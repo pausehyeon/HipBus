@@ -24,7 +24,8 @@ body, html {height: 100%}
     <p class="w3-large w3-center">
     	<a href="main.do">
 	    	<i class="fa fa-refresh w3-xlarge"></i>&nbsp;
-	    	메인으로 돌아가기    	</a>
+	    	메인으로 돌아가기
+	    </a>
     </p>
   </div>
   <div class="w3-display-bottomleft w3-padding-large w3-xlarge">
