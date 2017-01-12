@@ -1,5 +1,3 @@
-<!-- Synchronize와 Update to head 비교 -->
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -16,7 +14,8 @@
 	<c:import url="navbar_main.jsp"/>
 
 	<!-- Content -->
-	<div class="w3-content"
+	<div class="w3-content".
+	
 		style="max-width: 1100px; margin-top: 0px; margin-bottom: 80px">
 		<div class="w3-row w3-container w3-padding-64">
 			<!-- 여백 -->
