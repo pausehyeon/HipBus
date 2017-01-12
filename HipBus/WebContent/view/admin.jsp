@@ -1,3 +1,5 @@
+<!-- 최종수정자 남가현 -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/view/setting/setting.jsp"%>
