@@ -26,6 +26,7 @@
       <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
         <button onclick="document.getElementById('login').style.display='none'" type="button" class="w3-btn w3-red">Cancel</button>
         <span class="w3-right w3-padding w3-hide-small">아직 회원이 아니라면? <a href="mainJoin.do">Become a HipDriver</a></span>
+        <span class="w3-right w3-padding w3-hide-small">비밀번호가 기억이 안나세요? <a href="mainForgot.do">비밀번호 찾기</a></span>
       </div>
 
     </div>

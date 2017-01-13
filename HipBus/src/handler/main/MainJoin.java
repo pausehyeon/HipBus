@@ -11,7 +11,7 @@ import handler.CommandHandler;
 import handler.HandlerException;
 
 @Controller
-public class MainJoinHandler implements CommandHandler {
+public class MainJoin implements CommandHandler {
 
 	@RequestMapping("/mainJoin.do")
 	@Override
