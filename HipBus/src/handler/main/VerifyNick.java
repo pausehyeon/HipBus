@@ -13,17 +13,17 @@ import handler.HandlerException;
 import model.main.MainDao;
 
 @Controller
-public class VerifyEmail implements CommandHandler {
+public class VerifyNick implements CommandHandler {
 
 	@Resource(name="mainDao")
 	private MainDao mainDao;
 	
-	@RequestMapping("/verifyEmail.do")
+	@RequestMapping("/verifyNick.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-		int result = mainDao.verifyEmail(request.getParameter("email"));
+		int result = mainDao.verifyNick(request.getParameter("nick"));
 		request.setAttribute("result", result);
-		return new ModelAndView("verifyEmail");
+		return new ModelAndView("verifyNick");
 	}
 
 }

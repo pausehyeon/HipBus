@@ -4,9 +4,11 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Main">
 	
-	<!-- 연습용 -->
 	<select id="verifyEmail" parameterType="String" resultType="Integer">
-		select count(*) from dbtest where id = #{id}	
+		select count(*) from HB_Member where email = #{email}	
 	</select>
-	
+
+	<select id="verifyNick" parameterType="String" resultType="Integer">
+		select count(*) from HB_Member where nick = #{nick}
+	</select>	
 </mapper>

@@ -13,5 +13,9 @@ public class MainDBBean implements MainDao{
 		int result = session.selectOne("Main.verifyEmail", id);
 		return result;
 	}
-	
+	@Override
+	public int verifyNick(String nick) {
+		SqlSession session = SqlMapClient.getSession();
+		return session.selectOne("Main.verifyNick", nick);
+	}
 }
