@@ -10,3 +10,5 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <c:set var="project" value="/HipBus"/>
+
+<script type="text/javascript" src="/HipBus/scripts/jquery-3.1.1.js"></script>

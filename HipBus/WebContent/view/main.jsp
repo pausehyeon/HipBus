@@ -71,7 +71,7 @@
 				<div class="w3-left" onclick="plusDivs(-1)">
 					<i class="fa fa-arrow-circle-left w3-hover-text-teal"></i>
 				</div>
-				<div class="w3-right" onclick="plusDivs(1)">
+				<div class="w3-right" onclick="plusDivs(1)" id="nextslide">
 					<i class="fa fa-arrow-circle-right w3-hover-text-teal"></i>
 				</div>
 

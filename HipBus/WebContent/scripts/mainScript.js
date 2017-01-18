@@ -46,3 +46,11 @@ function myAccordion(id) {
 				.replace(" w3-theme", "");
 	}
 }
+
+// 자동으로 슬라이드 넘기기
+$(document).ready(function(){
+	
+	setInterval(function() {
+		$('#nextslide').trigger('click');	
+	}, 1500);
+});
