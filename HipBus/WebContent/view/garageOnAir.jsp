@@ -65,19 +65,6 @@
 	</div>
 </div>
 
-	<div class="w3-row">
-		<!-- Pagination -->
-		<div class="w3-center w3-padding-64">
-		  <ul class="w3-pagination">
-		    <li><a class="w3-theme-d1" href="#">1</a></li>
-		    <li><a class="w3-hover-opacity" href="#">2</a></li>
-		    <li><a class="w3-hover-opacity" href="#">3</a></li>
-		    <li><a class="w3-hover-opacity w3-hide-small" href="#">4</a></li>
-		    <li><a class="w3-hover-opacity w3-hide-small" href="#">5</a></li>
-		    <li><a class="w3-hover-opacity" href="#">»</a></li>
-		  </ul>
-		</div>
-	</div>
 <!-- END MAIN -->
 </div>
 	
