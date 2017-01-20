@@ -67,4 +67,4 @@
 </div>
 
 <!-- login 모달 창 -->
-<c:import url="login.jsp"/>
+<c:import url="modal_signIn.jsp"/>

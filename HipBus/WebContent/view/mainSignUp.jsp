@@ -29,7 +29,7 @@
 			}else{
 				console.log( "통신중..." );
 			}			
-		}, "verifyEmail.do", "POST", params);
+		}, "verifyEmailResult.do", "POST", params);
 		request.sendRequest();
 	}
 		
@@ -50,7 +50,7 @@
 			}else{
 				console.log( "통신중..." );
 			}	
-		}, "verifyNick.do", "POST", params);
+		}, "verifyNickResult.do", "POST", params);
 		request.sendRequest();
 	}
 	

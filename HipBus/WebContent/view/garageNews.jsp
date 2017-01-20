@@ -18,7 +18,7 @@
 			<p>공지사항 및 힙합 관련 최신 소식입니다.</p>
 			<hr>
 			<!-- 이 버튼은 관리자에게만 보임 -->
-			<a href="garageWrite.do"
+			<a href="garageNewsWrite.do"
 				class="w3-btn w3-padding w3-theme-d1 w3-margin-left w3-right"><i
 				class="fa fa-pencil-square-o w3-margin-right"></i>글쓰기</a>
 		</div>

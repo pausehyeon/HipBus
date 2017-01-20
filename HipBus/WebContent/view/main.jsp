@@ -27,7 +27,7 @@
 			<p class="w3-xlarge">
 				The hippest way to express myself<br>나를 표현하는 가장 Hip한 방법, HipBus<br>
 			</p>
-			<button class="w3-btn w3-padding-16 w3-large w3-margin-top" onclick="location='mainJoin.do'">
+			<button class="w3-btn w3-padding-16 w3-large w3-margin-top" onclick="location='mainSignUp.do'">
 				<i class="fa fa-address-card w3-xxsmall"></i> &nbsp;Become a HipDriver
 			</button>
 			<p class="w3-xsmall">
@@ -304,6 +304,6 @@
 
 
 <!-- login 모달 창 (위치 상관 없음) -->
-<c:import url="login.jsp"/>
+<c:import url="modal_signIn.jsp"/>
 
 </html>

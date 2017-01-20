@@ -15,7 +15,7 @@
 	//이메일 체크
 	function verifyemail(){
  		var params = "id=" + inputform.email.value;
-		request = new Request(verifyemailresult, "verifyEmail.do", "POST", params);
+		request = new Request(verifyemailresult, "verifyEmailResult.do", "POST", params);
 		request.sendRequest();
 	}
 	

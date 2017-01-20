@@ -1,6 +1,5 @@
-package handler.main;
+package handler.admin;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,20 +9,15 @@ import org.springframework.web.servlet.ModelAndView;
 
 import handler.CommandHandler;
 import handler.HandlerException;
-import model.main.MainDao;
 
 @Controller
-public class VerifyEmail implements CommandHandler {
+public class AdminADPro implements CommandHandler {
 
-	@Resource(name="mainDao")
-	private MainDao mainDao;
-	
-	@RequestMapping("/verifyEmail.do")
+	@RequestMapping("adminADPro.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-		int result = mainDao.verifyEmail(request.getParameter("email"));
-		request.setAttribute("result", result);
-		return new ModelAndView("verifyEmail");
+		// TODO Auto-generated method stub
+		return new ModelAndView("adminADPro");
 	}
 
 }

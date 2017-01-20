@@ -1,4 +1,4 @@
-package handler.main;
+package handler.garage;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,12 +11,12 @@ import handler.CommandHandler;
 import handler.HandlerException;
 
 @Controller
-public class LoginPro implements CommandHandler {
-	
-	@RequestMapping("/loginPro.do")
+public class GarageNewsWritePro implements CommandHandler{
+
+	@RequestMapping("/garageNewsWritePro.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		// TODO Auto-generated method stub
-		return new ModelAndView("loginPro.jsp");
+		return new ModelAndView("garageNewsWritePro");
 	}
 }

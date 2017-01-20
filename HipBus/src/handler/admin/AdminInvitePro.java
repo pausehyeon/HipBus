@@ -1,4 +1,4 @@
-package handler.main;
+package handler.admin;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,13 +11,13 @@ import handler.CommandHandler;
 import handler.HandlerException;
 
 @Controller
-public class MainJoin implements CommandHandler {
+public class AdminInvitePro implements CommandHandler {
 
-	@RequestMapping("/mainJoin.do")
+	@RequestMapping("/adminInvitePro.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		// TODO Auto-generated method stub
-		return new ModelAndView("mainJoin");
+		return new ModelAndView("adminInvitePro");
 	}
 
 }

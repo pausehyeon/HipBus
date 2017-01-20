@@ -1,4 +1,4 @@
-package handler.garage;
+package handler.main;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,12 +11,13 @@ import handler.CommandHandler;
 import handler.HandlerException;
 
 @Controller
-public class GarageRead implements CommandHandler{
+public class MainSignUpPro implements CommandHandler {
 
-	@RequestMapping("/garageRead.do")
+	@RequestMapping("/mainSignUpPro.do")
 	@Override
-	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException{
-		return new ModelAndView("garageRead");
+	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
+		// TODO Auto-generated method stub
+		return new ModelAndView("mainSignUpPro");
 	}
-	
+
 }
