@@ -11,12 +11,12 @@ import handler.CommandHandler;
 import handler.HandlerException;
 
 @Controller
-public class Garage implements CommandHandler{
-
-	@RequestMapping("/garage.do")
-	@Override
-	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException{
-		return new ModelAndView("garage");
-	}
+public class GarageNews implements CommandHandler{
 	
+	@RequestMapping(value={"/garageNews.do", "/garage.do"})
+	@Override
+	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
+		// TODO Auto-generated method stub
+		return new ModelAndView("garageNews");
+	}
 }

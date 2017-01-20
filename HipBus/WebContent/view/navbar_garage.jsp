@@ -13,7 +13,7 @@
 		<h4>
 			<b>Public Garage</b>
 		</h4>
-		<a href="garage.do" class="w3-hover-opacity"> News </a>
+		<a href="garageNews.do" class="w3-hover-opacity"> News </a>
 		<a href="garageOnAir.do" class="w3-hover-opacity"> On Air </a> 
 		<a href="garageUpcoming.do" class="w3-hover-opacity"> Upcoming </a>
 		<a href="garageWanted.do" class="w3-hover-opacity"> Wanted </a>
@@ -24,10 +24,10 @@
 	<div class="w3-bottom w3-hide-large w3-hide-medium" id="myNavbar">
 		<ul
 			class="w3-navbar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
-			<li class="w3-left" style="width: 25% !important"><a href="#"> News </a></li>
-			<li class="w3-left" style="width: 25% !important"><a href="#"> On Air </a></li>
-			<li class="w3-left" style="width: 25% !important"><a href="#"> Upcoming </a></li>
-			<li class="w3-left" style="width: 25% !important"><a href="#"> Wanted </a></li>
-			<li class="w3-left" style="width: 25% !important"><a href="#"> FAQ </a></li>
+			<li class="w3-left" style="width: 25% !important"><a href="garageNews.do"> News </a></li>
+			<li class="w3-left" style="width: 25% !important"><a href="garageOnAir.do"> On Air </a></li>
+			<li class="w3-left" style="width: 25% !important"><a href="garageUpcoming.do"> Upcoming </a></li>
+			<li class="w3-left" style="width: 25% !important"><a href="garageWanted.do"> Wanted </a></li>
+			<li class="w3-left" style="width: 25% !important"><a href="garageFAQ.do"> FAQ </a></li>
 		</ul>
 	</div>

@@ -8,12 +8,12 @@
   </a>
   <h4><b>Main Station</b></h4>
 	  <a href="station.do" class="w3-hover-opacity"> 전체보기 </a>  
-	  <a href="station_beat.do" class="w3-hover-opacity"> 비트 </a>
-	  <a href="station_rap.do" class="w3-hover-opacity"> 랩 </a>
-	  <a href="station_mix.do" class="w3-hover-opacity"> 믹스테잎 </a>
-	  <a href="station_vocal.do" class="w3-hover-opacity"> 보컬 </a>
-	  <a href="station_lyric.do" class="w3-hover-opacity"> 가사 </a>
-	  <a href="station_free.do" class="w3-hover-opacity"> 잡담 </a>  
+	  <a href="#" class="w3-hover-opacity"> 비트 </a>
+	  <a href="#" class="w3-hover-opacity"> 랩 </a>
+	  <a href="#" class="w3-hover-opacity"> 믹스테잎 </a>
+	  <a href="#" class="w3-hover-opacity"> 보컬 </a>
+	  <a href="#" class="w3-hover-opacity"> 가사 </a>
+	  <a href="#" class="w3-hover-opacity"> 잡담 </a>  
 </nav>
 
 <!-- Side Navbar on small screens (Hidden on medium and large screens) -->
