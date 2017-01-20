@@ -58,7 +58,7 @@
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
 <XPD:ATTR name="Left" type="integer">88</XPD:ATTR>
-<XPD:ATTR name="Top" type="integer">280</XPD:ATTR>
+<XPD:ATTR name="Top" type="integer">276</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">2529</XPD:ATTR>
 <XPD:ATTR name="Height" type="integer">1489</XPD:ATTR>
 <XPD:REF name="Model">UvrJINXI1Uuws8FYT10BSAAA</XPD:REF>
