@@ -1,4 +1,4 @@
-package handler.mybus;
+package handler.crewbus;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,13 +11,14 @@ import handler.CommandHandler;
 import handler.HandlerException;
 
 @Controller
-public class MyBusSignOutPro implements CommandHandler {
+public class CrewBusWantedDeletePro implements CommandHandler {
 
-	@RequestMapping("/myBusSignOutPro.do")
+	@RequestMapping("/crewBusWantedDeletePro.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		// TODO Auto-generated method stub
-		return new ModelAndView("myBusSignOutPro");
+		
+		return new ModelAndView("crewBusWantedDeletePro");
 	}
 
 }
