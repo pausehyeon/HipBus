@@ -59,7 +59,7 @@
 							</p>
 						</div>
 						<hr>
-						<a href="#"><i class="fa fa-pencil"></i> edit profile</a>
+						<a href="#"><i class="fa fa-pencil"></i> Edit Profile </a>
 						<hr>
 					</div>
 				</div>
@@ -132,7 +132,7 @@
 			<div class="w3-col m7">
 			<div class="w3-container w3-card-2 w3-white w3-round w3-margin-bottom w3-margin-left w3-margin-right w3-padding-32 w3-padding-xxlarge" >
 			<div class="w3-container w3-center w3-black">
-			  <h2><i class="fa fa-pencil"></i>&nbsp; edit profile </h2>
+			  <h2><i class="fa fa-pencil"></i>&nbsp; 회원 정보 수정 </h2>
 			</div>
 			
 			<form id="inputform" class="w3-container">
@@ -165,13 +165,13 @@
 						</div>
 					</div>
 					<p>
-						<span class="w3-tag w3-margin-top w3-padding w3-red">#빈지노<a class="w3-closebtn w3-tiny w3-margin-left">X</a></span>
-						<span class="w3-tag w3-margin-top w3-padding w3-orange">#언프리티_랩_스타<a class="w3-closebtn w3-tiny w3-margin-left">X</a></span>
-						<span class="w3-tag w3-margin-top w3-padding w3-teal">#믹스테잎<a class="w3-closebtn w3-tiny w3-margin-left">X</a></span>
-						<span class="w3-tag w3-margin-top w3-padding w3-blue">#랩<a class="w3-closebtn w3-tiny w3-margin-left">X</a></span>
-						<span class="w3-tag w3-margin-top w3-padding w3-red">#빈지노<a class="w3-closebtn w3-tiny w3-margin-left">X</a></span>
-						<span class="w3-tag w3-margin-top w3-padding w3-orange">#언프리티_랩_스타<a class="w3-closebtn w3-tiny w3-margin-left">X</a></span>
-						<span class="w3-tag w3-margin-top w3-padding w3-teal">#믹스테잎<a class="w3-closebtn w3-tiny w3-margin-left">X</a></span>
+						<span class="w3-tag w3-margin-top w3-padding w3-theme-l5">#빈지노<a class="w3-closebtn w3-tiny w3-margin-left">X</a></span>
+						<span class="w3-tag w3-margin-top w3-padding w3-theme-l4">#언프리티_랩_스타<a class="w3-closebtn w3-tiny w3-margin-left">X</a></span>
+						<span class="w3-tag w3-margin-top w3-padding w3-theme-l3">#믹스테잎<a class="w3-closebtn w3-tiny w3-margin-left">X</a></span>
+						<span class="w3-tag w3-margin-top w3-padding w3-theme-l2">#랩<a class="w3-closebtn w3-tiny w3-margin-left">X</a></span>
+						<span class="w3-tag w3-margin-top w3-padding w3-theme-l1">#빈지노<a class="w3-closebtn w3-tiny w3-margin-left">X</a></span>
+						<span class="w3-tag w3-margin-top w3-padding w3-theme">#언프리티_랩_스타<a class="w3-closebtn w3-tiny w3-margin-left">X</a></span>
+						<span class="w3-tag w3-margin-top w3-padding w3-theme-l5">#믹스테잎<a class="w3-closebtn w3-tiny w3-margin-left">X</a></span>
 					</p>
 				</p>
 				<br><br>
