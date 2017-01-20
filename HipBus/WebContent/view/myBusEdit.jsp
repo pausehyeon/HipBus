@@ -9,7 +9,7 @@
 <body class="w3-theme-l5">
 
 	<!-- Navbar -->
-	<c:import url="navbar_top.jsp"/>
+	<c:import url="navbar_top.jsp" />
 
 
 	<!-- Page Container -->
@@ -27,8 +27,9 @@
 					<div class="w3-container">
 						<h4 class="w3-center">My Profile</h4>
 						<p class="w3-center">
-							<img src="${project}/view/img/HipBusLogo_colored_sq.png" class="w3-circle"
-								style="height: 106px; width: 106px" alt="Avatar">
+							<img src="${project}/view/img/HipBusLogo_colored_sq.png"
+								class="w3-circle" style="height: 106px; width: 106px"
+								alt="Avatar">
 						</p>
 						<hr>
 						<p>
@@ -79,10 +80,12 @@
 							</ul>
 							</p>
 						</div>
-						<button onclick="location='myBus_vedios.do'" class="w3-btn-block w3-theme-l1 w3-left-align">
-							<i class="fa fa-video-camera fa-fw w3-margin-right"></i> 지난 라이브 영상
+						<button onclick="location='myBus_vedios.do'"
+							class="w3-btn-block w3-theme-l1 w3-left-align">
+							<i class="fa fa-video-camera fa-fw w3-margin-right"></i> 지난 라이브
+							영상
 						</button>
-						
+
 						<button onclick="myFunction('Demo2')"
 							class="w3-btn-block w3-theme-l1 w3-left-align">
 							<i class="fa	fa fa-align-left fa-fw w3-margin-right"></i>
@@ -130,61 +133,99 @@
 			<!-- Middle Column -->
 			<!-- 여기서부터 -->
 			<div class="w3-col m7">
-			<div class="w3-container w3-card-2 w3-white w3-round w3-margin-bottom w3-margin-left w3-margin-right w3-padding-32 w3-padding-xxlarge" >
-			<div class="w3-container w3-center w3-black">
-			  <h2><i class="fa fa-pencil"></i>&nbsp; 회원 정보 수정 </h2>
-			</div>
-			
-			<form id="inputform" class="w3-container">
-				<p>
-					<label>Nick Name</label>
-					<input class="w3-input" type="text">
-					<div class="w3-text-red w3-xsmall w3-right">*이미 존재하는 닉네임입니다.</div>
-				</p>
-				<br><br>
-				<p>
-					<label>Password</label>
-					<input class="w3-input" type="text">
-					<div class="w3-text-blue w3-xsmall w3-right">*비밀번호는 숫자와 알파벳 5~10자리로 입력해주세요.</div>
-				</p>
-				<br>
-				<p>
-					<label>Password 확인</label>
-					<input class="w3-input" type="text">
-					<div class="w3-text-blue w3-xsmall w3-right">*확인을 위해 다시 한번 입력해주세요.</div>
-				</p>
-				<br><br>
-				<p>
-					<label>Tags</label>
-					<div class="w3-row">
-						<div class="w3-threequarter">
-							<input id="tag" type="text" class="w3-input">
-						</div>
-						<div class="w3-rest">
-						 <span class="w3-badge w3-margin-left w3-large"> + </span>	
-						</div>
+				<div
+					class="w3-container w3-card-2 w3-white w3-round w3-margin-bottom w3-margin-left w3-margin-right w3-padding-32 w3-padding-xxlarge">
+					<div class="w3-container w3-center w3-black">
+						<h2>
+							<i class="fa fa-pencil"></i>&nbsp; 회원 정보 수정
+						</h2>
 					</div>
-					<p>
-						<span class="w3-tag w3-margin-top w3-padding w3-theme-l5">#빈지노<a class="w3-closebtn w3-tiny w3-margin-left">X</a></span>
-						<span class="w3-tag w3-margin-top w3-padding w3-theme-l4">#언프리티_랩_스타<a class="w3-closebtn w3-tiny w3-margin-left">X</a></span>
-						<span class="w3-tag w3-margin-top w3-padding w3-theme-l3">#믹스테잎<a class="w3-closebtn w3-tiny w3-margin-left">X</a></span>
-						<span class="w3-tag w3-margin-top w3-padding w3-theme-l2">#랩<a class="w3-closebtn w3-tiny w3-margin-left">X</a></span>
-						<span class="w3-tag w3-margin-top w3-padding w3-theme-l1">#빈지노<a class="w3-closebtn w3-tiny w3-margin-left">X</a></span>
-						<span class="w3-tag w3-margin-top w3-padding w3-theme">#언프리티_랩_스타<a class="w3-closebtn w3-tiny w3-margin-left">X</a></span>
-						<span class="w3-tag w3-margin-top w3-padding w3-theme-l5">#믹스테잎<a class="w3-closebtn w3-tiny w3-margin-left">X</a></span>
-					</p>
-				</p>
-				<br><br>
-				<div class="w3-center">
-					<input type="submit" value="수정 완료" class="w3-btn w3-padding w3-black w3-margin">				
+
+					<form id="inputform" class="w3-container">
+						<p>
+							<label>Nick Name</label> <input class="w3-input" type="text">
+						<div class="w3-text-red w3-xsmall w3-right">*이미 존재하는 닉네임입니다.</div>
+						</p>
+						<br> <br>
+						<p>
+							<label>Password</label> <input class="w3-input" type="text">
+						<div class="w3-text-blue w3-xsmall w3-right">*비밀번호는 숫자와 알파벳
+							5~10자리로 입력해주세요.</div>
+						</p>
+						<br>
+						<p>
+							<label>Password 확인</label> <input class="w3-input" type="text">
+						<div class="w3-text-blue w3-xsmall w3-right">*확인을 위해 다시 한번
+							입력해주세요.</div>
+						</p>
+						<br> <br>
+						<p>
+							<label>Tags</label>
+						<div class="w3-row">
+							<div class="w3-threequarter">
+								<input id="tag" type="text" class="w3-input">
+							</div>
+							<div class="w3-rest">
+								<span class="w3-badge w3-margin-left w3-large"> + </span>
+							</div>
+						</div>
+						<p>
+							<span class="w3-tag w3-margin-top w3-padding w3-theme-l5">#빈지노<a
+								class="w3-closebtn w3-tiny w3-margin-left">X</a></span> <span
+								class="w3-tag w3-margin-top w3-padding w3-theme-l4">#언프리티_랩_스타<a
+								class="w3-closebtn w3-tiny w3-margin-left">X</a></span> <span
+								class="w3-tag w3-margin-top w3-padding w3-theme-l3">#믹스테잎<a
+								class="w3-closebtn w3-tiny w3-margin-left">X</a></span> <span
+								class="w3-tag w3-margin-top w3-padding w3-theme-l2">#랩<a
+								class="w3-closebtn w3-tiny w3-margin-left">X</a></span> <span
+								class="w3-tag w3-margin-top w3-padding w3-theme-l1">#빈지노<a
+								class="w3-closebtn w3-tiny w3-margin-left">X</a></span> <span
+								class="w3-tag w3-margin-top w3-padding w3-theme">#언프리티_랩_스타<a
+								class="w3-closebtn w3-tiny w3-margin-left">X</a></span> <span
+								class="w3-tag w3-margin-top w3-padding w3-theme-l5">#믹스테잎<a
+								class="w3-closebtn w3-tiny w3-margin-left">X</a></span>
+						</p>
+						</p>
+						<br> <br>
+						<div class="w3-center">
+							<input type="submit" value="수정 완료"
+								class="w3-btn w3-padding w3-black w3-margin">
+						</div>
+
+
+					</form>
+
 				</div>
-				
-				
-			</form>
-			</div>
+				<!-- 회원탈퇴 -->
+				<div
+					class="w3-container w3-card-2 w3-white w3-round w3-margin-bottom w3-margin-left w3-margin-right w3-padding-32 w3-padding-xxlarge">
+					<div class="w3-container w3-center w3-red">
+						<h2>
+							<i class="fa fa-close"></i>&nbsp; 회원 탈퇴
+						</h2>
+					</div>
+
+					<form id="signoutform" class="w3-container">
+						<p>
+							<label>Password</label> <input class="w3-input" type="text">
+
+							<div class="w3-text-red w3-xsmall w3-right">*탈퇴 시 모든 정보가
+								삭제되며 복구할 수 없습니다. 신중히 결정해주세요</div>
+							</p>
+							<br>
+							<br>
+							<div class="w3-center">
+								<input type="submit" value="탈퇴하기"
+								class="w3-btn w3-padding w3-black w3-margin">
+							</div>
+
+
+						</form>
+					</div>
 			<!-- 여기까지 -->
-			<!-- End Middle Column -->
-			</div>
+							<!-- End Middle Column -->
+			
+						</div>
 
 			<!-- Right Column -->
 			<div class="w3-col m2">
@@ -195,7 +236,8 @@
 								<i class="fa fa-pencil"></i>&nbsp; Edit
 							</button>
 						</div>
-						<img src="${project}/view/img/notice1.png" alt="some image" style="width: 100%;">
+						<img src="${project}/view/img/notice1.png" alt="some image"
+							style="width: 100%;">
 						<p>
 							<strong>Seoul soul Festival 2016</strong>
 						</p>
@@ -236,7 +278,7 @@
 	</div>
 
 	<!-- Footer -->
-	<c:import url="footer.jsp"/>
+	<c:import url="footer.jsp" />
 
 </body>
 </html>
