@@ -4,7 +4,8 @@
 <html>
 <%@include file="/view/setting/setting.jsp"%>
 <%@include file="/view/setting/station_setting.jsp"%>
-
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <title>HipBus</title>
 <body>
 
@@ -40,12 +41,42 @@
 							class="w3-btn w3-padding w3-theme-d1 w3-margin-left"><i
 							class="fa fa-arrow-up w3-margin-right"></i>위로</a>
 					</footer>
+					<!--  댓글이 있는 경우  -->
+					<div class="w3-row">
+					<div class="w3-twothird w3-container" style="width:8%"><br>
+						<ul class="w3-ul">
+				<li class="w3-xlarge"><i class="glyphicon glyphicon-user"></i>
+   				</li>
+   				</ul>
+   				</div>
+   				<div class="w3-container w3-third w3-layout-cell" style="width:80%">
+  <p> <div class="w3-row"><div class="w3-twothird w3-container" style="width:80%">ID  작성일</div></div></p>
+   <p><h4 class="w3-text"><textarea style="width:23em;height:3em"></textarea></h4></p>
+				</div>
+   			</div>
+   				</div>
+					
+					<!--  댓글쓰기 -->
+				<ul class="w3-ul">
+				<li class="w3-xlarge"><i class="glyphicon glyphicon-user"></i>
+   				ID </li>
+   				</ul>
+				<div class="w3-row">
+   				<div class="w3-container w3-twothird" style="width:75%"><h4 class="w3-text"><textarea style="width:23em;height:3em"></textarea></h4></div>
+   				<div class="w3-container w3-third" style="width:25%"><h4><input type="button" class="w3-theme-d1 w3-padding " style="height:3em"value="댓글등록"> </h4></div>	
+			
+   				
+  				
+		
+					</div>
+				
 				</div>
 			</div>
-		</div>
-
+		</div>	
+		
+	
 		<!-- END MAIN -->
-	</div>
+		</div>
 
 	<!-- Footer -->
 	<c:import url="footer.jsp"/>
