@@ -42,34 +42,35 @@
 							class="fa fa-arrow-up w3-margin-right"></i>위로</a>
 					</footer>
 					<!--  댓글이 있는 경우  -->
-					<div class="w3-row">
-					<div class="w3-twothird w3-container" style="width:8%"><br>
-						<ul class="w3-ul">
-				<li class="w3-xlarge"><i class="glyphicon glyphicon-user"></i>
-   				</li>
-   				</ul>
-   				</div>
-   				<div class="w3-container w3-third w3-layout-cell" style="width:80%">
-  <p> <div class="w3-row"><div class="w3-twothird w3-container" style="width:80%">ID  작성일</div></div></p>
-   <p><h4 class="w3-text"><textarea style="width:23em;height:3em"></textarea></h4></p>
-				</div>
-   			</div>
-   				</div>
-					
-					<!--  댓글쓰기 -->
+				<div class="w3-container w3-row">
+				<div class="w3-harf w3-container">
 				<ul class="w3-ul">
-				<li class="w3-xlarge"><i class="glyphicon glyphicon-user"></i>
-   				ID </li>
+				<li class="w3-xlarge">&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-user  w3-padding-5"></i>
+   				ID 작성일</li>
    				</ul>
-				<div class="w3-row">
-   				<div class="w3-container w3-twothird" style="width:75%"><h4 class="w3-text"><textarea style="width:23em;height:3em"></textarea></h4></div>
-   				<div class="w3-container w3-third" style="width:25%"><h4><input type="button" class="w3-theme-d1 w3-padding " style="height:3em"value="댓글등록"> </h4></div>	
-			
-   				
-  				
-		
-					</div>
-				
+   				</div>
+   				<div class="w3-harf w3-container w3-right">
+   				asdas
+   				</div>
+   				</div>
+				<div class="w3-container">
+				<pre class="w3-input w3-border w3-left"> 댓글이 있네요</pre>
+				</div>
+				</div>
+   				</div>
+				<br><br>
+				&nbsp;<h5>댓글작성</h5>	
+					<!--  댓글쓰기 -->
+					<div class="w3-container w3-row">
+				<div class="w3-third w3-container w3-margin-top" style="width:8%"> 
+				<i class="w3-xxlarge glyphicon glyphicon-user"></i>
+				</div>
+				<div  class="w3-third w3-container" style="width:80%">
+				<textarea class="w3-input w3-border w3-padding-5"></textarea>
+				</div>
+				<div class="w3-third w3-container w3-margin-top" style="width:12%">
+				<input class="w3-btn w3-theme-d1 " type="button" value="등록">
+				</div>
 				</div>
 			</div>
 		</div>	

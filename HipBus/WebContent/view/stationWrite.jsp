@@ -22,6 +22,15 @@
 				<form name="writeform" method="post">
 					<div class="w3-card-4">
 						<header class="w3-container w3-padding-jumbo w3-theme-l3">
+							<select class="w3-left" name="category" style="margin:2px">
+							    <option value="">전체보기</option>
+							    <option value="비트">비트</option>
+							    <option value="랩">랩</option>
+							    <option value="믹스테잎">믹스테잎</option>
+							    <option value="보컬">보컬</option>
+							    <option value="가사">가사</option>
+							    <option value="잡담">잡담</option>
+							</select>
 							<input class="w3-input" type="text" required> <label
 								class="w3-label w3-validate">글제목</label> <a href="#"
 								class="w3-btn w3-padding w3-theme-d1 w3-margin w3-right"><i
