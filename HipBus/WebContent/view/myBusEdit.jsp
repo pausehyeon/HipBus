@@ -143,6 +143,22 @@
 
 					<form id="inputform" class="w3-container">
 						<p>
+							<label>Profile Picture</label>
+							<div class="w3-row">
+								<div class="w3-quarter w3-center">
+								<img src="${project}/view/img/HipBusLogo_colored_sq.png" class="w3-circle"
+									style="height: 106px; width: 106px" alt="Avatar">
+								</div>
+								<div class="w3-rest">
+									<a class="w3-input w3-right-align">HipBusLogo_colored_sq.png(기존 파일명) &nbsp;&nbsp;<i class="fa fa-download"></i></a>
+									<input class="w3-input" type="file">
+								</div>
+							</div>
+						<div class="w3-text-red w3-xsmall w3-right">*파일 형식에 맞지 않습니다.</div>
+						</p>
+						<br> <br>
+
+						<p>
 							<label>Nick Name</label> <input class="w3-input" type="text">
 						<div class="w3-text-red w3-xsmall w3-right">*이미 존재하는 닉네임입니다.</div>
 						</p>
@@ -162,10 +178,10 @@
 						<p>
 							<label>Tags</label>
 						<div class="w3-row">
-							<div class="w3-threequarter">
+							<div class="w3-quarter">
 								<input id="tag" type="text" class="w3-input">
 							</div>
-							<div class="w3-rest">
+							<div class="w3-rest w3-left-align">
 								<span class="w3-badge w3-margin-left w3-large"> + </span>
 							</div>
 						</div>
@@ -208,24 +224,22 @@
 					<form id="signoutform" class="w3-container">
 						<p>
 							<label>Password</label> <input class="w3-input" type="text">
-
-							<div class="w3-text-red w3-xsmall w3-right">*탈퇴 시 모든 정보가
-								삭제되며 복구할 수 없습니다. 신중히 결정해주세요</div>
-							</p>
-							<br>
-							<br>
-							<div class="w3-center">
-								<input type="submit" value="탈퇴하기"
+						<div class="w3-text-red w3-xsmall w3-right">*탈퇴 시 모든 정보가
+							삭제되며 복구할 수 없습니다. 신중히 결정해주세요</div>
+						</p>
+						<br> <br>
+						<div class="w3-center">
+							<input type="submit" value="탈퇴하기"
 								class="w3-btn w3-padding w3-black w3-margin">
-							</div>
-
-
-						</form>
-					</div>
-			<!-- 여기까지 -->
-							<!-- End Middle Column -->
-			
 						</div>
+
+
+					</form>
+				</div>
+				<!-- 여기까지 -->
+				<!-- End Middle Column -->
+
+			</div>
 
 			<!-- Right Column -->
 			<div class="w3-col m2">
