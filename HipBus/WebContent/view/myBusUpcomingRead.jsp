@@ -156,13 +156,15 @@
 														
 							</pre>
 							</div>
+							<hr style="border: 1px outset silver;"/>
 					<footer class="w3-container w3-padding-small w3-white w3-center">
 						
-					<hr style="border: 1px outset silver;"/>
+					<p>
 					<button class="w3-btn w3-border w3-light-grey">목록</button>
 					<button class="w3-btn w3-border w3-light-grey">삭제</button>
 					<button class="w3-btn w3-border w3-light-grey">수정</button>
-					
+					</p>
+						
 					</footer>
 				</div>
 			</div>
@@ -170,8 +172,7 @@
 				</div>
 
 				</div>
-				<!-- 여기까지 -->
-				<!-- End Middle Column -->
+				
 			</div>
 
 			<!-- Right Column -->
