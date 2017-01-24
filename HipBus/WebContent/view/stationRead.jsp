@@ -34,7 +34,7 @@
 대한사람 대한으로 길이 보전하세.
 					</pre>
 					</div>
-
+					
 					<footer class="w3-container w3-padding-jumbo w3-theme-l3 w3-center">
 						<a href="#" class="w3-btn w3-padding w3-theme-d1 w3-margin-left"><i
 							class="fa fa-thumbs-up w3-margin-right"></i>추천하기</a> <a href="#"
@@ -43,14 +43,12 @@
 					</footer>
 					<!--  댓글이 있는 경우  -->
 				<div class="w3-container w3-row">
-				<div class="w3-harf w3-container">
-				<ul class="w3-ul">
-				<li class="w3-xlarge">&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-user  w3-padding-5"></i>
-   				ID 작성일</li>
-   				</ul>
+				<div class="w3-harf w3-container w3-large w3-left">
+				<i class="glyphicon glyphicon-user  w3-padding-4"></i>
+   				ID 작성일
    				</div>
-   				<div class="w3-harf w3-container w3-right">
-   				asdas
+   				<div class="w3-harf w3-container w3-padding-4 w3-right">
+   				<a>수정</a> <a>삭제</a> <a>답글달기</a>
    				</div>
    				</div>
 				<div class="w3-container">
@@ -59,7 +57,7 @@
 				</div>
    				</div>
 				<br><br>
-				&nbsp;<h5>댓글작성</h5>	
+				<h5>&nbsp;&nbsp;&nbsp;&nbsp;댓글작성</h5>
 					<!--  댓글쓰기 -->
 					<div class="w3-container w3-row">
 				<div class="w3-third w3-container w3-margin-top" style="width:8%"> 
