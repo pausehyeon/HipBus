@@ -40,9 +40,34 @@
 				<i class="fa fa-users"></i>
 			</a>
 			<div class="w3-dropdown-content w3-white w3-card-4">
+				<a href="myBus.do">JD Yoo의 버스</a>
+				<a href="#">Jueun Jeong의 버스</a>
 				<a href="#">JD Yoo의 버스</a>
 				<a href="#">Jueun Jeong의 버스</a>
+				<a href="#">JD Yoo의 버스</a>
+				<a href="#" class="w3-center-align" onclick="document.getElementById('driverSearch').style.display='block'">더 보기</a>
 			</div>
+		</li>
+		<li class="w3-hide-small w3-dropdown-hover">
+			<a href="#" class="w3-padding-large w3-hover-white" title="otherdrivers">
+				<i class="fa fa-search"></i>
+			</a>
+			<div class="w3-dropdown-content w3-white w3-card-4">
+				<div class="w3-row w3-container w3-padding-16">
+					<div class="w3-threequarter">
+						<input type="text" class="w3-input" placeholder="Driver/Crew 찾기">
+					</div>
+					<div class="w3-quarter w3-right-align">
+						<i class="fa fa-search"></i>
+					</div>
+				</div>
+				<a href="myBus.do">JD Yoo의 버스</a>
+				<a href="#">Jueun Jeong의 버스</a>
+				<a href="#">JD Yoo의 버스</a>
+				<a href="#">Jueun Jeong의 버스</a>
+				<a href="#">JD Yoo의 버스</a>
+				<a href="#" class="w3-center-align" onclick="document.getElementById('hoppedOnList').style.display='block'">더 보기</a>
+			</div>	
 		</li>
 		<li>
 			<a onclick="document.getElementById('login').style.display='block'">로그인 해주세요.</a>
@@ -65,6 +90,12 @@
 		<li><a class="w3-padding-large" href="#">Public Garage</a></li>
 	</ul>
 </div>
+
+<!-- member 검색결과창 -->
+<c:import url="modal_hoppedOnList.jsp"/>
+
+<!-- member 검색결과창 -->
+<c:import url="modal_driverSearch.jsp"/>
 
 <!-- login 모달 창 -->
 <c:import url="modal_signIn.jsp"/>

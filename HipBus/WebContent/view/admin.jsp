@@ -32,9 +32,10 @@
 			onclick="w3_close()" title="close menu">
 			<i class="fa fa-remove fa-fw"></i> Close Menu</a>
 			<a href="#" class="w3-padding"><i class="fa fa-eye fa-fw"></i> &nbsp;HipBus 이용현황 </a>
-			<a href="#manageMembers" class="w3-padding"><i class="fa fa-user fa-fw"></i> &nbsp;회원정보 관리 </a>
+			<a href="#manageMembers" class="w3-padding"><i class="fa fa-users fa-fw"></i> &nbsp;회원 관리 </a>
 			<a href="#addad" class="w3-padding"><i class="fa fa-file-image-o fa-fw"></i> &nbsp;광고 삽입 </a>
 			<a href="#sendInvitation" class="w3-padding"><i class="fa fa-id-card-o fa-fw"></i> &nbsp;관리자 초대메일 보내기 </a>
+			<a href="#modify" class="w3-padding"><i class="fa fa-user fa-fw"></i> &nbsp;관리자 정보 관리 </a>
 			<a href="#withdrawal" class="w3-padding"><i class="fa fa-sign-out fa-fw"></i> &nbsp;사이트 탈퇴 </a>
 			<br><br>
 	</nav>
@@ -112,7 +113,7 @@
 				<div class="w3-row-padding" style="margin: 0 -16px">
 					<div class="w3-third">
 						<h5>
-							<i class="fa fa-user"></i><b> 회원정보 관리 </b>
+							<i class="fa fa-users"></i><b> 회원 관리 </b>
 						</h5>
 					</div>
 	
@@ -319,6 +320,56 @@
 			</div>
 		</div>
 		
+		<hr id="modify">
+
+		<div class="w3-content w3-padding-128">
+			<h5>
+				<i class="fa fa-user"></i><b> 관리자 정보 관리</b>
+			</h5>
+			
+			<form id="inputform" class="w3-container">
+				<p>
+					<label>Profile Picture</label>
+					<div class="w3-row">
+						<div class="w3-quarter w3-center">
+						<img src="${project}/view/img/HipBusLogo_colored_sq.png" class="w3-circle"
+							style="height: 106px; width: 106px" alt="Avatar">
+						</div>
+						<div class="w3-rest">
+							<a class="w3-input w3-right-align">HipBusLogo_colored_sq.png(기존 파일명) &nbsp;&nbsp;<i class="fa fa-download"></i></a>
+							<input class="w3-input" type="file">
+						</div>
+					</div>
+				<div class="w3-text-red w3-xsmall w3-right">*파일 형식에 맞지 않습니다.</div>
+				</p>
+				<br> <br>
+	
+				<p>
+					<label>Nick Name</label> <input class="w3-input" type="text">
+				<div class="w3-text-red w3-xsmall w3-right">*이미 존재하는 닉네임입니다.</div>
+				</p>
+				<br> <br>
+				<p>
+					<label>Password</label> <input class="w3-input" type="text">
+				<div class="w3-text-blue w3-xsmall w3-right">*비밀번호는 숫자와 알파벳
+					5~10자리로 입력해주세요.</div>
+				</p>
+				<br>
+				<p>
+					<label>Password 확인</label> <input class="w3-input" type="text">
+				<div class="w3-text-blue w3-xsmall w3-right">*확인을 위해 다시 한번
+					입력해주세요.</div>
+				</p>
+				<br> <br>
+				</p>
+				<br> <br>
+				<div class="w3-center w3-row">
+					<input type="submit" value="수정 완료"
+						class="w3-btn w3-hover-teal">
+				</div>
+			</form>
+		</div>	
+		
 		<hr id="withdrawal">
 
 		<div class="w3-content w3-padding-128">
@@ -332,7 +383,7 @@
 			</pre>
 			<input class="w3-check" type="checkbox">
 			<label class="w3-validate">안내 사항을 모두 확인하였으며, 이에 동의합니다.</label>
-			<p><button class="w3-btn w3-hover-teal" style="margin-left:40%">탈퇴</button></p>
+			<p class="w3-center"><button class="w3-btn w3-hover-teal">탈퇴</button></p>
 		</div>		
 
 		<!-- 여기까지 -->

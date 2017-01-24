@@ -144,16 +144,18 @@
 					<form id="inputform" class="w3-container">
 						<p>
 							<label>Profile Picture</label>
-							<div class="w3-row">
-								<div class="w3-quarter w3-center">
-								<img src="${project}/view/img/HipBusLogo_colored_sq.png" class="w3-circle"
-									style="height: 106px; width: 106px" alt="Avatar">
-								</div>
-								<div class="w3-rest">
-									<a class="w3-input w3-right-align">HipBusLogo_colored_sq.png(기존 파일명) &nbsp;&nbsp;<i class="fa fa-download"></i></a>
-									<input class="w3-input" type="file">
-								</div>
+						<div class="w3-row">
+							<div class="w3-quarter w3-center">
+								<img src="${project}/view/img/HipBusLogo_colored_sq.png"
+									class="w3-circle" style="height: 106px; width: 106px"
+									alt="Avatar">
 							</div>
+							<div class="w3-rest">
+								<a class="w3-input w3-right-align">HipBusLogo_colored_sq.png(기존
+									파일명) &nbsp;&nbsp;<i class="fa fa-download"></i>
+								</a> <input class="w3-input" type="file">
+							</div>
+						</div>
 						<div class="w3-text-red w3-xsmall w3-right">*파일 형식에 맞지 않습니다.</div>
 						</p>
 						<br> <br>
