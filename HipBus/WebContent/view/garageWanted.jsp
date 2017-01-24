@@ -131,6 +131,17 @@
 			</div>
 		</div>
 
+		 <div class="w3-padding" align="left">
+		
+		<select>
+			<option value="driver">작성자</option>
+			<option value="subject">제목</option>
+			<option value="content">내용</option>
+		</select>
+		
+   		<input type="text" placeholder="검색"> <button type="submit"><i class="fa fa-search"></i> </button>
+  		</div>
+
 		<div class="w3-row">
 			<!-- Pagination -->
 			<div class="w3-center w3-padding-64">
