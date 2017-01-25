@@ -1,4 +1,4 @@
-package handler.main;
+package handler.general;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -10,20 +10,20 @@ import org.springframework.web.servlet.ModelAndView;
 
 import handler.CommandHandler;
 import handler.HandlerException;
-import model.main.MainDao;
+import model.general.GeneralDao;
 
 @Controller
-public class VerifyEmailResult implements CommandHandler {
+public class VerifyNickResult implements CommandHandler {
 
-	@Resource(name="mainDao")
-	private MainDao mainDao;
+	@Resource(name="generalDao")
+	private GeneralDao generalDao;
 	
-	@RequestMapping("/verifyEmailResult.do")
+	@RequestMapping("/verifyNickResult.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-		int result = mainDao.verifyEmail(request.getParameter("email"));
+		int result = generalDao.verifyNick(request.getParameter("nick"));
 		request.setAttribute("result", result);
-		return new ModelAndView("verifyEmailResult");
+		return new ModelAndView("verifyNickResult");
 	}
 
 }

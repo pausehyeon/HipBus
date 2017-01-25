@@ -1,4 +1,4 @@
-package handler.main;
+package handler.general;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,11 +11,13 @@ import handler.CommandHandler;
 import handler.HandlerException;
 
 @Controller
-public class MainSignInPro implements CommandHandler{
-	@RequestMapping("/mainSignInPro.do")
+public class SignInPro implements CommandHandler {
+
+	@RequestMapping("/signInPro.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		// TODO Auto-generated method stub
-		return new ModelAndView("mainSignInPro");
+		return new ModelAndView("signInPro");
 	}
+
 }

@@ -1,5 +1,6 @@
-package handler.main;
+package handler.general;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,14 +10,20 @@ import org.springframework.web.servlet.ModelAndView;
 
 import handler.CommandHandler;
 import handler.HandlerException;
+import model.general.GeneralDao;
 
 @Controller
-public class MainSignOutPro implements CommandHandler{
+public class VerifyEmailResult implements CommandHandler {
+
+	@Resource(name="generalDao")
+	private GeneralDao generalDao;
 	
-	@RequestMapping("/mainSignOutPro.do")
+	@RequestMapping("/verifyEmailResult.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-		// TODO Auto-generated method stub
-		return new ModelAndView("mainSignOutPro");
+		int result = generalDao.verifyEmail(request.getParameter("email"));
+		request.setAttribute("result", result);
+		return new ModelAndView("verifyEmailResult");
 	}
+
 }

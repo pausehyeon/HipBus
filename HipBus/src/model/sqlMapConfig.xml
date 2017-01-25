@@ -28,5 +28,6 @@
 		<mapper resource="model/mybus/myBus.xml"/>
 		<mapper resource="model/crewbus/crewBus.xml"/>
 		<mapper resource="model/admin/admin.xml"/>
+		<mapper resource="model/general/general.xml"/>
 	</mappers>
 </configuration>

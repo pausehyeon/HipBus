@@ -1,6 +1,5 @@
-package handler.main;
+package handler.general;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,20 +9,15 @@ import org.springframework.web.servlet.ModelAndView;
 
 import handler.CommandHandler;
 import handler.HandlerException;
-import model.main.MainDao;
 
 @Controller
-public class VerifyNickResult implements CommandHandler {
+public class SignOutPro implements CommandHandler {
 
-	@Resource(name="mainDao")
-	private MainDao mainDao;
-	
-	@RequestMapping("/verifyNickResult.do")
+	@RequestMapping("/signOutPro.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-		int result = mainDao.verifyNick(request.getParameter("nick"));
-		request.setAttribute("result", result);
-		return new ModelAndView("verifyNickResult");
+		// TODO Auto-generated method stub
+		return new ModelAndView("signOutPro");
 	}
 
 }
