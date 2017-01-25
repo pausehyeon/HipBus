@@ -3,9 +3,7 @@
 
 <!-- 멤버 검색결과창 -->
 <div class="w3-container">
-  <h2>Hip Bus - Log in</h2>
-
-  <div id="memberSearch" class="w3-modal">
+  <div id="driverSearch" class="w3-modal">
     <div class="w3-modal-content w3-card-8 w3-animate-zoom" style="max-width:600px">
   
       <div class="w3-center"><br>

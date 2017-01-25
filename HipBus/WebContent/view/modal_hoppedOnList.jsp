@@ -3,9 +3,7 @@
 
 <!-- 홉온한 친구 목록 모달창 -->
 <div class="w3-container">
-  <h2>Hip Bus - Log in</h2>
-
-  <div id="memberSearch" class="w3-modal">
+  <div id="hoppedOnList" class="w3-modal">
     <div class="w3-modal-content w3-card-8 w3-animate-zoom" style="max-width:600px">
   
       <div class="w3-center"><br>
@@ -34,6 +32,7 @@
 			</p>
 		</div>
       <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+      	<p class="w3-right-align">올라 탄 버스</p>
       </div>
 
     </div>

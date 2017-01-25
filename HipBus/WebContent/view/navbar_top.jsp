@@ -45,7 +45,7 @@
 				<a href="#">JD Yoo의 버스</a>
 				<a href="#">Jueun Jeong의 버스</a>
 				<a href="#">JD Yoo의 버스</a>
-				<a href="#" class="w3-center-align" onclick="document.getElementById('driverSearch').style.display='block'">더 보기</a>
+				<a class="w3-center w3-small" onclick="document.getElementById('hoppedOnList').style.display='block'"><span>더 보기</span></a>
 			</div>
 		</li>
 		<li class="w3-hide-small w3-dropdown-hover">
@@ -66,7 +66,7 @@
 				<a href="#">JD Yoo의 버스</a>
 				<a href="#">Jueun Jeong의 버스</a>
 				<a href="#">JD Yoo의 버스</a>
-				<a href="#" class="w3-center-align" onclick="document.getElementById('hoppedOnList').style.display='block'">더 보기</a>
+				<a class="w3-center w3-small" onclick="document.getElementById('driverSearch').style.display='block'"><span>더 보기</span></a>
 			</div>	
 		</li>
 		<li>
