@@ -146,15 +146,20 @@
 							<header class="w3-container w3-padding w3-blue-grey">
 								<h5> oooo 힙합 공연</h5>
 							</header>
-							<p align="right">작성자:관리자 | 작성일:2016-12-19 | 조회수:0</p>
+							<p align="right" style="padding:5px">작성자:관리자 | 작성일:2016-12-19 | 조회수:0</p>
 							<hr style="border: 1px outset silver;"/>
 							
-							<div class="w3-container w3-padding-128 w3-padding-jumbo">
-							<pre>
-	
-								언제 어디서 누가 재미난 공연할거임
-														
-							</pre>
+							<div align="left" class="w3-container w3-padding-128 w3-padding-jumbo">
+
+							<div> 장소 </div>
+							<hr style="border: 1px outset lightgray">
+							<div> 일시 </div>
+							<hr style="border: 1px outset lightgray">
+							<div> 출연진 </div>
+							<hr style="border: 1px outset lightgray">
+							<div> 시간 </div>
+							<hr style="border: 1px outset lightgray">
+							
 							</div>
 							<hr style="border: 1px outset silver;"/>
 					<footer class="w3-container w3-padding-small w3-white w3-center">
