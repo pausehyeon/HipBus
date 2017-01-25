@@ -871,7 +871,7 @@
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="DyVcU5oDHkWT6EJDRPOKDAAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="6kWedDd89UiDPyFeERNiRQAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">MainSignInPro</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">SignInPro</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="M9BBtjhNQkmQJMoTpbQHDQAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -5905,7 +5905,7 @@
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="OOyrET0m20OFxmiiS3dcDgAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="1++Mr0kNmU6liZhSquKvbQAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">driverSearchResult</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">DriverSearchResult</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="RvMSMgt+eECEKcDKe9ZRPwAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -5936,7 +5936,7 @@
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="c48u8eDPi0GB+m7pDAs/iQAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="9leCF36qXUqT3WZH7sWeKAAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">hoppedOnListResult</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">HoppedOnListResult</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="Zp/bAX+pw0q9MPjuVloJ9AAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -6839,7 +6839,7 @@
 <XPD:REF name="Views[3]">bFc7GGTZ8kKbPPx3JOPLCwAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[40]" type="UMLClass" guid="t+aN+CYeL0C3Q4qQQihR1AAA">
-<XPD:ATTR name="Name" type="string">MainSignInPro</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">SignInPro</XPD:ATTR>
 <XPD:REF name="Namespace">aAHrh08tC0Wy5jiWTZW2RwAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">v4s+AyvSL0Cxk7qhgazlsQAA</XPD:REF>
@@ -9911,7 +9911,7 @@
 <XPD:REF name="Views[0]">E4DtkbC2B0+9AZ1rJ/2OUAAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[245]" type="UMLClass" guid="znVxWw82tE+mXuBtWumHswAA">
-<XPD:ATTR name="Name" type="string">driverSearchResult</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">DriverSearchResult</XPD:ATTR>
 <XPD:REF name="Namespace">aAHrh08tC0Wy5jiWTZW2RwAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">bordnfjeOEWEzyjEByoujwAA</XPD:REF>
@@ -9934,7 +9934,7 @@
 </XPD:OBJ>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[246]" type="UMLClass" guid="G+4O8FKME06bjrFUXOvttwAA">
-<XPD:ATTR name="Name" type="string">hoppedOnListResult</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">HoppedOnListResult</XPD:ATTR>
 <XPD:REF name="Namespace">aAHrh08tC0Wy5jiWTZW2RwAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">vU/KKikcoU+Z3/W4hMro6wAA</XPD:REF>
