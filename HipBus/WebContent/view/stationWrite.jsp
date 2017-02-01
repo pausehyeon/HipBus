@@ -8,7 +8,7 @@
 <title>HipBus</title>
 <body>
 
-	<c:import url="navbar_top.jsp"/>
+	<c:import url="../top.do"/>
 	<%@ include file="navbar_station.jsp"%>
 	
 	<!-- Main content: shift it to the right by 250 pixels when the sidenav is visible -->
@@ -58,7 +58,7 @@
 	</div>
 
 	<!-- Footer -->
-	<c:import url="footer.jsp"/>
+	<c:import url="../bottom.do"/>
 
 
 </body>

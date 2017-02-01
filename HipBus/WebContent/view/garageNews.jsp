@@ -8,11 +8,11 @@
 <title>HipBus</title>
 <body>
 
-	<c:import url="navbar_top.jsp"/>
-	<c:import url="navbar_garage.jsp"/>
+	<c:import url="../top.do"/>
 	
 	<!-- Main content: shift it to the right by 250 pixels when the sidenav is visible -->
 	<div class="w3-main " style="margin-right: 20%; margin-left: 20%">
+		<c:import url="navbar_garage.jsp"/>
 		<div class="w3-row w3-container" style="margin-top: 64px">
 			<h3>NEWS</h3>
 			<p>공지사항 및 힙합 관련 최신 소식입니다.</p>
@@ -153,7 +153,7 @@
 	</div>
 
 	<!-- Footer -->
-	<c:import url="footer.jsp"/>
+	<c:import url="../bottom.do"/>
 
 
 </body>

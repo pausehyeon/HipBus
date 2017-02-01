@@ -7,7 +7,7 @@
 <body>
 
 	<!-- Navbar -->
-	<c:import url="navbar_top.jsp"/>
+	<c:import url="../top.do"/>
 
 	<!-- Sidenav/menu -->
 	<nav
@@ -392,7 +392,7 @@
 	</div>
 
 	<!-- Footer -->
-	<c:import url="footer.jsp"/>
+	<c:import url="../bottom.do"/>
 
 
 </body>

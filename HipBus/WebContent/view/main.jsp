@@ -299,7 +299,7 @@
 		</div>
 	</div>
 	<!-- Footer -->
-	<c:import url="footer.jsp"/>
+	<c:import url="../bottom.do"/>
 </body>
 
 
