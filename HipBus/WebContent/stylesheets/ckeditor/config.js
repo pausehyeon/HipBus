@@ -20,7 +20,7 @@ CKEDITOR.editorConfig = function( config ) {
 			['Outdent','Indent','Blockquote'],
 			['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','Link'],
 			['Image','Flash','Table','HorizontalRule','Smiley','SpecialChar'],'/',
-			['Styles','Format','Font','FontSize'],['TextColor','BGColor'],['Maximize', 'ShowBlocks']
+			['Styles','Format','Font','FontSize'],['TextColor','BGColor'],['Maximize','ShowBlocks','Source',]
 	 ];
 
 };

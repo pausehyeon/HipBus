@@ -5,12 +5,15 @@
 <html>
 <script src="/HipBus/stylesheets/ckeditor/ckeditor.js"></script>
 <script src="/HipBus/scripts/busScript.js"></script>
-<link rel="stylesheet" href="/HipBus/stylesheets/samples/samples.css">
+<!-- <link rel="stylesheet" href="/HipBus/stylesheets/samples/samples.css"> -->
 <%@include file="/view/setting/setting.jsp"%>
 <%@include file="/view/setting/myBus_setting.jsp"%>
 
 <title>HipBus - Upcoming </title>
+
+
 <body class="w3-theme-l5">
+
 
 	<!-- Navbar -->
 	<c:import url="navbar_top.jsp" />
@@ -27,6 +30,7 @@
 			<!-- Left Column -->
 			<div class="w3-col m3">
 				<!-- Profile -->
+		
 				<div class="w3-card-2 w3-round w3-white w3-margin-bottom">
 					<div class="w3-container">
 						<h4 class="w3-center">My Profile</h4>
@@ -54,14 +58,14 @@
 							소속 크루 : The One
 						</p>
 						<div id="crew" class="w3-accordion-content w3-container">
-							<p>
+							<div>
 								<a href="crewBus.do">The One <i
 									class="fa fa-mail-forward fa-fw w3-margin-right w3-text-theme"></i></a>
 							<ul>
 								<li><a href="#">Victory Lee</a>
 								<li><a href="#">Jeehun Kim</a>
 							</ul>
-							</p>
+							</div>
 						</div>
 						<hr>
 						<a href="#"><i class="fa fa-pencil"></i> Edit Profile </a>
@@ -77,12 +81,12 @@
 							<i class="fa fa fa-heart fa-fw w3-margin-right"></i> 탑승자 명단
 						</button>
 						<div id="Demo1" class="w3-accordion-content w3-container">
-							<p>
+							<div>
 							<ul>
 								<li>Jueun Jeong<br>
 								<li>JD Yoo<br>
 							</ul>
-							</p>
+							</div>
 						</div>
 						<button onclick="location='myBus_vedios.do'"
 							class="w3-btn-block w3-theme-l1 w3-left-align">
@@ -96,7 +100,7 @@
 							Gahyeon의 게시글 모아보기
 						</button>
 						<div id="Demo2" class="w3-accordion-content w3-container">
-							<p>
+							<div>
 							<ul>
 								<li><a href="#"> 전체</a>
 								<li><a href="#"> 랩</a>
@@ -105,7 +109,7 @@
 								<li><a href="#"> 가사</a>
 								<li><a href="#"> 잡담</a>
 							</ul>
-							</p>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -142,15 +146,15 @@
 							</header>
 				<div class="w3-container w3-card-2 w3-white w3-round w3-margin-bottom w3-margin-left w3-margin-right w3-padding-32 w3-padding-xxlarge">
 				
-					<div>제목<br> <textarea placeholder="제목" rows="1" cols="81"  style="resize: none; 
-					wrap:hard; min-width:670px; max-width:670px"></textarea></div>	
+					<div>제목<br>
+					<textarea placeholder="제목" rows="1" cols="81"  style="resize: none; 
+					wrap:hard; min-width:670px; max-width:670px"></textarea></div>
 					<br>
 				
-					<div class="w3-padding-16 w3-card w3-light-grey">
-				
-					</div>
-					<div> <textarea class="ckeditor" cols="1" id="editor1" name="editor1" rows="15">
+					<div class="w3-padding-16 w3-card w3-light-grey"></div>
 					
+					<div class="ckeditor" id="editor1" > 
+					<!-- textarea class="ckeditor" cols="1" id="editor1" name="editor1" rows="15">-->
 							<div> 장소 </div> <br>
 							<hr style="border: 1px outset lightgray"> <br>
 							<div> 일시 </div> <br>
@@ -158,10 +162,8 @@
 							<div> 출연진 </div> <br>
 							<hr style="border: 1px outset lightgray"> <br>
 							<div> 시간 </div> <br>
-							<hr style="border: 1px outset lightgray"> <br>
-							
-					</textarea> </div>
-					
+							<hr style="border: 1px outset lightgray"> <br>		
+					<!--  </textarea> -->
 					<script type="text/javascript">
 					  CKEDITOR.replace('editor1',
 					    {
@@ -170,13 +172,11 @@
 					    }
 					  );
 					</script>
-				
+				 </div>			
 					<footer class="w3-container w3-padding-small w3-white w3-center">
-				
 					<p>
 					<button class="w3-btn w3-border w3-blue">등록</button>
 					</p>
-		
 						<i class="glyphicon glyphicon-search"></i>
 					</footer>
 				</div>

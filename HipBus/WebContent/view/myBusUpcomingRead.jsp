@@ -50,14 +50,14 @@
 							소속 크루 : The One
 						</p>
 						<div id="crew" class="w3-accordion-content w3-container">
-							<p>
+							<div>
 								<a href="crewBus.do">The One <i
 									class="fa fa-mail-forward fa-fw w3-margin-right w3-text-theme"></i></a>
 							<ul>
 								<li><a href="#">Victory Lee</a>
 								<li><a href="#">Jeehun Kim</a>
 							</ul>
-							</p>
+							</div>
 						</div>
 						<hr>
 						<a href="#"><i class="fa fa-pencil"></i> Edit Profile </a>
@@ -73,12 +73,12 @@
 							<i class="fa fa fa-heart fa-fw w3-margin-right"></i> 탑승자 명단
 						</button>
 						<div id="Demo1" class="w3-accordion-content w3-container">
-							<p>
+							<div>
 							<ul>
 								<li>Jueun Jeong<br>
 								<li>JD Yoo<br>
 							</ul>
-							</p>
+							</div>
 						</div>
 						<button onclick="location='myBus_vedios.do'"
 							class="w3-btn-block w3-theme-l1 w3-left-align">
@@ -92,7 +92,7 @@
 							Gahyeon의 게시글 모아보기
 						</button>
 						<div id="Demo2" class="w3-accordion-content w3-container">
-							<p>
+							<div>
 							<ul>
 								<li><a href="#"> 전체</a>
 								<li><a href="#"> 랩</a>
@@ -101,7 +101,7 @@
 								<li><a href="#"> 가사</a>
 								<li><a href="#"> 잡담</a>
 							</ul>
-							</p>
+							</div>
 						</div>
 					</div>
 				</div>

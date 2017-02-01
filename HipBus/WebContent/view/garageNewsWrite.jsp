@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<script src="/HipBus/stylesheets/ckeditor/ckeditor.js"></script>
 <%@include file="/view/setting/setting.jsp"%>
 <%@include file="/view/setting/garage_setting.jsp"%>
 
@@ -28,8 +29,18 @@
 								class="fa fa-image w3-margin-right"></i>이미지 첨부</a>
 						</header>
 
-						<div class="w3-container w3-padding-32 w3-padding-jumbo">
-							<textarea class="w3-input" rows="15"></textarea>
+						<div class="ckeditor w3-container w3-padding-32 w3-padding-jumbo" id="editor">
+							<!--  <textarea class="w3-input" rows="15"></textarea>-->
+							
+							<script type="text/javascript">
+					  CKEDITOR.replace('editor',
+					    {
+						  
+					      height : '350px',  // 입력창의 높이
+					      startupFocus : false
+					    }
+					  );
+					</script>
 						</div>
 
 						<footer

@@ -50,14 +50,14 @@
 							소속 크루 : The One
 						</p>
 						<div id="crew" class="w3-accordion-content w3-container">
-							<p>
+							<div>
 								<a href="crewBus.do">The One <i
 									class="fa fa-mail-forward fa-fw w3-margin-right w3-text-theme"></i></a>
 							<ul>
 								<li><a href="#">Victory Lee</a>
 								<li><a href="#">Jeehun Kim</a>
 							</ul>
-							</p>
+							</div>
 						</div>
 						<hr>
 						<a href="#"><i class="fa fa-pencil"></i> Edit Profile </a>
