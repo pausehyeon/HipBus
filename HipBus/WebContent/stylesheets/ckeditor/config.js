@@ -3,6 +3,8 @@
  * For licensing, see LICENSE.md or http://ckeditor.com/license
  */
 
+
+
 CKEDITOR.editorConfig = function( config ) {
 	// Define changes to default configuration here. For example:
 	// config.language = 'fr';
@@ -12,14 +14,13 @@ CKEDITOR.editorConfig = function( config ) {
 	config.resize_enabled = false;
 	config.enterMode = CKEDITOR.ENTER_BR;
 	
-	
-	 config.toolbar =[
-	        ['Source','-','Cut','Copy','Paste','PasteText','PasteFromWord','Undo','Redo','SelectAll','RemoveFormat'],
-	        '/',
-	        ['Bold','Italic','Underline','Strike', 'Subscript','Superscript'],
-	        ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
-	        ['NumberedList','BulletedList','Outdent','Indent','Blockquote','CreateDiv'],
-	        ['Image','Table','HorizontalRule','Smiley','SpecialChar','PageBreak'],
-	        ['Styles','Format','Font','FontSize','TextColor','BGColor','Maximize', 'ShowBlocks']
-	    ];
+	 config.toolbar = [
+			['Undo','Redo','-','Find','Replace','-','SelectAll'],
+			['Bold','Italic','-'],
+			['Outdent','Indent','Blockquote'],
+			['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','Link'],
+			['Image','Flash','Table','HorizontalRule','Smiley','SpecialChar'],'/',
+			['Styles','Format','Font','FontSize'],['TextColor','BGColor'],['Maximize', 'ShowBlocks']
+	 ];
+
 };

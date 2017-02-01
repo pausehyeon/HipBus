@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html>
 <script src="/HipBus/stylesheets/ckeditor/ckeditor.js"></script>
-<script src="/HipBus/scripts/jquery-3.1.1.js"></script>
 <script src="/HipBus/scripts/busScript.js"></script>
 <link rel="stylesheet" href="/HipBus/stylesheets/samples/samples.css">
 <%@include file="/view/setting/setting.jsp"%>
@@ -137,7 +136,6 @@
 
 			<!-- Middle Column -->
 			<!-- 여기서부터 -->
-			
 			<div class="w3-col m7">
 							<header class="w3-container w3-padding w3-black w3-margin-left w3-margin-right">
 								<h3 style="font-family:impact"> Upcoming</h3>
@@ -152,7 +150,26 @@
 				
 					</div>
 					<div> <textarea class="ckeditor" cols="1" id="editor1" name="editor1" rows="15">
+					
+							<div> 장소 </div> <br>
+							<hr style="border: 1px outset lightgray"> <br>
+							<div> 일시 </div> <br>
+							<hr style="border: 1px outset lightgray"> <br>
+							<div> 출연진 </div> <br>
+							<hr style="border: 1px outset lightgray"> <br>
+							<div> 시간 </div> <br>
+							<hr style="border: 1px outset lightgray"> <br>
+							
 					</textarea> </div>
+					
+					<script type="text/javascript">
+					  CKEDITOR.replace('editor1',
+					    {
+					      height : '350px',  // 입력창의 높이
+					      startupFocus : false
+					    }
+					  );
+					</script>
 				
 					<footer class="w3-container w3-padding-small w3-white w3-center">
 				
