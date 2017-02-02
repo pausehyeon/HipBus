@@ -14,7 +14,7 @@
 <!-- jQuery연결 -->
 <script type="text/javascript" src="/HipBus/scripts/jquery-3.1.1.js"></script>
 <!-- ckeditor연결 -->
-<script src="//cdn.ckeditor.com/4.6.2/basic/ckeditor.js"></script>
+<script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
 
 
 
