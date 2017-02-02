@@ -29,7 +29,7 @@
 						</header>
 
 						<div>
-							<textarea class="w3-input" rows="15" id="editor"></textarea>
+							<textarea class="w3-input" id="editor"></textarea>
 							<script type="text/javascript">
 								CKEDITOR.replace('editor',
 									{
