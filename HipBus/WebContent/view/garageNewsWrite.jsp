@@ -2,18 +2,17 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<script src="/HipBus/stylesheets/ckeditor/ckeditor.js"></script>
 <%@include file="/view/setting/setting.jsp"%>
 <%@include file="/view/setting/garage_setting.jsp"%>
 
 <title>HipBus</title>
 <body>
 
-	<c:import url="../top.do"/>
-	
+	<c:import url="../top.do" />
+
 	<!-- Main content: shift it to the right by 250 pixels when the sidenav is visible -->
 	<div class="w3-main " style="margin-right: 20%; margin-left: 20%">
-		<c:import url="navbar_garage.jsp"/>
+		<c:import url="navbar_garage.jsp" />
 		<div class="w3-row w3-container" style="margin-top: 64px">
 			<h3>NEWS</h3>
 			<hr>
@@ -29,18 +28,16 @@
 								class="fa fa-image w3-margin-right"></i>이미지 첨부</a>
 						</header>
 
-						<div class="ckeditor w3-container w3-padding-32 w3-padding-jumbo" id="editor">
-							<!--  <textarea class="w3-input" rows="15"></textarea>-->
-							
+						<div>
+							<textarea class="w3-input" rows="15" id="editor"></textarea>
 							<script type="text/javascript">
-					  CKEDITOR.replace('editor',
-					    {
-						  
-					      height : '350px',  // 입력창의 높이
-					      startupFocus : false
-					    }
-					  );
-					</script>
+								CKEDITOR.replace('editor',
+									{
+										height : '350px', // 입력창의 높이
+										startupFocus : false
+									}
+								);
+							</script>
 						</div>
 
 						<footer
@@ -60,7 +57,7 @@
 	</div>
 
 	<!-- Footer -->
-	<c:import url="../bottom.do"/>
+	<c:import url="../bottom.do" />
 
 
 </body>
