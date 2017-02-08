@@ -5,7 +5,7 @@
 <%@include file="/view/setting/setting.jsp"%>
 <%@include file="/view/setting/station_setting.jsp"%>
 
-<title>HipBus</title>
+<title>${str_title}</title>
 <body>
 
 	<c:import url="../top.do"/>

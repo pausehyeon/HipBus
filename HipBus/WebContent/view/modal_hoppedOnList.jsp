@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@include file="/view/setting/navbar_top_setting.jsp"%>
 <!-- 홉온한 친구 목록 모달창 -->
 <div class="w3-container">
   <div id="hoppedOnList" class="w3-modal">
@@ -32,7 +32,7 @@
 			</p>
 		</div>
       <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
-      	<p class="w3-right-align">올라 탄 버스</p>
+      	<p class="w3-right-align">${str_busList}</p>
       </div>
 
     </div>

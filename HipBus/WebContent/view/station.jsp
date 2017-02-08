@@ -7,7 +7,7 @@
 <%@include file="/view/setting/station_setting.jsp"%>
 
 
-<title>HipBus</title>
+<title>${str_title}</title>
 <body>
 
 	<!-- Navbar -->
@@ -18,12 +18,12 @@
 	<div class="w3-main " style="margin-right: 20%; margin-left: 20%">
 		<c:import url="navbar_station.jsp" />
 		<div class="w3-row w3-container" style="margin-top: 64px">
-			<h3>전체보기</h3>
-			<p>전체 게시글을 모아볼 수 있습니다.</p>
+			<h3>${str_allView}</h3>
+			<p>${str_allViewText}</p>
 			<hr>
 			<a href="station_write.do"
 				class="w3-btn w3-padding w3-theme-d1 w3-margin-left w3-right"><i
-				class="fa fa-pencil-square-o w3-margin-right"></i>글쓰기</a>
+				class="fa fa-pencil-square-o w3-margin-right"></i>${str_write}</a>
 		</div>
 		<div class="w3-row">
 			<div class="w3-twothird">

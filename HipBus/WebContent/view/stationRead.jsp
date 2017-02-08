@@ -6,7 +6,7 @@
 <%@include file="/view/setting/station_setting.jsp"%>
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<title>HipBus</title>
+<title>${str_title}</title>
 <body>
 
 	<c:import url="../top.do"/>
@@ -23,7 +23,12 @@
 				<div class="w3-card-4">
 					<header class="w3-container w3-padding-jumbo w3-theme-l3">
 						<h3>애국가</h3>
-						<p class="w3-right">작성자:aaa | 작성일:2016-12-19 | 조회수:0</p>
+						<p class="w3-right">작성자:aaa | 작성일:2016-12-19 | 조회수:0
+						<br>
+						<a class="w3-right">${str_delete}</a>  
+						
+						<a class="w3-right">${str_modify}&nbsp;</a>
+						</p>
 					</header>
 
 					<div class="w3-container w3-padding-128 w3-padding-jumbo">
@@ -37,9 +42,9 @@
 					
 					<footer class="w3-container w3-padding-jumbo w3-theme-l3 w3-center">
 						<a href="#" class="w3-btn w3-padding w3-theme-d1 w3-margin-left"><i
-							class="fa fa-thumbs-up w3-margin-right"></i>추천하기</a> <a href="#"
+							class="fa fa-thumbs-up w3-margin-right"></i>${str_recommend}</a> <a href="#"
 							class="w3-btn w3-padding w3-theme-d1 w3-margin-left"><i
-							class="fa fa-arrow-up w3-margin-right"></i>위로</a>
+							class="fa fa-arrow-up w3-margin-right"></i>${str_top}</a>
 					</footer>
 					<!--  댓글이 있는 경우  -->
 				<div class="w3-container w3-row">
@@ -48,7 +53,7 @@
    				ID 작성일
    				</div>
    				<div class="w3-harf w3-container w3-padding-4 w3-right">
-   				<a>수정</a> <a>삭제</a> <a>답글달기</a>
+   				<a>${str_modify}</a> <a>${str_delete}</a> <a>${str_reply}</a>
    				</div>
    				</div>
 				<div class="w3-container">
@@ -57,7 +62,7 @@
 				</div>
    				</div>
 				<br><br>
-				<h5>&nbsp;&nbsp;&nbsp;&nbsp;댓글작성</h5>
+				<h5>&nbsp;&nbsp;&nbsp;&nbsp;${str_replyWrite}</h5>
 					<!--  댓글쓰기 -->
 					<div class="w3-container w3-row">
 				<div class="w3-third w3-container w3-margin-top" style="width:8%"> 
@@ -67,7 +72,7 @@
 				<textarea class="w3-input w3-border w3-padding-5"></textarea>
 				</div>
 				<div class="w3-third w3-container w3-margin-top" style="width:12%">
-				<input class="w3-btn w3-theme-d1 " type="button" value="등록">
+				<input class="w3-btn w3-theme-d1 " type="button" value="${str_register}">
 				</div>
 				</div>
 			</div>
