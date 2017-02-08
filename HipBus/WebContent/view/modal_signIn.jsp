@@ -15,26 +15,25 @@
 
 		<form class="w3-container" action="form.asp">
 			<div class="w3-section">
-				<label><b>Username</b></label> <input
+				<label><b>${str_userName}</b></label> <input
 					class="w3-input w3-border w3-margin-bottom" type="text"
-					placeholder="Enter Username" name="usrname" required> <label><b>Password</b></label>
+					placeholder="Enter Username" name="usrname" required> <label><b>${str_password}</b></label>
 				<input class="w3-input w3-border" type="text"
 					placeholder="Enter Password" name="psw" required>
 				<button class="w3-btn-block w3-green w3-section w3-padding"
-					type="submit">Login</button>
+					type="submit">${btn_login}</button>
 				<input class="w3-check w3-margin-top" type="checkbox"
-					checked="checked"> Remember me
-			</div>
+					checked="checked"> ${str_rememberMe}</div>
 		</form>
 
 		<div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
 			<button
 				onclick="document.getElementById('login').style.display='none'"
-				type="button" class="w3-btn w3-red">Cancel</button>
-			<span class="w3-right w3-padding w3-hide-small">아직 회원이 아니라면? <a
-				href="mainSignUp.do">Become a HipDriver</a></span> <span
-				class="w3-right w3-padding w3-hide-small">비밀번호가 기억이 안나세요? <a
-				href="mainForgot.do">비밀번호 찾기</a></span>
+				type="button" class="w3-btn w3-red">${str_cancel}</button>
+			<span class="w3-right w3-padding w3-hide-small">${str_noMember}<a
+				href="mainSignUp.do">${str_becomeMember}</a></span> <span
+				class="w3-right w3-padding w3-hide-small">${str_passwordSearchMent}<a
+				href="mainForgot.do">${str_searchPassword}</a></span>
 		</div>
 
 	</div>
