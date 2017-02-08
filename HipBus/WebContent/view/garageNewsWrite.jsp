@@ -33,8 +33,10 @@
 							<script type="text/javascript">
 								CKEDITOR.replace('editor',
 									{
+										enterMode : "2",
 										height : '350px', // 입력창의 높이
-										startupFocus : false
+										filebrowserImageUploadUrl : "imageUpload.do" //이미지 업로드를 위해 핸들러 연결해줘야 함. 나중에 수정할게요.
+									//http://localhost:8080/HipBus/imageUpload.do?CKEditor=editor&CKEditorFuncNum=1&langCode=ko처럼 넘어 감.
 									}
 								);
 							</script>
