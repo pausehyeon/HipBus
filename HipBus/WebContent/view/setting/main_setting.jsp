@@ -44,6 +44,39 @@
 <c:set var="str_newPasswordSend" value="새 비밀번호 전송"/>
 
 <!-- mainSignIn.jsp -->
+<c:set var="str_signLogin" value=" &nbsp;Log-in"/>
+<c:set var="str_userName" value="Username"/>
+<c:set var="str_password" value="Password"/>
+<c:set var="btn_login" value="Login"/>
+<c:set var="str_rememberMe" value=" Remember me"/>
+<c:set var="str_noMember" value="아직 회원이 아니라면? "/>
+<c:set var="str_becomeMember" value="Become a HipDriver"/>
+
+<!-- mainSignUp.jsp -->
+<c:set var="str_email" value="Email"/>
+<c:set var="str_signUpEmail" value="*이 주소로 가입인증 메일이 발송되므로 반드시 정확한 주소를 입력해주세요."/>
+<c:set var="str_signUpUserName" value="*닉네임을 입력해주세요."/>
+<c:set var="str_signUpPassword" value="*비밀번호는 숫자와 알파벳을 조합하여 5~10자리로 입력해주세요."/>
+<c:set var="str_passwordCheck" value="Password 확인"/>
+<c:set var="str_signUpPasswordCheck" value="*확인을 위해 다시 한번 입력해주세요."/>
+<c:set var="str_emailOk" value="*사용할 수 있는 이메일입니다."/>
+<c:set var="str_emailNo" value="*이미 존재하는 이메일입니다."/>
+<c:set var="str_userNameOk" value="*사용할 수 있는 닉네임입니다."/>
+<c:set var="str_userNameNo" value="*이미 존재하는 닉네임입니다."/>
+<c:set var="str_emailLength" value="글자까지만 입력가능합니다."/>
+<c:set var="str_passwordError1" value="*반드시 숫자와 알파벳을 조합하여야 합니다."/>
+<c:set var="str_passwordError2" value="자리 이상입력해주십시오."/>
+<c:set var="str_passwordError3" value="*비밀번호는 최대 "/>
+<c:set var="str_passwordError4" value="글자를 초과할 수 없습니다."/>
+<c:set var="str_passwordOk" value="*유효한 비밀번호입니다."/>
+<c:set var="str_passwordError5" value="*반드시 숫자와 알파벳을 조합하여야 합니다."/>
+<c:set var="str_passwordCheckOk" value="비밀번호가 일치합니다."/>
+<c:set var="str_passwordCheckNo" value="비밀번호가 일치하지 않습니다."/>
+
+
+
+
+
 
 
 
