@@ -20,7 +20,7 @@
 	display: none
 }
 </style>
-
+<!-- main.jsp -->
 <c:set var="str_welcome" value="HipBus - Welcome!"/>
 <c:set var="str_topTitle" value="What's HipBus?"/>
 <c:set var="str_topContent1" value="The hippest way to express myself<br>나를 표현하는 가장 Hip한 방법, HipBus"/>
@@ -37,6 +37,17 @@
 <c:set var="btn_detail" value="자세히"/>
 <c:set var="str_contactUs" value="Contact Us"/>
 <c:set var="btn_mainSend" value="Send"/>
+
+<!-- mainForgot.jsp -->
+<c:set var="str_searchPassword" value=" &nbsp;비밀번호 찾기"/>
+<c:set var="str_noEmail" value="* 가입되어 있지 않은 이메일입니다."/>
+<c:set var="str_newPasswordSend" value="새 비밀번호 전송"/>
+
+<!-- mainSignIn.jsp -->
+
+
+
+
 
 
 
