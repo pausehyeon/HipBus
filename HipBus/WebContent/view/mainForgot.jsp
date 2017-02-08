@@ -52,18 +52,18 @@
 		<div class="w3-container w3-padding-128"
 			style="max-width: 1100px; margin-top: 0px; margin-bottom: 80px">
 			<div class="w3-container w3-center w3-black">
-			  <h2><i class="fa fa-question-circle w3-xxsmall"></i> &nbsp;비밀번호 찾기 </h2>
+			  <h2><i class="fa fa-question-circle w3-xxsmall"></i>${str_searchPassword} </h2>
 			</div>
 			
 			<form action="mainForgotPro.do" id="inputform" class="w3-container">
 				<p>
 					<label>Email</label>
 					<input id="email" type="text" class="w3-input" onkeyup="verifyemail()">
-					<div class="w3-text-blue w3-xsmall w3-right" id="emailresult">* 가입되어 있지 않은 이메일입니다.</div>
+					<div class="w3-text-blue w3-xsmall w3-right" id="emailresult">${str_noEmail}</div>
 				</p>
 				<br>				
 				<div class="w3-center">
-					<input type="submit" value="새 비밀번호 전송" class="w3-btn w3-padding w3-black w3-margin">				
+					<input type="submit" value="${str_newPasswordSend}" class="w3-btn w3-padding w3-black w3-margin">				
 				</div>
 			</form>
 		</div>
