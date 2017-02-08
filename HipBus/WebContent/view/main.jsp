@@ -8,7 +8,7 @@
 
 <!-- SETTING 끝 -->
 
-<title>HipBus - Welcome!</title>
+<title>${str_welcome}</title>
 <body onload="showDivs(1)">
 
 	<c:import url="navbar_main.jsp"/>
@@ -23,22 +23,22 @@
 		<!-- Join in -->
 		<div class="w3-container w3-red w3-center w3-padding-128"
 			style="max-width: 1100px; margin-top: 0px; margin-bottom: 80px">
-			<h1 class="w3-margin w3-jumbo">What's HipBus?</h1>
+			<h1 class="w3-margin w3-jumbo">${str_topTitle}</h1>
 			<p class="w3-xlarge">
-				The hippest way to express myself<br>나를 표현하는 가장 Hip한 방법, HipBus<br>
+				${str_topContent1}<br>
 			</p>
 			<button class="w3-btn w3-padding-16 w3-large w3-margin-top" onclick="location='mainSignUp.do'">
-				<i class="fa fa-address-card w3-xxsmall"></i> &nbsp;Become a HipDriver
+				<i class="fa fa-address-card w3-xxsmall"></i> ${str_topContent2}
 			</button>
 			<p class="w3-xsmall">
-				<a onclick="document.getElementById('login').style.display='block'">or log-in (click)</a>
+				<a onclick="document.getElementById('login').style.display='block'">${str_topContentLogin}</a>
 			</p>
 		</div>
 
 
 		<div class="w3-center w3-padding-64" id="news">
 			<span
-				class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">News</span>
+				class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">${str_mainNews}</span>
 		</div>
 		<!-- Slideshow -->
 
@@ -46,22 +46,19 @@
 			<div class="w3-display-container mySlides">
 				<img src="${project}/view/img/notice1.png" style="width: 100%">
 				<div class="w3-display-topleft w3-container w3-padding-32">
-					<span class="w3-white w3-padding-large w3-animate-bottom">공연
-						정보</span>
+					<span class="w3-white w3-padding-large w3-animate-bottom">${str_slideShow1}</span>
 				</div>
 			</div>
 			<div class="w3-display-container mySlides">
 				<img src="${project}/view/img/notice2.png" style="width: 100%">
 				<div class="w3-display-middle w3-container w3-padding-32">
-					<span class="w3-white w3-padding-large w3-animate-bottom">자작곡
-						공유</span>
+					<span class="w3-white w3-padding-large w3-animate-bottom">${str_slideShow2}</span>
 				</div>
 			</div>
 			<div class="w3-display-container mySlides">
 				<img src="${project}/view/img/notice3.png" style="width: 100%">
 				<div class="w3-display-topright w3-container w3-padding-32">
-					<span class="w3-white w3-padding-large w3-animate-bottom">Live
-						방송</span>
+					<span class="w3-white w3-padding-large w3-animate-bottom">${str_slideShow3}</span>
 				</div>
 			</div>
 
@@ -90,8 +87,7 @@
 		<!-- On air Section -->
 		<div class="w3-center w3-padding-64" id="onair">
 			<span
-				class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">On
-				Air</span>
+				class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">str_mainOnAir</span>
 		</div>
 
 		<div class="w3-row-padding">
@@ -152,8 +148,7 @@
 		<div class="w3-row-padding" id="topdrivers">
 			<div class="w3-center w3-padding-64">
 				<span
-					class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">Top
-					3 Drivers of last week</span>
+					class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">${str_top3}</span>
 			</div>
 
 			<div class="w3-third w3-margin-bottom">
@@ -166,7 +161,7 @@
 							그룹 AAA입니다.<br> 다음 주 공연 많이 찾아주세요!
 						</p>
 						<p>
-							<button class="w3-btn-block">Hop on</button>
+							<button class="w3-btn-block">${btn_hopOn}</button>
 						</p>
 					</div>
 				</div>
@@ -182,7 +177,7 @@
 							BBB입니다.<br> 안녕하세요.
 						</p>
 						<p>
-							<button class="w3-btn-block">Hop on</button>
+							<button class="w3-btn-block">${btn_hopOn}</button>
 						</p>
 					</div>
 				</div>
@@ -198,7 +193,7 @@
 							반갑습니다.<br>안녕하세ㅛㅇ...
 						</p>
 						<p>
-							<button class="w3-btn-block">Hop on</button>
+							<button class="w3-btn-block">${btn_hopOn}</button>
 						</p>
 					</div>
 				</div>
@@ -208,8 +203,7 @@
 		<!-- Grid -->
 		<div class="w3-center w3-padding-64" id="upcoming">
 			<span
-				class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">Upcoming
-				Events</span>
+				class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">${str_upcoming}</span>
 		</div>
 		<div class="w3-row-padding">
 			<div class="w3-third w3-margin-bottom">
@@ -224,7 +218,7 @@
 							(1 Free Drink 포함)</span>
 					</li>
 					<li class="w3-light-grey w3-padding-24">
-						<button class="w3-btn w3-green w3-padding-large">자세히</button>
+						<button class="w3-btn w3-green w3-padding-large">${btn_detail}</button>
 					</li>
 				</ul>
 			</div>
@@ -242,7 +236,7 @@
 							(1 Free Drink 포함)</span>
 					</li>
 					<li class="w3-light-grey w3-padding-24">
-						<button class="w3-btn w3-green w3-padding-large">자세히</button>
+						<button class="w3-btn w3-green w3-padding-large">${btn_detail}</button>
 					</li>
 				</ul>
 			</div>
@@ -259,7 +253,7 @@
 							(1 Free Drink 포함)</span>
 					</li>
 					<li class="w3-light-grey w3-padding-24">
-						<button class="w3-btn w3-green w3-padding-large">자세히</button>
+						<button class="w3-btn w3-green w3-padding-large">${btn_detail}</button>
 					</li>
 				</ul>
 			</div>
@@ -268,8 +262,7 @@
 		<!-- Contact -->
 		<div class="w3-center w3-padding-64" id="contact">
 			<span
-				class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">Contact
-				Us</span>
+				class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">${str_contactUs}</span>
 		</div>
 
 		<div class="w3-row-padding w3-padding-64">
@@ -294,7 +287,7 @@
 						class="w3-input w3-border w3-hover-border-black"
 						style="width: 100%;" name="Message" required>
 				</div>
-				<button type="submit" class="w3-btn w3-btn-block w3-padding-12">Send</button>
+				<button type="submit" class="w3-btn w3-btn-block w3-padding-12">${btn_mainSend}</button>
 			</form>
 		</div>
 	</div>
