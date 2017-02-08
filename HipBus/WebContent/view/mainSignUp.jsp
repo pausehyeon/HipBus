@@ -19,9 +19,9 @@
 			if(request.httpRequest.readyState == 4){
 				if(request.httpRequest.status == 200){
 					if(request.httpRequest.responseText.trim() == "0"){
-						$('#emailresult').removeClass('w3-text-red').addClass('w3-text-blue').text("*사용할 수 있는 이메일입니다.");	
+						$('#emailresult').removeClass('w3-text-red').addClass('w3-text-blue').text(${str_emailOk});	
 					}else{
-						$('#emailresult').removeClass('w3-text-blue').addClass('w3-text-red').text("*이미 존재하는 이메일입니다.");	
+						$('#emailresult').removeClass('w3-text-blue').addClass('w3-text-red').text(${str_emailNo});	
 					}
 				}else{
 					$('#emailresult').text(request.httpRequest.status+"오류");	
@@ -40,9 +40,9 @@
 			if(request.httpRequest.readyState == 4){
 				if(request.httpRequest.status == 200){
 					if(request.httpRequest.responseText.trim() == "0"){
-						$('#nickresult').removeClass('w3-text-red').addClass('w3-text-blue').text("*사용할 수 있는 닉네임입니다.");	
+						$('#nickresult').removeClass('w3-text-red').addClass('w3-text-blue').text(${str_userNameOk});	
 					}else{
-						$('#nickresult').removeClass('w3-text-blue').addClass('w3-text-red').text("*이미 존재하는 닉네임입니다.");	
+						$('#nickresult').removeClass('w3-text-blue').addClass('w3-text-red').text(${str_userNameNo});	
 					}
 				}else{
 					$('#nickresult').text('오류');
@@ -60,7 +60,7 @@
 		$('input[name="nick"]').keyup(function(){
 			var maxlength = 5;
 			if( $(this).val().length > maxlength){
-				$('#nickresult').addClass('w3-text-red').text(maxlength+'글자까지만 입력가능합니다.');
+				$('#nickresult').addClass('w3-text-red').text(maxlength+${str_emailLength});
 				$(this).val( $(this).val().substring(0,maxlength) );
 			}
 		});
@@ -75,31 +75,31 @@
 					if( $(this).val().indexOf(i) != -1)	containsNumber = true;
 				}
 				if(containsNumber == false){
-					$('#passwdresult').removeClass('w3-text-blue').addClass('w3-text-red').text('*반드시 숫자와 알파벳을 조합하여야 합니다.');
+					$('#passwdresult').removeClass('w3-text-blue').addClass('w3-text-red').text(${str_passwordError1});
 				}else if( $(this).val().length<5 ){
 					//길이가 짧은 경우
 					var minlength = 5; 
-					$('#passwdresult').removeClass('w3-text-red').addClass('w3-text-blue').text('*'+minlength+'자리 이상입력해주십시오.');
+					$('#passwdresult').removeClass('w3-text-red').addClass('w3-text-blue').text('*'+minlength+${str_passswordError2});
 				}else if( $(this).val().length>10 ){
 					//길이가 너무 긴 경우
 					var maxlength = 10;
-					$('#passwdresult').removeClass('w3-text-red').addClass('w3-text-blue').text('*비밀번호는 최대 '+maxlength+'글자를 초과할 수 없습니다.');
+					$('#passwdresult').removeClass('w3-text-red').addClass('w3-text-blue').text(${str_passwordError3}+maxlength+${str_passwordError4});
 					$(this).val( $(this).val().substring(0, maxlength) );
 				}else{
-					$('#passwdresult').removeClass('w3-text-red').addClass('w3-text-blue').text('*유효한 비밀번호입니다.');					
+					$('#passwdresult').removeClass('w3-text-red').addClass('w3-text-blue').text(${str_passwordOk});					
 				}
 			}else{
 			//숫자인 경우
-				$('#passwdresult').removeClass('w3-text-blue').addClass('w3-text-red').text('*반드시 숫자와 알파벳을 조합하여야 합니다.');
+				$('#passwdresult').removeClass('w3-text-blue').addClass('w3-text-red').text(${str_passwordError5});
 			}
 		});
 		
 		//비밀번호 확인
 		$('input[name="repasswd"]').keyup(function(){
 			if( $(this).val() == $('input[name="passwd"]').val() ){
-				$('#repasswdresult').removeClass('w3-text-red').addClass('w3-text-blue').text('비밀번호가 일치합니다.');
+				$('#repasswdresult').removeClass('w3-text-red').addClass('w3-text-blue').text(${str_passwordCheckOk});
 			}else{
-				$('#repasswdresult').removeClass('w3-text-blue').addClass('w3-text-red').text('비밀번호가 일치하지 않습니다.');
+				$('#repasswdresult').removeClass('w3-text-blue').addClass('w3-text-red').text(${str_passwordCheckNo});
 			}			
 		});
 
@@ -122,32 +122,32 @@
 		<div class="w3-container w3-padding-128"
 			style="max-width: 1100px; margin-top: 0px; margin-bottom: 80px">
 			<div class="w3-container w3-center w3-black">
-			  <h2><i class="fa fa-address-card w3-xxsmall"></i> &nbsp;Become a HipDriver</h2>
+			  <h2><i class="fa fa-address-card w3-xxsmall"></i> ${str_becomeMember}</h2>
 			</div>
 			
 			<form id="inputform" class="w3-container">
 				<p>
-					<label>Email</label>
+					<label>${str_email}</label>
 					<input id="email" name="email" type="text" class="w3-input" onkeyup="verifyemail()">
-					<div class="w3-text-blue w3-xsmall w3-right" id="emailresult">*이 주소로 가입인증 메일이 발송되므로 반드시 정확한 주소를 입력해주세요.</div>
+					<div class="w3-text-blue w3-xsmall w3-right" id="emailresult">${str_signUpEmail}</div>
 				</p>
 				<br>				
 				<p>
-					<label>Nick Name</label>
+					<label>${str_userName}</label>
 					<input name="nick" class="w3-input" type="text" onkeyup="verifynick()">
-					<div class="w3-text-blue w3-xsmall w3-right" id="nickresult">*닉네임을 입력해주세요.</div>
+					<div class="w3-text-blue w3-xsmall w3-right" id="nickresult">${str_signUpUserName}</div>
 				</p>
 				<br><br>
 				<p>
-					<label>Password</label>
+					<label>${str_password}</label>
 					<input name="passwd" class="w3-input" type="text">
-					<div class="w3-text-blue w3-xsmall w3-right" id="passwdresult">*비밀번호는 숫자와 알파벳을 조합하여 5~10자리로 입력해주세요.</div>
+					<div class="w3-text-blue w3-xsmall w3-right" id="passwdresult">${str_signUpPassword}</div>
 				</p>
 				<br>
 				<p>
-					<label>Password 확인</label>
+					<label>${str_passwordCheck}</label>
 					<input name="repasswd" class="w3-input" type="password">
-					<div class="w3-text-blue w3-xsmall w3-right" id="repasswdresult">*확인을 위해 다시 한번 입력해주세요.</div>
+					<div class="w3-text-blue w3-xsmall w3-right" id="repasswdresult">${str_signUpPasswordCheck}</div>
 				</p>
 				<br><br>
 				<div class="w3-center">
