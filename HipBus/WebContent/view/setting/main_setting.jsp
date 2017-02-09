@@ -32,11 +32,12 @@
 <c:set var="str_slideShow3" value="Live방송"/>
 <c:set var="str_mainOnAir" value="On Air"/>
 <c:set var="str_top3" value="Top3 Drivers of last week"/>
-<c:set var="btn_hopOn" value="Hop on"/>
+<c:set var="str_hopOn" value="Hop on"/>
 <c:set var="str_upcoming" value="Upcoming Events"/>
-<c:set var="btn_detail" value="자세히"/>
+<c:set var="str_detail" value="자세히"/>
 <c:set var="str_contactUs" value="Contact Us"/>
-<c:set var="btn_mainSend" value="Send"/>
+<c:set var="str_mainSend" value="Send"/>
+<c:set var="str_welcomeMain" value="님 어서오세요!"/>
 
 <!-- mainForgot.jsp -->
 <c:set var="str_searchPassword" value=" &nbsp;비밀번호 찾기"/>

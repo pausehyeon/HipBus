@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="/view/setting/setting.jsp"%>
 <%@include file="/view/setting/navbar_top_setting.jsp"%>
 <script type="text/javascript">
@@ -12,7 +11,7 @@
 			x.className = x.className.replace(" w3-show", "");
 		}
 	}
-//-->
+	//-->
 </script>
 
 <div class="w3-top">
@@ -27,75 +26,99 @@
 				<i class="fa fa-bus w3-margin-right"></i>${str_name}
 			</a>
 		</li>
-		<li class="w3-hide-small w3-dropdown-hover"><a href="#"
-			class="w3-padding-large w3-hover-white" title="go"><i
-				class="fa fa-chevron-down"></i></a>
-			<div class="w3-dropdown-content w3-white w3-card-4">
-				<a href="station.do">${str_station}</a> <a
-					href="garage.do">${str_garage}</a>
-			</div></li>
-
 		<li class="w3-hide-small w3-dropdown-hover">
-			<a href="#" class="w3-padding-large w3-hover-white" title="otherdrivers">
-				<i class="fa fa-users"></i>
+			<a href="#" class="w3-padding-large w3-hover-white" title="go">
+				<i class="fa fa-chevron-down"></i>
 			</a>
 			<div class="w3-dropdown-content w3-white w3-card-4">
-				<a href="myBus.do">JD Yoo의 버스</a>
-				<a href="#">Jueun Jeong의 버스</a>
-				<a href="#">JD Yoo의 버스</a>
-				<a href="#">Jueun Jeong의 버스</a>
-				<a href="#">JD Yoo의 버스</a>
-				<a class="w3-center w3-small" onclick="document.getElementById('hoppedOnList').style.display='block'"><span>${str_more}</span></a>
+				<a href="station.do">${str_station}</a>
+				<a href="garage.do">${str_garage}</a>
 			</div>
 		</li>
-		<li class="w3-hide-small w3-dropdown-hover">
-			<a href="#" class="w3-padding-large w3-hover-white" title="otherdrivers">
-				<i class="fa fa-search"></i>
-			</a>
-			<div class="w3-dropdown-content w3-white w3-card-4">
-				<div class="w3-row w3-container w3-padding-16">
-					<div class="w3-threequarter">
-						<input type="text" class="w3-input" placeholder="${str_search}">
-					</div>
-					<div class="w3-quarter w3-right-align">
-						<i class="fa fa-search"></i>
-					</div>
+
+		<c:if test="${sessionScope.memEmail eq null}">
+			<!-- ^ 로그인 되어 있지 않은 경우에 로그인 요청 메시지 -->
+			<li>
+				<a onclick="document.getElementById('login').style.display='block'">로그인 해주세요.</a>
+			</li>
+		</c:if>
+		<c:if test="${sessionScope.memEmail ne null}">
+			<!-- ^ 로그인 된 경우 친구목록과 검색기능 -->
+			<li class="w3-hid	e-small w3-dropdown-hover">
+				<a href="#" class="w3-padding-large w3-hover-white" title="otherdrivers">
+					<i class="fa fa-users"></i>
+				</a>
+				<div class="w3-dropdown-content w3-white w3-card-4">
+					<a href="myBus.do">JD Yoo의 버스</a>
+					<a href="#">Jueun Jeong의 버스</a>
+					<a href="#">JD Yoo의 버스</a>
+					<a href="#">Jueun Jeong의 버스</a>
+					<a href="#">JD Yoo의 버스</a>
+					<a class="w3-center w3-small" onclick="document.getElementById('hoppedOnList').style.display='block'">
+						<span>${str_more}</span>
+					</a>
 				</div>
-				<a href="myBus.do">JD Yoo의 버스</a>
-				<a href="#">Jueun Jeong의 버스</a>
-				<a href="#">JD Yoo의 버스</a>
-				<a href="#">Jueun Jeong의 버스</a>
-				<a href="#">JD Yoo의 버스</a>
-				<a class="w3-center w3-small" onclick="document.getElementById('driverSearch').style.display='block'"><span>${str_more}</span></a>
-			</div>	
-		</li>
-		<li>
-			<a onclick="document.getElementById('login').style.display='block'">로그인 해주세요.</a>
-		</li>
-		
+			</li>
+			<li class="w3-hide-small w3-dropdown-hover">
+				<a href="#" class="w3-padding-large w3-hover-white" title="otherdrivers">
+					<i class="fa fa-search"></i>
+				</a>
+				<div class="w3-dropdown-content w3-white w3-card-4">
+					<div class="w3-row w3-container w3-padding-16">
+						<div class="w3-threequarter">
+							<input type="text" class="w3-input" placeholder="${str_search}">
+						</div>
+						<div class="w3-quarter w3-right-align">
+							<i class="fa fa-search"></i>
+						</div>
+					</div>
+					<a href="myBus.do">JD Yoo의 버스</a>
+					<a href="#">Jueun Jeong의 버스</a>
+					<a href="#">JD Yoo의 버스</a>
+					<a href="#">Jueun Jeong의 버스</a>
+					<a href="#">JD Yoo의 버스</a>
+					<a class="w3-center w3-small" onclick="document.getElementById('driverSearch').style.display='block'">
+						<span>${str_more}</span>
+					</a>
+				</div>
+			</li>
+		</c:if>
 		<li class="w3-hide-small w3-right">
-			<a href="myBus.do" class="w3-padding-large w3-hover-white" title="My Bus">
+			<a href="myBus.do" class="w3-padding-large w3-hover-white" title="${str_myBus}">
 				<img src="${project}/view/img/HipBusLogo_colored_sq.png" class="w3-circle" style="height: 25px; width: 25px" alt="Avatar">
 			</a>
 		</li>
+		<c:if test="${sessionScope.memEmail ne null}">
+			<!-- 로그인된 경우 로그아웃 버튼 보이게 -->
+			<li class="w3-hide-small w3-right">
+				<a href="signOutPro.do" class="w3-padding-large w3-hover-white">
+					<i class="fa fa-sign-out"></i> ${str_signOut}
+				</a>
+			</li>
+		</c:if>
 	</ul>
 </div>
 
 <!-- Navbar on small screens -->
-<div id="navDemo" class="w3-hide w3-hide-large w3-hide-medium w3-top"
-	style="margin-top: 51px">
+<div id="navDemo" class="w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top: 51px">
 	<ul class="w3-navbar w3-left-align w3-large w3-theme">
-		<li><a class="w3-padding-large" href="#">${str_other}</a></li>
-		<li><a class="w3-padding-large" href="#">${str_station}</a></li>
-		<li><a class="w3-padding-large" href="#">${str_garage}</a></li>
+		<li>
+			<a class="w3-padding-large" href="#">${str_other}</a>
+		</li>
+		<li>
+			<a class="w3-padding-large" href="#">${str_station}</a>
+		</li>
+		<li>
+			<a class="w3-padding-large" href="#">${str_garage}</a>
+		</li>
 	</ul>
 </div>
 
 <!-- member 검색결과창 -->
-<c:import url="modal_hoppedOnList.jsp"/>
+<c:import url="modal_hoppedOnList.jsp" />
 
 <!-- member 검색결과창 -->
-<c:import url="modal_driverSearch.jsp"/>
+<c:import url="modal_driverSearch.jsp" />
 
 <!-- login 모달 창 -->
-<c:import url="modal_signIn.jsp"/>
+<c:import url="modal_signIn.jsp" />

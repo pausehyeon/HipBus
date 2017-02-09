@@ -22,12 +22,20 @@
 			<p class="w3-xlarge">
 				${str_topContent1}<br>
 			</p>
-			<button class="w3-btn w3-padding-16 w3-large w3-margin-top" onclick="location='mainSignUp.do'">
-				<i class="fa fa-address-card w3-xxsmall"></i> ${str_topContent2}
-			</button>
-			<p class="w3-xsmall">
-				<a href="mainSignIn.do">${str_topContentsignIn}</a>
-			</p>
+			<c:if test="${sessionScope.memEmail eq null}">
+				<button class="w3-btn w3-padding-16 w3-large w3-margin-top" onclick="location='mainSignUp.do'">
+					<i class="fa fa-address-card w3-xxsmall"></i> ${str_topContent2}
+				</button>
+				<p class="w3-xsmall">
+					<a href="mainSignIn.do">${str_topContentsignIn}</a>
+				</p>
+			</c:if>
+			<c:if test="${sessionScope.memEmail ne null}">
+				<p class="w3-xsmall">
+					<span>(불러온닉네임)</span>${str_welcomeMain}
+				</p>
+			</c:if>
+
 		</div>
 
 		<div class="w3-center w3-padding-64" id="news">
@@ -147,7 +155,7 @@
 							그룹 AAA입니다.<br> 다음 주 공연 많이 찾아주세요!
 						</p>
 						<p>
-							<button class="w3-btn-block">${btn_hopOn}</button>
+							<button class="w3-btn-block">${str_hopOn}</button>
 						</p>
 					</div>
 				</div>
@@ -163,7 +171,7 @@
 							BBB입니다.<br> 안녕하세요.
 						</p>
 						<p>
-							<button class="w3-btn-block">${btn_hopOn}</button>
+							<button class="w3-btn-block">${str_hopOn}</button>
 						</p>
 					</div>
 				</div>
@@ -179,7 +187,7 @@
 							반갑습니다.<br>안녕하세ㅛㅇ...
 						</p>
 						<p>
-							<button class="w3-btn-block">${btn_hopOn}</button>
+							<button class="w3-btn-block">${str_hopOn}</button>
 						</p>
 					</div>
 				</div>

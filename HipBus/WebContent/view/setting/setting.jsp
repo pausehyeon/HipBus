@@ -29,6 +29,7 @@
 <c:set var="str_contact" value="Contact"/>
 <c:set var="str_myBus" value="My Bus"/>
 <c:set var="str_crewBus" value="Crew Bus"/>
+<c:set var="str_signOut" value="Sign Out"/>
 
 <!-- mainSignIn.jsp, modal_signIn.jsp -->
 <c:set var="str_signIn" value="Sign in"/>
@@ -39,6 +40,7 @@
 <c:set var="str_signInBecomeMember" value="Become a HipDriver"/>
 <c:set var="str_signInCancel" value="Cancel"/>
 <c:set var="str_signInPasswordSearchMent" value="비밀번호가 기억이 안나세요? "/>
+<c:set var="str_wrongIdOrPasswd" value="이메일 주소 혹은 비밀번호가 맞지 않습니다."/>
 
 
 

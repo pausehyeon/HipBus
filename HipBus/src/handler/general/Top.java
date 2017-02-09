@@ -15,7 +15,6 @@ public class Top implements CommandHandler {
 	@RequestMapping("/top.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-		// TODO Auto-generated method stub
 		return new ModelAndView("top");
 	}
 

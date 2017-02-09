@@ -16,7 +16,9 @@ public class SignOutPro implements CommandHandler {
 	@RequestMapping("/signOutPro.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-		// TODO Auto-generated method stub
+		
+		request.getSession().removeAttribute("memEmail");
+		
 		return new ModelAndView("signOutPro");
 	}
 
