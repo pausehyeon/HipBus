@@ -15,3 +15,5 @@
 <c:set var="str_busList" value="올라 탄 버스"/>
 <!-- modal_driverSearch.jsp -->
 <c:set var="str_searchList" value="의 검색 결과"/>
+
+

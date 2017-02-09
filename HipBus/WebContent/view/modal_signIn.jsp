@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<!DOCTYPE html>
+<html>
+<!-- SETTING -->
+<%@include file="/view/setting/setting.jsp"%>
 <!-- login 모달 창 -->
 <div id="login" class="w3-modal">
 	<div class="w3-modal-content w3-card-8 w3-animate-zoom"
@@ -23,7 +26,8 @@
 				<button class="w3-btn-block w3-green w3-section w3-padding"
 					type="submit">${btn_login}</button>
 				<input class="w3-check w3-margin-top" type="checkbox"
-					checked="checked"> ${str_rememberMe}</div>
+					checked="checked"> ${str_rememberMe}
+			</div>
 		</form>
 
 		<div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
@@ -39,3 +43,4 @@
 	</div>
 </div>
 <!-- login 모달 창 끝 -->
+</html>

@@ -20,3 +20,10 @@
 
 <c:set var="project" value="/HipBus"/>
 
+<!-- modal_signIn.jsp -->
+<c:set var="str_signInCancel" value="Cancel"/>
+<c:set var="str_passwordSearchMent" value="비밀번호가 기억이 안나세요? "/>
+
+
+
+

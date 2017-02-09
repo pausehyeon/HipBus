@@ -2,9 +2,6 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<!-- SETTING -->
-<%@include file="/view/setting/setting.jsp"%>
-<%@include file="/view/setting/main_setting.jsp"%>
 
 <!-- SETTING 끝 -->
 
