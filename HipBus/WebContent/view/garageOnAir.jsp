@@ -5,7 +5,7 @@
 <%@include file="/view/setting/setting.jsp"%>
 <%@include file="/view/setting/garage_setting.jsp"%>
 
-<title>HipBus</title>
+<title>${str_Title}</title>
 <body>
 
 	<c:import url="../top.do"/>
@@ -14,8 +14,8 @@
 <div class="w3-main " style="margin-right:20%; margin-left:20%">
 	<c:import url="navbar_garage.jsp"/>
 	<div class="w3-row w3-container" style="margin-top:64px">
-		<h3>On Air</h3>
-		<p>현재 방송중인 버스를 모아봅니다.</p>
+		<h3>${str_OnAir}</h3>
+		<p>${str_OnAirTitle}</p>
 		<hr>
 		<div class="w3-right" style="width:10%">
 			<select class="w3-select" name="alignment">
@@ -24,7 +24,7 @@
 			  <option value="2">시청인원순</option>
 			</select>
 		</div>
-	    <a href="#"> <i class="fa fa-question-circle"></i>  라이브 스트리밍 이용방법</a>
+	    <a href="#"> <i class="fa fa-question-circle"></i>  라이브 스트리밍 이용방법 </a>
 	</div>
 	<div class="w3-row">
 		<div class="w3-twothird">	

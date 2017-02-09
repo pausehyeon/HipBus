@@ -6,7 +6,7 @@
 <%@include file="/view/setting/garage_setting.jsp"%>
 
 
-<title>HipBus</title>
+<title>${str_Title}</title>
 <body>
 
 	<c:import url="../top.do"/>
@@ -15,17 +15,17 @@
 	<div class="w3-main " style="margin-right:20%; margin-left:20%">
 		<c:import url="navbar_garage.jsp"/>
 		<div class="w3-row w3-container" style="margin-top:64px">
-			<h3>FAQ</h3>
-			<p>자주 묻는 질문 </p>
+			<h3>${str_FAQ}</h3>
+			<p>${str_FAQTitle}</p>
 			<hr>
 		</div>
 		<div class="w3-row w3-margin w3-padding-jumbo">
 		<div class="w3-row w3-section">
 			<div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-search"></i></div>
 			<div class="w3-rest">
-				<input class="w3-input w3-border" name="message" type="text" placeholder="검색">
+				<input class="w3-input w3-border" name="message" type="text" placeholder="${str_Search}">
 				<!-- 이 버튼은 관리자에게만 보임 -->
-				<a href="#" class="w3-btn w3-padding w3-theme-d1 w3-margin w3-right"><i class="fa fa-pencil-square-o w3-margin-right"></i>수정하기</a>
+				<a href="#" class="w3-btn w3-padding w3-theme-d1 w3-margin w3-right"><i class="fa fa-pencil-square-o w3-margin-right"></i>${str_Modify}</a>
 			</div>
 		</div>
 			<div class="w3-accordion w3-white">

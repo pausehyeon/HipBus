@@ -5,7 +5,7 @@
 <%@include file="/view/setting/setting.jsp"%>
 <%@include file="/view/setting/garage_setting.jsp"%>
 
-<title>HipBus</title>
+<title>${str_Title}</title>
 <body>
 
 	<c:import url="../top.do"/>
@@ -14,8 +14,8 @@
 	<div class="w3-main " style="margin-right: 20%; margin-left: 20%">
 		<c:import url="navbar_garage.jsp"/>
 		<div class="w3-row w3-container" style="margin-top: 64px">
-			<h3>Wanted</h3>
-			<p>각 Bus의 구인게시글을 모아서 보여줍니다.</p>
+			<h3>${str_Wanted}</h3>
+			<p>${str_WantedTitle}</p>
 			<hr>
 			<!-- 이 버튼은 관리자에게만 보임 -->
 			<a href="#"
@@ -134,12 +134,12 @@
 		 <div class="w3-padding" align="left">
 		
 		<select>
-			<option value="driver">작성자</option>
-			<option value="subject">제목</option>
-			<option value="content">내용</option>
+			<option value="driver">${str_Writer}</option>
+			<option value="subject">${str_Subject}</option>
+			<option value="content">${str_Content}</option>
 		</select>
 		
-   		<input type="text" placeholder="검색"> <button type="submit"><i class="fa fa-search"></i> </button>
+   		<input type="text" placeholder="${str_Search}"> <button type="submit"><i class="fa fa-search"></i> </button>
   		</div>
 
 		<div class="w3-row">

@@ -6,7 +6,7 @@
 <%@include file="/view/setting/garage_setting.jsp"%>
 
 
-<title>HipBus</title>
+<title>${str_Title}</title>
 <body>
 
 	<c:import url="../top.do"/>
@@ -15,8 +15,8 @@
 	<div class="w3-main " style="margin-right: 20%; margin-left: 20%">
 		<c:import url="navbar_garage.jsp"/>
 		<div class="w3-row w3-container" style="margin-top: 64px">
-			<h3>Upcoming</h3>
-			<p>각 Bus의 공연일정 게시글을 모아서 보여줍니다.</p>
+			<h3>${str_Upcoming}</h3>
+			<p>${str_UpcomingTitle}</p>
 			<hr>
 			<!-- 이 버튼은 관리자에게만 보임 -->
 			<a href="#"

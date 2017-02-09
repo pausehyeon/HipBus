@@ -8,7 +8,7 @@
 <script type="text/javascript">
 
 </script>
-<title>HipBus</title>
+<title>${str_Title}</title>
 <body>
 
 	<c:import url="../top.do"/>
@@ -17,7 +17,7 @@
 	<div class="w3-main " style="margin-right: 20%; margin-left: 20%">
 		<c:import url="navbar_garage.jsp"/>
 		<div class="w3-row w3-container" style="margin-top: 64px">
-			<h3>FAQ작성</h3>
+			<h3>${str_FAQWrite}</h3>
 			<hr>
 		</div>
 		<div class="w3-row">
@@ -26,7 +26,7 @@
 					<div class="w3-card-4">
 						<header class="w3-container w3-padding-jumbo w3-theme-l3">
 							<input class="w3-input" type="text" required> <label
-								class="w3-label w3-validate">글제목</label>
+								class="w3-label w3-validate">${str_Subject}</label>
 						</header>
 
 						<div class="w3-container w3-padding-32 w3-padding-jumbo">
@@ -38,9 +38,9 @@
 							<input type="submit"
 								class="w3-btn w3-padding w3-theme-d1 w3-margin-left"
 								
-								value="작성완료"> <a href="#"
+								value="${btn_write}"> <a href="#"
 								class="w3-btn w3-padding w3-theme-d1 w3-margin-left"><i
-								class="fa fa-mail-reply w3-margin-right"></i>작성취소</a>
+								class="fa fa-mail-reply w3-margin-right"></i>${btn_cancel}</a>
 						</footer>
 					</div>
 				</form>
