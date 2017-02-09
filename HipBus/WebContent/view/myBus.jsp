@@ -3,16 +3,17 @@
 <!DOCTYPE html>
 <html>
 <%@include file="/view/setting/setting.jsp"%>
+<%@include file="/view/setting/bus_setting.jsp"%>
 <%@include file="/view/setting/myBus_setting.jsp"%>
 
-<title>HipBus - My Bus</title>
+<title>${str_mybusTitle}</title>
 <body class="w3-theme-l5">
 
 	<!-- Navbar -->
 	<c:import url="../top.do" />
 
 	<!-- Page Container -->
-	<div class="w3-container w3-content" style="max-width: 1400px;">
+	<div class="w3-container w3-content" style="max-width: 1400px">
 		<!-- The Grid -->
 		<div class="w3-row w3-container" style="margin-top: 80px">
 			<!-- 여백 -->
@@ -37,7 +38,7 @@
 					-->
 						<!-- 2. 2등급 회원이며 채널 연결한 경우 -->
 						<h4 class="w3-right w3-margin-right">
-							<i class="fa fa-video-camera"></i>&nbsp; Live
+							<i class="fa fa-video-camera"></i>&nbsp; ${str_live}
 						</h4>
 					</div>
 					<div class="w3-row">
@@ -83,11 +84,10 @@
 					<div class="w3-col m12">
 						<div class="w3-card-2 w3-round w3-white">
 							<div class="w3-container w3-padding">
-								<h6 class="w3-opacity">이곳에 메시지를 남기세요.</h6>
-								<p contenteditable="true" class="w3-border w3-padding">ex.
-									좋은 음악이에요!</p>
+								<h6 class="w3-opacity">${str_putMsg}</h6>
+								<p contenteditable="true" class="w3-border w3-padding">${str_boardEx}</p>
 								<button type="button" class="w3-btn w3-theme-l1">
-									<i class="fa fa-pencil"></i>  Post
+									<i class="fa fa-pencil"></i> ${str_post}
 								</button>
 							</div>
 						</div>
@@ -106,29 +106,10 @@
 					<hr class="w3-clear">
 					<p>안녕하세요!!!!</p>
 					<button type="button" class="w3-btn w3-theme-l1">
-						<i class="fa fa-comment"></i>  댓글달기
+						<i class="fa fa-pencil"></i>  ${str_modBoard}
 					</button>
 					<button type="button" class="w3-btn w3-theme-l1">
-						<i class="fa fa-pencil"></i>  수정하기
-					</button>
-					<!-- ^ 글 쓴 본인에게만 보임 -->
-				</div>
-				<div
-					class="w3-container w3-card-2 w3-white w3-round w3-padding-32 w3-margin">
-					<img src="${project}/view/img/HipBusLogo_colored_sq.png"
-						alt="Avatar" class="w3-left w3-circle w3-margin-right"
-						style="width: 40px"> <span class="w3-right w3-opacity">16
-						min &nbsp;<a href="#"><i class="fa fa-close w3-right"></i></a>
-					</span>
-
-					<h4>Jueun Jeong</h4>
-					<hr class="w3-clear">
-					<p>안녕하세요!!!!</p>
-					<button type="button" class="w3-btn w3-theme-l1">
-						<i class="fa fa-comment"></i>  댓글달기
-					</button>
-					<button type="button" class="w3-btn w3-theme-l1">
-						<i class="fa fa-pencil"></i>  수정하기
+						<i class="fa fa-eraser"></i>  ${str_delBoard}
 					</button>
 					<!-- ^ 글 쓴 본인에게만 보임 -->
 				</div>
@@ -144,17 +125,36 @@
 					<hr class="w3-clear">
 					<p>안녕하세요!!!!</p>
 					<button type="button" class="w3-btn w3-theme-l1">
-						<i class="fa fa-comment"></i>  댓글달기
+						<i class="fa fa-pencil"></i>  ${str_modBoard}
 					</button>
 					<button type="button" class="w3-btn w3-theme-l1">
-						<i class="fa fa-pencil"></i>  수정하기
+						<i class="fa fa-eraser"></i>  ${str_delBoard}
+					</button>
+					<!-- ^ 글 쓴 본인에게만 보임 -->
+				</div>
+				<div
+					class="w3-container w3-card-2 w3-white w3-round w3-padding-32 w3-margin">
+					<img src="${project}/view/img/HipBusLogo_colored_sq.png"
+						alt="Avatar" class="w3-left w3-circle w3-margin-right"
+						style="width: 40px"> <span class="w3-right w3-opacity">16
+						min &nbsp;<a href="#"><i class="fa fa-close w3-right"></i></a>
+					</span>
+
+					<h4>Jueun Jeong</h4>
+					<hr class="w3-clear">
+					<p>안녕하세요!!!!</p>
+					<button type="button" class="w3-btn w3-theme-l1">
+						<i class="fa fa-pencil"></i>  ${str_modBoard}
+					</button>
+					<button type="button" class="w3-btn w3-theme-l1">
+						<i class="fa fa-eraser"></i>  ${str_delBoard}
 					</button>
 					<!-- ^ 글 쓴 본인에게만 보임 -->
 				</div>
 
 				<div class="w3-row-padding">
 					<div class="w3-col m12 w3-center">
-						<a href="#">More...</a>
+						<a href="#">${str_moreBoard}</a>
 					</div>
 				</div>
 				<!-- End Middle Column -->

@@ -5,7 +5,7 @@
 <%@include file="/view/setting/setting.jsp"%>
 <%@include file="/view/setting/myBus_setting.jsp"%>
 
-<title>HipBus - My Bus</title>
+<title>${str_mybusTitle}</title>
 <body class="w3-theme-l5">
 
 	<!-- Navbar -->

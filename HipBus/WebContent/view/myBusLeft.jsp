@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <%@include file="/view/setting/setting.jsp"%>
+<%@include file="/view/setting/bus_setting.jsp"%>
 <%@include file="/view/setting/myBus_setting.jsp"%>
 
 <!-- Left Column -->
@@ -10,7 +11,7 @@
 	<!-- Profile -->
 	<div class="w3-card-2 w3-round w3-white w3-margin-bottom">
 		<div class="w3-container">
-			<h4 class="w3-center">My Profile</h4>
+			<h4 class="w3-center">${str_myProfile}</h4>
 			<p class="w3-center">
 				<img src="${project}/view/img/HipBusLogo_colored_sq.png"
 					class="w3-circle" style="height: 106px; width: 106px" alt="Avatar">
@@ -30,7 +31,7 @@
 			</p>
 			<p onclick="myFunction('crew')">
 				<i class="fa fa-fort-awesome fa-fw w3-margin-right w3-text-theme"></i>
-				소속 크루 : The One
+				${str_crew} The One
 			</p>
 			<div id="crew" class="w3-accordion-content w3-container">
 				<p>
@@ -43,7 +44,7 @@
 				</p>
 			</div>
 			<hr>
-			<a href="myBusBeforeEdit.do"><i class="fa fa-pencil"></i> edit profile</a>
+			<a href="myBusBeforeEdit.do"><i class="fa fa-pencil"></i>${str_editProfile}</a>
 			<hr>
 		</div>
 	</div>
@@ -53,7 +54,7 @@
 		<div class="w3-accordion w3-white">
 			<button onclick="myFunction('Demo1')"
 				class="w3-btn-block w3-theme-l1 w3-left-align">
-				<i class="fa fa fa-heart fa-fw w3-margin-right"></i> 탑승자 명단
+				<i class="fa fa fa-heart fa-fw w3-margin-right"></i> ${str_hopperList}
 			</button>
 			<div id="Demo1" class="w3-accordion-content w3-container">
 				<p>
@@ -65,7 +66,7 @@
 			</div>
 			<button onclick="location='myBusVideos.do'"
 				class="w3-btn-block w3-theme-l1 w3-left-align">
-				<i class="fa fa-video-camera fa-fw w3-margin-right"></i> 지난 라이브 영상
+				<i class="fa fa-video-camera fa-fw w3-margin-right"></i> ${str_oldVideos}
 			</button>
 			<div id="Demo3" class="w3-accordion-content w3-container">
 				<div class="w3-row-padding">
@@ -75,18 +76,17 @@
 
 			<button onclick="myFunction('Demo2')"
 				class="w3-btn-block w3-theme-l1 w3-left-align">
-				<i class="fa	fa fa-align-left fa-fw w3-margin-right"></i> Gahyeon의
-				게시글 모아보기
+				<i class="fa	fa fa-align-left fa-fw w3-margin-right"></i> Gahyeon ${str_seePosts}
 			</button>
 			<div id="Demo2" class="w3-accordion-content w3-container">
 				<p>
 				<ul>
-					<li><a href="#"> 전체</a>
-					<li><a href="#"> 랩</a>
-					<li><a href="#"> 믹스테잎</a>
-					<li><a href="#"> 보컬</a>
-					<li><a href="#"> 가사</a>
-					<li><a href="#"> 잡담</a>
+					<li><a href="#"> ${str_whole}</a>
+					<li><a href="#"> ${str_rap}</a>
+					<li><a href="#"> ${str_mixtape}</a>
+					<li><a href="#"> ${str_vocal}</a>
+					<li><a href="#"> ${str_lirics}</a>
+					<li><a href="#"> ${str_freeTalk}</a>
 				</ul>
 				</p>
 			</div>
@@ -96,7 +96,7 @@
 	<!-- Interests -->
 	<div class="w3-card-2 w3-round w3-white w3-hide-small">
 		<div class="w3-container">
-			<p>관심사</p>
+			<p>${str_tags}</p>
 			<p>
 				<span class="w3-tag w3-small w3-theme-d5">랩</span> <span
 					class="w3-tag w3-small w3-theme-d4">믹스테잎</span> <span

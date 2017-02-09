@@ -4,10 +4,11 @@
 <!DOCTYPE html>
 <html>
 <%@include file="/view/setting/setting.jsp"%>
+<%@include file="/view/setting/bus_setting.jsp"%>
 <%@include file="/view/setting/myBus_setting.jsp"%>
 <script src="/HipBus/scripts/busScript.js"></script>
 
-<title>HipBus - Upcoming</title>
+<title>${str_upcomingTitle}</title>
 
 
 <body class="w3-theme-l5">
@@ -36,38 +37,36 @@
 					class="w3-container w3-card-2 w3-white w3-round w3-margin-bottom w3-margin-left w3-margin-right w3-padding-32 w3-padding-xxlarge">
 					<div class="w3-container w3-center w3-black">
 						<h2>
-							<i class="fa fa-calendar"></i>&nbsp; Upcoming
+							<i class="fa fa-calendar"></i>&nbsp; ${str_upcoming}
 						</h2>
 					</div>
 
 					<div class="w3-row-padding w3-padding-12">
 						<input class="w3-input" type="text" required="required"
 							autofocus="autofocus"> <label
-							class="w3-label w3-validate">공연명</label>
+							class="w3-label w3-validate">${str_showName}</label>
 					</div>
 					<div class="w3-row-padding">
 						<div class="w3-col m6">
 							<div class="w3-row-padding w3-right-align">
-								<input type="text" class="w3-input"> <label>* 장소</label>
+								<input type="text" class="w3-input"> <label>${str_location}</label>
 							</div>
 						</div>
 						<div class="w3-col m6">
 							<div class="w3-row-padding w3-right-align">
-								<input type="text" class="w3-input"> <label>*
-									출연진</label>
+								<input type="text" class="w3-input"> <label>${str_cast}</label>
 							</div>
 						</div>
 					</div>
 					<div class="w3-row-padding">
 						<div class="w3-col m6">
 							<div class="w3-row-padding w3-right-align">
-								<input type="datetime-local" class="w3-input"> <label>*
-									일시</label>
+								<input type="datetime-local" class="w3-input"> <label>${str_date}</label>
 							</div>
 						</div>
 						<div class="w3-col m6">
 							<div class="w3-row-padding w3-right-align">
-								<input type="time" class="w3-input"> <label>* 시간</label>
+								<input type="time" class="w3-input"> <label>${str_time}</label>
 							</div>
 						</div>
 					</div>
@@ -79,7 +78,7 @@
 					</div>
 					<div class="w3-row-padding w3-white w3-center">
 						<p>
-							<button class="w3-btn">등록</button>
+							<button class="w3-btn">${str_post}</button>
 						</p>
 						<i class="glyphicon glyphicon-search"></i>
 					</div>

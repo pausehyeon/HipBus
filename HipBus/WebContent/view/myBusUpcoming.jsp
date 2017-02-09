@@ -3,9 +3,10 @@
 <!DOCTYPE html>
 <html>
 <%@include file="/view/setting/setting.jsp"%>
+<%@include file="/view/setting/bus_setting.jsp"%>
 <%@include file="/view/setting/myBus_setting.jsp"%>
 
-<title>HipBus - My Bus</title>
+<title>${str_mybusTitle}</title>
 <body class="w3-theme-l5">
 
 	<!-- Navbar -->
@@ -31,7 +32,7 @@
 					class="w3-container w3-card-2 w3-white w3-round w3-margin-bottom w3-margin-left w3-margin-right w3-padding-32 w3-padding-xxlarge">
 					<div class="w3-container w3-center w3-black">
 						<h2>
-							<i class="fa fa-calendar"></i>&nbsp; 다가오는 공연
+							<i class="fa fa-calendar"></i>&nbsp; ${str_upcomingList}
 						</h2>
 					</div>
 					<div class="w3-row-padding w3-padding-16 w3-center">
@@ -75,7 +76,7 @@
 							<img src="${project}/view/img/poster6.jpg" alt="poster"
 								style="width: 100%">
 							<p class="w3-center w3-tiny">
-								작성자:Jihyeon<br> 작성일:2016-12-19 | 조회수: 0
+								${str_writer} Jihyeon ${str_writeDate}2016-12-19 ${str_hits} 0
 							</p>
 							<h4>Le French</h4>
 						</div>

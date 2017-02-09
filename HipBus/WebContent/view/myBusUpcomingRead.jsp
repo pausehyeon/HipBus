@@ -3,9 +3,10 @@
 <!DOCTYPE html>
 <html>
 <%@include file="/view/setting/setting.jsp"%>
+<%@include file="/view/setting/bus_setting.jsp"%>
 <%@include file="/view/setting/myBus_setting.jsp"%>
 
-<title>HipBus - Upcoming</title>
+<title>${str_upcomingTitle}</title>
 <body class="w3-theme-l5">
 
 	<!-- Navbar -->

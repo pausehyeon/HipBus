@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/view/setting/setting.jsp"%>
+<%@include file="/view/setting/bus_setting.jsp"%>
 <%@include file="/view/setting/crewBus_setting.jsp"%>
 
 
-<title>HipBus - Crew Bus</title>
+<title>${str_crewbusTitle}</title>
 <body class="w3-theme-l5">
 
 	<!-- Navbar -->
@@ -29,7 +30,7 @@
 					<button
 						class="w3-btn w3-btn-block w3-center w3-theme-l1 w3-padding-large">
 						<br> <br> <i class="fa fa-video-camera w3-xxlarge"></i>
-						<p>Start Live Drive!</p>
+						<p>${str_startLive}</p>
 						<br> <br>
 					</button>
 				</div>
@@ -38,11 +39,11 @@
 					<div class="w3-col m12">
 						<div class="w3-card-2 w3-round w3-white">
 							<div class="w3-container w3-padding">
-								<h6 class="w3-opacity">이곳에 메시지를 남기세요.</h6>
+								<h6 class="w3-opacity">${str_putMsg}</h6>
 								<p contenteditable="true" class="w3-border w3-padding">좋은
 									음악이에요!</p>
 								<button type="button" class="w3-btn w3-theme">
-									<i class="fa fa-pencil"></i>  Post
+									<i class="fa fa-pencil"></i>  ${str_post}
 								</button>
 							</div>
 						</div>
@@ -58,6 +59,13 @@
 					<br>
 					<hr class="w3-clear">
 					<p>안녕하세요!!!!</p>
+					<%-- <button type="button" class="w3-btn w3-theme-l1">
+						<i class="fa fa-pencil"></i>  ${str_modBoard}
+					</button>
+					<button type="button" class="w3-btn w3-theme-l1">
+						<i class="fa fa-eraser"></i>  ${str_delBoard}
+					</button> --%>
+					<!-- ^ 글 쓴 본인에게만 보이는 수정삭제버튼 -->
 					<!-- 	
         <button type="button" class="w3-btn w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button> 
         <button type="button" class="w3-btn w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> 
@@ -73,6 +81,13 @@
 					<br>
 					<hr class="w3-clear">
 					<p>다음 라이브 언제에요???</p>
+					<%-- <button type="button" class="w3-btn w3-theme-l1">
+						<i class="fa fa-pencil"></i>  ${str_modBoard}
+					</button>
+					<button type="button" class="w3-btn w3-theme-l1">
+						<i class="fa fa-eraser"></i>  ${str_delBoard}
+					</button> --%>
+					<!-- ^ 글 쓴 본인에게만 보이는 수정삭제버튼 -->
 					<!-- 
 			        <button type="button" class="w3-btn w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button> 
 			        <button type="button" class="w3-btn w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> 
@@ -88,6 +103,13 @@
 					<br>
 					<hr class="w3-clear">
 					<p>공연하신다면서요? 꼭 갈게요!</p>
+					<%-- <button type="button" class="w3-btn w3-theme-l1">
+						<i class="fa fa-pencil"></i>  ${str_modBoard}
+					</button>
+					<button type="button" class="w3-btn w3-theme-l1">
+						<i class="fa fa-eraser"></i>  ${str_delBoard}
+					</button> --%>
+					<!-- ^ 글 쓴 본인에게만 보이는 수정삭제버튼 -->
 					<!--    
 			        <div class="w3-row-padding" style="margin:0 -16px">
 				            <div class="w3-half">
@@ -105,7 +127,7 @@
 				</div>
 				<div class="w3-row-padding">
 					<div class="w3-col m12 w3-center">
-						<a href="#">More...</a>
+						<a href="#">${str_moreBoard}</a>
 					</div>
 				</div>
 				<!-- End Middle Column -->

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/view/setting/setting.jsp"%>
+<%@include file="/view/setting/bus_setting.jsp"%>
 <%@include file="/view/setting/crewBus_setting.jsp"%>
 
 
@@ -9,7 +10,7 @@
 	<!-- Profile -->
 	<div class="w3-card-2 w3-round w3-white">
 		<div class="w3-container">
-			<h4 class="w3-center">Crew Profile</h4>
+			<h4 class="w3-center">${str_crewProfile}</h4>
 			<p class="w3-center">
 				<img src="${project}/view/img/HipBusLogo_bw.png" class="w3-circle"
 					style="height: 106px; width: 106px" alt="Avatar">
@@ -24,8 +25,7 @@
 				email@address.com
 			</p>
 			<p onclick="myFunction('crew')">
-				<i class="fa fa-users fa-fw w3-margin-right w3-text-theme"></i> 크루
-				구성원 (2명)
+				<i class="fa fa-users fa-fw w3-margin-right w3-text-theme"></i> ${str_memberCount} 2 ${str_per}
 			</p>
 			<div id="crew" class="w3-accordion-content w3-container">
 				<p>
@@ -37,7 +37,7 @@
 				</p>
 			</div>
 			<hr>
-			<a href="#"><i class="fa fa-pencil"></i> edit profile</a>
+			<a href="#"><i class="fa fa-pencil"></i>${str_editProfile}</a>
 			<hr>
 		</div>
 	</div>
@@ -48,7 +48,7 @@
 		<div class="w3-accordion w3-white">
 			<button onclick="myFunction('Demo1')"
 				class="w3-btn-block w3-theme-l1 w3-left-align">
-				<i class="fa fa fa-heart fa-fw w3-margin-right"></i> 탑승자 명단
+				<i class="fa fa fa-heart fa-fw w3-margin-right"></i> ${str_hopperList}
 			</button>
 			<div id="Demo1" class="w3-accordion-content w3-container">
 				<p>
@@ -61,7 +61,7 @@
 
 			<button onclick="myFunction('Demo3')"
 				class="w3-btn-block w3-theme-l1 w3-left-align">
-				<i class="fa fa-video-camera fa-fw w3-margin-right"></i> 지난 라이브 영상
+				<i class="fa fa-video-camera fa-fw w3-margin-right"></i> ${str_oldVideos}
 			</button>
 			<div id="Demo3" class="w3-accordion-content w3-container">
 				<div class="w3-row-padding">
@@ -96,13 +96,17 @@
 			<button onclick="myFunction('Demo2')"
 				class="w3-btn-block w3-theme-l1 w3-left-align">
 				<i class="fa	fa fa-align-left fa-fw w3-margin-right"></i> The One
-				크루의 게시글 모아보기
+				${str_seePosts}
 			</button>
 			<div id="Demo2" class="w3-accordion-content w3-container">
 				<p>
 				<ul>
-					<li>[잡담] 요즘 힙합이...<br>
-					<li>[믹스테잎] my way<br>
+					<li><a href="#"> ${str_whole}</a>
+					<li><a href="#"> ${str_rap}</a>
+					<li><a href="#"> ${str_mixtape}</a>
+					<li><a href="#"> ${str_vocal}</a>
+					<li><a href="#"> ${str_lirics}</a>
+					<li><a href="#"> ${str_freeTalk}</a>
 				</ul>
 				</p>
 			</div>
@@ -113,7 +117,7 @@
 	<!-- Interests -->
 	<div class="w3-card-2 w3-round w3-white w3-hide-small">
 		<div class="w3-container">
-			<p>관심사</p>
+			<p>${str_tags}</p>
 			<p>
 				<span class="w3-tag w3-small w3-theme-d5">랩</span> <span
 					class="w3-tag w3-small w3-theme-d4">믹스테잎</span> <span
@@ -139,9 +143,9 @@
 			class="fa fa-remove"></i>
 		</span>
 		<p>
-			<strong>잠깐!</strong>
+			<strong>${str_infoTitle}</strong>
 		</p>
-		<p>다른 Driver의 버스에 탑승하면 다양한 정보를 받아보실 수 있습니다.</p>
+		<p>${str_infoMsg}</p>
 	</div>
 
 	<!-- End Left Column -->

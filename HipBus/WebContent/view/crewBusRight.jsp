@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/view/setting/setting.jsp"%>
+<%@include file="/view/setting/bus_setting.jsp"%>
 <%@include file="/view/setting/crewBus_setting.jsp"%>
 
 <!-- Right Column -->
@@ -9,7 +10,7 @@
 		<div class="w3-container">
 			<div class="w3-right w3-padding-16">
 				<button type="button" class="w3-btn w3-themel4">
-					<i class="fa fa-pencil"></i>&nbsp; Edit
+					<i class="fa fa-pencil"></i>&nbsp; ${str_edit}
 				</button>
 			</div>
 			<img src="${project}/view/img/notice1.png" alt="some image"
@@ -19,7 +20,7 @@
 			</p>
 			<p>토요일 15:00</p>
 			<p>
-				<button class="w3-btn w3-btn-block w3-theme-l1">자세히</button>
+				<button class="w3-btn w3-btn-block w3-theme-l1">${str_detail}</button>
 			</p>
 		</div>
 	</div>
@@ -29,17 +30,17 @@
 		<div class="w3-container">
 			<div class="w3-right w3-padding-16">
 				<button type="button" class="w3-btn w3-themel4">
-					<i class="fa fa-pencil"></i>&nbsp; Edit
+					<i class="fa fa-pencil"></i>&nbsp; ${str_edit}
 				</button>
 			</div>
 			<img src="${project}/view/img/topdriver1.png" alt="some image"
 				style="width: 100%;">
 			<p>
-				<strong>구인</strong>
+				<strong>${str_wanted}</strong>
 			</p>
 			<p>듀오로 활동하실 멤버를 구합니다.</p>
 			<p>
-				<button class="w3-btn w3-btn-block w3-theme-l1">자세히</button>
+				<button class="w3-btn w3-btn-block w3-theme-l1">${str_detail}</button>
 			</p>
 		</div>
 	</div>
@@ -47,7 +48,7 @@
 
 	<div class="w3-card-2 w3-round w3-white w3-center">
 		<div class="w3-container">
-			<p>Crew 가입 요청</p>
+			<p>${str_crewApply}</p>
 			<img src="${project}/view/img/HipBusLogo_bw.png" alt="Avatar"
 				style="width: 50%"><br> <span>JH Jeong</span>
 			<div class="w3-row w3-opacity">

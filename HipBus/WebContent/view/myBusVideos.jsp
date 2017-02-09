@@ -3,9 +3,10 @@
 <!DOCTYPE html>
 <html>
 <%@include file="/view/setting/setting.jsp"%>
+<%@include file="/view/setting/bus_setting.jsp"%>
 <%@include file="/view/setting/myBus_setting.jsp"%>
 
-<title>HipBus - My Bus</title>
+<title>${str_mybusTitle}</title>
 <body class="w3-theme-l5">
 
 	<!-- Navbar -->
@@ -34,23 +35,23 @@
 				<div class="w3-row-padding w3-center w3-theme-l5">
 					<div class="w3-col m4 l6 w3-padding-32 ">
 						<iframe src="http://www.youtube.com/embed/live_stream?channel=UCZQ5jz44ynb4AB8dCWWqbSg" frameborder="0" allowfullscreen></iframe>
-						<p class="w3-center w3-tiny">작성자:관리자 | 작성일:2016-12-19 | 조회수: 0</p>
-						<h5>정지현님의 라이브</h5>
+						<p class="w3-center w3-tiny">${str_writer}관리자 ${str_writeDate}2016-12-19 ${str_hits} 0</p>
+						<h5>정지현${str_whosLive}</h5>
 					</div>
 					<div class="w3-col m4 l6 w3-padding-32 w3-theme-l5">
 						<iframe src="http://www.youtube.com/embed/live_stream?channel=UCZQ5jz44ynb4AB8dCWWqbSg" frameborder="0" allowfullscreen></iframe>
 						<p class="w3-center w3-tiny">작성자:관리자 | 작성일:2016-12-19 | 조회수: 0</p>
-						<h5>정지현님의 라이브</h5>
+						<h5>정지현${str_whosLive}</h5>
 					</div>
 					<div class="w3-col m4 l6 w3-padding-32 w3-theme-l5">
 						<iframe src="http://www.youtube.com/embed/live_stream?channel=UCZQ5jz44ynb4AB8dCWWqbSg" frameborder="0" allowfullscreen></iframe>
 						<p class="w3-center w3-tiny">작성자:관리자 | 작성일:2016-12-19 | 조회수: 0</p>
-						<h5>정지현님의 라이브</h5>
+						<h5>정지현${str_whosLive}</h5>
 					</div>
 					<div class="w3-col m4 l6 w3-padding-32 w3-theme-l5">
 						<iframe src="http://www.youtube.com/embed/live_stream?channel=UCZQ5jz44ynb4AB8dCWWqbSg" frameborder="0" allowfullscreen></iframe>
 						<p class="w3-center w3-tiny">작성자:관리자 | 작성일:2016-12-19 | 조회수: 0</p>
-						<h5>정지현님의 라이브</h5>
+						<h5>정지현${str_whosLive}</h5>
 					</div>
 				</div>
 			</div>
