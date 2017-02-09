@@ -25,7 +25,7 @@
 <c:set var="str_topTitle" value="What's HipBus?"/>
 <c:set var="str_topContent1" value="The hippest way to express myself<br>나를 표현하는 가장 Hip한 방법, HipBus"/>
 <c:set var="str_topContent2" value="&nbsp;Become a HipDriver"/>
-<c:set var="str_topContentLogin" value="or log-in (click)"/>
+<c:set var="str_topContentsignIn" value="or sign-in (click)"/>
 <c:set var="str_mainNews" value="News"/>
 <c:set var="str_slideShow1" value="공연정보"/>
 <c:set var="str_slideShow2" value="자작곡공유"/>
@@ -42,15 +42,6 @@
 <c:set var="str_searchPassword" value=" &nbsp;비밀번호 찾기"/>
 <c:set var="str_noEmail" value="* 가입되어 있지 않은 이메일입니다."/>
 <c:set var="str_newPasswordSend" value="새 비밀번호 전송"/>
-
-<!-- mainSignIn.jsp -->
-<c:set var="str_signLogin" value=" &nbsp;Log-in"/>
-<c:set var="str_userName" value="Username"/>
-<c:set var="str_password" value="Password"/>
-<c:set var="btn_login" value="Login"/>
-<c:set var="str_rememberMe" value=" Remember me"/>
-<c:set var="str_noMember" value="아직 회원이 아니라면? "/>
-<c:set var="str_becomeMember" value="Become a HipDriver"/>
 
 <!-- mainSignUp.jsp -->
 <c:set var="str_email" value="Email"/>
@@ -73,12 +64,8 @@
 <c:set var="str_passwordCheckOk" value="비밀번호가 일치합니다."/>
 <c:set var="str_passwordCheckNo" value="비밀번호가 일치하지 않습니다."/>
 
-<!-- memberSearchResult.jsp 아직 없음. -->
-
-<!-- modal_driverSearch.jsp 아직 없음.-->
-
-<!-- modal_hoppedOnList.jsp 아직 없음. -->
-
+<!-- navbar_main.jsp -->
+<c:set var="str_topDrivers" value="Top Drivers"/>
 
 
 

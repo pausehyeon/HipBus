@@ -1,28 +1,23 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <!-- SETTING -->
 <%@include file="/view/setting/setting.jsp"%>
 <%@include file="/view/setting/main_setting.jsp"%>
-
 <!-- SETTING 끝 -->
 
 <title>${str_welcome}</title>
 <body onload="showDivs(1)">
 
-	<c:import url="navbar_main.jsp"/>
+	<c:import url="navbar_main.jsp" />
 
 	<!-- Content -->
-	<div class="w3-content".
-	
-		style="max-width: 1100px; margin-top: 0px; margin-bottom: 80px">
+	<div class="w3-content" style="max-width: 1100px; margin-top: 0px; margin-bottom: 80px">
 		<div class="w3-row w3-container w3-padding-64">
 			<!-- 여백 -->
 		</div>
 		<!-- Join in -->
-		<div class="w3-container w3-red w3-center w3-padding-128"
-			style="max-width: 1100px; margin-top: 0px; margin-bottom: 80px">
+		<div class="w3-container w3-red w3-center w3-padding-128" style="max-width: 1100px; margin-top: 0px; margin-bottom: 80px">
 			<h1 class="w3-margin w3-jumbo">${str_topTitle}</h1>
 			<p class="w3-xlarge">
 				${str_topContent1}<br>
@@ -31,14 +26,12 @@
 				<i class="fa fa-address-card w3-xxsmall"></i> ${str_topContent2}
 			</button>
 			<p class="w3-xsmall">
-				<a onclick="document.getElementById('login').style.display='block'">${str_topContentLogin}</a>
+				<a href="mainSignIn.do">${str_topContentsignIn}</a>
 			</p>
 		</div>
 
-
 		<div class="w3-center w3-padding-64" id="news">
-			<span
-				class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">${str_mainNews}</span>
+			<span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">${str_mainNews}</span>
 		</div>
 		<!-- Slideshow -->
 
@@ -73,21 +66,15 @@
 				</div>
 
 				<div class="w3-center">
-					<span
-						class="w3-tag demodots w3-border w3-transparent w3-hover-white"
-						onclick="currentDiv(1)"></span> <span
-						class="w3-tag demodots w3-border w3-transparent w3-hover-white"
-						onclick="currentDiv(2)"></span> <span
-						class="w3-tag demodots w3-border w3-transparent w3-hover-white"
-						onclick="currentDiv(3)"></span>
+					<span class="w3-tag demodots w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span> <span class="w3-tag demodots w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"></span>
+					<span class="w3-tag demodots w3-border w3-transparent w3-hover-white" onclick="currentDiv(3)"></span>
 				</div>
 			</div>
 		</div>
 
 		<!-- On air Section -->
 		<div class="w3-center w3-padding-64" id="onair">
-			<span
-				class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">str_mainOnAir</span>
+			<span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">str_mainOnAir</span>
 		</div>
 
 		<div class="w3-row-padding">
@@ -147,8 +134,7 @@
 		<!-- Grid -->
 		<div class="w3-row-padding" id="topdrivers">
 			<div class="w3-center w3-padding-64">
-				<span
-					class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">${str_top3}</span>
+				<span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">${str_top3}</span>
 			</div>
 
 			<div class="w3-third w3-margin-bottom">
@@ -202,20 +188,27 @@
 
 		<!-- Grid -->
 		<div class="w3-center w3-padding-64" id="upcoming">
-			<span
-				class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">${str_upcoming}</span>
+			<span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">${str_upcoming}</span>
 		</div>
 		<div class="w3-row-padding">
 			<div class="w3-third w3-margin-bottom">
 				<ul class="w3-ul w3-border w3-center w3-hover-shadow">
 					<li class="w3-black w3-xlarge w3-padding-32">Seoul Festa</li>
-					<li class="w3-padding-16"><b>장소</b> 홍대 놀이터</li>
-					<li class="w3-padding-16"><b>일시</b> 2월 1일</li>
-					<li class="w3-padding-16"><b>출연진</b> Some one</li>
-					<li class="w3-padding-16"><b>시간</b> 1h 30mins</li>
 					<li class="w3-padding-16">
-						<h2 class="w3-wide">15,000</h2> <span class="w3-opacity">원
-							(1 Free Drink 포함)</span>
+						<b>장소</b> 홍대 놀이터
+					</li>
+					<li class="w3-padding-16">
+						<b>일시</b> 2월 1일
+					</li>
+					<li class="w3-padding-16">
+						<b>출연진</b> Some one
+					</li>
+					<li class="w3-padding-16">
+						<b>시간</b> 1h 30mins
+					</li>
+					<li class="w3-padding-16">
+						<h2 class="w3-wide">15,000</h2>
+						<span class="w3-opacity">원 (1 Free Drink 포함)</span>
 					</li>
 					<li class="w3-light-grey w3-padding-24">
 						<button class="w3-btn w3-green w3-padding-large">${btn_detail}</button>
@@ -225,15 +218,22 @@
 
 			<div class="w3-third w3-margin-bottom">
 				<ul class="w3-ul w3-border w3-center w3-hover-shadow">
-					<li class="w3-dark-grey w3-xlarge w3-padding-32">Fiesta de
-						alguien</li>
-					<li class="w3-padding-16"><b>장소</b> 신촌 플레이버스</li>
-					<li class="w3-padding-16"><b>일시</b> 2월 1일</li>
-					<li class="w3-padding-16"><b>출연진</b> Some one</li>
-					<li class="w3-padding-16"><b>시간</b> 1h 30mins</li>
+					<li class="w3-dark-grey w3-xlarge w3-padding-32">Fiesta de alguien</li>
 					<li class="w3-padding-16">
-						<h2 class="w3-wide">15,000</h2> <span class="w3-opacity">원
-							(1 Free Drink 포함)</span>
+						<b>장소</b> 신촌 플레이버스
+					</li>
+					<li class="w3-padding-16">
+						<b>일시</b> 2월 1일
+					</li>
+					<li class="w3-padding-16">
+						<b>출연진</b> Some one
+					</li>
+					<li class="w3-padding-16">
+						<b>시간</b> 1h 30mins
+					</li>
+					<li class="w3-padding-16">
+						<h2 class="w3-wide">15,000</h2>
+						<span class="w3-opacity">원 (1 Free Drink 포함)</span>
 					</li>
 					<li class="w3-light-grey w3-padding-24">
 						<button class="w3-btn w3-green w3-padding-large">${btn_detail}</button>
@@ -244,13 +244,21 @@
 			<div class="w3-third w3-margin-bottom">
 				<ul class="w3-ul w3-border w3-center w3-hover-shadow">
 					<li class="w3-black w3-xlarge w3-padding-32">Holiday Busking</li>
-					<li class="w3-padding-16"><b>장소</b> 가로수길</li>
-					<li class="w3-padding-16"><b>일시</b> 2월 1일</li>
-					<li class="w3-padding-16"><b>출연진</b> Some one</li>
-					<li class="w3-padding-16"><b>시간</b> 1h 30mins</li>
 					<li class="w3-padding-16">
-						<h2 class="w3-wide">15,000</h2> <span class="w3-opacity">원
-							(1 Free Drink 포함)</span>
+						<b>장소</b> 가로수길
+					</li>
+					<li class="w3-padding-16">
+						<b>일시</b> 2월 1일
+					</li>
+					<li class="w3-padding-16">
+						<b>출연진</b> Some one
+					</li>
+					<li class="w3-padding-16">
+						<b>시간</b> 1h 30mins
+					</li>
+					<li class="w3-padding-16">
+						<h2 class="w3-wide">15,000</h2>
+						<span class="w3-opacity">원 (1 Free Drink 포함)</span>
 					</li>
 					<li class="w3-light-grey w3-padding-24">
 						<button class="w3-btn w3-green w3-padding-large">${btn_detail}</button>
@@ -261,42 +269,37 @@
 
 		<!-- Contact -->
 		<div class="w3-center w3-padding-64" id="contact">
-			<span
-				class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">${str_contactUs}</span>
+			<span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">${str_contactUs}</span>
 		</div>
 
 		<div class="w3-row-padding w3-padding-64">
 			<form class="w3-container" action="form.asp" target="_blank">
 				<div class="w3-group">
-					<label>Name</label> <input
-						class="w3-input w3-border w3-hover-border-black"
-						style="width: 100%;" type="text" name="Name" required>
+					<label>Name</label>
+					<input class="w3-input w3-border w3-hover-border-black" style="width: 100%;" type="text" name="Name" required>
 				</div>
 				<div class="w3-group">
-					<label>Email</label> <input
-						class="w3-input w3-border w3-hover-border-black"
-						style="width: 100%;" type="text" name="Email" required>
+					<label>Email</label>
+					<input class="w3-input w3-border w3-hover-border-black" style="width: 100%;" type="text" name="Email" required>
 				</div>
 				<div class="w3-group">
-					<label>Subject</label> <input
-						class="w3-input w3-border w3-hover-border-black"
-						style="width: 100%;" name="Subject" required>
+					<label>Subject</label>
+					<input class="w3-input w3-border w3-hover-border-black" style="width: 100%;" name="Subject" required>
 				</div>
 				<div class="w3-group">
-					<label>Message</label> <input
-						class="w3-input w3-border w3-hover-border-black"
-						style="width: 100%;" name="Message" required>
+					<label>Message</label>
+					<input class="w3-input w3-border w3-hover-border-black" style="width: 100%;" name="Message" required>
 				</div>
 				<button type="submit" class="w3-btn w3-btn-block w3-padding-12">${btn_mainSend}</button>
 			</form>
 		</div>
 	</div>
 	<!-- Footer -->
-	<c:import url="../bottom.do"/>
+	<c:import url="../bottom.do" />
 </body>
 
 
 <!-- login 모달 창 (위치 상관 없음) -->
-<c:import url="modal_signIn.jsp"/>
+<c:import url="modal_signIn.jsp" />
 
 </html>

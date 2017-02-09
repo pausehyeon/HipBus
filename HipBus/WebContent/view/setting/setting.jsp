@@ -17,13 +17,28 @@
 <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
 
 
-
 <c:set var="project" value="/HipBus"/>
 
-<!-- modal_signIn.jsp -->
-<c:set var="str_signInCancel" value="Cancel"/>
-<c:set var="str_passwordSearchMent" value="비밀번호가 기억이 안나세요? "/>
+<!-- 기본 -->
+<c:set var="str_mainStation" value="Main Station"/>
+<c:set var="str_publicGarage" value="Public Garage"/>
+<c:set var="str_management" value="Management"/>
+<c:set var="str_news" value="News"/>
+<c:set var="str_onAir" value="On Air"/>
+<c:set var="str_upcoming" value="Upcoming"/>
+<c:set var="str_contact" value="Contact"/>
+<c:set var="str_myBus" value="My Bus"/>
+<c:set var="str_crewBus" value="Crew Bus"/>
 
+<!-- mainSignIn.jsp, modal_signIn.jsp -->
+<c:set var="str_signIn" value="Sign in"/>
+<c:set var="str_signInUserName" value="Username"/>
+<c:set var="str_signInPassword" value="Password"/>
+<c:set var="str_signInRememberMe" value=" Remember me"/>
+<c:set var="str_signInNotMember" value="아직 회원이 아니라면? "/>
+<c:set var="str_signInBecomeMember" value="Become a HipDriver"/>
+<c:set var="str_signInCancel" value="Cancel"/>
+<c:set var="str_signInPasswordSearchMent" value="비밀번호가 기억이 안나세요? "/>
 
 
 

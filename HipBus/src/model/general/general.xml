@@ -9,5 +9,9 @@
 
 	<select id="verifyNick" parameterType="String" resultType="Integer">
 		select count(*) from HB_Member where nick = #{nick}
+	</select>
+	
+	<select id="checkEmailPasswd" parameterType="hashmap" resultType="Integer">
+		select count(*) from HB_Member where email=#{email} and passwd = #{passwd}
 	</select>	
 </mapper>

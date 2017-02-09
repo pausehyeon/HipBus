@@ -18,26 +18,26 @@
 
 		<form class="w3-container" action="form.asp">
 			<div class="w3-section">
-				<label><b>${str_userName}</b></label> <input
+				<label><b>${str_signInUserName}</b></label> <input
 					class="w3-input w3-border w3-margin-bottom" type="text"
-					placeholder="Enter Username" name="usrname" required> <label><b>${str_password}</b></label>
+					placeholder="Enter Username" name="usrname" required> <label><b>${str_signInPassword}</b></label>
 				<input class="w3-input w3-border" type="text"
 					placeholder="Enter Password" name="psw" required>
 				<button class="w3-btn-block w3-green w3-section w3-padding"
-					type="submit">${btn_login}</button>
+					type="submit">${str_signIn}</button>
 				<input class="w3-check w3-margin-top" type="checkbox"
-					checked="checked"> ${str_rememberMe}
+					checked="checked"> ${str_signInRememberMe}
 			</div>
 		</form>
 
 		<div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+			<span class="w3-right w3-padding w3-hide-small w3-tiny">${str_signInNotMember}<a
+				href="mainSignUp.do">${str_signInBecomeMember}</a>
+				<br>${str_signInPasswordSearchMent}<a href="mainForgot.do">${str_signInPasswordSearchMent}</a>
+			</span>
 			<button
 				onclick="document.getElementById('login').style.display='none'"
-				type="button" class="w3-btn w3-red">${str_cancel}</button>
-			<span class="w3-right w3-padding w3-hide-small">${str_noMember}<a
-				href="mainSignUp.do">${str_becomeMember}</a></span> <span
-				class="w3-right w3-padding w3-hide-small">${str_passwordSearchMent}<a
-				href="mainForgot.do">${str_searchPassword}</a></span>
+				type="button" class="w3-btn w3-red">${str_signInCancel}</button>
 		</div>
 
 	</div>
