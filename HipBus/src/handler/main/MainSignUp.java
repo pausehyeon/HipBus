@@ -18,6 +18,10 @@ public class MainSignUp implements CommandHandler {
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		// TODO Auto-generated method stub
 		return new ModelAndView("mainSignUp");
+		
+		
+		
+		
 	}
 
 }
