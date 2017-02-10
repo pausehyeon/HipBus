@@ -3,4 +3,28 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Station">
+
+	<select id="getCount" resultType="int">
+		select count(*) from HB_Station
+	</select>
+	
+	<select id="getArticles" parameterType="Map" resultType="model.StationDto">
+		select num,email,category,nick,subject,content,
+		imgname,imglocation,filename,filelocation,
+		likenum,readcount,reg_date,mod_date
+		 r from( select num,email,category,nick,subject,content,
+		imgname,imglocation,filename,filelocation,
+		likenum,readcount,reg_date,mod_date,rownum r from
+		(select * from HB_Station order by num asc)
+		order by num asc ) where r &gt;= #{start} and r &lt;= #{end}
+	</select>
+	
+	<select id="getArticle" parameterType="int" resultType="model.StationDto">
+		select * from HB_Station where num=#{num}
+	</select>
+	
+	<update id="addCount" parameterType="int">
+		update HB_Station set readcount=readcount+1 where num=#{num}
+	</update>
+	
 </mapper>

@@ -15,15 +15,17 @@
 	<div class="w3-main " style="margin-right: 20%; margin-left: 20%">
 		<%@ include file="navbar_station.jsp" %>
 		<div class="w3-row w3-container" style="margin-top: 64px">
-			<h3>가사</h3>
+			<h3>${article.category}</h3>
 			<hr>
 		</div>
 		<div class="w3-row">
 			<div class="w3-container">
 				<div class="w3-card-4">
 					<header class="w3-container w3-padding-jumbo w3-theme-l3">
-						<h3>애국가</h3>
-						<p class="w3-right">작성자:aaa | 작성일:2016-12-19 | 조회수:0
+						<h3>${article.subject}</h3>
+						<p class="w3-right">작성자:${article.nick} | 작성일:
+						<fmt:formatDate value="${article.reg_date}"
+				type="both" pattern="yyyy-MM-dd HH:mm"/> | 조회수:${article.readcount}
 						<br>
 						<a class="w3-right">${str_delete}</a>  
 						
@@ -33,18 +35,15 @@
 
 					<div class="w3-container w3-padding-128 w3-padding-jumbo">
 						<pre>
-동해물과 백두산이 마르고 닳도록
-하느님이 보우하사 우리나라 만세!
-무궁화 삼천리 화려강산
-대한사람 대한으로 길이 보전하세.
+${article.content}
 					</pre>
 					</div>
 					
 					<footer class="w3-container w3-padding-jumbo w3-theme-l3 w3-center">
 						<a href="#" class="w3-btn w3-padding w3-theme-d1 w3-margin-left"><i
-							class="fa fa-thumbs-up w3-margin-right"></i>${str_recommend}</a> <a href="#"
+							class="fa fa-thumbs-up w3-margin-right"></i>${btn_recommend}</a> <a href="#"
 							class="w3-btn w3-padding w3-theme-d1 w3-margin-left"><i
-							class="fa fa-arrow-up w3-margin-right"></i>${str_top}</a>
+							class="fa fa-arrow-up w3-margin-right"></i>${btn_top}</a>
 					</footer>
 					<!--  댓글이 있는 경우  -->
 				<div class="w3-container w3-row">
@@ -72,7 +71,7 @@
 				<textarea class="w3-input w3-border w3-padding-5"></textarea>
 				</div>
 				<div class="w3-third w3-container w3-margin-top" style="width:12%">
-				<input class="w3-btn w3-theme-d1 " type="button" value="${str_register}">
+				<input class="w3-btn w3-theme-d1 " type="button" value="${btn_register}">
 				</div>
 				</div>
 			</div>

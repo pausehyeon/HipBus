@@ -7,7 +7,7 @@
 <%@include file="/view/setting/station_setting.jsp"%>
 
 
-<title>${str_title}</title>
+<title>${str_title}${count}</title>
 <body>
 
 	<!-- Navbar -->
@@ -21,152 +21,77 @@
 			<h3>${str_allView}</h3>
 			<p>${str_allViewText}</p>
 			<hr>
-			<a href="station_write.do"
+				<div class="w3-row">
+				<div class="w3-container">
+					<p class="w3-third w3-border w3-padding-large w3-padding-48 w3-center">AD</p>
+					<p class="w3-third w3-border w3-padding-large w3-padding-48 w3-center">AD</p>
+					<p class="w3-border w3-third w3-padding-large w3-padding-48 w3-center">AD</p>
+				</div>
+			</div>
+			<a href="stationWrite.do"
 				class="w3-btn w3-padding w3-theme-d1 w3-margin-left w3-right"><i
-				class="fa fa-pencil-square-o w3-margin-right"></i>${str_write}</a>
+				class="fa fa-pencil-square-o w3-margin-right"></i>${btn_write}</a>
 		</div>
+	
+		<form>
 		<div class="w3-row">
 			<div class="w3-twothird">
-				<!-- 인기글 -->
-				<div>
-					<div class="w3-row w3-margin-bottom">
+				<!-- 글이없는경우 -->
+				<c:if test="${count == 0}">	
+				<div class="w3-row w3-margin-bottom">
 						<div class="w3-twothird w3-container">
-							<a href="station_read.do"><h5>인기글1</h5></a>
+						<h5>${msg_station_x}</h5>
 						</div>
-						<div class="w3-third w3-container">
-							<p class="w3-right w3-tiny">작성자:관리자 | 작성일:2016-12-19 | 조회수:0</p>
-						</div>
-					</div>
-
-					<div class="w3-row w3-margin-bottom">
-						<div class="w3-twothird w3-container">
-							<a href="station_read.do"><h5>인기글2</h5></a>
-						</div>
-						<div class="w3-third w3-container">
-							<p class="w3-right w3-tiny">작성자:누구 | 작성일:2016-12-19 | 조회수: 0</p>
-						</div>
-					</div>
-
-					<div class="w3-row w3-margin-bottom">
-						<div class="w3-twothird w3-container">
-							<a href="station_read.do"><h5>인기글3</h5></a>
-						</div>
-						<div class="w3-third w3-container">
-							<p class="w3-right w3-tiny">작성자:아무개 | 작성일:2016-12-19 | 조회수: 0</p>
-						</div>
-					</div>
-				</div>
-
-
-				<!-- 일반글 -->
+						</div>	
+				</c:if>	
+				<!-- 글이있는경우 -->
+				<c:if test="${count != 0}">
+				<c:forEach var="article" items="${station}">
 				<div>
 					<hr>
 					<div class="w3-row w3-margin-bottom">
 						<div class="w3-twothird w3-container">
-							<a href="station_read.do"><h5>[비트] 비트</h5></a>
+						<a href="stationRead.do?num=${article.num}&pageNum=${pageNum}"> 
+							<h5>[${article.category}] ${article.subject}</h5>
+							</a>
 						</div>
 						<div class="w3-third w3-container">
-							<p class="w3-right w3-tiny">작성자:아무나 | 작성일:2016-12-19 | 조회수: 0</p>
-						</div>
-					</div>
-					<div class="w3-row w3-margin-bottom">
-						<div class="w3-twothird w3-container">
-							<a href="station_read.do"><h5>2016 서울 힙합 페스티벌 관련 공지</h5></a>
-						</div>
-						<div class="w3-third w3-container">
-							<p class="w3-right w3-tiny">작성자:관리자 | 작성일:2016-12-19 | 조회수:0</p>
+							<p class="w3-right w3-tiny">작성자:${article.nick} | 작성일:<fmt:formatDate value="${article.reg_date}"
+						type="both" pattern="yyyy-MM-dd HH:mm"/> | 조회수: ${article.readcount} | 추천수:${article.likenum }</p>
 						</div>
 					</div>
 
-					<div class="w3-row w3-margin-bottom">
-						<div class="w3-twothird w3-container">
-							<a href="station_read.do"><h5>[잡담] Fiesta de Alguien
-									예매합시다</h5></a>
-						</div>
-						<div class="w3-third w3-container">
-							<p class="w3-right w3-tiny">작성자:누구 | 작성일:2016-12-19 | 조회수: 0</p>
-						</div>
 					</div>
-
-					<div class="w3-row w3-margin-bottom">
-						<div class="w3-twothird w3-container">
-							<a href="mainstation_readstation_read.do"><h5>[가사] 가사 평
-									좀</h5></a>
-						</div>
-						<div class="w3-third w3-container">
-							<p class="w3-right w3-tiny">작성자:아무개 | 작성일:2016-12-19 | 조회수: 0</p>
-						</div>
-					</div>
-
-					<div class="w3-row w3-margin-bottom">
-						<div class="w3-twothird w3-container">
-							<a href="station_read.do"><h5>[비트] 비트</h5></a>
-						</div>
-						<div class="w3-third w3-container">
-							<p class="w3-right w3-tiny">작성자:아무나 | 작성일:2016-12-19 | 조회수: 0</p>
-						</div>
-					</div>
-					<div class="w3-row w3-margin-bottom">
-						<div class="w3-twothird w3-container">
-							<a href="station_read.do"><h5>2016 서울 힙합 페스티벌 관련 공지</h5></a>
-						</div>
-						<div class="w3-third w3-container">
-							<p class="w3-right w3-tiny">작성자:관리자 | 작성일:2016-12-19 | 조회수:0</p>
-						</div>
-					</div>
-
-					<div class="w3-row w3-margin-bottom">
-						<div class="w3-twothird w3-container">
-							<a href="station_read.do"><h5>[잡담] Fiesta de Alguien
-									예매합시다</h5></a>
-						</div>
-						<div class="w3-third w3-container">
-							<p class="w3-right w3-tiny">작성자:누구 | 작성일:2016-12-19 | 조회수: 0</p>
-						</div>
-					</div>
-
-					<div class="w3-row w3-margin-bottom">
-						<div class="w3-twothird w3-container">
-							<a href="station_read.do"><h5>[가사] 가사 평 좀</h5></a>
-						</div>
-						<div class="w3-third w3-container">
-							<p class="w3-right w3-tiny">작성자:아무개 | 작성일:2016-12-19 | 조회수: 0</p>
-						</div>
-					</div>
-
-					<div class="w3-row w3-margin-bottom">
-						<div class="w3-twothird w3-container">
-							<a href="station_read.do"><h5>[비트] 비트</h5></a>
-						</div>
-						<div class="w3-third w3-container">
-							<p class="w3-right w3-tiny">작성자:아무나 | 작성일:2016-12-19 | 조회수: 0</p>
-						</div>
-					</div>
+					</c:forEach>
+					</c:if>
 				</div>
 			</div>
-
-			<div class="w3-third">
-				<div class="w3-container">
-					<p class="w3-border w3-padding-large w3-padding-128 w3-center">AD</p>
-					<p class="w3-border w3-padding-large w3-padding-128 w3-center">AD</p>
-					<p class="w3-border w3-padding-large w3-padding-48 w3-center">AD</p>
-				</div>
-			</div>
+</form>
+			
 		</div>
-
-		<div class="w3-row">
+		
+		<div class="w3-center ">
 			<!-- Pagination -->
-			<div class="w3-center w3-padding-64">
-				<ul class="w3-pagination">
-					<li><a class="w3-black" href="#">1</a></li>
-					<li><a class="w3-hover-black" href="#">2</a></li>
-					<li><a class="w3-hover-black" href="#">3</a></li>
-					<li><a class="w3-hover-black w3-hide-small" href="#">4</a></li>
-					<li><a class="w3-hover-black w3-hide-small" href="#">5</a></li>
-					<li><a class="w3-hover-black" href="#">»</a></li>
-				</ul>
-			</div>
+			
+			<c:if test="${startPage > pageBlock}">
+		<a class="w3-hover-black" href="station.do">◀◀</a>
+		<a class="w3-hover-black" href="station.do?pageNum=${startPage-pageBlock}">◀</a>
+	</c:if>
+	<c:forEach var="i" begin="${startPage}" end="${endPage}">
+		<c:if test="${i == currentPage}">
+			<span class="w3-hover-black">${i}</span>
+		</c:if>
+		<c:if test="${i != currentPage}">
+			<a class="w3-hover-black" href="station.do?pageNum=${i}">[${i}]</a>
+		</c:if>
+	</c:forEach>
+	<c:if test="${pageCount > endPage}">
+		<a class="w3-hover-black" href="station.do?pageNum=${startPage+pageBlock}">▶</a>
+		<a class="w3-hover-black" href="station.do?pageNum=${pageCount}">▶▶</a>
+	</c:if>
+	
 		</div>
+		
 		<!-- END MAIN -->
 	</div>
 

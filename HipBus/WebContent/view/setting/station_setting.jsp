@@ -17,15 +17,16 @@
 <c:set var="str_title" value="Hipbus"/>
 <c:set var="str_allView" value="전체보기"/>
 <c:set var="str_allViewText" value="전체 게시글을 모아볼 수 있습니다."/>
-<c:set var="str_write" value="글쓰기"/>
+<c:set var="btn_write" value="글쓰기"/>
+<c:set var="msg_station_x" value="게시글이 없습니다."/>
 <!-- stationRead.jsp -->
-<c:set var="str_recommend" value="추천하기"/>
-<c:set var="str_top" value="위로"/>
+<c:set var="btn_recommend" value="추천하기"/>
+<c:set var="btn_top" value="위로"/>
 <c:set var="str_reply" value="답글"/>
 <c:set var="str_modify" value="수정"/>
 <c:set var="str_delete" value="삭제"/>
-<c:set var="str_replyWrite" value="답글달기"/>
-<c:set var="str_register" value="등록"/>
+<c:set var="str_replyWrite" value="댓글"/>
+<c:set var="btn_register" value="등록"/>
 <!-- navbar_station.jsp -->
 <c:set var="str_sideName" value="Main Station"/>
 <c:set var="str_beat" value="비트"/>
@@ -34,3 +35,10 @@
 <c:set var="str_vocal" value="보컬"/>
 <c:set var="str_gasa" value="가사"/>
 <c:set var="str_freeBoard" value="자유게시판"/>
+
+<!-- stationWrite.jsp -->
+<c:set var="str_free" value="자유"/>
+<c:set var="str_writeName" value="글제목"/>
+<c:set var="str_img" value="이미지 첨부"/>
+<c:set var="btn_complete" value="작성완료"/>
+<c:set var="btn_cancel" value="작성취소"/>
