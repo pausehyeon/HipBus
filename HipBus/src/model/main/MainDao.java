@@ -1,6 +1,8 @@
 package model.main;
 
-public interface MainDao {
+import model.MemberDto;
 
+public interface MainDao {
+	public int insertMember( MemberDto dto );
 
 }
