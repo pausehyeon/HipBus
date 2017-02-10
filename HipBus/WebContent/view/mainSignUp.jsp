@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <!-- SETTING -->
@@ -110,54 +109,56 @@
 <title>HipBus - Welcome!</title>
 <body>
 
-	<%@ include file="navbar_main.jsp" %>
-	
+	<%@ include file="navbar_main.jsp"%>
+
 
 	<!-- Content -->
-	
-	<div class="w3-content"
-		style="max-width: 1100px; margin-top: 0px; margin-bottom: 80px">
+
+	<div class="w3-content" style="max-width: 1100px; margin-top: 0px; margin-bottom: 80px">
 
 		<!-- Join in -->
-		<div class="w3-container w3-padding-128"
-			style="max-width: 1100px; margin-top: 0px; margin-bottom: 80px">
+		<div class="w3-container w3-padding-128" style="max-width: 1100px; margin-top: 0px; margin-bottom: 80px">
 			<div class="w3-container w3-center w3-black">
-			  <h2><i class="fa fa-address-card w3-xxsmall"></i> ${str_becomeMember}</h2>
+				<h2>
+					<i class="fa fa-address-card w3-xxsmall"></i> ${str_becomeMember}
+				</h2>
 			</div>
-			
+
 			<form id="inputform" class="w3-container">
 				<p>
 					<label>${str_email}</label>
 					<input id="email" name="email" type="text" class="w3-input" onkeyup="verifyemail()">
-					<div class="w3-text-blue w3-xsmall w3-right" id="emailresult">${str_signUpEmail}</div>
+				<div class="w3-text-blue w3-xsmall w3-right" id="emailresult">${str_signUpEmail}</div>
 				</p>
-				<br>				
+				<br>
 				<p>
 					<label>${str_userName}</label>
 					<input name="nick" class="w3-input" type="text" onkeyup="verifynick()">
-					<div class="w3-text-blue w3-xsmall w3-right" id="nickresult">${str_signUpUserName}</div>
+				<div class="w3-text-blue w3-xsmall w3-right" id="nickresult">${str_signUpUserName}</div>
 				</p>
-				<br><br>
+				<br>
+				<br>
 				<p>
 					<label>${str_password}</label>
 					<input name="passwd" class="w3-input" type="text">
-					<div class="w3-text-blue w3-xsmall w3-right" id="passwdresult">${str_signUpPassword}</div>
+				<div class="w3-text-blue w3-xsmall w3-right" id="passwdresult">${str_signUpPassword}</div>
 				</p>
 				<br>
 				<p>
 					<label>${str_passwordCheck}</label>
 					<input name="repasswd" class="w3-input" type="password">
-					<div class="w3-text-blue w3-xsmall w3-right" id="repasswdresult">${str_signUpPasswordCheck}</div>
+				<div class="w3-text-blue w3-xsmall w3-right" id="repasswdresult">${str_signUpPasswordCheck}</div>
 				</p>
-				<br><br>
+				<br>
+				<br>
 				<div class="w3-center">
-					<input type="submit" value="회원가입" class="w3-btn w3-padding w3-black w3-margin">				
+					<input type="submit" value="회원가입" class="w3-btn w3-padding w3-black w3-margin">
 				</div>
 			</form>
 		</div>
 	</div>
 	<!-- Footer -->
-	<c:import url="../bottom.do"/>
+	<c:import url="../bottom.do" />
 
 </body>
 </html>
