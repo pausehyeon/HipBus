@@ -31,7 +31,7 @@
 <c:set var="str_slideShow2" value="자작곡공유"/>
 <c:set var="str_slideShow3" value="Live방송"/>
 <c:set var="str_mainOnAir" value="On Air"/>
-<c:set var="str_top3" value="Top3 Drivers of last week"/>
+<c:set var="str_top3" value="Top3 Drivers of today"/>
 <c:set var="str_hopOn" value="Hop on"/>
 <c:set var="str_upcoming" value="Upcoming Events"/>
 <c:set var="str_detail" value="자세히"/>
@@ -69,7 +69,8 @@
 <c:set var="str_topDrivers" value="Top Drivers"/>
 
 
-
+<!-- mainContactUsPro.jsp -->
+<c:set var="str_mailingSuccess" value="문의메일이 성공적으로 전송되었습니다. 관리자 확인 후 24시간 이내에 답변하겠습니다."></c:set>
 
 
 

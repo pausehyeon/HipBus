@@ -98,7 +98,7 @@
 
 		<!-- On air Section -->
 		<div class="w3-center w3-padding-64" id="onair">
-			<span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">str_mainOnAir</span>
+			<span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">${str_mainOnAir}</span>
 		</div>
 
 		<div class="w3-row-padding">
@@ -297,22 +297,32 @@
 		</div>
 
 		<div class="w3-row-padding w3-padding-64">
-			<form class="w3-container" action="form.asp" target="_blank">
+			<form name="contactForm" action="mainContactUsPro.do" method="post" class="w3-container">
 				<div class="w3-group">
 					<label>Name</label>
-					<input class="w3-input w3-border w3-hover-border-black" style="width: 100%;" type="text" name="Name" required>
+					<input type="text" name="name" required class="w3-input w3-border w3-hover-border-black" style="width: 100%;">
 				</div>
 				<div class="w3-group">
 					<label>Email</label>
-					<input class="w3-input w3-border w3-hover-border-black" style="width: 100%;" type="text" name="Email" required>
+					<input type="text" name="email" required class="w3-input w3-border w3-hover-border-black" style="width: 100%;">
+					<script type="text/javascript">
+					//<!--
+					$(document).ready(
+						function(){
+						/* 로그인된 경우 기본값을 로그인된 이메일로 */
+							contactForm.email.value="${sessionScope.memEmail}"
+						}		
+					);
+					//-->
+					</script>
 				</div>
 				<div class="w3-group">
 					<label>Subject</label>
-					<input class="w3-input w3-border w3-hover-border-black" style="width: 100%;" name="Subject" required>
+					<input name="subject" required class="w3-input w3-border w3-hover-border-black" style="width: 100%;">
 				</div>
 				<div class="w3-group">
 					<label>Message</label>
-					<input class="w3-input w3-border w3-hover-border-black" style="width: 100%;" name="Message" required>
+					<input name="content" required class="w3-input w3-border w3-hover-border-black" style="width: 100%;">
 				</div>
 				<button type="submit" class="w3-btn w3-btn-block w3-padding-12">${str_mainSend}</button>
 			</form>
