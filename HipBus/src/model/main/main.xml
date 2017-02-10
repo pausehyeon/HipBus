@@ -5,7 +5,7 @@
 <mapper namespace="Main">
 	<insert id="insertMember" parameterType="model.MemberDto">
 		insert into HB_Member values(
-		#{email}, #{nick}, #{passwd}, #{mem_level}, ${joindate}, ${imgname}
+		#{email}, #{nick}, #{passwd}, ${joindate}
 		)
 	</insert>
 		
