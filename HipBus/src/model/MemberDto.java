@@ -4,13 +4,13 @@ import java.sql.Timestamp;
 
 public class MemberDto {
 	
-	private String email;
-	private String passwd;
-	private String mem_level;
-	private Timestamp joindate;
-	private String imgname;	
-	
-	
+	private String email;		//회원 고유식별 id
+	private String nick;		//닉네임
+	private String passwd;		//비밀번호
+	private int mem_level;		//회원등급
+	private Timestamp joindate;	//가입일
+	private String imgName;		//이미지 파일명
+	private String imglocation;	//서버상 이미지 파일명
 	
 	public String getEmail() {
 		return email;
@@ -18,16 +18,22 @@ public class MemberDto {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public String getNick() {
+		return nick;
+	}
+	public void setNick(String nick) {
+		this.nick = nick;
+	}
 	public String getPasswd() {
 		return passwd;
 	}
 	public void setPasswd(String passwd) {
 		this.passwd = passwd;
 	}
-	public String getMem_level() {
+	public int getMem_level() {
 		return mem_level;
 	}
-	public void setMem_level(String mem_level) {
+	public void setMem_level(int mem_level) {
 		this.mem_level = mem_level;
 	}
 	public Timestamp getJoindate() {
@@ -36,13 +42,19 @@ public class MemberDto {
 	public void setJoindate(Timestamp joindate) {
 		this.joindate = joindate;
 	}
-	public String getImgname() {
-		return imgname;
+	public String getImgName() {
+		return imgName;
 	}
-	public void setImgname(String imgname) {
-		this.imgname = imgname;
+	public void setImgName(String imgName) {
+		this.imgName = imgName;
+	}
+	public String getImglocation() {
+		return imglocation;
+	}
+	public void setImglocation(String imglocation) {
+		this.imglocation = imglocation;
 	}
 	
 	
-
+	
 }
