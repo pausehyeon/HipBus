@@ -37,8 +37,6 @@
 						<input type="submit" value="${str_signIn}" class="w3-btn-block w3-green w3-section w3-padding">
 						<input name="rememberMe" type="checkbox" value="1" checked="checked" class="w3-check w3-margin-top">
 						${str_signInRememberMe}
-						<input name="urlToGoBack" type="hidden" value="main.do">
-						<!-- ^ 로그인 후 돌아올 페이지 url을 기억. 이 경우 항상 메인으로 -->
 					</form>
 				</div>
 

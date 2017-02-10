@@ -34,6 +34,22 @@
 				<p class="w3-xsmall">
 					<span>(불러온닉네임)</span>${str_welcomeMain}
 				</p>
+				<form name="signOutForm" method="post" action="signOutPro.do">
+					<input type="submit" value="&#xf08b;${str_signOut}" class="w3-btn w3-padding-16 w3-large w3-margin-top">
+					<!-- ^ &#xf08b;는 fontawesome의 fa-sign-out 아이콘. <i></i>를 넣을 수 없어서 css의 font-family를 FontAwesome으로 바꿈. http://fontawesome.io/cheatsheet/ 참조 -->
+					<input name="urlToGoBack" type="hidden">
+					<!-- ^ 로그아웃 후 돌아올 현재 페이지 url을 기억.-->
+					<script type="text/javascript">
+						//<!--
+						$(document).ready(
+							function() {
+								//여기서 hidden값을 현재 페이지 url로 바꿔줌.
+								signOutForm.urlToGoBack.value = location.href;
+							}
+						);
+						//-->
+					</script>
+				</form>
 			</c:if>
 
 		</div>
@@ -219,7 +235,7 @@
 						<span class="w3-opacity">원 (1 Free Drink 포함)</span>
 					</li>
 					<li class="w3-light-grey w3-padding-24">
-						<button class="w3-btn w3-green w3-padding-large">${btn_detail}</button>
+						<button class="w3-btn w3-green w3-padding-large">${str_detail}</button>
 					</li>
 				</ul>
 			</div>
@@ -244,7 +260,7 @@
 						<span class="w3-opacity">원 (1 Free Drink 포함)</span>
 					</li>
 					<li class="w3-light-grey w3-padding-24">
-						<button class="w3-btn w3-green w3-padding-large">${btn_detail}</button>
+						<button class="w3-btn w3-green w3-padding-large">${str_detail}</button>
 					</li>
 				</ul>
 			</div>
@@ -269,7 +285,7 @@
 						<span class="w3-opacity">원 (1 Free Drink 포함)</span>
 					</li>
 					<li class="w3-light-grey w3-padding-24">
-						<button class="w3-btn w3-green w3-padding-large">${btn_detail}</button>
+						<button class="w3-btn w3-green w3-padding-large">${str_detail}</button>
 					</li>
 				</ul>
 			</div>
@@ -298,7 +314,7 @@
 					<label>Message</label>
 					<input class="w3-input w3-border w3-hover-border-black" style="width: 100%;" name="Message" required>
 				</div>
-				<button type="submit" class="w3-btn w3-btn-block w3-padding-12">${btn_mainSend}</button>
+				<button type="submit" class="w3-btn w3-btn-block w3-padding-12">${str_mainSend}</button>
 			</form>
 		</div>
 	</div>

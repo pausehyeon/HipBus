@@ -17,6 +17,11 @@ public class SignOutPro implements CommandHandler {
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		
+		String urlToGoBack = request.getParameter("urlToGoBack");
+		if(urlToGoBack == null) urlToGoBack="main.do";
+		//돌아갈 url
+		request.setAttribute("urlToGoBack", urlToGoBack);
+		//세션에서 로그인 정보 지우기
 		request.getSession().removeAttribute("memEmail");
 		
 		return new ModelAndView("signOutPro");

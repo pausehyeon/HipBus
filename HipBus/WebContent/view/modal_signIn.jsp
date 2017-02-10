@@ -20,13 +20,16 @@
 				<input type="submit" value="${str_signIn}" class="w3-btn-block w3-green w3-section w3-padding">
 				<input name="rememberMe" type="checkbox" value="1" checked="checked" class="w3-check w3-margin-top">
 				${str_signInRememberMe}
-				<input name="urlToGoBack" type="hidden" value="main.do">
-				<!-- ^ 로그인 후 돌아올 현재 페이지 url을 기억. -->
+				<input name="urlToGoBack" type="hidden">
+				<!-- ^ 로그인 후 돌아올 현재 페이지 url을 기억.-->
 				<script type="text/javascript">
 					//<!--
-					function getUrlToGoBack() {
-						//여기서 hidden값을 바꿔줘야. jQuery를 이용할까?
-					}
+					$(document).ready(
+						function() {
+							//여기서 hidden값을 현재 페이지 url로 바꿔줌.
+							signInForm.urlToGoBack.value = location.href;
+						}
+					);
 					//-->
 				</script>
 			</div>
@@ -34,8 +37,8 @@
 
 		<div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
 			<span class="w3-right w3-padding w3-hide-small w3-tiny">${str_signInNotMember}<a href="mainSignUp.do">${str_signInBecomeMember}</a> <br>${str_signInPasswordSearchMent}<a
-					href="mainForgot.do"
-				>${str_signInPasswordSearchMent}</a>
+				href="mainForgot.do"
+			>${str_signInPasswordSearchMent}</a>
 			</span>
 			<button onclick="document.getElementById('login').style.display='none'" type="button" class="w3-btn w3-red">${str_signInCancel}</button>
 		</div>

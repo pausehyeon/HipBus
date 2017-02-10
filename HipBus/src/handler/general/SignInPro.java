@@ -44,6 +44,7 @@ public class SignInPro implements CommandHandler {
 		}
 
 		// 돌아갈 이전 페이지 주소
+		if (urlToGoBack == null) urlToGoBack = "main.do";
 		request.setAttribute("urlToGoBack", urlToGoBack);
 
 		return new ModelAndView("signInPro");
