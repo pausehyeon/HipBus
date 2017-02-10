@@ -6,7 +6,7 @@ import model.SqlMapClient;
 public class MainDBBean implements MainDao{
 	
 	public int insertMember( MemberDto dto ) {
-		return SqlMapClient.getSession().insert( "HipBus.insertMember", dto );
+		return SqlMapClient.getSession().insert( "Main.insertMember", dto );
 	}
 	
 
