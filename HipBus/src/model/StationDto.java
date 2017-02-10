@@ -1,8 +1,8 @@
-package model.station;
+package model;
 
 import java.sql.Timestamp;
 
-public class StationDataBean {
+public class StationDto {
 	private String nick;	//닉네임
 	private int num;		// 글번호
 	private Timestamp reg_date;	// 작성일
