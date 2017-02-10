@@ -2,5 +2,23 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
 <mapper namespace="Admin">
+	<!-- 관리자 현황 -->
+  	<select id="memberGrade" resultType="int">
+  		select count( * ) from hb_member
+  	</select>
+  	<select id="adminGrade" resultType="int">
+  		select count( * ) from hb_member where mem_level=3
+  	</select>
+  	
+  	<select id="numberOfCrew" resultType="int">
+  		select count( * ) from hb_crew
+  	</select>
+  	<select id="numberOfPost" resultType="int">
+  		select count( * ) from hb_station
+  	</select>
+  	
+  	<!-- 멤버목록부르기 -->
+
 </mapper>
