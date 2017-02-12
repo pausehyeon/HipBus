@@ -18,12 +18,11 @@ import handler.HandlerException;
 import model.general.FileUpload;
 
 @Controller
-public class ImageUpload implements CommandHandler {
+public class UploadToEditor implements CommandHandler {
 
-	@RequestMapping("/imageUpload.do")
+	@RequestMapping("/uploadToEditor.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-
 		// ckeditor가 다음과 같이 get 방식으로 정보를 넘겨줌.
 		// CKEditor=editor2&CKEditorFuncNum=2&langCode=de
 		try {
@@ -39,7 +38,7 @@ public class ImageUpload implements CommandHandler {
 
 		try {
 			MultipartRequest multi = new FileUpload().getMultipartRequest(request);
-			String filename = multi.getOriginalFileName("upload"); // 사용자가 올린 이미지의 이름
+			String filename = multi.getOriginalFileName("upload");   // 사용자가 올린 파일의 이름
 			String filelocation = multi.getFilesystemName("upload"); // 실제 저장된 이름
 
 			printWriter = response.getWriter();
@@ -47,7 +46,7 @@ public class ImageUpload implements CommandHandler {
 			String fileUrl = request.getSession().getServletContext().getContextPath() + "/hipbusSave/" + filelocation;// url경로
 
 			printWriter.println("<script type='text/javascript'>" + "window.parent.CKEDITOR.tools.callFunction("
-					+ request.getParameter("CKEditorFuncNum") + ",'" + fileUrl + "'" + ",'이미지를 업로드 하였습니다.'" + ");"
+					+ request.getParameter("CKEditorFuncNum") + ",'" + fileUrl + "'" + ",'파일을 업로드 하였습니다.'" + ");"
 					+ "</script>");
 			// ckeditor에게
 			// window.parent.CKEDITOR.tools.callFunction(CKEditorFuncNum, 실제로 저장된 경로, 메시지);로 callback하기로 약속되어 있음.
@@ -56,7 +55,6 @@ public class ImageUpload implements CommandHandler {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 		return null;
 	}
 

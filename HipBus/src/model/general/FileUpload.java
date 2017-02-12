@@ -18,7 +18,7 @@ public class FileUpload {
 
 		MultipartRequest multi;
 
-		multi = new MultipartRequest(request, path, 1024 * 1024 * 5, "utf-8", new DefaultFileRenamePolicy());
+		multi = new MultipartRequest(request, path, 1024 * 1024 * 16, "utf-8", new DefaultFileRenamePolicy());
 
 		return multi;
 		

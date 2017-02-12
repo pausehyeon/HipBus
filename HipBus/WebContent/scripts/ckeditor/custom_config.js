@@ -12,8 +12,8 @@ CKEDITOR.editorConfig = function( config ) {
 	config.extraPlugins = 'widget';
 	config.extraPlugins = 'widgetselection';
 	config.extraPlugins = 'lineutils';
-	config.extraPlugins = 'html5audio';
 	config.extraPlugins = 'videodetector';	//code 순서에 따라 둘 중 하나만 동작
+	config.extraPlugins = 'html5audio';
 	
 	
 	config.toolbarGroups = [
