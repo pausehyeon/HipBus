@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <%@include file="/view/setting/setting.jsp"%>
@@ -19,40 +18,36 @@
 		</div>
 		<div class="w3-row">
 			<div class="w3-container">
-				<form name="writeform" method="post">
-					<div class="w3-card-4">
+
+				<div class="w3-card-4">
+
+					<form name="writeform" method="post" enctype="multipart/form-data" action="garageNewsWritePro.do">
 						<header class="w3-container w3-padding-jumbo w3-theme-l3">
-							<input class="w3-input" type="text" required> <label
-								class="w3-label w3-validate">${str_Subject}</label> <!-- <a href="#"
-								class="w3-btn w3-padding w3-theme-d1 w3-margin w3-right"><i
-								class="fa fa-image w3-margin-right"></i>이미지 첨부</a> -->
+							<input name="subject" type="text" required class="w3-input">
+							<label class="w3-label w3-validate">${str_Subject}</label>
 						</header>
 
-						<div>
-							<textarea class="w3-input" id="editor"></textarea>
-							<script type="text/javascript">
-								CKEDITOR.replace('editor',
-									{
-										enterMode : "2",
-										height : '350px', // 입력창의 높이
-										resize_enabled : false, // 사이즈 조정
-										filebrowserImageUploadUrl : "imageUpload.do" //이미지 업로드를 위해 핸들러 연결해줘야 함. 나중에 수정할게요.
-									//http://localhost:8080/HipBus/imageUpload.do?CKEditor=editor&CKEditorFuncNum=1&langCode=ko처럼 넘어 감.
-									}
-								);
-							</script>
+						<div class="w3-row">
+							<textarea name="content" id="editor" class="w3-input"></textarea>
+							<script type="text/javascript" src="${project}/scripts/ckeditor/insertCkeditor.js"></script>
+							<!-- ^ ckeditor 연결 모듈 -->
 						</div>
-
-						<footer
-							class="w3-container w3-padding-jumbo w3-theme-l3 w3-center">
-							<input type="submit"
-								class="w3-btn w3-padding w3-theme-d1 w3-margin-left"
-								value="${btn_Write}"> <a href="#"
-								class="w3-btn w3-padding w3-theme-d1 w3-margin-left"><i
-								class="fa fa-mail-reply w3-margin-right"></i>${btn_Cancel}</a>
+						
+						<div class="w3-row w3-padding-jumbo w3-theme-l3">
+							<span>* <i class="fa fa-image"></i> &nbsp;대표 이미지 :
+							<input name="upload" type="file" accept="image/*">
+						</div>
+						<footer class="w3-container w3-padding-jumbo w3-theme-l3 w3-center">
+							<input type="submit" class="w3-btn w3-padding w3-theme-d1 w3-margin-left" value="&#xf00c; ${btn_Write}">
+							<!-- &#xf00c;는 fontawesome의 fa-check 아이콘. submit 버튼 안에 <i></i>태그를 넣을 수 없어서. -->
+							<a href="#" class="w3-btn w3-padding w3-theme-d1 w3-margin-left">
+								<i class="fa fa-mail-reply"></i>&nbsp;${btn_Cancel}
+							</a>
 						</footer>
-					</div>
-				</form>
+					</form>
+
+				</div>
+
 			</div>
 		</div>
 
