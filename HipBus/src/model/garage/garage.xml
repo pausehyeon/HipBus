@@ -3,4 +3,43 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Garage">
+
+<select id="getCount" resultType="int">
+		select count(*) from HB_News
+</select>
+
+
+<select id="getArticles" parameterType="Map" resultType="model.NewsDto">
+
+		select email,num,nick,subject,content,
+		imgname,imglocation,readcount,reg_date,mod_date
+		r from( select email,num,nick,subject,content,
+		imgname,imglocation,readcount,reg_date,mod_date,rownum r from
+		(select * from HB_News order by num desc)
+		order by num desc ) where r &gt;= #{start} and r &lt;= #{end}
+
+</select>
+
+
+<select id="getArticle" parameterType="int" resultType="model.NewsDto">
+	select * from HB_News where num=#{num}
+</select>
+
+<update id="addCount" parameterType="int">
+	update HB_News set readcount=readcount+1 where num=#{num}
+	</update>
+
+
+<select id="getMember" parameterType="String" resultType="model.MemberDto">
+	select * from HB_Member where email=#{email}
+
+</select>
+
+<insert id="insertNews" parameterType="model.NewsDto">
+insert into HB_News(email,num,nick,subject,content,imgname,imglocation,readcount,reg_date,mod_date)
+					values(#{email},newsseq.NEXTVAL,#{nick},#{subject},#{content},#{imgname,jdbcType=VARCHAR},#{imglocation,jdbcType=VARCHAR},#{readcount},#{reg_date},#{mod_date})
+
+
+</insert>
+
 </mapper>

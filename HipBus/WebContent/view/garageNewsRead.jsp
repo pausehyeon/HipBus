@@ -21,11 +21,13 @@
 			<div class="w3-container">
 				<div class="w3-card-4">
 					<header class="w3-container w3-padding-jumbo w3-theme-l3">
-						<h3>2017년 새해 이벤트 공지</h3>
-						<p class="w3-right">작성자:관리자 | 작성일:2016-12-19 | 조회수:0</p>
+						<h3>${article.subject}</h3>
+						<p class="w3-right">${str_Writer}:${article.nick} | ${str_Reg_Date}:${article.reg_date} | ${str_ReadCount}:${article.readcount}</p>
 					</header>
 
 					<div class="w3-container w3-padding-128 w3-padding-jumbo">
+					
+					<pre>${article.content}</pre>
 	
 					</div>
 

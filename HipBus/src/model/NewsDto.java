@@ -1,4 +1,4 @@
-package model;
+ package model;
 
 import java.sql.Timestamp;
 
@@ -13,7 +13,7 @@ public class NewsDto {
 	private String imglocation;		//서버상 이미지 파일명
 	private int readcount;			//조회수
 	private Timestamp reg_date;		//작성일
-	private Timestamp mode_date;	//수정일
+	private Timestamp mod_date;	//수정일
 	
 	public String getEmail() {
 		return email;
@@ -69,11 +69,11 @@ public class NewsDto {
 	public void setReg_date(Timestamp reg_date) {
 		this.reg_date = reg_date;
 	}
-	public Timestamp getMode_date() {
-		return mode_date;
+	public Timestamp getMod_date() {
+		return mod_date;
 	}
-	public void setMode_date(Timestamp mode_date) {
-		this.mode_date = mode_date;
+	public void setMod_date(Timestamp mod_date) {
+		this.mod_date = mod_date;
 	}
 
 }
