@@ -34,7 +34,7 @@
 						</div>
 						
 						<div class="w3-row w3-padding-jumbo w3-theme-l3">
-							<span>* <i class="fa fa-image"></i> &nbsp;대표 이미지 :
+							<span>* <i class="fa fa-image"></i> &nbsp;${str_insertThumbnail}
 							<input name="upload" type="file" accept="image/*">
 						</div>
 						<footer class="w3-container w3-padding-jumbo w3-theme-l3 w3-center">

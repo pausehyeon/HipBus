@@ -39,6 +39,9 @@
 <c:set var="str_Recommend" value="추천하기"/>
 <c:set var="str_Top" value="위로"/>
 
+<!--  garageeNewsWrite.jsp -->
+<c:set var="str_insertThumbnail" value="대표 이미지 :"></c:set>
+
 <!-- garageOnAir.jsp  -->
 <c:set var="str_OnAir" value="OnAir"/>
 <c:set var="str_OnAirTitle" value="현재 방송중인 버스를 모아봅니다."/>
@@ -50,5 +53,6 @@
 <!-- garageWanted.jsp -->
 <c:set var="str_Wanted" value="Wanted"/>
 <c:set var="str_WantedTitle" value="각 Bus의 구인게시글을 모아서 보여줍니다."/>
+
 
 
