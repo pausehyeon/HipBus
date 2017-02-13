@@ -16,6 +16,7 @@
 		//<!--
 		alert("test");
 		erroralert( signuperror );
+		location.href="mainSignUp.do";
 		//-->
 	</script>
 </c:if>
