@@ -10,18 +10,17 @@ import org.springframework.web.servlet.ModelAndView;
 
 import handler.CommandHandler;
 import handler.HandlerException;
-import model.MemberDto;
-import model.station.StationDao;
-
 @Controller
 public class StationWrite implements CommandHandler {
 
 	@RequestMapping("/stationWrite.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-		int num = 0;	
+		int num = 0;
 		
-		request.setAttribute("num", num);
+		
+		request.setAttribute("num",num);
+	
 		return new ModelAndView("stationWrite");
 	}
 

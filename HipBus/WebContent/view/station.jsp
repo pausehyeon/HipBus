@@ -28,9 +28,12 @@
 					<p class="w3-border w3-third w3-padding-large w3-padding-48 w3-center">AD</p>
 				</div>
 			</div>
-			<a href="stationWrite.do"
+				<c:if test="${sessionScope.memEmail eq null}"> <i class="w3-right">${msg_login}</i> </c:if>
+			<c:if test="${sessionScope.memEmail ne null}">	
+			<a href="stationWrite.do?email=${sessionScope.memEmail}"
 				class="w3-btn w3-padding w3-theme-d1 w3-margin-left w3-right"><i
 				class="fa fa-pencil-square-o w3-margin-right"></i>${btn_write}</a>
+			</c:if>
 		</div>
 	
 		<form>
@@ -42,7 +45,7 @@
 						<div class="w3-twothird w3-container">
 						<h5>${msg_station_x}</h5>
 						</div>
-						</div>	
+						</div>
 				</c:if>	
 				<!-- 글이있는경우 -->
 				<c:if test="${count != 0}">
@@ -52,7 +55,26 @@
 					<div class="w3-row w3-margin-bottom">
 						<div class="w3-twothird w3-container">
 						<a href="stationRead.do?num=${article.num}&pageNum=${pageNum}"> 
-							<h5>[${article.category}] ${article.subject}</h5>
+							<c:choose>
+							<c:when test="${article.category == 1}">
+							<h4>[${str_beat}] ${article.subject}</h4>
+							</c:when>
+							<c:when test="${article.category == 2}">
+							<h4>[${str_rab}] ${article.subject}</h4>
+							</c:when>
+							<c:when test="${article.category == 3}">
+							<h4>[${str_mixTape}] ${article.subject}</h4>
+							</c:when>
+							<c:when test="${article.category == 4}">
+							<h4>[${str_vocal}] ${article.subject}</h4>
+							</c:when>
+							<c:when test="${article.category == 5}">
+							<h4>[${str_gasa}] ${article.subject}</h4>
+							</c:when>
+							<c:when test="${article.category == 6}">
+							<h4>[${str_freeBoard}] ${article.subject}</h4>
+							</c:when>
+							</c:choose>
 							</a>
 						</div>
 						<div class="w3-third w3-container">

@@ -19,6 +19,7 @@
 <c:set var="str_allViewText" value="전체 게시글을 모아볼 수 있습니다."/>
 <c:set var="btn_write" value="글쓰기"/>
 <c:set var="msg_station_x" value="게시글이 없습니다."/>
+<c:set var="msg_login" value="글을 쓰려면 로그인을 해주세요"/>
 <!-- stationRead.jsp -->
 <c:set var="btn_recommend" value="추천하기"/>
 <c:set var="btn_top" value="위로"/>
@@ -26,6 +27,7 @@
 <c:set var="str_modify" value="수정"/>
 <c:set var="str_delete" value="삭제"/>
 <c:set var="str_replyWrite" value="댓글"/>
+<c:set var="str_list" value="목록"/>
 <c:set var="btn_register" value="등록"/>
 <!-- navbar_station.jsp -->
 <c:set var="str_sideName" value="Main Station"/>
@@ -42,3 +44,7 @@
 <c:set var="str_img" value="이미지 첨부"/>
 <c:set var="btn_complete" value="작성완료"/>
 <c:set var="btn_cancel" value="작성취소"/>
+
+<!--  stationModify -->
+<c:set var="btn_modifyComplete" value="수정완료"/>
+<c:set var="btn_modifyCancel" value="수정취소"/>

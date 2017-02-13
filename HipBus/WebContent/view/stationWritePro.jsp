@@ -15,6 +15,7 @@
 		//-->
 	</script>
 </c:if>
-<c:if test="${result != 0}">	
+<c:if test="${result != 0}">
+
 	<c:redirect url="station.do"/>	
 </c:if>	

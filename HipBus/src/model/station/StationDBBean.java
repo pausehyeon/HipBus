@@ -33,4 +33,14 @@ public class StationDBBean implements StationDao {
 		return SqlMapClient.getSession().insert( "Station.insertArticle", dto );
 		
 	}
+	
+	@Override
+	public MemberDto getMember(String email) { //nick값 불러오기위해씀
+		// TODO Auto-generated method stub
+		return SqlMapClient.getSession().selectOne("Station.getMember",email);
+	}
+	
+	public int updateArticle( StationDto dto ) {
+		return SqlMapClient.getSession().update( "Station.updateArticle", dto );				
+	}
 }

@@ -84,6 +84,7 @@ public class Station implements CommandHandler {
 			request.setAttribute( "startPage", startPage );
 			request.setAttribute( "endPage", endPage );
 			request.setAttribute( "pageCount", pageCount );
+			request.setAttribute("pageNum", pageNum);
 		}
 		
 		return new ModelAndView("station");

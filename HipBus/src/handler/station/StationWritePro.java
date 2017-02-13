@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import handler.CommandHandler;
 import handler.HandlerException;
+import model.MemberDto;
 import model.StationDto;
 import model.station.StationDao;
 
@@ -32,19 +33,24 @@ public class StationWritePro implements CommandHandler {
 			e.printStackTrace();
 		}
 		
+		
+		String email = request.getParameter("email");
+		
+		MemberDto article = stationDao.getMember(email);
+		
+		
+		
 		StationDto dto = new StationDto();
-		dto.setNum( Integer.parseInt(request.getParameter("num")));
-		dto.setEmail(request.getParameter("email"));
+		dto.setEmail((String)request.getSession().getAttribute("memEmail"));
 		dto.setCategory(Integer.parseInt(request.getParameter("category")));
-		dto.setNick(request.getParameter("nick"));
+		dto.setNick(article.getNick());
 		dto.setSubject(request.getParameter("subject"));
 		dto.setContent(request.getParameter("content"));
-		dto.setLikenum(Integer.parseInt(request.getParameter("likenum")));
 		dto.setReg_date(new Timestamp( System.currentTimeMillis() ));
 		dto.setMod_date(new Timestamp( System.currentTimeMillis() ));
 		
 		int result = stationDao.insertArticle( dto );
-		
+		request.setAttribute("article", article);
 		request.setAttribute( "result", result );
 		
 		return new ModelAndView("stationWritePro");

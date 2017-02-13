@@ -12,5 +12,7 @@ public interface StationDao {
 	public StationDto getArticle( int num );
 	public void addCount(int num);
 	public int insertArticle(StationDto dto);
+	public MemberDto getMember(String email);
+	public int updateArticle(StationDto dto);
 	
 }

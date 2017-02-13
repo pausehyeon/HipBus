@@ -15,7 +15,26 @@
 	<div class="w3-main " style="margin-right: 20%; margin-left: 20%">
 		<%@ include file="navbar_station.jsp" %>
 		<div class="w3-row w3-container" style="margin-top: 64px">
-			<h3>${article.category}</h3>
+			<c:choose>
+			<c:when test="${article.category == 1}">
+			<h3>${str_beat}</h3>
+			</c:when>
+			<c:when test="${article.category == 2}">
+			<h3>${str_rab}</h3>
+			</c:when>
+			<c:when test="${article.category == 3}">
+			<h3>${str_mixTape}</h3>
+			</c:when>
+			<c:when test="${article.category == 4}">
+			<h3>${str_vocal}</h3>
+			</c:when>
+			<c:when test="${article.category == 5}">
+			<h3>${str_gasa}</h3>
+			</c:when>
+			<c:when test="${article.category == 6}">
+			<h3>${str_freeBoard}</h3>
+			</c:when>
+			</c:choose>
 			<hr>
 		</div>
 		<div class="w3-row">
@@ -27,9 +46,6 @@
 						<fmt:formatDate value="${article.reg_date}"
 				type="both" pattern="yyyy-MM-dd HH:mm"/> | 조회수:${article.readcount}
 						<br>
-						<a class="w3-right">${str_delete}</a>  
-						
-						<a class="w3-right">${str_modify}&nbsp;</a>
 						</p>
 					</header>
 
@@ -41,9 +57,16 @@ ${article.content}
 					
 					<footer class="w3-container w3-padding-jumbo w3-theme-l3 w3-center">
 						<a href="#" class="w3-btn w3-padding w3-theme-d1 w3-margin-left"><i
-							class="fa fa-thumbs-up w3-margin-right"></i>${btn_recommend}</a> <a href="#"
+							class="fa fa-thumbs-up w3-margin-right"></i>${btn_recommend}</a>
+							<a href="station.do?pageNum=${pageNum}"
 							class="w3-btn w3-padding w3-theme-d1 w3-margin-left"><i
-							class="fa fa-arrow-up w3-margin-right"></i>${btn_top}</a>
+							class="fa fa-align-justify w3-margin-right"></i>${str_list}</a>
+						<c:if test="${sessionScope.memEmail == article.email}">
+						<a href="stationModify.do?num=${article.num}" class="w3-btn w3-padding w3-theme-d1 w3-margin-left">
+						<i class="fa fa-cog w3-margin-right"></i>${str_modify}</a>
+						<a href="stationDelete.do" class="w3-btn w3-padding w3-theme-d1 w3-margin-left">
+						<i class="glyphicon glyphicon-remove w3-margin-right"></i>${str_delete}</a>
+							</c:if>
 					</footer>
 					<!--  댓글이 있는 경우  -->
 				<div class="w3-container w3-row">

@@ -13,8 +13,8 @@
 		likenum,readcount,reg_date,mod_date
 		 r from( select num,email,category,nick,subject,content,
 		likenum,readcount,reg_date,mod_date,rownum r from
-		(select * from HB_Station order by num asc)
-		order by num asc ) where r &gt;= #{start} and r &lt;= #{end}
+		(select * from HB_Station order by num desc)
+		order by num desc ) where r &gt;= #{start} and r &lt;= #{end}
 	</select>
 	
 	<select id="getArticle" parameterType="int" resultType="model.StationDto">
@@ -25,14 +25,22 @@
 		update HB_Station set readcount=readcount+1 where num=#{num}
 	</update>
 	
+	<select id="getMember" parameterType="String" resultType="model.MemberDto">
+	select * from HB_Member where email=#{email}
+	</select>
+	
 	<insert id="insertArticle" parameterType="model.StationDto">
 		insert into HB_Station( num, email, category, nick, subject, content,
-		likenum, reg_date, mod_date)
-		values(stationseq.NEXTVAL, #{email jdbcType=VARCHAR},#{category},#{nick},
-		#{subject},#{content},0,
-		#{reg_date},#{mod_date} )
+		likenum,readcount, reg_date, mod_date)
+		values(stationseq.NEXTVAL, #{email},#{category},#{nick},
+		#{subject},#{content},0,0,
+		#{reg_date},#{mod_date})
 	</insert>
 	
-	
+	<update id="updateArticle" parameterType="model.StationDto">
+		update HB_Station set 
+		subject=#{subject}, content=#{content}
+		where num=#{num}
+	</update>
 	
 </mapper>

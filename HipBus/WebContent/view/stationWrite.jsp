@@ -19,30 +19,24 @@
 		</div>
 		<div class="w3-row">
 			<div class="w3-container">
-				<form name="writeform" method="post" action="stationWritePro.do">
+				<form name="writeform" method="post" action="stationWritePro.do?email=${sessionScope.memEmail}">
 					<div class="w3-card-4">
 						<header class="w3-container w3-padding-jumbo w3-theme-l3">
 							<select class="w3-left" name="category" style="margin: 2px">
-								<option value="1">${str_allView}</option>
-								<option value="2">${str_beat}</option>
-								<option value="3">${str_rab}</option>
-								<option value="4">${str_mixTape}</option>
-								<option value="5">${str_vocal}</option>
-								<option value="6">${str_gasa}</option>
-								<option value="7">${str_free}</option>
+								<option value="1">${str_beat}</option>
+								<option value="2">${str_rab}</option>
+								<option value="3">${str_mixTape}</option>
+								<option value="4">${str_vocal}</option>
+								<option value="5">${str_gasa}</option>
+								<option value="6">${str_free}</option>
 							</select>
 							<input name="subject" class="w3-input" type="text" required>
 							<label class="w3-label w3-validate" >${str_writeName}</label><br>
-							<br>
 							
-							<a href="#" class="w3-btn w3-padding w3-theme-d1 w3-margin w3-right"><i class="fa fa-image "></i>${str_img}</a>
 						</header>
-					<input type="hidden" name="email" value="${sessionScope.memEmail}">
-					<input type="hidden" name="num" value="${num}">
-					<input type="hidden" name="nick" value="${dto.nick}">
 						
 						<div class="w3-row">
-							<textarea name="content" id="editor" class="w3-input"></textarea>
+							<textarea name="content" id="editor" class="w3-input" required></textarea>
 							<script type="text/javascript" src="${project}/scripts/ckeditor/insertCkeditor.js"></script>
 							<!-- ^ ckeditor 연결 모듈 -->
 						</div>
