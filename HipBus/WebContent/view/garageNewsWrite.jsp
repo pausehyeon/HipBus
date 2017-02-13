@@ -3,7 +3,7 @@
 <html>
 <%@include file="/view/setting/setting.jsp"%>
 <%@include file="/view/setting/garage_setting.jsp"%>
-<script src="${project}/scripts/ckeditor/insertCkeditor.js"></script>
+
 
 <title>${str_Title}</title>
 <body>
@@ -22,15 +22,12 @@
 
 				<div class="w3-card-4">
 
-					<form name="writeform" method="post" enctype="multipart/form-data" action="garageNewsWritePro.do">
+					<form name="writeform" method="post" 
+					action="garageNewsWritePro.do?email=${sessionScope.memEmail}">
 					
 					<c:if test="${sessionScope.memEmail eq null}"> ${msg_login} </c:if>
 				
 					<c:if test="${sessionScope.memEmail ne null}">
-					<input type="hidden" name="email" value="${sessionScope.memEmail}">
-					<input type="hidden" name="num" value="${num}">
-					<input type="hidden" name="nick" value="${dto.nick}">
-					<input type="hidden" name="readcount" value=0>
 					
 						<header class="w3-container w3-padding-jumbo w3-theme-l3">
 							<input name="subject" type="text" required class="w3-input">

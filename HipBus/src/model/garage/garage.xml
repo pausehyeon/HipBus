@@ -37,7 +37,7 @@
 
 <insert id="insertNews" parameterType="model.NewsDto">
 insert into HB_News(email,num,nick,subject,content,imgname,imglocation,readcount,reg_date,mod_date)
-					values(#{email},newsseq.NEXTVAL,#{nick},#{subject},#{content},#{imgname,jdbcType=VARCHAR},#{imglocation,jdbcType=VARCHAR},#{readcount},#{reg_date},#{mod_date})
+					values(#{email},newsseq.NEXTVAL,#{nick},#{subject},#{content},#{imgname,jdbcType=VARCHAR},#{imglocation,jdbcType=VARCHAR},0,#{reg_date},#{mod_date})
 
 
 </insert>

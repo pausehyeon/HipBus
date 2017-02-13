@@ -1,5 +1,6 @@
 package handler.garage;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.sql.Timestamp;
 
@@ -11,10 +12,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.oreilly.servlet.MultipartRequest;
+
 import handler.CommandHandler;
 import handler.HandlerException;
+import model.MemberDto;
 import model.NewsDto;
 import model.garage.GarageDao;
+import model.general.FileUpload;
 
 @Controller
 public class GarageNewsWritePro implements CommandHandler{
@@ -33,16 +38,37 @@ public class GarageNewsWritePro implements CommandHandler{
 			e.printStackTrace();
 		}
 		
-		NewsDto article = new NewsDto();
+		String email = request.getParameter("email");
 		
-		article.setEmail(request.getParameter("email"));
-		article.setNum(Integer.parseInt(request.getParameter("num")));
-		article.setNick(request.getParameter("nick"));
+		
+		MemberDto dto = garageDao.getMember(email); //nick값 불러오기위한 메소드
+		 
+		request.setAttribute("dto",dto);
+		
+		NewsDto article = new NewsDto();
+		article.setEmail((String)request.getSession().getAttribute("memEmail"));
+		article.setNick(dto.getNick());
 		article.setSubject(request.getParameter("subject"));
 		article.setContent(request.getParameter("content"));
-		article.setReadcount(Integer.parseInt(request.getParameter("readcount")));
 		article.setReg_date( new Timestamp( System.currentTimeMillis() ) );
 		article.setMod_date( new Timestamp( System.currentTimeMillis() ) );
+		
+		MultipartRequest multi;
+		try {
+			multi = new FileUpload().getMultipartRequest(request);
+			
+			String imgname = multi.getOriginalFileName("upload"); 
+			String imglocation = multi.getFilesystemName("upload");
+			
+			article.setImgname(request.getParameter("imgname"));
+			article.setImglocation(request.getParameter("imglocation"));
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 		
 		int result = garageDao.insertNews(article);
 		
