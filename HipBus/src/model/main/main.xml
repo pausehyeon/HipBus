@@ -7,12 +7,29 @@
 		insert into HB_Member
 		values(
 		#{email}, #{nick}, #{passwd}, 1,
-		#{joindate}, #{imgname}, #{imglocation}
+		#{joindate}, #{imgname},
+		#{imglocation}
 		)
 	</insert>
 
 	<select id="getMember" parameterType="String" resultType="model.MemberDto">
-		select * from HB_Member where email=#{email}
+		select
+		* from HB_Member where email=#{email}
 	</select>
 
+	<select id="getTopDrivers" resultType="model.TopDriversDto">
+		select driver, driverRanking, passengersCount
+		from( 
+			select driver, row_number() over (order by passengersCount desc) as driverRanking, passengersCount
+			from (
+				select driver, max( r ) as passengersCount 
+				from (select driver, email, row_number() over (partition by driver order by driver) as r from hb_passengers) group by driver)
+			)
+		where driverRanking &lt; 4
+	</select>
+	<!-- ^ 순위 중복 없애기 위해 rank()대신 row_number()이용 -->
+	
+	<select id="getCrew" parameterType="String" resultType="model.CrewDto">
+		select * from hb_crew where crewid=#{crewid}
+	</select>
 </mapper>
