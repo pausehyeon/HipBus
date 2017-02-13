@@ -20,5 +20,10 @@
   	</select>
   	
   	<!-- 멤버목록부르기 -->
-
+	<select id="getMemberLists" resultType="model.MemberDto" parameterType="Map">
+		select email, nick, passwd, mem_level, r from 
+		(select email, nick, passwd, mem_level, imgname, imglocation, rownum r from
+		(select * from hb_member  order by mem_level asc) 
+		where mem_level=1 or mem_level=2 order by email asc) where r &gt;=${pageStart} and r &lt;=${pageEnd}
+	</select>
 </mapper>
