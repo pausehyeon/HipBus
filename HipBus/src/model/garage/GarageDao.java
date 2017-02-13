@@ -14,6 +14,7 @@ public interface GarageDao {
 	public NewsDto getArticle(int num);
 	public void addCount(int num);
 	public MemberDto getMember(String email); //nick값 불러오기위한 메소드
+	public int updateArticle( NewsDto dto );
 	
 	
 	

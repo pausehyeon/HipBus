@@ -42,4 +42,8 @@ insert into HB_News(email,num,nick,subject,content,imgname,imglocation,readcount
 
 </insert>
 
+<update id="updateArticle" parameterType="model.NewsDto">
+	update HB_News set subject=#{subject}, content=#{content} where num=#{num}
+</update>
+
 </mapper>

@@ -54,7 +54,13 @@
 <c:set var="str_Wanted" value="Wanted"/>
 <c:set var="str_WantedTitle" value="각 Bus의 구인게시글을 모아서 보여줍니다."/>
 
-<c:set var="msg_login" value="글쓰기 권한이 없습니다. 로그인을 해주세요"/>
+
 <c:set var="msg_list_x" value="게시글이 없습니다."/>
+<c:set var="btn_mod" value="수정"/>
+<c:set var="btn_mod_cancel" value="수정취소"/>
+
+<c:set var="btn_modify" value="글수정"/>
+<c:set var="btn_delete" value="글삭제"/>
+<c:set var="btn_list" value="글목록"/>
 
 

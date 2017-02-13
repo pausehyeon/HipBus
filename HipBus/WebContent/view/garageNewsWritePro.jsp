@@ -4,6 +4,7 @@
 <!-- 공지사항 글쓰기 결과 -->
 <%@include file="/view/setting/setting.jsp"%>
 <%@include file="/view/setting/garage_setting.jsp"%>
+<script src="${project}/scripts/garageScript.js"></script>
 
 
 <c:if test="${result == 0}">

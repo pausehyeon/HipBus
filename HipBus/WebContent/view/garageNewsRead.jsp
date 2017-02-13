@@ -32,13 +32,18 @@
 					</div>
 
 					<footer class="w3-container w3-padding-jumbo w3-theme-l3 w3-center">
+					<c:if test="${dto.mem_level != 3 }">
 						<a href="#" class="w3-btn w3-padding w3-theme-d1 w3-margin-left"><i
-							class="fa fa-thumbs-up w3-margin-right"></i>${str_Recommend}</a> <a href="garageNews.do"
-							class="w3-btn w3-padding w3-theme-d1 w3-margin-left"><i
-							class="fa fa-align-justify w3-margin-right"></i>글목록</a>
-						<a href="garageNewsModify.do" 	class="w3-btn w3-padding w3-theme-d1 w3-margin-left">
-						<i class="fa fa-cog w3-margin-right"></i>글수정</a>
-						</a>
+							class="fa fa-thumbs-up w3-margin-right"></i>${str_Recommend}</a>
+					</c:if>		
+						 <a href="garageNews.do" class="w3-btn w3-padding w3-theme-d1 w3-margin-left"><i
+							class="fa fa-align-justify w3-margin-right"></i>${btn_list}</a>
+						<c:if test="${dto.mem_level == 3 }">
+						<a href="garageNewsModify.do?num=${article.num}" class="w3-btn w3-padding w3-theme-d1 w3-margin-left">
+						<i class="fa fa-cog w3-margin-right"></i>${btn_modify}</a>
+						<a href="garageNewsDeletePro.do" class="w3-btn w3-padding w3-theme-d1 w3-margin-left">
+						<i class="fa fa-cut w3-margin-right"></i>${btn_delete}</a>
+						</c:if>
 					</footer>
 				</div>
 			</div>

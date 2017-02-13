@@ -51,6 +51,12 @@ public class GarageDBBean implements GarageDao {
 		
 	}
 
+	@Override
+	public int updateArticle(NewsDto dto) {
+		// TODO Auto-generated method stub
+		return SqlMapClient.getSession().update("Garage.updateArticle",dto);
+	}
+
 	
 
 	

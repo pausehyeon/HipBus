@@ -25,10 +25,6 @@
 					<form name="writeform" method="post" 
 					action="garageNewsWritePro.do">
 					
-					<c:if test="${sessionScope.memEmail eq null}"> ${msg_login} </c:if>
-				
-					<c:if test="${sessionScope.memEmail ne null}">
-					
 						<header class="w3-container w3-padding-jumbo w3-theme-l3">
 							<input name="subject" type="text" required class="w3-input">
 							<label class="w3-label w3-validate">${str_Subject}</label>
@@ -51,7 +47,7 @@
 								<i class="fa fa-mail-reply"></i>&nbsp;${btn_Cancel}
 							</a>
 						</footer>
-						</c:if>
+						
 					</form>
 
 				</div>

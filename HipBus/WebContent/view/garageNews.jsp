@@ -41,7 +41,7 @@
 					<hr>
 				
 				<div class="w3-row w3-margin-bottom">
-				<c:if test="${sessionScope.memEmail ne null}">
+			
 					<div class="w3-twothird w3-container">
 						<a href="garageNewsRead.do?num=${article.num}&pageNum=${pageNum}">${article.subject}</a>
 					</div>
@@ -49,31 +49,13 @@
 						<p class="w3-right w3-tiny">${str_Writer}:${article.nick} | 
 						${str_Reg_Date}:${article.reg_date} | ${str_ReadCount}:${article.readcount}</p>
 						</div>
-					</c:if>
-				<c:if test="${sessionScope.memEmail eq null}">
-					<div class="w3-twothird w3-container">
-						<a href="garageNews.do" onclick="msg_login()">${article.subject}</a>
-						
-					</div>
-					<div class="w3-third w3-container">
-						<p class="w3-right w3-tiny">${str_Writer}:${article.nick} | 
-						${str_Reg_Date}:${article.reg_date} | ${str_ReadCount}:${article.readcount}</p>
 						</div>
-					</c:if>
-					</div>	
-				
 					</div>
 					</c:forEach>
 					</c:if>
-				
-		
 					
 					</div>
 				</div>
-				
-				
-
-
 			
 			<div class="w3-third">
 				<div class="w3-container">

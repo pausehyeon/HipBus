@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import handler.CommandHandler;
 import handler.HandlerException;
+import model.MemberDto;
 import model.NewsDto;
 import model.garage.GarageDao;
 
@@ -30,6 +31,15 @@ public class GarageNewsRead implements CommandHandler{
 		
 		if( ! request.getRemoteAddr().equals( article.getNick() ) )
 			garageDao.addCount( num );
+		
+		String email =(String)request.getSession().getAttribute("memEmail");
+		if( email != null){
+		
+		MemberDto dto = garageDao.getMember(email);
+		 
+		request.setAttribute("dto",dto);
+		}
+		
 		
 		
 		request.setAttribute( "article", article );	
