@@ -40,18 +40,9 @@ public class GarageNewsWritePro implements CommandHandler{
 		
 		String email =(String)request.getSession().getAttribute("memEmail");
 		
-		
 		MemberDto dto = garageDao.getMember(email); //nick값 불러오기위한 메소드
 		 
 		request.setAttribute("dto",dto);
-		
-		NewsDto article = new NewsDto();
-		article.setEmail((String)request.getSession().getAttribute("memEmail"));
-		article.setNick(dto.getNick());
-		article.setSubject(request.getParameter("subject"));
-		article.setContent(request.getParameter("content"));
-		article.setReg_date( new Timestamp( System.currentTimeMillis() ) );
-		article.setMod_date( new Timestamp( System.currentTimeMillis() ) );
 		
 		MultipartRequest multi;
 		try {
@@ -59,21 +50,24 @@ public class GarageNewsWritePro implements CommandHandler{
 			
 			String imgname = multi.getOriginalFileName("upload"); 
 			String imglocation = multi.getFilesystemName("upload");
+			//^ imglocation resize한 다음에 db에 저장해야.
 			
-			article.setImgname(request.getParameter("imgname"));
-			article.setImglocation(request.getParameter("imglocation"));
+			NewsDto article = new NewsDto();
+			article.setEmail(dto.getEmail());
+			article.setNick(dto.getNick());
+			article.setSubject(multi.getParameter("subject"));
+			article.setContent(multi.getParameter("content"));
+			article.setReg_date( new Timestamp( System.currentTimeMillis() ) );
+			article.setMod_date( new Timestamp( System.currentTimeMillis() ) );
+			article.setImgname(imgname);
+			article.setImglocation(imglocation);
+			int result = garageDao.insertNews(article);
+			request.setAttribute( "result", result );
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		
-		int result = garageDao.insertNews(article);
-		
-		request.setAttribute( "result", result );
-		
 		
 		return new ModelAndView("garageNewsWritePro");
 	}

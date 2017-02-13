@@ -22,7 +22,7 @@
 
 				<div class="w3-card-4">
 
-					<form name="writeform" method="post" 
+					<form name="writeform" method="post" enctype="multipart/form-data"
 					action="garageNewsWritePro.do">
 					
 						<header class="w3-container w3-padding-jumbo w3-theme-l3">
