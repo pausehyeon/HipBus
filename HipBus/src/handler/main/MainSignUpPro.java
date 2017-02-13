@@ -41,7 +41,7 @@ public class MainSignUpPro implements CommandHandler {
 		dto.setImgName("img.jpg");
 		dto.setImglocation("img.jpg");
 		
-		int result = Maindao.insertMember( dto );
+		int result = Maindao.insertMember( dto );		
 		
 		request.setAttribute("result", result);
 		
