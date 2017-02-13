@@ -6,7 +6,8 @@
 	<insert id="insertMember" parameterType="model.MemberDto">
 		insert into HB_Member
 		values(
-		#{email}, #{nick}, #{passwd}, ${joindate}
+		#{email}, #{nick}, #{passwd}, 0,
+		#{joindate}, #{imgname}, #{imglocation}
 		)
 	</insert>
 
