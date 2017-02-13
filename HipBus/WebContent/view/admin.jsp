@@ -95,105 +95,66 @@
 					</div>
 
 					<div>
-						<table class="w3-table w3-striped w3-white">
+						<table border="1" class="w3-table w3-striped w3-white">
 							<tr class="w3-black">
 								<th><a href="#" style="text-decoration: none">${str_memGrade}</a></th>
-								<th><a href="#" style="text-decoration: none">${str_memId}</a></th>
-								<th width="80px"><a href="#" style="text-decoration: none">${str_memNick}</a></th>
-								<th><a></a></th>
+								<th><a href="#" style="text-decoration: none">&nbsp;&nbsp;${str_memId}</a></th>
+								<th width="80px"><a href="#" style="text-decoration: none">&nbsp;&nbsp;${str_memNick}</a></th>
+								<th style="text-align: certer"><a href="#" style="text-decoration: none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${str_memAuthority}</a></th>
 							</tr>
-
+						<c:if test="${numberOfMember == 0}">
 							<tr>
-								<td><i class="fa fa-user-circle-o w3-padding-tiny"></i></td>
-								<td>1등급 회원 아이디</td>
-								<!-- 불러오는 아이디 -->
-								<td>1등급 회원 닉네임</td>
-								<!-- 불러온 닉네임 -->
-								<td style="text-align: right;"><a class="w3-hover-black w3-padding" style="text-decoration: none" href="#">${str_memGo}&nbsp;<i class="fa fa-bus"></i>
-								</a> <a class="w3-hover-black w3-padding" style="text-decoration: none" href="#">${str_memGo}&nbsp; <i class="fa fa-fort-awesome"></i>
-								</a> <a class="w3-hover-black w3-padding" style="text-decoration: none" href="#">${str_memModify}</a> <a class="w3-hover-black w3-padding" style="text-decoration: none" href="#">${str_memLeave}</a>
+								<td colspan="4" style="text-align : center">
+									${str_listMsg}
 								</td>
 							</tr>
-							<tr>
-								<td><i class="fa fa-user-circle-o w3-padding-tiny"></i></td>
-								<td>1등급 회원 아이디</td>
-								<td>1등급 회원 닉네임</td>
-								<td style="text-align: right;"><a class="w3-hover-black w3-padding" style="text-decoration: none" href="#">${str_memGo}&nbsp;<i class="fa fa-bus"></i></a> <a
-									class="w3-hover-black w3-padding" style="text-decoration: none" href="#"
-								>${str_memGo}&nbsp;<i class="fa fa-fort-awesome"></i>
-								</a> <a class="w3-hover-black w3-padding" style="text-decoration: none" href="#">${str_memModify}</a> <a class="w3-hover-black w3-padding" style="text-decoration: none" href="#">${str_memLeave}</a>
-								</td>
-							</tr>
-							<tr>
-								<td><i class="fa fa-user-circle w3-padding-tiny"></i></td>
-								<td>2등급 회원 아이디</td>
-								<td>2등급 회원 닉네임</td>
-								<td style="text-align: right;"><a class="w3-hover-black w3-padding" style="text-decoration: none" href="#">${str_memGo}&nbsp;<i class="fa fa-bus"></i></a> <a
-									class="w3-hover-black w3-padding" style="text-decoration: none" href="#"
-								>${str_memGo}&nbsp;<i class="fa fa-fort-awesome"></i>
-								</a> <a class="w3-hover-black w3-padding" style="text-decoration: none" href="#">${str_memModify} </a> <a class="w3-hover-black w3-padding" style="text-decoration: none" href="#">${str_memLeave}</a></td>
-							</tr>
-							<tr>
-								<td><i class="fa fa-user-circle-o w3-padding-tiny"></i></td>
-								<td>1등급 회원 아이디</td>
-								<td>1등급 회원 닉네임</td>
-								<td style="text-align: right;"><a class="w3-hover-black w3-padding" style="text-decoration: none" href="#">${str_memGo}&nbsp;<i class="fa fa-bus"></i></a> <a
-									class="w3-hover-black w3-padding" style="text-decoration: none" href="#"
-								>${str_memGo}&nbsp;<i class="fa fa-fort-awesome"></i>
-								</a> <a class="w3-hover-black w3-padding" style="text-decoration: none" href="#">${str_memModify}</a> <a class="w3-hover-black w3-padding" style="text-decoration: none" href="#">${str_memLeave}</a>
-								</td>
-							</tr>
-							<tr>
-								<td><i class="fa fa-user-circle w3-padding-tiny"></i></td>
-								<td>2등급 회원 아이디</td>
-								<td>2등급 회원 닉네임</td>
-								<td style="text-align: right;"><a class="w3-hover-black w3-padding" style="text-decoration: none" href="#">${str_memGo}&nbsp;<i class="fa fa-bus"></i></a> <a
-									class="w3-hover-black w3-padding" style="text-decoration: none" href="#"
-								>${str_memGo}&nbsp;<i class="fa fa-fort-awesome"></i>
-								</a> <a class="w3-hover-black w3-padding" style="text-decoration: none" href="#"> 회원정보수정 </a> <a class="w3-hover-black w3-padding" style="text-decoration: none" href="#"> 강제탈퇴 </a></td>
-							</tr>
-							<tr>
-								<td><i class="fa fa-user-circle w3-padding-tiny"></i></td>
-								<td>2등급 회원 아이디</td>
-								<td>2등급 회원 닉네임</td>
-								<td style="text-align: right;"><a class="w3-hover-black w3-padding" style="text-decoration: none" href="#">${str_memGo}&nbsp;<i class="fa fa-bus"></i></a> <a
-									class="w3-hover-black w3-padding" style="text-decoration: none" href="#"
-								>${str_memGo}&nbsp;<i class="fa fa-fort-awesome"></i>
-								</a> <a class="w3-hover-black w3-padding" style="text-decoration: none" href="#"> 회원정보수정 </a> <a class="w3-hover-black w3-padding" style="text-decoration: none" href="#"> 강제탈퇴 </a></td>
-							</tr>
-							<tr>
-								<td><i class="fa fa-user-circle w3-padding-tiny"></i></td>
-								<td>2등급 회원 아이디</td>
-								<td>2등급 회원 닉네임</td>
-								<td style="text-align: right;"><a class="w3-hover-black w3-padding" style="text-decoration: none" href="#">${str_memGo}&nbsp;<i class="fa fa-bus"></i></a> <a
-									class="w3-hover-black w3-padding" style="text-decoration: none" href="#"
-								>${str_memGo}&nbsp;<i class="fa fa-fort-awesome"></i>
-								</a> <a class="w3-hover-black w3-padding" style="text-decoration: none" href="#"> 회원정보수정 </a> <a class="w3-hover-black w3-padding" style="text-decoration: none" href="#"> 강제탈퇴 </a></td>
-							</tr>
+						</c:if>
+						<c:if test="${numberOfMember != 0}">
+							<c:forEach var="getMember" items="${list}">
+								<tr>
+									<td>${getMember.mem_level}&nbsp;${str_memGrade}</td>
+									<td>${getMember.email}</td>
+									<!-- 불러오는 아이디 -->
+									<td>${getMember.nick}</td>
+									<!-- 불러온 닉네임 -->
+									<td style="text-align: left;"><a class="w3-hover-black w3-padding" style="text-decoration: none" href="#">${str_memGo}&nbsp;<i class="fa fa-bus"></i>
+									</a> <a class="w3-hover-black w3-padding" style="text-decoration: none" href="#">${str_memGo}&nbsp; <i class="fa fa-fort-awesome"></i>
+									</a> <a class="w3-hover-black w3-padding" style="text-decoration: none" href="#">${str_memModify}</a> 
+									<a class="w3-hover-black w3-padding" style="text-decoration: none" href="#">${str_memLeave}</a>
+									</td>
+								</tr>
+							</c:forEach>
+						</c:if>
+							
 						</table>
 					</div>
+					<c:if test="${pageBlock != null}">
+						<script type="text/javascript">
+							alert("pageCount");
+						</script>
+					</c:if>
 					<div class="w3-row">
 						<!-- Pagination -->
 						<div class="w3-center w3-padding-32">
 							<ul class="w3-pagination">
-								<li>
-									<a class="w3-black" href="#">1</a>
-								</li>
-								<li>
-									<a class="w3-hover-black" href="#">2</a>
-								</li>
-								<li>
-									<a class="w3-hover-black" href="#">3</a>
-								</li>
-								<li>
-									<a class="w3-hover-black w3-hide-small" href="#">4</a>
-								</li>
-								<li>
-									<a class="w3-hover-black w3-hide-small" href="#">5</a>
-								</li>
-								<li>
-									<a class="w3-hover-black" href="#">»</a>
-								</li>
+							<c:if test="${numberOfMember > 0}">
+								<c:if test="${startPage > pageBlock}">
+									<li><a href="admin.do">◀◀</a></li>
+									<li><a href="admin.do?pageNum=${startPage-pageBlock}">◀</a></li>
+								</c:if>
+								<c:forEach var="i" begin="${startPage}" end="${endPage}">
+									<c:if test="${i == pageNow}">
+										<li><a>${i}</a></li>
+									</c:if>
+									<c:if test="${i != pageNow}">
+										<li><a href="admin.do?pageNum=${i}">${i}</a></li>
+									</c:if>
+								</c:forEach>
+								<c:if test="${pageCount > endPage}">
+									<li><a href="admin.do?pageNum=${startPage+pageBlock}">▶</a></li>
+									<li><a href="admin.do?pageNum=${pageCount}">▶▶</a><li>
+								</c:if>
+							</c:if>
 							</ul>
 						</div>
 						<form class="w3-container" action="form.asp">
