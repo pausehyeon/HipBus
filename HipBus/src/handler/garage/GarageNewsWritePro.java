@@ -38,7 +38,7 @@ public class GarageNewsWritePro implements CommandHandler{
 			e.printStackTrace();
 		}
 		
-		String email = request.getParameter("email");
+		String email =(String)request.getSession().getAttribute("memEmail");
 		
 		
 		MemberDto dto = garageDao.getMember(email); //nick값 불러오기위한 메소드

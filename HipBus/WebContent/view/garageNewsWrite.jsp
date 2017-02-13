@@ -23,7 +23,7 @@
 				<div class="w3-card-4">
 
 					<form name="writeform" method="post" 
-					action="garageNewsWritePro.do?email=${sessionScope.memEmail}">
+					action="garageNewsWritePro.do">
 					
 					<c:if test="${sessionScope.memEmail eq null}"> ${msg_login} </c:if>
 				

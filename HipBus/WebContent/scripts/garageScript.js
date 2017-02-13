@@ -14,3 +14,8 @@ function myFunction(id) {
         x.previousElementSibling.className.replace(" w3-theme-d1", "");
     }
 }
+
+function msg_login(){
+	
+	alert("글읽기 권한이 없습니다. 로그인 후 이용해주세요.");
+}

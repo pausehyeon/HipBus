@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import handler.CommandHandler;
 import handler.HandlerException;
+import model.MemberDto;
 import model.NewsDto;
 import model.garage.GarageDao;
 
@@ -28,6 +29,7 @@ public class GarageNews implements CommandHandler{
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		// TODO Auto-generated method stub
+	
 		
 		int pageSize = 5;			// 한페이지에 출력할 글 개수
 		int pageBlock = 5;			// 한 번에 보여줄 페이지 개수
@@ -86,6 +88,16 @@ public class GarageNews implements CommandHandler{
 			request.setAttribute( "startPage", startPage );
 			request.setAttribute( "endPage", endPage );
 			request.setAttribute( "pageCount", pageCount );
+		}
+		
+		
+		
+		String email =(String)request.getSession().getAttribute("memEmail");
+		if( email != null){
+		
+		MemberDto dto = garageDao.getMember(email);
+		 
+		request.setAttribute("dto",dto);
 		}
 		
 			
