@@ -1,6 +1,11 @@
 package model.admin;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.stereotype.Component;
+
+import model.MemberDto;
 import model.SqlMapClient;
 
 @Component("adminDao")
@@ -23,9 +28,11 @@ public class AdminDBBean implements AdminDao {
 	public int reportPost() {
 		return SqlMapClient.getSession().selectOne("Admin.numberOfPost"); 
 	}//게시물수
-
-	
+		
 	//****멤버목록****
-	
+	@Override
+	public List<MemberDto> getMemberLists(Map<String, Integer> map) {
+		return SqlMapClient.getSession().selectList("Admin.getMemberLists",map);
+	}//회원목록 부르는 바구니
 	
 }
