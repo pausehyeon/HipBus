@@ -22,6 +22,8 @@
 <c:set var="str_memGrade" value="등급"/>
 <c:set var="str_memId" value="아이디"/>
 <c:set var="str_memNick" value="닉네임"/>
+<c:set var="str_memAuthority" value="관리자 권한"/>
+<c:set var="str_listMsg" value="불러올 회원목록이 없습니다."/>
 <c:set var="str_memGo" value="Go to"/>
 <c:set var="str_memModify" value="회원정보수정"/>
 <c:set var="str_memLeave" value="회원탈퇴"/>
