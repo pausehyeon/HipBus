@@ -3,4 +3,26 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="MyBus">
+	<select id="getBoards" parameterType="String" resultType="model.BoardDto">
+		select * from HB_Board where driver=#{driver} order by reg_date desc
+	</select>
+	<select id="getLastBoard" parameterType="String" resultType="model.BoardDto">
+		select * from HB_Board where num=(select max(num) from HB_Board where driver=#{driver})
+	</select>
+	<select id="getNick" parameterType="String" resultType="String">
+		select nick from HB_member where email=#{email}
+	</select>
+	<insert id="appendBoard" parameterType="model.BoardDto">
+		insert into HB_Board values 
+		(#{driver,jdbcType=VARCHAR}, boardseq.nextVal, #{email,jdbcType=VARCHAR}, 
+		#{nick,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, sysdate, sysdate)
+	</insert>
+	<delete id="deleteBoard" parameterType="int">
+		delete from HB_Board where num = #{num}
+	</delete>
+	<update id="modifyBoard" parameterType="model.BoardDto">
+		update HB_Board set content='${content}', mod_date=sysdate where num=${num}
+	</update>
 </mapper>
+
+

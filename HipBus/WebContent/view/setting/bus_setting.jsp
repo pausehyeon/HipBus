@@ -7,10 +7,8 @@
 <c:set var="str_mybusTitle" value="HipBus - My Bus"/>
 <c:set var="str_upcomingTitle" value="HipBus - Upcoming"/>
 <c:set var="str_crewbusTitle" value="HipBus - Crew Bus"/>
-<c:set var="str_crewbusTitle" value="HipBus - Crew Bus"/>
-<c:set var="str_crewbusTitle" value="HipBus - Crew Bus"/>
 
-<!-- myBus.jsp / crewBus -->
+<!-- myBus / crewBus -->
 <c:set var="str_putMsg" value="이곳에 메세지를 남기세요"/>
 <c:set var="str_boardEx" value="ex) 좋은 음악이에요!"/>
 <c:set var="str_live" value="Live"/>
@@ -18,6 +16,8 @@
 <c:set var="str_post" value="Post"/>
 <c:set var="str_modBoard" value="수정하기"/>
 <c:set var="str_delBoard" value="삭제하기"/>
+<c:set var="str_modComplete" value="수정완료"/>
+<c:set var="str_modCancel" value="수정취소"/>
 <c:set var="str_moreBoard" value="More..."/>
 
 <!-- myBusBeforeEdit.jsp -->
