@@ -9,7 +9,7 @@ public class MemberDto {
 	private String passwd;		//비밀번호
 	private int mem_level;		//회원등급
 	private Timestamp joindate;	//가입일
-	private String imgName;		//이미지 파일명
+	private String imgname;		//이미지 파일명
 	private String imglocation;	//서버상 이미지 파일명
 	
 	public String getEmail() {
@@ -43,10 +43,10 @@ public class MemberDto {
 		this.joindate = joindate;
 	}
 	public String getImgName() {
-		return imgName;
+		return imgname;
 	}
-	public void setImgName(String imgName) {
-		this.imgName = imgName;
+	public void setImgName( String imgname) {
+		this.imgname = imgname;
 	}
 	public String getImglocation() {
 		return imglocation;
