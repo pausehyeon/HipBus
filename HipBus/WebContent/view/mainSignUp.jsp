@@ -124,7 +124,7 @@
 				</h2>
 			</div>
 
-			<form id="inputform" class="w3-container">
+			<form id="inputform" class="w3-container" method="post" action="mainSignUpPro.do">
 				<p>
 					<label>${str_email}</label>
 					<input id="email" name="email" type="text" class="w3-input" onkeyup="verifyemail()">
@@ -140,7 +140,7 @@
 				<br>
 				<p>
 					<label>${str_password}</label>
-					<input name="passwd" class="w3-input" type="text">
+					<input name="passwd" class="w3-input" type="password">
 				<div class="w3-text-blue w3-xsmall w3-right" id="passwdresult">${str_signUpPassword}</div>
 				</p>
 				<br>
@@ -150,10 +150,10 @@
 				<div class="w3-text-blue w3-xsmall w3-right" id="repasswdresult">${str_signUpPasswordCheck}</div>
 				</p>
 				<br>
-				<br>
+				<br>				
 				<div class="w3-center">
 					<input type="submit" value="회원가입" class="w3-btn w3-padding w3-black w3-margin">
-				</div>
+				</div>				
 			</form>
 		</div>
 	</div>
