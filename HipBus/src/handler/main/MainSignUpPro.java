@@ -21,14 +21,12 @@ import model.main.MainDao;
 public class MainSignUpPro implements CommandHandler {
 	
 	@Autowired(required=false)
-	@Resource(name="MainDao")
+	@Resource(name="mainDao") 
 	public MainDao Maindao;
 
 	@RequestMapping("/mainSignUpPro.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-		// TODO Auto-generated method stub
-		
 		try {
 			request.setCharacterEncoding( "utf-8" );
 		} catch (UnsupportedEncodingException e) {
@@ -40,10 +38,12 @@ public class MainSignUpPro implements CommandHandler {
 		dto.setNick(request.getParameter("nick"));
 		dto.setPasswd( request.getParameter("passwd"));
 		dto.setJoindate(new Timestamp( System.currentTimeMillis() ));
+		dto.setImgName("img.jpg");
+		dto.setImglocation("img.jpg");
 		
 		int result = Maindao.insertMember( dto );
 		
-		request.setAttribute("result", result);				
+		request.setAttribute("result", result);
 		
 		return new ModelAndView("mainSignUpPro");		
 	}
