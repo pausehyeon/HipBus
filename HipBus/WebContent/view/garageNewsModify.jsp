@@ -47,7 +47,7 @@
 						<footer class="w3-container w3-padding-jumbo w3-theme-l3 w3-center">
 							<input type="submit" class="w3-btn w3-padding w3-theme-d1 w3-margin-left" value="&#xf00c; ${btn_mod}">
 							<!-- &#xf00c;는 fontawesome의 fa-check 아이콘. submit 버튼 안에 <i></i>태그를 넣을 수 없어서. -->
-							<a href="#" class="w3-btn w3-padding w3-theme-d1 w3-margin-left">
+							<a href="garageNews.do" class="w3-btn w3-padding w3-theme-d1 w3-margin-left">
 								<i class="fa fa-mail-reply"></i>&nbsp;${btn_mod_cancel}
 							</a>
 						</footer>
