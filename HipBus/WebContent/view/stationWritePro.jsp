@@ -1,5 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!-- 
-public station에서 글 작성 오류 시 경고창
--->
+    
+<%@include file="/view/setting/setting.jsp"%>
+<%@include file="/view/setting/station_setting.jsp"%>
+<script type="text/javascript" src="/HipBus/scripts/stationScript.js"></script>
+
+
+<h2> ${str_write} </h2>
+
+<c:if test="${result == 0}">
+	<script type="text/javascript">
+		<!--
+		erroralert( writeerror );
+		//-->
+	</script>
+</c:if>
+<c:if test="${result != 0}">	
+	<c:redirect url="station.do"/>	
+</c:if>	

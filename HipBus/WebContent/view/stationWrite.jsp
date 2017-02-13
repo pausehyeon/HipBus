@@ -3,7 +3,7 @@
 <html>
 <%@include file="/view/setting/setting.jsp"%>
 <%@include file="/view/setting/station_setting.jsp"%>
-
+<script src="${project}/scripts/ckeditor/insertCkeditor.js"></script>
 <title>${str_title}</title>
 <body>
 
@@ -19,7 +19,7 @@
 		</div>
 		<div class="w3-row">
 			<div class="w3-container">
-				<form name="writeform" method="post">
+				<form name="writeform" method="post" action="stationWritePro.do">
 					<div class="w3-card-4">
 						<header class="w3-container w3-padding-jumbo w3-theme-l3">
 							<select class="w3-left" name="category" style="margin: 2px">
@@ -31,29 +31,21 @@
 								<option value="6">${str_gasa}</option>
 								<option value="7">${str_free}</option>
 							</select>
-							<input class="w3-input" type="text" required>
-							<label class="w3-label w3-validate">${str_writeName}</label><br>
+							<input name="subject" class="w3-input" type="text" required>
+							<label class="w3-label w3-validate" >${str_writeName}</label><br>
 							<br>
-							<input type="file" name="filename1" size=40>
+							
 							<a href="#" class="w3-btn w3-padding w3-theme-d1 w3-margin w3-right"><i class="fa fa-image "></i>${str_img}</a>
 						</header>
-						</form>
+					<input type="hidden" name="email" value="${sessionScope.memEmail}">
+					<input type="hidden" name="num" value="${num}">
+					<input type="hidden" name="nick" value="${dto.nick}">
 						
-						<div>
-							<textarea class="w3-input" id="holder"></textarea>
-							<script type="text/javascript">
-								CKEDITOR
-										.replace(
-												'holder',
-												{
-													enterMode : "2",
-													height : '350px', // 입력창의 높이
-													filebrowserImageUploadUrl : "imageUpload.do" //이미지 업로드를 위해 핸들러 연결해줘야 함. 나중에 수정할게요.
-												//http://localhost:8080/HipBus/imageUpload.do?CKEditor=editor&CKEditorFuncNum=1&langCode=ko처럼 넘어 감.
-												});
-							</script>
+						<div class="w3-row">
+							<textarea name="content" id="editor" class="w3-input"></textarea>
+							<script type="text/javascript" src="${project}/scripts/ckeditor/insertCkeditor.js"></script>
+							<!-- ^ ckeditor 연결 모듈 -->
 						</div>
-
 						<footer class="w3-container w3-padding-jumbo w3-theme-l3 w3-center">
 							<input type="submit" class="w3-btn w3-padding w3-theme-d1 w3-margin-left" value="${btn_complete}">
 							<a href="#" class="w3-btn w3-padding w3-theme-d1 w3-margin-left"><i class="fa fa-mail-reply w3-margin-right"></i>${btn_cancel}</a>

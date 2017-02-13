@@ -3,7 +3,7 @@ package model.station;
 import java.util.List;
 import java.util.Map;
 
-
+import model.MemberDto;
 import model.StationDto;
 
 public interface StationDao {
@@ -11,5 +11,6 @@ public interface StationDao {
 	public List<StationDto> getArticles( Map<String, Integer> map );
 	public StationDto getArticle( int num );
 	public void addCount(int num);
+	public int insertArticle(StationDto dto);
 	
 }

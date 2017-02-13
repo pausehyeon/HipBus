@@ -9,43 +9,12 @@ public class StationDto {
 	private String nick;	//닉네임
 	private String subject;		// 글제목
 	private String content;		// 글내용
-	private String imgname;		//이미지파일명
-	private String imglocation;	//서버상이미지파일명
-	private String filename;	//음원파일명
-	private String filelocation; //서버상음원파일명
 	private int likenum;		// 추천수
 	private int readcount;		// 조회수
 	private Timestamp reg_date;	// 작성일
-	
-	
-	public String getImgname() {
-		return imgname;
-	}
-	public void setImgname(String imgname) {
-		this.imgname = imgname;
-	}
-	public String getImglocation() {
-		return imglocation;
-	}
-	public void setImglocation(String imglocation) {
-		this.imglocation = imglocation;
-	}
-	public String getFilename() {
-		return filename;
-	}
-	public void setFilename(String filename) {
-		this.filename = filename;
-	}
-	public String getFilelocation() {
-		return filelocation;
-	}
-	public void setFilelocation(String filelocation) {
-		this.filelocation = filelocation;
-	}
 	private Timestamp mod_date;	// 수정일
 	// 파일들은 아직안함
-	
-	
+
 	public String getNick() {
 		return nick;
 	}

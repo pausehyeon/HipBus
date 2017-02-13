@@ -1,7 +1,7 @@
 /**
  * main station에 연결할 javascript.
  */
-
+var writeerror = "글작성에 실패했습니다. \n잠시 후 다시 시도하세요.";
 //Accordion
 function myFunction(id) {
     var x = document.getElementById(id);

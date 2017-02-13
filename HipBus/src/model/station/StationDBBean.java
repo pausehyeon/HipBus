@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
+import model.MemberDto;
 import model.SqlMapClient;
 import model.StationDto;
 
@@ -26,6 +27,10 @@ public class StationDBBean implements StationDao {
 	
 	public void addCount(int num) {
 		SqlMapClient.getSession().update( "Station.addCount", num );
+	}
+	
+	public int insertArticle( StationDto dto ) {
+		return SqlMapClient.getSession().insert( "Station.insertArticle", dto );
 		
 	}
 }

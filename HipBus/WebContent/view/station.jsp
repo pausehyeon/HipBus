@@ -7,7 +7,7 @@
 <%@include file="/view/setting/station_setting.jsp"%>
 
 
-<title>${str_title}${count}</title>
+<title>${str_title}</title>
 <body>
 
 	<!-- Navbar -->
