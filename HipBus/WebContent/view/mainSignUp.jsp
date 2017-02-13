@@ -18,9 +18,9 @@
 			if(request.httpRequest.readyState == 4){
 				if(request.httpRequest.status == 200){
 					if(request.httpRequest.responseText.trim() == "0"){
-						$('#emailresult').removeClass('w3-text-red').addClass('w3-text-blue').text(${str_emailOk});	
+						$('#emailresult').removeClass('w3-text-red').addClass('w3-text-blue').text("${str_emailOk}");	
 					}else{
-						$('#emailresult').removeClass('w3-text-blue').addClass('w3-text-red').text(${str_emailNo});	
+						$('#emailresult').removeClass('w3-text-blue').addClass('w3-text-red').text("${str_emailNo}");	
 					}
 				}else{
 					$('#emailresult').text(request.httpRequest.status+"오류");	
@@ -39,9 +39,9 @@
 			if(request.httpRequest.readyState == 4){
 				if(request.httpRequest.status == 200){
 					if(request.httpRequest.responseText.trim() == "0"){
-						$('#nickresult').removeClass('w3-text-red').addClass('w3-text-blue').text(${str_userNameOk});	
+						$('#nickresult').removeClass('w3-text-red').addClass('w3-text-blue').text("${str_userNameOk}");	
 					}else{
-						$('#nickresult').removeClass('w3-text-blue').addClass('w3-text-red').text(${str_userNameNo});	
+						$('#nickresult').removeClass('w3-text-blue').addClass('w3-text-red').text("${str_userNameNo}");	
 					}
 				}else{
 					$('#nickresult').text('오류');
@@ -59,7 +59,7 @@
 		$('input[name="nick"]').keyup(function(){
 			var maxlength = 5;
 			if( $(this).val().length > maxlength){
-				$('#nickresult').addClass('w3-text-red').text(maxlength+${str_emailLength});
+				$('#nickresult').addClass('w3-text-red').text(maxlength+"${str_emailLength}");
 				$(this).val( $(this).val().substring(0,maxlength) );
 			}
 		});
@@ -74,31 +74,31 @@
 					if( $(this).val().indexOf(i) != -1)	containsNumber = true;
 				}
 				if(containsNumber == false){
-					$('#passwdresult').removeClass('w3-text-blue').addClass('w3-text-red').text(${str_passwordError1});
+					$('#passwdresult').removeClass('w3-text-blue').addClass('w3-text-red').text("${str_passwordError1}");
 				}else if( $(this).val().length<5 ){
 					//길이가 짧은 경우
 					var minlength = 5; 
-					$('#passwdresult').removeClass('w3-text-red').addClass('w3-text-blue').text('*'+minlength+${str_passswordError2});
+					$('#passwdresult').removeClass('w3-text-red').addClass('w3-text-blue').text('*'+minlength+"${str_passswordError2}");
 				}else if( $(this).val().length>10 ){
 					//길이가 너무 긴 경우
 					var maxlength = 10;
-					$('#passwdresult').removeClass('w3-text-red').addClass('w3-text-blue').text(${str_passwordError3}+maxlength+${str_passwordError4});
+					$('#passwdresult').removeClass('w3-text-red').addClass('w3-text-blue').text("${str_passwordError3}"+maxlength+"${str_passwordError4}");
 					$(this).val( $(this).val().substring(0, maxlength) );
 				}else{
-					$('#passwdresult').removeClass('w3-text-red').addClass('w3-text-blue').text(${str_passwordOk});					
+					$('#passwdresult').removeClass('w3-text-red').addClass('w3-text-blue').text("${str_passwordOk}");					
 				}
 			}else{
 			//숫자인 경우
-				$('#passwdresult').removeClass('w3-text-blue').addClass('w3-text-red').text(${str_passwordError5});
+				$('#passwdresult').removeClass('w3-text-blue').addClass('w3-text-red').text("${str_passwordError5}");
 			}
 		});
 		
 		//비밀번호 확인
 		$('input[name="repasswd"]').keyup(function(){
 			if( $(this).val() == $('input[name="passwd"]').val() ){
-				$('#repasswdresult').removeClass('w3-text-red').addClass('w3-text-blue').text(${str_passwordCheckOk});
+				$('#repasswdresult').removeClass('w3-text-red').addClass('w3-text-blue').text("${str_passwordCheckOk}");
 			}else{
-				$('#repasswdresult').removeClass('w3-text-blue').addClass('w3-text-red').text(${str_passwordCheckNo});
+				$('#repasswdresult').removeClass('w3-text-blue').addClass('w3-text-red').text("${str_passwordCheckNo}");
 			}			
 		});
 

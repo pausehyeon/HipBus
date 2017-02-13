@@ -9,12 +9,9 @@
 <script type="text/javascript" src="/HipBus/scripts/mainScript.js"></script>
 <!-- SETTING 끝 -->
 
-<h2> ㅇㅇ </h2>
-
 <c:if test="${result == 0 }">
 	<script type="text/javascript">
-		//<!--
-		alert("test");
+		//<!--		
 		erroralert( signuperror );
 		location.href="mainSignUp.do";
 		//-->
@@ -22,9 +19,10 @@
 </c:if>
 <c:if test="${result != 0 }">
 	<script type="text/javascript">
-		alert( signupok );
-		alert("test2");
+		//<!--
+		alert( signupok );		
 		location.href="mainSignIn.do";
+		//-->
 	</script>	
 	<%-- <c:redirect url="main.do"/> 리다이렉트를 쓰면 얼럿이 안먹음!--%>
 </c:if>
