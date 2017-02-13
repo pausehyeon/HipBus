@@ -46,4 +46,10 @@ insert into HB_News(email,num,nick,subject,content,imgname,imglocation,readcount
 	update HB_News set subject=#{subject}, content=#{content} where num=#{num}
 </update>
 
+<delete id="deleteArticle" parameterType="int">
+	delete from HB_News where num=#{num}
+</delete>
+
+
 </mapper>
+

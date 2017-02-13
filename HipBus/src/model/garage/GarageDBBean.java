@@ -57,6 +57,16 @@ public class GarageDBBean implements GarageDao {
 		return SqlMapClient.getSession().update("Garage.updateArticle",dto);
 	}
 
+	@Override
+	public int deleteArticle(int num) {
+		// TODO Auto-generated method stub
+		int result = 0;
+		
+		result = SqlMapClient.getSession().delete("Garage.deleteArticle",num);
+		
+		return result;
+	}
+
 	
 
 	

@@ -7,11 +7,16 @@
 
 <title>${str_Title}</title>
 
+<c:if test="${result == 0}">		
+		<script type="text/javascript">
+		//<!--
+		alert( deleteerror );
+		//-->
+		</script>
+		<meta http-equiv="refresh" content="0; url=garageNews.do">
+</c:if>
+	
+<c:if test="${result == 1}">
+		<c:redirect url="garageNews.do"/>
+</c:if>	
 
-<body>
-
-
-
-
-</body>
-</html>

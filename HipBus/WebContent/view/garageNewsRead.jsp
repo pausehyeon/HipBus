@@ -4,6 +4,7 @@
 <html>
 <%@include file="/view/setting/setting.jsp"%>
 <%@include file="/view/setting/garage_setting.jsp"%>
+<script src="${project}/scripts/garageScript.js"></script>
 
 <title>${str_title}</title>
 <body>
@@ -41,7 +42,7 @@
 						<c:if test="${dto.mem_level == 3 }">
 						<a href="garageNewsModify.do?num=${article.num}" class="w3-btn w3-padding w3-theme-d1 w3-margin-left">
 						<i class="fa fa-cog w3-margin-right"></i>${btn_modify}</a>
-						<a href="garageNewsDeletePro.do" class="w3-btn w3-padding w3-theme-d1 w3-margin-left">
+						<a href="garageNewsDeletePro.do?num=${article.num}" class="w3-btn w3-padding w3-theme-d1 w3-margin-left" onclick="deleteCheck()">
 						<i class="fa fa-cut w3-margin-right"></i>${btn_delete}</a>
 						</c:if>
 					</footer>

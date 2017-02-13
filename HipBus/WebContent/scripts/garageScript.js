@@ -24,3 +24,13 @@ function erroralert( msg ) {
 	history.back();
 }
 
+
+function deleteCheck(){
+
+	 if( confirm(" 정말로 삭제하시겠습니까?" ) == true ){
+		 location.href="garageDeletePro.do";
+	 }else{
+		 history.back();
+	 }
+	
+}
