@@ -160,10 +160,6 @@ CREATE TABLE HB_Station
 	nick varchar2(30) NOT NULL,
 	subject varchar2(500) NOT NULL,
 	content varchar2(4000) NOT NULL,
-	imgname varchar2(1000),
-	imglocation varchar2(1000),
-	filename varchar2(1000),
-	filelocation varchar2(1000),
 	likenum number(22) NOT NULL,
 	readcount number(22) DEFAULT 0 NOT NULL,
 	reg_date date DEFAULT sysdate NOT NULL,
@@ -333,6 +329,7 @@ ALTER TABLE HB_StationReply
 	ADD FOREIGN KEY (num)
 	REFERENCES HB_Station (num) ON DELETE CASCADE
 ;
+
 
 
 
