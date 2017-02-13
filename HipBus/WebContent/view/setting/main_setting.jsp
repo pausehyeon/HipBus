@@ -31,13 +31,14 @@
 <c:set var="str_slideShow2" value="자작곡공유"/>
 <c:set var="str_slideShow3" value="Live방송"/>
 <c:set var="str_mainOnAir" value="On Air"/>
-<c:set var="str_top3" value="Top3 Drivers of today"/>
-<c:set var="str_hopOn" value="Hop on"/>
+<c:set var="str_top3" value="Top3 Drivers of Today"/>
+<c:set var="str_hopOn" value="Go to Hop on"/>
 <c:set var="str_upcoming" value="Upcoming Events"/>
 <c:set var="str_detail" value="자세히"/>
 <c:set var="str_contactUs" value="Contact Us"/>
 <c:set var="str_mainSend" value="Send"/>
 <c:set var="str_welcomeMain" value="님 어서오세요!"/>
+<c:set var="str_passengerCount" value="명의 승객이 탑승중입니다."/>
 
 <!-- mainForgot.jsp -->
 <c:set var="str_searchPassword" value=" &nbsp;비밀번호 찾기"/>

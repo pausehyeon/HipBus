@@ -4,7 +4,7 @@ public class CrewDto {
 
 	private String crewid;		//크루아이디
 	private String crewname;	//크루이름
-	private String imgName;		//이미지 파일명
+	private String imgname;		//이미지 파일명
 	private String imglocation;	//서버상 이미지 파일명
 	
 	public String getCrewid() {
@@ -19,11 +19,11 @@ public class CrewDto {
 	public void setCrewname(String crewname) {
 		this.crewname = crewname;
 	}
-	public String getImgName() {
-		return imgName;
+	public String getImgname() {
+		return imgname;
 	}
-	public void setImgName(String imgName) {
-		this.imgName = imgName;
+	public void setImgName(String imgname) {
+		this.imgname = imgname;
 	}
 	public String getImglocation() {
 		return imglocation;

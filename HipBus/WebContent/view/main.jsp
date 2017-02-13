@@ -32,7 +32,7 @@
 			</c:if>
 			<c:if test="${sessionScope.memEmail ne null}">
 				<p class="w3-xsmall">
-					<span>(불러온닉네임)</span>${str_welcomeMain}
+					<span>${member.nick}</span>${str_welcomeMain}
 				</p>
 				<form name="signOutForm" method="post" action="signOutPro.do">
 					<input type="submit" value="&#xf08b;${str_signOut}" class="w3-btn w3-padding-16 w3-large w3-margin-top">
@@ -160,54 +160,25 @@
 			<div class="w3-center w3-padding-64">
 				<span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">${str_top3}</span>
 			</div>
-
-			<div class="w3-third w3-margin-bottom">
-				<div class="w3-card-4">
-					<img src="${project}/view/img/topdriver1.png" alt="John" style="width: 100%">
-					<div class="w3-container">
-						<h3>aaa</h3>
-						<p class="w3-opacity">AAA</p>
-						<p>
-							그룹 AAA입니다.<br> 다음 주 공연 많이 찾아주세요!
-						</p>
-						<p>
-							<button class="w3-btn-block">${str_hopOn}</button>
-						</p>
+			
+			<c:forEach var="topdriver" begin="0" end="2" step="1" varStatus="status" items="${topdrivers}">
+				<div class="w3-third w3-margin-bottom">
+					<div class="w3-card-4">
+						<img src="${project}/${topdriver.imglocation}" alt="top driver's profile" style="width: 100%">
+						<div class="w3-container">
+							<h3>${topdriver.nick}</h3>
+							<p class="w3-opacity">${topdriver.driver}</p>
+							<p>
+								<span>${topdriver.passengersCount}</span>${str_passengerCount}
+							</p>
+							<p>
+								<a href="topdriver.url"class="w3-btn-block">${str_hopOn}</a>
+							</p>
+						</div>
 					</div>
 				</div>
-			</div>
-
-			<div class="w3-third w3-margin-bottom">
-				<div class="w3-card-4">
-					<img src="${project}/view/img/topdriver2.png" alt="Mike" style="width: 100%">
-					<div class="w3-container">
-						<h3>bbb</h3>
-						<p class="w3-opacity">BBB</p>
-						<p>
-							BBB입니다.<br> 안녕하세요.
-						</p>
-						<p>
-							<button class="w3-btn-block">${str_hopOn}</button>
-						</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="w3-third w3-margin-bottom">
-				<div class="w3-card-4">
-					<img src="${project}/view/img/topdriver3.png" alt="Jane" style="width: 100%">
-					<div class="w3-container">
-						<h3>ccc</h3>
-						<p class="w3-opacity">CCC</p>
-						<p>
-							반갑습니다.<br>안녕하세ㅛㅇ...
-						</p>
-						<p>
-							<button class="w3-btn-block">${str_hopOn}</button>
-						</p>
-					</div>
-				</div>
-			</div>
+			
+			</c:forEach>
 		</div>
 
 		<!-- Grid -->
@@ -306,14 +277,14 @@
 					<label>Email</label>
 					<input type="text" name="email" required class="w3-input w3-border w3-hover-border-black" style="width: 100%;">
 					<script type="text/javascript">
-					//<!--
-					$(document).ready(
-						function(){
-						/* 로그인된 경우 기본값을 로그인된 이메일로 */
-							contactForm.email.value="${sessionScope.memEmail}"
-						}		
-					);
-					//-->
+						//<!--
+						$(document).ready(
+							function() {
+								/* 로그인된 경우 기본값을 로그인된 이메일로 */
+								contactForm.email.value = "${sessionScope.memEmail}"
+							}
+						);
+						//-->
 					</script>
 				</div>
 				<div class="w3-group">
