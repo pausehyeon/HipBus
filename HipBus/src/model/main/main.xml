@@ -4,11 +4,14 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Main">
 	<insert id="insertMember" parameterType="model.MemberDto">
-		insert into HB_Member values(
+		insert into HB_Member
+		values(
 		#{email}, #{nick}, #{passwd}, ${joindate}
 		)
 	</insert>
-		
-	
+
+	<select id="getMember" parameterType="String" resultType="model.MemberDto">
+		select * from HB_Member where email=#{email}
+	</select>
 
 </mapper>

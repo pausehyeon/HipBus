@@ -5,5 +5,6 @@ import model.MemberDto;
 public interface MainDao {
 	
 	public int insertMember( MemberDto dto );
+	public MemberDto getMember(String email);
 
 }
