@@ -18,6 +18,10 @@ public interface GarageDao {
 	public int updateArticle( NewsDto dto );
 	public int deleteArticle(int num);
 	public List<FAQDto> getFAQList(Map<String,Integer> map);
+	public int insertFAQ(FAQDto article);
+	public FAQDto getFAQArticle(int num);
+	public int updateFAQArticle( FAQDto dto );
+	public int getFAQCount();
 
 	
 }

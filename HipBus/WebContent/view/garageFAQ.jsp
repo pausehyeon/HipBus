@@ -27,16 +27,25 @@
 				
 				<c:if test="${dto.mem_level == 3 }">
 				<!-- 이 버튼은 관리자에게만 보임 -->
-				<a href="garageFAQModify" class="w3-btn w3-padding w3-theme-d1 w3-margin w3-right"><i class="fa fa-pencil-square-o w3-margin-right"></i>${str_Modify}</a>
+				<a href="garageFAQWrite.do" class="w3-btn w3-padding w3-theme-d1 w3-margin w3-right"><i class="fa fa-pencil-square-o w3-margin-right"></i>${str_Write}</a>
 				</c:if>
-				
 				<c:if test="${dto.mem_level != 3 }">
 				<div class="w3-padding"></div>
 				</c:if>
 			</div>
 		</div>
+		
+		<!-- 글이없는경우 -->
+				<c:if test="${count == 0}">
 			
+				<div class="w3-row w3-margin-bottom">
+						<div class="w3-twothird w3-container">
+						<h5>${msg_list_x}</h5>
+						</div>
+						</div>	
+				</c:if>	
 			
+			<c:if test="${count != 0}">	
 			<c:forEach var="article" items="${FAQList}">
 			<c:set var="su" value="${su+1}"/>
 			<div class="w3-accordion w3-white">
@@ -44,15 +53,25 @@
 					<h4>Q${su}&nbsp;${article.subject}&nbsp;<i class="fa fa-caret-down"></i></h4>
 				</button>
 				<div id="q${article.num}" class="w3-accordion-content w3-container">
-				  <p>${article.content}</p>
+				  <p>${article.content}
+				  <c:if test="${dto.mem_level == 3 }">
+				  <a href="garageFAQModify.do?num=${article.num}" class="w3-btn w3-padding w3-theme-d1 w3-margin w3-right"><i class="fa fa-pencil-square-o w3-margin-right"></i>${str_Modify}</a>
+				  </c:if>
+				  <c:if test="${dto.mem_level != 3 }">
+				  <div class="w3-padding"></div> 
+				  </c:if>
+				  </p>
+				  
 				</div>
 			</div>
 				
 			</c:forEach>
+			</c:if>
 		</div>
-		
-		<div class="w3-row">
+
+		<div class="w3-center">
 			<!-- Pagination -->
+			<!--  
 			<div class="w3-center w3-padding-64">
 			  <ul class="w3-pagination">
 			    <li><a class="w3-theme-d1" href="#">1</a></li>
@@ -63,7 +82,30 @@
 			    <li><a class="w3-hover-opacity" href="#">»</a></li>
 			  </ul>
 			</div>
+		-->
+			<c:if test="${startPage > pageBlock}">
+		<a class="w3-hover-black" href="garageFAQ.do">◀◀</a>
+		<a class="w3-hover-black" href="garageFAQ.do?pageNum=${startPage-pageBlock}">◀</a>
+	</c:if>
+	<c:forEach var="i" begin="${startPage}" end="${endPage}">
+		<c:if test="${i == currentPage}">
+			<span class="w3-hover-black">${i}</span>
+		</c:if>
+		<c:if test="${i != currentPage}">
+			<a class="w3-hover-black" href="garageFAQ.do?pageNum=${i}">[${i}]</a>
+		</c:if>
+	</c:forEach>
+	<c:if test="${pageCount > endPage}">
+		<a class="w3-hover-black" href="garageFAQ.do?pageNum=${startPage+pageBlock}">▶</a>
+		<a class="w3-hover-black" href="garageFAQ.do?pageNum=${pageCount}">▶▶</a>
+	</c:if>
+	
+		
+		
+		
+		
 		</div>
+		
 	<!-- END MAIN -->
 	</div>
 	

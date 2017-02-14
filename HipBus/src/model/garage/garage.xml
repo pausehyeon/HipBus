@@ -17,6 +17,7 @@
 		imgname,imglocation,readcount,reg_date,mod_date,rownum r from
 		(select * from HB_News order by num desc)
 		order by num desc ) where r &gt;= #{start} and r &lt;= #{end}
+		
 
 </select>
 
@@ -27,7 +28,7 @@
 
 <update id="addCount" parameterType="int">
 	update HB_News set readcount=readcount+1 where num=#{num}
-	</update>
+</update>
 
 
 <select id="getMember" parameterType="String" resultType="model.MemberDto">
@@ -50,10 +51,33 @@ insert into HB_News(email,num,nick,subject,content,imgname,imglocation,readcount
 	delete from HB_News where num=#{num}
 </delete>
 
-<select id="getFAQList" parameterType="Map" resultType="model.FAQDto">
-	select * from HB_FAQ
-
+<select id="getFAQCount" resultType="int">
+		select count(*) from HB_FAQ
 </select>
+
+
+<select id="getFAQList" parameterType="Map" resultType="model.FAQDto">
+	
+		select num,email,nick,subject,content
+		r from( select num,email,nick,subject,content,rownum r from
+		(select * from HB_FAQ order by num desc)
+		order by num desc) where r &gt;= #{start} and r &lt;= #{end}
+				
+</select>
+
+<insert id="insertFAQ" parameterType="model.FAQDto">
+insert into HB_FAQ(num,email,nick,subject,content)
+					values(newsseq.NEXTVAL,#{email},#{nick},#{subject},#{content})
+</insert>
+
+<select id="getFAQArticle" parameterType="int" resultType="model.FAQDto">
+	select * from HB_FAQ where num=#{num}
+</select>
+
+<update id="updateFAQArticle" parameterType="model.FAQDto">
+	update HB_FAQ set subject=#{subject}, content=#{content} where num=#{num}
+</update>
+
 
 
 </mapper>

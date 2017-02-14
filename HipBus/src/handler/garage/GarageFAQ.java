@@ -16,7 +16,6 @@ import handler.CommandHandler;
 import handler.HandlerException;
 import model.FAQDto;
 import model.MemberDto;
-import model.NewsDto;
 import model.garage.GarageDao;
 
 @Controller
@@ -29,7 +28,7 @@ public class GarageFAQ implements CommandHandler{
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException{
 		
 		
-		int pageSize = 5;			// 한페이지에 출력할 글 개수
+		int pageSize = 3;			// 한페이지에 출력할 글 개수
 		int pageBlock = 5;			// 한 번에 보여줄 페이지 개수
 		int count = 0;
 		
@@ -43,7 +42,7 @@ public class GarageFAQ implements CommandHandler{
 		int startPage = 0;			// 보여줄 페이지의 시작 번호
 		int endPage = 0;			// 보여줄 페이지의 끝 번호
 		
-		count = garageDao.getCount();
+		count = garageDao.getFAQCount();
 		
 		pageNum = request.getParameter( "pageNum" );
 		if( pageNum == null || pageNum.equals( "" ) ) {

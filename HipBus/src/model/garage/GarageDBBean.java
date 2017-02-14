@@ -74,6 +74,30 @@ public class GarageDBBean implements GarageDao {
 		return SqlMapClient.getSession().selectList( "Garage.getFAQList");
 	}
 
+	@Override
+	public int insertFAQ(FAQDto article) {
+		// TODO Auto-generated method stub
+		return SqlMapClient.getSession().insert("Garage.insertFAQ",article);
+	}
+
+	@Override
+	public FAQDto getFAQArticle(int num) {
+		// TODO Auto-generated method stub
+		return SqlMapClient.getSession().selectOne("Garage.getFAQArticle",num);
+	}
+
+	@Override
+	public int updateFAQArticle(FAQDto dto) {
+		// TODO Auto-generated method stub
+		return SqlMapClient.getSession().update("Garage.updateFAQArticle",dto);
+	}
+
+	@Override
+	public int getFAQCount() {
+		// TODO Auto-generated method stub
+		return SqlMapClient.getSession().selectOne( "Garage.getFAQCount" );
+	}
+
 	
 
 	
