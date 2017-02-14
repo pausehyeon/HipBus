@@ -51,7 +51,6 @@
 					</script>
 				</form>
 			</c:if>
-
 		</div>
 
 		<div class="w3-center w3-padding-64" id="news">
@@ -172,7 +171,7 @@
 								<span>${topdriver.passengersCount}</span>${str_passengerCount}
 							</p>
 							<p>
-								<a href="topdriver.url"class="w3-btn-block">${str_hopOn}</a>
+								<a href="${topdriver.url}" class="w3-btn-block">${str_hopOn}</a>
 							</p>
 						</div>
 					</div>

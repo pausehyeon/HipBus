@@ -50,12 +50,12 @@ public class Main implements CommandHandler{
 				
 				if(topMember.getImglocation() != null) imglocation = "hipbusSave/"+topMember.getImglocation();
 				topdriver.setNick( topMember.getNick() );
-				topdriver.setUrl("myBus.do?email="+topMember.getEmail());
+				topdriver.setUrl("myBus.do?driver="+topMember.getEmail());
 			}else{
 				CrewDto topCrew = dao.getCrew(topdriver.getDriver());
 				if(topCrew.getImglocation() != null) imglocation = "hipbusSave/"+topCrew.getImglocation();
 				topdriver.setNick( topCrew.getCrewname() );
-				topdriver.setUrl("crewBus.do?crewid="+topCrew.getCrewid());
+				topdriver.setUrl("crewBus.do?driver="+topCrew.getCrewid());
 			}
 			
 			topdriver.setImglocation(imglocation);

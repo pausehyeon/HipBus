@@ -19,8 +19,8 @@
 
 			<c:if test="${sessionScope.memEmail ne null }">
 				<!-- 로그인 된 상태에서 보임 -->
-				<a href="myBus.do?${sessionScope.memEmail}">${str_myBus}</a>
-				<a href="crewBus.do?${sessionScope.memEmail}">${str_crewBus}</a>
+				<a href="myBus.do?driver=${sessionScope.memEmail}">${str_myBus}</a>
+				<a href="crewBus.do?driver=${sessionScope.memEmail}">${str_crewBus}</a>
 			</c:if>
 			<c:if test="${sessionScope.memEmail eq null }">
 				<!-- 로그인 안 된 상태에서 보임 -->

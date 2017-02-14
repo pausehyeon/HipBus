@@ -69,16 +69,17 @@
 				</div>
 			</li>
 		</c:if>
-		<li class="w3-hide-small w3-right">
-			<a href="myBus.do" class="w3-padding-large w3-hover-white" title="${str_myBus}"> <img src="${project}/view/img/HipBusLogo_colored_sq.png" class="w3-circle" style="height: 25px; width: 25px"
-				alt="Avatar"
-			>
-			</a>
-		</li>
 		<c:if test="${sessionScope.memEmail ne null}">
-			<!-- 로그인된 경우 로그아웃 버튼 보이게 -->
+			<!-- 로그인된 경우 로그아웃 버튼, my bus로 가기 버튼 보이게 -->
+			
 			<li class="w3-hide-small w3-right">
-
+				<a href="myBus.do?driver=${sessionScope.memEmail}" class="w3-padding-large w3-hover-white" title="${str_myBus}"> <img src="${project}/view/img/HipBusLogo_colored_sq.png" class="w3-circle"
+					style="height: 25px; width: 25px" alt="Avatar"
+				>
+				</a>
+			</li>
+			
+			<li class="w3-hide-small w3-right">
 				<form name="signOutForm" method="post" action="signOutPro.do">
 					<input type="submit" value="&#xf08b;${str_signOut}" class="w3-btn w3-theme-d2 w3-padding-large w3-hover-white">
 					<!-- ^ &#xf08b;는 fontawesome의 fa-sign-out 아이콘. <i></i>를 넣을 수 없어서 css의 font-family를 FontAwesome으로 바꿈. http://fontawesome.io/cheatsheet/ 참조 -->
@@ -95,8 +96,8 @@
 						//-->
 					</script>
 				</form>
-
 			</li>
+			
 		</c:if>
 	</ul>
 </div>
