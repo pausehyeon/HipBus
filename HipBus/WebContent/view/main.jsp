@@ -165,11 +165,9 @@
 					<div class="w3-card-4">
 						<img src="${project}/${topdriver.imglocation}" alt="top driver's profile" style="width: 100%">
 						<div class="w3-container">
-							<h3>${topdriver.nick}</h3>
-							<p class="w3-opacity">${topdriver.driver}</p>
-							<p>
-								<span>${topdriver.passengersCount}</span>${str_passengerCount}
-							</p>
+							
+							<h5><span class="w3-text-right w3-text-khaki"><i class="fa fa-diamond"></i> ${topdriver.driverRanking}${str_rank}</span> ${topdriver.nick}</h5>
+							<p class="w3-opacity">	<span>${topdriver.passengersCount}</span>${str_passengerCount}</p>
 							<p>
 								<a href="${topdriver.url}" class="w3-btn-block">${str_hopOn}</a>
 							</p>
