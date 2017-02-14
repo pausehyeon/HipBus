@@ -32,4 +32,14 @@ public class MyBusDBBean implements MyBusDao {
 	public String getChannelid( String driver ) {
 		return SqlMapClient.getSession().selectOne("MyBus.getChannelid", driver);
 	}
+	public int isHop( Map<String,String> map ){
+		return SqlMapClient.getSession().selectOne("MyBus.isHop",map);
+	}
+	public int hopOn( Map<String,String> map ){
+		return SqlMapClient.getSession().insert("MyBus.hopOn",map);
+	}
+	public int hopOff( Map<String,String> map ){
+		return SqlMapClient.getSession().delete("MyBus.hopOff",map);
+	}
+
 }

@@ -6,6 +6,7 @@
 <%@include file="/view/setting/bus_setting.jsp"%>
 <%@include file="/view/setting/myBus_setting.jsp"%>
 
+
 <!-- Left Column -->
 <div class="w3-col m3">
 	<!-- Profile -->
@@ -29,6 +30,9 @@
 				<i class="fa fa-bookmark fa-fw w3-margin-right w3-text-theme"></i>
 				Best Driver
 			</p>
+			<button name="hop" onclick="location='myBusHopOnPro.do?driver=${driver}&email=${email}&hopORnot=${hopORnot}'">
+				${str_hop} &nbsp; ${hopORnot}
+			</button>
 			<p onclick="myFunction('crew')">
 				<i class="fa fa-fort-awesome fa-fw w3-margin-right w3-text-theme"></i>
 				${str_crew} The One

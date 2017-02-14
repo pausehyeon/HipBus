@@ -24,21 +24,15 @@ public class MyBus implements CommandHandler {
 		String email = null;
 		String channelid = mybusDao.getChannelid( driver );
 		
-/*
-		if(request.getSession()==null) {
-			email = "nonmember";		// 비회원방문자 
-		} else {
-		//	email = request.getSession().getAttribute("memEmail");
-			email = "mem2@hipbus.com";	// 방문자 (세션에 저장된 이메일)
+		if( request.getSession() != null ) {
+			email = (String) request.getSession().getAttribute("memEmail");	// 방문자 (세션에 저장된 이메일)
+
 			if(driver == email) { 		// 세션의 이메일과 버스주인의 이메일이 같을때 (자기 페이지인 경우)
-				int mem_level = mybusDao.getMember( email ).getMem_level();	// 회원등급을 보낸다
-				request.setAttribute("mem_level", mem_level);
-			} else {					// 남의 페이지인 경우
-										// hop판별
+				
+			} else {					// 회원이 남의 페이지에 방문한 경우
+				
 			}
 		}
-*/
-		email = "mem1@hipbus.com";
 		
 		int mem_level = mybusDao.getMember( driver ).getMem_level();
 		

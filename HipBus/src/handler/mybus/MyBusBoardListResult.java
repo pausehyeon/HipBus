@@ -1,4 +1,4 @@
-package model.mybus;
+package handler.mybus;
 
 import java.util.HashMap;
 import java.util.List;
@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import handler.CommandHandler;
 import handler.HandlerException;
 import model.BoardDto;
+import model.mybus.MyBusDao;
 
 @Controller
 public class MyBusBoardListResult implements CommandHandler {

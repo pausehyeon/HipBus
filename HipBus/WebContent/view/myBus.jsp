@@ -4,6 +4,7 @@
 <%@include file="/view/setting/setting.jsp"%>
 <%@include file="/view/setting/bus_setting.jsp"%>
 <%@include file="/view/setting/myBus_setting.jsp"%>
+
 <script src="/HipBus/scripts/ajax.js"></script>
 <style type="text/css">
 	textarea {
@@ -11,7 +12,7 @@
 		overflow:hidden;
 		border:none;
 		width:100%;
-	} 
+	}
 	textarea:focus {
 		outline: none;
 	}
@@ -27,13 +28,14 @@
 	// 댓글목록 불러오기
 	$(document).ready (
 		function(){
+			alert("${email}");
 			boardCount = countCriteria;
 			loadBoard( boardCount );			
 		}
 	);
 	
 	function loadBoard( boardCount, more ) {
-		var params = 'driver=' + $('#driver').val()
+		var params = 'driver=' + "${driver}"
 				   + '&boardCount=' + boardCount;
 		request = new Request (
 			function() {
@@ -76,8 +78,8 @@
 	
 	// 댓글 삽입
 	function boardAppend() {
-		var params = 'driver=' + $('#driver').val()						// 버스주인 이메일 혹은 크루아이디
-				   + '&email=' + $('#email').val()						// 세션에 저장된 작성자 이메일
+		var params = 'driver=' + "${driver}"						// 버스주인 이메일 혹은 크루아이디
+				   + '&email=' + "${email}"					// 세션에 저장된 작성자 이메일
 				   + '&content=' + $('input[name=content]').val();		// 본문 입력내용
 		request = new Request(
 			function() {
@@ -238,8 +240,6 @@
 </script>
 <title>${str_mybusTitle}</title>
 <body class="w3-theme-l5">
-	<input type="hidden" id="driver" value="${driver}">
-	<input type="hidden" id="email" value="${email}">
 	<!-- Navbar -->
 	<c:import url="../top.do" />
 	<textarea rows="" cols="" readonly="readonly"></textarea>
@@ -251,21 +251,13 @@
 		</div>
 		<div class="w3-row">
 			<!-- Left Column -->
-			<c:import url="../myBusLeft.do"></c:import>
+			<c:import url="../myBusLeft.do?driver=${driver}&email=${email}"></c:import>
 			<!-- End Left Column -->
 
 			<!-- Middle Column -->
 			<div class="w3-col m7">
 				<div class="w3-container w3-card-2 w3-theme-l1 w3-round w3-margin-bottom w3-margin-left w3-margin-right w3-padding-16">
 
-							<!-- 사용안함 -->
-<%-- 
-				<div class="w3-row">
-					<a href="#" class="w3-center w3-theme-l1 w3-padding-large">
-						<p> <i class="fa fa-video-camera w3-xxlarge"></i><br>${str_startLive}</p>
-					</a>
-				</div>
- --%>
 							<!-- 2. 2등급 회원이며 채널 연결한 경우 이용자와 타이용자 공용 -->
 <c:if test="${channelid != null}">
 				<div class="w3-row">
@@ -284,36 +276,45 @@
 </c:if>
 
 						<!-- 본인페이지 if 시작-->
+<c:if test="${driver == email}">
 						<!-- 2등급 회원인데 아직 채널을 연결하지 않은 경우 -->
-<c:if test="${channelid == null and mem_level == 2}">
-				<div class="w3-row">
-					<div class="w3-row w3-center w3-theme-l1 w3-padding-large w3-small">
-						<p>
+	<c:if test="${channelid == null and mem_level == 2}">
+					<div class="w3-row">
+						<div class="w3-row w3-center w3-theme-l1 w3-padding-large w3-small">
+							<p>
+								<i class="fa fa-video-camera w3-xxlarge"></i>
+								<br>
+								아직 채널 ID를 등록하지 않으셨습니다.<br>
+								유투브 채널 ID를 등록하고 방송을 시작해보세요.<br><br>
+								<input class="w3-input" type="text" required>
+								<br>
+								<a href="#">채널 ID를 찾으려면?</a>
+							</p>
+						</div>
+					</div>
+	</c:if>
+								<!-- 1등급 회원인 경우 -->
+	<c:if test="${mem_level == 1}">
+					<div class="w3-row"> 
+						<p class="w3-center w3-theme-l1 w3-padding-large w3-tiny">
 							<i class="fa fa-video-camera w3-xxlarge"></i>
 							<br>
-							아직 채널 ID를 등록하지 않으셨습니다.<br>
-							유투브 채널 ID를 등록하고 방송을 시작해보세요.<br><br>
-							<input class="w3-input" type="text" required>
-							<br>
-							<a href="#">채널 ID를 찾으려면?</a>
-						</p>
+							사이트 규정에 따라 Main Station에 10개 이상 글을 게시한 이용자만 라이브 스트리밍을 이용할 수 있습니다.
+							<br><br>
+							<a href="station.do" class="w3-small">글 쓰러 가기</a>
+						</p> 
 					</div>
-				</div>
-</c:if>
-							<!-- 1등급 회원인 경우 -->
-<c:if test="${mem_level == 1}">
-				<div class="w3-row"> 
-					<p class="w3-center w3-theme-l1 w3-padding-large w3-tiny">
-						<i class="fa fa-video-camera w3-xxlarge"></i>
-						<br>
-						사이트 규정에 따라 Main Station에 10개 이상 글을 게시한 이용자만 라이브 스트리밍을 이용할 수 있습니다.
-						<br><br>
-						<a href="station.do" class="w3-small">글 쓰러 가기</a>
-					</p> 
-				</div>
-</c:if>
+	</c:if>
 						<!-- 본인페이지 if 끝 -->
-						<!-- 타페이지 -->
+</c:if>
+						<!-- 채널연결안된 타페이지 -->
+<c:if test="${driver != email and channelid == null}">
+					<div class="w3-row">
+						<a href="#" class="w3-center w3-theme-l1 w3-padding-large">
+							<p> <i class="fa fa-video-camera w3-xxlarge"></i><br><%-- ${str_whatsLive} --%></p>
+						</a>
+					</div>
+</c:if>
 						<!-- 타페이지 끝 -->
 			</div>
 
@@ -322,7 +323,12 @@
 					<div class="w3-card-2 w3-round w3-white">
 						<div class="w3-container w3-padding">
 							<h6 class="w3-opacity">${str_putMsg}</h6>
+						<c:if test="${email != null}">
 							<input type="text" placeholder="${str_boardEx}" name="content" class="w3-border w3-padding w3-input" border="1">
+						</c:if>
+						<c:if test="${email == null}">
+							<input type="text" placeholder="${str_cantBoard}" name="content" class="w3-border w3-padding w3-input" border="1" readonly>
+						</c:if>
 							<button type="button" class="w3-btn w3-theme-l1" onclick="boardAppend()">
 								<i class="fa fa-pencil"></i> ${str_post}
 							</button>

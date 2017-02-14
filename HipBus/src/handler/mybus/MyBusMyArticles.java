@@ -1,4 +1,4 @@
-package model.mybus;
+package handler.mybus;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

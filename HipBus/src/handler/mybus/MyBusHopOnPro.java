@@ -16,32 +16,32 @@ import handler.HandlerException;
 import model.mybus.MyBusDao;
 
 @Controller
-public class MyBusLeft implements CommandHandler {
+public class MyBusHopOnPro implements CommandHandler {
 	@Resource(name="myBusDao")
 	MyBusDao mybusDao;
-	
-	@RequestMapping("/myBusLeft.do")
+	@RequestMapping("/myBusHopOnPro.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		String driver = request.getParameter("driver");
 		String email = request.getParameter("email");
-		
+		String hopORnot = request.getParameter("hopORnot");
 		Map<String,String> map = new HashMap<String,String>();
 		map.put("driver", driver);
 		map.put("email", email);
-
-		int isHop = mybusDao.isHop(map);
-		String hopORnot = null;
-		if( isHop != 0 ) {
-			hopORnot = "off";
-		} else if( isHop == 0 ) {
-			hopORnot = "on";
+		
+		int result = 0;
+		
+		if( hopORnot.equals("on") ){
+			result = mybusDao.hopOn(map);
+		} else if( hopORnot.equals("off") ) {
+			result = mybusDao.hopOff(map);
 		}
 		
-		request.setAttribute("hopORnot", hopORnot);
+		request.setAttribute("result", result);
 		request.setAttribute("driver", driver);
-		request.setAttribute("email", email);
-		return new ModelAndView("myBusLeft");
+		request.setAttribute("hopORnot", hopORnot);
+
+		return new ModelAndView("myBusHopOnPro");
 	}
 
 }

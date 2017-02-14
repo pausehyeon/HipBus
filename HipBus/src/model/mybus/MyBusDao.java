@@ -14,4 +14,7 @@ public interface MyBusDao {
 	public int deleteBoard( int num );
 	public int modifyBoard( BoardDto dto );
 	public String getChannelid( String driver );
+	public int isHop( Map<String,String> map );
+	public int hopOn( Map<String,String> map );
+	public int hopOff( Map<String,String> map );
 }

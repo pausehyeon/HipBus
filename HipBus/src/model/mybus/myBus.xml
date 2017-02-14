@@ -33,6 +33,15 @@
 		and num &gt; (select max(num) from hb_board where driver=#{driver})-#{boardCount}
 		order by num desc
 	</select>
+	<select id="isHop" parameterType="map" resultType="int">
+		select count(*) from hb_passengers where driver=#{driver} and email=#{email}
+	</select>
+	<insert id="hopOn" parameterType="map">
+		insert into hb_passengers values (#{driver},#{email})
+	</insert>
+	<delete id="hopOff" parameterType="map">
+		delete from hb_passengers where driver=#{driver} and email=#{email}
+	</delete>
 </mapper>
 
 

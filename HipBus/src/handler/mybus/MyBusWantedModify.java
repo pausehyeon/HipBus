@@ -1,6 +1,5 @@
-package model.mybus;
+package handler.mybus;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -12,19 +11,13 @@ import handler.CommandHandler;
 import handler.HandlerException;
 
 @Controller
-public class MyBusBoardDeleteResult implements CommandHandler {
+public class MyBusWantedModify implements CommandHandler {
 
-	@Resource(name="myBusDao")
-	MyBusDao mybusDao;
-	
-	@RequestMapping("/myBusBoardDeleteResult.do")
+	@RequestMapping("/myBusWantedModify.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-		int num = Integer.parseInt( request.getParameter("num") );
-		int result = mybusDao.deleteBoard( num );
-		request.setAttribute("result", result);
-		request.setAttribute("num", num);
-		return new ModelAndView("myBusBoardDeleteResult");
+		// TODO Auto-generated method stub
+		return new ModelAndView("myBusWantedModify");
 	}
 
 }

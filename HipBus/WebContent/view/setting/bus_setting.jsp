@@ -11,8 +11,9 @@
 <!-- myBus / crewBus -->
 <c:set var="str_putMsg" value="이곳에 메세지를 남기세요"/>
 <c:set var="str_boardEx" value="ex) 좋은 음악이에요!"/>
+<c:set var="str_cantBoard" value="방명록을 작성하려면 로그인해주세요♡"/>
 <c:set var="str_live" value="Live"/>
-<c:set var="str_startLive" value="Start Live Drive!"/>
+<c:set var="str_whatsLive" value="라이브방송이란?"/>
 <c:set var="str_post" value="Post"/>
 <c:set var="str_modBoard" value="수정하기"/>
 <c:set var="str_delBoard" value="삭제하기"/>
@@ -31,6 +32,7 @@
 <c:set var="str_myProfile" value="Profile"/>
 <c:set var="str_crew" value="소속 크루 : "/>
 <c:set var="str_editProfile" value=" edit profile"/>
+<c:set var="str_hop" value="hop"/>
 <c:set var="str_hopperList" value=" 탑승자 명단"/>
 <c:set var="str_oldVideos" value=" 지난 라이브 영상"/>
 <c:set var="str_seePosts" value=" 의 게시글 모아보기"/>
@@ -73,3 +75,6 @@
 <!-- myBusVideos.jsp -->
 <c:set var="str_whosLive" value="님의 라이브"/>
 
+<!-- myBusHopOnPro.jsp -->
+<c:set var="str_hopOnError" value="버스에 정상적으로 올라타지 못했습니다."/>
+<c:set var="str_hopOffError" value="버스에서 성공적으로 내리지 못했습니다."/>

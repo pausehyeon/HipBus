@@ -1,4 +1,4 @@
-package model.mybus;
+package handler.mybus;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,13 +11,13 @@ import handler.CommandHandler;
 import handler.HandlerException;
 
 @Controller
-public class MyBusWantedModify implements CommandHandler {
+public class MyBusWantedModifyPro implements CommandHandler {
 
-	@RequestMapping("/myBusWantedModify.do")
+	@RequestMapping("/myBusWantedModifyPro.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		// TODO Auto-generated method stub
-		return new ModelAndView("myBusWantedModify");
+		return new ModelAndView("myBusWantedModifyPro");
 	}
 
 }

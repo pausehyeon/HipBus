@@ -1,4 +1,4 @@
-package model.mybus;
+package handler.mybus;
 
 import java.io.UnsupportedEncodingException;
 
@@ -13,13 +13,14 @@ import org.springframework.web.servlet.ModelAndView;
 import handler.CommandHandler;
 import handler.HandlerException;
 import model.BoardDto;
+import model.mybus.MyBusDao;
 
 @Controller
-public class MyBusBoardModifyResult implements CommandHandler {
-
+public class MyBusBoardAppendResult implements CommandHandler {
 	@Resource(name="myBusDao")
-	MyBusDao mybusDao;
-	@RequestMapping("/myBusBoardModifyResult.do")
+	public MyBusDao mybusDao; 
+	
+	@RequestMapping("/myBusBoardAppendResult.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		try {
@@ -27,19 +28,21 @@ public class MyBusBoardModifyResult implements CommandHandler {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		int num = Integer.parseInt(request.getParameter("num"));
-		String content = request.getParameter("content");
-		
 		BoardDto dto = new BoardDto();
-		dto.setNum( num );
-		dto.setContent( content );
 		
-		int result = mybusDao.modifyBoard( dto );
+		dto.setDriver(request.getParameter("driver"));
+		dto.setEmail(request.getParameter("email"));
+		dto.setContent(request.getParameter("content"));
+		
+		dto.setNick( mybusDao.getMember( dto.getEmail() ).getNick() );
+		
+		int result = mybusDao.appendBoard( dto );
+		BoardDto returnDto = new BoardDto();
+		returnDto = mybusDao.getLastBoard( dto.getDriver() );
 		
 		request.setAttribute("result", result);
-		request.setAttribute("content", content);
+		request.setAttribute("dto", returnDto);
 		
-		return new ModelAndView("myBusBoardModifyResult");
+		return new ModelAndView("myBusBoardAppendResult");
 	}
-
 }
