@@ -46,4 +46,5 @@
 		over(order by reg_date desc) r from hb_news
 		) where r&lt;4
 	</select>
+
 </mapper>

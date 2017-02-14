@@ -8,19 +8,25 @@
 <!-- Icon Bar (Sidenav - hidden on small screens) -->
 <nav class="w3-sidenav w3-center w3-small w3-hide-small">
 	<!-- Avatar image in top left corner -->
-	<img class="w3-padding-large w3-padding-32" src="${project}/view/img/HipBusLogo_colored.png" style="width: 100%">
+	<img src="${project}/view/img/HipBusLogo_colored.png" onclick="location='${project}/main.do'" style="width: 100%" class="w3-padding-large w3-padding-32">
 	<div class="w3-accordion">
 		<a onclick="myAccordion('letsdrive')" class="w3-padding-large w3-hover-black">
 			<p>
 				Let's Drive! &nbsp;<i class="fa fa-caret-down"></i>
 			</p>
 		</a>
-		<div id="letsdrive" class="w3-accordion-content w3-animate-left w3-padding">
+		<div id="letsdrive" class="w3-accordion-content w3-animate-left w3-padding w3-left-align">
 
 			<c:if test="${sessionScope.memEmail ne null }">
 				<!-- 로그인 된 상태에서 보임 -->
-				<a href="myBus.do?driver=${sessionScope.memEmail}">${str_myBus}</a>
-				<a href="crewBus.do?driver=${sessionScope.memEmail}">${str_crewBus}</a>
+				<a href="myBus.do?driver=${sessionScope.memEmail}"><i class="fa fa-bus"></i> ${str_myBus}</a>
+
+				<c:if test="${hasMyCrew eq 1}" >
+				<!-- 소속된 크루가 있을 때만 보임 -->
+				<c:forEach var="myCrew" begin="0" end="${fn:length(myCrews)}" step="1" items="${myCrews}">
+					<a href="crewBus.do?driver=${myCrew.crewid}"><i class="fa fa-fort-awesome"></i> ${myCrew.crewname}</a>
+				</c:forEach>
+				</c:if>
 			</c:if>
 			<c:if test="${sessionScope.memEmail eq null }">
 				<!-- 로그인 안 된 상태에서 보임 -->

@@ -16,6 +16,7 @@ import model.CrewDto;
 import model.MemberDto;
 import model.NewsDto;
 import model.TopDriversDto;
+import model.general.GeneralDao;
 import model.main.MainDao;
 
 @Controller
@@ -23,6 +24,8 @@ public class Main implements CommandHandler {
 
 	@Resource(name = "mainDao")
 	private MainDao dao;
+	@Resource(name = "generalDao")
+	private GeneralDao generalDao;
 
 	@RequestMapping("/main.do")
 	@Override
@@ -30,8 +33,19 @@ public class Main implements CommandHandler {
 
 		String memEmail = (String) request.getSession().getAttribute("memEmail");
 
-		// 개인 정보
 		if (memEmail != null) {
+			// navbar_main
+			List<CrewDto> myCrews = generalDao.getMyCrews(memEmail);
+			if(myCrews == null || myCrews.size() == 0){
+				// 속한 크루가 하나도 없으면
+				request.setAttribute("hasMyCrew", 0);
+			}else{
+				// 속한 크루가 하나라도 있으면
+				request.setAttribute("hasMyCrew", 1);
+				request.setAttribute("myCrews", myCrews);
+			}
+			
+			// 개인 정보
 			MemberDto member = dao.getMember(memEmail);
 			request.setAttribute("member", member);
 		}
