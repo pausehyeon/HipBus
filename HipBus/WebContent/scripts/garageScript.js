@@ -27,10 +27,19 @@ function erroralert( msg ) {
 
 function deleteCheck(){
 
-	 if( confirm(" 정말로 삭제하시겠습니까?" ) == true ){
-		 location.href="garageDeletePro.do";
+	 if( confirm(" 정말 삭제하시겠습니까?" ) == true ){
+		location.href="garageNewsDeletePro.do?num="+readForm.del.value;
 	 }else{
-		 history.back();
+		 location.reload(true);
 	 }
+	
+}
+
+function z(){
+	if(! writeform.content.value){
+		alert("내용을 입력하세요");
+		writeform.content.focus();
+		return false;
+	}
 	
 }

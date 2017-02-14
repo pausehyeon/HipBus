@@ -14,6 +14,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+
 <c:set var="str_Title" value="HipBus"/>
 <c:set var="str_Subject" value="글제목"/>
 <c:set var="str_Modify" value="수정하기"/>

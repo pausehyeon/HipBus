@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
+import model.FAQDto;
 import model.MemberDto;
 import model.NewsDto;
 import model.SqlMapClient;
@@ -65,6 +66,12 @@ public class GarageDBBean implements GarageDao {
 		result = SqlMapClient.getSession().delete("Garage.deleteArticle",num);
 		
 		return result;
+	}
+
+	@Override
+	public List<FAQDto> getFAQList(Map<String,Integer> map) {
+		// TODO Auto-generated method stub
+		return SqlMapClient.getSession().selectList( "Garage.getFAQList");
 	}
 
 	

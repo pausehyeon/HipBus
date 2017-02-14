@@ -1,5 +1,7 @@
 package handler.garage;
 
+import java.io.UnsupportedEncodingException;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,7 +24,12 @@ public class GarageNewsModifyPro implements CommandHandler {
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		// TODO Auto-generated method stub
-		
+
+		try {
+			request.setCharacterEncoding( "utf-8" );
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 	
 	
 		NewsDto dto = new NewsDto();

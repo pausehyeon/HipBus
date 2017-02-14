@@ -50,6 +50,11 @@ insert into HB_News(email,num,nick,subject,content,imgname,imglocation,readcount
 	delete from HB_News where num=#{num}
 </delete>
 
+<select id="getFAQList" parameterType="Map" resultType="model.FAQDto">
+	select * from HB_FAQ
+
+</select>
+
 
 </mapper>
 

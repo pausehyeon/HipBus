@@ -3,6 +3,7 @@ package model.garage;
 import java.util.List;
 import java.util.Map;
 
+import model.FAQDto;
 import model.MemberDto;
 import model.NewsDto;
 
@@ -16,6 +17,7 @@ public interface GarageDao {
 	public MemberDto getMember(String email); //nick값 불러오기위한 메소드
 	public int updateArticle( NewsDto dto );
 	public int deleteArticle(int num);
+	public List<FAQDto> getFAQList(Map<String,Integer> map);
 
 	
 }

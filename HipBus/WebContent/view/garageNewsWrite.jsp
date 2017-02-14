@@ -3,6 +3,7 @@
 <html>
 <%@include file="/view/setting/setting.jsp"%>
 <%@include file="/view/setting/garage_setting.jsp"%>
+<script src="${project}/scripts/garageScript.js"></script>
 
 
 <title>${str_Title}</title>
@@ -22,7 +23,7 @@
 
 				<div class="w3-card-4">
 
-					<form name="writeform" method="post" enctype="multipart/form-data"
+					<form name="writeform" method="post" onsubmit="return z()" enctype="multipart/form-data"
 					action="garageNewsWritePro.do">
 					
 						<header class="w3-container w3-padding-jumbo w3-theme-l3">
@@ -31,7 +32,7 @@
 						</header>
 
 						<div class="w3-row">
-							<textarea name="content" id="editor" class="w3-input"></textarea>
+							<textarea name="content" id="editor" required class="w3-input"></textarea>
 							<script type="text/javascript" src="${project}/scripts/ckeditor/insertCkeditor.js"></script>
 							<!-- ^ ckeditor 연결 모듈 -->
 						</div>
@@ -41,9 +42,10 @@
 							<input name="upload" type="file" accept="image/*">
 						</div>
 						<footer class="w3-container w3-padding-jumbo w3-theme-l3 w3-center">
-							<input type="submit" class="w3-btn w3-padding w3-theme-d1 w3-margin-left" value="&#xf00c; ${btn_Write}">
+							<input type="submit" class="w3-btn w3-padding w3-theme-d1 w3-margin-left" value="&#xf00c; ${btn_Write}" >
+							
 							<!-- &#xf00c;는 fontawesome의 fa-check 아이콘. submit 버튼 안에 <i></i>태그를 넣을 수 없어서. -->
-							<a href="#" class="w3-btn w3-padding w3-theme-d1 w3-margin-left">
+							<a href="garageNews.do" class="w3-btn w3-padding w3-theme-d1 w3-margin-left">
 								<i class="fa fa-mail-reply"></i>&nbsp;${btn_Cancel}
 							</a>
 						</footer>

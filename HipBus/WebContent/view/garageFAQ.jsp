@@ -24,90 +24,31 @@
 			<div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-search"></i></div>
 			<div class="w3-rest">
 				<input class="w3-input w3-border" name="message" type="text" placeholder="${str_Search}">
+				
+				<c:if test="${dto.mem_level == 3 }">
 				<!-- 이 버튼은 관리자에게만 보임 -->
-				<a href="#" class="w3-btn w3-padding w3-theme-d1 w3-margin w3-right"><i class="fa fa-pencil-square-o w3-margin-right"></i>${str_Modify}</a>
+				<a href="garageFAQModify" class="w3-btn w3-padding w3-theme-d1 w3-margin w3-right"><i class="fa fa-pencil-square-o w3-margin-right"></i>${str_Modify}</a>
+				</c:if>
+				
+				<c:if test="${dto.mem_level != 3 }">
+				<div class="w3-padding"></div>
+				</c:if>
 			</div>
 		</div>
+			
+			
+			<c:forEach var="article" items="${FAQList}">
+			<c:set var="su" value="${su+1}"/>
 			<div class="w3-accordion w3-white">
-				<button onclick="myFunction('q1')" class="w3-btn-block w3-theme-l3 w3-left-align">
-					<h4>Q1 회원가입은 어떻게 하나요?&nbsp;<i class="fa fa-caret-down"></i></h4>
+				<button onclick="myFunction('q${article.num}')" class="w3-btn-block w3-theme-l3 w3-left-align">
+					<h4>Q${su}&nbsp;${article.subject}&nbsp;<i class="fa fa-caret-down"></i></h4>
 				</button>
-				<div id="q1" class="w3-accordion-content w3-container">
-				  <p>답변 내용은 다음과 같습니다.</p>
+				<div id="q${article.num}" class="w3-accordion-content w3-container">
+				  <p>${article.content}</p>
 				</div>
 			</div>
-			<div class="w3-accordion w3-white">
-				<button onclick="myFunction('q2')" class="w3-btn-block w3-theme-l1 w3-left-align">
-					<h4>Q2 크루에 초대하려면 어떻게 하죠?&nbsp;<i class="fa fa-caret-down"></i></h4>
-				</button>
-				<div id="q2" class="w3-accordion-content w3-container">
-				  <p>답변 내용은 다음과 같습니다.</p>
-				</div>
-			</div>
-			<div class="w3-accordion w3-white">
-				<button onclick="myFunction('q3')" class="w3-btn-block w3-theme-l3 w3-left-align">
-					<h4>Q3 라이브 스트리밍은 어떻게 하나요?&nbsp;<i class="fa fa-caret-down"></i></h4>
-				</button>
-				<div id="q3" class="w3-accordion-content w3-container">
-				  <p>답변 내용은 다음과 같습니다.</p>
-				</div>
-			</div>
-			<div class="w3-accordion w3-white">
-				<button onclick="myFunction('q4')" class="w3-btn-block w3-theme-l1 w3-left-align">
-					<h4>Q4 &nbsp;<i class="fa fa-caret-down"></i></h4>
-				</button>
-				<div id="q4" class="w3-accordion-content w3-container">
-				  <p>답변 내용은 다음과 같습니다.</p>
-				</div>
-			</div>
-			<div class="w3-accordion w3-white">
-				<button onclick="myFunction('q5')" class="w3-btn-block w3-theme-l3 w3-left-align">
-					<h4>Q5 &nbsp;<i class="fa fa-caret-down"></i></h4>
-				</button>
-				<div id="q3" class="w3-accordion-content w3-container">
-				  <p>답변 내용은 다음과 같습니다.</p>
-				</div>
-			</div>
-			<div class="w3-accordion w3-white">
-				<button onclick="myFunction('q6')" class="w3-btn-block w3-theme-l1 w3-left-align">
-					<h4>Q6 &nbsp;<i class="fa fa-caret-down"></i></h4>
-				</button>
-				<div id="q4" class="w3-accordion-content w3-container">
-				  <p>답변 내용은 다음과 같습니다.</p>
-				</div>
-			</div>
-			<div class="w3-accordion w3-white">
-				<button onclick="myFunction('q7')" class="w3-btn-block w3-theme-l3 w3-left-align">
-					<h4>Q7 &nbsp;<i class="fa fa-caret-down"></i></h4>
-				</button>
-				<div id="q3" class="w3-accordion-content w3-container">
-				  <p>답변 내용은 다음과 같습니다.</p>
-				</div>
-			</div>
-			<div class="w3-accordion w3-white">
-				<button onclick="myFunction('q8')" class="w3-btn-block w3-theme-l1 w3-left-align">
-					<h4>Q8 &nbsp;<i class="fa fa-caret-down"></i></h4>
-				</button>
-				<div id="q4" class="w3-accordion-content w3-container">
-				  <p>답변 내용은 다음과 같습니다.</p>
-				</div>
-			</div>
-			<div class="w3-accordion w3-white">
-				<button onclick="myFunction('q9')" class="w3-btn-block w3-theme-l3 w3-left-align">
-					<h4>Q9 &nbsp;<i class="fa fa-caret-down"></i></h4>
-				</button>
-				<div id="q3" class="w3-accordion-content w3-container">
-				  <p>답변 내용은 다음과 같습니다.</p>
-				</div>
-			</div>
-			<div class="w3-accordion w3-white">
-				<button onclick="myFunction('q10')" class="w3-btn-block w3-theme-l1 w3-left-align">
-					<h4>Q10 &nbsp;<i class="fa fa-caret-down"></i></h4>
-				</button>
-				<div id="q4" class="w3-accordion-content w3-container">
-				  <p>답변 내용은 다음과 같습니다.</p>
-				</div>
-			</div>
+				
+			</c:forEach>
 		</div>
 		
 		<div class="w3-row">
