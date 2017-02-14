@@ -9,13 +9,18 @@
 	<c:import url="../top.do" />
 
 	<!-- Sidenav/menu -->
-	<nav class="w3-sidenav w3-collapse w3-theme-l5 w3-animate-right w3-padding-xlarge" style="z-index: 3; right: 0; width: 20%; margin-top: 0px;" id="mySidenav">
+	<nav class="w3-sidenav w3-collapse w3-theme-l5 w3-animate-right w3-padding-xlarge" style="z-index: 3; right: 0; width: 20%; margin-top: 50px;" id="mySidenav">
 		<br>
+		<c:if test="${sessionScope.memEmail != null}">
 		<div class="w3-container w3-row">
 			<div class="w3-col s8 w3-center">
-				<span><strong> 관리자A </strong>${str_idMsg}</span><br>
+				<span><strong> ${sessionScope.memEmail}</strong>${str_idMsg}</span><br>
 			</div>
 		</div>
+		</c:if>
+		<c:if test="${sessionScope.memEmail == null}">
+			<c:redirect url="main.do"/>
+		</c:if>
 		<hr>
 		<div class="w3-container">
 			<h5>${str_adminMenu}</h5>
@@ -118,8 +123,8 @@
 										<!-- 불러오는 아이디 -->
 										<td>${getMember.nick}</td>
 										<!-- 불러온 닉네임 -->
-										<td style="text-align: left;"><a class="w3-hover-black w3-padding" style="text-decoration: none" href="myBus.do?email=${getMember.email}">${str_memGo}&nbsp;<i class="fa fa-bus"></i></a> 
-										<a class="w3-hover-black w3-padding" style="text-decoration: none" href="crewBus.do?crewid=${crewid}">${str_memGo}&nbsp; <i class="fa fa-fort-awesome"></i></a> 
+										<td style="text-align: left;"><a class="w3-hover-black w3-padding" style="text-decoration: none" href="myBus.do?driver=${getMember.email}">${str_memGo}&nbsp;<i class="fa fa-bus"></i></a> 
+										<a class="w3-hover-black w3-padding" style="text-decoration: none" href="crewBus.do?driver=${getMember.crewid}">${str_memGo}&nbsp; <i class="fa fa-fort-awesome"></i></a> 
 										<a class="w3-hover-black w3-padding" style="text-decoration: none" href="#">${str_memModify}</a>
 										<a class="w3-hover-black w3-padding" style="text-decoration: none" href="adminMemberEjectPro.do?email=${getMember.email}">${str_memLeave}</a>
 										</td>
