@@ -20,50 +20,64 @@
 <script type="text/javascript">
 	//<!--
 	var request = null;
+	var countCriteria = 5;	// 방명록 로드시 볼 갯수
+	var boardCount = 0; 
+	var contentFix = null;
+	var isFirstCancel = "Y";
 	// 댓글목록 불러오기
 	$(document).ready (
-		function() {
-			var params = 'driver=' + 'dd';		// 버스 주인의 이메일
-			request = new Request (
-				function() {
-					var boardList = document.getElementById("boardList");
-					if(request.httpRequest.readyState==4) {
-						if(request.httpRequest.status==200){
-							var msg = "";
-							var xmldoc = request.httpRequest.responseXML;
-							var code = xmldoc.getElementsByTagName("code").item(0).innerHTML;
-							if(code == "selected") {
-								var data = eval( "(" + xmldoc.getElementsByTagName("data").item(0).innerHTML + ")" );
-								if(data.length == 0){
-									msg = "현재 방명록이 없습니다. 첫방명록을 작성해보세요!";
-									$('#boardInfo').html(msg);
-									$('#moreBoard').hide();
-								} else {
-									for( var i=0; i<data.length; i++){
-										var newdiv = makeBoard(data[i]);
-										boardList.appendChild(newdiv);
-									}
-								}
-							} else if(code=="empty") {
-								var message = xmldoc.getElementsByTagName("message").item(0).innerHTML;
-								msg += message;
-							}
-						} else {
-							$('#console').html("readyState 에러");
-						}
-					} else {
-						$('#console').html("Status 에러");
-					}
-				}
-				,"myBusBoardListResult.do", "POST", params );
-			request.sendRequest();
+		function(){
+			boardCount = countCriteria;
+			loadBoard( boardCount );			
 		}
 	);
 	
+	function loadBoard( boardCount, more ) {
+		var params = 'driver=' + $('#driver').val()
+				   + '&boardCount=' + boardCount;
+		request = new Request (
+			function() {
+				var boardList = document.getElementById("boardList");
+				if(request.httpRequest.readyState==4) {
+					if(request.httpRequest.status==200){
+						var msg = "";
+						var xmldoc = request.httpRequest.responseXML;
+						var code = xmldoc.getElementsByTagName("code").item(0).innerHTML;
+						if(code == "selected") {
+							var data = eval( "(" + xmldoc.getElementsByTagName("data").item(0).innerHTML + ")" );
+							if(data.length == 0){
+								msg = "현재 방명록이 없습니다. 첫방명록을 작성해보세요!";
+								$('#boardInfo').html(msg);
+								$('#moreBoard').hide();
+							} else {
+								if( more ){
+									$('#boardList').empty();
+								}
+								
+								for( var i=0; i<data.length; i++){
+									var newdiv = makeBoard(data[i]);
+									boardList.appendChild(newdiv);
+								}
+							}
+						} else if(code=="empty") {
+							var message = xmldoc.getElementsByTagName("message").item(0).innerHTML;
+							msg += message;
+						}
+					} else {
+						$('#console').html("readyState 에러");
+					}
+				} else {
+					$('#console').html("Status 에러");
+				}
+			}
+			,"myBusBoardListResult.do", "POST", params );
+		request.sendRequest();
+	}
+	
 	// 댓글 삽입
 	function boardAppend() {
-		var params = 'driver=' + 'dd'						// 버스주인 이메일 혹은 크루아이디
-				   + '&email=' + 'ss'						// 세션에 저장된 작성자 이메일
+		var params = 'driver=' + $('#driver').val()						// 버스주인 이메일 혹은 크루아이디
+				   + '&email=' + $('#email').val()						// 세션에 저장된 작성자 이메일
 				   + '&content=' + $('input[name=content]').val();		// 본문 입력내용
 		request = new Request(
 			function() {
@@ -106,13 +120,25 @@
 		$('#board_'+num+' textarea').focus();
 	}
 
-	function modCancel( num ){
-		$('#board_'+num+' textarea').prop('readonly',true);
+	function modCancel( num, content, criteria ) {	// 이전 데이터 저장해서 다시 띄움
+		if( criteria ) {
+			if( !$('input[name='+num+']').prop("content") ) {
+				$('input[name='+num+']').prop( "content", content );
+				$('#board_'+num+' textarea').val( $('input[name='+num+']').prop("content") );
+			} else { 
+				$('#board_'+num+' textarea').val( $('input[name='+num+']').prop("content") );
+			}
+		} else {
+			$('input[name='+num+']').prop( "content", content );
+			$('#board_'+num+' textarea').val( $('input[name='+num+']').prop("content") );
+		}
+
+		$('#board_'+num+' textarea').prop('readonly',true);		
 		$('#board_'+num+' button:odd').show();
 		$('#board_'+num+' button:even').hide();
 	}
 	
-	function modComplete( num ){
+	function modComplete( num ) {
 		var params = 'num=' + num
 				   + '&content=' + $('#board_'+num+' textarea').val();
 		request = new Request(
@@ -123,14 +149,12 @@
 						var code = xmldoc.getElementsByTagName("code").item(0).innerHTML;
 						if( code == "updated") {
 							var data = xmldoc.getElementsByTagName("data").item(0).innerHTML;
-							$('#board_'+num+' textarea').val(data);
 							alert("성공적으로 수정되었습니다.");
 						} else if(code=="failed"){
 							var message = xmldoc.getElementsByTagName("message").item(0).innerHTML;
 							$('#console').html( message );
 						}
-						$('#board_'+num+' button:odd').show();
-						$('#board_'+num+' button:even').hide();
+						modCancel( num, data );
 					} else {
 						$('#console').html("readyState 에러");
 					}
@@ -179,11 +203,12 @@
 		newdiv.setAttribute("id", "board_" + data.num);
 		newdiv.innerHTML 
 			= '<div class="w3-container w3-card-2 w3-white w3-round w3-padding-32 w3-margin" id="list">'
-			+ '<a href="#"><img src="${project}/view/img/HipBusLogo_colored_sq.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width: 40px"></a>'
+			+ '<a href=myBus.do?driver='+data.email+'><img src="${project}/view/img/HipBusLogo_colored_sq.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width: 40px"></a>'
 			+	'<span class="w3-right w3-opacity">'+ data.reg_date +'&nbsp;'
-			+	'<a href="#"><i class="fa fa-close w3-right"></i></a></span>'
+			+	'<a href="#"><i class="fa fa-close w3-right" onclick="delBoard('+ data.num +')"></i></a></span>'
 			+		'<h4>' + data.nick + '</h4>'
 			+		'<hr class="w3-clear">'
+			+		'<input type="hidden" name="'+ data.num +'">'
 			+		'<textarea readonly="true" rows="3">' + data.content + "</textarea>"
 			+	'<button type="button" class="w3-btn w3-theme-l1 modc" style="display:none" onclick="modComplete('+ data.num +')">'
 			+		'<i class="fa fa-eraser"></i>  ${str_modComplete}'
@@ -191,7 +216,7 @@
 			+	'<button type="button" class="w3-btn w3-theme-l1" onclick="modBoardView('+ data.num +')">'
 			+		'<i class="fa fa-pencil"></i>  ${str_modBoard}'
 			+	'</button> &nbsp;'
-			+	'<button type="button" class="w3-btn w3-theme-l1" style="display:none" onclick="modCancel('+ data.num +')">'
+			+	"<button type=\"button\" class=\"w3-btn w3-theme-l1\" style=\"display:none\" onclick=\"modCancel("+ data.num +",\'"+ data.content +"\','first')\">"
 			+		'<i class="fa fa-eraser"></i>  ${str_modCancel}'
 			+	'</button>'
 			+	'<button type="button" class="w3-btn w3-theme-l1" onclick="delBoard('+ data.num +')">'
@@ -201,12 +226,20 @@
 		newdiv.data = data;
 		return newdiv;
 	}
+ 	$(document).on(
+		'click', '#moreBoard',
+		function( e ) {
+			boardCount += countCriteria;
+			loadBoard( boardCount, "more" );
+		}
+	);
 	
 	//-->
 </script>
 <title>${str_mybusTitle}</title>
 <body class="w3-theme-l5">
-
+	<input type="hidden" id="driver" value="${driver}">
+	<input type="hidden" id="email" value="${email}">
 	<!-- Navbar -->
 	<c:import url="../top.do" />
 	<textarea rows="" cols="" readonly="readonly"></textarea>
@@ -224,30 +257,36 @@
 			<!-- Middle Column -->
 			<div class="w3-col m7">
 				<div class="w3-container w3-card-2 w3-theme-l1 w3-round w3-margin-bottom w3-margin-left w3-margin-right w3-padding-16">
-					<div class="w3-row">
 
-						<!-- 1. 채널 연결하지 않은 경우 -->
-						<!-- 
+							<!-- 사용안함 -->
+<%-- 
+				<div class="w3-row">
 					<a href="#" class="w3-center w3-theme-l1 w3-padding-large">
 						<p> <i class="fa fa-video-camera w3-xxlarge"></i><br>${str_startLive}</p>
 					</a>
-					-->
-						<!-- 2. 2등급 회원이며 채널 연결한 경우 -->
-
-						<h4 class="w3-right w3-margin-right">
-							<i class="fa fa-video-camera"></i>&nbsp; ${str_live}
-						</h4>
+				</div>
+ --%>
+							<!-- 2. 2등급 회원이며 채널 연결한 경우 이용자와 타이용자 공용 -->
+<c:if test="${channelid != null}">
+				<div class="w3-row">
+					<h4 class="w3-right w3-margin-right">
+						<i class="fa fa-video-camera"></i>&nbsp; ${str_live}
+					</h4>
+				</div>
+				<div class="w3-row">
+					<div class="w3-twothird">
+								<iframe style="width: 100%; height: 360px" src="http://www.youtube.com/embed/live_stream?channel=${channelid}" frameborder="0" allowfullscreen></iframe>
 					</div>
-					<div class="w3-row">
-						<div class="w3-twothird">
-							<iframe style="width: 100%; height: 360px" src="http://www.youtube.com/embed/live_stream?channel=UCZQ5jz44ynb4AB8dCWWqbSg" frameborder="0" allowfullscreen></iframe>
-						</div>
-						<div class="w3-third">
-							<iframe style="width: 100%; height: 360px" src="https://www.youtube.com/live_chat?v=Fdvsv3xisy8&embed_domain=localhost" frameborder="0" allowfullscreen></iframe>
-						</div>
+					<div class="w3-third">
+									<iframe style="width: 100%; height: 360px" src="https://www.youtube.com/live_chat?v=Fdvsv3xisy8&embed_domain=localhost" frameborder="0" allowfullscreen></iframe>
+					</div>
+				</div>
+</c:if>
 
-						<!-- 3. 2등급 회원인데 아직 채널을 연결하지 않은 경우 -->
-						<!-- 
+						<!-- 본인페이지 if 시작-->
+						<!-- 2등급 회원인데 아직 채널을 연결하지 않은 경우 -->
+<c:if test="${channelid == null and mem_level == 2}">
+				<div class="w3-row">
 					<div class="w3-row w3-center w3-theme-l1 w3-padding-large w3-small">
 						<p>
 							<i class="fa fa-video-camera w3-xxlarge"></i>
@@ -259,45 +298,49 @@
 							<a href="#">채널 ID를 찾으려면?</a>
 						</p>
 					</div>
-					-->
-						<!-- 4. 1등급 회원인 경우 -->
-						 <!-- 
-						<p class="w3-center w3-theme-l1 w3-padding-large w3-tiny">
-							<i class="fa fa-video-camera w3-xxlarge"></i>
-							<br>
-							사이트 규정에 따라 Main Station에10개 이상 글을 게시한 이용자만 라이브 스트리밍을 이용할 수 있습니다.
-							<br><br>
-							<a href="station.do" class="w3-small">글 쓰러 가기</a>
-						</p> 
-						-->
-					 
-					</div>
 				</div>
+</c:if>
+							<!-- 1등급 회원인 경우 -->
+<c:if test="${mem_level == 1}">
+				<div class="w3-row"> 
+					<p class="w3-center w3-theme-l1 w3-padding-large w3-tiny">
+						<i class="fa fa-video-camera w3-xxlarge"></i>
+						<br>
+						사이트 규정에 따라 Main Station에 10개 이상 글을 게시한 이용자만 라이브 스트리밍을 이용할 수 있습니다.
+						<br><br>
+						<a href="station.do" class="w3-small">글 쓰러 가기</a>
+					</p> 
+				</div>
+</c:if>
+						<!-- 본인페이지 if 끝 -->
+						<!-- 타페이지 -->
+						<!-- 타페이지 끝 -->
+			</div>
 
-				<div class="w3-row-padding">
-					<div class="w3-col m12">
-						<div class="w3-card-2 w3-round w3-white">
-							<div class="w3-container w3-padding">
-								<h6 class="w3-opacity">${str_putMsg}</h6>
-								<input type="text" placeholder="${str_boardEx}" name="content" class="w3-border w3-padding w3-input" border="1">
-								<button type="button" class="w3-btn w3-theme-l1" onclick="boardAppend()">
-									<i class="fa fa-pencil"></i> ${str_post}
-								</button>
-							</div>
+			<div class="w3-row-padding">
+				<div class="w3-col m12">
+					<div class="w3-card-2 w3-round w3-white">
+						<div class="w3-container w3-padding">
+							<h6 class="w3-opacity">${str_putMsg}</h6>
+							<input type="text" placeholder="${str_boardEx}" name="content" class="w3-border w3-padding w3-input" border="1">
+							<button type="button" class="w3-btn w3-theme-l1" onclick="boardAppend()">
+								<i class="fa fa-pencil"></i> ${str_post}
+							</button>
 						</div>
 					</div>
 				</div>
-				
-				<div id="boardList">
+			</div>
+			
+			<div id="boardList">
+			</div>
+			
+			<div class="w3-row-padding">
+				<div class="w3-col m12 w3-center dash">
+						<br><br><span id="boardInfo"></span>
+					<button id="moreBoard">${str_moreBoard}</button>
+					<br><br><div id="console"></div>
 				</div>
-				
-				<div class="w3-row-padding">
-					<div class="w3-col m12 w3-center">
- 						<br><br><span id="boardInfo"></span>
-						<a href="#" id="moreBoard">${str_moreBoard}</a>
-						<br><br><div id="console"></div>
-					</div>
-				</div>
+			</div>
 				
 				
 				

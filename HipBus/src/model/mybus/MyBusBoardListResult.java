@@ -1,6 +1,8 @@
 package model.mybus;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -23,10 +25,13 @@ public class MyBusBoardListResult implements CommandHandler {
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		String driver = request.getParameter("driver");
-		List<BoardDto> boardList = mybusDao.getBoardList(driver);
+		String boardCount = request.getParameter("boardCount");
+		Map<String, String> map = new HashMap<>();
+		map.put("driver", driver);
+		map.put("boardCount", boardCount);
+		List<BoardDto> boardList = mybusDao.getBoardList(map);
 		request.setAttribute("boardList", boardList);
 
 		return new ModelAndView("myBusBoardListResult");
 	}
-
 }

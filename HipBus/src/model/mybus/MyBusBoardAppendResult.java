@@ -1,7 +1,6 @@
 package model.mybus;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -34,7 +33,7 @@ public class MyBusBoardAppendResult implements CommandHandler {
 		dto.setEmail(request.getParameter("email"));
 		dto.setContent(request.getParameter("content"));
 		
-		dto.setNick( mybusDao.getNick( dto.getEmail() ) );
+		dto.setNick( mybusDao.getMember( dto.getEmail() ).getNick() );
 		
 		int result = mybusDao.appendBoard( dto );
 		BoardDto returnDto = new BoardDto();

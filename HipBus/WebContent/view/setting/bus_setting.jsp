@@ -28,7 +28,7 @@
 <c:set var="str_confilm" value="확인"/>
 
 <!-- myBusLeft.jsp -->
-<c:set var="str_myProfile" value="My Profile"/>
+<c:set var="str_myProfile" value="Profile"/>
 <c:set var="str_crew" value="소속 크루 : "/>
 <c:set var="str_editProfile" value=" edit profile"/>
 <c:set var="str_hopperList" value=" 탑승자 명단"/>

@@ -1,15 +1,17 @@
 package model.mybus;
 
 import java.util.List;
+import java.util.Map;
 
 import model.BoardDto;
 import model.MemberDto;
 
 public interface MyBusDao {
-	public String getNick( String email );
-	public List<BoardDto> getBoardList( String driver );
+	public List<BoardDto> getBoardList( Map<String, String> map );
 	public BoardDto getLastBoard( String driver );
+	public MemberDto getMember( String email );
 	public int appendBoard( BoardDto dto );
 	public int deleteBoard( int num );
 	public int modifyBoard( BoardDto dto );
+	public String getChannelid( String driver );
 }

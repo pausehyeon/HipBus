@@ -3,14 +3,11 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="MyBus">
-	<select id="getBoards" parameterType="String" resultType="model.BoardDto">
+<!-- 	<select id="getBoards" parameterType="String" resultType="model.BoardDto">
 		select * from HB_Board where driver=#{driver} order by reg_date desc
-	</select>
+	</select> -->
 	<select id="getLastBoard" parameterType="String" resultType="model.BoardDto">
 		select * from HB_Board where num=(select max(num) from HB_Board where driver=#{driver})
-	</select>
-	<select id="getNick" parameterType="String" resultType="String">
-		select nick from HB_member where email=#{email}
 	</select>
 	<insert id="appendBoard" parameterType="model.BoardDto">
 		insert into HB_Board values 
@@ -21,8 +18,21 @@
 		delete from HB_Board where num = #{num}
 	</delete>
 	<update id="modifyBoard" parameterType="model.BoardDto">
-		update HB_Board set content='${content}', mod_date=sysdate where num=${num}
+		update HB_Board set content=#{content}, mod_date=sysdate where num=#{num}
 	</update>
+	<select id="getMember" parameterType="String"  resultType="model.MemberDto">
+		select * from HB_member where email=#{email,jdbcType=VARCHAR}
+	</select>
+	<select id="getChannelid" parameterType="String"  resultType="String">
+		select channel_id from HB_Channel where driver=#{driver}
+	</select>
+	<select id="getBoards" parameterType="map" resultType="model.BoardDto">
+		select * from hb_board 
+		where driver=#{driver}
+		and num &lt;= (select max(num) from hb_board where driver=#{driver}) 
+		and num &gt; (select max(num) from hb_board where driver=#{driver})-#{boardCount}
+		order by num desc
+	</select>
 </mapper>
 
 
