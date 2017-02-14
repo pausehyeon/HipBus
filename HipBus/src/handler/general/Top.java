@@ -36,7 +36,7 @@ public class Top implements CommandHandler {
 				// 속한 크루가 하나도 없으면
 				request.setAttribute("hasMyCrew", 0);
 			}else{
-				imglocation = "view/img/HipBusLogo_colored_sq.png.png";	//크루 이미지 없는 경우 기본 이미지
+				imglocation = "view/img/HipBusLogo_colored_sq.png";	//크루 이미지 없는 경우 기본 이미지
 				for(int i=0; i<myCrews.size(); i++){
 					CrewDto myCrew = myCrews.get(i);
 					if( myCrew.getImglocation() == null ){
@@ -54,7 +54,7 @@ public class Top implements CommandHandler {
 			
 			MemberDto member = dao.getMember(memEmail);
 			if(member.getImglocation() == null){
-				imglocation = "view/img/HipBusLogo_colored_sq.png.png";	//프로필 이미지 없는 경우 기본 이미지
+				imglocation = "view/img/HipBusLogo_colored_sq.png";	//프로필 이미지 없는 경우 기본 이미지
 				member.setImglocation(imglocation);
 			}
 			request.setAttribute("member", member);
