@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import model.CrewDto;
 import model.MemberDto;
+import model.NewsDto;
 import model.SqlMapClient;
 import model.TopDriversDto;
 
@@ -30,5 +31,10 @@ public class MainDBBean implements MainDao{
 	@Override
 	public CrewDto getCrew(String crewid) {
 		return SqlMapClient.getSession().selectOne("Main.getCrew", crewid);
+	}
+	
+	@Override
+	public List<NewsDto> getNewsArticles() {
+		return SqlMapClient.getSession().selectList("Main.getNewsArticles");
 	}
 }

@@ -14,57 +14,82 @@ import handler.CommandHandler;
 import handler.HandlerException;
 import model.CrewDto;
 import model.MemberDto;
+import model.NewsDto;
 import model.TopDriversDto;
 import model.main.MainDao;
 
 @Controller
-public class Main implements CommandHandler{
-	
-	@Resource(name="mainDao")
+public class Main implements CommandHandler {
+
+	@Resource(name = "mainDao")
 	private MainDao dao;
-	
+
 	@RequestMapping("/main.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-		
+
 		String memEmail = (String) request.getSession().getAttribute("memEmail");
-		
-		if(memEmail != null){
+
+		// 개인 정보
+		if (memEmail != null) {
 			MemberDto member = dao.getMember(memEmail);
-			request.setAttribute("member", member );			
+			request.setAttribute("member", member);
 		}
-		
-		List<TopDriversDto> topdrivers = dao.getTopDrivers();
-		
-		for(int i=0; i<topdrivers.size(); i++){
-			TopDriversDto topdriver = topdrivers.get(i);
-			topdrivers.remove(i);
-			
-			//만약 topdriver.driver 값에 @가 포함되면 개인이고 포함되지 않으면 crew임.
-			boolean isNotCrew = topdriver.getDriver().contains("@");
-			
-			String imglocation = "view/img/HipBusLogo_colored_sq.png";
-			
-			if(isNotCrew){
-				MemberDto topMember = dao.getMember(topdriver.getDriver());
-				
-				if(topMember.getImglocation() != null) imglocation = "hipbusSave/"+topMember.getImglocation();
-				topdriver.setNick( topMember.getNick() );
-				topdriver.setUrl("myBus.do?driver="+topMember.getEmail());
-			}else{
-				CrewDto topCrew = dao.getCrew(topdriver.getDriver());
-				if(topCrew.getImglocation() != null) imglocation = "hipbusSave/"+topCrew.getImglocation();
-				topdriver.setNick( topCrew.getCrewname() );
-				topdriver.setUrl("crewBus.do?driver="+topCrew.getCrewid());
+
+		// News
+		List<NewsDto> newsArticles = dao.getNewsArticles();
+		if(newsArticles == null || newsArticles.size() == 0){
+			//만일 공지사항이 하나도 없으면
+			request.setAttribute("hasNewsArticle", 0);
+		}else{
+			request.setAttribute("hasNewsArticle", 1);
+			request.setAttribute("newsArticles", newsArticles);
+			for (int i = 0; i < newsArticles.size(); i++) {
+				NewsDto newsArticle = newsArticles.get(i);
+				if (newsArticle.getImglocation() != null) {
+					newsArticle.setImglocation("hipbusSave/" + newsArticle.getImglocation());
+				} else {
+					newsArticle.setImglocation("view/img/notice2.png"); // 기본
+					// 이미지
+				}
 			}
-			
-			topdriver.setImglocation(imglocation);
-			
-			topdrivers.add(topdriver);
 		}
+
 		
-		request.setAttribute("topdrivers", topdrivers);
-		
+		// Top Drivers
+		List<TopDriversDto> topdrivers = dao.getTopDrivers();
+		if(topdrivers == null || topdrivers.size() == 0){
+			request.setAttribute("hasTopDriver", 0);
+		}else{
+			request.setAttribute("hasTopDriver", 1);
+			for (int i = 0; i < topdrivers.size(); i++) {
+				TopDriversDto topdriver = topdrivers.get(i);
+				topdrivers.remove(i);
+				// 만약 topdriver.driver 값에 @가 포함되면 개인이고 포함되지 않으면 crew임.
+				boolean isNotCrew = topdriver.getDriver().contains("@");
+	
+				String imglocation = "view/img/HipBusLogo_colored_sq.png";
+	
+				if (isNotCrew) {
+					MemberDto topMember = dao.getMember(topdriver.getDriver());
+	
+					if (topMember.getImglocation() != null)
+						imglocation = "hipbusSave/" + topMember.getImglocation();
+					topdriver.setNick(topMember.getNick());
+					topdriver.setUrl("myBus.do?driver=" + topMember.getEmail());
+				} else {
+					CrewDto topCrew = dao.getCrew(topdriver.getDriver());
+					if (topCrew.getImglocation() != null)
+						imglocation = "hipbusSave/" + topCrew.getImglocation();
+					topdriver.setNick(topCrew.getCrewname());
+					topdriver.setUrl("crewBus.do?driver=" + topCrew.getCrewid());
+				}
+				topdriver.setImglocation(imglocation);
+				topdrivers.add(topdriver);
+			}
+			request.setAttribute("topdrivers", topdrivers);
+		}
+
 		return new ModelAndView("main");
 	}
 }

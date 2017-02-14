@@ -18,18 +18,32 @@
 	</select>
 
 	<select id="getTopDrivers" resultType="model.TopDriversDto">
-		select driver, driverRanking, passengersCount
-		from( 
-			select driver, row_number() over (order by passengersCount desc) as driverRanking, passengersCount
-			from (
-				select driver, max( r ) as passengersCount 
-				from (select driver, email, row_number() over (partition by driver order by driver) as r from hb_passengers) group by driver)
-			)
+		select driver,
+		driverRanking, passengersCount
+		from(
+		select driver, row_number() over (order by passengersCount desc) as
+		driverRanking, passengersCount
+		from (
+		select driver, max( r ) as passengersCount
+		from (select driver, email, row_number() over (partition by driver order
+		by driver) as r from hb_passengers) group by driver)
+		)
 		where driverRanking &lt; 4
 	</select>
 	<!-- ^ 순위 중복 없애기 위해 rank()대신 row_number()이용 -->
-	
+
 	<select id="getCrew" parameterType="String" resultType="model.CrewDto">
-		select * from hb_crew where crewid=#{crewid}
+		select *
+		from hb_crew where crewid=#{crewid}
+	</select>
+
+	<select id="getNewsArticles" resultType="model.NewsDto">
+		select
+		email,num,nick,subject,content,imgname,imglocation,readcount,reg_date,mod_date
+		from (
+		select
+		email,num,nick,subject,content,imgname,imglocation,readcount,reg_date,mod_date,row_number()
+		over(order by reg_date desc) r from hb_news
+		) where r&lt;4
 	</select>
 </mapper>

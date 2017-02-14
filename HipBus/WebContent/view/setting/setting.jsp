@@ -11,6 +11,7 @@
 <!-- jstl연결 -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!-- jQuery연결 -->
 <script type="text/javascript" src="/HipBus/scripts/jquery-3.1.1.js"></script>
 <!-- ckeditor연결 -->
