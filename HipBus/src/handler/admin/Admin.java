@@ -42,10 +42,30 @@ public class Admin implements CommandHandler {
 		request.setAttribute("numberOfCrew", numberOfCrew);
 		request.setAttribute("numberOfPost", numberOfPost);
 		
+		
+		int count = 0;			//전체글 회원수
+		
+		//검색
+		String keyword = request.getParameter("keyword");
+		String category = request.getParameter("category");
+		if(category != null){
+			Map<String,String> smap = new HashMap<String, String>();
+			smap.put("keyword", keyword);
+			smap.put("category", category);
+		
+			List<MemberDto> slist = adminDao.getSearch(smap);
+			request.setAttribute("slist", slist);
+			
+			int num = adminDao.searchNum(smap);
+				count = num;
+			}else{
+				count = memberGrade - adminGrade;
+			}
+		
 		//회원목록
 		int pageSize = 5;		//한번에 보이는 갯수
 		int pageBlock = 3;		//보여지는 페이지 수
-		//int count = 0;			//전체글 회원수
+	
 		
 		String pageNum = null;		//보고자 하는 페이지의 글
 		int pageNow = 0;			//현재 페이지 
@@ -63,16 +83,16 @@ public class Admin implements CommandHandler {
 			pageNum = "1";
 		}
 		pageNow = Integer.parseInt(pageNum);
-		pageCount = numberOfMember/pageSize + (numberOfMember % pageSize > 0 ? 1 : 0 );
+		pageCount = count/pageSize + (count % pageSize > 0 ? 1 : 0 );
 		if(pageNow > pageCount){ pageNow = pageCount;}
 		
 		pageStart = (pageNow - 1) * pageSize + 1;
 		pageEnd = pageStart + pageSize - 1;
-		if(pageEnd > numberOfMember){ pageEnd = numberOfMember; }
+		if(pageEnd > count){ pageEnd = count; }
 		
-		number = numberOfMember - (pageNow - 1) * pageSize;
+		number = count - (pageNow - 1) * pageSize;
 		
-		if(numberOfMember > 0){
+		if(count > 0){
 			startPage = (pageNow / pageBlock) * pageBlock + 1;
 			if(pageNow % pageBlock == 0){
 				startPage -= pageBlock;
@@ -85,7 +105,7 @@ public class Admin implements CommandHandler {
 		
 		request.setAttribute("pageNum", pageNum);
 		
-		if(numberOfMember != 0){
+		if(count != 0){
 			Map<String, Integer> map = new HashMap<String, Integer>();
 			map.put("pageStart", pageStart);
 			map.put("pageEnd", pageEnd);
@@ -102,7 +122,11 @@ public class Admin implements CommandHandler {
 			request.setAttribute("startPage", startPage);
 			request.setAttribute("endPage", endPage);
 			request.setAttribute("pageCount", pageCount);
+			
+			
 		}
+		
+		
 		
 		
 		
