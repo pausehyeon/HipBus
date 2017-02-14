@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
 
 import model.CrewDto;
+import model.MemberDto;
 import model.SqlMapClient;
 
 @Component("generalDao")
@@ -34,5 +35,10 @@ public class GeneralDBBean implements GeneralDao {
 	@Override
 	public List<CrewDto> getMyCrews(String email) {
 		return session.selectList("General.getMyCrews", email);
+	}
+	
+	@Override
+	public MemberDto getMember(String email) {
+		return SqlMapClient.getSession().selectOne( "General.getMember", email );
 	}
 }

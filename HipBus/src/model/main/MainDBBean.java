@@ -19,11 +19,6 @@ public class MainDBBean implements MainDao{
 	}
 	
 	@Override
-	public MemberDto getMember(String email) {
-		return SqlMapClient.getSession().selectOne( "Main.getMember", email );
-	}
-	
-	@Override
 	public List<TopDriversDto> getTopDrivers() {
 		return SqlMapClient.getSession().selectList("Main.getTopDrivers");
 	}

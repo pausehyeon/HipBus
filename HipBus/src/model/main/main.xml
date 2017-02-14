@@ -12,11 +12,6 @@
 		)
 	</insert>
 
-	<select id="getMember" parameterType="String" resultType="model.MemberDto">
-		select
-		* from HB_Member where email=#{email}
-	</select>
-
 	<select id="getTopDrivers" resultType="model.TopDriversDto">
 		select driver,
 		driverRanking, passengersCount

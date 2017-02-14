@@ -24,6 +24,7 @@ public class Main implements CommandHandler {
 
 	@Resource(name = "mainDao")
 	private MainDao dao;
+
 	@Resource(name = "generalDao")
 	private GeneralDao generalDao;
 
@@ -46,7 +47,7 @@ public class Main implements CommandHandler {
 			}
 			
 			// 개인 정보
-			MemberDto member = dao.getMember(memEmail);
+			MemberDto member = generalDao.getMember(memEmail);
 			request.setAttribute("member", member);
 		}
 
@@ -85,7 +86,7 @@ public class Main implements CommandHandler {
 				String imglocation = "view/img/HipBusLogo_colored_sq.png";
 	
 				if (isNotCrew) {
-					MemberDto topMember = dao.getMember(topdriver.getDriver());
+					MemberDto topMember = generalDao.getMember(topdriver.getDriver());
 	
 					if (topMember.getImglocation() != null)
 						imglocation = "hipbusSave/" + topMember.getImglocation();
