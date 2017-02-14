@@ -116,7 +116,7 @@
 				<!-- 가입한 크루가 있으면 -->
 				<c:forEach var="myCrew" items="${myCrews}" begin="0" end="${fn:length(myCrews)}">
 					<li class="w3-hide-small w3-right">
-						<a href="crewBus.do?driver=${myCrew.crewid}" class="w3-padding-large w3-hover-white" title="${str_myBus}">
+						<a href="crewBus.do?driver=${myCrew.crewid}" class="w3-padding-large w3-hover-white" title="${str_crewBus}">
 							<img src="${project}/${myCrew.imglocation}" class="w3-circle" style="height: 25px; width: 25px" alt="My Bus">
 						</a>
 					</li>
