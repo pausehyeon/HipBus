@@ -105,6 +105,7 @@ public class Admin implements CommandHandler {
 		
 		request.setAttribute("pageNum", pageNum);
 		
+		//멤버목록전체와 조인된 크루아이디 불러와 list로 담음
 		if(count != 0){
 			Map<String, Integer> map = new HashMap<String, Integer>();
 			map.put("pageStart", pageStart);
@@ -123,9 +124,7 @@ public class Admin implements CommandHandler {
 			request.setAttribute("endPage", endPage);
 			request.setAttribute("pageCount", pageCount);
 			
-			
 		}
-		
 		
 		
 		
