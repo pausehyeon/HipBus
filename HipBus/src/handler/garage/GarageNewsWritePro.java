@@ -20,6 +20,7 @@ import model.MemberDto;
 import model.NewsDto;
 import model.garage.GarageDao;
 import model.general.FileUpload;
+import model.general.ImageResize;
 
 @Controller
 public class GarageNewsWritePro implements CommandHandler{
@@ -50,7 +51,7 @@ public class GarageNewsWritePro implements CommandHandler{
 			
 			String imgname = multi.getOriginalFileName("upload"); 
 			String imglocation = multi.getFilesystemName("upload");
-			//^ imglocation resize한 다음에 db에 저장해야.
+			imglocation = new ImageResize().resize(request, imglocation, 0.6, 1060);
 			
 			NewsDto article = new NewsDto();
 			article.setEmail(dto.getEmail());
