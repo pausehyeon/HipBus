@@ -15,4 +15,11 @@ public interface AdminDao {
 	//멤버 목록 부르기
 	public List<MemberDto> getMemberLists(Map<String, Integer> map);
 	
+	//검색
+	public List<MemberDto> getSearch(Map<String, String> map);
+	public int searchNum(Map<String,String> map);
+	
+	//삭제
+	public int DeleteMember(String email);
+	
 }

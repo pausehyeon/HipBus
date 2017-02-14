@@ -26,4 +26,19 @@
 		(select * from hb_member  order by mem_level asc) 
 		where mem_level=1 or mem_level=2 order by email asc) where r &gt;=${pageStart} and r &lt;=${pageEnd}
 	</select>
+	
+	<!-- 검색 -->
+	<select id="getSearch" resultType="model.MemberDto" parameterType="Map">
+		select * from hb_member where #{category} like #{keyword}%
+	</select>
+	
+	<select id="searchNum" resultType="int" parameterType="Map">
+		select count(*) from hb_member where #{category} like #{keyword}%
+	</select>
+	
+	<!-- 삭제 -->
+	<delete id="deleteMember" parameterType="String">
+		delete from hb_member where email=#{email}
+	</delete>
+	
 </mapper>

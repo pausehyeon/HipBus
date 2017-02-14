@@ -35,4 +35,19 @@ public class AdminDBBean implements AdminDao {
 		return SqlMapClient.getSession().selectList("Admin.getMemberLists",map);
 	}//회원목록 부르는 바구니
 	
+	@Override
+	public List<MemberDto> getSearch(Map<String, String> smap) {
+		return SqlMapClient.getSession().selectList("Admin.getSearch", smap);
+	}//검색
+	public int searchNum(Map<String, String> nmap) {
+		return SqlMapClient.getSession().selectOne("Admin.searchNum", nmap);
+	}//페이지 번호
+		
+	//회원삭제
+	@Override
+	public int DeleteMember(String email) {
+		return SqlMapClient.getSession().delete("Admin.deleteMember",email);
+	}
+	
+	
 }
