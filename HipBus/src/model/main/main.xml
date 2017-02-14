@@ -24,6 +24,7 @@
 		by driver) as r from hb_passengers) group by driver)
 		)
 		where driverRanking &lt; 4
+		order by driverRanking asc
 	</select>
 	<!-- ^ 순위 중복 없애기 위해 rank()대신 row_number()이용 -->
 
