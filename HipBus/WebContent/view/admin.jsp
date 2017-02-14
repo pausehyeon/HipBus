@@ -98,7 +98,7 @@
 						<table border="1" class="w3-table w3-striped w3-white">
 							<tr class="w3-black">
 								<th><a href="#" style="text-decoration: none">${str_memGrade}</a></th>
-								<th><a href="#" style="text-decoration: none">&nbsp;&nbsp;${str_memId}</a></th>
+								<th><a href="#" style="text-decoration: none">&nbsp;&nbsp;${str_memEmail}</a></th>
 								<th width="80px"><a href="#" style="text-decoration: none">&nbsp;&nbsp;${str_memNick}</a></th>
 								<th style="text-align: certer"><a href="#" style="text-decoration: none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${str_memAuthority}</a></th>
 							</tr>
@@ -110,29 +110,46 @@
 							</tr>
 						</c:if>
 						<c:if test="${numberOfMember != 0}">
-							<c:forEach var="getMember" items="${list}">
-								<tr>
-									<td>${getMember.mem_level}&nbsp;${str_memGrade}</td>
-									<td>${getMember.email}</td>
-									<!-- 불러오는 아이디 -->
-									<td>${getMember.nick}</td>
-									<!-- 불러온 닉네임 -->
-									<td style="text-align: left;"><a class="w3-hover-black w3-padding" style="text-decoration: none" href="#">${str_memGo}&nbsp;<i class="fa fa-bus"></i>
-									</a> <a class="w3-hover-black w3-padding" style="text-decoration: none" href="#">${str_memGo}&nbsp; <i class="fa fa-fort-awesome"></i>
-									</a> <a class="w3-hover-black w3-padding" style="text-decoration: none" href="#">${str_memModify}</a> 
-									<a class="w3-hover-black w3-padding" style="text-decoration: none" href="#">${str_memLeave}</a>
-									</td>
-								</tr>
-							</c:forEach>
+							<c:if test="${slist == null}">
+								<c:forEach var="getMember" items="${list}">
+									<tr>
+										<td>${getMember.mem_level}&nbsp;${str_memGrade}</td>
+										<td>${getMember.email}</td>
+										<!-- 불러오는 아이디 -->
+										<td>${getMember.nick}</td>
+										<!-- 불러온 닉네임 -->
+										<td style="text-align: left;"><a class="w3-hover-black w3-padding" style="text-decoration: none" href="myBus.do?email=${getMember.email}">${str_memGo}&nbsp;<i class="fa fa-bus"></i></a> 
+										<a class="w3-hover-black w3-padding" style="text-decoration: none" href="crewBus.do?crewid=${crewid}">${str_memGo}&nbsp; <i class="fa fa-fort-awesome"></i></a> 
+										<a class="w3-hover-black w3-padding" style="text-decoration: none" href="#">${str_memModify}</a>
+										<a class="w3-hover-black w3-padding" style="text-decoration: none" href="adminMemberEjectPro.do?email=${getMember.email}">${str_memLeave}</a>
+										</td>
+									</tr>
+								</c:forEach>
+							</c:if>
+							<c:if test="${slist != null}">
+								<c:forEach var="getSearch" items="${slist}">
+									<tr>
+										<td>${getSearch.mem_level}&nbsp;${str_memGrade}</td>
+										<td>${getSearch.email}</td>
+										<!-- 불러오는 아이디 -->
+										<td>${getSearch.nick}</td>
+										<!-- 불러온 닉네임 -->
+										<td style="text-align: left;"><a class="w3-hover-black w3-padding" style="text-decoration: none" href="#">${str_memGo}&nbsp;<i class="fa fa-bus"></i></a> 
+										<a class="w3-hover-black w3-padding" style="text-decoration: none" href="#">${str_memGo}&nbsp; <i class="fa fa-fort-awesome"></i></a> 
+										<a class="w3-hover-black w3-padding" style="text-decoration: none" href="#">${str_memModify}</a>
+										<a class="w3-hover-black w3-padding" style="text-decoration: none" href="#">${str_memLeave}</a>
+										</td>
+									</tr>
+								</c:forEach>
+							</c:if>
 						</c:if>
-							
 						</table>
 					</div>
-					<c:if test="${pageBlock != null}">
+				<%-- 	<c:if test="${pageBlock != null}">
 						<script type="text/javascript">
 							alert("pageCount");
 						</script>
-					</c:if>
+					</c:if> --%>
 					<div class="w3-row">
 						<!-- Pagination -->
 						<div class="w3-center w3-padding-32">
@@ -157,15 +174,15 @@
 							</c:if>
 							</ul>
 						</div>
-						<form class="w3-container" action="form.asp">
-							<select class="w3-select w3-border w3-quarter" name="option">
-								<option value=" " disabled>${str_memSearchOption}</option>
-								<option value="id">${str_memId}</option>
-								<option value="nickname">${str_memNick }</option>
-								<option value="nickname">${str_memGrade}</option>
+						<form class="w3-container" action="admin.do">
+							<select class="w3-select w3-border w3-quarter" name="category">
+								<option value="" disabled>${str_memSearchOption}</option>
+								<option value="email">${str_memEmail}</option>
+								<option value="nick">${str_memNick }</option>
+								<option value="mem_level">${str_memGrade}</option>
 							</select>
-							<input class="w3-input w3-border w3-half" name="first" type="text">
-							<button class="w3-btn w3-black w3-large">${str_memSearchBtn}</button>
+							<input class="w3-input w3-border w3-half" name="keyword" type="text">
+							<button class="w3-btn w3-black w3-large" onclick="location=admin.do?category=catagory&keyword=keyword">${str_memSearchBtn}</button>
 						</form>
 					</div>
 
