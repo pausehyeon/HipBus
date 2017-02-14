@@ -21,10 +21,16 @@
   	
   	<!-- 멤버목록부르기 -->
 	<select id="getMemberLists" resultType="model.MemberDto" parameterType="Map">
-		select email, nick, passwd, mem_level, r from 
-		(select email, nick, passwd, mem_level, imgname, imglocation, rownum r from
-		(select * from hb_member  order by mem_level asc) 
-		where mem_level=1 or mem_level=2 order by email asc) where r &gt;=${pageStart} and r &lt;=${pageEnd}
+		select email, nick, mem_level, crewid, r from 
+		(select email, nick, mem_level, crewid, rownum r from
+		(select m.email, nick,mem_level,crewid from hb_member m, hb_crewmember c where m.email=c.email(+) order by mem_level asc) 
+		where mem_level=1 or mem_level=2 order by email asc) where r &gt;= #{pageStart} and r &lt;= #{pageEnd}
+
+	</select>
+	
+	<!-- 크루아이디 가져오기 -->
+	<select id="getCrewId" resultType="String" parameterType="String">
+		select crewid from hb_crewmember where email=#{email}
 	</select>
 	
 	<!-- 검색 -->
@@ -40,5 +46,7 @@
 	<delete id="deleteMember" parameterType="String">
 		delete from hb_member where email=#{email}
 	</delete>
+	
+	
 	
 </mapper>
