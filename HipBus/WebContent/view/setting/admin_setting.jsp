@@ -20,7 +20,7 @@
 
 <c:set var="str_memberModify" value="회원정보 관리"/>
 <c:set var="str_memGrade" value="등급"/>
-<c:set var="str_memId" value="아이디"/>
+<c:set var="str_memEmail" value="이메일(=id)"/>
 <c:set var="str_memNick" value="닉네임"/>
 <c:set var="str_memAuthority" value="관리자 권한"/>
 <c:set var="str_listMsg" value="불러올 회원목록이 없습니다."/>
