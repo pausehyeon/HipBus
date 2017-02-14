@@ -36,7 +36,7 @@
 <c:set var="str_mainSend" value="Send"/>
 <c:set var="str_welcomeMain" value="님 어서오세요!"/>
 <c:set var="str_passengerCount" value="명의 승객이 탑승중입니다."/>
-<c:set var="str_noTopDriver" value="아직 활동 회원이 없습니다. &lt;br&gt; 더 많은 활동 부탁드립니다!"></c:set>
+<c:set var="str_noTopDriver" value="아직 활동 회원이 없습니다. <br> 더 많은 활동 부탁드립니다!"></c:set>
 <c:set var="str_noNewsArticles" value="등록된 공지사항이 없습니다."/>
 
 <!-- mainForgot.jsp -->

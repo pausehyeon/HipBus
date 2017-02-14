@@ -44,10 +44,6 @@
 				<input name="urlToGoBack" type="hidden">
 				<!-- ^ 로그아웃 후 돌아올 현재 페이지 url을 기억.-->
 				<script type="text/javascript">
-					
-					
-					
-					
 						//<!--
 						$(document).ready(
 							function() {
@@ -55,10 +51,6 @@
 								signOutForm.urlToGoBack.value = location.href;
 							}
 						);
-						
-				
-				
-				
 				//-->
 				</script>
 			</form>
@@ -165,7 +157,7 @@
 			<span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">${str_top3}</span>
 		</div>
 		<c:if test="${hasTopDriver eq 0}">
-			<p>${str_noTopDriver}</p>
+			<p class="w3-center">${str_noTopDriver}</p>
 		</c:if>
 		<c:if test="${hasTopDriver ne 0}">
 			<c:forEach var="topdriver" begin="0" end="${fn:length(topdrivers)}" step="1" varStatus="status" items="${topdrivers}">
