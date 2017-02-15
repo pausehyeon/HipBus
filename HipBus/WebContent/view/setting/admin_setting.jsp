@@ -25,7 +25,7 @@
 <c:set var="str_memAuthority" value="관리자 권한"/>
 <c:set var="str_listMsg" value="불러올 회원목록이 없습니다."/>
 <c:set var="str_memGo" value="Go to"/>
-<c:set var="str_memModify" value="회원정보수정"/>
+<c:set var="str_memModify" value="회원등급수정"/>
 <c:set var="str_memLeave" value="회원탈퇴"/>
 <c:set var="str_memSearchOption" value="검색기준 선택"/>
 <c:set var="str_memSearchBtn" value="검색"/>
