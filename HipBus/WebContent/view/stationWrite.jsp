@@ -4,6 +4,7 @@
 <%@include file="/view/setting/setting.jsp"%>
 <%@include file="/view/setting/station_setting.jsp"%>
 <script src="${project}/scripts/ckeditor/insertCkeditor.js"></script>
+<script type="text/javascript" src="${project}/scripts/stationScript.js"></script>
 <title>${str_title}</title>
 <body>
 
@@ -19,7 +20,8 @@
 		</div>
 		<div class="w3-row">
 			<div class="w3-container">
-				<form name="writeform" method="post" action="stationWritePro.do?email=${sessionScope.memEmail}">
+				<form name="writeform" method="post" action="stationWritePro.do?email=${sessionScope.memEmail}"
+				>
 					<div class="w3-card-4">
 						<header class="w3-container w3-padding-jumbo w3-theme-l3">
 							<select class="w3-left" name="category" style="margin: 2px">
@@ -36,17 +38,24 @@
 						</header>
 						
 						<div class="w3-row">
-							<textarea name="content" id="editor" class="w3-input" required></textarea>
-							<script type="text/javascript" src="${project}/scripts/ckeditor/insertCkeditor.js"></script>
+							<textarea name="content" id="editor" class="w3-input">	
+							</textarea>
+								<script type="text/javascript" src="${project}/scripts/ckeditor/insertCkeditor.js"></script>
+								
 							<!-- ^ ckeditor 연결 모듈 -->
 						</div>
 						<footer class="w3-container w3-padding-jumbo w3-theme-l3 w3-center">
 							<input type="submit" class="w3-btn w3-padding w3-theme-d1 w3-margin-left" value="${btn_complete}">
-							<a href="#" class="w3-btn w3-padding w3-theme-d1 w3-margin-left"><i class="fa fa-mail-reply w3-margin-right"></i>${btn_cancel}</a>
+							<a href="station.do" class="w3-btn w3-padding w3-theme-d1 w3-margin-left"
+							onclick="return backAlert()">
+							<i class="fa fa-mail-reply w3-margin-right"></i>${btn_cancel}</a>
+							
+							
 						</footer>
 					</div>
 				</form>
 			</div>
+			
 		</div>
 
 		<!-- END MAIN -->

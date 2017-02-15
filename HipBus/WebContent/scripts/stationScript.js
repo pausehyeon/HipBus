@@ -3,6 +3,10 @@
  */
 var writeerror = "글작성에 실패했습니다. \n잠시 후 다시 시도하세요.";
 var modifyerror = "글수정에 실패했습니다. \n잠시 후 다시 시도하세요.";
+var deleteok = "게시글을 삭제하시겠습니까?";
+var deleteerror = "글삭제 실패했습니다.\n잠시 후 다시 시도하세요.";
+var contentnull = "글내용이 없습니다.\n내용을 입력 하세요.";
+var back = "목록으로 돌아가시겠습니까?\n작성된 내용은 삭제됩니다.";
 //Accordion
 function myFunction(id) {
     var x = document.getElementById(id);
@@ -14,4 +18,16 @@ function myFunction(id) {
         x.previousElementSibling.className = 
         x.previousElementSibling.className.replace(" w3-theme-d1", "");
     }
+}
+
+function alertgo() {
+	var retVal = confirm( deleteok );
+	   if( retVal == true ){
+		   location.href="stationDeletePro.do?num="+readform.num.value;
+	   }else{
+		   location.href="station.do";
+	   }
+}
+function backAlert() {
+	return confirm( back );
 }

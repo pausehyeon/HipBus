@@ -6,6 +6,7 @@
 <%@include file="/view/setting/station_setting.jsp"%>
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script type="text/javascript" src="/HipBus/scripts/stationScript.js"></script>
 <title>${str_title}</title>
 <body>
 
@@ -40,6 +41,7 @@
 		<div class="w3-row">
 			<div class="w3-container">
 				<div class="w3-card-4">
+				<form name="readform">
 					<header class="w3-container w3-padding-jumbo w3-theme-l3">
 						<h3>${article.subject}</h3>
 						<p class="w3-right">작성자:${article.nick} | 작성일:
@@ -56,7 +58,8 @@ ${article.content}
 					</div>
 					
 					<footer class="w3-container w3-padding-jumbo w3-theme-l3 w3-center">
-						<a href="#" class="w3-btn w3-padding w3-theme-d1 w3-margin-left"><i
+						<a href="#" class="w3-btn w3-padding w3-theme-d1 w3-margin-left"
+							onclick=""><i
 							class="fa fa-thumbs-up w3-margin-right"></i>${btn_recommend}</a>
 							<a href="station.do?pageNum=${pageNum}"
 							class="w3-btn w3-padding w3-theme-d1 w3-margin-left"><i
@@ -64,9 +67,12 @@ ${article.content}
 						<c:if test="${sessionScope.memEmail == article.email}">
 						<a href="stationModify.do?num=${article.num}" class="w3-btn w3-padding w3-theme-d1 w3-margin-left">
 						<i class="fa fa-cog w3-margin-right"></i>${str_modify}</a>
-						<a href="stationDelete.do" class="w3-btn w3-padding w3-theme-d1 w3-margin-left">
+						<input type="hidden" value="${article.num}" name="num">
+						<a  class="w3-btn w3-padding w3-theme-d1 w3-margin-left"
+						onclick="alertgo()">
 						<i class="glyphicon glyphicon-remove w3-margin-right"></i>${str_delete}</a>
 							</c:if>
+					
 					</footer>
 					<!--  댓글이 있는 경우  -->
 				<div class="w3-container w3-row">
@@ -81,6 +87,7 @@ ${article.content}
 				<div class="w3-container">
 				<pre class="w3-input w3-border w3-left"> 댓글이 있네요</pre>
 				</div>
+				</form>
 				</div>
    				</div>
 				<br><br>
@@ -98,6 +105,7 @@ ${article.content}
 				</div>
 				</div>
 			</div>
+			
 		</div>	
 		
 	

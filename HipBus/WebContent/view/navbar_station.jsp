@@ -9,12 +9,12 @@
   </a>
   <h4><b>${str_sideName}</b></h4>
 	  <a href="station.do" class="w3-hover-opacity">${str_allView}</a>  
-	  <a href="#" class="w3-hover-opacity">${str_beat}</a>
-	  <a href="#" class="w3-hover-opacity">${str_rab}</a>
-	  <a href="#" class="w3-hover-opacity">${str_mixTape}</a>
-	  <a href="#" class="w3-hover-opacity">${str_vocal}</a>
-	  <a href="#" class="w3-hover-opacity">${str_gasa}</a>
-	  <a href="#" class="w3-hover-opacity">${str_freeBoard}</a>  
+	  <a href="station.do?category=${category1}&type=2" class="w3-hover-opacity">${str_beat}</a>
+	  <a href="station.do?category=${category2}&type=3" class="w3-hover-opacity">${str_rab}</a>
+	  <a href="station.do?category=${category3}&type=4" class="w3-hover-opacity">${str_mixTape}</a>
+	  <a href="station.do?category=${category4}&type=5" class="w3-hover-opacity">${str_vocal}</a>
+	  <a href="station.do?category=${category5}&type=6" class="w3-hover-opacity">${str_gasa}</a>
+	  <a href="station.do?category=${category6}&type=7" class="w3-hover-opacity">${str_freeBoard}</a>  
 </nav>
 
 <!-- Side Navbar on small screens (Hidden on medium and large screens) -->
