@@ -47,7 +47,6 @@ public class StationWritePro implements CommandHandler {
 		dto.setSubject(request.getParameter("subject"));
 		dto.setContent(request.getParameter("content"));
 		dto.setReg_date(new Timestamp( System.currentTimeMillis() ));
-		dto.setMod_date(new Timestamp( System.currentTimeMillis() ));
 		
 		int result = stationDao.insertArticle( dto );
 		request.setAttribute("article", article);

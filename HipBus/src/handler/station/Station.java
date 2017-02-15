@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.aop.IntroductionAdvisor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -27,7 +28,7 @@ public class Station implements CommandHandler {
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		
-		int pageSize = 2;			// 한페이지에 출력할 글 개수
+		int pageSize = 10;			// 한페이지에 출력할 글 개수
 		int pageBlock = 5;			// 한 번에 보여줄 페이지 개수
 		int count = 0;
 		
@@ -42,6 +43,32 @@ public class Station implements CommandHandler {
 		int endPage = 0;			// 보여줄 페이지의 끝 번호
 		
 		count = stationDao.getCount();
+		
+		int type = 1; 
+		if(request.getParameter("type") != null){
+			type = Integer.parseInt(request.getParameter("type"));
+		}
+		// 카테고리
+		if(type == 1){
+			int category1 = stationDao.category(1);
+			request.setAttribute("category1", category1);
+		}else if(type == 2){
+			int category1 = stationDao.category(1);
+			request.setAttribute("category1", category1);
+		}else if(type == 3){
+			int category3 = stationDao.category(3);
+			request.setAttribute("category3", category3);
+		}else if(type == 4){
+			int category4 = stationDao.category(4);
+			request.setAttribute("category4", category4);
+		}else if(type == 5){
+			int category5 = stationDao.category(5);
+			request.setAttribute("category5", category5);
+		}else if(type == 6){
+			int category6 = stationDao.category(6);
+			request.setAttribute("category6", category6);
+		}
+		request.setAttribute("type", type);
 		
 		pageNum = request.getParameter( "pageNum" );
 		if( pageNum == null || pageNum.equals( "" ) ) {
@@ -68,10 +95,19 @@ public class Station implements CommandHandler {
 		
 		request.setAttribute("count", count);
 		request.setAttribute("pagenum", pageNum);
+		/*
+		request.setAttribute("category1", category1);
+		request.setAttribute("category2", category2);
+		request.setAttribute("category3", category3);
+		request.setAttribute("category4", category4);
+		request.setAttribute("category5", category5);
+		request.setAttribute("category6", category6);
+		*/
 		
 		if( count != 0 ) {
 			// 글이 있는 경우
-			Map<String, Integer> map 
+			
+				Map<String, Integer> map 
 				= new HashMap<String, Integer>();
 			map.put( "start", start );
 			map.put( "end", end );
@@ -85,8 +121,8 @@ public class Station implements CommandHandler {
 			request.setAttribute( "endPage", endPage );
 			request.setAttribute( "pageCount", pageCount );
 			request.setAttribute("pageNum", pageNum);
+			
 		}
-		
 		return new ModelAndView("station");
 	}
 

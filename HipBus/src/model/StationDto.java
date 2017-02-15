@@ -12,8 +12,6 @@ public class StationDto {
 	private int likenum;		// 추천수
 	private int readcount;		// 조회수
 	private Timestamp reg_date;	// 작성일
-	private Timestamp mod_date;	// 수정일
-	// 파일들은 아직안함
 
 	public String getNick() {
 		return nick;
@@ -27,12 +25,7 @@ public class StationDto {
 	public void setNum(int num) {
 		this.num = num;
 	}
-	public Timestamp getReg_date() {
-		return reg_date;
-	}
-	public void setReg_date(Timestamp reg_date) {
-		this.reg_date = reg_date;
-	}
+	
 	public int getCategory() {
 		return category;
 	}
@@ -69,12 +62,13 @@ public class StationDto {
 	public void setReadcount(int readcount) {
 		this.readcount = readcount;
 	}
-	public Timestamp getMod_date() {
-		return mod_date;
+	public Timestamp getReg_date() {
+		return reg_date;
 	}
-	public void setMod_date(Timestamp mod_date) {
-		this.mod_date = mod_date;
+	public void setReg_date(Timestamp reg_date) {
+		this.reg_date = reg_date;
 	}
+	
 	
 	
 	
