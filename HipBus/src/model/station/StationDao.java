@@ -14,5 +14,6 @@ public interface StationDao {
 	public int insertArticle(StationDto dto);
 	public MemberDto getMember(String email);
 	public int updateArticle(StationDto dto);
-	
+	public int deleteArticle( int num );
+	public int category(int category);
 }

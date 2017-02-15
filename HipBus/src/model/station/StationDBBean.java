@@ -43,4 +43,14 @@ public class StationDBBean implements StationDao {
 	public int updateArticle( StationDto dto ) {
 		return SqlMapClient.getSession().update( "Station.updateArticle", dto );				
 	}
+
+	public int deleteArticle( int num ) {
+		return SqlMapClient.getSession().delete( "Station.deleteArticle", num );
+	}
+	@Override
+	public int category( int category) {
+		return  SqlMapClient.getSession().selectOne("Station.category", category);
+	}
+	
+	
 }
