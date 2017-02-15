@@ -19,14 +19,19 @@
 			<hr>
 			
 			<div class="w3-row">
-			<a href="garageWantedSearch.do"><i class="w3-large fa fa-search"></i></a>
+			<a href="garageWantedSearch.do"><i class="w3-large fa fa-search" ></i></a>
 			<input type="search" placeholder="${str_Search}" style="width:500px; height:30px;">
 			</div>
 			
+			<c:if test="${dto.mem_level == 3 }">
 			<!-- 이 버튼은 관리자에게만 보임 -->
 			<a href="#"
 				class="w3-btn w3-padding w3-theme-d1 w3-margin-left w3-right"><i
-				class="fa fa-pencil-square-o w3-margin-right"></i>관리하기</a>
+				class="fa fa-pencil-square-o w3-margin-right" onclick=""></i>관리하기</a>
+			</c:if>
+			<c:if test="${dto.mem_level !=3 }">
+			<div class="w3-padding-tiny w3-margin"></div>
+			</c:if>
 		</div>
 		<div class="w3-row">
 			<div class="w3-twothird">
