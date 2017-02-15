@@ -135,7 +135,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2017-01-05 15:37:05</creation_date>
-			<updated_date>2017-02-15 09:38:11</updated_date>
+			<updated_date>2017-02-15 12:16:20</updated_date>
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>
@@ -4294,7 +4294,7 @@
 	</test_data_list>
 	<sequence_set>
 		<sequence>
-			<name>boardseq</name>
+			<name>HB_boardseq</name>
 			<schema></schema>
 			<increment>1</increment>
 			<min_value>1</min_value>
@@ -4309,7 +4309,7 @@
 			<decimal_size>0</decimal_size>
 		</sequence>
 		<sequence>
-			<name>crewidseq</name>
+			<name>HB_crewidseq</name>
 			<schema></schema>
 			<increment>1</increment>
 			<min_value>1</min_value>
@@ -4324,7 +4324,7 @@
 			<decimal_size>0</decimal_size>
 		</sequence>
 		<sequence>
-			<name>faqseq</name>
+			<name>HB_faqseq</name>
 			<schema></schema>
 			<increment>1</increment>
 			<min_value>1</min_value>
@@ -4339,7 +4339,7 @@
 			<decimal_size>0</decimal_size>
 		</sequence>
 		<sequence>
-			<name>newsseq</name>
+			<name>HB_newsseq</name>
 			<schema></schema>
 			<increment>1</increment>
 			<min_value>1</min_value>
@@ -4354,7 +4354,7 @@
 			<decimal_size>0</decimal_size>
 		</sequence>
 		<sequence>
-			<name>replyseq</name>
+			<name>HB_replyseq</name>
 			<schema></schema>
 			<increment>1</increment>
 			<min_value>1</min_value>
@@ -4369,7 +4369,7 @@
 			<decimal_size>0</decimal_size>
 		</sequence>
 		<sequence>
-			<name>stationseq</name>
+			<name>HB_stationseq</name>
 			<schema></schema>
 			<increment>1</increment>
 			<min_value>1</min_value>
@@ -4384,7 +4384,7 @@
 			<decimal_size>0</decimal_size>
 		</sequence>
 		<sequence>
-			<name>upcomingseq</name>
+			<name>HB_upcomingseq</name>
 			<schema></schema>
 			<increment>1</increment>
 			<min_value>1</min_value>
@@ -4399,7 +4399,7 @@
 			<decimal_size>0</decimal_size>
 		</sequence>
 		<sequence>
-			<name>wantedseq</name>
+			<name>HB_wantedseq</name>
 			<schema></schema>
 			<increment>1</increment>
 			<min_value>1</min_value>
