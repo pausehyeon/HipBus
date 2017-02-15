@@ -15,4 +15,5 @@ public interface MainDao {
 	public CrewDto getCrew(String crewid);
 	public List<NewsDto> getNewsArticles();
 	public List<UpcomingDto> getUpcomings();
+
 }

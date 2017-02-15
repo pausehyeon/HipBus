@@ -38,4 +38,5 @@ public class MainDBBean implements MainDao{
 	public List<UpcomingDto> getUpcomings() {
 		return SqlMapClient.getSession().selectList("Main.getUpcomings");
 	}
+	
 }

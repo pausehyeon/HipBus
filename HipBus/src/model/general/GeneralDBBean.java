@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
 
+import model.ChannelDto;
 import model.CrewDto;
 import model.MemberDto;
 import model.SqlMapClient;
@@ -40,5 +41,10 @@ public class GeneralDBBean implements GeneralDao {
 	@Override
 	public MemberDto getMember(String email) {
 		return SqlMapClient.getSession().selectOne( "General.getMember", email );
+	}
+	
+	@Override
+	public List<ChannelDto> getChannels() {
+		return session.selectList("General.getChannels");
 	}
 }

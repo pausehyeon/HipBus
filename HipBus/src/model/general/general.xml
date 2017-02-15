@@ -27,4 +27,8 @@
 		and m.email=#{email}
 	</select>
 	<!-- ^ email을 주면 해당 email이 속해있는 크루 리스트를 돌려줌 -->
+	
+	<select id="getChannels" resultType="model.ChannelDto">
+		select * from HB_Channel
+	</select>
 </mapper>

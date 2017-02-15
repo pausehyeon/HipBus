@@ -1,7 +1,5 @@
 package handler.main;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -14,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import handler.CommandHandler;
 import handler.HandlerException;
+import model.ChannelDto;
 import model.CrewDto;
 import model.MemberDto;
 import model.NewsDto;
@@ -74,6 +73,21 @@ public class Main implements CommandHandler {
 				}
 			}
 		}
+		
+		//OnAir
+		//채널리스트 넘겨주기
+		List<ChannelDto> channels = generalDao.getChannels();
+		
+		String channelsJson = "[";
+		for(int i=0; i<channels.size(); i++){
+			ChannelDto channel = channels.get(i);
+			channelsJson += "{ driver : '"+channel.getDriver()+"', channel_id : '"+channel.getChannel_id()+"' }";
+			if(i<channels.size()-1){
+				channelsJson += ", ";
+			}
+		}
+		channelsJson += "]";
+		request.setAttribute("channelsJson", channelsJson);
 
 		// Top Drivers
 		List<TopDriversDto> topdrivers = dao.getTopDrivers();
@@ -121,8 +135,6 @@ public class Main implements CommandHandler {
 			request.setAttribute("hasUpcoming", 1);
 			for(int i=0; i<upcomings.size(); i++){
 				UpcomingDto upcoming = upcomings.get(i);
-				String formattedperf_date = new SimpleDateFormat("yy.MM.dd  a HH:mm").format(upcoming.getPerf_date());
-				upcoming.setFormattedperf_date(formattedperf_date);
 				
 				if(upcoming.getDriver().contains("@")){
 					//크루가 아니면 마이버스로 연결
@@ -137,7 +149,7 @@ public class Main implements CommandHandler {
 			}
 			request.setAttribute("upcomings", upcomings);
 		}
-
+		
 		return new ModelAndView("main");
 	}
 }

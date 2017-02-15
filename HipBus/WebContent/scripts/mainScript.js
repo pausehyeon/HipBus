@@ -46,9 +46,8 @@ function showDivs(n) {
 	dots[slideIndex - 1].className += " w3-white";
 }
 
-
-// 자동으로 슬라이드 넘기기
-$(document).ready(function() {
+$(document).ready(function() {	
+	// 자동으로 슬라이드 넘기기
 	if($('#nextslide').length){
 		//^ 만일 id=nextslide가 하나도 없으면 0. 즉 false
 		setInterval(function() {

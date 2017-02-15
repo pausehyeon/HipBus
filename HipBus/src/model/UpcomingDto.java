@@ -17,8 +17,7 @@ public class UpcomingDto {
 	private int readcount;
 	private Timestamp reg_date;
 	
-	private String formattedperf_date;	//db컬럼은 아니고 나중에 db 컬럼 내용을 출력할 때 "yy.MM.dd a HH:mm"처럼 출력하려고 추가한 변수.
-	private String url; //역시 DB컬럼은 아니고 크루/마이버스 구분해서 redirect해주기 위해 추가한 변수.
+	private String url; //DB컬럼은 아니고 크루/마이버스 구분해서 redirect해주기 위해 추가한 변수.
 	
 	public int getNum() {
 		return num;
@@ -58,9 +57,6 @@ public class UpcomingDto {
 	}
 	public Timestamp getReg_date() {
 		return reg_date;
-	}
-	public String getFormattedperf_date() {
-		return formattedperf_date;
 	}
 	public String getUrl() {
 		return url;
@@ -103,9 +99,6 @@ public class UpcomingDto {
 	}
 	public void setReg_date(Timestamp reg_date) {
 		this.reg_date = reg_date;
-	}
-	public void setFormattedperf_date(String formattedperf_date) {
-		this.formattedperf_date = formattedperf_date;
 	}
 	public void setUrl(String url) {
 		this.url = url;
