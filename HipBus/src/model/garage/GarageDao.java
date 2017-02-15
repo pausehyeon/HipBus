@@ -22,6 +22,7 @@ public interface GarageDao {
 	public FAQDto getFAQArticle(int num);
 	public int updateFAQArticle( FAQDto dto );
 	public int getFAQCount();
+	public int faqDeleteArticle(int num);
 
 	
 }

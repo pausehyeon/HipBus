@@ -1,5 +1,6 @@
 package handler.garage;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,14 +10,25 @@ import org.springframework.web.servlet.ModelAndView;
 
 import handler.CommandHandler;
 import handler.HandlerException;
+import model.garage.GarageDao;
 
 @Controller
 public class GarageFAQDeletePro implements CommandHandler {
+
+	@Resource(name="garageDao")
+	private GarageDao garageDao;
 
 	@RequestMapping("/garageFAQDeletePro.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		// TODO Auto-generated method stub
+		
+
+		int num = Integer.parseInt(request.getParameter("num"));
+		
+		int result = garageDao.faqDeleteArticle(num);
+		request.setAttribute( "result", result );
+		
 		return new ModelAndView("garageFAQDeletePro");
 	}
 

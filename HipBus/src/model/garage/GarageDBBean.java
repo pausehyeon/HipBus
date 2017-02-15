@@ -98,6 +98,16 @@ public class GarageDBBean implements GarageDao {
 		return SqlMapClient.getSession().selectOne( "Garage.getFAQCount" );
 	}
 
+	@Override
+	public int faqDeleteArticle(int num) {
+		// TODO Auto-generated method stub
+		int result = 0;
+		
+		result = SqlMapClient.getSession().delete("Garage.faqDeleteArticle",num);
+		
+		return result;
+	}
+
 	
 
 	

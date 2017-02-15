@@ -9,12 +9,10 @@ public class NewsDto {
 	private String nick;			//닉네임
 	private String subject;			//글제목
 	private String content;			//글내용
-	private String imgname;			//이미지 파일명
 	private String imglocation;		//서버상 이미지 파일명
 	private int readcount;			//조회수
 	private Timestamp reg_date;		//작성일
-	private Timestamp mod_date;	//수정일
-	
+
 	public String getEmail() {
 		return email;
 	}
@@ -45,12 +43,6 @@ public class NewsDto {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getImgname() {
-		return imgname;
-	}
-	public void setImgname(String imgname) {
-		this.imgname = imgname;
-	}
 	public String getImglocation() {
 		return imglocation;
 	}
@@ -69,11 +61,4 @@ public class NewsDto {
 	public void setReg_date(Timestamp reg_date) {
 		this.reg_date = reg_date;
 	}
-	public Timestamp getMod_date() {
-		return mod_date;
-	}
-	public void setMod_date(Timestamp mod_date) {
-		this.mod_date = mod_date;
-	}
-
 }

@@ -12,9 +12,9 @@
 <select id="getArticles" parameterType="Map" resultType="model.NewsDto">
 
 		select email,num,nick,subject,content,
-		imgname,imglocation,readcount,reg_date,mod_date
+		imglocation,readcount,reg_date,
 		r from( select email,num,nick,subject,content,
-		imgname,imglocation,readcount,reg_date,mod_date,rownum r from
+		imglocation,readcount,reg_date,rownum r from
 		(select * from HB_News order by num desc)
 		order by num desc ) where r &gt;= #{start} and r &lt;= #{end}
 		
@@ -37,8 +37,8 @@
 </select>
 
 <insert id="insertNews" parameterType="model.NewsDto">
-insert into HB_News(email,num,nick,subject,content,imgname,imglocation,readcount,reg_date,mod_date)
-					values(#{email},newsseq.NEXTVAL,#{nick},#{subject},#{content},#{imgname,jdbcType=VARCHAR},#{imglocation,jdbcType=VARCHAR},0,#{reg_date},#{mod_date})
+insert into HB_News(email,num,nick,subject,content,imglocation,readcount,reg_date)
+					values(#{email},newsseq.NEXTVAL,#{nick},#{subject},#{content},#{imglocation,jdbcType=VARCHAR},0,#{reg_date})
 
 
 </insert>
@@ -58,10 +58,7 @@ insert into HB_News(email,num,nick,subject,content,imgname,imglocation,readcount
 
 <select id="getFAQList" parameterType="Map" resultType="model.FAQDto">
 	
-		select num,email,nick,subject,content
-		r from( select num,email,nick,subject,content,rownum r from
-		(select * from HB_FAQ order by num desc)
-		order by num desc) where r &gt;= #{start} and r &lt;= #{end}
+		select * from hb_faq
 				
 </select>
 
@@ -77,6 +74,11 @@ insert into HB_FAQ(num,email,nick,subject,content)
 <update id="updateFAQArticle" parameterType="model.FAQDto">
 	update HB_FAQ set subject=#{subject}, content=#{content} where num=#{num}
 </update>
+
+<delete id="faqDeleteArticle" parameterType="int">
+	delete from HB_FAQ where num=#{num}
+</delete>
+
 
 
 

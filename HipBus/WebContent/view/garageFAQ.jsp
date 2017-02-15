@@ -10,7 +10,6 @@
 <body>
 
 	<c:import url="../top.do"/>
-	
 	<!-- Main content: shift it to the right by 250 pixels when the sidenav is visible -->
 	<div class="w3-main " style="margin-right:20%; margin-left:20%">
 		<c:import url="navbar_garage.jsp"/>
@@ -47,15 +46,18 @@
 			
 			<c:if test="${count != 0}">	
 			<c:forEach var="article" items="${FAQList}">
-			<c:set var="su" value="${su+1}"/>
+			<c:set var="sum" value="${sum+1}"/>
 			<div class="w3-accordion w3-white">
 				<button onclick="myFunction('q${article.num}')" class="w3-btn-block w3-theme-l3 w3-left-align">
-					<h4>Q${su}&nbsp;${article.subject}&nbsp;<i class="fa fa-caret-down"></i></h4>
+					<h4>Q${sum}&nbsp;${article.subject}&nbsp;<i class="fa fa-caret-down"></i></h4>
 				</button>
 				<div id="q${article.num}" class="w3-accordion-content w3-container">
 				  <p>${article.content}
 				  <c:if test="${dto.mem_level == 3 }">
 				  <a href="garageFAQModify.do?num=${article.num}" class="w3-btn w3-padding w3-theme-d1 w3-margin w3-right"><i class="fa fa-pencil-square-o w3-margin-right"></i>${str_Modify}</a>
+				  <button type="button" class="w3-btn w3-padding w3-theme-d1 w3-margin-left" onclick="faqDeleteCheck()">
+				  <i class="fa fa-cut w3-margin-right"></i>${btn_delete}</button>
+				  <input type="hidden" value="${article.num}" id="faqDelete">
 				  </c:if>
 				  <c:if test="${dto.mem_level != 3 }">
 				  <div class="w3-padding"></div> 
@@ -108,7 +110,7 @@
 		
 	<!-- END MAIN -->
 	</div>
-	
+
 <!-- Footer -->
 <c:import url="../bottom.do"/>
 

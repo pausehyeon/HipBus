@@ -59,8 +59,6 @@ public class GarageNewsWritePro implements CommandHandler{
 			article.setSubject(multi.getParameter("subject"));
 			article.setContent(multi.getParameter("content"));
 			article.setReg_date( new Timestamp( System.currentTimeMillis() ) );
-			article.setMod_date( new Timestamp( System.currentTimeMillis() ) );
-			article.setImgname(imgname);
 			article.setImglocation(imglocation);
 			int result = garageDao.insertNews(article);
 			request.setAttribute( "result", result );

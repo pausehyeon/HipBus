@@ -47,7 +47,7 @@ public class GarageFAQModifyPro implements CommandHandler {
 		
 		
 		
-		return new ModelAndView("garageFAQModyfyPro");
+		return new ModelAndView("garageFAQModifyPro");
 	}
 
 }

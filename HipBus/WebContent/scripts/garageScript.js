@@ -25,10 +25,20 @@ function erroralert( msg ) {
 }
 
 
-function deleteCheck(){
-
+function newsDeleteCheck(){
+	var num = document.getElementById("newsDelete")
 	 if( confirm(" 정말 삭제하시겠습니까?" ) == true ){
-		location.href="garageNewsDeletePro.do?num="+readForm.del.value;
+		location.href="garageNewsDeletePro.do?num="+num.value;
+	 }else{
+		 location.reload(true);
+	 }
+	
+}
+
+function faqDeleteCheck(){
+	   var num = document.getElementById("faqDelete");
+	 if( confirm(" 정말 삭제하시겠습니까?" ) == true ){
+		location.href="garageFAQDeletePro.do?num="+num.value;
 	 }else{
 		 location.reload(true);
 	 }
@@ -36,8 +46,8 @@ function deleteCheck(){
 }
 
 function z(){
-	if(! writeform.content.value){
-		alert("내용을 입력하세요");
+	if(! writeform.upload.value){
+		alert("이미지를 업로드하세요");
 		writeform.content.focus();
 		return false;
 	}
