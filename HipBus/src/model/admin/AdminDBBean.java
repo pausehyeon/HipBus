@@ -45,8 +45,14 @@ public class AdminDBBean implements AdminDao {
 		
 	//회원삭제
 	@Override
-	public int DeleteMember(String email) {
+	public int deleteMember(String email) {
 		return SqlMapClient.getSession().delete("Admin.deleteMember",email);
+	}
+	
+	//회원등급 수정
+	@Override
+	public int modifyGrade(MemberDto dto) {
+		return SqlMapClient.getSession().update("Admin.modifyGrade", dto);
 	}
 	
 	

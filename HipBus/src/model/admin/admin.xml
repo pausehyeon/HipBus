@@ -28,19 +28,19 @@
 
 	</select>
 	
-	<!-- 크루아이디 가져오기 -->
-	<select id="getCrewId" resultType="String" parameterType="String">
-		select crewid from hb_crewmember where email=#{email}
-	</select>
-	
 	<!-- 검색 -->
 	<select id="getSearch" resultType="model.MemberDto" parameterType="Map">
-		select * from hb_member where #{category} like #{keyword}%
+		select * from hb_member where ${category} like '${keyword}%' 
 	</select>
 	
 	<select id="searchNum" resultType="int" parameterType="Map">
-		select count(*) from hb_member where #{category} like #{keyword}%
+		select count(*) from hb_member where ${category} like '${keyword}%'
 	</select>
+	
+	<!-- 수정 -->
+	<update id="modifyGrade" parameterType="model.MemberDto">
+		update hb_member set mem_level=#{mem_level} where email=#{email}
+	</update>
 	
 	<!-- 삭제 -->
 	<delete id="deleteMember" parameterType="String">

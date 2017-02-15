@@ -19,7 +19,10 @@ public interface AdminDao {
 	public List<MemberDto> getSearch(Map<String, String> map);
 	public int searchNum(Map<String,String> map);
 	
+	//수정
+	public int modifyGrade(MemberDto dto);
+	
 	//삭제
-	public int DeleteMember(String email);
+	public int deleteMember(String email);
 	
 }
