@@ -21,7 +21,10 @@
 	</select>
 	
 	<select id="getMyCrews" parameterType="String" resultType="model.CrewDto">
-		select distinct c.crewid, c.crewname from HB_Crew c, HB_CrewMember m where m.email=#{email}
+		select distinct c.crewid, c.crewname 
+		from HB_Crew c, HB_CrewMember m 
+		where c.crewid=m.crewid
+		and m.email=#{email}
 	</select>
 	<!-- ^ email을 주면 해당 email이 속해있는 크루 리스트를 돌려줌 -->
 </mapper>
