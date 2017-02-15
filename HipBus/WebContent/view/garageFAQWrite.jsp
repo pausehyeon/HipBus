@@ -22,7 +22,7 @@
 		</div>
 		<div class="w3-row">
 			<div class="w3-container">
-				<form name="writeform" method="post" action="garageFAQWritePro.do">
+				<form name="writeform" method="post" onsubmit="return newsWriteCheck(this);" action="garageFAQWritePro.do">
 					<div class="w3-card-4">
 						<header class="w3-container w3-padding-jumbo w3-theme-l3">
 							<input class="w3-input" type="text" required name="subject"> <label

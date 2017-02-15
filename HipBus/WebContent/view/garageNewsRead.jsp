@@ -40,7 +40,7 @@
 						<i class="fa fa-cog w3-margin-right"></i>${btn_modify}</a>
 						<button type="button" class="w3-btn w3-padding w3-theme-d1 w3-margin-left" onclick="newsDeleteCheck()">
 						<i class="fa fa-cut w3-margin-right"></i>${btn_delete}</button>
-						<input type="hidden" value="${article.num}" id="newsDelete">
+						<input type="hidden" value="${article.num}" id="num">
 						<!--  <a href="garageNewsDeletePro.do?num=${article.num}" class="w3-btn w3-padding w3-theme-d1 w3-margin-left" onclick="deleteCheck()">
 						<i class="fa fa-cut w3-margin-right"></i>${btn_delete}</a>-->
 						</c:if>

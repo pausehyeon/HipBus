@@ -16,13 +16,21 @@
 			<h3>${str_News}</h3>
 			<p>${str_NewsTitle}</p>
 			<hr>
+			
+			<div class="w3-row">
+				<div class="w3-container">
+					<p class="w3-third w3-border w3-padding-large w3-padding-48 w3-center">AD</p>
+					<p class="w3-third w3-border w3-padding-large w3-padding-48 w3-center">AD</p>
+					<p class="w3-border w3-third w3-padding-large w3-padding-48 w3-center">AD</p>
+				</div>
+			</div>
 			<!-- 이 버튼은 관리자에게만 보임 -->
 			<c:if test="${dto.mem_level == 3 }">
 			<a href="garageNewsWrite.do" class="w3-btn w3-padding w3-theme-d1 w3-margin-left w3-right">	<i class="fa fa-pencil-square-o w3-margin-right"></i>${str_Write}</a>
 			</c:if>
 		</div>
 		<div class="w3-row">
-			<div class="w3-twothird">
+			<div class=" w3-container">
 			<!-- 글이없는경우 -->
 				<c:if test="${count == 0}">
 			
@@ -56,14 +64,6 @@
 					
 					</div>
 				</div>
-			
-			<div class="w3-third">
-				<div class="w3-container">
-					<p class="w3-border w3-padding-small w3-padding-128 w3-center">AD</p>
-					<p class="w3-border w3-padding-small w3-padding-48 w3-center">AD</p>
-					<p class="w3-border w3-padding-small w3-padding-128 w3-center">AD</p>
-				</div>
-			</div>
 		</div>
 
 		<div class="w3-row">

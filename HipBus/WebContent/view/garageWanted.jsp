@@ -17,6 +17,12 @@
 			<h3>${str_Wanted}</h3>
 			<p>${str_WantedTitle}</p>
 			<hr>
+			
+			<div class="w3-row">
+			<a href="garageWantedSearch.do"><i class="w3-large fa fa-search"></i></a>
+			<input type="search" placeholder="${str_Search}" style="width:500px; height:30px;">
+			</div>
+			
 			<!-- 이 버튼은 관리자에게만 보임 -->
 			<a href="#"
 				class="w3-btn w3-padding w3-theme-d1 w3-margin-left w3-right"><i

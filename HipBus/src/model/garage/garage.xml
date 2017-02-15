@@ -38,7 +38,7 @@
 
 <insert id="insertNews" parameterType="model.NewsDto">
 insert into HB_News(email,num,nick,subject,content,imglocation,readcount,reg_date)
-					values(#{email},newsseq.NEXTVAL,#{nick},#{subject},#{content},#{imglocation,jdbcType=VARCHAR},0,#{reg_date})
+					values(#{email},HB_newsseq.NEXTVAL,#{nick},#{subject},#{content},#{imglocation,jdbcType=VARCHAR},0,#{reg_date})
 
 
 </insert>
@@ -64,7 +64,7 @@ insert into HB_News(email,num,nick,subject,content,imglocation,readcount,reg_dat
 
 <insert id="insertFAQ" parameterType="model.FAQDto">
 insert into HB_FAQ(num,email,nick,subject,content)
-					values(newsseq.NEXTVAL,#{email},#{nick},#{subject},#{content})
+					values(HB_newsseq.NEXTVAL,#{email},#{nick},#{subject},#{content})
 </insert>
 
 <select id="getFAQArticle" parameterType="int" resultType="model.FAQDto">

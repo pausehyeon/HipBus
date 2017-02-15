@@ -26,7 +26,7 @@ function erroralert( msg ) {
 
 
 function newsDeleteCheck(){
-	var num = document.getElementById("newsDelete")
+	var num = document.getElementById("num")
 	 if( confirm(" 정말 삭제하시겠습니까?" ) == true ){
 		location.href="garageNewsDeletePro.do?num="+num.value;
 	 }else{
@@ -36,7 +36,7 @@ function newsDeleteCheck(){
 }
 
 function faqDeleteCheck(){
-	   var num = document.getElementById("faqDelete");
+	   var num = document.getElementById("num");
 	 if( confirm(" 정말 삭제하시겠습니까?" ) == true ){
 		location.href="garageFAQDeletePro.do?num="+num.value;
 	 }else{
@@ -45,11 +45,18 @@ function faqDeleteCheck(){
 	
 }
 
-function z(){
-	if(! writeform.upload.value){
-		alert("이미지를 업로드하세요");
-		writeform.content.focus();
+function newsWriteCheck(){
+	 var data = CKEDITOR.instances.editor.getData();
+	if(data == "" ){
+		alert("내용을 입력하세요");
 		return false;
 	}
-	
+}
+
+function faqWriteCheck(){
+	 var data = CKEDITOR.instances.editor.getData();
+	if(data == "" ){
+		alert("내용을 입력하세요");
+		return false;
+	}
 }

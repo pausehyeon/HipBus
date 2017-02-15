@@ -44,31 +44,35 @@
 						</div>	
 				</c:if>	
 			
-			<c:if test="${count != 0}">	
+			
 			<c:forEach var="article" items="${FAQList}">
 			<c:set var="sum" value="${sum+1}"/>
-			<div class="w3-accordion w3-white">
+			<div class="w3-accordion w3-white w3-card-4">
 				<button onclick="myFunction('q${article.num}')" class="w3-btn-block w3-theme-l3 w3-left-align">
 					<h4>Q${sum}&nbsp;${article.subject}&nbsp;<i class="fa fa-caret-down"></i></h4>
+				<hr>
 				</button>
+
 				<div id="q${article.num}" class="w3-accordion-content w3-container">
-				  <p>${article.content}
+				  <div class="w3-padding-jumbo ">${article.content}
 				  <c:if test="${dto.mem_level == 3 }">
+				  <div class=" w3-margin w3-padding">
 				  <a href="garageFAQModify.do?num=${article.num}" class="w3-btn w3-padding w3-theme-d1 w3-margin w3-right"><i class="fa fa-pencil-square-o w3-margin-right"></i>${str_Modify}</a>
-				  <button type="button" class="w3-btn w3-padding w3-theme-d1 w3-margin-left" onclick="faqDeleteCheck()">
+				  <button type="button" class="w3-btn w3-padding w3-theme-d1 w3-margin w3-right " onclick="faqDeleteCheck()">
 				  <i class="fa fa-cut w3-margin-right"></i>${btn_delete}</button>
-				  <input type="hidden" value="${article.num}" id="faqDelete">
+				  <input type="hidden" value="${article.num}" id="num">
+				  </div>
 				  </c:if>
 				  <c:if test="${dto.mem_level != 3 }">
 				  <div class="w3-padding"></div> 
 				  </c:if>
-				  </p>
+				  </div>
 				  
 				</div>
 			</div>
 				
 			</c:forEach>
-			</c:if>
+			
 		</div>
 
 		<div class="w3-center">
@@ -85,22 +89,6 @@
 			  </ul>
 			</div>
 		-->
-			<c:if test="${startPage > pageBlock}">
-		<a class="w3-hover-black" href="garageFAQ.do">◀◀</a>
-		<a class="w3-hover-black" href="garageFAQ.do?pageNum=${startPage-pageBlock}">◀</a>
-	</c:if>
-	<c:forEach var="i" begin="${startPage}" end="${endPage}">
-		<c:if test="${i == currentPage}">
-			<span class="w3-hover-black">${i}</span>
-		</c:if>
-		<c:if test="${i != currentPage}">
-			<a class="w3-hover-black" href="garageFAQ.do?pageNum=${i}">[${i}]</a>
-		</c:if>
-	</c:forEach>
-	<c:if test="${pageCount > endPage}">
-		<a class="w3-hover-black" href="garageFAQ.do?pageNum=${startPage+pageBlock}">▶</a>
-		<a class="w3-hover-black" href="garageFAQ.do?pageNum=${pageCount}">▶▶</a>
-	</c:if>
 	
 		
 		
