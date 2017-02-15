@@ -110,7 +110,7 @@
 	//<!--
 		$(document).ready(function() {
 			//OnAir 목록 받아오기
-			getonairlist( eval("${channelsJson}") );
+			getonairlist( eval("${channelsJson}"), "${googleApiKey}" );
 		});
 	//-->
 	</script>

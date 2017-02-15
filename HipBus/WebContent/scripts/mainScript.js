@@ -48,8 +48,7 @@ function showDivs(n) {
 
 
 //채널 아이디를 넘겨받아서 라이브 중인 채널의 썸네일을 출력해주는 function
-function checkonair(channelId){
-	var googleApiKey = "AIzaSyBkLOF2M3MDF-RiayKdaKrBhPu4faiSWtA";
+function checkonair(channelId, googleApiKey){
 	var params = "part=snippet&channelId="+channelId+"&type=video&eventType=live&key="+googleApiKey;
 	var request;
 	request = new Request( function(){
@@ -98,12 +97,12 @@ function checkonair(channelId){
 }
 
 //채널 목록 받아와서 checkonair()에 출력을 요청
-function getonairlist(channelsJson){
+function getonairlist(channelsJson, googleApiKey){
 //	var channelsJson = eval("${channelsJson}");
 	for(var i=0; i<channelsJson.length; i++){
 		var channel_id = channelsJson[i].channel_id;
 		var driver = channelsJson[i].driver;
-		checkonair(channel_id);
+		checkonair(channel_id, googleApiKey);
 	}
 }
 

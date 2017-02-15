@@ -19,6 +19,7 @@
 
 
 <c:set var="project" value="/HipBus"/>
+<c:set var="googleApiKey" value="AIzaSyAg6U0l2-bbb3gH_VCElJcM9Ry6Uug7jFw"/>
 
 <!-- 기본 -->
 <c:set var="str_mainStation" value="Main Station"/>
