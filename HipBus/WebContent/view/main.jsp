@@ -202,7 +202,7 @@
 	</div>
 	<div class="w3-row-padding">
 		<c:if test="${hasUpcoming eq 0}">
-			<div class="w3-container">${str_noUpcomings}</div>
+			<div class="w3-container w3-center">${str_noUpcomings}</div>
 		</c:if>
 		<c:if test="${hasUpcoming eq 1}">
 			<c:forEach var="upcoming" begin="0" end="${fn:length(upcomings)}" items="${upcomings}">
