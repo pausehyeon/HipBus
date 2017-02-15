@@ -37,15 +37,17 @@ public class MainSignUpPro implements CommandHandler {
 		dto.setEmail( request.getParameter("email"));
 		dto.setNick(request.getParameter("nick"));
 		dto.setPasswd( request.getParameter("passwd"));
-		dto.setJoindate(new Timestamp( System.currentTimeMillis() ));
-//		dto.setImgName("img.jpg");
+		dto.setJoindate(new Timestamp( System.currentTimeMillis() ));		
 		dto.setImglocation("img.jpg");
 		
 		int result = Maindao.insertMember( dto );		
 		
 		request.setAttribute("result", result);
 		
-		return new ModelAndView("mainSignUpPro");		
+		//여기다메일		
+		
+		return new ModelAndView("mainSignUpPro");	
+		
 	}
 
 }

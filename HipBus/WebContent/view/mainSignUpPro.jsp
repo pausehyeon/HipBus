@@ -12,7 +12,7 @@
 <c:if test="${result == 0 }">
 	<script type="text/javascript">
 		//<!--		
-		erroralert( signuperror );
+		alert( signuperror );
 		location.href="mainSignUp.do";
 		//-->
 	</script>

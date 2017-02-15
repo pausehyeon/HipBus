@@ -127,7 +127,7 @@
 			<form id="inputform" class="w3-container" method="post" action="mainSignUpPro.do">
 				<p>
 					<label>${str_email}</label>
-					<input id="email" name="email" type="text" class="w3-input" onkeyup="verifyemail()">
+					<input id="email" name="email" type="text" class="w3-input" onkeyup="verifyemail()" required>
 				<div class="w3-text-blue w3-xsmall w3-right" id="emailresult">${str_signUpEmail}</div>
 				</p>
 				<br>

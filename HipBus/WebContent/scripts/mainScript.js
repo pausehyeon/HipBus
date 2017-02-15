@@ -2,7 +2,7 @@
  * main.jsp에 연결할 javascript.
  */
 var signuperror = "회원가입에 실패했습니다. \n잠시 후 다시 시도하세요.";
-var signupok = "회원가입에 성공하였습니다. \n로그인 이용 후 사용 가능합니다!";
+var signupok = "회원가입에 성공하였습니다. \n입력하신 이메일로 인증 후 로그인 가능합니다!";
 
 //Accordions
 function myAccordion(id) {
