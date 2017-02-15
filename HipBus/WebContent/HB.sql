@@ -53,7 +53,6 @@ CREATE TABLE HB_AD
 (
 	ad_num number(1) NOT NULL,
 	html varchar2(1000),
-	imgname varchar2(1000),
 	imglocation varchar2(1000),
 	PRIMARY KEY (ad_num)
 );
@@ -67,7 +66,6 @@ CREATE TABLE HB_Board
 	nick varchar2(30) NOT NULL,
 	content varchar2(4000) NOT NULL,
 	reg_date date NOT NULL,
-	mod_date date NOT NULL,
 	PRIMARY KEY (num)
 );
 
@@ -84,7 +82,6 @@ CREATE TABLE HB_Crew
 (
 	crewid varchar2(50) NOT NULL,
 	crewname varchar2(100) NOT NULL UNIQUE,
-	imgname varchar2(1000),
 	imglocation varchar2(1000),
 	PRIMARY KEY (crewid)
 );
@@ -123,7 +120,6 @@ CREATE TABLE HB_Member
 	passwd varchar2(15) NOT NULL,
 	mem_level number(1) DEFAULT 1 NOT NULL,
 	joindate date DEFAULT sysdate NOT NULL,
-	imgname varchar2(1000),
 	imglocation varchar2(1000),
 	PRIMARY KEY (email)
 );
@@ -136,11 +132,9 @@ CREATE TABLE HB_News
 	nick varchar2(30) NOT NULL,
 	subject varchar2(500) NOT NULL,
 	content varchar2(4000) NOT NULL,
-	imgname varchar2(1000),
 	imglocation varchar2(1000),
 	readcount number(22) NOT NULL,
 	reg_date date NOT NULL,
-	mod_date date NOT NULL,
 	PRIMARY KEY (num)
 );
 
@@ -163,7 +157,6 @@ CREATE TABLE HB_Station
 	likenum number(22) NOT NULL,
 	readcount number(22) DEFAULT 0 NOT NULL,
 	reg_date date DEFAULT sysdate NOT NULL,
-	mod_date date DEFAULT sysdate NOT NULL,
 	PRIMARY KEY (num)
 );
 
@@ -177,7 +170,6 @@ CREATE TABLE HB_StationReply
 	re_step number(22) NOT NULL,
 	re_level number(22) NOT NULL,
 	reg_date date NOT NULL,
-	mod_date date NOT NULL,
 	status number(1) DEFAULT 0 NOT NULL,
 	PRIMARY KEY (replynum)
 );
@@ -196,13 +188,15 @@ CREATE TABLE HB_Upcoming
 	driver varchar2(50) NOT NULL,
 	nick varchar2(30) NOT NULL,
 	subject varchar2(500) NOT NULL,
-	content varchar2(4000) NOT NULL,
-	imgname varchar2(1000),
-	imglocation varchar2(1000),
+	perf_place varchar2(500) NOT NULL,
 	perf_date date NOT NULL,
+	perf_cast varchar2(500) NOT NULL,
+	perf_runningtime number(3) NOT NULL,
+	perf_price number(10) DEFAULT 0 NOT NULL,
+	content varchar2(4000) NOT NULL,
+	imglocation varchar2(1000) NOT NULL,
 	readcount number(22) NOT NULL,
 	reg_date date NOT NULL,
-	mod_date date NOT NULL,
 	PRIMARY KEY (num)
 );
 
@@ -222,12 +216,10 @@ CREATE TABLE HB_Wanted
 	nick varchar2(30) NOT NULL,
 	subject varchar2(500) NOT NULL,
 	content varchar2(4000) NOT NULL,
-	imgname varchar2(1000),
 	imglocation varchar2(1000),
 	dueDate date NOT NULL,
 	readcount number(22) NOT NULL,
 	reg_date date NOT NULL,
-	mod_date date NOT NULL,
 	PRIMARY KEY (num)
 );
 
@@ -329,7 +321,6 @@ ALTER TABLE HB_StationReply
 	ADD FOREIGN KEY (num)
 	REFERENCES HB_Station (num) ON DELETE CASCADE
 ;
-
 
 
 
