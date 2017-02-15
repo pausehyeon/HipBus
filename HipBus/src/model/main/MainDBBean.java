@@ -23,11 +23,6 @@ public class MainDBBean implements MainDao{
 	public List<TopDriversDto> getTopDrivers() {
 		return SqlMapClient.getSession().selectList("Main.getTopDrivers");
 	}
-
-	@Override
-	public CrewDto getCrew(String crewid) {
-		return SqlMapClient.getSession().selectOne("Main.getCrew", crewid);
-	}
 	
 	@Override
 	public List<NewsDto> getNewsArticles() {

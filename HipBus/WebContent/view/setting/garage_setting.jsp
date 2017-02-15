@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="/HipBus/stylesheets/w3style_blue.css">
+<script type="text/javascript" src="/HipBus/scripts/ajax.js"></script>
 <script type="text/javascript" src="/HipBus/scripts/garageScript.js"></script>
 <style>
 	.w3-sidenav a,.w3-sidenav h4 {padding: 12px;}

@@ -7,6 +7,11 @@
 		select
 		* from HB_Member where email=#{email}
 	</select>
+	
+	<select id="getCrew" parameterType="String" resultType="model.CrewDto">
+		select *
+		from hb_crew where crewid=#{crewid}
+	</select>
 
 	<select id="verifyEmail" parameterType="String" resultType="Integer">
 		select count(*) from HB_Member where email = #{email}	

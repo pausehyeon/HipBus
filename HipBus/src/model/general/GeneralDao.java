@@ -8,6 +8,7 @@ import model.MemberDto;
 
 public interface GeneralDao {
 	public MemberDto getMember(String email);
+	public CrewDto getCrew(String crewid);	
 	public int verifyEmail(String email);
 	public int verifyNick(String nick);
 	public int checkEmailPasswd(String email, String passwd);

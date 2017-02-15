@@ -79,7 +79,7 @@ public class Main implements CommandHandler {
 				topdriver.setImglocation(topMember.getImglocation());
 			} else {
 				// 크루인 경우
-				CrewDto topCrew = dao.getCrew(topdriver.getDriver());
+				CrewDto topCrew = generalDao.getCrew(topdriver.getDriver());
 				topdriver.setNick(topCrew.getCrewname());
 				topdriver.setImglocation(topCrew.getImglocation());
 			}

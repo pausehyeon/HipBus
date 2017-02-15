@@ -14,6 +14,16 @@ import model.SqlMapClient;
 @Component("generalDao")
 public class GeneralDBBean implements GeneralDao {
 	SqlSession session = SqlMapClient.getSession();
+	
+	@Override
+	public MemberDto getMember(String email) {
+		return session.selectOne( "General.getMember", email );
+	}
+	
+	@Override
+	public CrewDto getCrew(String crewid) {
+		return session.selectOne("General.getCrew", crewid);
+	}
 
 	@Override
 	public int verifyEmail(String id) {
@@ -36,11 +46,6 @@ public class GeneralDBBean implements GeneralDao {
 	@Override
 	public List<CrewDto> getMyCrews(String email) {
 		return session.selectList("General.getMyCrews", email);
-	}
-	
-	@Override
-	public MemberDto getMember(String email) {
-		return SqlMapClient.getSession().selectOne( "General.getMember", email );
 	}
 	
 	@Override

@@ -48,8 +48,8 @@ function showDivs(n) {
 
 
 //채널 아이디를 넘겨받아서 라이브 중인 채널의 썸네일을 출력해주는 function
-function checkonair(channelId, googleApiKey){
-	var params = "part=snippet&channelId="+channelId+"&type=video&eventType=live&key="+googleApiKey;
+function checkonair(channel_id, googleApiKey){
+	var params = "part=snippet&channelId="+channel_id+"&type=video&eventType=live&key="+googleApiKey;
 	var request;
 	request = new Request( function(){
 				var onairsection = document.getElementById('onairsection');

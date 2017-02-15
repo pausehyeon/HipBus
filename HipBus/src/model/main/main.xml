@@ -31,11 +31,6 @@
 	</select>
 	<!-- ^ 순위 중복 없애기 위해 rank()대신 row_number()이용 -->
 
-	<select id="getCrew" parameterType="String" resultType="model.CrewDto">
-		select *
-		from hb_crew where crewid=#{crewid}
-	</select>
-
 	<select id="getNewsArticles" resultType="model.NewsDto">
 		select
 		email,num,nick,subject,content,imglocation,readcount,reg_date
