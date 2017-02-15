@@ -104,7 +104,7 @@
 					</div>
 
 					<div>
-						<table border="1" class="w3-table w3-striped w3-white">
+						<table class="w3-table w3-striped w3-white">
 							<tr class="w3-black">
 								<th ><a href="#" style="text-decoration: none">${str_memGrade}</a></th>
 								<th><a href="#" style="text-decoration: none">&nbsp;&nbsp;${str_memEmail}</a></th>
@@ -132,7 +132,7 @@
 											<a class="w3-hover-black w3-padding" style="text-decoration: none" href="crewBus.do?driver=${getMember.crewid}">${str_memGo}&nbsp; <i class="fa fa-fort-awesome"></i></a>
 										</c:if>
 										<c:if test="${getMember.crewid == null}">
-											<i class="fa fa-close">&nbsp;&nbsp;${str_memGo}</i>
+											&nbsp;&nbsp;&nbsp;&nbsp;${str_empty}<i class="fa fa-close"></i>
 										</c:if>
 										<%-- <button class="w3-btn w3-black w3-large" onclick="goModify(${status.count})">버튼</button> --%>
 										<c:if test="${getMember.mem_level == 1}">
@@ -173,7 +173,7 @@
 								</c:forEach>
 							</c:if>
 						</c:if>
-						</table>ㄴ
+						</table>
 					</div>
 				<%-- 	<c:if test="${pageBlock != null}">
 						<script type="text/javascript">
@@ -316,21 +316,6 @@
 			</h5>
 
 			<form id="inputform" class="w3-container">
-				<p>
-					<label>${str_amProfile}</label>
-				<div class="w3-row">
-					<div class="w3-quarter w3-center">
-						<img src="${project}/view/img/HipBusLogo_colored_sq.png" class="w3-circle" style="height: 106px; width: 106px" alt="Avatar">
-					</div>
-					<div class="w3-rest">
-						<a class="w3-input w3-right-align">HipBusLogo_colored_sq.png(Default file Name) &nbsp;&nbsp; <i class="fa fa-download"></i></a>
-						<input class="w3-input" type="file">
-					</div>
-				</div>
-				<div class="w3-text-red w3-xsmall w3-right">*파일 형식에 맞지 않습니다. innerHTML</div>
-				</p>
-				<br> <br>
-
 				<p>
 					<label>${str_amNick}</label>
 					<input class="w3-input" type="text" id="nick">
