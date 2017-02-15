@@ -38,7 +38,7 @@ public class MainSignUpPro implements CommandHandler {
 		dto.setNick(request.getParameter("nick"));
 		dto.setPasswd( request.getParameter("passwd"));
 		dto.setJoindate(new Timestamp( System.currentTimeMillis() ));
-		dto.setImgName("img.jpg");
+//		dto.setImgName("img.jpg");
 		dto.setImglocation("img.jpg");
 		
 		int result = Maindao.insertMember( dto );		

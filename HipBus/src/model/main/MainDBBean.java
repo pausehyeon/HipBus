@@ -9,6 +9,7 @@ import model.MemberDto;
 import model.NewsDto;
 import model.SqlMapClient;
 import model.TopDriversDto;
+import model.UpcomingDto;
 
 @Component( "mainDao" )
 public class MainDBBean implements MainDao{
@@ -31,5 +32,10 @@ public class MainDBBean implements MainDao{
 	@Override
 	public List<NewsDto> getNewsArticles() {
 		return SqlMapClient.getSession().selectList("Main.getNewsArticles");
+	}
+	
+	@Override
+	public List<UpcomingDto> getUpcomings() {
+		return SqlMapClient.getSession().selectList("Main.getUpcomings");
 	}
 }

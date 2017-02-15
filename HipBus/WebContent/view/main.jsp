@@ -44,6 +44,10 @@
 				<input name="urlToGoBack" type="hidden">
 				<!-- ^ 로그아웃 후 돌아올 현재 페이지 url을 기억.-->
 				<script type="text/javascript">
+					
+					
+					
+					
 						//<!--
 						$(document).ready(
 							function() {
@@ -51,6 +55,10 @@
 								signOutForm.urlToGoBack.value = location.href;
 							}
 						);
+				
+				
+				
+				
 				//-->
 				</script>
 			</form>
@@ -165,9 +173,12 @@
 					<div class="w3-card-4">
 						<img src="${project}/${topdriver.imglocation}" alt="top driver's profile" style="width: 100%">
 						<div class="w3-container">
-							
-							<h5><span class="w3-text-right w3-text-khaki"><i class="fa fa-diamond"></i> ${topdriver.driverRanking}${str_rank}</span> ${topdriver.nick}</h5>
-							<p class="w3-opacity">	<span>${topdriver.passengersCount}</span>${str_passengerCount}</p>
+
+							<h5>
+								<span class="w3-text-right w3-text-khaki"><i class="fa fa-diamond"></i> ${topdriver.driverRanking}${str_rank}</span> ${topdriver.nick}
+							</h5>
+							<p class="w3-opacity">
+								<span>${topdriver.passengersCount}</span>${str_passengerCount}</p>
 							<p>
 								<a href="${topdriver.url}" class="w3-btn-block">${str_hopOn}</a>
 							</p>
@@ -183,80 +194,36 @@
 		<span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">${str_upcoming}</span>
 	</div>
 	<div class="w3-row-padding">
-		<div class="w3-third w3-margin-bottom">
-			<ul class="w3-ul w3-border w3-center w3-hover-shadow">
-				<li class="w3-black w3-xlarge w3-padding-32">Seoul Festa</li>
-				<li class="w3-padding-16">
-					<b>장소</b> 홍대 놀이터
-				</li>
-				<li class="w3-padding-16">
-					<b>일시</b> 2월 1일
-				</li>
-				<li class="w3-padding-16">
-					<b>출연진</b> Some one
-				</li>
-				<li class="w3-padding-16">
-					<b>시간</b> 1h 30mins
-				</li>
-				<li class="w3-padding-16">
-					<h2 class="w3-wide">15,000</h2>
-					<span class="w3-opacity">원 (1 Free Drink 포함)</span>
-				</li>
-				<li class="w3-light-grey w3-padding-24">
-					<button class="w3-btn w3-green w3-padding-large">${str_detail}</button>
-				</li>
-			</ul>
-		</div>
-
-		<div class="w3-third w3-margin-bottom">
-			<ul class="w3-ul w3-border w3-center w3-hover-shadow">
-				<li class="w3-dark-grey w3-xlarge w3-padding-32">Fiesta de alguien</li>
-				<li class="w3-padding-16">
-					<b>장소</b> 신촌 플레이버스
-				</li>
-				<li class="w3-padding-16">
-					<b>일시</b> 2월 1일
-				</li>
-				<li class="w3-padding-16">
-					<b>출연진</b> Some one
-				</li>
-				<li class="w3-padding-16">
-					<b>시간</b> 1h 30mins
-				</li>
-				<li class="w3-padding-16">
-					<h2 class="w3-wide">15,000</h2>
-					<span class="w3-opacity">원 (1 Free Drink 포함)</span>
-				</li>
-				<li class="w3-light-grey w3-padding-24">
-					<button class="w3-btn w3-green w3-padding-large">${str_detail}</button>
-				</li>
-			</ul>
-		</div>
-
-		<div class="w3-third w3-margin-bottom">
-			<ul class="w3-ul w3-border w3-center w3-hover-shadow">
-				<li class="w3-black w3-xlarge w3-padding-32">Holiday Busking</li>
-				<li class="w3-padding-16">
-					<b>장소</b> 가로수길
-				</li>
-				<li class="w3-padding-16">
-					<b>일시</b> 2월 1일
-				</li>
-				<li class="w3-padding-16">
-					<b>출연진</b> Some one
-				</li>
-				<li class="w3-padding-16">
-					<b>시간</b> 1h 30mins
-				</li>
-				<li class="w3-padding-16">
-					<h2 class="w3-wide">15,000</h2>
-					<span class="w3-opacity">원 (1 Free Drink 포함)</span>
-				</li>
-				<li class="w3-light-grey w3-padding-24">
-					<button class="w3-btn w3-green w3-padding-large">${str_detail}</button>
-				</li>
-			</ul>
-		</div>
+		<c:if test="${hasUpcoming eq 0}">
+			<div class="w3-container">${str_noUpcomings}</div>
+		</c:if>
+		<c:if test="${hasUpcoming eq 1}">
+			<c:forEach var="upcoming" begin="0" end="${fn:length(upcomings)}" items="${upcomings}">
+				<div class="w3-third w3-margin-bottom">
+					<ul class="w3-ul w3-border w3-center w3-hover-shadow">
+						<li class="w3-black w3-xlarge w3-padding-16">${upcoming.subject}</li>
+						<li>
+							<img src="${project}/hipbusSave/${upcoming.imglocation}" alt="${str_upcoming}" style="width: 100%">
+						</li>
+						<li class="w3-padding-8">
+							<b>${str_perf_place}</b> ${upcoming.perf_place}
+						</li>
+						<li class="w3-padding-8">
+							<b>${str_perf_date}</b> ${upcoming.formattedperf_date}
+						</li>
+						<li class="w3-padding-8">
+							<b>${str_perf_cast}</b> ${upcoming.perf_cast}
+						</li>
+						<li class="w3-padding-8">
+							<b>${str_perf_runningtime}</b> ${upcoming.perf_runningtime}${str_minute}
+						</li>
+						<li class="w3-light-grey w3-padding-24">
+							<a href="${upcoming.url}?num=${upcoming.num}" class="w3-btn w3-green w3-padding-large">${str_detail}</a>
+						</li>
+					</ul>
+				</div>
+			</c:forEach>
+		</c:if>
 	</div>
 
 	<!-- Contact -->
@@ -275,6 +242,10 @@
 				<input type="text" name="email" required class="w3-input w3-border w3-hover-border-black" style="width: 100%;">
 				<script type="text/javascript">
 					
+					
+					
+					
+					
 					//<!--
 					$(document).ready(
 						function() {
@@ -282,6 +253,10 @@
 							contactForm.email.value = "${sessionScope.memEmail}"
 						}
 					);
+				
+				
+				
+				
 				
 				//-->
 				</script>

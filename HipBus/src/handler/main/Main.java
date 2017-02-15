@@ -1,5 +1,7 @@
 package handler.main;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -16,6 +18,7 @@ import model.CrewDto;
 import model.MemberDto;
 import model.NewsDto;
 import model.TopDriversDto;
+import model.UpcomingDto;
 import model.general.GeneralDao;
 import model.main.MainDao;
 
@@ -108,6 +111,31 @@ public class Main implements CommandHandler {
 				topdrivers.add(topdriver);
 			}
 			request.setAttribute("topdrivers", topdrivers);
+		}
+		
+		//Upcoming
+		List<UpcomingDto> upcomings = dao.getUpcomings();
+		if(upcomings == null || upcomings.size() == 0){
+			request.setAttribute("hasUpcoming", 0);
+		}else{
+			request.setAttribute("hasUpcoming", 1);
+			for(int i=0; i<upcomings.size(); i++){
+				UpcomingDto upcoming = upcomings.get(i);
+				String formattedperf_date = new SimpleDateFormat("yy.MM.dd  a HH:mm").format(upcoming.getPerf_date());
+				upcoming.setFormattedperf_date(formattedperf_date);
+				
+				if(upcoming.getDriver().contains("@")){
+					//크루가 아니면 마이버스로 연결
+					upcoming.setUrl("myBusUpcomingRead.do");
+				}else{
+					//크루면 크루버스로 연결
+					upcoming.setUrl("crewBusUpcomingRead.do");
+				}
+				
+				upcomings.remove(i);
+				upcomings.add(upcoming);
+			}
+			request.setAttribute("upcomings", upcomings);
 		}
 
 		return new ModelAndView("main");

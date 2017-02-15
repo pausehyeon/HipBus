@@ -39,6 +39,13 @@
 <c:set var="str_noTopDriver" value="아직 활동 회원이 없습니다. <br> 더 많은 활동 부탁드립니다!"></c:set>
 <c:set var="str_noNewsArticles" value="등록된 공지사항이 없습니다."/>
 <c:set var="str_rank" value="위"/>
+<c:set var="str_perf_place" value="장소"/>
+<c:set var="str_perf_date" value="공연 일시"/>
+<c:set var="str_perf_cast" value="출연진"/>
+<c:set var="str_perf_runningtime" value="공연 시간"/>
+<c:set var="str_minute" value="분"/>
+<c:set var="str_noUpcomings" value="다가오는 공연 정보가 없습니다."/>
+
 <!-- mainForgot.jsp -->
 <c:set var="str_searchPassword" value=" &nbsp;비밀번호 찾기"/>
 <c:set var="str_noEmail" value="* 가입되어 있지 않은 이메일입니다."/>

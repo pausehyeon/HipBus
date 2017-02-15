@@ -16,15 +16,19 @@
 		select driver,
 		driverRanking, passengersCount
 		from(
-		select driver, row_number() over (order by passengersCount desc) as
+		select driver, row_number() over
+		(order by passengersCount desc) as
 		driverRanking, passengersCount
 		from (
 		select driver, max( r ) as passengersCount
-		from (select driver, email, row_number() over (partition by driver order
-		by driver) as r from hb_passengers) group by driver)
+		from (select driver, email,
+		row_number() over (partition by driver order
+		by driver) as r from
+		hb_passengers) group by driver)
 		)
 		where driverRanking &lt; 4
-		order by driverRanking asc
+		order by
+		driverRanking asc
 	</select>
 	<!-- ^ 순위 중복 없애기 위해 rank()대신 row_number()이용 -->
 
@@ -35,12 +39,22 @@
 
 	<select id="getNewsArticles" resultType="model.NewsDto">
 		select
-		email,num,nick,subject,content,imgname,imglocation,readcount,reg_date,mod_date
+		email,num,nick,subject,content,imglocation,readcount,reg_date
 		from (
 		select
-		email,num,nick,subject,content,imgname,imglocation,readcount,reg_date,mod_date,row_number()
+		email,num,nick,subject,content,imglocation,readcount,reg_date,row_number()
 		over(order by reg_date desc) r from hb_news
 		) where r&lt;4
 	</select>
 
+	<select id="getUpcomings" resultType="model.UpcomingDto">
+		select num, driver, nick, subject, perf_place, perf_date, perf_cast,
+		perf_runningtime, perf_price, content, imglocation, readcount,
+		reg_date from (
+		select num, driver, nick, subject, perf_place, perf_date, perf_cast,
+		perf_runningtime, perf_price, content, imglocation, readcount,
+		reg_date, row_number() over(order by perf_date asc) r from HB_Upcoming
+		where perf_date &gt; sysdate)
+		where r&lt;4 order by perf_date asc
+	</select>
 </mapper>
