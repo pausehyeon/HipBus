@@ -18,6 +18,7 @@ import handler.CommandHandler;
 import handler.HandlerException;
 import model.MemberDto;
 import model.admin.AdminDao;
+import model.general.GeneralDao;
 
 @Controller
 public class Admin implements CommandHandler {
@@ -25,11 +26,22 @@ public class Admin implements CommandHandler {
 	@Autowired(required=false)
 	@Resource(name="adminDao")
 	public AdminDao adminDao;
+	
+	@Autowired(required=false)
+	@Resource(name="generalDao")
+	public GeneralDao generalDao;
 
 	
 	@RequestMapping("/admin.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
+		
+		//관리자 닉네임 가져오기
+		String memEmail = (String) request.getSession().getAttribute("memEmail");
+		MemberDto member = generalDao.getMember(memEmail);
+		request.setAttribute("member", member);
+		
+		
 		//관리자 현황
 		int memberGrade = adminDao.reportMember();		//멤버 전체의 수
 		int adminGrade = adminDao.reportGrade();		//3등급관리지의 총수
@@ -48,6 +60,7 @@ public class Admin implements CommandHandler {
 		//검색
 		String keyword = request.getParameter("keyword");
 		String category = request.getParameter("category");
+		
 		if(category != null){
 			Map<String,String> smap = new HashMap<String, String>();
 			smap.put("keyword", keyword);
@@ -58,9 +71,9 @@ public class Admin implements CommandHandler {
 			
 			int num = adminDao.searchNum(smap);
 				count = num;
-			}else{
-				count = memberGrade - adminGrade;
-			}
+		}else{
+			count = memberGrade - adminGrade;
+		}
 		
 		//회원목록
 		int pageSize = 5;		//한번에 보이는 갯수

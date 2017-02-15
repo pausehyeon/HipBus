@@ -24,7 +24,7 @@ public class AdminMemberEjectPro implements CommandHandler {
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		String email = request.getParameter("email");
 		
-		int result = adminDao.DeleteMember(email);
+		int result = adminDao.deleteMember(email);
 		request.setAttribute("result", result);
 		
 		return new ModelAndView("adminMemberEjectPro");
