@@ -40,11 +40,11 @@
 				<span>${member.nick}</span>${str_welcomeMain}
 			</p>
 			<form name="signOutForm" method="post" action="signOutPro.do">
-				<input type="submit" value="&#xf08b;${str_signOut}" class="w3-btn w3-padding-16 w3-large w3-margin-top">
-				<!-- ^ &#xf08b;는 fontawesome의 fa-sign-out 아이콘. <i></i>를 넣을 수 없어서 css의 font-family를 FontAwesome으로 바꿈. http://fontawesome.io/cheatsheet/ 참조 -->
+				<input type="submit" value="${str_signOut}" class="w3-btn w3-padding-16 w3-large w3-margin-top">
 				<input name="urlToGoBack" type="hidden">
 				<!-- ^ 로그아웃 후 돌아올 현재 페이지 url을 기억.-->
 				<script type="text/javascript">
+					
 					//<!--
 					$(document).ready(
 						function() {
@@ -52,6 +52,7 @@
 							signOutForm.urlToGoBack.value = location.href;
 						}
 					);
+				
 				//-->
 				</script>
 			</form>
@@ -105,13 +106,15 @@
 	</div>
 
 	<div class="w3-row-padding" id="onairsection"></div>
-	<div class="w3-row-padding" id="onairloadingsection"></div>
+	<div class="w3-row-padding w3-center" id="onairloadingsection"></div>
 	<script type="text/javascript">
+		
 	//<!--
 		$(document).ready(function() {
 			//OnAir 목록 받아오기
 			getonairlist( eval("${channelsJson}"), "${googleApiKey}" );
 		});
+	
 	//-->
 	</script>
 
@@ -169,7 +172,7 @@
 				<div class="w3-third w3-margin-bottom">
 					<ul class="w3-ul w3-border w3-center w3-hover-shadow">
 						<li class="w3-black w3-xlarge w3-padding-16">${upcoming.subject}</li>
-						<li><img src="${project}/hipbusSave/${upcoming.imglocation}" alt="${str_upcoming}" style="width: 100%"></li>
+						<li class="w3-center w3-padding-8 w3-padding-small"><img src="${project}/hipbusSave/${upcoming.imglocation}" alt="${str_upcoming}" style="width: 100%"></li>
 						<li class="w3-padding-8"><b>${str_perf_place}</b> ${upcoming.perf_place}</li>
 						<li class="w3-padding-8"><b>${str_perf_date}</b> <fmt:formatDate value="${upcoming.perf_date}" type="both" pattern="yy.MM.dd  a HH:mm" /></li>
 						<li class="w3-padding-8"><b>${str_perf_cast}</b> ${upcoming.perf_cast}</li>

@@ -89,8 +89,7 @@
 			<li class="w3-hide-small w3-right">
 				<!-- 로그아웃 -->
 				<form name="signOutForm" method="post" action="signOutPro.do">
-					<input type="submit" value="&#xf08b;${str_signOut}" class="w3-btn w3-theme-d2 w3-padding-large w3-hover-white">
-					<!-- ^ &#xf08b;는 fontawesome의 fa-sign-out 아이콘. <i></i>를 넣을 수 없어서 css의 font-family를 FontAwesome으로 바꿈. http://fontawesome.io/cheatsheet/ 참조 -->
+					<input type="submit" value="${str_signOut}" class="w3-btn w3-theme-d2 w3-padding-large w3-hover-white">
 					<input name="urlToGoBack" type="hidden">
 					<!-- ^ 로그아웃 후 돌아올 현재 페이지 url을 기억.-->
 					<script type="text/javascript">

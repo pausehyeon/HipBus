@@ -31,7 +31,8 @@
 <c:set var="str_contact" value="Contact"/>
 <c:set var="str_myBus" value="My Bus"/>
 <c:set var="str_crewBus" value="Crew Bus"/>
-<c:set var="str_signOut" value="Sign Out"/>
+<c:set var="str_signOut" value="&#xf08b; Sign Out"/>
+	<!-- ^ &#xf08b;는 fontawesome의 fa-sign-out -->
 
 <!-- mainSignIn.jsp, modal_signIn.jsp -->
 <c:set var="str_signIn" value="Sign in"/>
