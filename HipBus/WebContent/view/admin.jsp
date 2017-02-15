@@ -2,9 +2,13 @@
 <%@include file="/view/setting/setting.jsp"%>
 <%@include file="/view/setting/admin_setting.jsp"%>
 
+<!DOCTYPE html>
+<html>
 <title>${str_title}</title>
 
+
 <body>
+
 	<!-- Navbar -->
 	<c:import url="../top.do" />
 
@@ -14,7 +18,7 @@
 		<c:if test="${sessionScope.memEmail != null}">
 		<div class="w3-container w3-row">
 			<div class="w3-col s8 w3-center">
-				<span><strong> ${sessionScope.memEmail}</strong>${str_idMsg}</span><br>
+				<span><strong> ${member.nick}</strong>&nbsp;${str_idMsg}</span><br>
 			</div>
 		</div>
 		</c:if>
@@ -102,7 +106,7 @@
 					<div>
 						<table border="1" class="w3-table w3-striped w3-white">
 							<tr class="w3-black">
-								<th><a href="#" style="text-decoration: none">${str_memGrade}</a></th>
+								<th ><a href="#" style="text-decoration: none">${str_memGrade}</a></th>
 								<th><a href="#" style="text-decoration: none">&nbsp;&nbsp;${str_memEmail}</a></th>
 								<th width="80px"><a href="#" style="text-decoration: none">&nbsp;&nbsp;${str_memNick}</a></th>
 								<th style="text-align: certer"><a href="#" style="text-decoration: none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${str_memAuthority}</a></th>
@@ -116,16 +120,27 @@
 						</c:if>
 						<c:if test="${numberOfMember != 0}">
 							<c:if test="${slist == null}">
-								<c:forEach var="getMember" items="${list}">
+								<c:forEach var="getMember" items="${list}" varStatus="status">
 									<tr>
 										<td>${getMember.mem_level}&nbsp;${str_memGrade}</td>
 										<td>${getMember.email}</td>
 										<!-- 불러오는 아이디 -->
 										<td>${getMember.nick}</td>
 										<!-- 불러온 닉네임 -->
-										<td style="text-align: left;"><a class="w3-hover-black w3-padding" style="text-decoration: none" href="myBus.do?driver=${getMember.email}">${str_memGo}&nbsp;<i class="fa fa-bus"></i></a> 
-										<a class="w3-hover-black w3-padding" style="text-decoration: none" href="crewBus.do?driver=${getMember.crewid}">${str_memGo}&nbsp; <i class="fa fa-fort-awesome"></i></a> 
-										<a class="w3-hover-black w3-padding" style="text-decoration: none" href="#">${str_memModify}</a>
+										<td style="text-align: left;"><a class="w3-hover-black w3-padding" style="text-decoration: none" href="myBus.do?driver=${getMember.email}">${str_memGo}&nbsp;<i class="fa fa-bus"></i></a>
+										<c:if test="${getMember.crewid != null}">
+											<a class="w3-hover-black w3-padding" style="text-decoration: none" href="crewBus.do?driver=${getMember.crewid}">${str_memGo}&nbsp; <i class="fa fa-fort-awesome"></i></a>
+										</c:if>
+										<c:if test="${getMember.crewid == null}">
+											<i class="fa fa-close">&nbsp;&nbsp;${str_memGo}</i>
+										</c:if>
+										<%-- <button class="w3-btn w3-black w3-large" onclick="goModify(${status.count})">버튼</button> --%>
+										<c:if test="${getMember.mem_level == 1}">
+											<a class="w3-hover-black w3-padding" style="text-decoration: none" href="adminMemberManagePro.do?mem_level=2&email=${getMember.email}">${str_memModify}</a>
+										</c:if>
+										<c:if test="${getMember.mem_level == 2}">
+											<a class="w3-hover-black w3-padding" style="text-decoration: none" href="adminMemberManagePro.do?mem_level=1&email=${getMember.email}">${str_memModify}</a>
+										</c:if>
 										<a class="w3-hover-black w3-padding" style="text-decoration: none" href="adminMemberEjectPro.do?email=${getMember.email}">${str_memLeave}</a>
 										</td>
 									</tr>
@@ -139,16 +154,26 @@
 										<!-- 불러오는 아이디 -->
 										<td>${getSearch.nick}</td>
 										<!-- 불러온 닉네임 -->
-										<td style="text-align: left;"><a class="w3-hover-black w3-padding" style="text-decoration: none" href="#">${str_memGo}&nbsp;<i class="fa fa-bus"></i></a> 
-										<a class="w3-hover-black w3-padding" style="text-decoration: none" href="#">${str_memGo}&nbsp; <i class="fa fa-fort-awesome"></i></a> 
-										<a class="w3-hover-black w3-padding" style="text-decoration: none" href="#">${str_memModify}</a>
-										<a class="w3-hover-black w3-padding" style="text-decoration: none" href="#">${str_memLeave}</a>
+										<td style="text-align: left;"><a class="w3-hover-black w3-padding" style="text-decoration: none" href="myBus.do?driver=${getSearch.email}">${str_memGo}&nbsp;<i class="fa fa-bus"></i></a>
+										<c:if test="${getSearch.crewid != null}">
+											<a class="w3-hover-black w3-padding" style="text-decoration: none" href="crewBus.do?driver=${getSearch.crewid}">${str_memGo}&nbsp; <i class="fa fa-fort-awesome"></i></a>
+										</c:if>
+										<c:if test="${getSearch.crewid == null}">
+											<i class="fa fa-close">&nbsp;&nbsp;${str_memGo}</i>
+										</c:if>
+										<c:if test="${getMember.mem_level == 1}">
+											<a class="w3-hover-black w3-padding" style="text-decoration: none" href="adminMemberManagePro.do?mem_level=2&email=${getMember.email}">${str_memModify}</a>
+										</c:if>
+										<c:if test="${getMember.mem_level == 2}">
+											<a class="w3-hover-black w3-padding" style="text-decoration: none" href="adminMemberManagePro.do?mem_level=1&email=${getMember.email}">${str_memModify}</a>
+										</c:if>
+										<a class="w3-hover-black w3-padding" style="text-decoration: none" href="adminMemberEjectPro.do?email=${getSearch.email}">${str_memLeave}</a>
 										</td>
 									</tr>
 								</c:forEach>
 							</c:if>
 						</c:if>
-						</table>
+						</table>ㄴ
 					</div>
 				<%-- 	<c:if test="${pageBlock != null}">
 						<script type="text/javascript">
