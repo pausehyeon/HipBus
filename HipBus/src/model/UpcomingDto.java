@@ -17,8 +17,6 @@ public class UpcomingDto {
 	private int readcount;
 	private Timestamp reg_date;
 	
-	private String url; //DB컬럼은 아니고 크루/마이버스 구분해서 redirect해주기 위해 추가한 변수.
-	
 	public int getNum() {
 		return num;
 	}
@@ -58,9 +56,6 @@ public class UpcomingDto {
 	public Timestamp getReg_date() {
 		return reg_date;
 	}
-	public String getUrl() {
-		return url;
-	}
 	public void setNum(int num) {
 		this.num = num;
 	}
@@ -99,8 +94,5 @@ public class UpcomingDto {
 	}
 	public void setReg_date(Timestamp reg_date) {
 		this.reg_date = reg_date;
-	}
-	public void setUrl(String url) {
-		this.url = url;
 	}
 }

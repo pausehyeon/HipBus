@@ -3,6 +3,7 @@
 <!-- jstl연결 -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<script type="text/javascript" src="/HipBus/scripts/ajax.js"></script>
 <script type="text/javascript" src="/HipBus/scripts/mainScript.js"></script>
 <style>
 .w3-tag, .fa {
@@ -74,7 +75,6 @@
 
 <!-- navbar_main.jsp -->
 <c:set var="str_topDrivers" value="Top Drivers"/>
-
 
 <!-- mainContactUsPro.jsp -->
 <c:set var="str_mailingSuccess" value="문의메일이 성공적으로 전송되었습니다. 관리자 확인 후 24시간 이내에 답변하겠습니다."></c:set>

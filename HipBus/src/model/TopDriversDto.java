@@ -7,15 +7,7 @@ public class TopDriversDto {
 	private int passengersCount;
 	private String imglocation;
 	private String nick;
-	private String url;
 	
-	
-	public String getUrl() {
-		return url;
-	}
-	public void setUrl(String url) {
-		this.url = url;
-	}
 	public String getDriver() {
 		return driver;
 	}
