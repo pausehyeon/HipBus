@@ -56,7 +56,7 @@
 					<hr>
 					<div class="w3-row w3-margin-bottom">
 						<div class="w3-twothird w3-container">
-						<a href="stationRead.do?num=${article.num}&pageNum=${pageNum}&category=${article.category}"> 
+						<a href="stationRead.do?num=${article.num}&pageNum=${pageNum}&category=${article.category}&type=${type}"> 
 							<c:choose>
 							<c:when test="${article.category == 1}">
 							<h4>[${str_beat}] ${article.subject}</h4>
@@ -91,7 +91,7 @@
 				<c:if test="${article.category == 1}">
 				<div class="w3-row w3-margin-bottom">
 						<div class="w3-twothird w3-container">
-						<a href="stationRead.do?num=${article.num}&pageNum=${pageNum}&category=${article.category}"> 
+						<a href="stationRead.do?num=${article.num}&type=${type}&category=${article.category}&pageNum${pageNum}"> 
 							<h4>[${str_beat}] ${article.subject}</h4></a>
 							</div>
 						<div class="w3-third w3-container">
@@ -105,7 +105,7 @@
 				<c:if test="${article.category == 2}">
 				<div class="w3-row w3-margin-bottom">
 						<div class="w3-twothird w3-container">
-						<a href="stationRead.do?num=${article.num}&pageNum=${pageNum}&category=${article.category}"> 
+						<a href="stationRead.do?num=${article.num}&type=${type}&category=${article.category}&pageNum${pageNum}"> 
 							<h4>[${str_rab}] ${article.subject}</h4></a>
 							</div>
 						<div class="w3-third w3-container">
@@ -115,7 +115,62 @@
 					</div>
 							</c:if>
 				</c:if>
-				
+				<c:if test="${type == 4 }">
+				<c:if test="${article.category == 3}">
+				<div class="w3-row w3-margin-bottom">
+						<div class="w3-twothird w3-container">
+						<a href="stationRead.do?num=${article.num}&type=${type}&category=${article.category}&pageNum${pageNum}"> 
+							<h4>[${str_mixTape}] ${article.subject}</h4></a>
+							</div>
+						<div class="w3-third w3-container">
+							<p class="w3-right w3-tiny">작성자:${article.nick} | 작성일: <fmt:formatDate value="${article.reg_date}"
+				type="both" pattern="yyyy-MM-dd HH:mm"/> | 조회수: ${article.readcount} | 추천수:${article.likenum }</p>
+						</div>
+					</div>
+							</c:if>
+				</c:if>
+				<c:if test="${type == 5 }">
+				<c:if test="${article.category == 4}">
+				<div class="w3-row w3-margin-bottom">
+						<div class="w3-twothird w3-container">
+						<a href="stationRead.do?num=${article.num}&type=${type}&category=${article.category}&pageNum${pageNum}"> 
+							<h4>[${str_vocal}] ${article.subject}</h4></a>
+							</div>
+						<div class="w3-third w3-container">
+							<p class="w3-right w3-tiny">작성자:${article.nick} | 작성일: <fmt:formatDate value="${article.reg_date}"
+				type="both" pattern="yyyy-MM-dd HH:mm"/> | 조회수: ${article.readcount} | 추천수:${article.likenum }</p>
+						</div>
+					</div>
+							</c:if>
+				</c:if>
+				<c:if test="${type == 6 }">
+				<c:if test="${article.category == 5}">
+				<div class="w3-row w3-margin-bottom">
+						<div class="w3-twothird w3-container">
+						<a href="stationRead.do?num=${article.num}&type=${type}&category=${article.category}&pageNum${pageNum}"> 
+							<h4>[${str_gasa}] ${article.subject}</h4></a>
+							</div>
+						<div class="w3-third w3-container">
+							<p class="w3-right w3-tiny">작성자:${article.nick} | 작성일: <fmt:formatDate value="${article.reg_date}"
+				type="both" pattern="yyyy-MM-dd HH:mm"/> | 조회수: ${article.readcount} | 추천수:${article.likenum }</p>
+						</div>
+					</div>
+							</c:if>
+				</c:if>
+				<c:if test="${type == 7 }">
+				<c:if test="${article.category == 6}">
+				<div class="w3-row w3-margin-bottom">
+						<div class="w3-twothird w3-container">
+						<a href="stationRead.do?num=${article.num}&type=${type}&category=${article.category}&pageNum${pageNum}"> 
+							<h4>[${str_freeBoard}] ${article.subject}</h4></a>
+							</div>
+						<div class="w3-third w3-container">
+							<p class="w3-right w3-tiny">작성자:${article.nick} | 작성일: <fmt:formatDate value="${article.reg_date}"
+				type="both" pattern="yyyy-MM-dd HH:mm"/> | 조회수: ${article.readcount} | 추천수:${article.likenum }</p>
+						</div>
+					</div>
+							</c:if>
+				</c:if>
 					
 					</c:forEach>
 					</c:if>
@@ -124,7 +179,7 @@
 </form>
 			
 		</div>
-		<c:if test="${type == 2 }">
+		<c:if test="${type == 1 }">
 		<div class="w3-center ">
 			<!-- Pagination -->
 			
@@ -137,7 +192,7 @@
 			<span class="w3-hover-black">${i}</span>
 		</c:if>
 		<c:if test="${i != currentPage}">
-			<a class="w3-hover-black" href="station.do?pageNum=${i}&type=2">[${i}]</a>
+			<a class="w3-hover-black" href="station.do?pageNum=${i}">[${i}]</a>
 		</c:if>
 	</c:forEach>
 	<c:if test="${pageCount > endPage}">

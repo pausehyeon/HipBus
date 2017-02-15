@@ -25,7 +25,7 @@ public class StationRead implements CommandHandler{
 		
 		String pageNum = request.getParameter( "pageNum" );
 		int num = Integer.parseInt( request.getParameter( "num" ) );
-		
+		int type = Integer.parseInt(request.getParameter("type"));
 		StationDto article = stationDao.getArticle(num);
 		
 		if( ! request.getRemoteAddr().equals( article.getNick() ) )
@@ -34,6 +34,7 @@ public class StationRead implements CommandHandler{
 		request.setAttribute( "num", num );
 		request.setAttribute( "pageNum", pageNum );
 		request.setAttribute( "article", article );	
+		request.setAttribute("type", type);
 		
 		return new ModelAndView("stationRead");
 	}

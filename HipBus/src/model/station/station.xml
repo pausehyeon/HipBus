@@ -10,9 +10,9 @@
 	
 	<select id="getArticles" parameterType="Map" resultType="model.StationDto">
 		select num,email,category,nick,subject,content,
-		likenum,readcount,reg_date
+		likenum,readcount,reg_date,
 		 r from( select num,email,category,nick,subject,content,
-		likenum,readcount,reg_date,rownum r from
+		likenum,readcount,reg_date, rownum r from
 		(select * from HB_Station order by num desc)
 		order by num desc ) where r &gt;= #{start} and r &lt;= #{end}
 	</select>
@@ -33,7 +33,8 @@
 		insert into HB_Station( num, email, category, nick, subject, content,
 		likenum,readcount, reg_date)
 		values(stationseq.NEXTVAL, #{email},#{category},#{nick},
-		#{subject},#{content},0,0,#{reg_date})
+		#{subject},#{content},0,0,
+		#{reg_date})
 	</insert>
 	
 	<update id="updateArticle" parameterType="model.StationDto">

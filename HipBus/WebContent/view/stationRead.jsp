@@ -61,7 +61,7 @@ ${article.content}
 						<a href="#" class="w3-btn w3-padding w3-theme-d1 w3-margin-left"
 							onclick=""><i
 							class="fa fa-thumbs-up w3-margin-right"></i>${btn_recommend}</a>
-							<a href="station.do?pageNum=${pageNum}"
+							<a href="station.do?pageNum=${pageNum}&type=${type}"
 							class="w3-btn w3-padding w3-theme-d1 w3-margin-left"><i
 							class="fa fa-align-justify w3-margin-right"></i>${str_list}</a>
 						<c:if test="${sessionScope.memEmail == article.email}">

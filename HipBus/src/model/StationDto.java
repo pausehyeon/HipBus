@@ -12,31 +12,31 @@ public class StationDto {
 	private int likenum;		// 추천수
 	private int readcount;		// 조회수
 	private Timestamp reg_date;	// 작성일
-
-	public String getNick() {
-		return nick;
-	}
-	public void setNick(String nick) {
-		this.nick = nick;
-	}
+	
+	
 	public int getNum() {
 		return num;
 	}
 	public void setNum(int num) {
 		this.num = num;
 	}
-	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public int getCategory() {
 		return category;
 	}
 	public void setCategory(int category) {
 		this.category = category;
 	}
-	public String getEmail() {
-		return email;
+	public String getNick() {
+		return nick;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setNick(String nick) {
+		this.nick = nick;
 	}
 	public String getSubject() {
 		return subject;
@@ -68,6 +68,7 @@ public class StationDto {
 	public void setReg_date(Timestamp reg_date) {
 		this.reg_date = reg_date;
 	}
+
 	
 	
 	
