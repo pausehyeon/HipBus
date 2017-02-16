@@ -4,83 +4,110 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Garage">
 
-<select id="getCount" resultType="int">
+	<select id="getCount" resultType="int">
 		select count(*) from HB_News
-</select>
+	</select>
 
 
-<select id="getArticles" parameterType="Map" resultType="model.NewsDto">
+	<select id="getArticles" parameterType="Map" resultType="model.NewsDto">
 
-		select email,num,nick,subject,content,
+		select
+		email,num,nick,subject,content,
 		imglocation,readcount,reg_date,
-		r from( select email,num,nick,subject,content,
+		r from(
+		select email,num,nick,subject,content,
 		imglocation,readcount,reg_date,rownum r from
-		(select * from HB_News order by num desc)
-		order by num desc ) where r &gt;= #{start} and r &lt;= #{end}
-		
-
-</select>
-
-
-<select id="getArticle" parameterType="int" resultType="model.NewsDto">
-	select * from HB_News where num=#{num}
-</select>
-
-<update id="addCount" parameterType="int">
-	update HB_News set readcount=readcount+1 where num=#{num}
-</update>
+		(select * from HB_News
+		order by num desc)
+		order by num desc ) where r &gt;= #{start} and r
+		&lt;= #{end}
 
 
-<select id="getMember" parameterType="String" resultType="model.MemberDto">
-	select * from HB_Member where email=#{email}
-
-</select>
-
-<insert id="insertNews" parameterType="model.NewsDto">
-insert into HB_News(email,num,nick,subject,content,imglocation,readcount,reg_date)
-					values(#{email},HB_newsseq.NEXTVAL,#{nick},#{subject},#{content},#{imglocation,jdbcType=VARCHAR},0,#{reg_date})
+	</select>
 
 
-</insert>
+	<select id="getArticle" parameterType="int" resultType="model.NewsDto">
+		select *
+		from HB_News where num=#{num}
+	</select>
 
-<update id="updateArticle" parameterType="model.NewsDto">
-	update HB_News set subject=#{subject}, content=#{content} where num=#{num}
-</update>
+	<update id="addCount" parameterType="int">
+		update HB_News set
+		readcount=readcount+1 where num=#{num}
+	</update>
 
-<delete id="deleteArticle" parameterType="int">
-	delete from HB_News where num=#{num}
-</delete>
 
-<select id="getFAQCount" resultType="int">
+	<select id="getMember" parameterType="String" resultType="model.MemberDto">
+		select
+		* from HB_Member where email=#{email}
+
+	</select>
+
+	<insert id="insertNews" parameterType="model.NewsDto">
+		insert into
+		HB_News(email,num,nick,subject,content,imglocation,readcount,reg_date)
+		values(#{email},HB_newsseq.NEXTVAL,#{nick},#{subject},#{content},#{imglocation,jdbcType=VARCHAR},0,#{reg_date})
+
+
+	</insert>
+
+	<update id="updateArticle" parameterType="model.NewsDto">
+		update HB_News set
+		subject=#{subject}, content=#{content} where num=#{num}
+	</update>
+
+	<delete id="deleteArticle" parameterType="int">
+		delete from HB_News
+		where num=#{num}
+	</delete>
+
+	<select id="getFAQCount" resultType="int">
 		select count(*) from HB_FAQ
-</select>
+	</select>
 
 
-<select id="getFAQList" parameterType="Map" resultType="model.FAQDto">
-	
-		select * from hb_faq
-				
-</select>
+	<select id="getFAQList" parameterType="Map" resultType="model.FAQDto">
 
-<insert id="insertFAQ" parameterType="model.FAQDto">
-insert into HB_FAQ(num,email,nick,subject,content)
-					values(HB_newsseq.NEXTVAL,#{email},#{nick},#{subject},#{content})
-</insert>
+		select *
+		from hb_faq
 
-<select id="getFAQArticle" parameterType="int" resultType="model.FAQDto">
-	select * from HB_FAQ where num=#{num}
-</select>
+	</select>
 
-<update id="updateFAQArticle" parameterType="model.FAQDto">
-	update HB_FAQ set subject=#{subject}, content=#{content} where num=#{num}
-</update>
+	<insert id="insertFAQ" parameterType="model.FAQDto">
+		insert into
+		HB_FAQ(num,email,nick,subject,content)
+		values(HB_newsseq.NEXTVAL,#{email},#{nick},#{subject},#{content})
+	</insert>
 
-<delete id="faqDeleteArticle" parameterType="int">
-	delete from HB_FAQ where num=#{num}
-</delete>
+	<select id="getFAQArticle" parameterType="int" resultType="model.FAQDto">
+		select * from HB_FAQ where num=#{num}
+	</select>
 
+	<update id="updateFAQArticle" parameterType="model.FAQDto">
+		update HB_FAQ set
+		subject=#{subject}, content=#{content} where num=#{num}
+	</update>
 
+	<delete id="faqDeleteArticle" parameterType="int">
+		delete from HB_FAQ
+		where num=#{num}
+	</delete>
 
+	<select id="getUpcomingCount" resultType="int">
+		select count(*) from
+		HB_Upcoming
+	</select>
+
+	<select id="getUpcomingArticles" parameterType="Map"
+		resultType="model.UpcomingDto">
+		select num, driver, nick, subject, perf_place, perf_date,
+		perf_cast, perf_runningtime, perf_price, content, imglocation,
+		readcount, reg_date from (select num, driver, nick, subject,
+		perf_place, perf_date, perf_cast, perf_runningtime, perf_price,
+		content, imglocation, readcount, reg_date, row_number() over(order by
+		reg_date desc) r from hb_upcoming) where r &gt;= #{start} and r &lt;= #{end} order by
+		reg_date desc
+	</select>
 
 </mapper>
 

@@ -9,6 +9,7 @@ import model.FAQDto;
 import model.MemberDto;
 import model.NewsDto;
 import model.SqlMapClient;
+import model.UpcomingDto;
 
 @Component("garageDao")
 public class GarageDBBean implements GarageDao {
@@ -108,9 +109,15 @@ public class GarageDBBean implements GarageDao {
 		return result;
 	}
 
-	
+	@Override
+	public int getUpcomingCount() {
+		return SqlMapClient.getSession().selectOne("Garage.getUpcomingCount");
+	}
 
-	
+	@Override
+	public List<UpcomingDto> getUpcomingArticles(Map<String, Integer> startAndEnd) {
+		return SqlMapClient.getSession().selectList("Garage.getUpcomingArticles", startAndEnd);
+	}
 	
 }
 

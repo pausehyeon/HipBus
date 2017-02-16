@@ -6,6 +6,7 @@ import java.util.Map;
 import model.FAQDto;
 import model.MemberDto;
 import model.NewsDto;
+import model.UpcomingDto;
 
 public interface GarageDao {
 	
@@ -23,6 +24,7 @@ public interface GarageDao {
 	public int updateFAQArticle( FAQDto dto );
 	public int getFAQCount();
 	public int faqDeleteArticle(int num);
-
+	public int getUpcomingCount();
+	public List<UpcomingDto> getUpcomingArticles(Map<String, Integer> startAndEnd );
 	
 }
