@@ -27,19 +27,16 @@
 
 
 	<select id="getArticle" parameterType="int" resultType="model.NewsDto">
-		select *
-		from HB_News where num=#{num}
+		select * from HB_News where num=#{num}
 	</select>
 
 	<update id="addCount" parameterType="int">
-		update HB_News set
-		readcount=readcount+1 where num=#{num}
+		update HB_News set readcount=readcount+1 where num=#{num}
 	</update>
 
 
 	<select id="getMember" parameterType="String" resultType="model.MemberDto">
-		select
-		* from HB_Member where email=#{email}
+		select * from HB_Member where email=#{email}
 
 	</select>
 
@@ -52,76 +49,70 @@
 	</insert>
 
 	<update id="updateArticle" parameterType="model.NewsDto">
-		update HB_News set
-		subject=#{subject}, content=#{content} where num=#{num}
+		update HB_News set subject=#{subject}, content=#{content} where num=#{num}
 	</update>
 
 	<delete id="deleteArticle" parameterType="int">
-		delete from HB_News
-		where num=#{num}
+		delete from HB_News where num=#{num}
 	</delete>
+
+	<select id="getFAQList" parameterType="Map" resultType="model.FAQDto">
+
+		select * from hb_faq
+
+	</select>
+
+	<insert id="insertFAQ" parameterType="model.FAQDto">
+		insert into HB_FAQ(num,email,nick,subject,content)
+		values(HB_newsseq.NEXTVAL,#{email},#{nick},#{subject},#{content})
+	</insert>
 
 	<select id="getFAQCount" resultType="int">
 		select count(*) from HB_FAQ
 	</select>
-
-
-
-	<select id="getFAQList" parameterType="Map" resultType="model.FAQDto">
-
-		select *
-		from hb_faq
-	</select>
-<select id="getFAQArticle" parameterType="int" resultType="model.FAQDto">
-	select * from HB_FAQ where num=#{num}
-</select>
-
-
-	<insert id="insertFAQ" parameterType="model.FAQDto">
-		insert into
-		HB_FAQ(num,email,nick,subject,content)
-		values(HB_newsseq.NEXTVAL,#{email},#{nick},#{subject},#{content})
-	</insert>
 
 	<select id="getFAQArticle" parameterType="int" resultType="model.FAQDto">
 		select * from HB_FAQ where num=#{num}
 	</select>
 
 	<update id="updateFAQArticle" parameterType="model.FAQDto">
-		update HB_FAQ set
-		subject=#{subject}, content=#{content} where num=#{num}
+		update HB_FAQ set subject=#{subject}, content=#{content} where num=#{num}
 	</update>
 
-<select id="getWantedCount" resultType="int">
-		select count(*) from HB_Wanted
-</select>
-
 	<delete id="faqDeleteArticle" parameterType="int">
-		delete from HB_FAQ
-		where num=#{num}
+		delete from HB_FAQ where num=#{num}
 	</delete>
 
 
+	<select id="getWantedCount" resultType="int">
+		select count(*) from
+		HB_Wanted
+	</select>
 
-<select id="getWantedArticles" parameterType="Map" resultType="model.WantedDto">
 
-	
+
+	<select id="getWantedArticles" parameterType="Map" resultType="model.WantedDto">
+
+
 		select driver,num,nick,subject,content,
 		imglocation,duedate,readcount,reg_date,
-		r from( select driver,num,nick,subject,content,
+		r from( select
+		driver,num,nick,subject,content,
 		imglocation,duedate,readcount,reg_date,rownum r from
-		(select * from HB_Wanted order by num desc)
-		order by num desc ) where r &gt;= #{start} and r &lt;= #{end}
+		(select * from
+		HB_Wanted order by num desc)
+		order by num desc ) where r &gt;= #{start}
+		and r &lt;= #{end}
 
-</select>
+	</select>
 
-<select id="getWantedSearch" parameterType="Map" resultType="model.WantedDto">
+	<select id="getWantedSearch" parameterType="Map" resultType="model.WantedDto">
 
-	select * from HB_Wanted where ${select} like'%${write}%'
+		select * from HB_Wanted where ${select} like'%${write}%'
 
-</select>
+	</select>
 
-<select id="getUpcomingCount" resultType="int">
+	<select id="getUpcomingCount" resultType="int">
 		select count(*) from
 		HB_Upcoming
 	</select>
@@ -133,9 +124,12 @@
 		readcount, reg_date from (select num, driver, nick, subject,
 		perf_place, perf_date, perf_cast, perf_runningtime, perf_price,
 		content, imglocation, readcount, reg_date, row_number() over(order by
-		reg_date desc) r from hb_upcoming) where r &gt;= #{start} and r &lt;= #{end} order by
+		reg_date desc) r from hb_upcoming) where r &gt;= #{start} and r &lt;=
+		#{end} order by
 		reg_date desc
 	</select>
+
+
 
 </mapper>
 
