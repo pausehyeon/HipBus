@@ -119,3 +119,13 @@ function faqWriteCheck(){
 		return false;
 	}
 }
+
+function search(){	
+	
+	if(! searchform.write.value){
+		alert("검색어를 입력하세요.");
+		searchform.write.focus();
+		return false;
+	}
+	
+}

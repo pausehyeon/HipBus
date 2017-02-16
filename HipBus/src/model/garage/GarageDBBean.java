@@ -9,6 +9,7 @@ import model.FAQDto;
 import model.MemberDto;
 import model.NewsDto;
 import model.SqlMapClient;
+import model.WantedDto;
 import model.UpcomingDto;
 
 @Component("garageDao")
@@ -107,6 +108,24 @@ public class GarageDBBean implements GarageDao {
 		result = SqlMapClient.getSession().delete("Garage.faqDeleteArticle",num);
 		
 		return result;
+	}
+
+	@Override
+	public List<WantedDto> getWantedArticles(Map<String, Integer> map) {
+		// TODO Auto-generated method stub
+		return SqlMapClient.getSession().selectList( "Garage.getWantedArticles",map);
+	}
+
+	@Override
+	public int getWantedCount() {
+		// TODO Auto-generated method stub
+		return SqlMapClient.getSession().selectOne( "Garage.getWantedCount" );
+	}
+
+	@Override
+	public List<WantedDto> getWantedSearch(Map<String, String> searchMap) {
+		// TODO Auto-generated method stub
+		return SqlMapClient.getSession().selectList( "Garage.getWantedSearch",searchMap);
 	}
 
 	@Override

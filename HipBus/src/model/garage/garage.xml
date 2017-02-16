@@ -66,12 +66,16 @@
 	</select>
 
 
+
 	<select id="getFAQList" parameterType="Map" resultType="model.FAQDto">
 
 		select *
 		from hb_faq
-
 	</select>
+<select id="getFAQArticle" parameterType="int" resultType="model.FAQDto">
+	select * from HB_FAQ where num=#{num}
+</select>
+
 
 	<insert id="insertFAQ" parameterType="model.FAQDto">
 		insert into
@@ -88,12 +92,36 @@
 		subject=#{subject}, content=#{content} where num=#{num}
 	</update>
 
+<select id="getWantedCount" resultType="int">
+		select count(*) from HB_Wanted
+</select>
+
 	<delete id="faqDeleteArticle" parameterType="int">
 		delete from HB_FAQ
 		where num=#{num}
 	</delete>
 
-	<select id="getUpcomingCount" resultType="int">
+
+
+<select id="getWantedArticles" parameterType="Map" resultType="model.WantedDto">
+
+	
+		select driver,num,nick,subject,content,
+		imglocation,duedate,readcount,reg_date,
+		r from( select driver,num,nick,subject,content,
+		imglocation,duedate,readcount,reg_date,rownum r from
+		(select * from HB_Wanted order by num desc)
+		order by num desc ) where r &gt;= #{start} and r &lt;= #{end}
+
+</select>
+
+<select id="getWantedSearch" parameterType="Map" resultType="model.WantedDto">
+
+	select * from HB_Wanted where ${select} like'%${write}%'
+
+</select>
+
+<select id="getUpcomingCount" resultType="int">
 		select count(*) from
 		HB_Upcoming
 	</select>

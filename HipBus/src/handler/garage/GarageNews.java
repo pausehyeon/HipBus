@@ -31,7 +31,7 @@ public class GarageNews implements CommandHandler{
 		// TODO Auto-generated method stub
 	
 		
-		int pageSize = 5;			// 한페이지에 출력할 글 개수
+		int pageSize = 10;			// 한페이지에 출력할 글 개수
 		int pageBlock = 5;			// 한 번에 보여줄 페이지 개수
 		int count = 0;
 		
