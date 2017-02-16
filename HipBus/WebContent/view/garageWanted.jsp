@@ -18,13 +18,6 @@
 			<p>${str_WantedTitle}</p>
 			<hr>
 			
-			<!-- 
-			<div class="w3-row">
-			<a href="garageWantedSearch.do"><i class="w3-large fa fa-search" ></i></a>
-			<input type="search" placeholder="${str_Search}" style="width:500px; height:30px;">
-			</div>
-			-->
-			
 				<div class="w3-row">
 				<div class="w3-container">
 					<p class="w3-third w3-border w3-padding-large w3-padding-48 w3-center">AD</p>
@@ -32,17 +25,7 @@
 					<p class="w3-border w3-third w3-padding-large w3-padding-48 w3-center">AD</p>
 				</div>
 			</div>
-			
-			
-			<c:if test="${dto.mem_level == 3 }">
-			<!-- 이 버튼은 관리자에게만 보임 -->
-			<a href="#"
-				class="w3-btn w3-padding w3-theme-d1 w3-margin-left w3-right"><i
-				class="fa fa-pencil-square-o w3-margin-right" onclick=""></i>관리하기</a>
-			</c:if>
-			<c:if test="${dto.mem_level !=3 }">
 			<div class="w3-padding-tiny w3-margin"></div>
-			</c:if>
 		</div>
 		<div class="w3-row">
 		
@@ -62,10 +45,11 @@
 		
 				<div class="w3-row w3-margin-bottom">
 					<div class="w3-twothird w3-container">
-						<h5>${article.subject}</h5>
+						<a href="myBusWantedRead.do?num=${article.num}">
+						${article.subject}</a>
 					</div>
 					<div class="w3-third w3-container">
-						<p class="w3-right w3-tiny">${str_writer}:${article.nick}| ${str_Reg_Date}:${article.reg_date} 
+						<p class="w3-right w3-tiny">${str_Writer}:${article.nick}| ${str_Reg_Date}:${article.reg_date} 
 						| ${str_ReadCount}:${article.readcount}</p>
 					</div>
 				</div>

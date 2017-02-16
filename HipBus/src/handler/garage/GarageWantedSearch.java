@@ -105,8 +105,6 @@ public class GarageWantedSearch implements CommandHandler{
 		request.setAttribute("dto",dto);
 		}
 		
-		
-		
 		Map<String, String> searchMap 
 		= new HashMap<String, String>();
 		searchMap.put( "select", select );
