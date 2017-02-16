@@ -5,6 +5,7 @@
 <%@include file="/view/setting/bus_setting.jsp"%>
 <%@include file="/view/setting/myBus_setting.jsp"%>
 
+<script src="/HipBus/scripts/busScript.js"></script>
 <script src="/HipBus/scripts/ajax.js"></script>
 <style type="text/css">
 textarea {
@@ -24,7 +25,6 @@ textarea:focus {
 	var countCriteria = 5; // 방명록 로드시 볼 갯수
 	var boardCount = 0;
 	var contentFix = null;
-	var isFirstCancel = "Y";
 	// 댓글목록 불러오기
 	$(document).ready(function() {
 		boardCount = countCriteria;
@@ -37,6 +37,7 @@ textarea:focus {
 				function() {
 					var boardList = document.getElementById("boardList");
 					if (request.httpRequest.readyState == 4) {
+						$('#console').remove();
 						if (request.httpRequest.status == 200) {
 							var msg = "";
 							var xmldoc = request.httpRequest.responseXML;
@@ -69,9 +70,13 @@ textarea:focus {
 							$('#console').html("readyState 에러");
 						}
 					} else {
-						$('#console').html("Status 에러");
+						$('#console').append($("<img/>",{
+							src : "${project}/view/img/loading.gif",
+							style : "width:30%"
+						}));
 					}
 				}, "myBusBoardListResult.do", "POST", params);
+		request.getXMLHttpRequest();
 		request.sendRequest();
 	}
 
@@ -116,13 +121,16 @@ textarea:focus {
 						$('#console').html("Status 에러");
 					}
 				}, 'myBusBoardAppendResult.do', 'POST', params);
+		request.getXMLHttpRequest();
 		request.sendRequest();
 	}
 	// 방명록 수정
 	function modBoardView(num) {
 		$('#board_' + num + ' textarea').prop('readonly', false);
-		$('#board_' + num + ' button:odd').hide();
-		$('#board_' + num + ' button:even').show();
+		$('#board_' + num + ' #modView').hide();
+		$('#board_' + num + ' #delBoard').hide();
+		$('#board_' + num + ' #modComplete').show();
+		$('#board_' + num + ' #modCancel').show();
 		$('#board_' + num + ' textarea').focus();
 	}
 
@@ -143,8 +151,10 @@ textarea:focus {
 		}
 
 		$('#board_' + num + ' textarea').prop('readonly', true);
-		$('#board_' + num + ' button:odd').show();
-		$('#board_' + num + ' button:even').hide();
+		$('#board_' + num + ' #modView').show();
+		$('#board_' + num + ' #delBoard').show();
+		$('#board_' + num + ' #modComplete').hide();
+		$('#board_' + num + ' #modCancel').hide();
 	}
 
 	function modComplete(num) {
@@ -174,6 +184,7 @@ textarea:focus {
 						$('#console').html("Status 에러");
 					}
 				}, 'myBusBoardModifyResult.do', "POST", params);
+		request.getXMLHttpRequest();
 		request.sendRequest();
 	}
 	// 댓글 삭제
@@ -210,6 +221,7 @@ textarea:focus {
 					}
 
 				}, "myBusBoardDeleteResult.do", "POST", params);
+		request.getXMLHttpRequest();
 		request.sendRequest();
 	}
 
@@ -217,6 +229,95 @@ textarea:focus {
 	function makeBoard(data) {
 		var newdiv = document.createElement("div");
 		newdiv.setAttribute("id", "board_" + data.num);
+<<<<<<< .mine
+		alert("${driver}");
+		alert("${email}");
+		var appendBtn = ''; 
+		var modBtn = ''; 
+		var board = '';
+		
+		modBtn += '<button type="button" id="modComplete" class="w3-btn w3-theme-l1 modc" style="display:none" onclick="modComplete('+ data.num+ ')">';
+		modBtn += '<i class="fa fa-check"></i>';
+		modBtn += '</button>';
+		modBtn += '<button type="button" id="modView" class="w3-btn w3-theme-l1" onclick="modBoardView('+ data.num+ ')">';
+		modBtn += '<i class="fa fa-pencil"></i>';
+		modBtn += '</button> &nbsp;';
+		modBtn += "<button type=\"button\" id='modCancel' class=\"w3-btn w3-theme-l1\" style=\"display:none\" onclick=\"modCancel("+ data.num + ",\'"+ data.content+ "\','creteria')\">";
+		modBtn += '<i class="fa fa-times"></i>';
+		modBtn += '</button>';
+		
+		appendBtn += '<div class="w3-left">';
+		if(data.email=="${sessionScope.memEmail}"){
+			appendBtn += modBtn;
+		}
+		appendBtn += '<button type="button" id="delBoard" class="w3-btn w3-theme-l1" onclick="delBoard('+ data.num+ ')">';
+		appendBtn += '<i class="fa fa-trash-o"></i>';
+		appendBtn += '</button> &nbsp;';
+		appendBtn += '</div>';
+		
+		
+		board += '<div class="w3-container w3-card-2 w3-white w3-round w3-padding-32 w3-margin" id="list">';
+		board += '<a href=myBus.do?driver='+ data.email+ '><img src="${project}/view/img/HipBusLogo_colored_sq.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width: 40px"></a>';
+		board += '<span class="w3-right w3-opacity">'+ data.reg_date+ '&nbsp;';
+		board += '<a href="#"><i class="fa fa-close w3-right" onclick="delBoard('+ data.num+ ')"></i></a></span>';
+		board += '<h4>'+ data.nick+ '</h4>';
+		board += '<hr class="w3-clear">';
+		board += '<input type="hidden" name="'+ data.num +'">';
+		board += '<textarea readonly="true" rows="3">'+ data.content+ "</textarea>";
+			if(data.email=="${sessionScope.memEmail}" || "${email==driver}"){
+				board += appendBtn;
+			}
+		board += '</div>';
+		
+		newdiv.innerHTML = board;
+		newdiv.data += data;
+||||||| .r241
+		alert("${fn:trim('" + data.email + "')=='f@com.com'}");
+		alert("${sessionScope.memEmail=='f@com.com'}");
+		newdiv.innerHTML = '<div class="w3-container w3-card-2 w3-white w3-round w3-padding-32 w3-margin" id="list">'
+				+ '<a href=myBus.do?driver='
+				+ data.email
+				+ '><img src="${project}/view/img/HipBusLogo_colored_sq.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width: 40px"></a>'
+				+ '<span class="w3-right w3-opacity">'
+				+ data.reg_date
+				+ '&nbsp;'
+				+ '<a href="#"><i class="fa fa-close w3-right" onclick="delBoard('
+				+ data.num
+				+ ')"></i></a></span>'
+				+ '<h4>'
+				+ data.nick
+				+ '</h4>'
+				+ '<hr class="w3-clear">'
+				+ '<input type="hidden" name="'+ data.num +'">'
+				+ '<textarea readonly="true" rows="3">'
+				+ data.content
+				+ "</textarea>"
+				+ '<div class="w3-center">'
+				+ '<c:if test="${driver==email}">'
+				+ '<button type="button" class="w3-btn w3-theme-l1 modc" style="display:none" onclick="modComplete('
+				+ data.num
+				+ ')">'
+				+ '<i class="fa fa-scissors"></i>  ${str_modComplete}'
+				+ '</button>'
+				+ '<button type="button" class="w3-btn w3-theme-l1" onclick="modBoardView('
+				+ data.num
+				+ ')">'
+				+ '<i class="fa fa-pencil"></i>  ${str_modBoard}'
+				+ '</button> &nbsp;'
+				+ "<button type=\"button\" class=\"w3-btn w3-theme-l1\" style=\"display:none\" onclick=\"modCancel("
+				+ data.num
+				+ ",\'"
+				+ data.content
+				+ "\','first')\">"
+				+ '<i class="fa fa-times"></i>  ${str_modCancel}'
+				+ '</button>'
+				+ '<button type="button" class="w3-btn w3-theme-l1" onclick="delBoard('
+				+ data.num
+				+ ')">'
+				+ '<i class="fa fa-trash-o"></i>  ${str_delBoard}'
+				+ '</button> &nbsp;' + '</c:if>' + '</div>' + '</div>';
+		newdiv.data = data;
+=======
 		var msg = "";
 		var modbuttons = "";
 		
@@ -268,12 +369,15 @@ textarea:focus {
 		
 		newdiv.innerHTML = msg;
 		newdiv.data = data;
+>>>>>>> .r250
 		return newdiv;
 	}
 	$(document).on('click', '#moreBoard', function(e) {
 		boardCount += countCriteria;
 		loadBoard(boardCount, "more");
 	});
+
+
 //-->
 </script>
 <title>${str_mybusTitle}</title>
@@ -304,14 +408,31 @@ textarea:focus {
 							</h4>
 						</div>
 						<div class="w3-row">
-							<div class="w3-twothird">
-								<iframe style="width: 100%; height: 360px" src="http://www.youtube.com/embed/live_stream?channel=${channelid}" frameborder="0" allowfullscreen></iframe>
+							<div class="w3-twothird" id="onair">
 							</div>
-							<div class="w3-third">
-								<iframe style="width: 100%; height: 360px" src="https://www.youtube.com/live_chat?v=Fdvsv3xisy8&embed_domain=localhost" frameborder="0" allowfullscreen></iframe>
+							<div class="w3-third" id="onairchat">
 							</div>
 						</div>
+<<<<<<< .mine
+						<div id="oaconsole"></div>
+						
+						<script type="text/javascript">
+						//<!--
+							$(document).ready(
+								function(){
+									playonair("${channelid}","${googleApiKey}")	
+								}
+							);
+						//-->
+						</script>
+
 					</c:if>
+					<c:if test="${1=='1'}">
+						<script type="text/javascript">
+							alert("됨?");
+						</script>
+					</c:if>
+
 					<!-- 본인페이지 if 시작-->
 					<c:if test="${driver == email}">
 						<!-- 2등급 회원인데 아직 채널을 연결하지 않은 경우 -->
@@ -324,7 +445,7 @@ textarea:focus {
 										<br> <a href="#">채널 ID를 찾으려면?</a>
 									</p>
 								</div>
-							</div>
+							</div>						
 						</c:if>
 						<!-- 1등급 회원인 경우 -->
 						<c:if test="${mem_level == 1}">
