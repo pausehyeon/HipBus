@@ -44,9 +44,9 @@
 				<form name="readform">
 					<header class="w3-container w3-padding-jumbo w3-theme-l3">
 						<h3>${article.subject}</h3>
-						<p class="w3-right">작성자:${article.nick} | 작성일:
+						<p class="w3-right">${str_writeNick}: ${article.nick} | ${str_reg_date}: 
 						<fmt:formatDate value="${article.reg_date}"
-				type="both" pattern="yyyy-MM-dd HH:mm"/> | 조회수:${article.readcount}
+				type="both" pattern="yyyy-MM-dd HH:mm"/> | ${str_readCount}: ${article.readcount} | ${str_upCount}: ${article.likenum}
 						<br>
 						</p>
 					</header>

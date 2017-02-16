@@ -48,3 +48,9 @@
 <!--  stationModify -->
 <c:set var="btn_modifyComplete" value="수정완료"/>
 <c:set var="btn_modifyCancel" value="수정취소"/>
+
+<!-- stationRead.jsp -->
+<c:set var="str_upCount" value="추천수"/>
+<c:set var="str_writeNick" value="작성자"/>
+<c:set var="str_reg_date" value="작성일"/>
+<c:set var="str_readCount" value="조회수"/>
