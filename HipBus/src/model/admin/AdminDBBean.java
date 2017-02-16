@@ -36,17 +36,35 @@ public class AdminDBBean implements AdminDao {
 	}//회원목록 부르는 바구니
 	
 	@Override
-	public List<MemberDto> getSearch(Map<String, String> smap) {
+	public List<MemberDto> getSearch(Map<String, Object> smap) {
 		return SqlMapClient.getSession().selectList("Admin.getSearch", smap);
 	}//검색
 	public int searchNum(Map<String, String> nmap) {
 		return SqlMapClient.getSession().selectOne("Admin.searchNum", nmap);
 	}//페이지 번호
 		
-	//회원삭제
+	//회원삭제-크루장 위임 강제
+	@Override
+	public List<String> crewLeader(String email) {
+		return SqlMapClient.getSession().selectList("Admin.crewLeader",email);
+	}
+	@Override
+	public List<MemberDto> crewId(String crewid) {
+		return SqlMapClient.getSession().selectList("Admin.crewLeader", crewid);
+	}
+	@Override
+	public int updateLeader(String email) {
+		return SqlMapClient.getSession().update("Admin.crewLeader", email);
+	}
+	
+	//삭제
 	@Override
 	public int deleteMember(String email) {
 		return SqlMapClient.getSession().delete("Admin.deleteMember",email);
+	}
+	@Override
+	public int deleteDriver(String email) {
+		return SqlMapClient.getSession().delete("Admin.deleteDriver",email);
 	}
 	
 	//회원등급 수정

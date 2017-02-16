@@ -30,11 +30,14 @@
 	
 	<!-- 검색 -->
 	<select id="getSearch" resultType="model.MemberDto" parameterType="Map">
-		select * from hb_member where ${category} like '${keyword}%' 
+		select email, nick, mem_level, crewid, r from 
+		(select email, nick, mem_level, crewid, rownum r from
+		(select m.email, nick,mem_level,crewid from hb_member m, hb_crewmember c where m.email=c.email(+) order by mem_level asc) 
+		where ${category} like '${keyword}%' or mem_level=1 and mem_level=2 order by email asc) where r &gt;= #{pageStart} and r &lt;= #{pageEnd}
 	</select>
 	
 	<select id="searchNum" resultType="int" parameterType="Map">
-		select count(*) from hb_member where ${category} like '${keyword}%'
+		select count(*) from hb_member where ${category} like '${keyword}%' or mem_level=1 and mem_level=2
 	</select>
 	
 	<!-- 수정 -->
@@ -43,8 +46,22 @@
 	</update>
 	
 	<!-- 삭제 -->
+	<select id="crewLeader" parameterType="String">
+		select crewid from hb_crewmember where email=#{email} and leader=2
+	</select>
+	<select id="crewId" parameterType="String">
+		select m.email, m.joindate from hb_crewmember c,hb_member m where c.email=m.email 
+		and crewid=#{crewid} and leader=1 order by joindate asc 
+	</select>
+	<update id="updateLeader" parameterType="String">
+		update hb_crewmember set leader=2 where email=#{email} 
+	</update>
+	
 	<delete id="deleteMember" parameterType="String">
 		delete from hb_member where email=#{email}
+	</delete>
+	<delete id="deleteDriver" parameterType="String">
+		delete from hb_driver where driver=#{email}
 	</delete>
 	
 	

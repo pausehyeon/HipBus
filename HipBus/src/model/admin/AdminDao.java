@@ -16,13 +16,19 @@ public interface AdminDao {
 	public List<MemberDto> getMemberLists(Map<String, Integer> map);
 	
 	//검색
-	public List<MemberDto> getSearch(Map<String, String> map);
-	public int searchNum(Map<String,String> map);
+	public List<MemberDto> getSearch(Map<String, Object> map);
+	public int searchNum(Map<String, String> map);
 	
 	//수정
 	public int modifyGrade(MemberDto dto);
 	
+	//삭제시 크루장 인계
+	public List<String> crewLeader(String email);
+	public List<MemberDto> crewId(String crewid);
+	public int updateLeader(String email);
+	
 	//삭제
 	public int deleteMember(String email);
+	public int deleteDriver(String email);
 	
 }
