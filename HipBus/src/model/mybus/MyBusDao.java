@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import model.BoardDto;
+import model.CrewDto;
+import model.CrewMemberDto;
 import model.MemberDto;
 
 public interface MyBusDao {
@@ -17,4 +19,8 @@ public interface MyBusDao {
 	public int isHop( Map<String,String> map );
 	public int hopOn( Map<String,String> map );
 	public int hopOff( Map<String,String> map );
+	public List<CrewDto> getMyCrews(String driver);
+	public List<CrewMemberDto> getMyMembers(Map<String, String> map);
+	public List<String> getTags(String driver);
+	public List<MemberDto> getPassengers(String driver);
 }

@@ -6,6 +6,8 @@ import java.util.Map;
 import org.springframework.stereotype.Component;
 
 import model.BoardDto;
+import model.CrewDto;
+import model.CrewMemberDto;
 import model.MemberDto;
 import model.SqlMapClient;
 
@@ -40,6 +42,18 @@ public class MyBusDBBean implements MyBusDao {
 	}
 	public int hopOff( Map<String,String> map ){
 		return SqlMapClient.getSession().delete("MyBus.hopOff",map);
+	}
+	public List<CrewDto> getMyCrews(String driver){
+		return SqlMapClient.getSession().selectList("MyBus.getMyCrews", driver);
+	}
+	public List<CrewMemberDto> getMyMembers(Map<String, String> map){
+		return SqlMapClient.getSession().selectList("MyBus.getMyMembers", map);
+	}
+	public List<String> getTags(String driver){
+		return SqlMapClient.getSession().selectList("MyBus.getTags", driver);
+	}
+	public List<MemberDto> getPassengers(String driver){
+		return SqlMapClient.getSession().selectList("MyBus.getPassengers", driver);
 	}
 
 }

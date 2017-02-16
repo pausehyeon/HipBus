@@ -3,22 +3,19 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="MyBus">
-<!-- 	<select id="getBoards" parameterType="String" resultType="model.BoardDto">
-		select * from HB_Board where driver=#{driver} order by reg_date desc
-	</select> -->
 	<select id="getLastBoard" parameterType="String" resultType="model.BoardDto">
 		select * from HB_Board where num=(select max(num) from HB_Board where driver=#{driver})
 	</select>
 	<insert id="appendBoard" parameterType="model.BoardDto">
 		insert into HB_Board values 
-		(#{driver,jdbcType=VARCHAR}, boardseq.nextVal, #{email,jdbcType=VARCHAR}, 
-		#{nick,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, sysdate, sysdate)
+		(#{driver,jdbcType=VARCHAR}, hb_boardseq.nextVal, #{email,jdbcType=VARCHAR}, 
+		#{nick,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, sysdate)
 	</insert>
 	<delete id="deleteBoard" parameterType="int">
 		delete from HB_Board where num = #{num}
 	</delete>
 	<update id="modifyBoard" parameterType="model.BoardDto">
-		update HB_Board set content=#{content}, mod_date=sysdate where num=#{num}
+		update HB_Board set content=#{content} where num=#{num}
 	</update>
 	<select id="getMember" parameterType="String"  resultType="model.MemberDto">
 		select * from HB_member where email=#{email,jdbcType=VARCHAR}
@@ -42,6 +39,33 @@
 	<delete id="hopOff" parameterType="map">
 		delete from hb_passengers where driver=#{driver} and email=#{email}
 	</delete>
+	<!-- <select id="getMyCrews" parameterType="String" resultType="model.MyCrewDto">
+		select distinct c.crewid, c.crewname, email 
+		from hb_crewmember m, hb_crew c
+		where m.crewid=c.crewid
+		and m.crewid in (select crewid from hb_crewmember where email=#{driver})
+	</select>
+	 -->
+	 <select id="getMyCrews" parameterType="String" resultType="model.CrewDto">
+	 	select c.crewid, c.crewname
+		from hb_crewmember m, hb_crew c
+		where m.crewid=c.crewid
+		and m.email=#{driver}
+	 </select>
+	 <select id="getMyMembers" parameterType="Map" resultType="model.CrewMemberDto">
+	 	select c.email,c.crewid,c.leader,m.nick 
+	 	from hb_crewmember c, hb_member m
+		where c.email=m.email 
+		and crewid=#{crewid} 
+		and c.email!=#{driver}
+		order by c.leader desc
+	 </select>
+	 <select id="getTags" parameterType="String" resultType="String">
+	 	select tag from hb_tag where driver=#{driver}
+	 </select>
+	 <select id="getPassengers" parameterType="String" resultType="model.MemberDto">
+		select * from hb_member where email in (select email from hb_passengers where driver=#{driver})
+	 </select>
 </mapper>
 
 

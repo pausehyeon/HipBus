@@ -11,9 +11,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import handler.CommandHandler;
 import handler.HandlerException;
+import model.MemberDto;
+import model.general.GeneralDao;
 
 @Controller
 public class MyBus implements CommandHandler {
+	@Resource(name="generalDao")
+	GeneralDao generalDao;
+	
 	@Resource(name="myBusDao")
 	model.mybus.MyBusDao mybusDao;
 	
@@ -34,7 +39,7 @@ public class MyBus implements CommandHandler {
 			}
 		}
 		
-		int mem_level = mybusDao.getMember( driver ).getMem_level();
+		int mem_level = mybusDao.getMember(driver).getMem_level();
 		
 		request.setAttribute("mem_level", mem_level);
 		request.setAttribute("driver", driver);

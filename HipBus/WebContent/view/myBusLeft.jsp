@@ -6,6 +6,17 @@
 <%@include file="/view/setting/bus_setting.jsp"%>
 <%@include file="/view/setting/myBus_setting.jsp"%>
 
+<script type="text/javascript">
+//<!--
+	$(document).ready(
+		function() {
+
+		}
+			
+	);
+//-->
+
+</script>
 
 <!-- Left Column -->
 <div class="w3-col m3">
@@ -14,41 +25,68 @@
 		<div class="w3-container">
 			<h4 class="w3-center">${str_myProfile}</h4>
 			<p class="w3-center">
+			<c:if test="${memDto.getImglocation()!=null}">
+				<img alt="img" src="${project}/hipbusSave/${memDto.getImglocation()}"
+					class="w3-circle" style="width:50%" alt="Avatar">
+			</c:if>
+			<c:if test="${memDto.getImglocation()==null}">
 				<img src="${project}/view/img/HipBusLogo_colored_sq.png"
-					class="w3-circle" style="height: 106px; width: 106px" alt="Avatar">
+					class="w3-circle" style="width:50%" alt="Avatar">
+			</c:if>
 			</p>
 			<hr>
 			<p>
 				<i class="fa fa-id-badge fa-fw w3-margin-right w3-text-theme"></i>
-				Gahyeon Nam
+				${memDto.getNick()}
 			</p>
 			<p>
-				<i class="fa fa-facebook-square fa-fw w3-margin-right w3-text-theme"></i>
-				email@address.com
+				<i class="fa fa-at fa-fw w3-margin-right w3-text-theme"></i>
+				${memDto.getEmail()}
 			</p>
+		<c:if test="${memDto.getMem_level() == 2}">
 			<p>
 				<i class="fa fa-bookmark fa-fw w3-margin-right w3-text-theme"></i>
 				Best Driver
 			</p>
+		</c:if>
+		<c:if test="${email != null and email != driver}">
 			<button name="hop" onclick="location='myBusHopOnPro.do?driver=${driver}&email=${email}&hopORnot=${hopORnot}'">
 				${str_hop} &nbsp; ${hopORnot}
 			</button>
-			<p onclick="myFunction('crew')">
+		</c:if>
+	<c:if test="${myCrews[0] != null}">
+		<c:forEach var="crew" items="${myCrews}">
+			
+			<p onclick="myFunction('${crew.crewid}')">
 				<i class="fa fa-fort-awesome fa-fw w3-margin-right w3-text-theme"></i>
-				${str_crew} The One
+				${str_crew} ${crew.crewname}
 			</p>
-			<div id="crew" class="w3-accordion-content w3-container">
+			<div id="${crew.crewid}" class="w3-accordion-content w3-container">
 				<p>
-					<a href="crewBus.do">The One <i
-						class="fa fa-mail-forward fa-fw w3-margin-right w3-text-theme"></i></a>
+					<a href="crewBus.do?driver=${crew.crewid}">${crew.crewname}
+					<i class="fa fa-mail-forward fa-fw w3-margin-right w3-text-theme"></i></a>
+			
 				<ul>
-					<li><a href="#">Victory Lee</a>
-					<li><a href="#">Jeehun Kim</a>
+				
+					<c:if test="${myMembers[crew.crewid]!=null and myMembers[crew.crewid].size()!=0}">
+					<c:forEach begin="0" end="${myMembers[crew.crewid].size()-1}" varStatus="status">
+   						<li><a href="myBus.do?driver=${myMembers[crew.crewid].get(status.count-1).getEmail()}">${myMembers[crew.crewid].get(status.count-1).getNick()}</a>
+ 					</c:forEach>
+					</c:if>
+					<c:if test="${myMembers[crew.crewid]==null}">
+						<li><a href="#">널이다.</a>
+					</c:if>
+
 				</ul>
+			
 				</p>
 			</div>
+		</c:forEach>
+	</c:if>
+	<c:if test="${driver==email}">
 			<hr>
 			<a href="myBusBeforeEdit.do"><i class="fa fa-pencil"></i>${str_editProfile}</a>
+	</c:if>
 			<hr>
 		</div>
 	</div>
@@ -60,11 +98,27 @@
 				class="w3-btn-block w3-theme-l1 w3-left-align">
 				<i class="fa fa fa-heart fa-fw w3-margin-right"></i> ${str_hopperList}
 			</button>
-			<div id="Demo1" class="w3-accordion-content w3-container">
+			<div id="Demo1" class="w3-accordion-content w3-container w3-padding-2">
 				<p>
-				<ul>
-					<li>Jueun Jeong<br>
-					<li>JD Yoo<br>
+				<ul class="w3-ul">
+			<c:if test="${passengers==null}">
+				<li>아직 탑승자가 없습니다.</li>
+			</c:if>
+			<c:if test="${passengers!=null}">
+				<c:forEach var="passenger" items="${passengers}" varStatus="status">
+					<li class="w3-padding-10">
+						<c:if test="${passenger.getImglocation()!=null}">
+							<img alt="img" src="${project}/hipbusSave/${passenger.getImglocation()}"
+								class="w3-left w3-circle w3-margin-right" style="width:11%">
+						</c:if>
+						<c:if test="${passenger.getImglocation()==null}">
+							<img src="${project}/view/img/HipBusLogo_colored_sq.png"
+								class="w3-left w3-circle w3-margin-right" style="width:11%" alt="Avatar">
+						</c:if>
+						<a href="myBus.do?driver=${passenger.getEmail()}" class="w3-middle">${passenger.getNick()}</a>
+					</li>
+				</c:forEach>
+			</c:if>
 				</ul>
 				</p>
 			</div>
@@ -102,18 +156,23 @@
 		<div class="w3-container">
 			<p>${str_tags}</p>
 			<p>
-				<span class="w3-tag w3-small w3-theme-d5">랩</span> <span
-					class="w3-tag w3-small w3-theme-d4">믹스테잎</span> <span
-					class="w3-tag w3-small w3-theme-d3">가사</span> <span
-					class="w3-tag w3-small w3-theme-d2">Games</span> <span
-					class="w3-tag w3-small w3-theme-d1">Friends</span> <span
-					class="w3-tag w3-small w3-theme">쇼미더머니</span> <span
-					class="w3-tag w3-small w3-theme-l1">언프리티랩스타</span> <span
-					class="w3-tag w3-small w3-theme-l2">Food</span> <span
-					class="w3-tag w3-small w3-theme-l3">빈지노</span> <span
-					class="w3-tag w3-small w3-theme-l4">Art</span> <span
-					class="w3-tag w3-small w3-theme-l5">Photos</span>
+		<c:forEach var="tag" items="${tags}">
+				<span class="w3-tag w3-small w3-theme-d3">${tag}</span>
+		</c:forEach>
 			</p>
+			<!-- <p>
+				<span class="w3-tag w3-small w3-theme-d5">랩</span> 
+				<span class="w3-tag w3-small w3-theme-d4">믹스테잎</span> 
+				<span class="w3-tag w3-small w3-theme-d3">가사</span> 
+				<span class="w3-tag w3-small w3-theme-d2">Games</span> 
+				<span class="w3-tag w3-small w3-theme-d1">Friends</span> 
+				<span class="w3-tag w3-small w3-theme">쇼미더머니</span> 
+				<span class="w3-tag w3-small w3-theme-l1">언프리티랩스타</span> 
+				<span class="w3-tag w3-small w3-theme-l2">Food</span> 
+				<span class="w3-tag w3-small w3-theme-l3">빈지노</span> 
+				<span class="w3-tag w3-small w3-theme-l4">Art</span> 
+				<span class="w3-tag w3-small w3-theme-l5">Photos</span>
+			</p> -->
 		</div>
 	</div>
 	<br>
