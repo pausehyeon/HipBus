@@ -22,7 +22,7 @@
 
 		<div class="w3-row">
 			<!-- Left Column -->
-			<c:import url="../myBusLeft.do"></c:import>
+			<c:import url="../myBusLeft.do?driver=${driver}&email=${email}"></c:import>
 			<!-- End Left Column -->
 
 			<!-- Middle Column -->
@@ -31,9 +31,9 @@
 				<div
 					class="w3-container w3-card-2 w3-white w3-round w3-margin-bottom w3-margin-left w3-margin-right w3-padding-32 w3-padding-xxlarge">
 					<div class="w3-container w3-center w3-black">
-						<h2>
+						<h3>
 							<i class="fa fa-calendar"></i>&nbsp; ${str_upcomingList}
-						</h2>
+						</h3>
 					</div>
 					<div class="w3-row-padding w3-padding-16 w3-center">
 						<div class="w3-col m4 l3">
