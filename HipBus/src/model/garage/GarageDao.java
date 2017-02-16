@@ -20,11 +20,10 @@ public interface GarageDao {
 	public MemberDto getMember(String email); //nick값 불러오기위한 메소드
 	public int updateArticle( NewsDto dto );
 	public int deleteArticle(int num);
-	public List<FAQDto> getFAQList(Map<String,Integer> map);
+	public List<FAQDto> getFAQList();
 	public int insertFAQ(FAQDto article);
 	public FAQDto getFAQArticle(int num);
 	public int updateFAQArticle( FAQDto dto );
-	public int getFAQCount();
 	public int faqDeleteArticle(int num);
 	public List<WantedDto> getWantedArticles(Map<String,Integer> map); 
 	public int getWantedCount();

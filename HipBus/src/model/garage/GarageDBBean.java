@@ -71,7 +71,7 @@ public class GarageDBBean implements GarageDao {
 	}
 
 	@Override
-	public List<FAQDto> getFAQList(Map<String,Integer> map) {
+	public List<FAQDto> getFAQList() {
 		// TODO Auto-generated method stub
 		return SqlMapClient.getSession().selectList( "Garage.getFAQList");
 	}
@@ -92,12 +92,6 @@ public class GarageDBBean implements GarageDao {
 	public int updateFAQArticle(FAQDto dto) {
 		// TODO Auto-generated method stub
 		return SqlMapClient.getSession().update("Garage.updateFAQArticle",dto);
-	}
-
-	@Override
-	public int getFAQCount() {
-		// TODO Auto-generated method stub
-		return SqlMapClient.getSession().selectOne( "Garage.getFAQCount" );
 	}
 
 	@Override

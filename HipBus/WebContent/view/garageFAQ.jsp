@@ -20,10 +20,7 @@
 		</div>
 		<div class="w3-row w3-margin w3-padding-jumbo">
 		<div class="w3-row w3-section">
-			<div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-search"></i></div>
 			<div class="w3-rest">
-				<input class="w3-input w3-border" name="message" type="text" placeholder="${str_Search}">
-				
 				<c:if test="${dto.mem_level == 3 }">
 				<!-- 이 버튼은 관리자에게만 보임 -->
 				<a href="garageFAQWrite.do" class="w3-btn w3-padding w3-theme-d1 w3-margin w3-right"><i class="fa fa-pencil-square-o w3-margin-right"></i>${str_Write}</a>
@@ -34,8 +31,12 @@
 			</div>
 		</div>
 		
-		<!-- 글이없는경우 -->
-				<c:if test="${count == 0}">
+		
+			
+				
+			<c:forEach var="article" items="${FAQList}">
+			<!-- 글이없는경우 -->
+				<c:if test="${article.num eq null}">
 			
 				<div class="w3-row w3-margin-bottom">
 						<div class="w3-twothird w3-container">
@@ -43,9 +44,6 @@
 						</div>
 						</div>	
 				</c:if>	
-			
-			
-			<c:forEach var="article" items="${FAQList}">
 			<c:set var="sum" value="${sum+1}"/>
 			<div class="w3-accordion w3-white w3-card-4">
 				<button onclick="myFunction('q${article.num}')" class="w3-btn-block w3-theme-l3 w3-left-align">

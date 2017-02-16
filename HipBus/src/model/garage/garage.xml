@@ -67,10 +67,6 @@
 		values(HB_newsseq.NEXTVAL,#{email},#{nick},#{subject},#{content})
 	</insert>
 
-	<select id="getFAQCount" resultType="int">
-		select count(*) from HB_FAQ
-	</select>
-
 	<select id="getFAQArticle" parameterType="int" resultType="model.FAQDto">
 		select * from HB_FAQ where num=#{num}
 	</select>
