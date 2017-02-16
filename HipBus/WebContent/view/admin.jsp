@@ -6,7 +6,6 @@
 <html>
 <title>${str_title}</title>
 
-
 <body>
 
 	<!-- Navbar -->
@@ -93,7 +92,6 @@
 			<br>
 		</div>
 		<hr id="manageMembers">
-
 		<div class="w3-content w3-padding-128">
 			<div class="w3-container w3-section">
 				<div class="w3-row-padding" style="margin: 0 -16px">
@@ -111,14 +109,14 @@
 								<th width="80px"><a href="#" style="text-decoration: none">&nbsp;&nbsp;${str_memNick}</a></th>
 								<th style="text-align: certer"><a href="#" style="text-decoration: none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${str_memAuthority}</a></th>
 							</tr>
-						<c:if test="${numberOfMember == 0}">
+						<c:if test="${count == 0}">
 							<tr>
 								<td colspan="4" style="text-align : center">
 									${str_listMsg}
 								</td>
 							</tr>
 						</c:if>
-						<c:if test="${numberOfMember != 0}">
+						<c:if test="${count != 0}">
 							<c:if test="${slist == null}">
 								<c:forEach var="getMember" items="${list}" varStatus="status">
 									<tr>
@@ -184,9 +182,9 @@
 						<!-- Pagination -->
 						<div class="w3-center w3-padding-32">
 							<ul class="w3-pagination">
-							<c:if test="${numberOfMember > 0}">
+							<c:if test="${count > 0}">
 								<c:if test="${startPage > pageBlock}">
-									<li><a href="admin.do">◀◀</a></li>
+									<li><a href="admin.do#manageMembers">◀◀</a></li>
 									<li><a href="admin.do?pageNum=${startPage-pageBlock}">◀</a></li>
 								</c:if>
 								<c:forEach var="i" begin="${startPage}" end="${endPage}">
@@ -194,25 +192,40 @@
 										<li><a>${i}</a></li>
 									</c:if>
 									<c:if test="${i != pageNow}">
-										<li><a href="admin.do?pageNum=${i}">${i}</a></li>
+										<li><a href="admin.do?pageNum=${i}#manageMembers">${i}</a></li>
 									</c:if>
 								</c:forEach>
 								<c:if test="${pageCount > endPage}">
 									<li><a href="admin.do?pageNum=${startPage+pageBlock}">▶</a></li>
-									<li><a href="admin.do?pageNum=${pageCount}">▶▶</a><li>
+									<li><a href="admin.do?pageNum=${pageCount}#manageMembers">▶▶</a><li>
 								</c:if>
 							</c:if>
 							</ul>
 						</div>
-						<form class="w3-container" action="admin.do">
+						<c:if test="${count gt 1}">
+		<script type="text/javascript">
+		$(document).ready(function (){
+			alert("${count}");
+		});
+			keywordcheck=function(){
+				if(! search.keyword.value){
+					alert("검색할 키워드를 작성하세요.");
+					search.keyword.focus();
+					return false;
+				}
+			}
+			
+		</script>
+		</c:if>
+						<form class="w3-container" name="search" action="admin.do#manageMembers" onsubmit="return keywordcheck()">
 							<select class="w3-select w3-border w3-quarter" name="category">
-								<option value="" disabled>${str_memSearchOption}</option>
+								<option value="${str_memSearchOption}">${str_memSearchOption}</option>
 								<option value="email">${str_memEmail}</option>
 								<option value="nick">${str_memNick }</option>
 								<option value="mem_level">${str_memGrade}</option>
 							</select>
 							<input class="w3-input w3-border w3-half" name="keyword" type="text">
-							<button class="w3-btn w3-black w3-large" onclick="location=admin.do?category=catagory&keyword=keyword">${str_memSearchBtn}</button>
+							<button class="w3-btn w3-black w3-large" type="submit">${str_memSearchBtn}</button>
 						</form>
 					</div>
 
@@ -301,7 +314,7 @@
 					</p>
 
 					<p>
-						<button class="w3-btn w3-black w3-hover-teal">${str_emSendEmail}</button>
+						<button class="w3-btn w3-black w3-hover-teal" onclick="location=admin.do?#">${str_emSendEmail}</button>
 					</p>
 				</form>
 			</div>
@@ -355,7 +368,7 @@
 			<input class="w3-check" type="checkbox">
 			<label class="w3-validate"></label>
 			<p class="w3-center">
-				<button class="w3-btn w3-hover-teal">${str_adminDeleteBtn}</button>
+				<button class="w3-btn w3-hover-teal" onclick="location=main.do">${str_adminDeleteBtn}</button>
 			</p>
 		</div>
 

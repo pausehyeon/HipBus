@@ -13,8 +13,13 @@
 	</script> -->
 <c:if test="${result == 0}">
 	<script type="text/javascript">
-		alert("실패");
+		alert("Member 삭제실패");
 	</script>
 	<meta http-equiv="refresh" content="5; url=admin.do">
 </c:if>
-
+<c:if test="${resultcheck eq 0}">
+	<script type="text/javascript">
+		alert("Driver 삭제실패");
+	</script>
+	<meta http-equiv="refresh" content="5; url=admin.do">
+</c:if>
