@@ -217,50 +217,56 @@ textarea:focus {
 	function makeBoard(data) {
 		var newdiv = document.createElement("div");
 		newdiv.setAttribute("id", "board_" + data.num);
-		alert("${fn:trim('" + data.email + "')=='f@com.com'}");
-		alert("${sessionScope.memEmail=='f@com.com'}");
-		newdiv.innerHTML = '<div class="w3-container w3-card-2 w3-white w3-round w3-padding-32 w3-margin" id="list">'
-				+ '<a href=myBus.do?driver='
-				+ data.email
-				+ '><img src="${project}/view/img/HipBusLogo_colored_sq.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width: 40px"></a>'
-				+ '<span class="w3-right w3-opacity">'
-				+ data.reg_date
-				+ '&nbsp;'
-				+ '<a href="#"><i class="fa fa-close w3-right" onclick="delBoard('
-				+ data.num
-				+ ')"></i></a></span>'
-				+ '<h4>'
-				+ data.nick
-				+ '</h4>'
-				+ '<hr class="w3-clear">'
-				+ '<input type="hidden" name="'+ data.num +'">'
-				+ '<textarea readonly="true" rows="3">'
-				+ data.content
-				+ "</textarea>"
-				+ '<div class="w3-center">'
-				+ '<c:if test="${driver==email}">'
-				+ '<button type="button" class="w3-btn w3-theme-l1 modc" style="display:none" onclick="modComplete('
-				+ data.num
-				+ ')">'
-				+ '<i class="fa fa-scissors"></i>  ${str_modComplete}'
-				+ '</button>'
-				+ '<button type="button" class="w3-btn w3-theme-l1" onclick="modBoardView('
-				+ data.num
-				+ ')">'
-				+ '<i class="fa fa-pencil"></i>  ${str_modBoard}'
-				+ '</button> &nbsp;'
-				+ "<button type=\"button\" class=\"w3-btn w3-theme-l1\" style=\"display:none\" onclick=\"modCancel("
-				+ data.num
-				+ ",\'"
-				+ data.content
-				+ "\','first')\">"
-				+ '<i class="fa fa-times"></i>  ${str_modCancel}'
-				+ '</button>'
-				+ '<button type="button" class="w3-btn w3-theme-l1" onclick="delBoard('
-				+ data.num
-				+ ')">'
-				+ '<i class="fa fa-trash-o"></i>  ${str_delBoard}'
-				+ '</button> &nbsp;' + '</c:if>' + '</div>' + '</div>';
+		var msg = "";
+		var modbuttons = "";
+		
+		modbuttons += '<button type="button" class="w3-btn w3-theme-l1 modc" style="display:none" onclick="modComplete(';
+		modbuttons += data.num;
+		modbuttons += ')">';
+		modbuttons += '<i class="fa fa-scissors"></i>  ${str_modComplete}';
+		modbuttons += '</button>';
+		modbuttons += '<button type="button" class="w3-btn w3-theme-l1" onclick="modBoardView(';
+		modbuttons += data.num;
+		modbuttons += ')">';
+		modbuttons += '<i class="fa fa-pencil"></i>  ${str_modBoard}';
+		modbuttons += '</button> &nbsp;';
+		modbuttons += "<button type=\"button\" class=\"w3-btn w3-theme-l1\" style=\"display:none\" onclick=\"modCancel(";
+		modbuttons += data.num;
+		modbuttons += ",\'";
+		modbuttons += data.content;
+		modbuttons += "\','first')\">";
+		modbuttons += '<i class="fa fa-times"></i>  ${str_modCancel}';
+		modbuttons += '</button>';
+		modbuttons += '<button type="button" class="w3-btn w3-theme-l1" onclick="delBoard(';
+		modbuttons += data.num;
+		modbuttons += ')">';
+		modbuttons += '<i class="fa fa-trash-o"></i>  ${str_delBoard}';
+		modbuttons += '</button>';
+
+		msg += '<div class="w3-container w3-card-2 w3-white w3-round w3-padding-32 w3-margin" id="list">';
+		msg += '<a href=myBus.do?driver='+ data.email;
+		msg += '><img src="${project}/view/img/HipBusLogo_colored_sq.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width: 40px"></a>';
+		msg += '<span class="w3-right w3-opacity">';
+		msg += data.reg_date;
+		msg += '&nbsp;';
+		msg += '<a href="#"><i class="fa fa-close w3-right" onclick="delBoard(';
+		msg += data.num;
+		msg += ')"></i></a></span>';
+		msg += '<h4>';
+		msg += data.nick;
+		msg += '</h4>';
+		msg += '<hr class="w3-clear">';
+		msg += '<input type="hidden" name="'+ data.num +'">';
+		msg += '<textarea readonly="true" rows="3">';
+		msg += data.content;
+		msg += "</textarea>";
+		msg += '<div class="w3-center">';
+		if(data.email == "${sessionScope.memEmail}"){
+			msg += modbuttons;
+		}
+		msg += '</div>' + '</div>';
+		
+		newdiv.innerHTML = msg;
 		newdiv.data = data;
 		return newdiv;
 	}
@@ -306,11 +312,6 @@ textarea:focus {
 							</div>
 						</div>
 					</c:if>
-					<c:if test="${1=='1'}">
-						<script type="text/javascript">
-							alert("됨?");
-						</script>
-					</c:if>
 					<!-- 본인페이지 if 시작-->
 					<c:if test="${driver == email}">
 						<!-- 2등급 회원인데 아직 채널을 연결하지 않은 경우 -->
@@ -318,8 +319,7 @@ textarea:focus {
 							<div class="w3-row">
 								<div class="w3-row w3-center w3-theme-l1 w3-padding-large w3-small">
 									<p>
-										<i class="fa fa-video-camera w3-xxlarge"></i> <br> 아직 채널 ID를 등록하지 않으셨습니다.<br> 유투브 채널 ID를 등록하고 방송을 시작해보세요.<br>
-										<br>
+										<i class="fa fa-video-camera w3-xxlarge"></i> <br> 아직 채널 ID를 등록하지 않으셨습니다.<br> 유투브 채널 ID를 등록하고 방송을 시작해보세요.<br> <br>
 										<input class="w3-input" type="text" required>
 										<br> <a href="#">채널 ID를 찾으려면?</a>
 									</p>
@@ -330,8 +330,7 @@ textarea:focus {
 						<c:if test="${mem_level == 1}">
 							<div class="w3-row">
 								<p class="w3-center w3-theme-l1 w3-padding-large w3-tiny">
-									<i class="fa fa-video-camera w3-xxlarge"></i> <br> 사이트 규정에 따라 Main Station에 10개 이상 글을 게시한 이용자만 라이브 스트리밍을 이용할 수 있습니다. <br>
-									<br> <a href="station.do" class="w3-small">글 쓰러 가기</a>
+									<i class="fa fa-video-camera w3-xxlarge"></i> <br> 사이트 규정에 따라 Main Station에 10개 이상 글을 게시한 이용자만 라이브 스트리밍을 이용할 수 있습니다. <br> <br> <a href="station.do" class="w3-small">글 쓰러 가기</a>
 								</p>
 							</div>
 						</c:if>
@@ -374,12 +373,9 @@ textarea:focus {
 
 				<div class="w3-row-padding">
 					<div class="w3-col m12 w3-center dash">
-						<br>
-						<br>
-						<span id="boardInfo"></span>
+						<br> <br> <span id="boardInfo"></span>
 						<button id="moreBoard">${str_moreBoard}</button>
-						<br>
-						<br>
+						<br> <br>
 						<div id="console"></div>
 					</div>
 				</div>

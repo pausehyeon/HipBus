@@ -41,7 +41,7 @@
 <c:set var="str_Recommend" value="추천하기"/>
 <c:set var="str_Top" value="위로"/>
 
-<!--  garageeNewsWrite.jsp -->
+<!--  garageNewsWrite.jsp -->
 <c:set var="str_insertThumbnail" value="대표 이미지 :"></c:set>
 
 <!-- garageOnAir.jsp  -->
@@ -64,5 +64,9 @@
 <c:set var="btn_modify" value="글수정"/>
 <c:set var="btn_delete" value="글삭제"/>
 <c:set var="btn_list" value="글목록"/>
+
+<!-- garageUpcoming.jsp -->
+<c:set var="str_noUpcoming" value="다가오는 공연 일정이 없습니다."></c:set>
+
 
 

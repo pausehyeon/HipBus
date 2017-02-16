@@ -52,4 +52,9 @@ public class GeneralDBBean implements GeneralDao {
 	public List<ChannelDto> getChannels() {
 		return session.selectList("General.getChannels");
 	}
+	
+	@Override
+	public String getVerificationCode(String email) {
+		return session.selectOne("General.getVerificationCode", email);
+	}
 }

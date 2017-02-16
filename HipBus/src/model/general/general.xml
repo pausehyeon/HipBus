@@ -36,4 +36,8 @@
 	<select id="getChannels" resultType="model.ChannelDto">
 		select * from HB_Channel
 	</select>
+	
+	<select id="getVerificationCode" parameterType="String" resultType="String">
+		select code from HB_Verification where email=#{email} 
+	</select>
 </mapper>
