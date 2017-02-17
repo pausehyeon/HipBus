@@ -10,6 +10,18 @@
 		#{joindate}, #{imglocation}
 		)
 	</insert>
+	
+	<insert id="insertDriver" parameterType="String">
+		insert into HB_Driver values( #{email} )
+	</insert>	
+	
+	<insert id="emailValidate" parameterType="Map">
+		insert into HB_Verification values( #{email}, #{code} )
+	</insert>
+	
+	<select id="emailCheck" parameterType="String">
+		select count (*) from HB_member where email = #{email}
+	</select>
 
 	<select id="getTopDrivers" resultType="model.TopDriversDto">
 		select driver,
