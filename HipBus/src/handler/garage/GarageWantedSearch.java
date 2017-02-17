@@ -46,7 +46,7 @@ public class GarageWantedSearch implements CommandHandler{
 			searchMap.put("searchType", searchType);
 			searchMap.put("keyword",keyword);
 			
-			int num=garageDao.getWantedSearch(searchMap);
+			int num= garageDao.getWantedSearch(searchMap);
 			count = num;
 		}
 		
