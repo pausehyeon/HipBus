@@ -83,9 +83,9 @@
 <!-- myBusUpcoming -->
 	<insert id="writeUpcoming" parameterType="model.UpcomingDto">
 		insert into hb_upcoming values
-		(hb_upcomingseq.nextVal,#{driver,jdbcType=VARCHAR},#{nick},#{subject},
-		#{perf_place},#{perf_date},#{perf_cast},#{perf_runningtime},#{perf_price},
-		#{content},#{imglocation},0,sysdate)
+		(hb_upcomingseq.nextVal,#{driver,jdbcType=VARCHAR},#{nick,jdbcType=VARCHAR},#{subject,jdbcType=VARCHAR},
+		#{perf_place,jdbcType=VARCHAR},#{perf_date,jdbcType=DATE},#{perf_cast,jdbcType=VARCHAR},#{perf_runningtime,jdbcType=INTEGER},#{perf_price,jdbcType=INTEGER},
+		#{content,jdbcType=VARCHAR},#{imglocation,jdbcType=INTEGER},0,sysdate)
 	</insert>
 	<select id="getUpcoming" parameterType="int" resultType="model.UpcomingDto">
 		select * from hb_upcoming where num=#{num}

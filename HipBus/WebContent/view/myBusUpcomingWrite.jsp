@@ -34,7 +34,7 @@
 			<!-- 여기서부터 -->
 			<div class="w3-col m7">
 				<div class="w3-container w3-card-2 w3-white w3-round w3-margin-bottom w3-margin-left w3-margin-right w3-padding-32 w3-padding-xxlarge">
-					<form name="writeUpcomingForm" action="myBusUpcomingWritePro.do?driver=${driver}" method="post">
+					<form name="writeUpcomingForm" action="myBusUpcomingWritePro.do?driver=${driver}" method="post" enctype="multipart/form-data">
 						<div class="w3-container w3-center w3-black">
 							<h3>
 								<i class="fa fa-calendar"></i>&nbsp; ${str_upcoming}

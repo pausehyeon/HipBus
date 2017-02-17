@@ -1,5 +1,6 @@
 package handler.mybus;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.sql.Timestamp;
 
@@ -11,10 +12,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.oreilly.servlet.MultipartRequest;
+
 import handler.CommandHandler;
 import handler.HandlerException;
 import model.MemberDto;
 import model.UpcomingDto;
+import model.general.FileUpload;
+import model.general.ImageResize;
 import model.mybus.MyBusDao;
 
 @Controller
@@ -31,36 +36,32 @@ public class MyBusUpcomingWritePro implements CommandHandler {
 		}
 		String driver = request.getParameter("driver");
 		
-		String img = request.getParameter("upload");
-		String imgLocation = img.substring(img.lastIndexOf("\\")+1);
-		
-		UpcomingDto dto = new UpcomingDto();
-		MemberDto mdto = mybusDao.getMember(driver);
-		String nick = null;
-		if( mdto == null ){
-			nick = "dto가 널이다";
-		} else {
-			nick = mdto.getNick();			
-		}
-		String showDate = request.getParameter("showDate");
-		String date = showDate.replace("T", " ")+":00";
-		Timestamp ts = Timestamp.valueOf(date);
+		MultipartRequest multi;
+		try {
+			multi = new FileUpload().getMultipartRequest(request);
+			
+			String imglocation = multi.getFilesystemName("upload");
+			imglocation = new ImageResize().resize(request, imglocation, 0.7, 560);	
 
-		dto.setDriver(driver);
-		dto.setNick(nick);
-		dto.setSubject(request.getParameter("showName"));
-		dto.setPerf_place(request.getParameter("location"));
-		dto.setPerf_date(ts);
-		dto.setPerf_cast(request.getParameter("cast"));
-		dto.setPerf_runningtime(Integer.parseInt(request.getParameter("runningTime")));
-		dto.setPerf_price(Integer.parseInt(request.getParameter("price")));
-		dto.setContent(request.getParameter("content"));
-		dto.setImglocation(imgLocation);
-		
-		int result = mybusDao.writeUpcoming(dto);
-		
-		request.setAttribute("result", result);
-		request.setAttribute("driver", driver);
+			UpcomingDto dto = new UpcomingDto();
+			dto.setDriver(driver);
+			dto.setNick(mybusDao.getMember(driver).getNick());
+			dto.setSubject(multi.getParameter("showName"));
+			dto.setPerf_place(multi.getParameter("location"));
+			dto.setPerf_date(Timestamp.valueOf(multi.getParameter("showDate").replace("T", " ")+":00"));
+			dto.setPerf_cast(multi.getParameter("cast"));
+			dto.setPerf_runningtime(Integer.parseInt(multi.getParameter("runningTime")));
+			dto.setPerf_price(Integer.parseInt(multi.getParameter("price")));
+			dto.setContent(multi.getParameter("content"));
+			dto.setImglocation(imglocation);
+			
+			int result = mybusDao.writeUpcoming(dto);
+			
+			request.setAttribute("result", result);
+			request.setAttribute("driver", driver);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 		return new ModelAndView("myBusUpcomingWritePro");
 	}

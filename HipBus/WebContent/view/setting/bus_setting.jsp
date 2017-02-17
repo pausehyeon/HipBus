@@ -64,6 +64,10 @@
 <c:set var="str_writeDate" value="| 작성일 : "/>
 <c:set var="str_hits" value="| 조회수 : "/>
 
+<!-- myBusUpcomingRead.jsp -->
+<c:set var="str_minute" value=" 분"/>
+<c:set var="str_goUpcomingList" value="더 많은 공연일정 보러가기"/>
+
 <!-- myBusUpcomingWrite.jsp -->
 <c:set var="str_upcoming" value="Upcoming"/>
 <c:set var="str_concertName" value="공연명"/>
