@@ -35,39 +35,60 @@
 				<div class="w3-container w3-card-2 w3-white w3-round w3-margin-bottom w3-margin-left w3-margin-right w3-padding-32 w3-padding-xxlarge">
 					<div class="w3-container w3-center w3-black">
 						<h3>
-							<i class="fa fa-calendar"></i>&nbsp; ${str_upcoming}
+							<i class="fa fa-calendar"></i>&nbsp; ${str_upcoming} : 공연제목
 						</h3>
 					</div>
 
-					<div class="w3-row-padding w3-padding-12">
-						<label class="w3-label w3-validate">${str_showName}</label>
-					</div>
-					<div class="w3-row-padding">
-						<div class="w3-col m6">
+					<div class="w3-row-padding w3-margin-top">
+						<div class="w3-col m12 w3-padding-12 w3-center">
+							<img src="${project}/view/img/poster1.jpg">
+						</div>
+						<div class="w3-col m2">
 							<div class="w3-row-padding w3-right-align">
 								<label>${str_location}</label>
 							</div>
 						</div>
-						<div class="w3-col m6">
+						<div class="w3-col m4">
+							<div class="w3-row-padding w3-left-align">
+								<label>장소</label>
+							</div>
+						</div>
+						<div class="w3-col m2">
 							<div class="w3-row-padding w3-right-align">
 								<label>${str_cast}</label>
 							</div>
 						</div>
+						<div class="w3-col m4">
+							<div class="w3-row-padding w3-left-align">
+								<label>누구, 누구</label>
+							</div>
+						</div>
 					</div>
 					<div class="w3-row-padding">
-						<div class="w3-col m6">
+						<div class="w3-col m2">
 							<div class="w3-row-padding w3-right-align">
 								<label>${str_date}</label>
 							</div>
 						</div>
-						<div class="w3-col m6">
+						<div class="w3-col m4">
+							<div class="w3-row-padding w3-left-align">
+								<label>2017년 02월 17일</label>
+							</div>
+						</div>
+						<div class="w3-col m2">
 							<div class="w3-row-padding w3-right-align">
 								<label>${str_time}</label>
 							</div>
 						</div>
+						<div class="w3-col m4">
+							<div class="w3-row-padding w3-left-align">
+								<label>pm 09:00 (90분 간)</label>
+							</div>
+						</div>
 					</div>
-					<div class="w3-row-padding w3-padding-32">
+					<div class="w3-row-padding w3-padding-32 w3-padding-jumbo">
 						<p>
+							글 내용 글 내용 글 내용 글 내용 글 내용 글 내용 글 내용 글 내용 글 내용
 						</p>
 					</div>
 					<div class="w3-row-padding w3-white w3-center">
