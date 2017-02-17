@@ -41,7 +41,7 @@ public class MyBusUpcomingWritePro implements CommandHandler {
 			multi = new FileUpload().getMultipartRequest(request);
 			
 			String imglocation = multi.getFilesystemName("upload");
-			imglocation = new ImageResize().resize(request, imglocation, 0.7, 560);	
+			imglocation = new ImageResize().resize(request, imglocation, 1.4, 560);	
 
 			UpcomingDto dto = new UpcomingDto();
 			dto.setDriver(driver);
