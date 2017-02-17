@@ -21,7 +21,7 @@
 	<script type="text/javascript">
 		//<!--
 		alert( signupok );		
-		location.href="mainSignIn.do";
+		location.href="main.do";
 		//-->
 	</script>	
 	<%-- <c:redirect url="main.do"/> 리다이렉트를 쓰면 얼럿이 안먹음!--%>
