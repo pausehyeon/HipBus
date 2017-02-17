@@ -229,9 +229,6 @@ textarea:focus {
 	function makeBoard(data) {
 		var newdiv = document.createElement("div");
 		newdiv.setAttribute("id", "board_" + data.num);
-<<<<<<< .mine
-		alert("${driver}");
-		alert("${email}");
 		var appendBtn = ''; 
 		var modBtn = ''; 
 		var board = '';
@@ -271,105 +268,7 @@ textarea:focus {
 		
 		newdiv.innerHTML = board;
 		newdiv.data += data;
-||||||| .r241
-		alert("${fn:trim('" + data.email + "')=='f@com.com'}");
-		alert("${sessionScope.memEmail=='f@com.com'}");
-		newdiv.innerHTML = '<div class="w3-container w3-card-2 w3-white w3-round w3-padding-32 w3-margin" id="list">'
-				+ '<a href=myBus.do?driver='
-				+ data.email
-				+ '><img src="${project}/view/img/HipBusLogo_colored_sq.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width: 40px"></a>'
-				+ '<span class="w3-right w3-opacity">'
-				+ data.reg_date
-				+ '&nbsp;'
-				+ '<a href="#"><i class="fa fa-close w3-right" onclick="delBoard('
-				+ data.num
-				+ ')"></i></a></span>'
-				+ '<h4>'
-				+ data.nick
-				+ '</h4>'
-				+ '<hr class="w3-clear">'
-				+ '<input type="hidden" name="'+ data.num +'">'
-				+ '<textarea readonly="true" rows="3">'
-				+ data.content
-				+ "</textarea>"
-				+ '<div class="w3-center">'
-				+ '<c:if test="${driver==email}">'
-				+ '<button type="button" class="w3-btn w3-theme-l1 modc" style="display:none" onclick="modComplete('
-				+ data.num
-				+ ')">'
-				+ '<i class="fa fa-scissors"></i>  ${str_modComplete}'
-				+ '</button>'
-				+ '<button type="button" class="w3-btn w3-theme-l1" onclick="modBoardView('
-				+ data.num
-				+ ')">'
-				+ '<i class="fa fa-pencil"></i>  ${str_modBoard}'
-				+ '</button> &nbsp;'
-				+ "<button type=\"button\" class=\"w3-btn w3-theme-l1\" style=\"display:none\" onclick=\"modCancel("
-				+ data.num
-				+ ",\'"
-				+ data.content
-				+ "\','first')\">"
-				+ '<i class="fa fa-times"></i>  ${str_modCancel}'
-				+ '</button>'
-				+ '<button type="button" class="w3-btn w3-theme-l1" onclick="delBoard('
-				+ data.num
-				+ ')">'
-				+ '<i class="fa fa-trash-o"></i>  ${str_delBoard}'
-				+ '</button> &nbsp;' + '</c:if>' + '</div>' + '</div>';
-		newdiv.data = data;
-=======
-		var msg = "";
-		var modbuttons = "";
-		
-		modbuttons += '<button type="button" class="w3-btn w3-theme-l1 modc" style="display:none" onclick="modComplete(';
-		modbuttons += data.num;
-		modbuttons += ')">';
-		modbuttons += '<i class="fa fa-scissors"></i>  ${str_modComplete}';
-		modbuttons += '</button>';
-		modbuttons += '<button type="button" class="w3-btn w3-theme-l1" onclick="modBoardView(';
-		modbuttons += data.num;
-		modbuttons += ')">';
-		modbuttons += '<i class="fa fa-pencil"></i>  ${str_modBoard}';
-		modbuttons += '</button> &nbsp;';
-		modbuttons += "<button type=\"button\" class=\"w3-btn w3-theme-l1\" style=\"display:none\" onclick=\"modCancel(";
-		modbuttons += data.num;
-		modbuttons += ",\'";
-		modbuttons += data.content;
-		modbuttons += "\','first')\">";
-		modbuttons += '<i class="fa fa-times"></i>  ${str_modCancel}';
-		modbuttons += '</button>';
-		modbuttons += '<button type="button" class="w3-btn w3-theme-l1" onclick="delBoard(';
-		modbuttons += data.num;
-		modbuttons += ')">';
-		modbuttons += '<i class="fa fa-trash-o"></i>  ${str_delBoard}';
-		modbuttons += '</button>';
 
-		msg += '<div class="w3-container w3-card-2 w3-white w3-round w3-padding-32 w3-margin" id="list">';
-		msg += '<a href=myBus.do?driver='+ data.email;
-		msg += '><img src="${project}/view/img/HipBusLogo_colored_sq.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width: 40px"></a>';
-		msg += '<span class="w3-right w3-opacity">';
-		msg += data.reg_date;
-		msg += '&nbsp;';
-		msg += '<a href="#"><i class="fa fa-close w3-right" onclick="delBoard(';
-		msg += data.num;
-		msg += ')"></i></a></span>';
-		msg += '<h4>';
-		msg += data.nick;
-		msg += '</h4>';
-		msg += '<hr class="w3-clear">';
-		msg += '<input type="hidden" name="'+ data.num +'">';
-		msg += '<textarea readonly="true" rows="3">';
-		msg += data.content;
-		msg += "</textarea>";
-		msg += '<div class="w3-center">';
-		if(data.email == "${sessionScope.memEmail}"){
-			msg += modbuttons;
-		}
-		msg += '</div>' + '</div>';
-		
-		newdiv.innerHTML = msg;
-		newdiv.data = data;
->>>>>>> .r250
 		return newdiv;
 	}
 	$(document).on('click', '#moreBoard', function(e) {
@@ -413,7 +312,7 @@ textarea:focus {
 							<div class="w3-third" id="onairchat">
 							</div>
 						</div>
-<<<<<<< .mine
+
 						<div id="oaconsole"></div>
 						
 						<script type="text/javascript">
@@ -427,12 +326,6 @@ textarea:focus {
 						</script>
 
 					</c:if>
-					<c:if test="${1=='1'}">
-						<script type="text/javascript">
-							alert("됨?");
-						</script>
-					</c:if>
-
 					<!-- 본인페이지 if 시작-->
 					<c:if test="${driver == email}">
 						<!-- 2등급 회원인데 아직 채널을 연결하지 않은 경우 -->
@@ -507,7 +400,7 @@ textarea:focus {
 			</div>
 
 			<!--  Right Column -->
-			<c:import url="../myBusRight.do"></c:import>
+			<c:import url="../myBusRight.do?driver=${driver}&email=${email}"></c:import>
 			<!-- End Right Column -->
 
 			<!-- End Grid -->
