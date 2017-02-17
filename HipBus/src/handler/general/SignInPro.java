@@ -40,20 +40,19 @@ public class SignInPro implements CommandHandler {
 		
 		if (result == 1) {
 		//id와 pw가 모두 일치하면
-			//중요!! 편의를 위해 잠시 주석처리 했습니다. 이 주석을 풀고 아래 'session에 로그인 정보 저장'한 줄을 지우면, 인증해야만 로그인이 가능합니다.
-			/*
-			if( dao.getVerificationCode(email) == "Y" ){
+			
+			/*if( dao.getVerificationCode(email) == "Y" ){
 				// 이메일 인증이 된 상태면
 				// session에 로그인정보 저장
 				request.getSession().setAttribute("memEmail", email);
+				// 위엣놈을 복사해서 아래에 놓으면 로그인됨. 기능 구현시에는 아래꺼 지우고 주석 해제
 			}else{
 				// 이메일 인증만 안 된 상태면 result == 2
 				// result = 2;							
-			}
-			*/
+			}*/
 			
-			// session에 로그인정보 저장 : 위의 주석을 풀 때 지워주세요.
 			request.getSession().setAttribute("memEmail", email);
+
 			
 		}
 		request.setAttribute("result", result);
