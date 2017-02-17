@@ -174,6 +174,7 @@ CREATE TABLE HB_StationReply
 	replynum number(22) NOT NULL,
 	num number(22) NOT NULL,
 	email varchar2(50) NOT NULL,
+	content varchar2(4000) NOT NULL,
 	ref_num number(22) NOT NULL,
 	re_step number(22) NOT NULL,
 	re_level number(22) NOT NULL,
@@ -230,7 +231,6 @@ CREATE TABLE HB_Wanted
 	reg_date date NOT NULL,
 	PRIMARY KEY (num)
 );
-
 
 
 /* Create Foreign Keys 수정: 지현 */
@@ -341,4 +341,5 @@ ALTER TABLE HB_StationLike
 	ADD FOREIGN KEY (num)
 	REFERENCES HB_Station (num) ON DELETE CASCADE
 ;
+
 
