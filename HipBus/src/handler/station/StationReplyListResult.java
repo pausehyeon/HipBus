@@ -16,7 +16,7 @@ public class StationReplyListResult implements CommandHandler {
 	@RequestMapping("/stationReplyListResult.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-		// TODO Auto-generated method stub
+		
 		return new ModelAndView("stationReplyListResult");
 	}
 

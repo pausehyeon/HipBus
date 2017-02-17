@@ -70,9 +70,11 @@ ${article.content}
 					</div>
 					
 					<footer class="w3-container w3-padding-jumbo w3-theme-l3 w3-center">
+					<c:if test="${sessionScope.memEmail != null }">
 						<a class="w3-btn w3-padding w3-theme-d1 w3-margin-left"
 							onclick="Likego()"><i
 							class="fa fa-thumbs-up w3-margin-right"></i>${btn_recommend}<br>${article.likenum}</a>
+							</c:if>
 							<a href="station.do?pageNum=${pageNum}&type=${type}"
 							class="w3-btn w3-padding w3-theme-d1 w3-margin-left"><i
 							class="fa fa-align-justify w3-margin-right"></i>${str_list}</a>
