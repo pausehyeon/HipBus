@@ -9,10 +9,8 @@ public class MemberDto {
 	private String passwd;		//비밀번호
 	private int mem_level;		//회원등급
 	private Timestamp joindate;	//가입일
-	private String imglocation;	//서버상 이미지 파일명
-	
-	//크루멤버의 크루아이디를 같이 부르기 때문에 추가
-	private String crewid;
+	private String imglocation;	//서버상 이미지 파일명		
+	private String crewid;		//크루멤버의 크루아이디를 같이 부르기 때문에 추가	
 
 	public String getEmail() {
 		return email;
