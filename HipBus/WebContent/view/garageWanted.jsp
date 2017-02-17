@@ -59,17 +59,17 @@
 		</c:if>
 
 		</div>
-	<form name="searchform" method="post" action="garageWantedSearch.do" onsubmit="return search()">
+	<form name="searchform" method="get" action="garageWantedSearch.do" onsubmit="return search()">
 		 <div class="w3-padding" align="left">
 
 		
-		<select name="select" >
+		<select name="searchType" >
 			<option value="nick">${str_Writer}</option>
 			<option value="subject">${str_Subject}</option>
 			<option value="content">${str_Content}</option>
 		</select>
 		
-   		<input type="text" name="write" placeholder="${str_Search}"> <button type="submit"><i class="fa fa-search"></i> </button>
+   		<input type="text" name="keyword" placeholder="${str_Search}"> <button type="submit"><i class="fa fa-search"></i> </button>
   		</div>
 </form>
 		<div class="w3-row">

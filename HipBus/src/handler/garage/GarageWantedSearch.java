@@ -35,10 +35,24 @@ public class GarageWantedSearch implements CommandHandler{
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-
-		int pageSize = 3;			// 한페이지에 출력할 글 개수
-		int pageBlock = 5;			// 한 번에 보여줄 페이지 개수
+		
+		String searchType = request.getParameter("searchType");
+		String keyword = request.getParameter("keyword");
 		int count = 0;
+		
+		
+		if(keyword != null){
+			Map<String,String> searchMap = new HashMap<String,String>();
+			searchMap.put("searchType", searchType);
+			searchMap.put("keyword",keyword);
+			
+			int num=garageDao.getWantedSearch(searchMap);
+			count = num;
+		}
+		
+		
+		int pageSize = 10;			// 한페이지에 출력할 글 개수
+		int pageBlock = 5;			// 한 번에 보여줄 페이지 개수
 		
 		String pageNum = null;
 		int currentPage = 0;		// 현재 페이지 
@@ -50,7 +64,7 @@ public class GarageWantedSearch implements CommandHandler{
 		int startPage = 0;			// 보여줄 페이지의 시작 번호
 		int endPage = 0;			// 보여줄 페이지의 끝 번호
 		
-		count = garageDao.getWantedCount();
+		//count = garageDao.getWantedCount();
 		
 		pageNum = request.getParameter( "pageNum" );
 		if( pageNum == null || pageNum.equals( "" ) ) {
@@ -78,6 +92,7 @@ public class GarageWantedSearch implements CommandHandler{
 		request.setAttribute("count", count);
 		request.setAttribute("pagenum", pageNum);
 		
+		
 		if( count != 0 ) {
 			// 글이 있는 경우
 			Map<String, Integer> map 
@@ -94,8 +109,7 @@ public class GarageWantedSearch implements CommandHandler{
 			request.setAttribute( "endPage", endPage );
 			request.setAttribute( "pageCount", pageCount );
 		}
-		String select = request.getParameter("select");
-		String write = request.getParameter("write");
+		
 	
 		String email =(String)request.getSession().getAttribute("memEmail");
 		if( email != null){
@@ -105,19 +119,23 @@ public class GarageWantedSearch implements CommandHandler{
 		request.setAttribute("dto",dto);
 		}
 		
-		Map<String, String> searchMap 
-		= new HashMap<String, String>();
-		searchMap.put( "select", select );
-		searchMap.put( "write", write );
+		Map<String, Object> searchResesultMap 
+		= new HashMap<String, Object>();
+		searchResesultMap.put( "searchType", searchType );
+		searchResesultMap.put( "keyword", keyword );
+		searchResesultMap.put("start", start);
+		searchResesultMap.put("end", end);
 		
-		List <WantedDto> SearchList = garageDao.getWantedSearch(searchMap);
 		
+		List <WantedDto> SearchList = garageDao.getSearchResult(searchResesultMap);
+		
+		
+		request.setAttribute("searchType", searchType);
+		request.setAttribute("keyword",keyword);
 		request.setAttribute("SearchList",SearchList);
-		
-		
-		
 		
 		
 		return new ModelAndView("garageWantedSearch");
 	}
+
 }

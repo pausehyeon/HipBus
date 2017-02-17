@@ -102,11 +102,26 @@
 
 	</select>
 
-	<select id="getWantedSearch" parameterType="Map" resultType="model.WantedDto">
+	<select id="getWantedSearch" parameterType="Map" resultType="int">
 
-		select * from HB_Wanted where ${select} like'%${write}%'
+		select count(*) from HB_Wanted where ${searchType} like'%${keyword}%'
 
 	</select>
+	
+	<select id="getSearchResult" parameterType="Map" resultType="model.WantedDto">
+	
+	select driver,num,nick,subject,content,
+		imglocation,duedate,readcount,reg_date,
+		r from( select
+		driver,num,nick,subject,content,
+		imglocation,duedate,readcount,reg_date,rownum r from
+		(select * from
+		HB_Wanted order by num desc) where ${searchType} like'%${keyword}%'
+		order by num desc ) where r &gt;= #{start}
+		and r &lt;= #{end}
+	
+	</select>
+	
 
 	<select id="getUpcomingCount" resultType="int">
 		select count(*) from

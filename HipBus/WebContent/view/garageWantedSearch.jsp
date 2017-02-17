@@ -17,14 +17,6 @@
 			<h3>${str_Wanted}</h3>
 			<p>${str_WantedTitle}</p>
 			<hr>
-			
-			<!-- 
-			<div class="w3-row">
-			<a href="garageWantedSearch.do"><i class="w3-large fa fa-search" ></i></a>
-			<input type="search" placeholder="${str_Search}" style="width:500px; height:30px;">
-			</div>
-			-->
-			
 				<div class="w3-row">
 				<div class="w3-container">
 					<p class="w3-third w3-border w3-padding-large w3-padding-48 w3-center">AD</p>
@@ -70,13 +62,13 @@
 		 <div class="w3-padding" align="left">
 
 		
-		<select name="select">
+		<select name="searchType">
 			<option value="nick">${str_Writer}</option>
 			<option value="subject">${str_Subject}</option>
 			<option value="content">${str_Content}</option>
 		</select>
 		
-   		<input type="text" name="write" placeholder="${str_Search}"> <button type="submit"><i class="fa fa-search"></i> </button>
+   		<input type="text" name="keyword" placeholder="${str_Search}"> <button type="submit"><i class="fa fa-search"></i> </button>
   		</div>
 </form>
 		<div class="w3-row">
@@ -85,20 +77,20 @@
 			
 
 	<c:if test="${startPage > pageBlock}">
-		<a href="garageWantedSearch.do">[◀◀]</a>
-		<a href="garageWantedSearch.do?pageNum=${startPage-pageBlock}">[◀]</a>
+		<a href="garageWantedSearch.do&searchType=${searchType}&keyword=${keyword}">[◀◀]</a>
+		<a href="garageWantedSearch.do?pageNum=${startPage-pageBlock}&searchType=${searchType}&keyword=${keyword}">[◀]</a>
 	</c:if>
 	<c:forEach var="i" begin="${startPage}" end="${endPage}">
 		<c:if test="${i == currentPage}">
 			<span>[${i}]</span>
 		</c:if>
 		<c:if test="${i != currentPage}">
-			<a href="garageWantedSearch.do?pageNum=${i}">[${i}]</a>
+			<a href="garageWantedSearch.do?pageNum=${i}&searchType=${searchType}&keyword=${keyword}">[${i}]</a>
 		</c:if>
 	</c:forEach>
 	<c:if test="${pageCount > endPage}">
-		<a href="garageWantedSearch.do?pageNum=${startPage+pageBlock}">[▶]</a>
-		<a href="garageWantedSearch.do?pageNum=${pageCount}">[▶▶]</a>
+		<a href="garageWantedSearch.do?pageNum=${startPage+pageBlock}&searchType=${searchType}&keyword=${keyword}">[▶]</a>
+		<a href="garageWantedSearch.do?pageNum=${pageCount}&searchType=${searchType}&keyword=${keyword}">[▶▶]</a>
 	</c:if>			
 		<!-- 
 				<ul class="w3-pagination">

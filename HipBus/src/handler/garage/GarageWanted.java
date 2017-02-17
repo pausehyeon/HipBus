@@ -29,7 +29,7 @@ public class GarageWanted implements CommandHandler{
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException{
 		
 
-		int pageSize = 3;			// 한페이지에 출력할 글 개수
+		int pageSize = 10;			// 한페이지에 출력할 글 개수
 		int pageBlock = 5;			// 한 번에 보여줄 페이지 개수
 		int count = 0;
 		

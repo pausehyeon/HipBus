@@ -117,10 +117,17 @@ public class GarageDBBean implements GarageDao {
 	}
 
 	@Override
-	public List<WantedDto> getWantedSearch(Map<String, String> searchMap) {
+	public int getWantedSearch(Map<String, String> searchMap) {
 		// TODO Auto-generated method stub
-		return SqlMapClient.getSession().selectList( "Garage.getWantedSearch",searchMap);
+		return SqlMapClient.getSession().selectOne( "Garage.getWantedSearch",searchMap);
 	}
+	
+	@Override
+	public List<WantedDto> getSearchResult(Map<String, Object> searchResesultMap) {
+		// TODO Auto-generated method stub
+		return SqlMapClient.getSession().selectList( "Garage.getSearchResult", searchResesultMap);
+	}
+	
 
 	@Override
 	public int getUpcomingCount() {
@@ -131,6 +138,7 @@ public class GarageDBBean implements GarageDao {
 	public List<UpcomingDto> getUpcomingArticles(Map<String, Integer> startAndEnd) {
 		return SqlMapClient.getSession().selectList("Garage.getUpcomingArticles", startAndEnd);
 	}
+
 	
 }
 

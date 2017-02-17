@@ -1,9 +1,6 @@
 package handler.garage;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -42,7 +39,6 @@ public class GarageFAQ implements CommandHandler{
 		 
 		request.setAttribute("dto",dto);
 		}
-		
 		
 		return new ModelAndView("garageFAQ");
 	}

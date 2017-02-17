@@ -27,7 +27,8 @@ public interface GarageDao {
 	public int faqDeleteArticle(int num);
 	public List<WantedDto> getWantedArticles(Map<String,Integer> map); 
 	public int getWantedCount();
-	public List<WantedDto> getWantedSearch(Map<String,String> searchMap); 
+	public int getWantedSearch(Map<String,String> searchMap); 
+	public List<WantedDto> getSearchResult(Map<String,Object> searchResesultMap);
 	public int getUpcomingCount();
 	public List<UpcomingDto> getUpcomingArticles(Map<String, Integer> startAndEnd );
 
