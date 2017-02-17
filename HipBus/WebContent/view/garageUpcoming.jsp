@@ -23,6 +23,9 @@
 				<div class="w3-row-padding w3-padding-16 w3-left">
 					<div class="w3-col m12 w3-cell-middle">
 						<form action="garageUpcoming.do" method="get">
+						<jsp:useBean id="now" class="java.util.Date" />
+						<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" />  
+
 							<input name="startDate" type="date" value="${today}" required="required" class="w3-padding w3-theme-l4 w3-btn w3-margin-right">
 							<span class="w3-center">~ </span>
 							<input name="endDate" type="date" value="${today}" required="required" class="w3-padding w3-theme-l4 w3-btn w3-margin-left">
