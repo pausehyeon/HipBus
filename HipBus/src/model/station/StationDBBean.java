@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
+import model.LikeDto;
 import model.MemberDto;
 import model.SqlMapClient;
 import model.StationDto;
@@ -27,6 +28,14 @@ public class StationDBBean implements StationDao {
 	
 	public void addCount(int num) {
 		SqlMapClient.getSession().update( "Station.addCount", num );
+	}
+	
+	public void addLike(int num) {
+		SqlMapClient.getSession().update( "Station.addLike", num );
+	}
+	
+	public int likeArticle( LikeDto dto ) {
+		return SqlMapClient.getSession().insert( "Station.likeArticle", dto );
 	}
 	
 	public int insertArticle( StationDto dto ) {
@@ -52,5 +61,16 @@ public class StationDBBean implements StationDao {
 		return  SqlMapClient.getSession().selectOne("Station.category", category);
 	}
 	
+	public int check( int num, String email ) {
+		int result = 0;
+		StationDto dto = getArticle( num );
+		if( dto.getEmail().equals("email"))  {
+			result = 1;
+		} 		
+		return result;
+	}
 	
+	public int getLike( LikeDto num ) {
+		return SqlMapClient.getSession().selectOne( "Station.getLike", num );	
+	}
 }

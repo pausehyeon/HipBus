@@ -3,6 +3,7 @@ package model.station;
 import java.util.List;
 import java.util.Map;
 
+import model.LikeDto;
 import model.MemberDto;
 import model.StationDto;
 
@@ -16,4 +17,8 @@ public interface StationDao {
 	public int updateArticle(StationDto dto);
 	public int deleteArticle( int num );
 	public int category(int category);
+	public void addLike( int num);
+	public int likeArticle(LikeDto dto);
+	public int check( int num, String email );
+	public int getLike(LikeDto dto);
 }

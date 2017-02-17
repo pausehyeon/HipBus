@@ -21,9 +21,22 @@
 		select * from HB_Station where num=#{num}
 	</select>
 	
+	<select id="getLike" parameterType="model.likeDto" resultType="int">
+		select count(*) from HB_StationLike where num=#{num} and email=#{email}
+	</select>
+	
 	<update id="addCount" parameterType="int">
 		update HB_Station set readcount=readcount+1 where num=#{num}
 	</update>
+	
+	<update id="addLike" parameterType="int">
+		update HB_Station set likenum=likenum+1 where num=#{num}
+	</update>
+	
+	<insert id="likeArticle" parameterType="model.LikeDto">
+		insert into HB_StationLike( num, email) values(
+		#{num},#{email})
+	</insert>
 	
 	<select id="getMember" parameterType="String" resultType="model.MemberDto">
 	select * from HB_Member where email=#{email}
@@ -32,7 +45,7 @@
 	<insert id="insertArticle" parameterType="model.StationDto">
 		insert into HB_Station( num, email, category, nick, subject, content,
 		likenum,readcount, reg_date)
-		values(stationseq.NEXTVAL, #{email},#{category},#{nick},
+		values(HB_stationseq.NEXTVAL, #{email},#{category},#{nick},
 		#{subject},#{content},0,0,
 		#{reg_date})
 	</insert>

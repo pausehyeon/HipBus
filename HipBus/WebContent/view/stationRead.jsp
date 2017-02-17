@@ -46,7 +46,7 @@
 						<h3>${article.subject}</h3>
 						<p class="w3-right">${str_writeNick}: ${article.nick} | ${str_reg_date}: 
 						<fmt:formatDate value="${article.reg_date}"
-				type="both" pattern="yyyy-MM-dd HH:mm"/> | ${str_readCount}: ${article.readcount} | ${str_upCount}: ${article.likenum}
+				type="both" pattern="yyyy-MM-dd HH:mm"/> | ${str_readCount}: ${article.readcount}
 						<br>
 						</p>
 					</header>
@@ -58,9 +58,9 @@ ${article.content}
 					</div>
 					
 					<footer class="w3-container w3-padding-jumbo w3-theme-l3 w3-center">
-						<a href="#" class="w3-btn w3-padding w3-theme-d1 w3-margin-left"
-							onclick=""><i
-							class="fa fa-thumbs-up w3-margin-right"></i>${btn_recommend}</a>
+						<a class="w3-btn w3-padding w3-theme-d1 w3-margin-left"
+							onclick="Likego()"><i
+							class="fa fa-thumbs-up w3-margin-right"></i>${btn_recommend}<br>${article.likenum}</a>
 							<a href="station.do?pageNum=${pageNum}&type=${type}"
 							class="w3-btn w3-padding w3-theme-d1 w3-margin-left"><i
 							class="fa fa-align-justify w3-margin-right"></i>${str_list}</a>
@@ -68,6 +68,10 @@ ${article.content}
 						<a href="stationModify.do?num=${article.num}" class="w3-btn w3-padding w3-theme-d1 w3-margin-left">
 						<i class="fa fa-cog w3-margin-right"></i>${str_modify}</a>
 						<input type="hidden" value="${article.num}" name="num">
+						<input type="hidden" value="${pageNum}" name="pageNum">
+						<input type="hidden" value="${article.category}" name="category">
+						<input type="hidden" value="${type}" name="type">
+						<input type="hidden" value="${sessionScope.memEmail}" name="email">
 						<a  class="w3-btn w3-padding w3-theme-d1 w3-margin-left"
 						onclick="alertgo()">
 						<i class="glyphicon glyphicon-remove w3-margin-right"></i>${str_delete}</a>

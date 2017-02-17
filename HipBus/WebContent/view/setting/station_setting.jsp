@@ -17,11 +17,17 @@
 <c:set var="str_title" value="Hipbus"/>
 <c:set var="str_allView" value="전체보기"/>
 <c:set var="str_allViewText" value="전체 게시글을 모아볼 수 있습니다."/>
+<c:set var="str_beatViewText" value="비트 게시글을 모아볼 수 있습니다."/>
+<c:set var="str_rabViewText" value="랩 게시글을 모아볼 수 있습니다."/>
+<c:set var="str_mixViewText" value="믹스테이프 게시글을 모아볼 수 있습니다."/>
+<c:set var="str_vocalViewText" value="보컬 게시글을 모아볼 수 있습니다."/>
+<c:set var="str_gasaViewText" value="가사 게시글을 모아볼 수 있습니다."/>
+<c:set var="str_freeViewText" value="자유 게시글을 모아볼 수 있습니다."/>
 <c:set var="btn_write" value="글쓰기"/>
 <c:set var="msg_station_x" value="게시글이 없습니다."/>
 <c:set var="msg_login" value="글을 쓰려면 로그인을 해주세요"/>
 <!-- stationRead.jsp -->
-<c:set var="btn_recommend" value="추천하기"/>
+<c:set var="btn_recommend" value="추천"/>
 <c:set var="btn_top" value="위로"/>
 <c:set var="str_reply" value="답글"/>
 <c:set var="str_modify" value="수정"/>

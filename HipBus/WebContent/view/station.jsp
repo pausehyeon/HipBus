@@ -66,14 +66,12 @@
 		<div class="w3-row">
 			<div class="w3-twothird">
 				<!-- 글이없는경우 -->
-				<c:if test="${count == 0}">
-				<c:if test="${type == 1 }">	
+				<c:if test="${count == 0}">	
 				<div class="w3-row w3-margin-bottom">
 						<div class="w3-twothird w3-container">
 						<h5>${msg_station_x}</h5>
 						</div>
 						</div>
-				</c:if>
 				</c:if>
 				<!-- 글이있는경우 -->
 			
@@ -116,13 +114,6 @@
 					</div>
 				</c:if>
 				<c:if test="${type == 2 }">
-				<c:if test="${category1 == 0}">	
-				<div class="w3-row w3-margin-bottom">
-						<div class="w3-twothird w3-container">
-						<h5>${msg_station_x}</h5>
-						</div>
-						</div>
-				</c:if>
 				<c:if test="${article.category == 1}">
 				<div class="w3-row w3-margin-bottom">
 						<div class="w3-twothird w3-container">
@@ -137,13 +128,6 @@
 							</c:if>
 				</c:if>
 				<c:if test="${type == 3 }">
-				<c:if test="${category2 == 0}">	
-				<div class="w3-row w3-margin-bottom">
-						
-						<h5>${msg_station_x}1</h5>
-						
-						</div>
-				</c:if>
 				<c:if test="${article.category == 2}">
 				<div class="w3-row w3-margin-bottom">
 						<div class="w3-twothird w3-container">
@@ -158,13 +142,6 @@
 							</c:if>
 				</c:if>
 				<c:if test="${type == 4 }">
-				<c:if test="${category3 == 0}">	
-				<div class="w3-row w3-margin-bottom">
-						<div class="w3-twothird w3-container">
-						<h5>${msg_station_x}</h5>
-						</div>
-						</div>
-				</c:if>
 				<c:if test="${article.category == 3}">
 				<div class="w3-row w3-margin-bottom">
 						<div class="w3-twothird w3-container">
@@ -179,13 +156,6 @@
 							</c:if>
 				</c:if>
 				<c:if test="${type == 5 }">
-				<c:if test="${category4 == 0}">	
-				<div class="w3-row w3-margin-bottom">
-						<div class="w3-twothird w3-container">
-						<h5>${msg_station_x}</h5>
-						</div>
-						</div>
-				</c:if>
 				<c:if test="${article.category == 4}">
 				<div class="w3-row w3-margin-bottom">
 						<div class="w3-twothird w3-container">
@@ -200,13 +170,6 @@
 							</c:if>
 				</c:if>
 				<c:if test="${type == 6 }">
-				<c:if test="${category5 == 0}">	
-				<div class="w3-row w3-margin-bottom">
-						<div class="w3-twothird w3-container">
-						<h5>${msg_station_x}</h5>
-						</div>
-						</div>
-				</c:if>
 				<c:if test="${article.category == 5}">
 				<div class="w3-row w3-margin-bottom">
 						<div class="w3-twothird w3-container">
@@ -221,13 +184,6 @@
 							</c:if>
 				</c:if>
 				<c:if test="${type == 7 }">
-				<c:if test="${category6 == 0}">	
-				<div class="w3-row w3-margin-bottom">
-						<div class="w3-twothird w3-container">
-						<h5>${msg_station_x}</h5>
-						</div>
-						</div>
-				</c:if>
 				<c:if test="${article.category == 6}">
 				<div class="w3-row w3-margin-bottom">
 						<div class="w3-twothird w3-container">
