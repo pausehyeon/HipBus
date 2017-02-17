@@ -1,10 +1,10 @@
 package model.main;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
-import model.CrewDto;
 import model.MemberDto;
 import model.NewsDto;
 import model.SqlMapClient;
@@ -17,6 +17,21 @@ public class MainDBBean implements MainDao{
 	@Override
 	public int insertMember( MemberDto dto ) {
 		return SqlMapClient.getSession().insert( "Main.insertMember", dto );
+	}
+	
+	@Override
+	public int insertDriver( String email ) {
+		return SqlMapClient.getSession().insert( "Main.insertDriver", email );
+	}
+	
+	@Override
+	public int emailValidate( Map<String, String> ms ) {
+		return SqlMapClient.getSession().insert( "Main.emailValidate", ms );
+	}
+	
+	@Override
+	public int emailCheck( Map<String, String> emailCheck ) {
+		return SqlMapClient.getSession().selectOne( "Main.emailCheck", emailCheck );
 	}
 	
 	@Override
