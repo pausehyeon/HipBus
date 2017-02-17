@@ -30,10 +30,6 @@
 				</c:if>
 			</div>
 		</div>
-		
-		
-			
-				
 			<c:forEach var="article" items="${FAQList}">
 			<!-- 글이없는경우 -->
 				<c:if test="${article.num eq null}">

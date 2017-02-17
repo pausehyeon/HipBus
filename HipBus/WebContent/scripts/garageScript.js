@@ -3,6 +3,9 @@
  */
 var modifyerror = "글수정에 실패했습니다. \n잠시 후 다시 시도하세요.";
 var writeerror = "글작성에 실패했습니다. \n잠시 후 다시 시도하세요.";
+var deleteMsg = "게시글을 삭제하시겠습니까.?";
+var writeMsg = "내용을 입력하세요.";
+var searchMsg = "검색어를 입력하세요.";
 
 var str_hopOn = 'Go To Hop On';
 
@@ -86,7 +89,7 @@ function erroralert( msg ) {
 
 function newsDeleteCheck(){
 	var num = document.getElementById("num")
-	 if( confirm(" 정말 삭제하시겠습니까?" ) == true ){
+	 if( confirm( deleteMsg ) == true ){
 		location.href="garageNewsDeletePro.do?num="+num.value;
 	 }else{
 		 location.reload(true);
@@ -96,7 +99,7 @@ function newsDeleteCheck(){
 
 function faqDeleteCheck(){
 	   var num = document.getElementById("num");
-	 if( confirm(" 정말 삭제하시겠습니까?" ) == true ){
+	 if( confirm( deleteMsg ) == true ){
 		location.href="garageFAQDeletePro.do?num="+num.value;
 	 }else{
 		 location.reload(true);
@@ -107,7 +110,7 @@ function faqDeleteCheck(){
 function newsWriteCheck(){
 	 var data = CKEDITOR.instances.editor.getData();
 	if(data == "" ){
-		alert("내용을 입력하세요");
+		alert(writeMsg);
 		return false;
 	}
 }
@@ -115,7 +118,7 @@ function newsWriteCheck(){
 function newsModifyCheck(){
 	 var data = CKEDITOR.instances.editor.getData();
 	if(data == "" ){
-		alert("내용을 입력하세요");
+		alert(writeMsg);
 		return false;
 	}
 }
@@ -123,7 +126,7 @@ function newsModifyCheck(){
 function faqWriteCheck(){
 	 var data = CKEDITOR.instances.editor.getData();
 	if(data == "" ){
-		alert("내용을 입력하세요");
+		alert(writeMsg);
 		return false;
 	}
 }
@@ -131,7 +134,7 @@ function faqWriteCheck(){
 function faqModifyCheck(){
 	 var data = CKEDITOR.instances.editor.getData();
 	if(data == "" ){
-		alert("내용을 입력하세요");
+		alert(writeMsg);
 		return false;
 	}
 }
@@ -142,7 +145,7 @@ function faqModifyCheck(){
 function search(){	
 	
 	if(! searchform.keyword.value){
-		alert("검색어를 입력하세요.");
+		alert(searchMsg);
 		searchform.keyword.focus();
 		return false;
 	}
