@@ -171,7 +171,12 @@
 			<c:forEach var="upcoming" begin="0" end="${fn:length(upcomings)}" items="${upcomings}">
 				<div class="w3-third w3-margin-bottom">
 					<ul class="w3-ul w3-border w3-center w3-hover-shadow">
-						<li class="w3-black w3-xlarge w3-padding-16">${upcoming.subject}</li>
+						<c:if test="${fn:length(upcoming.subject) gt 10}">
+							<li class="w3-black w3-xlarge w3-padding-16">${fn:substring(upcoming.subject, 0, 10)}...</li>
+						</c:if>
+						<c:if test="${fn:length(upcoming.subject) le 10}">
+							<li class="w3-black w3-xlarge w3-padding-16">${upcoming.subject}</li>
+						</c:if>
 						<li class="w3-center w3-padding-8 w3-padding-small"><img src="${project}/hipbusSave/${upcoming.imglocation}" alt="${str_upcoming}" style="width: 100%"></li>
 						<li class="w3-padding-8"><b>${str_perf_place}</b> ${upcoming.perf_place}</li>
 						<li class="w3-padding-8"><b>${str_perf_date}</b> <fmt:formatDate value="${upcoming.perf_date}" type="both" pattern="yy.MM.dd  a HH:mm" /></li>
