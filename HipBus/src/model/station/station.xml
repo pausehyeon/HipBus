@@ -65,4 +65,29 @@
   		select count( * ) from hb_station where category=#{category}
   	</select>
   	
+  	<!--  댓글 -->
+  	<select id="getReplys" parameterType="Map" resultType="model.ReplyDto">
+		select replynum,num,email,content,
+		ref_num,re_step,re_level,reg_date,status,
+		 r from( select replynum,num,email,content,
+		ref_num,re_step,re_level,reg_date,status,
+		rownum r from
+		(select * from HB_StationReply order by replynum desc)
+		order by replynum desc ) where r &gt;= #{start} and r &lt;= #{end}
+	</select>
+	
+	<insert id="replyInsert" parameterType="model.ReplyDto">
+		insert into HB_StationReply( replynum,num,email,content,
+		ref_num,re_step,re_level,reg_date,status)
+		values(HB_replyseq.NEXTVAL,#{num},#{email},
+		#{content},#{ref_num},#{re_step},#{re_level},#{reg_date},1)
+	</insert>
+	
+	<update id="updateReply" parameterType="model.ReplyDto">
+		update HB_StationReply set re_step=re_step+1 
+		where ref_num=#{ref_num} and re_step &gt; #{re_step}
+	</update>
+	<select id="getReplyCount" resultType="int">
+		select count(*) from HB_StationReply
+	</select>
 </mapper>

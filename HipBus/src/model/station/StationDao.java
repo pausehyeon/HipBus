@@ -5,6 +5,7 @@ import java.util.Map;
 
 import model.LikeDto;
 import model.MemberDto;
+import model.ReplyDto;
 import model.StationDto;
 
 public interface StationDao {
@@ -19,6 +20,8 @@ public interface StationDao {
 	public int category(int category);
 	public void addLike( int num);
 	public int likeArticle(LikeDto dto);
-	public int check( int num, String email );
 	public int getLike(LikeDto dto);
+	public List<ReplyDto> getReplys( Map<String, Integer> map);
+	public int replyInsert(ReplyDto dto);
+	public int getReplyCount();
 }

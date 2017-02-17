@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import model.LikeDto;
 import model.MemberDto;
+import model.ReplyDto;
 import model.SqlMapClient;
 import model.StationDto;
 
@@ -17,6 +18,9 @@ public class StationDBBean implements StationDao {
 		
 	public int getCount() {
 		return SqlMapClient.getSession().selectOne( "Station.getCount" );
+	}
+	public int getReplyCount() {
+		return SqlMapClient.getSession().selectOne( "Station.getReplyCount" );
 	}
 	public List<StationDto> getArticles( Map<String, Integer> map ) {
 		return SqlMapClient.getSession().selectList( "Station.getArticles", map );
@@ -61,16 +65,44 @@ public class StationDBBean implements StationDao {
 		return  SqlMapClient.getSession().selectOne("Station.category", category);
 	}
 	
-	public int check( int num, String email ) {
-		int result = 0;
-		StationDto dto = getArticle( num );
-		if( dto.getEmail().equals("email"))  {
-			result = 1;
-		} 		
-		return result;
-	}
 	
 	public int getLike( LikeDto num ) {
 		return SqlMapClient.getSession().selectOne( "Station.getLike", num );	
 	}
+	
+	public List<ReplyDto> getReplys( Map<String, Integer> map ) {
+		return SqlMapClient.getSession().selectList( "Station.getReplys", map );
+	}
+	
+	public int replyInsert( ReplyDto dto ) {
+		int replynum = dto.getReplynum();	// 제목글 / 답변글
+		int ref_num = dto.getRef_num();				// 그룹화 아이디
+		int re_step = dto.getRe_step();		// 글순서
+		int re_level = dto.getRe_level();	// 글레벨
+		
+		if( replynum == 0 ) {
+			// 제목글			
+			if( getCount() != 0 ) {
+				// 글이 있는 경우
+				// 그룹화아이디 = 글번호최대값 + 1
+				ref_num = (Integer) SqlMapClient.getSession().selectOne( "Station.maxNum" ) + 1;				
+			} else {
+				// 글이 없는 경우
+				ref_num = 1;
+			}				
+			re_step = 0;
+			re_level = 0;
+		} else {			
+			SqlMapClient.getSession().update( "Station.updateReply", dto );	
+			re_step ++;
+			re_level ++;				
+		}			
+		
+		dto.setRef_num( ref_num );
+		dto.setRe_step( re_step );
+		dto.setRe_level( re_level );
+		return SqlMapClient.getSession().insert( "Station.replyInsert", dto );
+		
+	}
+
 }
