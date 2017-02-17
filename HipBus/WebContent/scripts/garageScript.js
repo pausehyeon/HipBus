@@ -112,6 +112,14 @@ function newsWriteCheck(){
 	}
 }
 
+function newsModifyCheck(){
+	 var data = CKEDITOR.instances.editor.getData();
+	if(data == "" ){
+		alert("내용을 입력하세요");
+		return false;
+	}
+}
+
 function faqWriteCheck(){
 	 var data = CKEDITOR.instances.editor.getData();
 	if(data == "" ){
@@ -119,6 +127,17 @@ function faqWriteCheck(){
 		return false;
 	}
 }
+
+function faqModifyCheck(){
+	 var data = CKEDITOR.instances.editor.getData();
+	if(data == "" ){
+		alert("내용을 입력하세요");
+		return false;
+	}
+}
+
+
+
 
 function search(){	
 	

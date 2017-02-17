@@ -11,7 +11,7 @@
 
 	<c:import url="../top.do" />
 	<c:if test="${sessionScope.memEmail eq null}">
-	<meta http-equiv="refresh" content="0;url=garageNews.do">
+		<meta http-equiv="refresh" content="0;url=garageNews.do">
 	</c:if>
 
 	<!-- Main content: shift it to the right by 250 pixels when the sidenav is visible -->
@@ -26,12 +26,10 @@
 
 				<div class="w3-card-4">
 
-					<form name="writeform" method="post" 
-					action="garageNewsModifyPro.do?num=${article.num}">
-					
+					<form name="writeform" method="post" onsubmit="return newsModifyCheck(this);" action="garageNewsModifyPro.do?num=${article.num}">
+
 						<header class="w3-container w3-padding-jumbo w3-theme-l3">
-							<input name="subject" type="text" required class="w3-input" value="${article.subject}">
-							<label class="w3-label w3-validate">${str_Subject}</label>
+							<input name="subject" type="text" required class="w3-input" value="${article.subject}"> <label class="w3-label w3-validate">${str_Subject}</label>
 						</header>
 
 						<div class="w3-row">
@@ -39,19 +37,17 @@
 							<script type="text/javascript" src="${project}/scripts/ckeditor/insertCkeditor.js"></script>
 							<!-- ^ ckeditor 연결 모듈 -->
 						</div>
-						
+
 						<div class="w3-row w3-padding-jumbo w3-theme-l3">
-							<span>* <i class="fa fa-image"></i> &nbsp;${str_insertThumbnail}
-							<input name="upload" type="file" accept="image/*">
+							<span>* <i class="fa fa-image"></i> &nbsp;${str_insertThumbnail} <input name="upload" type="file" accept="image/*">
 						</div>
 						<footer class="w3-container w3-padding-jumbo w3-theme-l3 w3-center">
 							<input type="submit" class="w3-btn w3-padding w3-theme-d1 w3-margin-left" value="&#xf00c; ${btn_mod}">
 							<!-- &#xf00c;는 fontawesome의 fa-check 아이콘. submit 버튼 안에 <i></i>태그를 넣을 수 없어서. -->
-							<a href="garageNews.do" class="w3-btn w3-padding w3-theme-d1 w3-margin-left">
-								<i class="fa fa-mail-reply"></i>&nbsp;${btn_mod_cancel}
+							<a href="garageNews.do" class="w3-btn w3-padding w3-theme-d1 w3-margin-left"> <i class="fa fa-mail-reply"></i>&nbsp;${btn_mod_cancel}
 							</a>
 						</footer>
-						
+
 					</form>
 
 				</div>

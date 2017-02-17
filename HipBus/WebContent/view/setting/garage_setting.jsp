@@ -55,6 +55,7 @@
 <!-- garageWanted.jsp -->
 <c:set var="str_Wanted" value="Wanted"/>
 <c:set var="str_WantedTitle" value="각 Bus의 구인게시글을 모아서 보여줍니다."/>
+<c:set var="msg_search_x" value="검색 결과가 없습니다."/>
 
 
 <c:set var="msg_list_x" value="게시글이 없습니다."/>
