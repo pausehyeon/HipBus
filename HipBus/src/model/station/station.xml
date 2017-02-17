@@ -21,7 +21,7 @@
 		select * from HB_Station where num=#{num}
 	</select>
 	
-	<select id="getLike" parameterType="model.likeDto" resultType="int">
+	<select id="getLike" parameterType="model.LikeDto" resultType="int">
 		select count(*) from HB_StationLike where num=#{num} and email=#{email}
 	</select>
 	
