@@ -8,16 +8,20 @@
 
 <h2> ${str_write} </h2>
 
-<c:if test="${resultCheck == 0}">
+<c:if test="${emailresult != 0}">
 	<script type="text/javascript">
-		<!--
-		erroralert( passwderror );
+		//<!--
+		alert( likeconfirm )
+		history.go(-1);
 		//-->
 	</script>
 </c:if>
-<c:if test="${emailresult != 0 }">
-<c:redirect url="station.do?pageNum=${pageNum}"/>
-</c:if>
-<c:if test="${result != 0}">	
-	<c:redirect url="station.do?pageNum=${pageNum}"/>	
+<c:if test="${emailresult == 0 }">
+<c:if test="${result != 0}">
+	<script type="text/javascript">
+	//<!--
+	history.go(-1)
+	//-->
+	</script>	
 </c:if>	
+</c:if>

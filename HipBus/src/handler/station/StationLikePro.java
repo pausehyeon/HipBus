@@ -30,7 +30,7 @@ public class StationLikePro implements CommandHandler {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		
+		String pageNum = request.getParameter("pageNum");
 		int num = Integer.parseInt(request.getParameter("num"));
 		StationDto article = stationDao.getArticle(num);
 		LikeDto dto = new LikeDto();
@@ -41,12 +41,13 @@ public class StationLikePro implements CommandHandler {
 		int emailresult = stationDao.getLike(dto);
 	
 		request.setAttribute( "emailresult", emailresult );
-		
+		if( emailresult == 0 ){
 		stationDao.addLike(num);
+		}
 		int result = stationDao.likeArticle(dto);	
 		request.setAttribute( "result", result );
 		request.setAttribute("article", article);
-		
+		request.setAttribute("pageNum", pageNum);
 		
 		return new ModelAndView("stationLikePro");
 	}

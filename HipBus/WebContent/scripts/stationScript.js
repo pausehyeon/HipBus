@@ -8,6 +8,7 @@ var deleteerror = "글삭제 실패했습니다.\n잠시 후 다시 시도하세
 var contentnull = "글내용이 없습니다.\n내용을 입력 하세요.";
 var back = "목록으로 돌아가시겠습니까?\n작성된 내용은 삭제됩니다.";
 var likeok = "추천 하시겠습니까?";
+var likeconfirm = "이미 추천하셨습니다.";
 //Accordion
 function myFunction(id) {
     var x = document.getElementById(id);
@@ -30,14 +31,6 @@ function alertgo() {
 	   }
 }
 
-function Likego() {
-	var retVal = confirm( likeok );
-	   if( retVal == true ){
-		   location.href="stationLikePro.do?num="+readform.num.value+"&email="+readform.email.value;
-	   }else{
-		   location.href="stationRead.do?num="+readform.num.value+"&pageNum="+readform.pageNum.value+"category="+readform.category.value+"&type="+readform.type.value;
-	   }
-}
 
 function backAlert() {
 	return confirm( back );

@@ -7,6 +7,18 @@
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script type="text/javascript" src="/HipBus/scripts/stationScript.js"></script>
+<script type="text/javascript">
+						//<!--
+						function Likego() {
+							var retVal = confirm( likeok );
+							   if( retVal == true ){
+								   location.href="stationLikePro.do?num="+"${article.num}";
+							   }else{
+								   location.href="stationRead.do?num="+readform.num.value+"&pageNum="+readform.pageNum.value+"category="+readform.category.value+"&type="+readform.type.value;
+							   }
+						}
+						//-->
+					</script>
 <title>${str_title}</title>
 <body>
 

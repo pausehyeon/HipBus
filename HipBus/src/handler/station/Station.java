@@ -88,7 +88,7 @@ public class Station implements CommandHandler {
 		}
 		
 		request.setAttribute("count", count);
-		request.setAttribute("pagenum", pageNum);
+		request.setAttribute("pageNum", pageNum);
 		/*
 		request.setAttribute("category1", category1);
 		request.setAttribute("category2", category2);
