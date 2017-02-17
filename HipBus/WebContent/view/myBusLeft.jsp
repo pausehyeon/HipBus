@@ -27,7 +27,7 @@
 			<p class="w3-center">
 			<c:if test="${memDto.getImglocation()!=null}">
 				<img alt="img" src="${project}/hipbusSave/${memDto.getImglocation()}"
-					class="w3-circle" style="width:50%" alt="Avatar">
+					class="w3-circle" style="width:50%">
 			</c:if>
 			<c:if test="${memDto.getImglocation()==null}">
 				<img src="${project}/view/img/HipBusLogo_colored_sq.png"
@@ -49,7 +49,7 @@
 				Best Driver
 			</p>
 		</c:if>
-		<c:if test="${email != null and email != driver}">
+		<c:if test="${email!=null and email != driver}">
 			<button name="hop" onclick="location='myBusHopOnPro.do?driver=${driver}&email=${email}&hopORnot=${hopORnot}'">
 				${str_hop} &nbsp; ${hopORnot}
 			</button>
@@ -67,16 +67,11 @@
 					<i class="fa fa-mail-forward fa-fw w3-margin-right w3-text-theme"></i></a>
 			
 				<ul>
-				
 					<c:if test="${myMembers[crew.crewid]!=null and myMembers[crew.crewid].size()!=0}">
 					<c:forEach begin="0" end="${myMembers[crew.crewid].size()-1}" varStatus="status">
    						<li><a href="myBus.do?driver=${myMembers[crew.crewid].get(status.count-1).getEmail()}">${myMembers[crew.crewid].get(status.count-1).getNick()}</a>
  					</c:forEach>
 					</c:if>
-					<c:if test="${myMembers[crew.crewid]==null}">
-						<li><a href="#">널이다.</a>
-					</c:if>
-
 				</ul>
 			
 				</p>
@@ -132,22 +127,16 @@
 				</div>
 			</div>
 
-			<button onclick="myFunction('Demo2')"
-				class="w3-btn-block w3-theme-l1 w3-left-align">
-				<i class="fa	fa fa-align-left fa-fw w3-margin-right"></i> Gahyeon ${str_seePosts}
+			<button onclick="location='myBusMyArticles.do?driver=${driver}'" class="w3-btn-block w3-theme-l1 w3-left-align">
+				<i class="fa fa fa-align-left fa-fw w3-margin-right"></i> ${memDto.getNick()} ${str_seePosts}
 			</button>
-			<div id="Demo2" class="w3-accordion-content w3-container">
+<%-- 			<div id="Demo2" class="w3-accordion-content w3-container">
 				<p>
 				<ul>
-					<li><a href="#"> ${str_whole}</a>
-					<li><a href="#"> ${str_rap}</a>
-					<li><a href="#"> ${str_mixtape}</a>
-					<li><a href="#"> ${str_vocal}</a>
-					<li><a href="#"> ${str_lirics}</a>
-					<li><a href="#"> ${str_freeTalk}</a>
+					<li><a href="myBusMyArticles.do?driver=${driver}"> ${str_whole}</a>
 				</ul>
 				</p>
-			</div>
+			</div> --%>
 		</div>
 	</div>
 

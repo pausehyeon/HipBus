@@ -16,7 +16,12 @@ public class MyBusRight implements CommandHandler {
 	@RequestMapping("/myBusRight.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-		// TODO Auto-generated method stub
+		String driver = request.getParameter("driver");
+		String email = (String) request.getSession().getAttribute("memEmail");
+		
+		
+		request.setAttribute("driver", driver);
+		request.setAttribute("email", email);
 		return new ModelAndView("myBusRight");
 	}
 

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!-- Titles -->
 <c:set var="str_crewbusTitle" value="HipBus - Crew Bus"/>
@@ -78,3 +79,6 @@
 <!-- myBusHopOnPro.jsp -->
 <c:set var="str_hopOnError" value="버스에 정상적으로 올라타지 못했습니다."/>
 <c:set var="str_hopOffError" value="버스에서 성공적으로 내리지 못했습니다."/>
+
+<!-- myBusMyArticles -->
+<c:set var="str_myArticles" value="님의 모든 글"/>

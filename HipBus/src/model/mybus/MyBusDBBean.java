@@ -10,6 +10,8 @@ import model.CrewDto;
 import model.CrewMemberDto;
 import model.MemberDto;
 import model.SqlMapClient;
+import model.StationDto;
+import model.UpcomingDto;
 
 @Component("myBusDao")
 public class MyBusDBBean implements MyBusDao {
@@ -54,6 +56,18 @@ public class MyBusDBBean implements MyBusDao {
 	}
 	public List<MemberDto> getPassengers(String driver){
 		return SqlMapClient.getSession().selectList("MyBus.getPassengers", driver);
+	}
+	public int getArticleCount(String driver){
+		return SqlMapClient.getSession().selectOne("MyBus.getArticleCount", driver);
+	}
+	public List<StationDto> getArticles(Map<String,String> map){
+		return SqlMapClient.getSession().selectList("MyBus.getArticles", map);
+	}
+	public int writeUpcoming(UpcomingDto dto){
+		return SqlMapClient.getSession().insert("MyBus.writeUpcoming", dto);
+	}
+	public UpcomingDto getUpcoming(int num) {
+		return SqlMapClient.getSession().selectOne("MyBus.getUpcoming", num);
 	}
 
 }

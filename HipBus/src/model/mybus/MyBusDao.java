@@ -7,6 +7,8 @@ import model.BoardDto;
 import model.CrewDto;
 import model.CrewMemberDto;
 import model.MemberDto;
+import model.StationDto;
+import model.UpcomingDto;
 
 public interface MyBusDao {
 	public List<BoardDto> getBoardList( Map<String, String> map );
@@ -23,4 +25,8 @@ public interface MyBusDao {
 	public List<CrewMemberDto> getMyMembers(Map<String, String> map);
 	public List<String> getTags(String driver);
 	public List<MemberDto> getPassengers(String driver);
+	public int getArticleCount(String driver);
+	public List<StationDto> getArticles(Map<String,String> map);
+	public int writeUpcoming(UpcomingDto dto);
+	public UpcomingDto getUpcoming(int num);
 }

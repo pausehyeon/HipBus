@@ -22,7 +22,7 @@
 
 		<div class="w3-row">
 			<!-- Left Column -->
-			<c:import url="../myBusLeft.do?driver=${driver}&email=${email}"></c:import>
+			<c:import url="../myBusLeft.do?driver=${driver}"></c:import>
 			<!-- End Left Column -->
 
 			<!-- Middle Column -->
@@ -88,7 +88,7 @@
 			</div>
 
 			<!-- Right Column -->
-			<c:import url="../myBusRight.do" />
+			<c:import url="../myBusRight.do?driver=${driver}" />
 			<!-- End Right Column -->
 
 			<!-- End Grid -->

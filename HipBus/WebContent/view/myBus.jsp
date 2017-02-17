@@ -219,7 +219,6 @@ textarea:focus {
 					} else {
 						$('#console').html("Status 에러");
 					}
-
 				}, "myBusBoardDeleteResult.do", "POST", params);
 		request.getXMLHttpRequest();
 		request.sendRequest();
@@ -292,7 +291,7 @@ textarea:focus {
 		</div>
 		<div class="w3-row">
 			<!-- Left Column -->
-			<c:import url="../myBusLeft.do?driver=${driver}&email=${email}"></c:import>
+			<c:import url="../myBusLeft.do?driver=${driver}"></c:import>
 			<!-- End Left Column -->
 
 			<!-- Middle Column -->

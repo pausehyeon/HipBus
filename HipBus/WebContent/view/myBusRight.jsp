@@ -10,11 +10,13 @@
 <div class="w3-col m2">
 	<div class="w3-card-2 w3-round w3-white w3-center">
 		<div class="w3-container">
-			<div class="w3-right w3-padding-16">
-				<button type="button" class="w3-btn w3-theme-l1">
-					<i class="fa fa-pencil"></i>&nbsp; ${str_edit}
-				</button>
-			</div>
+			<c:if test="${driver==email}">
+				<div class="w3-right w3-padding-16">
+					<button type="button" class="w3-btn w3-theme-l1" onclick="location='myBusUpcomingWrite.do?driver=${driver}&email=${email}'">
+						<i class="fa fa-pencil"></i>&nbsp; ${str_edit}
+					</button>
+				</div>
+			</c:if>
 			<img src="${project}/view/img/notice1.png" alt="some image"
 				style="width: 100%;">
 			<p>

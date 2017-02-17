@@ -29,19 +29,25 @@ public class MyBusLeft implements CommandHandler {
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		String driver = request.getParameter("driver");
-		String email = request.getParameter("email");
-		
+		String email = null; 
+		email = (String) request.getSession().getAttribute("memEmail");
+
 		Map<String,String> map = new HashMap<String,String>();
 		map.put("driver", driver);
 		map.put("email", email);
-
-		int isHop = mybusDao.isHop(map);
+		
+		int isHop = 0;
 		String hopORnot = null;
-		if( isHop != 0 ) {
-			hopORnot = "off";
-		} else if( isHop == 0 ) {
-			hopORnot = "on";
+		if( email != null ){
+			isHop = mybusDao.isHop(map);
+			if( isHop == 1 ) {
+				hopORnot = "off";
+			} else if( isHop == 0 ) {
+				hopORnot = "on";
+			}
 		}
+		
+		
 		
 		MemberDto memDto = mybusDao.getMember(driver);
 		

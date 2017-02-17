@@ -66,6 +66,30 @@
 	 <select id="getPassengers" parameterType="String" resultType="model.MemberDto">
 		select * from hb_member where email in (select email from hb_passengers where driver=#{driver})
 	 </select>
+	 
+<!-- myArticles -->
+	<select id="getArticleCount" parameterType="String" resultType="int">
+		select count(*) from hb_station where email=#{driver}
+	</select>
+	<select id="getArticles" parameterType="map" resultType="model.StationDto">
+		select num,email,category,nick,subject,content,
+		likenum,readcount,reg_date,
+		 r from( select num,email,category,nick,subject,content,
+		likenum,readcount,reg_date, rownum r from
+		(select * from HB_Station order by num desc)
+		order by num desc ) where r &gt;= #{start} and r &lt;= #{end} and email=#{driver}
+	</select>
+	
+<!-- myBusUpcoming -->
+	<insert id="writeUpcoming" parameterType="model.UpcomingDto">
+		insert into hb_upcoming values
+		(hb_upcomingseq.nextVal,#{driver,jdbcType=VARCHAR},#{nick},#{subject},
+		#{perf_place},#{perf_date},#{perf_cast},#{perf_runningtime},#{perf_price},
+		#{content},#{imglocation},0,sysdate)
+	</insert>
+	<select id="getUpcoming" parameterType="int" resultType="model.UpcomingDto">
+		select * from hb_upcoming where num=#{num}
+	</select>
 </mapper>
 
 
