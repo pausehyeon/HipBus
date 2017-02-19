@@ -70,9 +70,10 @@ textarea:focus {
 							$('#console').html("readyState 에러");
 						}
 					} else {
-						$('#console').append($("<img/>",{
-							src : "${project}/view/img/loading.gif",
-							style : "width:30%"
+						$('#console').append($("<img/>", {
+							src : "${project}/view/img/loading2.gif",
+							style : "width:30%",
+							class : "w3-center"
 						}));
 					}
 				}, "myBusBoardListResult.do", "POST", params);
@@ -228,43 +229,49 @@ textarea:focus {
 	function makeBoard(data) {
 		var newdiv = document.createElement("div");
 		newdiv.setAttribute("id", "board_" + data.num);
-		var appendBtn = ''; 
-		var modBtn = ''; 
+		var appendBtn = '';
+		var modBtn = '';
 		var board = '';
-		
-		modBtn += '<button type="button" id="modComplete" class="w3-btn w3-theme-l1 modc" style="display:none" onclick="modComplete('+ data.num+ ')">';
-		modBtn += '<i class="fa fa-check"></i>';
+
+		modBtn += '<button type="button" id="modComplete" class="w3-btn w3-theme-l1 modc" style="display:none" onclick="modComplete('
+				+ data.num + ')">';
+		modBtn += '<i class="fa fa-check"></i> ${str_modComplete}';
 		modBtn += '</button>';
-		modBtn += '<button type="button" id="modView" class="w3-btn w3-theme-l1" onclick="modBoardView('+ data.num+ ')">';
-		modBtn += '<i class="fa fa-pencil"></i>';
+		modBtn += '<button type="button" id="modView" class="w3-btn w3-theme-l1" onclick="modBoardView('
+				+ data.num + ')">';
+		modBtn += '<i class="fa fa-pencil"></i> ${str_modBoard}';
 		modBtn += '</button> &nbsp;';
-		modBtn += "<button type=\"button\" id='modCancel' class=\"w3-btn w3-theme-l1\" style=\"display:none\" onclick=\"modCancel("+ data.num + ",\'"+ data.content+ "\','creteria')\">";
-		modBtn += '<i class="fa fa-times"></i>';
+		modBtn += "<button type=\"button\" id='modCancel' class=\"w3-btn w3-theme-l1\" style=\"display:none\" onclick=\"modCancel("
+				+ data.num + ",\'" + data.content + "\','creteria')\">";
+		modBtn += '<i class="fa fa-times"></i> ${str_modCancel}';
 		modBtn += '</button>';
-		
-		appendBtn += '<div class="w3-left">';
-		if(data.email=="${sessionScope.memEmail}"){
+
+		appendBtn += '<div class="w3-center">';
+		if (data.email == "${sessionScope.memEmail}") {
 			appendBtn += modBtn;
 		}
-		appendBtn += '<button type="button" id="delBoard" class="w3-btn w3-theme-l1" onclick="delBoard('+ data.num+ ')">';
-		appendBtn += '<i class="fa fa-trash-o"></i>';
+		appendBtn += '<button type="button" id="delBoard" class="w3-btn w3-theme-l1" onclick="delBoard('
+				+ data.num + ')">';
+		appendBtn += '<i class="fa fa-trash-o"></i> ${str_delBoard}';
 		appendBtn += '</button> &nbsp;';
 		appendBtn += '</div>';
-		
-		
+
 		board += '<div class="w3-container w3-card-2 w3-white w3-round w3-padding-32 w3-margin" id="list">';
-		board += '<a href=myBus.do?driver='+ data.email+ '><img src="${project}/view/img/HipBusLogo_colored_sq.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width: 40px"></a>';
-		board += '<span class="w3-right w3-opacity">'+ data.reg_date+ '&nbsp;';
-		board += '<a href="#"><i class="fa fa-close w3-right" onclick="delBoard('+ data.num+ ')"></i></a></span>';
-		board += '<h4>'+ data.nick+ '</h4>';
+		board += '<a href=myBus.do?driver='
+				+ data.email
+				+ '><img src="${project}/view/img/HipBusLogo_colored_sq.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width: 40px"></a>';
+		board += '<span class="w3-right w3-opacity">' + data.reg_date
+				+ '</span>';
+		board += '<h4>' + data.nick + '</h4>';
 		board += '<hr class="w3-clear">';
 		board += '<input type="hidden" name="'+ data.num +'">';
-		board += '<textarea readonly="true" rows="3">'+ data.content+ "</textarea>";
-			if(data.email=="${sessionScope.memEmail}" || "${email==driver}"){
-				board += appendBtn;
-			}
+		board += '<textarea readonly="true" rows="3">' + data.content
+				+ "</textarea>";
+		if (data.email == "${sessionScope.memEmail}" || "${email==driver}") {
+			board += appendBtn;
+		}
 		board += '</div>';
-		
+
 		newdiv.innerHTML = board;
 		newdiv.data += data;
 
@@ -274,8 +281,6 @@ textarea:focus {
 		boardCount += countCriteria;
 		loadBoard(boardCount, "more");
 	});
-
-
 //-->
 </script>
 <title>${str_mybusTitle}</title>
@@ -306,21 +311,16 @@ textarea:focus {
 							</h4>
 						</div>
 						<div class="w3-row">
-							<div class="w3-twothird" id="onair">
-							</div>
-							<div class="w3-third" id="onairchat">
-							</div>
+							<div class="w3-twothird" id="onair"></div>
+							<div class="w3-third" id="onairchat"></div>
 						</div>
 
 						<div id="oaconsole"></div>
-						
+
 						<script type="text/javascript">
-						//<!--
-							$(document).ready(
-								function(){
-									playonair("${channelid}","${googleApiKey}")	
-								}
-							);
+							$(document).ready(function() {
+								playonair("${channelid}", "${googleApiKey}")
+							});
 						//-->
 						</script>
 
@@ -334,16 +334,18 @@ textarea:focus {
 									<p>
 										<i class="fa fa-video-camera w3-xxlarge"></i> <br> 아직 채널 ID를 등록하지 않으셨습니다.<br> 유투브 채널 ID를 등록하고 방송을 시작해보세요.<br> <br>
 										<input class="w3-input" type="text" required>
-										<br> <a href="#">채널 ID를 찾으려면?</a>
+										<br>
+										<a href="#">채널 ID를 찾으려면?</a>
 									</p>
 								</div>
-							</div>						
+							</div>
 						</c:if>
 						<!-- 1등급 회원인 경우 -->
 						<c:if test="${mem_level == 1}">
 							<div class="w3-row">
 								<p class="w3-center w3-theme-l1 w3-padding-large w3-tiny">
-									<i class="fa fa-video-camera w3-xxlarge"></i> <br> 사이트 규정에 따라 Main Station에 10개 이상 글을 게시한 이용자만 라이브 스트리밍을 이용할 수 있습니다. <br> <br> <a href="station.do" class="w3-small">글 쓰러 가기</a>
+									<i class="fa fa-video-camera w3-xxlarge"></i> <br> 사이트 규정에 따라 Main Station에 10개 이상 글을 게시한 이용자만 라이브 스트리밍을 이용할 수 있습니다. <br> <br>
+									<a href="station.do" class="w3-small">글 쓰러 가기</a>
 								</p>
 							</div>
 						</c:if>
@@ -367,16 +369,24 @@ textarea:focus {
 					<div class="w3-col m12">
 						<div class="w3-card-2 w3-round w3-white">
 							<div class="w3-container w3-padding">
-								<h6 class="w3-opacity">${str_putMsg}</h6>
-								<c:if test="${email != null}">
-									<input type="text" placeholder="${str_boardEx}" name="content" class="w3-border w3-padding w3-input" border="1">
-								</c:if>
-								<c:if test="${email == null}">
-									<input type="text" placeholder="${str_cantBoard}" name="content" class="w3-border w3-padding w3-input" border="1" readonly>
-								</c:if>
-								<button type="button" class="w3-btn w3-theme-l1" onclick="boardAppend()">
-									<i class="fa fa-pencil"></i> ${str_post}
-								</button>
+								<div class="w3-row-padding">
+									<h6 class="w3-opacity">${str_putMsg}</h6>
+								</div>
+								<div class="w3-row-padding w3-margin-bottom">
+									<div class="w3-col m10 w3-cell-middle">
+										<c:if test="${email != null}">
+											<input type="text" placeholder="${str_boardEx}" name="content" class="w3-border w3-padding w3-input" border="1">
+										</c:if>
+										<c:if test="${email == null}">
+											<input type="text" placeholder="${str_cantBoard}" name="content" class="w3-border w3-padding w3-input" border="1" readonly>
+										</c:if>
+									</div>
+									<div class="w3-col m2 w3-cell-middle">
+										<button type="button" class="w3-btn-block w3-theme-l1" onclick="boardAppend()">
+											<i class="fa fa-pencil"></i> ${str_post}
+										</button>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -387,7 +397,7 @@ textarea:focus {
 				<div class="w3-row-padding">
 					<div class="w3-col m12 w3-center dash">
 						<br> <br> <span id="boardInfo"></span>
-						<button id="moreBoard">${str_moreBoard}</button>
+						<p id="moreBoard" style="text-decoration: underline">${str_moreBoard}</p>
 						<br> <br>
 						<div id="console"></div>
 					</div>
