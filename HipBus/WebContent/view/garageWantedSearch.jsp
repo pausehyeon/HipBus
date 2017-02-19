@@ -23,13 +23,15 @@
 				<c:if test="${count == 0}">
 					<div class="w3-row w3-margin-bottom">
 						<div class="w3-twothird w3-container">
-							<h5>${msg_search_x}</h5>
+							<h5 style="font-weight:bold;">${msg_search_x}</h5>
 						</div>
 					</div>
 				</c:if>
 
 				<!-- 글이있는경우 -->
 				<c:if test="${count != 0}">
+					<h5 style="color:blue; font-weight:bold; display:inline;">${keyword}</h5> 
+					<h5 style="display:inline; font-weight:bold;">검색 결과 ${count}건의 게시글을 찾았습니다.</h5>
 					<c:forEach var="article" items="${SearchList}">
 						<hr>
 						<div class="w3-row w3-margin-bottom">

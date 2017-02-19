@@ -132,6 +132,39 @@
 		resultType="model.UpcomingDto">
 		select num, driver, nick, subject, perf_place, perf_date,
 		perf_cast, perf_runningtime, perf_price, content, imglocation,
+		readcount, reg_date, r from (select num, driver, nick, subject,
+		perf_place, perf_date, perf_cast, perf_runningtime, perf_price,
+		content, imglocation, readcount, reg_date, rownum r from(select * from HB_upcoming order by
+		reg_date desc)order by reg_date desc ) where r &gt;= #{start} and r &lt;=
+		#{end}
+	</select>
+	
+	 <select id="searchDate" parameterType="Map" resultType="int">
+
+		select count(*) from HB_upcoming where PERF_DATE &gt;= '${startDate}' and PERF_DATE  &lt;= '${endDate}'
+
+	</select>
+	
+	
+ <select id="getDateList" parameterType="Map" resultType="model.UpcomingDto">
+ 
+ 	select num, driver, nick, subject, perf_place, perf_date,
+		perf_cast, perf_runningtime, perf_price, content, imglocation,
+		readcount, reg_date, r from (select num, driver, nick, subject,
+		perf_place, perf_date, perf_cast, perf_runningtime, perf_price,
+		content, imglocation, readcount, reg_date, rownum r from(select * from HB_upcoming order by
+		reg_date desc)where PERF_DATE &gt;='${startDate}' and PERF_DATE  &lt;='${endDate}'
+		order by reg_date desc ) where r &gt;= #{start} and r &lt;=
+		#{end}
+ </select>
+ 
+
+
+<!-- 
+<select id="getUpcomingArticles" parameterType="Map"
+		resultType="model.UpcomingDto">
+		select num, driver, nick, subject, perf_place, perf_date,
+		perf_cast, perf_runningtime, perf_price, content, imglocation,
 		readcount, reg_date from (select num, driver, nick, subject,
 		perf_place, perf_date, perf_cast, perf_runningtime, perf_price,
 		content, imglocation, readcount, reg_date, row_number() over(order by
@@ -141,6 +174,6 @@
 	</select>
 
 
-
+ -->
 </mapper>
 

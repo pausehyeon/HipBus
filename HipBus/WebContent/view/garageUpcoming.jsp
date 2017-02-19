@@ -22,7 +22,7 @@
 			<div class="w3-twothird">
 				<div class="w3-row-padding w3-padding-16 w3-left">
 					<div class="w3-col m12 w3-cell-middle">
-						<form action="garageUpcoming.do" method="get">
+						<form action="garageUpcoming.do" method="get" >
 						<jsp:useBean id="now" class="java.util.Date" />
 						<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" />  
 
@@ -36,9 +36,9 @@
 				<div class="w3-row-padding w3-padding-16 w3-center">
 					<div class="w3-col m12">
 						<c:if test="${count eq 0}">
-							<p class="w3-center w3-cell-middle">${str_noUpcoming}</p>
+							<p class="w3-center w3-cell-middle" style="font-weight:bold;">${str_noUpcoming}</p>
 						</c:if>
-						<c:if test="${count ne 0 and articles ne null}">
+						<c:if test="${count ne 0 and dateList eq null}">
 							<c:forEach var="article" items="${articles}">
 								<c:if test='${fn:contains(article.driver, "@")}'>
 									<c:set var="url" value="myBusUpcomingRead.do?num="></c:set>
@@ -67,7 +67,44 @@
 										| ${article.readcount}
 									</p>
 								</div>
-							</c:forEach>
+								</c:forEach>
+							
+						</c:if>
+						
+						<c:if test="${count ne 0 and dateList ne null}">
+						<p>
+							<h5 style="color:blue; font-weight:bold; display:inline;">${startDate} ~ ${endDate}</h5> 
+							&nbsp;<h5 style="display:inline; font-weight:bold;"> ${count}건의 공연일정이 있습니다.</h5> </p>
+							<c:forEach var="datelist" items="${dateList}">
+								<c:if test='${fn:contains(datelist.driver, "@")}'>
+									<c:set var="url" value="myBusUpcomingRead.do?num="></c:set>
+								</c:if>
+								<c:if test='${not fn:contains(datelist.driver, "@")}'>
+									<c:set var="url" value="crewBusUpcomingRead.do?num="></c:set>
+								</c:if>
+								<div class="w3-col m4 l3" onclick="location='${url}${datelist.driver}'">
+									<c:if test="${datelist.imglocation eq null }">
+										<img src="${project}/view/img/poster1.jpg" alt="poster" style="width: 100%">
+									</c:if>
+									<c:if test="${datelist.imglocation ne null }">
+										<img src="${project}/hipbusSave/${datelist.imglocation}" alt="poster" style="width: 100%">
+									</c:if>
+									<c:if test="${fn:length(datelist.subject) gt 7 }">
+										<p class="w3-large w3-slim">${fn:substring(datelist.subject, 0, 7)}...</p>
+									</c:if>
+									<c:if test="${ fn:length(datelist.subject) le 7 }">
+										<p class="w3-large w3-slim">${datelist.subject}</p>
+									</c:if>
+
+									<span><fmt:formatDate value="${datelist.perf_date}" type="both" pattern="M월 d일 공연 예정" /></span>
+									<p class="w3-tiny">
+										${datelist.nick} |
+										<fmt:formatDate value="${datelist.reg_date}" type="both" pattern="yyyy-MM-dd HH:mm" />
+										| ${datelist.readcount}
+									</p>
+								</div>
+								</c:forEach>
+							
 						</c:if>
 					</div>
 				</div>

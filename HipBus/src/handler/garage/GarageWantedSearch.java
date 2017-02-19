@@ -133,6 +133,7 @@ public class GarageWantedSearch implements CommandHandler{
 		request.setAttribute("searchType", searchType);
 		request.setAttribute("keyword",keyword);
 		request.setAttribute("SearchList",SearchList);
+		request.setAttribute("count", count);
 		
 		
 		return new ModelAndView("garageWantedSearch");

@@ -31,6 +31,8 @@ public interface GarageDao {
 	public List<WantedDto> getSearchResult(Map<String,Object> searchResesultMap);
 	public int getUpcomingCount();
 	public List<UpcomingDto> getUpcomingArticles(Map<String, Integer> startAndEnd );
-
+	public List<UpcomingDto> getDateList(Map<String,Object> upcomingMap);
+	public int searchDate(Map<String,String> dateMap);
+ 
 	
 }

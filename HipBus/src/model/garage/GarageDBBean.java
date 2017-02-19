@@ -139,6 +139,18 @@ public class GarageDBBean implements GarageDao {
 		return SqlMapClient.getSession().selectList("Garage.getUpcomingArticles", startAndEnd);
 	}
 
+	@Override
+	public List<UpcomingDto> getDateList(Map<String, Object> upcomingMap) {
+		// TODO Auto-generated method stub
+		return SqlMapClient.getSession().selectList("Garage.getDateList", upcomingMap);
+	}
+
+	@Override
+	public int searchDate(Map<String, String> dateMap) {
+		// TODO Auto-generated method stub
+		return SqlMapClient.getSession().selectOne( "Garage.searchDate",dateMap);
+	}
+
 	
 }
 
