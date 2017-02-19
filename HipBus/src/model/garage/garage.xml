@@ -96,8 +96,8 @@
 		driver,num,nick,subject,content,
 		imglocation,duedate,readcount,reg_date,rownum r from
 		(select * from
-		HB_Wanted order by num desc)
-		order by num desc ) where r &gt;= #{start}
+		HB_Wanted where duedate &gt; sysdate order by duedate desc)
+		order by duedate desc ) where r &gt;= #{start}
 		and r &lt;= #{end}
 
 	</select>

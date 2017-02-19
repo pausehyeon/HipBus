@@ -20,33 +20,42 @@
 		<div class="w3-row">
 			<div class="w3-twothird">
 				<!-- 글이 없는 경우 -->
-				<c:if test="${count == 0}">
+				<c:if test="${(count eq 0) or (WantedList eq null)}">
 
 					<div class="w3-row w3-margin-bottom">
-						<div class="w3-twothird w3-container">
+						<div class="w3-col m12 w3-cell-middle">
 							<h5>${msg_list_x}</h5>
 						</div>
 					</div>
 				</c:if>
 
 				<!-- 글이있는경우 -->
-
-				<c:if test="${count != 0}">
+				<c:if test="${(count ne 0) and (WantedList ne null)}">
 					<c:forEach var="article" items="${WantedList}">
 						<hr>
-
 						<div class="w3-row w3-margin-bottom">
-							<div class="w3-col m4 l3">
+							<div class="w3-col m12">
+								<!-- D-day 연산을 위해 시스템 날짜를 받아옴 -->
+								<jsp:useBean id="now" class="java.util.Date" />
+								<fmt:parseNumber var="today" value="${now.time/ (1000*60*60*24)}" integerOnly="true"/>
+								<fmt:parseNumber var="duedate" value="${article.duedate.time/ (1000*60*60*24)}" integerOnly="true"/>
+								<!-- D-n 초록색, D-3 ~ D-1 빨간 색, D-day, 마감으로 나누어표시 -->
+								<c:if test="${(today - duedate) lt (-3)}">
+									<span class="w3-badge w3-green">D${today - duedate}</span>
+								</c:if>
+								<c:if test="${(today - duedate) ge (-3)}">
+									<span class="w3-badge w3-red">D${today - duedate}</span>
+								</c:if>
+								<c:if test="${(today - duedate) eq 0}">
+									<span class="w3-badge w3-red">D-Day</span>
+								</c:if>
 								<a href="myBusWantedRead.do?num=${article.num}"> ${article.subject}</a>
-							</div>
-
 							<p class="w3-right w3-tiny">${article.nick}|
 								<fmt:formatDate value="${article.reg_date}" type="both" pattern="yyyy-MM-dd HH:mm" />
 								| ${article.readcount}
 							</p>
+							</div>
 						</div>
-
-
 					</c:forEach>
 				</c:if>
 
@@ -69,7 +78,8 @@
 								<option value="nick">${str_Writer}</option>
 								<option value="subject">${str_Subject}</option>
 								<option value="content">${str_Content}</option>
-							</select> <input type="text" name="keyword" placeholder="${str_Search}">
+							</select>
+							<input type="text" name="keyword" placeholder="${str_Search}">
 							<button type="submit">
 								<i class="fa fa-search"></i>
 							</button>
