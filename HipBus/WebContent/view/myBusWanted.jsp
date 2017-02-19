@@ -32,35 +32,12 @@
 						</h3>
 					</div>
 					<div class="w3-row-padding w3-padding-16 w3-center">
+						<!-- 글이 없는 경우 -->
+						<!-- 글이 있는 경우 -->
 						<div class="w3-col m4">
 							<img src="${project}/view/img/poster1.jpg" alt="poster" style="width: 100%">
-							<h5>구합니다!</h5>
-							<p class="w3-tiny">래퍼 | 2017.02.16 | 0</p>
-						</div>
-						<div class="w3-col m4">
-							<img src="${project}/view/img/poster1.jpg" alt="poster" style="width: 100%">
-							<h5>구합니다!</h5>
-							<p class="w3-tiny">래퍼 | 2017.02.16 | 0</p>
-						</div>
-						<div class="w3-col m4">
-							<img src="${project}/view/img/poster1.jpg" alt="poster" style="width: 100%">
-							<h5>구합니다!</h5>
-							<p class="w3-tiny">래퍼 | 2017.02.16 | 0</p>
-						</div>
-						<div class="w3-col m4">
-							<img src="${project}/view/img/poster1.jpg" alt="poster" style="width: 100%">
-							<h5>구합니다!</h5>
-							<p class="w3-tiny">래퍼 | 2017.02.16 | 0</p>
-						</div>
-						<div class="w3-col m4">
-							<img src="${project}/view/img/poster1.jpg" alt="poster" style="width: 100%">
-							<h5>구합니다!</h5>
-							<p class="w3-tiny">래퍼 | 2017.02.16 | 0</p>
-						</div>
-						<div class="w3-col m4">
-							<img src="${project}/view/img/poster1.jpg" alt="poster" style="width: 100%">
-							<h5>구합니다!</h5>
-							<p class="w3-tiny">래퍼 | 2017.02.16 | 0</p>
+							<h5><span class="w3-badge w3-green">D-3</span> 구합니다!</h5>
+							<p class="w3-tiny"> 2017.02.16 | 0 </p>
 						</div>
 					</div>
 

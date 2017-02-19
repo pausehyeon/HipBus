@@ -84,5 +84,10 @@
 <c:set var="str_hopOnError" value="버스에 정상적으로 올라타지 못했습니다."/>
 <c:set var="str_hopOffError" value="버스에서 성공적으로 내리지 못했습니다."/>
 
-<!-- myBusMyArticles -->
+<!-- myBusMyArticles.jsp -->
 <c:set var="str_myArticles" value="님의 모든 글"/>
+
+<!-- myBusWanted.jsp, myBusWantedModify.jsp -->
+<c:set var="str_subject" value="제목"/>
+<c:set var="str_duedate" value="모집 마감일"/>
+<c:set var="str_list" value="글목록"/>
