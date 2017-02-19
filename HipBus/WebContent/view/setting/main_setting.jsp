@@ -41,10 +41,10 @@
 <c:set var="str_noNewsArticles" value="등록된 공지사항이 없습니다."/>
 <c:set var="str_rank" value="위"/>
 <c:set var="str_perf_place" value="장소"/>
-<c:set var="str_perf_date" value="공연 일시"/>
-<c:set var="str_perf_cast" value="출연진"/>
-<c:set var="str_perf_runningtime" value="공연 시간"/>
+<c:set var="str_perf_date" value="공연 일자"/>
+<c:set var="str_perf_runningtime" value="공연 시각"/>
 <c:set var="str_minute" value="분"/>
+<c:set var="str_perf_cast" value="출연진"/>
 <c:set var="str_noUpcomings" value="다가오는 공연 정보가 없습니다."/>
 
 <!-- mainForgot.jsp -->

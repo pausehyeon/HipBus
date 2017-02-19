@@ -179,9 +179,9 @@
 						</c:if>
 						<li class="w3-center w3-padding-8 w3-padding-small"><img src="${project}/hipbusSave/${upcoming.imglocation}" alt="${str_upcoming}" style="width: 100%"></li>
 						<li class="w3-padding-8"><b>${str_perf_place}</b> ${upcoming.perf_place}</li>
-						<li class="w3-padding-8"><b>${str_perf_date}</b> <fmt:formatDate value="${upcoming.perf_date}" type="both" pattern="yy.MM.dd  a HH:mm" /></li>
+						<li class="w3-padding-8"><b>${str_perf_date}</b> <fmt:formatDate value="${upcoming.perf_date}" type="both" pattern="yy.MM.dd" /></li>
+						<li class="w3-padding-8"><b>${str_perf_runningtime}</b> <fmt:formatDate value="${upcoming.perf_date}" type="both" pattern="a h시 mm분" /> ( ${upcoming.perf_runningtime}${str_minute} )</li>
 						<li class="w3-padding-8"><b>${str_perf_cast}</b> ${upcoming.perf_cast}</li>
-						<li class="w3-padding-8"><b>${str_perf_runningtime}</b> ${upcoming.perf_runningtime}${str_minute}</li>
 						<li class="w3-light-grey w3-padding-24"><c:if test="${fn:contains(upcoming.driver, '@') }">
 								<!-- 개인인 경우 -->
 								<a href="myBusUpcomingRead.do?num=${upcoming.num}" class="w3-btn w3-green w3-padding-large">${str_detail}</a>
