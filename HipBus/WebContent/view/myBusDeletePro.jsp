@@ -28,7 +28,7 @@
 	<script type="text/javascript">
 		//<!--		
 		alert( signoutpasswderror );
-		location.href="myBusEdit.do?driver=${sessionScope.memEmail}";		
+		location.href="myBusEdit.do?driver=" + '${sessionScope.memEmail}';		
 		//-->
 	</script>
 </c:if>

@@ -29,7 +29,8 @@ public class MyBusDeletePro implements CommandHandler {
 		int signOutDriver = 0;		
 		
 		if ( passwd.equals(passwdCheck)) {
-			signOutResult = mybusDao.deleteEmail(email);			
+			signOutResult = mybusDao.deleteEmail(email);
+			request.getSession().removeAttribute("memEmail");
 		} else if ( ! passwd.equals(passwdCheck)) {
 			signOutResult = -1;
 		}
@@ -39,7 +40,7 @@ public class MyBusDeletePro implements CommandHandler {
 		
 		request.setAttribute("signOutResult", signOutResult);
 		request.setAttribute("signOutDriver", signOutDriver);	
-		request.getSession().removeAttribute("memEmail");
+		
 		
 		return new ModelAndView("myBusDeletePro");
 	}
