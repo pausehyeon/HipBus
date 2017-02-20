@@ -97,14 +97,6 @@
 						</div>
 						<div class="w3-row-padding w3-white w3-center">
 							<p>
-								<button type="button" onclick="funcs()">
-								확인
-								</button>
-								<script type="text/javascript">
-								function funcs() {
-									alert("${driver}");
-								}
-								</script>
 								<button type="submit" class="w3-btn">${str_post}</button>
 							</p>
 							<i class="glyphicon glyphicon-search"></i>

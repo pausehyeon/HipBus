@@ -29,4 +29,6 @@ public interface MyBusDao {
 	public List<StationDto> getArticles(Map<String,String> map);
 	public int writeUpcoming(UpcomingDto dto);
 	public UpcomingDto getUpcoming(int num);
+	public List<UpcomingDto> getUpcomings();
+	public UpcomingDto getNewUpcoming(String driver);
 }

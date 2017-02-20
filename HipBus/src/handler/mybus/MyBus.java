@@ -6,12 +6,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.context.annotation.SessionScope;
 import org.springframework.web.servlet.ModelAndView;
 
 import handler.CommandHandler;
 import handler.HandlerException;
-import model.MemberDto;
 import model.general.GeneralDao;
 
 @Controller
@@ -31,12 +29,6 @@ public class MyBus implements CommandHandler {
 		
 		if( request.getSession() != null ) {
 			email = (String) request.getSession().getAttribute("memEmail");	// 방문자 (세션에 저장된 이메일)
-
-			if(driver == email) { 		// 세션의 이메일과 버스주인의 이메일이 같을때 (자기 페이지인 경우)
-				
-			} else {					// 회원이 남의 페이지에 방문한 경우
-				
-			}
 		}
 		
 		int mem_level = mybusDao.getMember(driver).getMem_level();

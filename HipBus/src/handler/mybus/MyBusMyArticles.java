@@ -26,7 +26,6 @@ public class MyBusMyArticles implements CommandHandler {
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		String driver = request.getParameter("driver");
-		String email = request.getParameter("email");
 		int pageSize = 6;			// 한페이지에 출력할 글 개수
 		int pageBlock = 5;			// 한 번에 보여줄 페이지 개수
 		int count = 0;
@@ -104,12 +103,10 @@ public class MyBusMyArticles implements CommandHandler {
 			request.setAttribute("pageNum", pageNum);	
 		}
 		
+		String nick = mybusDao.getMember(driver).getNick();
 		
-		
-		
+		request.setAttribute("nick", nick);
 		request.setAttribute("driver", driver);
-		request.setAttribute("email", email);
-		
 		return new ModelAndView("myBusMyArticles");
 	}
 

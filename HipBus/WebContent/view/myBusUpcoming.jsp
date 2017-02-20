@@ -36,52 +36,21 @@
 						</h3>
 					</div>
 					<div class="w3-row-padding w3-padding-16 w3-center">
-						<div class="w3-col m4 l3">
-							<img src="${project}/view/img/poster1.jpg" alt="poster"
-								style="width: 100%">
-							<h4>The Perfect Sandwich, A Real NYC Classic</h4>
-						</div>
-						<div class="w3-col m4 l3">
-							<img src="${project}/view/img/poster6.jpg" alt="poster"
-								style="width: 100%">
-							<h4>Let Me Tell You About This Steak</h4>
-						</div>
-						<div class="w3-col m4 l3">
-							<img src="${project}/view/img/poster2.jpg" alt="poster"
-								style="width: 100%">
-							<h4>Cherries, interrupted</h4>
-						</div>
-						<div class="w3-col m4 l3">
-							<img src="${project}/view/img/poster3.jpg" alt="poster"
-								style="width: 100%">
-							<h4>Once Again, Robust Wine and Vegetable Pasta</h4>
-						</div>
-
-						<div class="w3-col m4 l3">
-							<img src="${project}/view/img/poster4.jpg" alt="poster"
-								style="width: 100%">
-							<h4>All I Need Is a Popsicle</h4>
-						</div>
-						<div class="w3-col m4 l3">
-							<img src="${project}/view/img/poster5.jpg" alt="poster"
-								style="width: 100%">
-							<h4>Salmon For Your Skin</h4>
-						</div>
-						<div class="w3-col m4 l3">
-							<img src="${project}/view/img/poster6.jpg" alt="poster"
-								style="width: 100%">
-							<h4>The Perfect Sandwich, A Real Classic</h4>
-						</div>
-						<div class="w3-col m4 l3">
-							<img src="${project}/view/img/poster6.jpg" alt="poster"
-								style="width: 100%">
-							<p class="w3-center w3-tiny">
-								${str_writer} Jihyeon ${str_writeDate}2016-12-19 ${str_hits} 0
-							</p>
-							<h4>Le French</h4>
-						</div>
+					<c:if test="${upcomings!=null}">
+						<c:forEach var="article" items="${upcomings}">
+							<div class="w3-col m4 l3 w3-hover-grey" onclick="location='myBusUpcomingRead.do?driver=${driver}&num=${article.num}'">
+								<img src="${project}/hipbusSave/${article.imglocation}" alt="poster"
+									style="width: 100%">
+								<h4>${article.subject}</h4>
+							</div>
+						</c:forEach>
+					</c:if>
+					<c:if test="${upcomings==null}">
+							<div class="w3-col m4 l3">
+								<h4>${아직 작성한 글이 없습니다.}</h4>
+							</div>
+					</c:if>
 					</div>
-
 				</div>
 				<!-- 여기까지 -->
 				<!-- End Middle Column -->

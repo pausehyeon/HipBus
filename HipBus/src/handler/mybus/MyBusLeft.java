@@ -17,7 +17,6 @@ import handler.HandlerException;
 import model.CrewDto;
 import model.CrewMemberDto;
 import model.MemberDto;
-import model.general.ImageResize;
 import model.mybus.MyBusDao;
 
 @Controller
@@ -68,6 +67,9 @@ public class MyBusLeft implements CommandHandler {
 		
 		List<MemberDto> passengers = mybusDao.getPassengers(driver);
 		
+		String channelid = mybusDao.getChannelid( driver );
+		
+		request.setAttribute("channelid", channelid);
 		request.setAttribute("passengers", passengers);
 		request.setAttribute("tags", tags);
 		request.setAttribute("myMembers", myMembers);

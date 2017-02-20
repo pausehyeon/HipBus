@@ -107,7 +107,7 @@
 
 			<li class="w3-hide-small w3-right">
 				<a href="myBus.do?driver=${sessionScope.memEmail}" class="w3-padding-large w3-hover-white" title="${str_myBus}">
-					<img src="${project}/${member.imglocation}" class="w3-circle" style="height: 25px; width: 25px" alt="Crew Bus">
+					<img src="${project}/hipbusSave/${member.imglocation}" class="w3-circle" style="height: 25px; width: 25px" alt="Crew Bus">
 				</a>
 			</li>
 

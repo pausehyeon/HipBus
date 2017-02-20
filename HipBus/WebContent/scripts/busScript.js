@@ -40,12 +40,12 @@ function playonair(channel_id, googleApiKey){
 						var jsonData = eval( "("+request.httpRequest.responseText.trim() +")");
 
 						var video = "";
+						var chat = "";
 						video += '<iframe style="width: 100%; height: 360px" src="http://www.youtube.com/embed/live_stream?channel='+ channel_id +'" frameborder="0" allowfullscreen></iframe>';
 						onair.innerHTML += video;
 							
 						if(jsonData.pageInfo.totalResults != 0){ //라이브 방송중인 경우
 							var videoId = jsonData.items[0].id.videoId;
-							var chat = "";
 							chat += '<iframe style="width: 100%; height: 360px" src="https://www.youtube.com/live_chat?v='+videoId+'&embed_domain=localhost" frameborder="0" allowfullscreen></iframe>';
 							
 							onairchat.innerHTML += chat;
@@ -59,7 +59,7 @@ function playonair(channel_id, googleApiKey){
 						}else{
 							oaconsole.innerHTML = "";
 						}
-					}else{
+					} else{
 						oaconsole.innerHTML = "<p class='w3-center'> 오류 발생"+request.status+" </p>";
 					}
 				}else{
@@ -71,3 +71,5 @@ function playonair(channel_id, googleApiKey){
 			params);
 	request.sendRequest();
 }
+
+

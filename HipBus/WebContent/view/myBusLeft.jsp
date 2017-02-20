@@ -6,18 +6,6 @@
 <%@include file="/view/setting/bus_setting.jsp"%>
 <%@include file="/view/setting/myBus_setting.jsp"%>
 
-<script type="text/javascript">
-//<!--
-	$(document).ready(
-		function() {
-
-		}
-			
-	);
-//-->
-
-</script>
-
 <!-- Left Column -->
 <div class="w3-col m3">
 	<!-- Profile -->
@@ -27,11 +15,11 @@
 			<p class="w3-center">
 			<c:if test="${memDto.getImglocation()!=null}">
 				<img alt="img" src="${project}/hipbusSave/${memDto.getImglocation()}"
-					class="w3-circle" style="width:50%">
+					class="w3-circle" style="width:50%" onclick="location='myBus.do?driver=${driver}'">
 			</c:if>
 			<c:if test="${memDto.getImglocation()==null}">
 				<img src="${project}/view/img/HipBusLogo_colored_sq.png"
-					class="w3-circle" style="width:50%" alt="Avatar">
+					class="w3-circle" style="width:50%" alt="Avatar"  onclick="location='myBus.do?driver=${driver}'">
 			</c:if>
 			</p>
 			<hr>
@@ -117,16 +105,12 @@
 				</ul>
 				</p>
 			</div>
-			<button onclick="location='myBusVideos.do'"
+			<c:if test="${channelid!=null}">
+			<button onclick="location='myBusVideos.do?driver=${driver}'"
 				class="w3-btn-block w3-theme-l1 w3-left-align">
 				<i class="fa fa-video-camera fa-fw w3-margin-right"></i> ${str_oldVideos}
 			</button>
-			<div id="Demo3" class="w3-accordion-content w3-container">
-				<div class="w3-row-padding">
-					<div class="w3-half"></div>
-				</div>
-			</div>
-
+			</c:if>
 			<button onclick="location='myBusMyArticles.do?driver=${driver}'" class="w3-btn-block w3-theme-l1 w3-left-align">
 				<i class="fa fa fa-align-left fa-fw w3-margin-right"></i> ${memDto.getNick()} ${str_seePosts}
 			</button>

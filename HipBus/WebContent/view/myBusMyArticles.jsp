@@ -4,6 +4,7 @@
 <%@include file="/view/setting/setting.jsp"%>
 <%@include file="/view/setting/bus_setting.jsp"%>
 <%@include file="/view/setting/myBus_setting.jsp"%>
+<%@include file="/view/setting/station_setting.jsp"%>
 
 <title>${str_mybusTitle}</title>
 <body class="w3-theme-l5">
@@ -29,24 +30,25 @@
 				<div class="w3-container w3-card-2 w3-white w3-round w3-margin-bottom w3-margin-left w3-margin-right w3-padding-32 w3-padding-xxlarge">
 					<div class="w3-container w3-center w3-black">
 						<h3>
-							<i class="fa fa-list-ul"></i>&nbsp; ${str_myArticles}
+							<i class="fa fa fa-align-left fa-fw w3-margin-right"></i>${nick} ${str_myArticles}
 						</h3>
 					</div>
 					<div class="w3-row">
 						<!-- 글이없는경우 -->
-						<c:if test="${count == 0}">
-							<c:if test="${type == 1 }">
+						<c:if test="${station==null}">
 								<div class="w3-row w3-margin-bottom">
 									<div class="w3-twothird w3-container">
 										<h5>${msg_station_x}</h5>
 									</div>
 								</div>
-							</c:if>
 						</c:if>
 						<!-- 글이있는경우 -->
 
 						<c:if test="${count != 0}">
 							<c:forEach var="article" items="${station}">
+							<script type="text/javascript">
+							
+							</script>
 								<c:if test="${type == 1 }">
 									<div>
 										<hr>
@@ -244,20 +246,20 @@
 							<!-- Pagination -->
 
 							<c:if test="${startPage > pageBlock}">
-								<a class="w3-hover-black" href="station.do">◀◀</a>
-								<a class="w3-hover-black" href="station.do?pageNum=${startPage-pageBlock}">◀</a>
+								<a class="w3-hover-black" href="myBus.do?driver=${driver}">◀◀</a>
+								<a class="w3-hover-black" href="myBus.do?driver=${driver}&pageNum=${startPage-pageBlock}">◀</a>
 							</c:if>
 							<c:forEach var="i" begin="${startPage}" end="${endPage}">
 								<c:if test="${i == currentPage}">
 									<span class="w3-hover-black">${i}</span>
 								</c:if>
 								<c:if test="${i != currentPage}">
-									<a class="w3-hover-black" href="station.do?pageNum=${i}">[${i}]</a>
+									<a class="w3-hover-black" href="myBus.do?driver=${driver}&pageNum=${i}">[${i}]</a>
 								</c:if>
 							</c:forEach>
 							<c:if test="${pageCount > endPage}">
-								<a class="w3-hover-black" href="station.do?pageNum=${startPage+pageBlock}">▶</a>
-								<a class="w3-hover-black" href="station.do?pageNum=${pageCount}">▶▶</a>
+								<a class="w3-hover-black" href="myBus.do?driver=${driver}&pageNum=${startPage+pageBlock}">▶</a>
+								<a class="w3-hover-black" href="myBus.do?driver=${driver}&pageNum=${pageCount}">▶▶</a>
 							</c:if>
 						</div>
 					</c:if>

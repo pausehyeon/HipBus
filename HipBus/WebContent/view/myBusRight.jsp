@@ -9,23 +9,35 @@
 <!-- Right Column -->
 <div class="w3-col m2">
 	<div class="w3-card-2 w3-round w3-white w3-center">
-		<div class="w3-container">
-			<c:if test="${driver==email}">
-				<div class="w3-right w3-padding-16">
-					<button type="button" class="w3-btn w3-theme-l1" onclick="location='myBusUpcomingWrite.do?driver=${driver}&email=${email}'">
-						<i class="fa fa-pencil"></i>&nbsp; ${str_edit}
-					</button>
-				</div>
+		<div class="w3-container">			
+			
+				<c:if test="${driver==email}">
+					<div class="w3-right w3-padding-16">
+						<button type="button" class="w3-btn w3-theme-l1" onclick="location='myBusUpcomingWrite.do?driver=${driver}'">
+							<i class="fa fa-pencil"></i>&nbsp; ${str_edit}
+						</button>
+					</div>
+				</c:if>
+				<c:if test="${driver!=email}">
+					&nbsp;
+				</c:if>
+			<c:if test="${upcomingDto.imglocation==null}">
+				<img src="${project}/view/img/notice1.png" alt="some image"
+					style="width: 100%;">
 			</c:if>
-			<img src="${project}/view/img/notice1.png" alt="some image"
-				style="width: 100%;">
-			<p>
-				<strong>Seoul soul Festival 2016</strong>
-			</p>
-			<p>토요일 15:00</p>
-			<p>
-				<button class="w3-btn w3-btn-block w3-theme-l1">${str_detail}</button>
-			</p>
+			<c:if test="${upcomingDto.imglocation!=null}">
+				<img src="${project}/hipbusSave/${upcomingDto.imglocation}" alt="some image"
+					style="width: 100%;">
+				<p>
+					<strong>${upcomingDto.subject}</strong>
+				</p>
+				<p>${upcomingDto.perf_date}</p>
+				<p>
+					<button class="w3-btn w3-btn-block w3-theme-l1"
+							onclick="location='myBusUpcomingRead.do?driver=${driver}&num=${upcomingDto.num}'">${str_detail}</button>
+				</p>
+			</c:if>
+			
 		</div>
 	</div>
 	<br>

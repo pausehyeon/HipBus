@@ -21,7 +21,7 @@
 		select * from HB_member where email=#{email,jdbcType=VARCHAR}
 	</select>
 	<select id="getChannelid" parameterType="String"  resultType="String">
-		select channel_id from HB_Channel where driver=#{driver}
+		select channel_id from HB_Channel where driver=#{driver,jdbcType=VARCHAR}
 	</select>
 	<select id="getBoards" parameterType="map" resultType="model.BoardDto">
 		select * from hb_board 
@@ -89,6 +89,14 @@
 	</insert>
 	<select id="getUpcoming" parameterType="int" resultType="model.UpcomingDto">
 		select * from hb_upcoming where num=#{num}
+	</select>
+	<select id="getUpcomings" resultType="model.UpcomingDto">
+		select * from hb_upcoming
+	</select>
+	<select id="getNewUpcoming" parameterType="String" resultType="model.UpcomingDto">
+		select * from hb_upcoming 
+		where driver=#{driver} 
+		and num=(select max(num) from hb_upcoming where driver=#{driver})
 	</select>
 </mapper>
 
