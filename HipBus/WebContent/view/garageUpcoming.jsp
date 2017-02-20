@@ -25,7 +25,6 @@
 						<form action="garageUpcoming.do" method="get" >
 						<jsp:useBean id="now" class="java.util.Date" />
 						<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" />  
-
 							<input name="startDate" type="date" value="${today}" required="required" class="w3-padding w3-theme-l4 w3-btn w3-margin-right">
 							<span class="w3-center">~ </span>
 							<input name="endDate" type="date" value="${today}" required="required" class="w3-padding w3-theme-l4 w3-btn w3-margin-left">
@@ -72,9 +71,11 @@
 						</c:if>
 						
 						<c:if test="${count ne 0 and dateList ne null}">
-						<p>
-							<h5 style="color:blue; font-weight:bold; display:inline;">${startDate} ~ ${endDate}</h5> 
-							&nbsp;<h5 style="display:inline; font-weight:bold;"> ${count}건의 공연일정이 있습니다.</h5> </p>
+							<div>
+						
+							<h5 style="color:blue; font-weight:bold; display:inline;">	${fn:substring(startDate,0,11)} ~ ${fn:substring(endDate,0,11)}</h5> 
+							&nbsp;<h5 style="display:inline; font-weight:bold;"> ${count}건의 공연일정이 있습니다.</h5> 
+							</div>				
 							<c:forEach var="datelist" items="${dateList}">
 								<c:if test='${fn:contains(datelist.driver, "@")}'>
 									<c:set var="url" value="myBusUpcomingRead.do?num="></c:set>

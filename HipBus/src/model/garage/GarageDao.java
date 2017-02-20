@@ -1,5 +1,6 @@
 package model.garage;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 
@@ -32,7 +33,7 @@ public interface GarageDao {
 	public int getUpcomingCount();
 	public List<UpcomingDto> getUpcomingArticles(Map<String, Integer> startAndEnd );
 	public List<UpcomingDto> getDateList(Map<String,Object> upcomingMap);
-	public int searchDate(Map<String,String> dateMap);
+	public int searchDate(Map<String,Object> dateMap);
  
 	
 }

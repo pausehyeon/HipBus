@@ -1,5 +1,6 @@
 package model.garage;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 
@@ -146,7 +147,7 @@ public class GarageDBBean implements GarageDao {
 	}
 
 	@Override
-	public int searchDate(Map<String, String> dateMap) {
+	public int searchDate(Map<String, Object> dateMap) {
 		// TODO Auto-generated method stub
 		return SqlMapClient.getSession().selectOne( "Garage.searchDate",dateMap);
 	}

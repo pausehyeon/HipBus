@@ -141,7 +141,7 @@
 	
 	<select id="searchDate" parameterType="Map" resultType="int">
 
-		select count(*) from HB_upcoming where PERF_DATE &gt;= '${startDate}' and PERF_DATE  &lt;= '${endDate}'
+		select count(*) from HB_upcoming where PERF_DATE &gt;=#{startDate} and PERF_DATE  &lt;= #{endDate}+1
 
 	</select>
 	
@@ -153,7 +153,7 @@
 		readcount, reg_date, r from (select num, driver, nick, subject,
 		perf_place, perf_date, perf_cast, perf_runningtime, perf_price,
 		content, imglocation, readcount, reg_date, rownum r from(select * from HB_upcoming order by
-		reg_date desc)where PERF_DATE &gt;='${startDate}' and PERF_DATE  &lt;='${endDate}'
+		reg_date desc)where PERF_DATE &gt;=#{startDate} and PERF_DATE  &lt;=#{endDate}+1
 		order by reg_date desc ) where r &gt;= #{start} and r &lt;=
 		#{end}
  </select>
