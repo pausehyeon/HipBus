@@ -139,7 +139,7 @@
 		#{end}
 	</select>
 	
-	 <select id="searchDate" parameterType="Map" resultType="int">
+	<select id="searchDate" parameterType="Map" resultType="int">
 
 		select count(*) from HB_upcoming where PERF_DATE &gt;= '${startDate}' and PERF_DATE  &lt;= '${endDate}'
 

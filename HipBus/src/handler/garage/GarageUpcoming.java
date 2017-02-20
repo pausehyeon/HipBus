@@ -1,5 +1,6 @@
 package handler.garage;
 
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import com.sun.org.apache.xalan.internal.xsltc.util.IntegerArray;
 
 import handler.CommandHandler;
 import handler.HandlerException;
@@ -43,8 +44,21 @@ public class GarageUpcoming implements CommandHandler {
 		int endPage = 0; // 보여줄 페이지의 끝 번호
 		
 		String startDate = request.getParameter("startDate");
-		String endDate = request.getParameter("endDate");
+		String endDate=request.getParameter("endDate");
 		
+		//String date = request.getParameter("startDate");
+		//String [] dateSplit = date.split("-");
+		
+		//int [] date1 = Integer.p
+		
+		
+		//String endDate1 = request.getParameter("endDate");
+		
+		
+		
+		//Timestamp startDate = new Timestamp(date2[0],date2[1],date2[2],hour, minute, second, nano)
+		
+	
 		
 		if(startDate != null){
 			Map<String,String> dateMap = new HashMap<String, String>();
