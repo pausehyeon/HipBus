@@ -70,19 +70,19 @@ public class StationDBBean implements StationDao {
 		return SqlMapClient.getSession().selectOne( "Station.getLike", num );	
 	}
 	
-	public List<ReplyDto> getReplys( Map<String, Integer> map ) {
-		return SqlMapClient.getSession().selectList( "Station.getReplys", map );
+	public List<ReplyDto> getReplys( int num ) {
+		return SqlMapClient.getSession().selectList( "Station.getReplys", num );
 	}
 	
 	public int replyInsert( ReplyDto dto ) {
 		int replynum = dto.getReplynum();	// 제목글 / 답변글
-		int ref_num = dto.getRef_num();				// 그룹화 아이디
+		int ref_num = dto.getRef_num();		// 그룹화 아이디
 		int re_step = dto.getRe_step();		// 글순서
 		int re_level = dto.getRe_level();	// 글레벨
 		
 		if( replynum == 0 ) {
 			// 제목글			
-			if( getCount() != 0 ) {
+			if( getReplyCount() != 0 ) {
 				// 글이 있는 경우
 				// 그룹화아이디 = 글번호최대값 + 1
 				ref_num = (Integer) SqlMapClient.getSession().selectOne( "Station.maxNum" ) + 1;				
@@ -103,6 +103,32 @@ public class StationDBBean implements StationDao {
 		dto.setRe_level( re_level );
 		return SqlMapClient.getSession().insert( "Station.replyInsert", dto );
 		
+	}
+	public ReplyDto getLastReply( int num ) {
+		return SqlMapClient.getSession().selectOne("Station.getLastReply", num);
+	}
+	
+	public int modifyReply( ReplyDto dto ){
+		return SqlMapClient.getSession().update("Station.modifyReply", dto);
+	}
+	
+	public ReplyDto getReply( int replynum ) {
+		return SqlMapClient.getSession().selectOne( "Station.getReply", replynum );	
+	}
+	
+	public int deleteReply(int replynum) {
+		int result = 0;
+		ReplyDto dto = getReply( replynum );
+		int cnt = SqlMapClient.getSession().selectOne("Station.replyCount", dto);
+		if( cnt != 0 ) {
+			// 답글이 있는 경우
+			result = -1;		
+		} else {
+			// 답글이 없는 경우
+			SqlMapClient.getSession().update( "Station.deleteReplyArticle", dto );
+			result = SqlMapClient.getSession().delete("Station.deleteReply", replynum);
+		}		
+		return result;
 	}
 
 }

@@ -66,21 +66,15 @@
   	</select>
   	
   	<!--  댓글 -->
-  	<select id="getReplys" parameterType="Map" resultType="model.ReplyDto">
-		select replynum,num,email,content,
-		ref_num,re_step,re_level,reg_date,status,
-		 r from( select replynum,num,email,content,
-		ref_num,re_step,re_level,reg_date,status,
-		rownum r from
-		(select * from HB_StationReply order by replynum desc)
-		order by replynum desc ) where r &gt;= #{start} and r &lt;= #{end}
+  	<select id="getReplys" parameterType="int" resultType="model.ReplyDto">
+		select * from HB_StationReply where num=#{num} order by replynum desc
 	</select>
 	
 	<insert id="replyInsert" parameterType="model.ReplyDto">
 		insert into HB_StationReply( replynum,num,email,content,
 		ref_num,re_step,re_level,reg_date,status)
 		values(HB_replyseq.NEXTVAL,#{num},#{email},
-		#{content},#{ref_num},#{re_step},#{re_level},#{reg_date},1)
+		#{content},#{ref_num},#{re_step},#{re_level},sysdate,1)
 	</insert>
 	
 	<update id="updateReply" parameterType="model.ReplyDto">
@@ -90,4 +84,35 @@
 	<select id="getReplyCount" resultType="int">
 		select count(*) from HB_StationReply
 	</select>
+	<select id="getLastReply" parameterType="int" resultType="model.ReplyDto">
+		select * from HB_StationReply where num=(select max(replynum) from HB_StationReply where num=#{num})
+	</select>
+	
+	<select id="maxNum" resultType="int">
+		select max(replynum) from HB_StationReply
+	</select>
+	
+	<update id="modifyReply" parameterType="model.ReplyDto">
+		update HB_StationReply set content=#{content} where replynum=#{replynum}
+	</update>
+	
+	<delete id="deleteReply" parameterType="int">
+		delete from HB_StationReply where replynum = #{replynum}
+	</delete>
+	
+	<select id="replyCount" parameterType="model.ReplyDto" resultType="int">
+		select count(*) from HB_StationReply 
+		where ref_num = #{ref_num} 
+		and re_step = #{re_step} + 1 
+		and re_level &gt; #{re_level}
+	</select>
+	<select id="getReply" parameterType="int" resultType="model.ReplyDto">
+		select * from HB_StationReply where replynum=#{replynum}
+	</select>
+	
+	<update id="deleteReplyArticle" parameterType="model.ReplyDto">
+		update HB_StationReply set re_step=re_step-1
+		where ref_num=#{ref_num} and re_step &gt; #{re_step}
+	</update>				
+
 </mapper>

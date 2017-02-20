@@ -36,6 +36,8 @@ public class StationRead implements CommandHandler{
 		request.setAttribute( "article", article );	
 		request.setAttribute("type", type);
 		
+		
+		
 		return new ModelAndView("stationRead");
 	}
 }

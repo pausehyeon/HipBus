@@ -1,5 +1,8 @@
 package handler.station;
 
+import java.io.UnsupportedEncodingException;
+
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,14 +12,35 @@ import org.springframework.web.servlet.ModelAndView;
 
 import handler.CommandHandler;
 import handler.HandlerException;
+import model.BoardDto;
+import model.ReplyDto;
+import model.station.StationDao;
 
 @Controller
 public class StationReplyModifyResult implements CommandHandler {
-
+	
+	@Resource( name="stationDao")
+	private StationDao stationDao;
+	
 	@RequestMapping("/stationReplyModifyResult.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-		// TODO Auto-generated method stub
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		int replynum = Integer.parseInt(request.getParameter("replynum"));
+		String content = request.getParameter("content");
+		
+		ReplyDto dto = new ReplyDto();
+		dto.setReplynum( replynum );
+		dto.setContent( content );
+		
+		int result = stationDao.modifyReply(dto);
+		
+		request.setAttribute("result", result);
+		request.setAttribute("content", content);
 		return new ModelAndView("stationReplyModifyResult");
 	}
 

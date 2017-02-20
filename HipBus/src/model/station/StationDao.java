@@ -21,7 +21,11 @@ public interface StationDao {
 	public void addLike( int num);
 	public int likeArticle(LikeDto dto);
 	public int getLike(LikeDto dto);
-	public List<ReplyDto> getReplys( Map<String, Integer> map);
+	public List<ReplyDto> getReplys( int num);
 	public int replyInsert(ReplyDto dto);
 	public int getReplyCount();
+	public ReplyDto getLastReply( int num );
+	public int modifyReply( ReplyDto dto);
+	public int deleteReply( int replynum );
+	public ReplyDto getReply(int replynum);
 }
