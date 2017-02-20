@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <%@include file="/view/setting/setting.jsp"%>
@@ -9,7 +8,6 @@
 <script type="text/javascript" src="/HipBus/scripts/stationScript.js"></script>
 <script type="text/javascript" src="/HipBus/scripts/ajax.js"></script>
 <script type="text/javascript">
-	//<!--
 	var request = null;
 	var contentFix = null;
 	// 댓글목록 불러오기
@@ -56,47 +54,61 @@
 		request.getXMLHttpRequest();
 		request.sendRequest();
 	}
-	
+
 	// div 만들어서 붙이기
 	function makeBoard(data) {
 		var newdiv = document.createElement("div");
 		newdiv.setAttribute("id", "board_" + data.replynum);
-		var modBtn = ''; 
+		var modBtn = '';
 		var board = '';
 		var reboard = '';
-		modBtn += '<button type="button" id="replyComplete" class="w3-btn w3-theme-l1 modc" style="display:none" onclick="modComplete('+ data.replynum+ ')">';
+		modBtn += '<button type="button" id="replyComplete" class="w3-btn w3-theme-l1 modc" style="display:none" onclick="modComplete('
+				+ data.replynum + ')">';
 		modBtn += '<i class="fa fa-check"></i>';
 		modBtn += '</button>';
-		modBtn += "<button type=\"button\" id='replyCancel' class=\"w3-btn w3-theme-l1\" style=\"display:none\" onclick=\"modCancel("+ data.replynum + ",\'"+ data.content+ "\','creteria')\">";
+		modBtn += "<button type=\"button\" id='replyCancel' class=\"w3-btn w3-theme-l1\" style=\"display:none\" onclick=\"modCancel("
+				+ data.replynum + ",\'" + data.content + "\','creteria')\">";
 		modBtn += '<i class="fa fa-times"></i>';
 		modBtn += '</button>';
-		
-		reboard += '<div  class="w3-third w3-container" style="width:80%">'
-		reboard += '<input type="text" id="recontent" name="recontent" class="w3-input w3-border w3-padding-5">'
-		reboard += '</div>'
-		reboard += '<div class="w3-third w3-container w3-margin-top3" style="width:20%">'
-		reboard += '<input class="w3-btn w3-theme-d1 " id="regester" type="button" value="${btn_register}">'
-		reboard += '</div>'
-		
-		
-		board += '<div class="w3-container w3-row">'
-		board += '<div class="w3-harf w3-container w3-large w3-left">'
-		board += '<i class="glyphicon glyphicon-user  w3-padding-4"></i>'
-		board += data.email+'&nbsp;'+data.reg_date
-		board += '</div>'
-		board += '<div class="w3-harf w3-container w3-padding-4 w3-right">'
-		if(data.email == "${sessionScope.memEmail}"){
-		board += '<a href="#" onClick="modBoardView('+ data.replynum+ '); return false" id="modView">${str_modify}</a>'
-		board += '<a href="#" onClick="delComplete('+ data.replynum+ '); return false"   id="delBoard">${str_delete}</a>'
-			board += modBtn
+
+		reboard += '<div  class="w3-third w3-container" style="width:80%">';
+		reboard += '<input type="text" id="recontent" name="recontent" class="w3-input w3-border w3-padding-5">';
+		reboard += '</div>';
+		reboard += '<div class="w3-third w3-container w3-margin-top3" style="width:20%">';
+		reboard += '<input class="w3-btn w3-theme-d1 " id="regester" type="button" value="${btn_register}">';
+		reboard += '</div>';
+
+		board += '<div class="w3-card-8 w3-margin w3-padding-xlarge w3-padding-64">';
+		board += '<div class="w3-container w3-row">';
+		board += '<div class="w3-col m1 w3-center">';
+		board += '	<img src="${project}/view/img/HipBusLogo_pale_sq.png" width="100%" class="w3-circle">';
+		board += '</div>';
+		board += '<div class="w3-col m11 w3-center">';
+		board += '<div class="w3-harf w3-container w3-large w3-left">';
+		board += data.email + '&nbsp;' + data.reg_date;
+		board += '</div>';
+		board += '<div class="w3-harf w3-container w3-padding-4 w3-right">';
+		if (data.email == "${sessionScope.memEmail}") {
+			board += '<a href="#" onClick="modBoardView('
+					+ data.replynum
+					+ '); return false" id="modView" class="w3-margin-right">${str_modify}</a>';
+			board += '<a href="#" onClick="delComplete('
+					+ data.replynum
+					+ '); return false"   id="delBoard" class="w3-margin-right">${str_delete}</a>';
+			board += modBtn;
 		}
-		board += '<a href="#" onClick="reBoardView('+ data.replynum +','+ data.ref_num +','+ data.re_step +','+ data.re_level + '); return false" id="reBoard">${str_reply}</a>'		
-		board += '</div>'
-		board += '</div>'
-		board += '<div class="w3-container">'
+		board += '<a href="#" onClick="reBoardView(' + data.replynum + ','
+				+ data.ref_num + ',' + data.re_step + ',' + data.re_level
+				+ '); return false" id="reBoard">${str_reply}</a>';
+		board += '</div>';
+		board += '<div class="w3-container w3-left-align">';
 		board += '<input type="hidden" name="'+ data.replynum +'">';
-		board += '<textarea readonly="true" class="w3-input w3-border w3-left">'+ data.content+ "</textarea>"
-		board += '</div>'
+		board += '<p class="w3-left-align">' + data.content
+				+ "</p>";
+		board += '</div>';
+		board += '</div>';
+		board += '</div>';
+		board += '</div>';
 		newdiv.innerHTML = board;
 		newdiv.data += data;
 
@@ -116,41 +128,42 @@
 							var code = xmldoc.getElementsByTagName("code")
 									.item(0).innerHTML;
 							if (code == "inserted") {
-								var data =  eval("("
+								var data = eval("("
 										+ xmldoc.getElementsByTagName("data")
-										.item(0).innerHTML + ")");
-								var newdiv = makeBoard(data);	
+												.item(0).innerHTML + ")");
+								var newdiv = makeBoard(data);
 								if (result.firstChild != null) {
 									var oldFirstChild = result.firstChild;
-									result.insertBefore(newdiv,
-											oldFirstChild);
+									result.insertBefore(newdiv, oldFirstChild);
 								}
 								if (result.firstChild == null) {
 									result.appendChild(newdiv);
 								}
-							 $('input[name=content]').val("");
-							 alert("글이 등록되었습니다.")
+								$('input[name=content]').val("");
+								alert("글이 등록되었습니다.")
 							} else if (code == "failed") {
 								var message = xmldoc.getElementsByTagName(
 										"message").item(0).innerHTML;
 							}
 						} else {
-							
+
 						}
 					} else {
-					
+
 					}
 				}, 'stationReplyAppendResult.do', 'POST', params);
 		request.getXMLHttpRequest();
 		request.sendRequest();
 	}
 	function Likego() {
-	var retVal = confirm( likeok );
-	if( retVal == true ){
-	location.href="stationLikePro.do?num="+"${article.num}";
-		   }else{
-	location.href="stationRead.do?num="+readform.num.value+"&pageNum="+readform.pageNum.value+"category="+readform.category.value+"&type="+readform.type.value;
-		   }
+		var retVal = confirm(likeok);
+		if (retVal == true) {
+			location.href = "stationLikePro.do?num=" + "${article.num}";
+		} else {
+			location.href = "stationRead.do?num=" + readform.num.value
+					+ "&pageNum=" + readform.pageNum.value + "category="
+					+ readform.category.value + "&type=" + readform.type.value;
+		}
 	}
 	// 리댓글
 	/*
@@ -192,11 +205,11 @@
 			
 			}
 		}, 'stationReplyAppendResult.do', 'POST', params);
-request.getXMLHttpRequest();
-request.sendRequest();
+	request.getXMLHttpRequest();
+	request.sendRequest();
 	}*/
 	// 댓글 수정
-	function modBoardView( replynum ) {
+	function modBoardView(replynum) {
 		$('#board_' + replynum + ' textarea').prop('readonly', false);
 		$('#board_' + replynum + ' #modView').hide();
 		$('#board_' + replynum + ' #delBoard').hide();
@@ -206,8 +219,7 @@ request.sendRequest();
 		$('#board_' + replynum + ' textarea').focus();
 	}
 
-	
-	function reBoardView( replynum, ref_num, re_step,re_level){
+	function reBoardView(replynum, ref_num, re_step, re_level) {
 		$('#board_' + replynum + '#recontent').show();
 		$('#board_' + replynum + '#regester').show();
 	}
@@ -252,24 +264,24 @@ request.sendRequest();
 							} else if (code == "failed") {
 								var message = xmldoc.getElementsByTagName(
 										"message").item(0).innerHTML;
-							
+
 							}
 							modCancel(replynum, data);
 						} else {
-						
+
 						}
 					} else {
-						
+
 					}
 				}, 'stationReplyModifyResult.do', "POST", params);
 		request.getXMLHttpRequest();
 		request.sendRequest();
 	}
-	
+
 	// 댓글 삭제
-	function delComplete(replynum){
-		var retVal = confirm( "삭제 하시겠습니까?" );
-		if( retVal == true ){
+	function delComplete(replynum) {
+		var retVal = confirm("삭제 하시겠습니까?");
+		if (retVal == true) {
 			var params = "replynum=" + replynum;
 			request = new Request(
 					function() {
@@ -282,145 +294,139 @@ request.sendRequest();
 										.item(0).innerHTML;
 								if (code == "deleted") {
 									var replynum = eval("("
-											+ xmldoc.getElementsByTagName("data")
-													.item(0).innerHTML + ")");
-									var deldiv = document.getElementById("board_"
-											+ replynum);
+											+ xmldoc.getElementsByTagName(
+													"data").item(0).innerHTML
+											+ ")");
+									var deldiv = document
+											.getElementById("board_" + replynum);
 									result.removeChild(deldiv);
 									alert("성공적으로 삭제하였습니다.");
 								} else if (code == "failed") {
-									msg += xmldoc.getElementsByTagName("message")
-											.item(0).innerHTML;
+									msg += xmldoc.getElementsByTagName(
+											"message").item(0).innerHTML;
 								} else if (code == "no") {
 									alert("댓글이 있는글은 삭제할수없습니다.");
 								}
-								
+
 							} else {
-								
+
 							}
 						} else {
-						
+
 						}
 					}, "stationReplyDeleteResult.do", "POST", params);
 			request.getXMLHttpRequest();
 			request.sendRequest();
-			   }else{
-		location.href="stationRead.do?num="+readform.num.value+"&pageNum="+readform.pageNum.value+"category="+readform.category.value+"&type="+readform.type.value;
-			   }
+		} else {
+			location.href = "stationRead.do?num=" + readform.num.value
+					+ "&pageNum=" + readform.pageNum.value + "category="
+					+ readform.category.value + "&type=" + readform.type.value;
+		}
 	}
-						//-->
-					</script>
-					
-					
+//-->
+</script>
+
+
 <title>${str_title}</title>
 <body>
 
-	<c:import url="../top.do"/>
-	
+	<c:import url="../top.do" />
+
 	<!-- Main content: shift it to the right by 250 pixels when the sidenav is visible -->
 	<div class="w3-main " style="margin-right: 20%; margin-left: 20%">
-		<%@ include file="navbar_station.jsp" %>
+		<%@ include file="navbar_station.jsp"%>
 		<div class="w3-row w3-container" style="margin-top: 64px">
 			<c:choose>
-			<c:when test="${article.category == 1}">
-			<h3>${str_beat}</h3>
-			</c:when>
-			<c:when test="${article.category == 2}">
-			<h3>${str_rab}</h3>
-			</c:when>
-			<c:when test="${article.category == 3}">
-			<h3>${str_mixTape}</h3>
-			</c:when>
-			<c:when test="${article.category == 4}">
-			<h3>${str_vocal}</h3>
-			</c:when>
-			<c:when test="${article.category == 5}">
-			<h3>${str_gasa}</h3>
-			</c:when>
-			<c:when test="${article.category == 6}">
-			<h3>${str_freeBoard}</h3>
-			</c:when>
+				<c:when test="${article.category == 1}">
+					<h3>${str_beat}</h3>
+				</c:when>
+				<c:when test="${article.category == 2}">
+					<h3>${str_rab}</h3>
+				</c:when>
+				<c:when test="${article.category == 3}">
+					<h3>${str_mixTape}</h3>
+				</c:when>
+				<c:when test="${article.category == 4}">
+					<h3>${str_vocal}</h3>
+				</c:when>
+				<c:when test="${article.category == 5}">
+					<h3>${str_gasa}</h3>
+				</c:when>
+				<c:when test="${article.category == 6}">
+					<h3>${str_freeBoard}</h3>
+				</c:when>
 			</c:choose>
 			<hr>
 		</div>
 		<div class="w3-row">
 			<div class="w3-container">
 				<div class="w3-card-4">
-				<form name="readform">
-					<header class="w3-container w3-padding-jumbo w3-theme-l3">
-						<h3>${article.subject}</h3>
-						<p class="w3-right">${str_writeNick}: ${article.nick} | ${str_reg_date}: 
-						<fmt:formatDate value="${article.reg_date}"
-				type="both" pattern="yyyy-MM-dd HH:mm"/> | ${str_readCount}: ${article.readcount}
-						<br>
-						</p>
-					</header>
+					<form name="readform">
+						<header class="w3-container w3-padding-jumbo w3-theme-l3">
+							<h3>${article.subject}</h3>
+							<p class="w3-right">${str_writeNick}:
+								${article.nick} | ${str_reg_date}:
+								<fmt:formatDate value="${article.reg_date}" type="both" pattern="yyyy-MM-dd HH:mm" />
+								| ${str_readCount}: ${article.readcount} <br>
+							</p>
+						</header>
 
-					<div class="w3-container w3-padding-128 w3-padding-jumbo">
-						<pre>
+						<div class="w3-container w3-padding-128 w3-padding-jumbo">
+							<pre>
 ${article.content}
 					</pre>
-					</div>
-					
-					<footer class="w3-container w3-padding-jumbo w3-theme-l3 w3-center">
-					<c:if test="${sessionScope.memEmail != null }">
-						<a class="w3-btn w3-padding w3-theme-d1 w3-margin-left"
-							onclick="Likego()"><i
-							class="fa fa-thumbs-up w3-margin-right"></i>${btn_recommend}<br>${article.likenum}</a>
+						</div>
+
+						<footer class="w3-container w3-padding-jumbo w3-theme-l3 w3-center">
+							<c:if test="${sessionScope.memEmail != null }">
+								<a class="w3-btn w3-padding w3-theme-d1 w3-margin-left" onclick="Likego()"><i class="fa fa-thumbs-up w3-margin-right"></i>${btn_recommend}<br>${article.likenum}</a>
 							</c:if>
-							<a href="station.do?pageNum=${pageNum}&type=${type}"
-							class="w3-btn w3-padding w3-theme-d1 w3-margin-left"><i
-							class="fa fa-align-justify w3-margin-right"></i>${str_list}</a>
-						<c:if test="${sessionScope.memEmail == article.email}">
-						<a href="stationModify.do?num=${article.num}" class="w3-btn w3-padding w3-theme-d1 w3-margin-left">
-						<i class="fa fa-cog w3-margin-right"></i>${str_modify}</a>
-						<input type="hidden" value="${article.num}" name="num">
-						<input type="hidden" value="${pageNum}" name="pageNum">
-						<input type="hidden" value="${article.category}" name="category">
-						<input type="hidden" value="${type}" name="type">
-						<input type="hidden" value="${sessionScope.memEmail}" name="email">
-						<input type="hidden" name="ref_num" value="${ref_num}">
-						<input type="hidden" name="re_step" value="${re_step}">
-						<input type="hidden" name="re_level" value="${re_level}">
-						<a  class="w3-btn w3-padding w3-theme-d1 w3-margin-left"
-						onclick="alertgo()">
-						<i class="glyphicon glyphicon-remove w3-margin-right"></i>${str_delete}</a>
+							<a href="station.do?pageNum=${pageNum}&type=${type}" class="w3-btn w3-padding w3-theme-d1 w3-margin-left"><i class="fa fa-align-justify w3-margin-right"></i>${str_list}</a>
+							<c:if test="${sessionScope.memEmail == article.email}">
+								<a href="stationModify.do?num=${article.num}" class="w3-btn w3-padding w3-theme-d1 w3-margin-left"> <i class="fa fa-cog w3-margin-right"></i>${str_modify}</a>
+								<input type="hidden" value="${article.num}" name="num">
+								<input type="hidden" value="${pageNum}" name="pageNum">
+								<input type="hidden" value="${article.category}" name="category">
+								<input type="hidden" value="${type}" name="type">
+								<input type="hidden" value="${sessionScope.memEmail}" name="email">
+								<input type="hidden" name="ref_num" value="${ref_num}">
+								<input type="hidden" name="re_step" value="${re_step}">
+								<input type="hidden" name="re_level" value="${re_level}">
+								<a class="w3-btn w3-padding w3-theme-d1 w3-margin-left" onclick="alertgo()"> <i class="glyphicon glyphicon-remove w3-margin-right"></i>${str_delete}</a>
 							</c:if>
-					
-					</footer>
-					
-				<div id="result">
-					<div id="reply">
-					</div>
-				</div>
-				</form>
-				</div>
-   				</div>
-				<br><br>
-				<h5>&nbsp;&nbsp;&nbsp;&nbsp;${str_replyWrite}</h5>
-					<!--  댓글쓰기 -->
-					<div class="w3-container w3-row">
-				<div class="w3-third w3-container" style="width:8%"> 
-				<i class="w3-xxlarge glyphicon glyphicon-user"></i>
-				</div>
-				<div  class="w3-third w3-container" style="width:80%">
-				<input type="text" name="content" class="w3-input w3-border w3-padding-5" required>
-				</div>
-				<div class="w3-third w3-container" style="width:12%">
-				<input class="w3-btn w3-theme-d1 " type="button" value="${btn_register}"
-				onclick="boardAppend()">
-				</div>
+
+						</footer>
+
+					</form>
 				</div>
 			</div>
-			
-		</div>	
-		
-	
-		<!-- END MAIN -->
+			<br> <br>
+			<div id="result">
+				<div id="reply"></div>
+			</div>
+
+			<!--  댓글쓰기 -->
+			<div class="w3-row-padding w3-padding-64 w3-row">
+				<div class="w3-col m1">
+					<img src="${project}/view/img/HipBusLogo_pale_sq.png" width="100%" class="w3-circle">
+				</div>
+				<div class="w3-col m9">
+					<input name="content" type="text" required class="w3-input w3-border w3-padding-5" style="height: 70px">
+				</div>
+				<div class="w3-col m2">
+					<input type="button" onclick="boardAppend()" value="${btn_register}" class="w3-btn-block w3-theme-d1" style="height: 70px">
+				</div>
+			</div>
 		</div>
 
+	</div>
+
+
+	<!-- END MAIN -->
+	</div>
+
 	<!-- Footer -->
-	<c:import url="../bottom.do"/>
+	<c:import url="../bottom.do" />
 
 
 </body>
