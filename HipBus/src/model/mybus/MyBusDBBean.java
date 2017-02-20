@@ -12,6 +12,7 @@ import model.MemberDto;
 import model.SqlMapClient;
 import model.StationDto;
 import model.UpcomingDto;
+import model.WantedDto;
 
 @Component("myBusDao")
 public class MyBusDBBean implements MyBusDao {
@@ -90,5 +91,28 @@ public class MyBusDBBean implements MyBusDao {
 	public int deleteDriver (String email) {
 		return SqlMapClient.getSession().delete("MyBus.deleteDriver", email);
 	}
-
+	@Override
+	public int insertWantedArticle(WantedDto article) {
+		return SqlMapClient.getSession().insert("MyBus.insertWantedArticle", article);
+	}
+	@Override
+	public WantedDto getWantedArticle(int num) {
+		return SqlMapClient.getSession().selectOne("MyBus.getWantedArticle", num);
+	}
+	@Override
+	public List<WantedDto> getWantedArticles(String driver) {
+		return SqlMapClient.getSession().selectList("MyBus.getWantedArticles", driver);
+	}
+	@Override
+	public int modifyWantedWholeArticle(WantedDto article) {
+		return SqlMapClient.getSession().update("MyBus.modifyWantedWholeArticle", article);
+	}
+	@Override
+	public int modifyWantedArticle(WantedDto article) {
+		return SqlMapClient.getSession().update("MyBus.modifyWantedArticle", article);
+	}
+	@Override
+	public int deleteWantedArticle(int num) {
+		return SqlMapClient.getSession().delete("MyBus.deleteWantedArticle", num);
+	}
 }

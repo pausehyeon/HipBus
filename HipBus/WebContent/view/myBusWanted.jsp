@@ -31,14 +31,65 @@
 							<i class="fa fa-bullhorn"></i>&nbsp; Wanted
 						</h3>
 					</div>
+					<div class="w3-container w3-right">
+						<a href="myBusWantedWrite.do?driver=${driver}" class="w3-btn w3-padding w3-theme-d1 w3-margin-left"> <i class="fa fa-pencil w3-margin-right"></i>${str_modBoard}</a>
+					</div>
 					<div class="w3-row-padding w3-padding-16 w3-center">
 						<!-- 글이 없는 경우 -->
-						<!-- 글이 있는 경우 -->
-						<div class="w3-col m4">
-							<img src="${project}/view/img/poster1.jpg" alt="poster" style="width: 100%">
-							<h5><span class="w3-badge w3-green">D-3</span> 구합니다!</h5>
-							<p class="w3-tiny"> 2017.02.16 | 0 </p>
-						</div>
+						<c:if test="${(count eq 0) or (articles eq null)}">
+							<div class="w3-col m12">
+								<h5>글이 없습니다.</h5>
+							</div>
+						</c:if>
+
+						<!-- 글이있는경우 -->
+						<c:if test="${(count ne 0) and (articles ne null)}">
+							<c:forEach var="article" items="${articles}">
+								<div class="w3-col m4" onclick="location = 'myBusWantedRead.do?driver=${driver}&num=${article.num}'">
+									<!-- 대표 이미지가 있는 경우 -->
+									<c:if test="${(article.imglocation ne null) and (article.imglocation ne '') }">
+										<img src="${project}/hipbusSave/${article.imglocation}" alt="poster" style="width: 100%">
+									</c:if>
+									<!-- 대표 이미지가 없는 경우 -->
+									<c:if test="${(article.imglocation eq null) or (article.imglocation eq '') }">
+										<img src="${project}/view/img/HipBusLogo_pale_sq.png" alt="poster" style="width: 100%" class="w3-opacity">
+									</c:if>
+									<!-- D-day 연산을 위해 시스템 날짜를 받아옴 -->
+									<jsp:useBean id="now" class="java.util.Date" />
+									<fmt:parseNumber var="today" value="${now.time/ (1000*60*60*24)}" integerOnly="true" />
+									<fmt:parseNumber var="duedate" value="${article.duedate.time/ (1000*60*60*24)}" integerOnly="true" />
+									<!-- D-n 초록색, D-3 ~ D-1 빨간 색, D-day, 마감으로 나누어표시 -->
+
+									<h5>
+										<c:if test="${(today - duedate) lt (-3)}">
+											<span class="w3-badge w3-green">D${today - duedate}</span>
+										</c:if>
+										<c:if test="${( (today - duedate) ge (-3) ) and ((today - duedate) lt 0)}">
+											<span class="w3-badge w3-red">D${today - duedate}</span>
+										</c:if>
+										<c:if test="${(today - duedate) eq 0}">
+											<span class="w3-badge w3-red">D-Day</span>
+										</c:if>
+										<c:if test="${(today - duedate) gt 0}">
+											<span class="w3-badge">${str_ended}</span>
+										</c:if>
+
+										<c:if test="${fn:length(article.subject) le 7}">
+											${article.subject}
+										</c:if>
+										<c:if test="${fn:length(article.subject) gt 7}">
+											${fn:substring(article.subject, 0, 7)}...
+										</c:if>
+									</h5>
+
+									<p class="w3-tiny">${article.nick}|
+										<fmt:formatDate value="${article.reg_date}" type="both" pattern="yyyy-MM-dd HH:mm" />
+										| ${article.readcount}
+									</p>
+									<hr>
+								</div>
+							</c:forEach>
+						</c:if>
 					</div>
 
 				</div>

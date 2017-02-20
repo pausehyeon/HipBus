@@ -9,6 +9,7 @@ import model.CrewMemberDto;
 import model.MemberDto;
 import model.StationDto;
 import model.UpcomingDto;
+import model.WantedDto;
 
 public interface MyBusDao {
 	public List<BoardDto> getBoardList( Map<String, String> map );
@@ -36,4 +37,10 @@ public interface MyBusDao {
 	public int delUpcoming (int num);
 	public int deleteEmail (String email);
 	public int deleteDriver (String email);
+	public int insertWantedArticle(WantedDto article);
+	public WantedDto getWantedArticle(int num);
+	public List<WantedDto> getWantedArticles(String driver);
+	public int modifyWantedWholeArticle(WantedDto article);
+	public int modifyWantedArticle(WantedDto article);
+	public int deleteWantedArticle(int num);
 }

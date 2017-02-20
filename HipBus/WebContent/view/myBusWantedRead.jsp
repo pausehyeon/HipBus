@@ -35,28 +35,38 @@
 				<div class="w3-container w3-card-2 w3-white w3-round w3-margin-bottom w3-margin-left w3-margin-right w3-padding-32 w3-padding-xxlarge">
 					<div class="w3-container w3-center w3-black">
 						<h3>
-							<i class="fa fa-bullhorn"></i>&nbsp; Wanted
+							<i class="fa fa-bullhorn"></i>&nbsp; Wanted : ${article.subject}
 						</h3>
 					</div>
 
 					<div class="w3-row-padding w3-margin-top w3-margin-bottom">
-						<div class="w3-col m6 w3-center">
-							<img src="${project}/view/img/poster1.jpg" width="100%">
-						</div>
-						<div class="w3-col m6 w3-center">
-							<div class="w3-row">
-								<h5>제목</h5>
+						<c:if test="${(article.imglocation eq null) or (article.imglocation eq '')}">
+							<div class="w3-col m12 w3-align-left">
+								<h5>${article.subject}</h5>
+								<p>${article.content}</p>
 							</div>
-							<div class="w3-row">
-								<p>글 내용 글 내용 글 내용 글 내용 글 내용 글 내용 글 내용 글 내용 글 내용</p>
+						</c:if>
+						<c:if test="${(article.imglocation ne null) and (article.imglocation ne '')}">
+							<div class="w3-col m6 w3-align-left">
+								<img src="${project}/hipbusSave/${article.imglocation}" width="100%">
 							</div>
-						</div>
+							<div class="w3-col m6 w3-align-left">
+								<div class="w3-row">
+									<h5>${article.subject}</h5>
+								</div>
+								<div class="w3-row">
+									<p>${article.content}</p>
+								</div>
+							</div>
+						</c:if>
 					</div>
 					<div class="w3-row-padding w3-white w3-center">
-						<p>
-							<a href="garageWanted.do" class="w3-btn w3-padding w3-theme-d1 w3-margin-left">
-								<i class="fa fa-align-justify w3-margin-right"></i>${str_list}</a>
-						</p>
+						<c:if test="${article.driver eq sessionScope.memEmail}">
+							<a href="myBusWantedModify.do?driver=${driver}&num=${article.num}" class="w3-btn w3-padding w3-theme-d1 w3-margin-left"> <i class="fa fa-pencil w3-margin-right"></i>${str_modBoard}</a>
+							<a href="myBusWantedDeletePro.do?driver=${driver}&num=${article.num}" class="w3-btn w3-padding w3-theme-d1 w3-margin-left"> <i class="fa fa-close w3-margin-right"></i>${str_delBoard}</a>
+						</c:if>
+						<a href="myBusWanted.do?driver=${driver}" class="w3-btn w3-padding w3-theme-d1 w3-margin-left"> <i class="fa fa-align-justify w3-margin-right"></i>${str_mylist}</a>
+						<a href="garageWanted.do" class="w3-btn w3-padding w3-theme-d1 w3-margin-left"> <i class="fa fa-align-justify w3-margin-right"></i>${str_list}</a>
 					</div>
 				</div>
 			</div>

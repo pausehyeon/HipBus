@@ -120,6 +120,27 @@
 	<delete id="deleteDriver" parameterType="String">
 		delete from HB_Driver where driver=#{driver}
 	</delete>
+<!-- myBusWanted -->
+	<insert id="insertWantedArticle" parameterType="model.WantedDto">
+		insert into hb_wanted values(#{driver}, hb_wantedseq.nextval, #{nick}, #{subject}, #{content}, #{imglocation,jdbcType=VARCHAR}, #{duedate}, 0, #{reg_date})
+	</insert>
+	<select id="getWantedArticle" parameterType="int" resultType="model.WantedDto">
+		select * from hb_wanted where num=#{num}
+	</select>
+	<select id="getWantedArticles" parameterType="String" resultType="model.WantedDto">
+		select * from hb_wanted where driver=#{driver} order by duedate
+	</select>
+	<update id="modifyWantedWholeArticle" parameterType="model.WantedDto">
+		update hb_wanted set subject = #{subject}, content=#{content}, imglocation = #{imglocation}, duedate=#{duedate}
+		where num=#{num}
+	</update>
+	<update id="modifyWantedArticle" parameterType="model.WantedDto">
+		update hb_wanted set subject = #{subject}, content=#{content}, duedate=#{duedate}
+		where num=#{num}
+	</update>
+	<update id="deleteWantedArticle" parameterType="int">
+		delete hb_wanted where num=#{num}
+	</update>	
 </mapper>
 
 

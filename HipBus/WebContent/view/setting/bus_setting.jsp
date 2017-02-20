@@ -55,7 +55,7 @@
 <!-- myBusRight.jsp -->
 <c:set var="str_edit" value="Edit"/>
 <c:set var="str_detail" value="자세히"/>
-<c:set var="str_wanted" value="구인"/>
+<c:set var="str_wanted" value="Wanted"/>
 <c:set var="str_crewApply" value="Crew 가입 요청"/>
 
 <!-- myBusUpcoming.jsp -->
@@ -90,4 +90,9 @@
 <!-- myBusWanted.jsp, myBusWantedModify.jsp -->
 <c:set var="str_subject" value="제목"/>
 <c:set var="str_duedate" value="모집 마감일"/>
-<c:set var="str_list" value="글목록"/>
+<c:set var="str_list" value="전체 글목록"/>
+<c:set var="str_mylist" value="글목록"/>
+<c:set var="str_ended" value="마감"/>
+<c:set var="str_insertThumbnail" value="대표이미지 선택"/>
+<c:set var="str_modifyThumbnail" value="대표이미지 수정"/>
+<c:set var="str_currentThumbnail" value="기존 대표이미지"/>

@@ -36,7 +36,7 @@
 					<form name="writeform" action="myBusWantedWritePro.do?driver=${driver}" method="post" enctype="multipart/form-data">
 						<div class="w3-container w3-center w3-black">
 							<h3>
-								<i class="fa fa-calendar"></i>&nbsp; ${str_upcoming}
+								<i class="fa fa fa-bullhorn"></i>&nbsp; ${str_wanted}
 							</h3>
 						</div>
 						<div class="w3-row-padding w3-padding-12">
@@ -58,7 +58,7 @@
 						<div class="w3-row-padding w3-padding-jumbo w3-theme-l3">
 							<span>* <i class="fa fa-image"></i> &nbsp;${str_insertThumbnail}
 							</span>
-							<input name="upload" type="file" accept="image/*" required>
+							<input name="upload" type="file" accept="image/*">
 						</div>
 						<div class="w3-row-padding w3-white w3-center">
 							<p>

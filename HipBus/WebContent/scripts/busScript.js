@@ -2,6 +2,12 @@
  * mybus.jsp와 crewbus.jsp에 연결할 javascript.
  */
 
+var str_insertSuccess = "글이 게시되었습니다.";
+var str_insertFail = "게시에 실패했습니다. 잠시 후 다시 시도해주세요."
+var str_deleteSuccess = "글이 삭제되었습니다.";
+var str_deleteFail = "삭제에 실패했습니다. 잠시 후 다시 시도해주세요."
+var str_modifySuccess = "글을 성공적으로 수정했습니다.";
+var str_modifyFail = "수정에 실패했습니다. 잠시 후 다시 시도해주세요.";
 var signouterror = "회원탈퇴에 실패했습니다. \n잠시 후 다시 시도해 주세요.";
 var signoutok = "회원탈퇴에 성공하였습니다.";
 var signoutpasswderror = "입력하신 비밀번호가 다릅니다. \n비밀번호를 다시 확인 해 주세요.";
@@ -63,7 +69,7 @@ function playonair(channel_id, googleApiKey){
 						}else{
 							oaconsole.innerHTML = "";
 						}
-					} else{
+					}else{
 						oaconsole.innerHTML = "<p class='w3-center'> 오류 발생"+request.status+" </p>";
 					}
 				}else{
@@ -75,5 +81,3 @@ function playonair(channel_id, googleApiKey){
 			params);
 	request.sendRequest();
 }
-
-
