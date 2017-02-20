@@ -1,11 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="/view/setting/setting.jsp"%>
 <%@include file="/view/setting/admin_setting.jsp"%>
+<%@include file="/view/setting/bus_setting.jsp"%>
+<%@include file="/view/setting/myBus_setting.jsp"%>
 
 <!DOCTYPE html>
 <html>
 <title>${str_title}</title>
-
+<script type="text/javascript">
+		
+		keywordcheck=function(){
+			if(! search.keyword.value){
+				alert("${str_memSearchMsg}");
+				search.keyword.focus();
+				return false;
+			}
+		}		
+		adNum=function(){
+			adform.ad_num.value = "";
+		}
+		addReq=function(){
+			$('input[name="upload"]').attr("required", false);
+		}
+		/* ad=function(){
+			//alert(adform.upload.value == "");
+			if(adform.upload.value == "" || adform.htmlCode.value == null )
+			
+			alert("아니야");
+			return false;
+			//location.href="AdminADPro.do?ad_num="+adform.ad_num.value;
+		} */
+		</script>
 <body>
 
 	<!-- Navbar -->
@@ -121,21 +146,41 @@
 								<c:forEach var="getMember" items="${list}" varStatus="status">
 									<tr>
 										<td>${getMember.mem_level}&nbsp;${str_memGrade}</td>
-										<td>${getMember.email}</td>
+										<td>
+										${getMember.email}
+										</td>
 										<!-- 불러오는 아이디 -->
 										<td>${getMember.nick}</td>
 										<!-- 불러온 닉네임 -->
 										<td style="text-align: left;"><a class="w3-hover-black w3-padding" style="text-decoration: none" href="myBus.do?driver=${getMember.email}">${str_memGo}&nbsp;<i class="fa fa-bus"></i></a>
-										<c:if test="${getMember.crewid != null}">
-											<a class="w3-hover-black w3-padding" style="text-decoration: none" href="crewBus.do?driver=${getMember.crewid}">${str_memGo}&nbsp; <i class="fa fa-fort-awesome"></i></a>
+										
+										<form action="admin.do" name="butto">
+										<button id="1" type="submit" onclick="hid(${getMember.email})">
+											크루목록 보기
+										</button>
+										
+										<a id="2"  href="#manageMembers" onclick="myFunction('crew')">
+											크루
+										</a>
+										<c:if test="${clist ==null}">
+											크루에 가입되어 잇지 않습니다
 										</c:if>
-										<c:if test="${getMember.crewid == null}">
-											&nbsp;&nbsp;&nbsp;&nbsp;${str_empty}<i class="fa fa-close"></i>
+										<c:if test="${clist != null}">
+										<c:forEach var="cl" items="${clist}">
+										<div id="crew" class="w3-accordion-content w3-container">
+											<ul>
+											
+												<li><a href="#">${cl}</a>
+											
+											</ul>
+										</div>
+										</c:forEach>
 										</c:if>
-										<%-- <button class="w3-btn w3-black w3-large" onclick="goModify(${status.count})">버튼</button> --%>
+										</form>
 										<c:if test="${getMember.mem_level == 1}">
 											<a class="w3-hover-black w3-padding" style="text-decoration: none" href="adminMemberManagePro.do?mem_level=2&email=${getMember.email}">${str_memModify}</a>
 										</c:if>
+
 										<c:if test="${getMember.mem_level == 2}">
 											<a class="w3-hover-black w3-padding" style="text-decoration: none" href="adminMemberManagePro.do?mem_level=1&email=${getMember.email}">${str_memModify}</a>
 										</c:if>
@@ -173,11 +218,7 @@
 						</c:if>
 						</table>
 					</div>
-				<%-- 	<c:if test="${pageBlock != null}">
-						<script type="text/javascript">
-							alert("pageCount");
-						</script>
-					</c:if> --%>
+			
 					<div class="w3-row">
 						<!-- Pagination -->
 						<div class="w3-center w3-padding-32">
@@ -202,21 +243,7 @@
 							</c:if>
 							</ul>
 						</div>
-						<c:if test="${count gt 1}">
-		<script type="text/javascript">
-		$(document).ready(function (){
-			alert("${count}");
-		});
-			keywordcheck=function(){
-				if(! search.keyword.value){
-					alert("검색할 키워드를 작성하세요.");
-					search.keyword.focus();
-					return false;
-				}
-			}
-			
-		</script>
-		</c:if>
+	
 						<form class="w3-container" name="search" action="admin.do#manageMembers" onsubmit="return keywordcheck()">
 							<select class="w3-select w3-border w3-quarter" name="category">
 								<option value="${str_memSearchOption}">${str_memSearchOption}</option>
@@ -233,10 +260,10 @@
 			</div>
 
 		</div>
+		
+		<div>
 
 		<hr id="addad">
-
-
 		<div class="w3-content w3-padding-128">
 			<h5>
 				<i class="fa fa-file-image-o"></i><b>&nbsp;${str_adminAd}</b>
@@ -244,56 +271,34 @@
 			</h5>
 			<br>
 			<div class="w3-card-4 w3-margin-left w3-margin-right w3-margin-top">
-				<form class="w3-container w3-margin">
-					<hr>
+				<form name="adform" class="w3-container w3-margin"  method="post" enctype="multipart/form-data"
+					action="adminADPro.do"><!-- onclick="return ad()" adminADPro.do -->
+					
 					<p>
 						<label class="w3-label w3-text-teal"><b>${str_adSize}</b></label>
 					<div>
-						<input class="w3-input" type="text" id="ad" readonly="readonly" value="readonly 광고의 주소가 삽입됨">
-						<!-- 불러들인 이미지의 주소 -->
-						<button class="w3-btn w3-teal w3-small">${str_adImgBtn}</button>
-						<!-- 이미지탐색버튼 -->
+					<select class="w3-select w3-border w3-quarter" name="ad_num" style="width: 150px">
+						<option value="선택" disabled>${str_adNumMsg}</option>
+						<option value="1">AD1</option>
+						<option value="2">AD2</option>
+						<option value="3">AD3</option>
+					</select>
+					<!-- <input type="text" name="ad_num" class="w3-opacity w3-input" style="width: 250px" maxlength="1"> -->
+					</div><br><br>
+					<div>
+						<input name="upload" type="file" accept="image/*" required>
+							<!-- 불러들인 이미지의 주소 -->
 					</div>
 					<div>
-						<input class="w3-opacity w3-input" type="text" id="ad-html" value="${str_adCodeMsg}">
-						<!-- htmlcode메시지삽입부 -->
+						<input class="w3-opacity w3-input" type="text" name="htmlCode" placeholder="${str_adCodeMsg}" onclick="addReq()">
+							<!-- htmlcode메시지삽입부 -->
 					</div>
 					<br>
-					<button class="w3-btn w3-black w3-hover-teal">${str_adAddBtn}</button>
+					<button type="submit" name="adbtn" class="w3-btn w3-black w3-hover-teal">${str_adAddBtn}</button>
 					<!-- 기본적 세팅값을 가져오면 거기서 수정이 이루어진뒤 버튼으로 update하는 것으로  -->
-					<button class="w3-btn w3-black w3-hover-teal">${str_adDeleteBtn}</button>
+					<button type="reset" class="w3-btn w3-black w3-hover-teal">${str_adDeleteBtn}</button>
 					<!-- 광고의 삭제후에 default값으로 이용될 이미지나 코드를 넣도록 만들어야 할듯 -->
 					</p>
-					<hr>
-					<p>
-						<label class="w3-label w3-text-teal"><b>${str_adSize}</b></label>
-					<div>
-						<input class="w3-input" type="text" id="aad" readonly="readonly" value="readonly 광고의 주소가 삽입됨">
-						<button class="w3-btn w3-teal w3-small">${str_adImgBtn}</button>
-					</div>
-					<div>
-						<input class="w3-opacity w3-input" type="text" id="aad-html" value="${str_adCodeMsg}">
-					</div>
-					<br>
-					<button class="w3-btn w3-black w3-hover-teal">${str_adAddBtn}</button>
-					<button class="w3-btn w3-black w3-hover-teal">${str_adDeleteBtn}</button>
-					</p>
-					<hr>
-					<p>
-						<label class="w3-label w3-text-teal"><b>${str_adSize}</b></label>
-					<div>
-						<input class="w3-input" type="text" id="aaad" readonly="readonly" value="readonly 광고의 주소가 삽입됨">
-						<button class="w3-btn w3-teal w3-small">${str_adImgBtn}</button>
-					</div>
-					<div>
-						<input class="w3-opacity w3-input" type="text" id="aaad-html" value="${str_adCodeMsg}">
-					</div>
-					<br>
-					<button class="w3-btn w3-black w3-hover-teal">${str_adAddBtn}</button>
-					<button class="w3-btn w3-black w3-hover-teal">${str_adDeleteBtn}</button>
-					</p>
-					<br>
-					<br>
 				</form>
 			</div>
 		</div>
