@@ -42,7 +42,7 @@
 								<c:if test="${(today - duedate) lt (-3)}">
 									<span class="w3-badge w3-green">D${today - duedate}</span>
 								</c:if>
-								<c:if test="${(today - duedate) ge (-3)}">
+								<c:if test="${( (today - duedate) ge (-3) ) and ((today - duedate) lt 0)}">
 									<span class="w3-badge w3-red">D${today - duedate}</span>
 								</c:if>
 								<c:if test="${(today - duedate) eq 0}">
