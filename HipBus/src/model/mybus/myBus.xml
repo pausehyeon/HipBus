@@ -98,7 +98,21 @@
 		where driver=#{driver} 
 		and num=(select max(num) from hb_upcoming where driver=#{driver})
 	</select>
-	
+	<update id="modUpcomingWith" parameterType="model.UpcomingDto">
+		update hb_upcoming set subject=#{subject}, perf_place=#{perf_place}, perf_date=#{perf_date}, perf_cast=#{perf_cast}, 
+		perf_runningtime=#{perf_runningtime}, perf_price=#{perf_price}, content=#{content}, imglocation=#{imglocation}
+		where driver = #{driver}
+	</update>
+	<update id="modUpcomingWithout" parameterType="model.UpcomingDto">
+		update hb_upcoming set subject=#{subject}, perf_place=#{perf_place}, perf_date=#{perf_date},
+		perf_cast=#{perf_cast}, perf_runningtime=#{perf_runningtime}, perf_price=#{perf_price}, content=#{content}
+		where driver = #{driver}
+	</update>
+	<delete id="delUpcoming" parameterType="int">
+		delete from hb_upcoming where num=#{num}
+	</delete>
+
+<!-- editProfile -->
 	<delete id="deleteEmail" parameterType="String">
 		delete from HB_Driver where email=#{email}
 	</delete>

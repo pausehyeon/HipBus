@@ -78,4 +78,13 @@ public class MyBusDBBean implements MyBusDao {
 	public int deleteEmail (String email) {
 		return SqlMapClient.getSession().delete("MyBus.deleteEmail", email);
 	}
+	public int modUpcomingWithout (UpcomingDto dto){
+		return SqlMapClient.getSession().update("MyBus.modUpcomingWithout", dto);
+	}
+	public int modUpcomingWith (UpcomingDto dto){
+		return SqlMapClient.getSession().update("MyBus.modUpcomingWith", dto);
+	}
+	public int delUpcoming (int num) {
+		return SqlMapClient.getSession().delete("MyBus.delUpcoming", num);
+	}
 }
