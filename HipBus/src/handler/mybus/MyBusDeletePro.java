@@ -24,11 +24,18 @@ public class MyBusDeletePro implements CommandHandler {
 		String email = (String) request.getSession().getAttribute("memEmail");
 		
 		String passwdCheck = mybusDao.getMember(email).getPasswd();
+		
 		int signOutResult = 0;
 		int signOutDriver = 0;		
 		
-		if ( passwd.equals(passwdCheck)) signOutResult = mybusDao.deleteEmail(email);		
-		if ( passwd.equals(passwdCheck)) signOutDriver = mybusDao.deleteDriver(email);
+		if ( passwd.equals(passwdCheck)) {
+			signOutResult = mybusDao.deleteEmail(email);			
+		} else if ( ! passwd.equals(passwdCheck)) {
+			signOutResult = -1;
+		}
+		
+		if ( passwd.equals(passwdCheck)) signOutDriver = mybusDao.deleteDriver(email);		
+		
 		
 		request.setAttribute("signOutResult", signOutResult);
 		request.setAttribute("signOutDriver", signOutDriver);	

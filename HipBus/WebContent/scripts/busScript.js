@@ -4,6 +4,7 @@
 
 var signouterror = "회원탈퇴에 실패했습니다. \n잠시 후 다시 시도해 주세요.";
 var signoutok = "회원탈퇴에 성공하였습니다.";
+var signoutpasswderror = "입력하신 비밀번호가 다릅니다. \n비밀번호를 다시 확인 해 주세요.";
 
 // Accordion
 function myFunction(id) {

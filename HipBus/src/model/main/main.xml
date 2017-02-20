@@ -7,7 +7,7 @@
 		insert into HB_Member
 		values(
 		#{email}, #{nick}, #{passwd}, 1,
-		#{joindate}, #{imglocation}
+		#{joindate}, #{imglocation,jdbcType=VARCHAR}
 		)
 	</insert>
 	

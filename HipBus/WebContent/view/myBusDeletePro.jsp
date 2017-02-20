@@ -16,15 +16,24 @@
 		//-->
 	</script>
 </c:if>
-<c:if test="${signOutResult != 0 }">
+<c:if test="${signOutResult == 1 }">
 	<script type="text/javascript">
 		//<!--
 		alert( signoutok );		
 		location.href="main.do";
 		//-->
 	</script>	
-	<%-- <c:redirect url="main.do"/> 리다이렉트를 쓰면 얼럿이 안먹음!--%>
 </c:if>
+<c:if test="${signOutResult == -1 }">
+	<script type="text/javascript">
+		//<!--		
+		alert( signoutpasswderror );
+		location.href="myBusEdit.do?driver=${sessionScope.memEmail}";		
+		//-->
+	</script>
+</c:if>
+<%-- <c:redirect url="main.do"/> 리다이렉트를 쓰면 얼럿이 안먹음!--%>
+
 
 
     
