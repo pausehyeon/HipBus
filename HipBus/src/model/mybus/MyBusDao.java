@@ -35,4 +35,5 @@ public interface MyBusDao {
 	public int modUpcomingWith (UpcomingDto dto);
 	public int delUpcoming (int num);
 	public int deleteEmail (String email);
+	public int deleteDriver (String email);
 }

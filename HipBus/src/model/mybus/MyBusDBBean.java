@@ -75,9 +75,6 @@ public class MyBusDBBean implements MyBusDao {
 	public UpcomingDto getNewUpcoming(String driver){
 		return SqlMapClient.getSession().selectOne("MyBus.getNewUpcoming", driver);
 	}
-	public int deleteEmail (String email) {
-		return SqlMapClient.getSession().delete("MyBus.deleteEmail", email);
-	}
 	public int modUpcomingWithout (UpcomingDto dto){
 		return SqlMapClient.getSession().update("MyBus.modUpcomingWithout", dto);
 	}
@@ -87,4 +84,11 @@ public class MyBusDBBean implements MyBusDao {
 	public int delUpcoming (int num) {
 		return SqlMapClient.getSession().delete("MyBus.delUpcoming", num);
 	}
+	public int deleteEmail (String email) {
+		return SqlMapClient.getSession().delete("MyBus.deleteEmail", email);
+	}
+	public int deleteDriver (String email) {
+		return SqlMapClient.getSession().delete("MyBus.deleteDriver", email);
+	}
+
 }

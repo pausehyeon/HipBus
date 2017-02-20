@@ -114,7 +114,11 @@
 
 <!-- editProfile -->
 	<delete id="deleteEmail" parameterType="String">
-		delete from HB_Driver where email=#{email}
+		delete from HB_Member where email=#{email}
+	</delete>
+	
+	<delete id="deleteDriver" parameterType="String">
+		delete from HB_Driver where driver=#{driver}
 	</delete>
 </mapper>
 
