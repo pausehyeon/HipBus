@@ -29,6 +29,7 @@
 <c:set var="str_memModify" value="회원등급수정"/>
 <c:set var="str_memLeave" value="회원탈퇴"/>
 <c:set var="str_memSearchOption" value="검색기준 선택"/>
+<c:set var="str_memSearchMsg" value="*검색할 키워드를 작성하세요."/>
 <c:set var="str_memSearchBtn" value="검색"/>
 
 <c:set var="str_adminAd" value="상업광고"/>
@@ -38,6 +39,8 @@
 <c:set var="str_adCodeMsg" value="HTML Code를 삽입하세요."/>
 <c:set var="str_adAddBtn" value="Add AD"/>
 <c:set var="str_adDeleteBtn" value="Delete AD"/>
+<c:set var="str_adCheckMsg" value="*이미지를 혹은 Html 코드를 입력해주세요."/>
+<c:set var="str_adNumMsg" value="1~3까지중 선택하세요."/>
 
 <c:set var="str_adminEmail" value="관리자 초대"/>
 <c:set var="str_emEmail" value="Email"/>
