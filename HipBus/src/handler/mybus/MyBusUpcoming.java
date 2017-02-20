@@ -24,7 +24,7 @@ public class MyBusUpcoming implements CommandHandler {
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		String driver = request.getParameter("driver");
 		
-		List<UpcomingDto> upcomings = mybusDao.getUpcomings();
+		List<UpcomingDto> upcomings = mybusDao.getUpcomings(driver);
 		
 		
 		

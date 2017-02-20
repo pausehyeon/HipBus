@@ -1,5 +1,6 @@
 package handler.mybus;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,14 +10,23 @@ import org.springframework.web.servlet.ModelAndView;
 
 import handler.CommandHandler;
 import handler.HandlerException;
+import model.mybus.MyBusDao;
 
 @Controller
 public class MyBusUpcomingDeletePro implements CommandHandler {
-
+	@Resource(name="myBusDao")
+	private MyBusDao mybusDao;
 	@RequestMapping("/myBusUpcomingDeletePro.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-		// TODO Auto-generated method stub
+		String driver = request.getParameter("driver");
+		int num = Integer.parseInt(request.getParameter("num"));
+		
+		int result = mybusDao.delUpcoming(num);
+		
+		request.setAttribute("num", num);
+		request.setAttribute("driver", driver);
+		request.setAttribute("result", result);
 		return new ModelAndView("myBusUpcomingDeletePro");
 	}
 

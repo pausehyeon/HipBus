@@ -12,18 +12,27 @@
 		<div class="w3-container">			
 			
 				<c:if test="${driver==email}">
-					<div class="w3-right w3-padding-16">
-						<button type="button" class="w3-btn w3-theme-l1" onclick="location='myBusUpcomingWrite.do?driver=${driver}'">
+					<div class="w3-right w3-padding-12">
+						<button class="w3-btn" onclick="location='myBusUpcomingWrite.do?driver=${driver}'">
 							<i class="fa fa-pencil"></i>&nbsp; ${str_edit}
 						</button>
 					</div>
 				</c:if>
-				<c:if test="${driver!=email}">
-					&nbsp;
+				<c:if test="${driver!=email and upcomingDto}">
+					<div class="w3-right w3-padding-12">
+						<button class="w3-btn" onclick="location='myBusUpcoming.do?driver=${driver}'">${str_goUpcomingList}</button>
+					</div>
+				</c:if>
+				<c:if test="${driver!=email and !upcomingDto}">
+					<div class="w3-right w3-padding-12">
+						&nbsp;
+					</div>
 				</c:if>
 			<c:if test="${upcomingDto.imglocation==null}">
-				<img src="${project}/view/img/notice1.png" alt="some image"
-					style="width: 100%;">
+				<img src="${project}/view/img/notice1.png" alt="some image"	style="width: 100%;">
+				<p>
+					<strong>예정된 공연이 없습니다.</strong>
+				</p>
 			</c:if>
 			<c:if test="${upcomingDto.imglocation!=null}">
 				<img src="${project}/hipbusSave/${upcomingDto.imglocation}" alt="some image"

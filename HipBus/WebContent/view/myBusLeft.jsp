@@ -68,7 +68,7 @@
 	</c:if>
 	<c:if test="${driver==email}">
 			<hr>
-			<a href="myBusBeforeEdit.do"><i class="fa fa-pencil"></i>${str_editProfile}</a>
+			<a href="myBusBeforeEdit.do?driver=${driver}"><i class="fa fa-pencil"></i>${str_editProfile}</a>
 	</c:if>
 			<hr>
 		</div>

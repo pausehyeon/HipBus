@@ -61,6 +61,8 @@ public class MyBusUpcomingWritePro implements CommandHandler {
 			request.setAttribute("driver", driver);
 		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (NumberFormatException e){
+			e.printStackTrace();
 		}
 		
 		return new ModelAndView("myBusUpcomingWritePro");

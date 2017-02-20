@@ -41,7 +41,7 @@
 					<div class="w3-right">
 						<button class="w3-btn" onclick="location='myBusUpcomingModify.do?driver=${driver}&num=${upcomingDto.num}'">
 						<i class="fa fa-pencil"></i></button>
-						<button class="w3-btn"><i class="fa fa-trash-o"></i></button>
+						<button class="w3-btn" onclick="location='myBusUpcomingDeletePro.do?driver=${driver}&num=${upcomingDto.num}'"><i class="fa fa-trash-o"></i></button>
 					</div>
 
 					<div class="w3-row-padding w3-margin-top">
@@ -98,7 +98,7 @@
 					</div>
 					<div class="w3-row-padding w3-white w3-center">
 						<p>
-							<button class="w3-btn">${str_goUpcomingList}</button>
+							<button class="w3-btn" onclick="location='myBusUpcoming.do?driver=${driver}'">${str_goUpcomingList}</button>
 						</p>
 						<i class="glyphicon glyphicon-search"></i>
 					</div>

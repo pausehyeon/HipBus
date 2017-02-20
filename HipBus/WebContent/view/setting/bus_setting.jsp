@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<script src="/HipBus/scripts/ajax.js"></script>
+<script src="/HipBus/scripts/busScript.js"></script>
 
 <!-- Titles -->
 <c:set var="str_crewbusTitle" value="HipBus - Crew Bus"/>
@@ -66,7 +68,7 @@
 
 <!-- myBusUpcomingRead.jsp -->
 <c:set var="str_minute" value=" 분"/>
-<c:set var="str_goUpcomingList" value="더 많은 공연일정 보러가기"/>
+<c:set var="str_goUpcomingList" value="공연일정 보러가기"/>
 
 <!-- myBusUpcomingWrite.jsp -->
 <c:set var="str_upcoming" value="Upcoming"/>
@@ -79,6 +81,8 @@
 
 <!-- myBusVideos.jsp -->
 <c:set var="str_whosLive" value="님의 라이브"/>
+<c:set var="str_title" value="TITLE : "/>
+<c:set var="str_myVideos" value=" 님의 모든 영상"/>
 
 <!-- myBusHopOnPro.jsp -->
 <c:set var="str_hopOnError" value="버스에 정상적으로 올라타지 못했습니다."/>

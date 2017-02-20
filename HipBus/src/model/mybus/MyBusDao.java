@@ -30,7 +30,7 @@ public interface MyBusDao {
 	public List<StationDto> getArticles(Map<String,String> map);
 	public int writeUpcoming(UpcomingDto dto);
 	public UpcomingDto getUpcoming(int num);
-	public List<UpcomingDto> getUpcomings();
+	public List<UpcomingDto> getUpcomings(String driver);
 	public UpcomingDto getNewUpcoming(String driver);
 	public int modUpcomingWithout (UpcomingDto dto);
 	public int modUpcomingWith (UpcomingDto dto);

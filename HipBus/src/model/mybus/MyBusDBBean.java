@@ -70,8 +70,8 @@ public class MyBusDBBean implements MyBusDao {
 	public UpcomingDto getUpcoming(int num) {
 		return SqlMapClient.getSession().selectOne("MyBus.getUpcoming", num);
 	}
-	public List<UpcomingDto> getUpcomings(){
-		return SqlMapClient.getSession().selectList("MyBus.getUpcomings");
+	public List<UpcomingDto> getUpcomings(String driver){
+		return SqlMapClient.getSession().selectList("MyBus.getUpcomings", driver);
 	}
 	public UpcomingDto getNewUpcoming(String driver){
 		return SqlMapClient.getSession().selectOne("MyBus.getNewUpcoming", driver);
