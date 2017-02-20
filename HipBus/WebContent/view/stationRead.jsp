@@ -56,20 +56,29 @@
 		request.getXMLHttpRequest();
 		request.sendRequest();
 	}
+	
 	// div 만들어서 붙이기
 	function makeBoard(data) {
 		var newdiv = document.createElement("div");
 		newdiv.setAttribute("id", "board_" + data.replynum);
 		var modBtn = ''; 
 		var board = '';
-		
+		var reboard = '';
 		modBtn += '<button type="button" id="replyComplete" class="w3-btn w3-theme-l1 modc" style="display:none" onclick="modComplete('+ data.replynum+ ')">';
 		modBtn += '<i class="fa fa-check"></i>';
 		modBtn += '</button>';
 		modBtn += "<button type=\"button\" id='replyCancel' class=\"w3-btn w3-theme-l1\" style=\"display:none\" onclick=\"modCancel("+ data.replynum + ",\'"+ data.content+ "\','creteria')\">";
 		modBtn += '<i class="fa fa-times"></i>';
 		modBtn += '</button>';
-
+		
+		reboard += '<div  class="w3-third w3-container" style="width:80%">'
+		reboard += '<input type="text" id="recontent" name="recontent" class="w3-input w3-border w3-padding-5">'
+		reboard += '</div>'
+		reboard += '<div class="w3-third w3-container w3-margin-top3" style="width:20%">'
+		reboard += '<input class="w3-btn w3-theme-d1 " id="regester" type="button" value="${btn_register}">'
+		reboard += '</div>'
+		
+		
 		board += '<div class="w3-container w3-row">'
 		board += '<div class="w3-harf w3-container w3-large w3-left">'
 		board += '<i class="glyphicon glyphicon-user  w3-padding-4"></i>'
@@ -81,14 +90,13 @@
 		board += '<a href="#" onClick="delComplete('+ data.replynum+ '); return false"   id="delBoard">${str_delete}</a>'
 			board += modBtn
 		}
-		board += '<a id="reBoard">${str_reply}</a>'
+		board += '<a href="#" onClick="reBoardView('+ data.replynum +','+ data.ref_num +','+ data.re_step +','+ data.re_level + '); return false" id="reBoard">${str_reply}</a>'		
 		board += '</div>'
 		board += '</div>'
 		board += '<div class="w3-container">'
 		board += '<input type="hidden" name="'+ data.replynum +'">';
 		board += '<textarea readonly="true" class="w3-input w3-border w3-left">'+ data.content+ "</textarea>"
 		board += '</div>'
-	
 		newdiv.innerHTML = board;
 		newdiv.data += data;
 
@@ -120,6 +128,8 @@
 								if (result.firstChild == null) {
 									result.appendChild(newdiv);
 								}
+							 $('input[name=content]').val("");
+							 alert("글이 등록되었습니다.")
 							} else if (code == "failed") {
 								var message = xmldoc.getElementsByTagName(
 										"message").item(0).innerHTML;
@@ -142,7 +152,49 @@
 	location.href="stationRead.do?num="+readform.num.value+"&pageNum="+readform.pageNum.value+"category="+readform.category.value+"&type="+readform.type.value;
 		   }
 	}
-	
+	// 리댓글
+	/*
+	function reBoard(replynum, ref_num, re_step,re_level){
+		var params = 'num=' + "${num}" // 버스주인 이메일 혹은 크루아이디
+		+ '&email=' + "${sessionScope.memEmail}" // 세션에 저장된 작성자 이메일
+		+ '&content=' + $('input[name=recontent]').val(); // 본문 입력내용
+		request = new Request(
+		function() {
+			var result = document.getElementById("result");
+			if (request.httpRequest.readyState == 4) {
+				if (request.httpRequest.status == 200) {
+					var xmldoc = request.httpRequest.responseXML;
+					var code = xmldoc.getElementsByTagName("code")
+							.item(0).innerHTML;
+					if (code == "inserted") {
+						var data =  eval("("
+								+ xmldoc.getElementsByTagName("data")
+								.item(0).innerHTML + ")");
+						var newdiv = makeBoard(data);	
+						if (result.firstChild != null) {
+							var oldFirstChild = result.firstChild;
+							result.insertBefore(newdiv,
+									oldFirstChild);
+						}
+						if (result.firstChild == null) {
+							result.appendChild(newdiv);
+						}
+					 $('input[name=recontent]').val("");
+					 alert("답글이 등록되었습니다.")
+					} else if (code == "failed") {
+						var message = xmldoc.getElementsByTagName(
+								"message").item(0).innerHTML;
+					}
+				} else {
+					
+				}
+			} else {
+			
+			}
+		}, 'stationReplyAppendResult.do', 'POST', params);
+request.getXMLHttpRequest();
+request.sendRequest();
+	}*/
 	// 댓글 수정
 	function modBoardView( replynum ) {
 		$('#board_' + replynum + ' textarea').prop('readonly', false);
@@ -154,6 +206,11 @@
 		$('#board_' + replynum + ' textarea').focus();
 	}
 
+	
+	function reBoardView( replynum, ref_num, re_step,re_level){
+		$('#board_' + replynum + '#recontent').show();
+		$('#board_' + replynum + '#regester').show();
+	}
 	function modCancel(replynum, content, criteria) { // 이전 데이터 저장해서 다시 띄움
 		if (criteria) {
 			if (!$('input[name=' + replynum + ']').prop("content")) {
@@ -333,6 +390,8 @@ ${article.content}
 					</footer>
 					
 				<div id="result">
+					<div id="reply">
+					</div>
 				</div>
 				</form>
 				</div>
@@ -341,13 +400,13 @@ ${article.content}
 				<h5>&nbsp;&nbsp;&nbsp;&nbsp;${str_replyWrite}</h5>
 					<!--  댓글쓰기 -->
 					<div class="w3-container w3-row">
-				<div class="w3-third w3-container w3-margin-top" style="width:8%"> 
+				<div class="w3-third w3-container" style="width:8%"> 
 				<i class="w3-xxlarge glyphicon glyphicon-user"></i>
 				</div>
 				<div  class="w3-third w3-container" style="width:80%">
-				<input type="text" name="content" class="w3-input w3-border w3-padding-5">
+				<input type="text" name="content" class="w3-input w3-border w3-padding-5" required>
 				</div>
-				<div class="w3-third w3-container w3-margin-top" style="width:12%">
+				<div class="w3-third w3-container" style="width:12%">
 				<input class="w3-btn w3-theme-d1 " type="button" value="${btn_register}"
 				onclick="boardAppend()">
 				</div>

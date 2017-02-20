@@ -85,7 +85,7 @@
 		select count(*) from HB_StationReply
 	</select>
 	<select id="getLastReply" parameterType="int" resultType="model.ReplyDto">
-		select * from HB_StationReply where num=(select max(replynum) from HB_StationReply where num=#{num})
+		select * from HB_StationReply where replynum=(select max(replynum) from HB_StationReply where num=#{num})
 	</select>
 	
 	<select id="maxNum" resultType="int">
