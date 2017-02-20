@@ -27,16 +27,19 @@
 
 
 	<select id="getArticle" parameterType="int" resultType="model.NewsDto">
-		select * from HB_News where num=#{num}
+		select *
+		from HB_News where num=#{num}
 	</select>
 
 	<update id="addCount" parameterType="int">
-		update HB_News set readcount=readcount+1 where num=#{num}
+		update HB_News set
+		readcount=readcount+1 where num=#{num}
 	</update>
 
 
 	<select id="getMember" parameterType="String" resultType="model.MemberDto">
-		select * from HB_Member where email=#{email}
+		select
+		* from HB_Member where email=#{email}
 
 	</select>
 
@@ -49,21 +52,25 @@
 	</insert>
 
 	<update id="updateArticle" parameterType="model.NewsDto">
-		update HB_News set subject=#{subject}, content=#{content} where num=#{num}
+		update HB_News set
+		subject=#{subject}, content=#{content} where num=#{num}
 	</update>
 
 	<delete id="deleteArticle" parameterType="int">
-		delete from HB_News where num=#{num}
+		delete from HB_News
+		where num=#{num}
 	</delete>
 
 	<select id="getFAQList" parameterType="Map" resultType="model.FAQDto">
 
-		select * from hb_faq
+		select *
+		from hb_faq
 
 	</select>
 
 	<insert id="insertFAQ" parameterType="model.FAQDto">
-		insert into HB_FAQ(num,email,nick,subject,content)
+		insert into
+		HB_FAQ(num,email,nick,subject,content)
 		values(HB_newsseq.NEXTVAL,#{email},#{nick},#{subject},#{content})
 	</insert>
 
@@ -72,11 +79,13 @@
 	</select>
 
 	<update id="updateFAQArticle" parameterType="model.FAQDto">
-		update HB_FAQ set subject=#{subject}, content=#{content} where num=#{num}
+		update HB_FAQ set
+		subject=#{subject}, content=#{content} where num=#{num}
 	</update>
 
 	<delete id="faqDeleteArticle" parameterType="int">
-		delete from HB_FAQ where num=#{num}
+		delete from HB_FAQ
+		where num=#{num}
 	</delete>
 
 
@@ -88,8 +97,6 @@
 
 
 	<select id="getWantedArticles" parameterType="Map" resultType="model.WantedDto">
-
-
 		select driver,num,nick,subject,content,
 		imglocation,duedate,readcount,reg_date,
 		r from( select
@@ -97,9 +104,9 @@
 		imglocation,duedate,readcount,reg_date,rownum r from
 		(select * from
 		HB_Wanted where duedate &gt; sysdate order by duedate desc)
-		order by duedate desc ) where r &gt;= #{start}
+		order by
+		duedate desc ) where r &gt;= #{start}
 		and r &lt;= #{end}
-
 	</select>
 
 	<select id="getWantedSearch" parameterType="Map" resultType="int">
@@ -107,10 +114,9 @@
 		select count(*) from HB_Wanted where ${searchType} like'%${keyword}%'
 
 	</select>
-	
+
 	<select id="getSearchResult" parameterType="Map" resultType="model.WantedDto">
-	
-	select driver,num,nick,subject,content,
+		select driver,num,nick,subject,content,
 		imglocation,duedate,readcount,reg_date,
 		r from( select
 		driver,num,nick,subject,content,
@@ -119,9 +125,8 @@
 		HB_Wanted order by num desc) where ${searchType} like'%${keyword}%'
 		order by num desc ) where r &gt;= #{start}
 		and r &lt;= #{end}
-	
 	</select>
-	
+
 
 	<select id="getUpcomingCount" resultType="int">
 		select count(*) from
@@ -134,46 +139,46 @@
 		perf_cast, perf_runningtime, perf_price, content, imglocation,
 		readcount, reg_date, r from (select num, driver, nick, subject,
 		perf_place, perf_date, perf_cast, perf_runningtime, perf_price,
-		content, imglocation, readcount, reg_date, rownum r from(select * from HB_upcoming order by
-		reg_date desc)order by reg_date desc ) where r &gt;= #{start} and r &lt;=
+		content, imglocation, readcount, reg_date, rownum r from(select * from
+		HB_upcoming order by
+		reg_date desc)order by reg_date desc ) where r
+		&gt;= #{start} and r &lt;=
 		#{end}
 	</select>
-	
+
 	<select id="searchDate" parameterType="Map" resultType="int">
-
-		select count(*) from HB_upcoming where PERF_DATE &gt;=#{startDate} and PERF_DATE  &lt;= #{endDate}+1
-
+		select
+		count(*) from HB_upcoming where PERF_DATE &gt;=#{startDate} and
+		PERF_DATE &lt;= #{endDate}+1
 	</select>
-	
-	
- <select id="getDateList" parameterType="Map" resultType="model.UpcomingDto">
- 
- 	select num, driver, nick, subject, perf_place, perf_date,
-		perf_cast, perf_runningtime, perf_price, content, imglocation,
-		readcount, reg_date, r from (select num, driver, nick, subject,
-		perf_place, perf_date, perf_cast, perf_runningtime, perf_price,
-		content, imglocation, readcount, reg_date, rownum r from(select * from HB_upcoming order by
-		reg_date desc)where PERF_DATE &gt;=#{startDate} and PERF_DATE  &lt;=#{endDate}+1
-		order by reg_date desc ) where r &gt;= #{start} and r &lt;=
-		#{end}
- </select>
- 
 
 
-<!-- 
-<select id="getUpcomingArticles" parameterType="Map"
-		resultType="model.UpcomingDto">
+	<select id="getDateList" parameterType="Map" resultType="model.UpcomingDto">
 		select num, driver, nick, subject, perf_place, perf_date,
-		perf_cast, perf_runningtime, perf_price, content, imglocation,
-		readcount, reg_date from (select num, driver, nick, subject,
-		perf_place, perf_date, perf_cast, perf_runningtime, perf_price,
-		content, imglocation, readcount, reg_date, row_number() over(order by
-		reg_date desc) r from hb_upcoming) where r &gt;= #{start} and r &lt;=
-		#{end} order by
-		reg_date desc
+		perf_cast,
+		perf_runningtime, perf_price, content, imglocation,
+		readcount,
+		reg_date, r from (select num, driver, nick, subject,
+		perf_place,
+		perf_date, perf_cast, perf_runningtime, perf_price,
+		content,
+		imglocation, readcount, reg_date, rownum r from(select * from
+		HB_upcoming order by
+		reg_date desc)where PERF_DATE &gt;=#{startDate}
+		and PERF_DATE &lt;=#{endDate}+1
+		order by reg_date desc ) where r &gt;=
+		#{start} and r &lt;=
+		#{end}
 	</select>
 
 
- -->
+
+	<!-- <select id="getUpcomingArticles" parameterType="Map" resultType="model.UpcomingDto"> 
+		select num, driver, nick, subject, perf_place, perf_date, perf_cast, perf_runningtime, 
+		perf_price, content, imglocation, readcount, reg_date from (select num, driver, 
+		nick, subject, perf_place, perf_date, perf_cast, perf_runningtime, perf_price, 
+		content, imglocation, readcount, reg_date, row_number() over(order by reg_date 
+		desc) r from hb_upcoming) where r &gt;= #{start} and r &lt;= #{end} order 
+		by reg_date desc </select> -->
 </mapper>
 

@@ -13,24 +13,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-
 import handler.CommandHandler;
 import handler.HandlerException;
 import model.UpcomingDto;
 import model.garage.GarageDao;
 
-
 @Controller
 public class GarageUpcoming implements CommandHandler {
 
-	@Resource(name="garageDao")
+	@Resource(name = "garageDao")
 	private GarageDao dao;
-	
+
 	@RequestMapping("/garageUpcoming.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		int pageSize = 8; // 한페이지에 출력할 글 개수
-		int pageBlock = 5; // 한 번에 보여줄 페이지 개수 
+		int pageBlock = 5; // 한 번에 보여줄 페이지 개수
 		int count = 0;
 
 		String pageNum = null;
@@ -41,40 +39,37 @@ public class GarageUpcoming implements CommandHandler {
 		int pageCount = 0; // 페이지 개수
 		int startPage = 0; // 보여줄 페이지의 시작 번호
 		int endPage = 0; // 보여줄 페이지의 끝 번호
-		
-		
+
 		String getStartDate = request.getParameter("startDate");
 		String getEndDate = request.getParameter("endDate");
-		
-		
-		if (getStartDate != null){
-		Timestamp startDate = Timestamp.valueOf(getStartDate +" 00:00:00");
-		Timestamp endDate = Timestamp.valueOf(getEndDate+" 00:00:00");
 
-		
-		if(startDate != null){
-			Map<String,Object> dateMap = new HashMap<String, Object>();
-			dateMap.put("startDate", startDate);
-			dateMap.put("endDate", endDate);
-			int num = dao.searchDate(dateMap);
-			count = num; 		//검색했을 때의 페이지 넘기는 전체글의 수를 count
-		}else{
-			count = dao.getUpcomingCount();
-			}
-		
-		}else if(getStartDate == null) {
-			String startDate= request.getParameter("startDate");
-			String endDate = request.getParameter("endDate");
-			
-			if(startDate != null){
-				Map<String,Object> dateMap = new HashMap<String, Object>();
+		if (getStartDate != null) {
+			Timestamp startDate = Timestamp.valueOf(getStartDate + " 00:00:00");
+			Timestamp endDate = Timestamp.valueOf(getEndDate + " 00:00:00");
+
+			if (startDate != null) {
+				Map<String, Object> dateMap = new HashMap<String, Object>();
 				dateMap.put("startDate", startDate);
 				dateMap.put("endDate", endDate);
 				int num = dao.searchDate(dateMap);
-				count = num; 		//검색했을 때의 페이지 넘기는 전체글의 수를 count
-			}else{
+				count = num; // 검색했을 때의 페이지 넘기는 전체글의 수를 count
+			} else {
 				count = dao.getUpcomingCount();
-				}
+			}
+
+		} else if (getStartDate == null) {
+			String startDate = request.getParameter("startDate");
+			String endDate = request.getParameter("endDate");
+
+			if (startDate != null) {
+				Map<String, Object> dateMap = new HashMap<String, Object>();
+				dateMap.put("startDate", startDate);
+				dateMap.put("endDate", endDate);
+				int num = dao.searchDate(dateMap);
+				count = num; // 검색했을 때의 페이지 넘기는 전체글의 수를 count
+			} else {
+				count = dao.getUpcomingCount();
+			}
 		}
 
 		pageNum = request.getParameter("pageNum");
@@ -121,31 +116,28 @@ public class GarageUpcoming implements CommandHandler {
 			request.setAttribute("pageNum", pageNum);
 
 		}
-		
-		
-		
-		if( getStartDate != null){
-		Timestamp startDate = Timestamp.valueOf(request.getParameter("startDate")+" 00:00:00");
-		Timestamp endDate = Timestamp.valueOf(request.getParameter("endDate")+" 00:00:00");
-		
-			if(startDate != null){
-			
-			Map<String,Object> upcomingMap = new HashMap<String,Object>();
-			upcomingMap.put("start", start);
-			upcomingMap.put("end", end);
-			upcomingMap.put("startDate",startDate);
-			upcomingMap.put("endDate", endDate);
-			
-			List<UpcomingDto> dateList = dao.getDateList(upcomingMap);
-			
-			request.setAttribute("dateList", dateList);
-			request.setAttribute("startDate",startDate);
-			request.setAttribute("endDate",endDate);
-			
-		
+
+		if (getStartDate != null) {
+			Timestamp startDate = Timestamp.valueOf(request.getParameter("startDate") + " 00:00:00");
+			Timestamp endDate = Timestamp.valueOf(request.getParameter("endDate") + " 00:00:00");
+
+			if (startDate != null) {
+
+				Map<String, Object> upcomingMap = new HashMap<String, Object>();
+				upcomingMap.put("start", start);
+				upcomingMap.put("end", end);
+				upcomingMap.put("startDate", startDate);
+				upcomingMap.put("endDate", endDate);
+
+				List<UpcomingDto> dateList = dao.getDateList(upcomingMap);
+
+				request.setAttribute("dateList", dateList);
+				request.setAttribute("startDate", startDate);
+				request.setAttribute("endDate", endDate);
+
+			}
 		}
-	}
-		request.setAttribute("count",count);
+		request.setAttribute("count", count);
 
 		return new ModelAndView("garageUpcoming");
 	}
