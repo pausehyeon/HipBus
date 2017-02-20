@@ -3,6 +3,8 @@ package model.admin;
 import java.util.List;
 import java.util.Map;
 
+import model.AdDto;
+import model.CrewMemberDto;
 import model.MemberDto;
 
 public interface AdminDao {
@@ -14,6 +16,7 @@ public interface AdminDao {
 	
 	//멤버 목록 부르기
 	public List<MemberDto> getMemberLists(Map<String, Integer> map);
+	public List<CrewMemberDto> getCrweId(String email);
 	
 	//검색
 	public List<MemberDto> getSearch(Map<String, Object> map);
@@ -31,4 +34,8 @@ public interface AdminDao {
 	public int deleteMember(String email);
 	public int deleteDriver(String email);
 	
+	//광고
+	public int updateAd(AdDto dto);
+	public int adnumCheck(int ad_num);
+	public int insertAd(AdDto dto);
 }

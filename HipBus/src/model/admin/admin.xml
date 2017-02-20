@@ -23,9 +23,14 @@
 	<select id="getMemberLists" resultType="model.MemberDto" parameterType="Map">
 		select email, nick, mem_level, crewid, r from 
 		(select email, nick, mem_level, crewid, rownum r from
-		(select m.email, nick,mem_level,crewid from hb_member m, hb_crewmember c where m.email=c.email(+) order by mem_level asc) 
+		(select m.email, nick,mem_level, crewid from hb_member m, hb_crewmember c where m.email=c.email(+) order by mem_level asc) 
 		where mem_level=1 or mem_level=2 order by email asc) where r &gt;= #{pageStart} and r &lt;= #{pageEnd}
 
+	</select>
+	
+	<!-- 크루리스트가져오기 -->
+	<select id="getCrewId" resultType="model.CrewMemberDto" parameterType="String">
+		select * from hb_crewmember order by crewid asc
 	</select>
 	
 	<!-- 검색 -->
@@ -46,10 +51,10 @@
 	</update>
 	
 	<!-- 삭제 -->
-	<select id="crewLeader" parameterType="String">
+	<select id="crewLeader" parameterType="String" resultType="String">
 		select crewid from hb_crewmember where email=#{email} and leader=2
 	</select>
-	<select id="crewId" parameterType="String">
+	<select id="crewId" parameterType="String" resultType="model.MemberDto">
 		select m.email, m.joindate from hb_crewmember c,hb_member m where c.email=m.email 
 		and crewid=#{crewid} and leader=1 order by joindate asc 
 	</select>
@@ -64,6 +69,17 @@
 		delete from hb_driver where driver=#{email}
 	</delete>
 	
-	
+	<!-- 광고 -->
+	<select id="adnumCheck" parameterType="int" resultType="int">
+		select count(*) from hb_ad where ad_num=#{ad_num}
+	</select>
+	<insert id="insertAd" parameterType="model.AdDto">
+		insert into hb_ad 
+		values (#{ad_num}, #{html}, #{imglocation})
+	</insert>
+	<update id="updateAd" parameterType="model.AdDto">
+		update hb_ad set imglocation=#{imglocation}, html=#{html} 
+		where ad_num=#{ad_num}
+	</update>
 	
 </mapper>

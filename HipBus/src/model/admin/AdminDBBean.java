@@ -5,6 +5,8 @@ import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
+import model.AdDto;
+import model.CrewMemberDto;
 import model.MemberDto;
 import model.SqlMapClient;
 
@@ -34,6 +36,10 @@ public class AdminDBBean implements AdminDao {
 	public List<MemberDto> getMemberLists(Map<String, Integer> map) {
 		return SqlMapClient.getSession().selectList("Admin.getMemberLists",map);
 	}//회원목록 부르는 바구니
+	@Override
+	public List<CrewMemberDto> getCrweId(String email) {
+		return SqlMapClient.getSession().selectList("Admin.getCrewId", email);
+	}
 	
 	@Override
 	public List<MemberDto> getSearch(Map<String, Object> smap) {
@@ -73,5 +79,17 @@ public class AdminDBBean implements AdminDao {
 		return SqlMapClient.getSession().update("Admin.modifyGrade", dto);
 	}
 	
+	//광고
+	@Override
+	public int updateAd(AdDto dto) {
+		return SqlMapClient.getSession().update("Admin.updateAd", dto);
+	}
+	public int adnumCheck(int ad_num) {
+		return SqlMapClient.getSession().selectOne("Admin.adnumCheck", ad_num);
+	}
+	@Override
+	public int insertAd(AdDto dto) {
+		return SqlMapClient.getSession().insert("Admin.insertAd", dto);
+	}
 	
 }
