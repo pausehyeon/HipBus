@@ -2,6 +2,9 @@
  * mybus.jsp와 crewbus.jsp에 연결할 javascript.
  */
 
+var signouterror = "회원탈퇴에 실패했습니다. \n잠시 후 다시 시도해 주세요.";
+var signoutok = "회원탈퇴에 성공하였습니다.";
+
 // Accordion
 function myFunction(id) {
 	var x = document.getElementById(id);

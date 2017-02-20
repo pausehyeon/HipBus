@@ -112,16 +112,16 @@
 						<p class="w3-responsive">
 							<i class="fa fa-check"></i> 탈퇴할 경우 재사용 및 복구가 불가능합니다.<br> 탈퇴 후 사이트에 게시한 내용을 수정/삭제 할 수 없습니다.
 						</p>
-						<form id="signoutform" class="w3-container">
+						<form id="signoutform" class="w3-container" action="myBusDeletePro.do" method="post">
 							<p>
 								<label>Password</label>
-								<input class="w3-input" type="text">
+								<input name="passwd" class="w3-input" type="password">
 							</p>
 							<br> <br>
 							<input class="w3-check" type="checkbox">
 							<label class="w3-validate">안내 사항을 모두 확인하였으며, 이에 동의합니다.</label>
 							<p class="w3-center">
-								<button class="w3-btn w3-hover-teal">탈퇴</button>
+								<button type="submit" class="w3-btn w3-hover-teal">탈퇴</button>
 							</p>
 						</form>
 					</div>
