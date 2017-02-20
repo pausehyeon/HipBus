@@ -31,9 +31,14 @@
 							<i class="fa fa-bullhorn"></i>&nbsp; Wanted
 						</h3>
 					</div>
-					<div class="w3-container w3-right">
-						<a href="myBusWantedWrite.do?driver=${driver}" class="w3-btn w3-padding w3-theme-d1 w3-margin-left"> <i class="fa fa-pencil w3-margin-right"></i>${str_modBoard}</a>
-					</div>
+					<c:if test="${driver eq sessionScope.memEmail}">
+						<div class="w3-row w3-margin-top w3-margin-bottom">
+							<div class="w3-col m12">
+								<a href="myBusWantedWrite.do?driver=${driver}" class="w3-btn w3-padding w3-theme-l3 w3-margin-left w3-right"> <i class="fa fa-pencil w3-margin-right"></i>${str_post}</a>
+							</div>
+						</div>
+					</c:if>
+					
 					<div class="w3-row-padding w3-padding-16 w3-center">
 						<!-- 글이 없는 경우 -->
 						<c:if test="${(count eq 0) or (articles eq null)}">
