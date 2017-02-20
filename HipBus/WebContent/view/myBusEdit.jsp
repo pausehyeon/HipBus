@@ -20,7 +20,7 @@
 
 		<div class="w3-row">
 			<!-- Left Column -->
-			<c:import url="../myBusLeft.do"></c:import>
+			<c:import url="../myBusLeft.do?driver=${driver}"></c:import>
 			<!-- End Left Column -->
 
 			<!-- Middle Column -->
@@ -132,7 +132,7 @@
 			</div>
 
 			<!--  Right Column -->
-			<c:import url="../myBusRight.do"></c:import>
+			<c:import url="../myBusRight.do?driver=${driver}"></c:import>
 			<!-- End Right Column -->
 
 			<!-- End Grid -->

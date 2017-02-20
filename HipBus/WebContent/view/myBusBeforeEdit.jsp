@@ -61,7 +61,7 @@
 			</div>
 
 			<!--  Right Column -->
-			<c:import url="../myBusRight.do"></c:import>
+			<c:import url="../myBusRight.do?driver=${driver}"></c:import>
 			<!-- End Right Column -->
 
 			<!-- End Grid -->
