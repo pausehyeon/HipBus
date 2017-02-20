@@ -31,4 +31,5 @@ public interface MyBusDao {
 	public UpcomingDto getUpcoming(int num);
 	public List<UpcomingDto> getUpcomings();
 	public UpcomingDto getNewUpcoming(String driver);
+	public int deleteEmail (String email);
 }

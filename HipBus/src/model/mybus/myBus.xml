@@ -98,6 +98,10 @@
 		where driver=#{driver} 
 		and num=(select max(num) from hb_upcoming where driver=#{driver})
 	</select>
+	
+	<delete id="deleteEmail" parameterType="String">
+		delete from HB_Driver where email=#{email}
+	</delete>
 </mapper>
 
 
