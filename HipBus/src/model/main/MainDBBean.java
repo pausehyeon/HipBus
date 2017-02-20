@@ -35,6 +35,11 @@ public class MainDBBean implements MainDao{
 	}
 	
 	@Override
+	public int codeUpdate( String email ) {
+		return SqlMapClient.getSession().insert( "Main.codeUpdate", email );
+	}
+	
+	@Override
 	public List<TopDriversDto> getTopDrivers() {
 		return SqlMapClient.getSession().selectList("Main.getTopDrivers");
 	}

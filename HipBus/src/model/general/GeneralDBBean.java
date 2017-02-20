@@ -54,7 +54,7 @@ public class GeneralDBBean implements GeneralDao {
 	}
 	
 	@Override
-	public String getVerificationCode(String email) {
+	public int getVerificationCode(String email) {
 		return session.selectOne("General.getVerificationCode", email);
 	}
 }

@@ -14,5 +14,5 @@ public interface GeneralDao {
 	public int checkEmailPasswd(String email, String passwd);
 	public List<CrewDto> getMyCrews(String email);
 	public List<ChannelDto> getChannels();
-	public String getVerificationCode(String email);
+	public int getVerificationCode(String email);
 }

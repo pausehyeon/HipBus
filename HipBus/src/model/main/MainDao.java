@@ -17,4 +17,5 @@ public interface MainDao {
 	public List<NewsDto> getNewsArticles();
 	public List<UpcomingDto> getUpcomings();
 	public int emailCheck( Map<String, String> emailCheck );
+	public int codeUpdate( String email );
 }

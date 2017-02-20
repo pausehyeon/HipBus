@@ -37,7 +37,7 @@
 		select * from HB_Channel
 	</select>
 	
-	<select id="getVerificationCode" parameterType="String" resultType="String">
+	<select id="getVerificationCode" parameterType="String" resultType="int">
 		select code from HB_Verification where email=#{email} 
 	</select>
 </mapper>

@@ -19,9 +19,13 @@
 		insert into HB_Verification values( #{email}, #{code} )
 	</insert>
 	
-	<select id="emailCheck" parameterType="String">
-		select count (*) from HB_member where email = #{email}
+	<select id="emailCheck" resultType="int" parameterType="Map">
+		select count (*) from HB_Verification where email = #{email} and code = #{code}
 	</select>
+	
+	<update id="codeUpdate" parameterType="String">
+		update HB_Verification set code = -1 where email = #{email}		
+	</update>
 
 	<select id="getTopDrivers" resultType="model.TopDriversDto">
 		select driver,
