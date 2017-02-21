@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<body onclick="set()">
+<%@include file="/view/setting/setting.jsp"%>
+
+<body>
 
 	<!-- 댓글 Alert   -->
 	<div class="w3-container w3-margin-bottom w3-text-khaki" style="border: 1px solid white; float: left; width: 5%;">
@@ -9,10 +11,10 @@
 		</a>
 	</div>
 	<div style="border: 1px solid white; float: left; width: 5%;">
-		<span class="w3-bottom w3-left w3-padding-large w3-hover-opacity" onclick="get()" Title="${driver}의 bus">mybus1</span>
+		<span class="w3-bottom w3-left w3-padding-large w3-hover-opacity" onclick="myBusGet()">myBus</span>
 	</div>
 	<div style="border: 1px solid white; float: left; width: 5%;">
-		<span class="w3-bottom w3-left w3-padding-large w3-hover-opacity" onclick="get2()" >mybus2</span>
+		<span class="w3-bottom w3-left w3-padding-large w3-hover-opacity" onclick="crewBusGet()">crewBus</span>
 	</div>
 	<div style="border: 1px solid white; float: left; width: 5%;">
 		<span class="w3-bottom w3-left w3-padding-large w3-hover-opacity" onclick="location.href='garageNews.do'">mybus3</span>
