@@ -48,7 +48,12 @@
 								<c:if test="${(today - duedate) eq 0}">
 									<span class="w3-badge w3-red">D-Day</span>
 								</c:if>
-								<a href="myBusWantedRead.do?num=${article.num}"> ${article.subject}</a>
+								<c:if test="${fn:contains( article.driver,'@') }">
+									<a href="myBusWantedRead.do?driver=${article.driver}&num=${article.num}"> ${article.subject}</a>
+								</c:if>
+								<c:if test="${not fn:contains( article.driver,'@') }">
+									<a href="crewBusWantedRead.do?driver=${article.driver}&num=${article.num}"> ${article.subject}</a>
+								</c:if>
 								<p class="w3-right w3-tiny">${article.nick}|
 									<fmt:formatDate value="${article.reg_date}" type="both" pattern="yyyy-MM-dd HH:mm" />
 									| ${article.readcount}
