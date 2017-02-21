@@ -42,6 +42,6 @@ public interface MyBusDao {
 	public List<WantedDto> getWantedArticles(String driver);
 	public int modifyWantedWholeArticle(WantedDto article);
 	public int modifyWantedArticle(WantedDto article);
-	public int deleteWantedArticle(int num);	
-	public WantedDto getNewWanted(String driver);
+	public int deleteWantedArticle(int num);
+	public int imgLocationUpdate(MemberDto imglocation);
 }

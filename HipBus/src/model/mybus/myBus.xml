@@ -139,13 +139,12 @@
 		update hb_wanted set subject = #{subject}, content=#{content}, duedate=#{duedate}
 		where num=#{num}
 	</update>
-	<update id="deleteWantedArticle" parameterType="int">
+	<delete id="deleteWantedArticle" parameterType="int">
 		delete hb_wanted where num=#{num}
-	</update>	
-	<select id="getNewWanted" parameterType="String" resultType="model.WantedDto">
-		select * from hb_wanted 
-		where num=(select max(num) from hb_wanted where driver=#{driver})
-	</select>
+	</delete>	
+	<update id="imgLocationUpdate" parameterType="model.MemberDto">
+		update hb_member set imglocation=#{imglocation} where email=#{email} 
+	</update>
 </mapper>
 
 

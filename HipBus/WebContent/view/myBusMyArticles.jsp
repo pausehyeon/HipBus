@@ -36,11 +36,11 @@
 					<div class="w3-row">
 						<!-- 글이없는경우 -->
 						<c:if test="${station==null}">
-							<div class="w3-row w3-margin-bottom w3-padding">
-								<div class="w3-margin-top w3-container">
-									<h5 class="w3-center">${msg_station_x}</h5>
+								<div class="w3-row w3-margin-bottom">
+									<div class="w3-twothird w3-container">
+										<h5>${msg_station_x}</h5>
+									</div>
 								</div>
-							</div>
 						</c:if>
 						<!-- 글이있는경우 -->
 
@@ -241,7 +241,7 @@
 							</c:forEach>
 						</c:if>
 					</div>
-					<c:if test="${type == 1 and station!=null}">
+					<c:if test="${type == 1 }">
 						<div class="w3-center ">
 							<!-- Pagination -->
 

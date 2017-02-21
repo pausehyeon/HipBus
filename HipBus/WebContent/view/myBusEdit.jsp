@@ -106,7 +106,7 @@
 							<i class="fa fa-pencil"></i><b> 기본 정보 수정 </b>
 						</h5>
 
-						<form id="inputform" enctype="multipart/form-data" action="myBusEditPro.do" method="post" class="w3-container">
+						<form id="inputform" enctype="multipart/form-data" action="myBusEditPro.do?driver=${driver}" method="post" class="w3-container">
 							<p>
 								<label>Profile Picture</label>
 							<div class="w3-row">
