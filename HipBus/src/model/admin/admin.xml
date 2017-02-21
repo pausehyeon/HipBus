@@ -21,23 +21,23 @@
   	
   	<!-- 멤버목록부르기 -->
 	<select id="getMemberLists" resultType="model.MemberDto" parameterType="Map">
-		select email, nick, mem_level, crewid, r from 
-		(select email, nick, mem_level, crewid, rownum r from
-		(select m.email, nick,mem_level, crewid from hb_member m, hb_crewmember c where m.email=c.email(+) order by mem_level asc) 
+		select email, nick, mem_level, r from 
+		(select email, nick, mem_level, rownum r from
+		(select email, nick,mem_level from hb_member order by mem_level asc) 
 		where mem_level=1 or mem_level=2 order by email asc) where r &gt;= #{pageStart} and r &lt;= #{pageEnd}
 
 	</select>
 	
 	<!-- 크루리스트가져오기 -->
-	<select id="getCrewId" resultType="model.CrewMemberDto" parameterType="String">
-		select * from hb_crewmember order by crewid asc
+	<select id="getCrewId" resultType="model.CrewMemberDto">
+		select * from hb_crewmember order by email asc
 	</select>
 	
 	<!-- 검색 -->
 	<select id="getSearch" resultType="model.MemberDto" parameterType="Map">
-		select email, nick, mem_level, crewid, r from 
-		(select email, nick, mem_level, crewid, rownum r from
-		(select m.email, nick,mem_level,crewid from hb_member m, hb_crewmember c where m.email=c.email(+) order by mem_level asc) 
+		select email, nick, mem_level, r from 
+		(select email, nick, mem_level, rownum r from
+		(select email, nick,mem_level from hb_member order by mem_level asc) 
 		where ${category} like '${keyword}%' or mem_level=1 and mem_level=2 order by email asc) where r &gt;= #{pageStart} and r &lt;= #{pageEnd}
 	</select>
 	
@@ -52,14 +52,14 @@
 	
 	<!-- 삭제 -->
 	<select id="crewLeader" parameterType="String" resultType="String">
-		select crewid from hb_crewmember where email=#{email} and leader=2
+		select crewid from hb_crewmember where email=#{email,jdbcType=VARCHAR} and leader=2
 	</select>
 	<select id="crewId" parameterType="String" resultType="model.MemberDto">
 		select m.email, m.joindate from hb_crewmember c,hb_member m where c.email=m.email 
 		and crewid=#{crewid} and leader=1 order by joindate asc 
 	</select>
-	<update id="updateLeader" parameterType="String">
-		update hb_crewmember set leader=2 where email=#{email} 
+	<update id="updateLeader" parameterType="Map">
+		update hb_crewmember set leader=2 where email=#{email} and crewid=#{crewid}
 	</update>
 	
 	<delete id="deleteMember" parameterType="String">

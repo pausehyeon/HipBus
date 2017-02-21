@@ -37,8 +37,8 @@ public class AdminDBBean implements AdminDao {
 		return SqlMapClient.getSession().selectList("Admin.getMemberLists",map);
 	}//회원목록 부르는 바구니
 	@Override
-	public List<CrewMemberDto> getCrweId(String email) {
-		return SqlMapClient.getSession().selectList("Admin.getCrewId", email);
+	public List<CrewMemberDto> getCrewId() {
+		return SqlMapClient.getSession().selectList("Admin.getCrewId");
 	}
 	
 	@Override
@@ -47,7 +47,7 @@ public class AdminDBBean implements AdminDao {
 	}//검색
 	public int searchNum(Map<String, String> nmap) {
 		return SqlMapClient.getSession().selectOne("Admin.searchNum", nmap);
-	}//페이지 번호
+	}
 		
 	//회원삭제-크루장 위임 강제
 	@Override
@@ -56,13 +56,13 @@ public class AdminDBBean implements AdminDao {
 	}
 	@Override
 	public List<MemberDto> crewId(String crewid) {
-		return SqlMapClient.getSession().selectList("Admin.crewLeader", crewid);
+		return SqlMapClient.getSession().selectList("Admin.crewId", crewid);
 	}
 	@Override
-	public int updateLeader(String email) {
-		return SqlMapClient.getSession().update("Admin.crewLeader", email);
+	public int updateLeader(Map<String,String> map) {
+		return SqlMapClient.getSession().update("Admin.updateLeader", map);
 	}
-	
+
 	//삭제
 	@Override
 	public int deleteMember(String email) {
