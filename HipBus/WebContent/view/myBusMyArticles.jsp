@@ -246,20 +246,20 @@
 							<!-- Pagination -->
 
 							<c:if test="${startPage > pageBlock}">
-								<a class="w3-hover-black" href="myBus.do?driver=${driver}">◀◀</a>
-								<a class="w3-hover-black" href="myBus.do?driver=${driver}&pageNum=${startPage-pageBlock}">◀</a>
+								<a class="w3-hover-black" href="myBusMyArticles.do?driver=${driver}">◀◀</a>
+								<a class="w3-hover-black" href="myBusMyArticles.do?driver=${driver}&pageNum=${startPage-pageBlock}">◀</a>
 							</c:if>
 							<c:forEach var="i" begin="${startPage}" end="${endPage}">
 								<c:if test="${i == currentPage}">
 									<span class="w3-hover-black">${i}</span>
 								</c:if>
 								<c:if test="${i != currentPage}">
-									<a class="w3-hover-black" href="myBus.do?driver=${driver}&pageNum=${i}">[${i}]</a>
+									<a class="w3-hover-black" href="myBusMyArticles.do?driver=${driver}&pageNum=${i}">[${i}]</a>
 								</c:if>
 							</c:forEach>
 							<c:if test="${pageCount > endPage}">
-								<a class="w3-hover-black" href="myBus.do?driver=${driver}&pageNum=${startPage+pageBlock}">▶</a>
-								<a class="w3-hover-black" href="myBus.do?driver=${driver}&pageNum=${pageCount}">▶▶</a>
+								<a class="w3-hover-black" href="myBusMyArticles.do?driver=${driver}&pageNum=${startPage+pageBlock}">▶</a>
+								<a class="w3-hover-black" href="myBusMyArticles.do?driver=${driver}&pageNum=${pageCount}">▶▶</a>
 							</c:if>
 						</div>
 					</c:if>

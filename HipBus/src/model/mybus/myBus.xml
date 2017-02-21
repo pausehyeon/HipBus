@@ -24,11 +24,12 @@
 		select channel_id from HB_Channel where driver=#{driver,jdbcType=VARCHAR}
 	</select>
 	<select id="getBoards" parameterType="map" resultType="model.BoardDto">
-		select * from hb_board 
-		where driver=#{driver}
-		and num &lt;= (select max(num) from hb_board where driver=#{driver}) 
-		and num &gt; (select max(num) from hb_board where driver=#{driver})-#{boardCount}
-		order by num desc
+		select * from (select driver, num, email, nick, content, reg_date, rownum r 
+		from hb_board where driver=#{driver} order by reg_date desc)
+		where r &lt;= (select max(r) from (select driver, num, email, nick, content, reg_date, rownum r 
+		from hb_board where driver=#{driver} order by reg_date desc))
+		and r &gt; (select max(r) from (select driver, num, email, nick, content, reg_date, rownum r 
+		from hb_board where driver=#{driver} order by reg_date desc))-#{boardCount}
 	</select>
 	<select id="isHop" parameterType="map" resultType="int">
 		select count(*) from hb_passengers where driver=#{driver} and email=#{email}

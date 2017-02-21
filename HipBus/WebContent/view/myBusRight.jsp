@@ -40,7 +40,8 @@
 				<p>
 					<strong>${upcomingDto.subject}</strong>
 				</p>
-				<p>${upcomingDto.perf_date}</p>
+				<fmt:formatDate var="date" value="${upcomingDto.perf_date}" pattern="yy/MM/dd hh:mm"/>
+				<p>${date}</p>
 				<p>
 					<button class="w3-btn w3-btn-block w3-theme-l1"
 							onclick="location='myBusUpcomingRead.do?driver=${driver}&num=${upcomingDto.num}'">${str_detail}</button>

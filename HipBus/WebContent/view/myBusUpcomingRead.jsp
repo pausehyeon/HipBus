@@ -77,7 +77,8 @@
 						</div>
 						<div class="w3-col m4">
 							<div class="w3-row-padding w3-left-align">
-								<label>${upcomingDto.perf_date}</label>
+								<fmt:formatDate var="date" value="${upcomingDto.perf_date}" pattern="yy/MM/dd hh:mm"/>
+								<label>${date}</label>
 							</div>
 						</div>
 						<div class="w3-col m2">

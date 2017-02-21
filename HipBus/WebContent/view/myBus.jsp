@@ -32,44 +32,49 @@ textarea:focus {
 	function loadBoard(boardCount, more) {	// 방명록리스트 가져오는 메소드
 		var params = 'driver=' + "${driver}" + '&boardCount=' + boardCount;
 		request = new Request(
-				function() {
-					var boardList = document.getElementById("boardList");
-					if (request.httpRequest.readyState == 4) {
-						if (request.httpRequest.status == 200) {
-							var msg = "";
-							var xmldoc = request.httpRequest.responseXML;
-							var code = xmldoc.getElementsByTagName("code").item(0).innerHTML;
-							if (code == "selected") {
-								var data = eval("("+ xmldoc.getElementsByTagName("data").item(0).innerHTML + ")");
-								if (data.length == 0) {
-									msg = "현재 방명록이 없습니다. 첫방명록을 작성해보세요!";
-									$('#boardInfo').html(msg);	// 방명록 없을때 메세지출력용 div
+			function() {
+				var boardList = document.getElementById("boardList");
+				if (request.httpRequest.readyState == 4) {
+					if (request.httpRequest.status == 200) {
+						var msg = "";
+						var xmldoc = request.httpRequest.responseXML;
+						var code = xmldoc.getElementsByTagName("code").item(0).innerHTML;
+						if (code == "selected") {
+							var data = eval("("+ xmldoc.getElementsByTagName("data").item(0).innerHTML + ")");
+							if (data.length == 0) {
+								msg = "현재 방명록이 없습니다. 첫방명록을 작성해보세요!";
+								$('#boardInfo').html(msg);	// 방명록 없을때 메세지출력용 div
+								$('#moreBoard').hide();
+							} else {
+								if ( more ) {	// more매개변수가 왔으면, 원래있던 리스트를 먼저 지운다
+									$('#boardList').empty();
+								}
+								if (data.length < 5){
 									$('#moreBoard').hide();
 								} else {
-									if ( more ) {	// more매개변수가 왔으면, 원래있던 리스트를 먼저 지운다
-										$('#boardList').empty();
-									}
-									for (var i = 0; i < data.length; i++) {	// 방명록을 위부터 하나씩 붙인다
-										var newdiv = makeBoard(data[i]);
-										boardList.appendChild(newdiv);
-									}
+									$('#moreBoard').show();
 								}
-							} else if (code == "empty") {
-								var message = xmldoc.getElementsByTagName(
-										"message").item(0).innerHTML;
-								msg += message;
+								for (var i = 0; i < data.length; i++) {	// 방명록을 위부터 하나씩 붙인다
+									var newdiv = makeBoard(data[i]);
+									boardList.appendChild(newdiv);
+								}
 							}
-							$('#console').remove();
-						} else {
-							$('#console').html("readyState 에러");
+						} else if (code == "empty") {
+							var message = xmldoc.getElementsByTagName(
+									"message").item(0).innerHTML;
+							msg += message;
 						}
+						$('#console').remove();
 					} else {
-						$('#console').append($("<img/>",{
-							src : "${project}/view/img/loading.gif",
-							style : "width:30%"
-						}));
+						$('#console').html("readyState 에러");
 					}
-				}, "myBusBoardListResult.do", "POST", params);
+				} else {
+					$('#console').append($("<img/>",{
+						src : "${project}/view/img/loading.gif",
+						style : "width:30%"
+					}));
+				}
+			}, "myBusBoardListResult.do", "POST", params);
 		request.sendRequest();
 	}
 
