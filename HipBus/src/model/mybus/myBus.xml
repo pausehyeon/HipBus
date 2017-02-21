@@ -142,6 +142,10 @@
 	<update id="deleteWantedArticle" parameterType="int">
 		delete hb_wanted where num=#{num}
 	</update>	
+	<select id="getNewWanted" parameterType="String" resultType="model.WantedDto">
+		select * from hb_wanted 
+		where num=(select max(num) from hb_wanted where driver=#{driver})
+	</select>
 </mapper>
 
 

@@ -33,7 +33,6 @@
 
 <!-- myBusLeft.jsp -->
 <c:set var="str_myProfile" value="Profile"/>
-<c:set var="str_crew" value="소속 크루 : "/>
 <c:set var="str_editProfile" value=" edit profile"/>
 <c:set var="str_hop" value="hop"/>
 <c:set var="str_hopperList" value=" 탑승자 명단"/>
@@ -46,6 +45,8 @@
 <c:set var="str_lirics" value="가사"/>
 <c:set var="str_freeTalk" value="잡담"/>
 <c:set var="str_tags" value="관심사"/>
+<c:set var="str_upcoming" value="공연"/>
+<c:set var="str_wanted" value="구인"/>
 
 <!-- crewBusLeft.jsp -->
 <c:set var="str_crewProfile" value="Crew Profile"/>
