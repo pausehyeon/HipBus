@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import handler.CommandHandler;
 import handler.HandlerException;
 import model.StationDto;
+import model.garage.GarageDao;
 import model.station.StationDao;
 
 @Controller
@@ -22,6 +23,9 @@ public class Station implements CommandHandler {
 	
 	@Resource( name="stationDao")
 	private StationDao stationDao;
+	
+	@Resource( name="garageDao")
+	private GarageDao garageDao;
 	
 	@RequestMapping("/station.do")
 	@Override
@@ -117,6 +121,14 @@ public class Station implements CommandHandler {
 			request.setAttribute("pageNum", pageNum);
 			
 		}
+		
+		String ad1_imglocation = garageDao.getAd(1);
+		String ad2_imglocation = garageDao.getAd(2);
+		String ad3_imglocation = garageDao.getAd(3);
+		
+		request.setAttribute("ad1_imglocation", ad1_imglocation);
+		request.setAttribute("ad2_imglocation", ad2_imglocation);
+		request.setAttribute("ad3_imglocation", ad3_imglocation);
 		return new ModelAndView("station");
 	}
 

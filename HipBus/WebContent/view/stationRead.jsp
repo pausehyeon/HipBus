@@ -34,9 +34,10 @@
 									msg += "<center>"
 									msg += "현재 댓글이 없습니다.";
 									msg += "</center>"
-									result.innerHTML = msg;
+									$('#boardInfo').html(msg);
 								} else {
 									for (var i = 0; i < data.length; i++) {
+								
 										var newdiv = makeBoard(data[i]);
 										result.appendChild(newdiv);
 									}
@@ -70,13 +71,6 @@
 				+ data.replynum + ",\'" + data.content + "\','creteria')\">";
 		modBtn += '<i class="fa fa-times"></i>';
 		modBtn += '</button>';
-
-		reboard += '<div  class="w3-third w3-container" style="width:80%">';
-		reboard += '<input type="text" id="recontent" name="recontent" class="w3-input w3-border w3-padding-5">';
-		reboard += '</div>';
-		reboard += '<div class="w3-third w3-container w3-margin-top3" style="width:20%">';
-		reboard += '<input class="w3-btn w3-theme-d1 " id="regester" type="button" value="${btn_register}">';
-		reboard += '</div>';
 
 		board += '<div class="w3-card-8 w3-margin w3-padding-xlarge w3-padding-64">';
 		board += '<div class="w3-container w3-row">';
@@ -119,6 +113,60 @@
 
 		return newdiv;
 	}
+	
+	// 댓글 삽입
+	function boardAppend() {
+		var params = 'num=' + "${num}" // 버스주인 이메일 혹은 크루아이디
+				+ '&email=' + "${sessionScope.memEmail}" // 세션에 저장된 작성자 이메일
+				+ '&content=' + $('input[name=content]').val(); // 본문 입력내용
+		request = new Request(
+				function() {
+					var result = document.getElementById("result");
+					if (request.httpRequest.readyState == 4) {
+						if (request.httpRequest.status == 200) {
+							var xmldoc = request.httpRequest.responseXML;
+							var code = xmldoc.getElementsByTagName("code")
+									.item(0).innerHTML;
+							if (code == "inserted") {
+								var data = eval("("
+										+ xmldoc.getElementsByTagName("data")
+												.item(0).innerHTML + ")");
+								var newdiv = makeBoard(data);
+								$('#boardInfo').html("");
+								if (result.firstChild != null) {
+									var oldFirstChild = result.firstChild;
+									result.insertBefore(newdiv, oldFirstChild);
+								}
+								if (result.firstChild == null) {
+									result.appendChild(newdiv);
+								}
+								$('input[name=content]').val("");
+								alert("글이 등록되었습니다.")
+							} else if (code == "failed") {
+								var message = xmldoc.getElementsByTagName(
+										"message").item(0).innerHTML;
+							}
+						} else {
+
+						}
+					} else {
+
+					}
+				}, 'stationReplyAppendResult.do', 'POST', params);
+		request.getXMLHttpRequest();
+		request.sendRequest();
+	}
+	function Likego() {
+		var retVal = confirm(likeok);
+		if (retVal == true) {
+			location.href = "stationLikePro.do?num=" + "${article.num}";
+		} else {
+			location.href = "stationRead.do?num=" + readform.num.value
+					+ "&pageNum=" + readform.pageNum.value + "category="
+					+ readform.category.value + "&type=" + readform.type.value;
+		}
+	}
+	// 리댓글
 	function reBoardView(replynum,ref_num,re_step){
 		//var replyBoard = document.getElementById("replyBoardABC_"+replynum);
 		reloadBoard(ref_num);
@@ -143,7 +191,7 @@
 		reboard += '<img src="${project}/view/img/HipBusLogo_pale_sq.png" width="100%" class="w3-circle">'
 		reboard += '</div>'
 		reboard += '<div class="w3-col m7">'
-		reboard += '<input name="content" type="text" required class="w3-input w3-border w3-padding-5" style="height: 50px">'
+		reboard += '<input name="recontent" type="text" required class="w3-input w3-border w3-padding-5" style="height: 50px">'
 		reboard += '</div>'
 		reboard += '<div class="w3-col m2">'
 		reboard += '<input type="button" onclick="boardAppend()" value="${btn_register}" class="w3-btn-block w3-theme-d1" style="height: 50px">'
@@ -185,58 +233,7 @@
 
 		return renewdiv;
 	}
-	// 댓글 삽입
-	function boardAppend() {
-		var params = 'num=' + "${num}" // 버스주인 이메일 혹은 크루아이디
-				+ '&email=' + "${sessionScope.memEmail}" // 세션에 저장된 작성자 이메일
-				+ '&content=' + $('input[name=content]').val(); // 본문 입력내용
-		request = new Request(
-				function() {
-					var result = document.getElementById("result");
-					if (request.httpRequest.readyState == 4) {
-						if (request.httpRequest.status == 200) {
-							var xmldoc = request.httpRequest.responseXML;
-							var code = xmldoc.getElementsByTagName("code")
-									.item(0).innerHTML;
-							if (code == "inserted") {
-								var data = eval("("
-										+ xmldoc.getElementsByTagName("data")
-												.item(0).innerHTML + ")");
-								var newdiv = makeBoard(data);
-								if (result.firstChild != null) {
-									var oldFirstChild = result.firstChild;
-									result.insertBefore(newdiv, oldFirstChild);
-								}
-								if (result.firstChild == null) {
-									result.appendChild(newdiv);
-								}
-								$('input[name=content]').val("");
-								alert("글이 등록되었습니다.")
-							} else if (code == "failed") {
-								var message = xmldoc.getElementsByTagName(
-										"message").item(0).innerHTML;
-							}
-						} else {
-
-						}
-					} else {
-
-					}
-				}, 'stationReplyAppendResult.do', 'POST', params);
-		request.getXMLHttpRequest();
-		request.sendRequest();
-	}
-	function Likego() {
-		var retVal = confirm(likeok);
-		if (retVal == true) {
-			location.href = "stationLikePro.do?num=" + "${article.num}";
-		} else {
-			location.href = "stationRead.do?num=" + readform.num.value
-					+ "&pageNum=" + readform.pageNum.value + "category="
-					+ readform.category.value + "&type=" + readform.type.value;
-		}
-	}
-	// 리댓글
+	
 	function reloadBoard(ref_num) {
 		var params = 'ref_num=' + ref_num;
 		request = new Request(
@@ -254,6 +251,17 @@
 												.item(0).innerHTML + ")");
 								if (data.length == 0) {
 									msg += "<center>"
+										msg += '<div class="w3-row-padding w3-padding-32 w3-row">'
+										msg += '<div class="w3-col m1">'
+										msg += '<img src="${project}/view/img/HipBusLogo_pale_sq.png" width="100%" class="w3-circle">'
+										msg += '</div>'
+										msg += '<div class="w3-col m7">'
+										msg += '<input name="recontent" type="text" required class="w3-input w3-border w3-padding-5" style="height: 50px">'
+										msg += '</div>'
+										msg += '<div class="w3-col m2">'
+										msg += '<input type="button" onclick="boardAppend()" value="${btn_register}" class="w3-btn-block w3-theme-d1" style="height: 50px">'
+										msg += '</div>'
+										msg += '</div>'
 									msg += "현재 댓글이 없습니다.";
 									msg += "</center>"
 									infResult.innerHTML = msg;
@@ -365,6 +373,12 @@
 											.getElementById("board_" + replynum);
 									result.removeChild(deldiv);
 									alert("성공적으로 삭제하였습니다.");
+									if(data.length > 1){
+										msg += "<center>"
+										msg += "현재 댓글이 없습니다.";
+										msg += "</center>"
+										$('#boardInfo').html(msg);
+									}
 								} else if (code == "failed") {
 									msg += xmldoc.getElementsByTagName(
 											"message").item(0).innerHTML;
@@ -462,26 +476,17 @@ ${article.content}
 					
 					</footer>
 					
-				<div id="result">
-					<div id="reply">
-					</div>
-					
-					</footer>
-					
-				<div id="result">
-					<div id="reply">
-					</div>
 
 
-						</footer>
 
 					</form>
 
 				</div>
 			</div>
 			<br> <br>
+			
 			<div id="result">
-				<div id="reply"></div>
+			<span id="boardInfo"></span>
 			</div>
 
 			<!--  댓글쓰기 -->

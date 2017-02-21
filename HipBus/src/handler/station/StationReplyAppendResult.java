@@ -31,7 +31,7 @@ public class StationReplyAppendResult implements CommandHandler {
 		}
 		// 댓글
 				int replynum = 0;		// 제목글 0 / 답변글 ! 0
-				int ref_num = 1;		// 그룹화 아이디
+				int ref_num = 0;		// 그룹화 아이디
 				int re_step = 0;	// 글순서
 				int re_level = 0;	// 글레벨
 				if( request.getParameter( "replynum" ) != null ) {

@@ -67,7 +67,7 @@
   	
   	<!--  댓글 -->
   	<select id="getReplys" parameterType="int" resultType="model.ReplyDto">
-		select * from HB_StationReply where num=#{num} order by replynum desc
+		select * from HB_StationReply where num=#{num} order by replynum asc
 	</select>
 	
 	<insert id="replyInsert" parameterType="model.ReplyDto">

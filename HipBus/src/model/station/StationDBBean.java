@@ -119,9 +119,8 @@ public class StationDBBean implements StationDao {
 	public int deleteReply(int replynum) {
 		int result = 0;
 		ReplyDto dto = getReply( replynum );
-		
-			SqlMapClient.getSession().update( "Station.deleteReplyArticle", dto );
-			result = SqlMapClient.getSession().delete("Station.deleteReply", replynum);	
+		SqlMapClient.getSession().update( "Station.deleteReplyArticle", dto );
+		result = SqlMapClient.getSession().delete("Station.deleteReply", replynum);	
 		return result;
 	}
 	// 대댓글
