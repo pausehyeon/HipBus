@@ -47,10 +47,15 @@
 <!-- garageOnAir.jsp  -->
 <c:set var="str_OnAir" value="OnAir"/>
 <c:set var="str_OnAirTitle" value="현재 방송중인 버스를 모아봅니다."/>
+<c:set var="str_order" value="정렬"/>
+<c:set var="str_latest" value="최신순"/>
+<c:set var="str_morePassengers" value="탑승인원순"/>
+<c:set var="str_howTo" value="라이브 스트리밍 이용방법"/>
 
 <!-- garageUpcoming.jsp -->
 <c:set var="str_Upcoming" value="Upcoming"/>
 <c:set var="str_UpcomingTitle" value="각 Bus의 공연일정 게시글을 모아서 보여줍니다."/>
+<c:set var="str_upcomingO" value="의 공연일정이 있습니다."/>
 
 <!-- garageWanted.jsp -->
 <c:set var="str_Wanted" value="Wanted"/>

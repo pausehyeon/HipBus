@@ -42,7 +42,7 @@ function checkonair(channel_id, googleApiKey, url, nick){
 						}
 						
 						if(cnt == 0){
-							onairloadingsection.innerHTML = "<p class='w3-center'>현재 방송 중인 채널이 없습니다.</p>";
+							onairloadingsection.innerHTML = '<p class="w3-center w3-cell-middle" style="font-weight: bold;">현재 방송 중인 채널이 없습니다.</p>';
 						}else{
 							onairloadingsection.innerHTML = "";
 						}

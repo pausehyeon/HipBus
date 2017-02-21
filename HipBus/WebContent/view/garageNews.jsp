@@ -15,22 +15,22 @@
 		<div class="w3-row-padding" style="margin-top: 64px">
 			<h3>${str_News}</h3>
 			<p>${str_NewsTitle}</p>
+			<!-- 이 버튼은 관리자에게만 보임 -->
+			<c:if test="${dto.mem_level == 3 }">
+				<div class="w3-row-padding w3-center">
+					<a href="garageNewsWrite.do" class="w3-btn w3-padding w3-theme-d1 w3-margin-left w3-right">
+						<i class="fa fa-pencil-square-o w3-margin-right"></i>${str_Write}</a>
+				</div>
+			</c:if>
 			<hr>
 		</div>
 		<div class="w3-row-padding">
 			<div class="w3-twothird">
-				<!-- 이 버튼은 관리자에게만 보임 -->
-				<c:if test="${dto.mem_level == 3 }">
-					<div class="w3-row-padding w3-padding-16 w3-center">
-						<a href="garageNewsWrite.do" class="w3-btn w3-padding w3-theme-d1 w3-margin-left w3-right">
-							<i class="fa fa-pencil-square-o w3-margin-right"></i>${str_Write}</a>
-					</div>
-				</c:if>
 				<!-- 글이없는경우 -->
 				<c:if test="${(count eq 0) or (NewsList eq null)}">
 					<div class="w3-row w3-margin-bottom">
-						<div class="w3-twothird w3-container">
-							<h5>${msg_list_x}</h5>
+						<div class="w3-col m12 w3-container">
+							<p class="w3-center w3-cell-middle" style="font-weight: bold;">${msg_list_x}</p>
 						</div>
 					</div>
 				</c:if>
