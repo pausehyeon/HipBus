@@ -33,6 +33,8 @@ public class MyBusDeletePro implements CommandHandler {
 			request.getSession().removeAttribute("memEmail");
 		} else if ( ! passwd.equals(passwdCheck)) {
 			signOutResult = -1;
+		} else {
+			signOutResult = 1;
 		}
 		
 		if ( passwd.equals(passwdCheck)) signOutDriver = mybusDao.deleteDriver(email);		

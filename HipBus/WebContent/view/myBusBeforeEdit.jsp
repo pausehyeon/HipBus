@@ -39,13 +39,13 @@
 							<b>${str_passwdHelp}</b>
 						</h5>
 
-						<form id="inputform" class="w3-container">
+						<form id="inputform" class="w3-container" action="myBusBeforeEditPro.do?driver=${driver}" method="post">
 							<p>
-								<label>${str_email}</label> <input class="w3-input" type="text" value="aaa@email.com" disabled="disabled">
+								<label>${str_email}</label> <input class="w3-input" type="text" value="${driver}" disabled="disabled">
 							</p>
 							<br> <br>
 							<p>
-								<label>${str_passwd}</label> <input class="w3-input" type="text">
+								<label>${str_passwd}</label> <input class="w3-input" type="text" name="passwd">
 							</p>
 							<br>
 							<div class="w3-center">

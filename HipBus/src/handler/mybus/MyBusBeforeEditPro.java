@@ -1,5 +1,9 @@
 package handler.mybus;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -12,11 +16,33 @@ import handler.HandlerException;
 
 @Controller
 public class MyBusBeforeEditPro implements CommandHandler {
+	@Resource(name="myBusDao")
+	model.mybus.MyBusDao mybusDao;
 
 	@RequestMapping("/myBusBeforeEditPro.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		// TODO Auto-generated method stub
+		
+		String passwd = request.getParameter("passwd");
+		String email = (String) request.getSession().getAttribute("memEmail");
+		String driver = request.getParameter("driver");				
+		String passwdCheck = mybusDao.getMember(email).getPasswd();		
+		
+		int result = 0;
+		
+		if ( passwd.equals(passwdCheck)) {
+			result = mybusDao.beforeEditCheck(passwd);					
+		} else if ( ! passwd.equals(passwdCheck)) {
+			result = -1;
+		} else {
+			result = 1;
+		}
+		
+		
+		request.setAttribute("driver", driver);
+		request.setAttribute("passwd", passwd);
+		request.setAttribute("result", result);
 		return new ModelAndView("myBusBeforeEditPro");
 	}
 

@@ -43,4 +43,5 @@ public interface MyBusDao {
 	public int modifyWantedWholeArticle(WantedDto article);
 	public int modifyWantedArticle(WantedDto article);
 	public int deleteWantedArticle(int num);
+	public int beforeEditCheck(String passwd);
 }
