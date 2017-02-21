@@ -65,15 +65,15 @@ function playonair(channel_id, googleApiKey){
 						}
 						
 						if(cnt == 0){
-							oaconsole.innerHTML = "<p class='w3-center'>방송중인 영상이 없습니다.</p>";
+							onairchat.innerHTML = "<p class='w3-center'>방송중인 영상이 없습니다.</p>";
 						}else{
-							oaconsole.innerHTML = "";
+							onairchat.innerHTML = "";
 						}
 					}else{
-						oaconsole.innerHTML = "<p class='w3-center'> 오류 발생"+request.status+" </p>";
+						onairchat.innerHTML = "<p class='w3-center'> 오류 발생"+request.status+" </p>";
 					}
 				}else{
-					oaconsole.innerHTML = "<img src='/HipBus/view/img/loading.gif' alt='로딩 중입니다' style='width:100px;'>";
+					onairchat.innerHTML = "<img src='/HipBus/view/img/loading.gif' alt='로딩 중입니다' style='width:100px;'>";
 				}
 			},
 			"https://www.googleapis.com/youtube/v3/search",
