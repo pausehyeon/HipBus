@@ -29,6 +29,12 @@ public class MyBusLeft implements CommandHandler {
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		String driver = request.getParameter("driver");
 		String email = null; 
+		int mem_level = 0;
+		if( request.getSession().getAttribute("memEmail") != null ) {
+			email = (String) request.getSession().getAttribute("memEmail");
+			mem_level = mybusDao.getMember(email).getMem_level();
+		}
+		
 		email = (String) request.getSession().getAttribute("memEmail");
 
 		Map<String,String> map = new HashMap<String,String>();
@@ -69,6 +75,8 @@ public class MyBusLeft implements CommandHandler {
 		
 		String channelid = mybusDao.getChannelid( driver );
 		
+		
+		request.setAttribute("mem_level", mem_level);
 		request.setAttribute("channelid", channelid);
 		request.setAttribute("passengers", passengers);
 		request.setAttribute("tags", tags);

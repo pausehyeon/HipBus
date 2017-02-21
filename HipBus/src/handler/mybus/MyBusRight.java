@@ -25,8 +25,11 @@ public class MyBusRight implements CommandHandler {
 		String email = (String) request.getSession().getAttribute("memEmail");
 		
 		UpcomingDto upcomingDto = mybusDao.getNewUpcoming(driver);
-		upcomingDto.setImglocation(upcomingDto.getImglocation());
-		request.setAttribute("upcomingDto", upcomingDto);
+		if(upcomingDto!=null){
+			upcomingDto.setImglocation(upcomingDto.getImglocation());
+			request.setAttribute("upcomingDto", upcomingDto);
+			
+		}
 		
 		request.setAttribute("driver", driver);
 		request.setAttribute("email", email);

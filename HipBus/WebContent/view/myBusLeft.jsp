@@ -37,7 +37,7 @@
 				Best Driver
 			</p>
 		</c:if>
-		<c:if test="${email!=null and email != driver}">
+		<c:if test="${email!=null and email != driver and mem_level!=3}">
 			<button name="hop" onclick="location='myBusHopOnPro.do?driver=${driver}&email=${email}&hopORnot=${hopORnot}'">
 				${str_hop} &nbsp; ${hopORnot}
 			</button>
@@ -113,6 +113,14 @@
 			</c:if>
 			<button onclick="location='myBusMyArticles.do?driver=${driver}'" class="w3-btn-block w3-theme-l1 w3-left-align">
 				<i class="fa fa fa-align-left fa-fw w3-margin-right"></i> ${memDto.getNick()} ${str_seePosts}
+			</button>
+			<button onclick="location='myBusUpcoming.do?driver=${driver}'"
+				class="w3-btn-block w3-theme-l1 w3-left-align">
+				<i class="fa fa-calendar fa-fw w3-margin-right"></i> ${str_upcoming}
+			</button>
+			<button onclick="location='myBusWanted.do?driver=${driver}'"
+				class="w3-btn-block w3-theme-l1 w3-left-align">
+				<i class="fa fa-bullhorn fa-fw w3-margin-right"></i> ${str_wanted}
 			</button>
 <%-- 			<div id="Demo2" class="w3-accordion-content w3-container">
 				<p>

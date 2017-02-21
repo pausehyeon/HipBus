@@ -55,7 +55,6 @@ function loadVideos(channel_id, googleApiKey, pageToken){
 	var request;
 	request = new Request( function(){
 				var videos = document.getElementById('videos');
-				var console = document.getElementById('console');
 				if(request.httpRequest.readyState == 4){
 					if(request.httpRequest.status == 200){
 						var jsonData = eval( "("+request.httpRequest.responseText.trim() +")");
@@ -73,30 +72,31 @@ function loadVideos(channel_id, googleApiKey, pageToken){
 							if(jsonData.nextPageToken && !jsonData.prevPageToken){
 								video += '<div class="w3-row w3-center">';
 								video += '<div class="w3-col w3-padding-12">'
-								video += '<a href="myBusVideos.do?driver=${driver}&nextPageToken='+jsonData.nextPageToken+'">▶</a>';
+								video += '<a class="w3-btn w3-hover-red w3-round" href="myBusVideos.do?driver=${driver}&nextPageToken='+jsonData.nextPageToken+'">▶</a>';
 								video += '</div></div>';
 							} else if(jsonData.prevPageToken && !jsonData.nextPageToken){
 								video += '<div class="w3-row w3-center">';
-								video += '<a href="myBusVideos.do?driver=${driver}&prevPageToken='+jsonData.prevPageToken+'">◀</a>';
-								video += '</div>';
+								video += '<div class="w3-col w3-padding-12">'
+								video += '<a class="w3-btn w3-hover-red w3-round" href="myBusVideos.do?driver=${driver}&prevPageToken='+jsonData.prevPageToken+'">◀</a>';
+								video += '</div></div>';
 							} else if(jsonData.nextPageToken && jsonData.prevPageToken){
 								video += '<div class="w3-row w3-center">';
-								video += '<a href="myBusVideos.do?driver=${driver}&prevPageToken='+jsonData.prevPageToken+'">◀</a>';
-								video += '<a href="myBusVideos.do?driver=${driver}&nextPageToken='+jsonData.nextPageToken+'">▶</a>';
-								video += '</div>';
+								video += '<div class="w3-col w3-padding-12">'
+								video += '<a class="w3-btn w3-hover-red w3-round" href="myBusVideos.do?driver=${driver}&prevPageToken='+jsonData.prevPageToken+'">◀</a>';
+								video += '<a class="w3-btn w3-hover-red w3-round" href="myBusVideos.do?driver=${driver}&nextPageToken='+jsonData.nextPageToken+'">▶</a>';
+								video += '</div></div>';
 							}
 							videos.innerHTML += video;
 						} else{ // 동영상이 없는경우
 							video += '<p class="w3-center"> 영상이 없습니다. </p>';
 							videos.innerHTML += video;
 						}
-						
-						console.innerHTML = "";
+						$('#console').empty();
 					}else{
-						console.innerHTML = "<p class='w3-center'> 오류 발생"+request.status+" </p>";
+						$('#console').html("<p class='w3-center'> 오류 발생"+request.httpRequest.status+" </p>");
 					}
 				}else{
-					console.innerHTML = "<img src='/HipBus/view/img/loading.gif' alt='로딩 중입니다' style='width:100px'>";
+					$('#console').html("<img src='/HipBus/view/img/loading.gif' alt='로딩 중입니다' style='width:100px'>");
 				}
 			},
 			"https://www.googleapis.com/youtube/v3/search", "GET", params);
