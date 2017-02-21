@@ -28,4 +28,5 @@ public interface StationDao {
 	public int modifyReply( ReplyDto dto);
 	public int deleteReply( int replynum );
 	public ReplyDto getReply(int replynum);
+	public List<ReplyDto> getInfReplys( int ref_num );
 }

@@ -97,22 +97,93 @@
 					+ '); return false"   id="delBoard" class="w3-margin-right">${str_delete}</a>';
 			board += modBtn;
 		}
-		board += '<a href="#" onClick="reBoardView(' + data.replynum + ','
-				+ data.ref_num + ',' + data.re_step + ',' + data.re_level
-				+ '); return false" id="reBoard">${str_reply}</a>';
+		board += '<a href="#" onClick="reBoardView(' + data.replynum +','
+			  + data.ref_num + ',' + data.re_step				
+		      + '); return false" id="reBoard">${str_reply}</a>';
 		board += '</div>';
 		board += '<div class="w3-container w3-left-align">';
 		board += '<input type="hidden" name="'+ data.replynum +'">';
-		board += '<p class="w3-left-align">' + data.content
-				+ "</p>";
+		board += '<textarea readonly="true" wrap="VIRTUAL" style="resize:none; width:100%;' 
+			  + 'height:4000; border:0;overflow-y:hidden;background:clear;">'
+			  + data.content +'</textarea>'
+		board += '</div>';
+		board += '<div id="replyBoardABC_'+data.replynum+'">';
 		board += '</div>';
 		board += '</div>';
 		board += '</div>';
 		board += '</div>';
+		
+		
 		newdiv.innerHTML = board;
 		newdiv.data += data;
 
 		return newdiv;
+	}
+	function reBoardView(replynum,ref_num,re_step){
+		//var replyBoard = document.getElementById("replyBoardABC_"+replynum);
+		reloadBoard(ref_num);
+	}
+	function reMakeBoard(data) {
+		var renewdiv = document.createElement("div");
+		renewdiv.setAttribute("id", "reboard_" + data.replynum);
+		var modBtn = '';
+		var reboard = '';
+		modBtn += '<button type="button" id="replyComplete" class="w3-btn w3-theme-l1 modc" style="display:none" onclick="modComplete('
+			+ data.replynum + ')">';
+		modBtn += '<i class="fa fa-check"></i>';
+		modBtn += '</button>';
+		modBtn += "<button type=\"button\" id='replyCancel' class=\"w3-btn w3-theme-l1\" style=\"display:none\" onclick=\"modCancel("
+				+ data.replynum + ",\'" + data.content + "\','creteria')\">";
+		modBtn += '<i class="fa fa-times"></i>';
+		modBtn += '</button>';
+		
+		
+		reboard += '<div class="w3-row-padding w3-padding-32 w3-row">'
+		reboard += '<div class="w3-col m1">'
+		reboard += '<img src="${project}/view/img/HipBusLogo_pale_sq.png" width="100%" class="w3-circle">'
+		reboard += '</div>'
+		reboard += '<div class="w3-col m7">'
+		reboard += '<input name="content" type="text" required class="w3-input w3-border w3-padding-5" style="height: 50px">'
+		reboard += '</div>'
+		reboard += '<div class="w3-col m2">'
+		reboard += '<input type="button" onclick="boardAppend()" value="${btn_register}" class="w3-btn-block w3-theme-d1" style="height: 50px">'
+		reboard += '</div>'
+		reboard += '</div>'
+		
+		reboard += '<div class="w3-card-8 w3-margin w3-padding-xlarge w3-padding-64">';
+		reboard += '<div class="w3-container w3-row">';
+		reboard += '<div class="w3-col m1 w3-center">';
+		reboard += '<img src="${project}/view/img/HipBusLogo_pale_sq.png" width="100%" class="w3-circle">';
+		reboard += '</div>';
+		reboard += '<div class="w3-col m11 w3-center">';
+		reboard += '<div class="w3-harf w3-container w3-large w3-left">';
+		reboard += data.email + '&nbsp;' + data.reg_date;
+		reboard += '</div>';
+		reboard += '<div class="w3-harf w3-container w3-padding-4 w3-right">';
+		
+	 	if (data.email == "${sessionScope.memEmail}") {
+			reboard += '<a href="#" onClick="modBoardView('
+					+ data.replynum
+					+ '); return false" id="remodView" class="w3-margin-right">${str_modify}</a>';
+			reboard += '<a href="#" onClick="delComplete('
+					+ data.replynum
+					+ '); return false"   id="redelBoard" class="w3-margin-right">${str_delete}</a>';
+			reboard += modBtn;
+		} 
+		reboard += '</div>';
+		reboard += '<div class="w3-container w3-left-align">';
+	 	reboard += '<input type="hidden" name="'+ data.replynum +'">';	
+		reboard += '<textarea readonly="true" wrap="VIRTUAL" style="resize:none; width:100%;' 
+				+ 'height:4000; border:0;overflow-y:hidden;background:clear;">'
+				+ data.content +'</textarea>'
+	 	reboard += '</div>';
+		reboard += '</div>';
+		reboard += '</div>';
+		reboard += '</div>';
+		renewdiv.innerHTML = reboard;
+		renewdiv.data += data;
+
+		return renewdiv;
 	}
 	// 댓글 삽입
 	function boardAppend() {
@@ -166,48 +237,45 @@
 		}
 	}
 	// 리댓글
-	/*
-	function reBoard(replynum, ref_num, re_step,re_level){
-		var params = 'num=' + "${num}" // 버스주인 이메일 혹은 크루아이디
-		+ '&email=' + "${sessionScope.memEmail}" // 세션에 저장된 작성자 이메일
-		+ '&content=' + $('input[name=recontent]').val(); // 본문 입력내용
+	function reloadBoard(ref_num) {
+		var params = 'ref_num=' + ref_num;
 		request = new Request(
-		function() {
-			var result = document.getElementById("result");
-			if (request.httpRequest.readyState == 4) {
-				if (request.httpRequest.status == 200) {
-					var xmldoc = request.httpRequest.responseXML;
-					var code = xmldoc.getElementsByTagName("code")
-							.item(0).innerHTML;
-					if (code == "inserted") {
-						var data =  eval("("
-								+ xmldoc.getElementsByTagName("data")
-								.item(0).innerHTML + ")");
-						var newdiv = makeBoard(data);	
-						if (result.firstChild != null) {
-							var oldFirstChild = result.firstChild;
-							result.insertBefore(newdiv,
-									oldFirstChild);
+				function() {
+					var infResult = document.getElementById("replyBoardABC_"+ref_num);
+					if (request.httpRequest.readyState == 4) {
+						if (request.httpRequest.status == 200) {
+							var msg = "";
+							var xmldoc = request.httpRequest.responseXML;
+							var code = xmldoc.getElementsByTagName("code")
+									.item(0).innerHTML;
+							if (code == "selected") {
+								var data = eval("("
+										+ xmldoc.getElementsByTagName("data")
+												.item(0).innerHTML + ")");
+								if (data.length == 0) {
+									msg += "<center>"
+									msg += "현재 댓글이 없습니다.";
+									msg += "</center>"
+									infResult.innerHTML = msg;
+								} else {
+									for (var i = 0; i < data.length; i++) {
+										var renewdiv = reMakeBoard(data[i]);
+										infResult.appendChild(renewdiv);
+									}
+								}
+							} else if (code == "empty") {
+								var message = xmldoc.getElementsByTagName(
+										"message").item(0).innerHTML;
+								msg += message;
+							}
+						} else {
 						}
-						if (result.firstChild == null) {
-							result.appendChild(newdiv);
-						}
-					 $('input[name=recontent]').val("");
-					 alert("답글이 등록되었습니다.")
-					} else if (code == "failed") {
-						var message = xmldoc.getElementsByTagName(
-								"message").item(0).innerHTML;
+					} else {
 					}
-				} else {
-					
-				}
-			} else {
-			
-			}
-		}, 'stationReplyAppendResult.do', 'POST', params);
-	request.getXMLHttpRequest();
-	request.sendRequest();
-	}*/
+				}, "stationInfReplyListResult.do", "POST", params);
+		request.getXMLHttpRequest();
+		request.sendRequest();
+	}
 	// 댓글 수정
 	function modBoardView(replynum) {
 		$('#board_' + replynum + ' textarea').prop('readonly', false);
@@ -219,10 +287,6 @@
 		$('#board_' + replynum + ' textarea').focus();
 	}
 
-	function reBoardView(replynum, ref_num, re_step, re_level) {
-		$('#board_' + replynum + '#recontent').show();
-		$('#board_' + replynum + '#regester').show();
-	}
 	function modCancel(replynum, content, criteria) { // 이전 데이터 저장해서 다시 띄움
 		if (criteria) {
 			if (!$('input[name=' + replynum + ']').prop("content")) {
@@ -395,9 +459,24 @@ ${article.content}
 								<a class="w3-btn w3-padding w3-theme-d1 w3-margin-left" onclick="alertgo()"> <i class="glyphicon glyphicon-remove w3-margin-right"></i>${str_delete}</a>
 							</c:if>
 
+					
+					</footer>
+					
+				<div id="result">
+					<div id="reply">
+					</div>
+					
+					</footer>
+					
+				<div id="result">
+					<div id="reply">
+					</div>
+
+
 						</footer>
 
 					</form>
+
 				</div>
 			</div>
 			<br> <br>

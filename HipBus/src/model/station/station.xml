@@ -74,7 +74,7 @@
 		insert into HB_StationReply( replynum,num,email,content,
 		ref_num,re_step,re_level,reg_date,status)
 		values(HB_replyseq.NEXTVAL,#{num},#{email},
-		#{content},#{ref_num},#{re_step},#{re_level},sysdate,1)
+		#{content},#{ref_num},#{re_step},#{re_level},sysdate,0)
 	</insert>
 	
 	<update id="updateReply" parameterType="model.ReplyDto">
@@ -114,5 +114,8 @@
 		update HB_StationReply set re_step=re_step-1
 		where ref_num=#{ref_num} and re_step &gt; #{re_step}
 	</update>				
-
+	<!--  대댓글 -->
+	<select id="getInfReplys" parameterType="int" resultType="model.ReplyDto">
+		select * from HB_StationReply where ref_num=#{ref_num} and re_step=1 order by reg_date asc
+	</select>
 </mapper>

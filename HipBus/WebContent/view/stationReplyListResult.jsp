@@ -15,7 +15,9 @@
 					email : '${article.email}',
 					content : '${article.content}',
 					reg_date : '${article.reg_date}',
-					replynum : '${article.replynum}'
+					replynum : '${article.replynum}',
+					ref_num :  ${article.ref_num},
+					re_step :  ${article.re_step}
 				}
 			</c:forEach>
 		]</data>
