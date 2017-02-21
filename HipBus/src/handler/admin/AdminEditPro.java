@@ -32,9 +32,7 @@ public class AdminEditPro implements CommandHandler {
 		}
 		
 		String email =(String)request.getSession().getAttribute("memEmail");
-		System.out.println(email);
-		
-		
+				
 		MemberDto dto = new MemberDto();
 		dto.setEmail(email);
 		dto.setNick(request.getParameter("nick"));
