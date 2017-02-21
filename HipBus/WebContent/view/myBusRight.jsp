@@ -18,12 +18,12 @@
 						</button>
 					</div>
 				</c:if>
-				<c:if test="${driver!=email and upcomingDto}">
+				<c:if test="${driver!=email and upcomingDto!=null}">
 					<div class="w3-right w3-padding-12">
 						<button class="w3-btn" onclick="location='myBusUpcoming.do?driver=${driver}'">${str_goUpcomingList}</button>
 					</div>
 				</c:if>
-				<c:if test="${driver!=email and !upcomingDto}">
+				<c:if test="${driver!=email and upcomingDto==null}">
 					<div class="w3-right w3-padding-12">
 						&nbsp;
 					</div>

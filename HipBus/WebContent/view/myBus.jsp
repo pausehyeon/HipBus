@@ -255,7 +255,7 @@ textarea:focus {
 		board += '<hr class="w3-clear">';
 		board += '<input type="hidden" name="'+ data.num +'">';
 		board += '<textarea readonly="true" rows="3" class="w3-padding-left">'+ data.content+ "</textarea>";
-			if(data.email=="${sessionScope.memEmail}" || "${driver}"=="<%=session.getAttribute("memEmail")%>"){	// 작성자와 세션이메일이 같거나 버스주인과 이메일이 같으면 버튼을 붙인다
+			if(data.email=="${email}" || "${driver}"=="${email}" || "${my_level}"==3){	// 작성자와 세션이메일이 같거나 버스주인과 이메일이 같으면 버튼을 붙인다
 				board += appendBtn;
 			}
 		board += '</div>';
@@ -393,7 +393,7 @@ textarea:focus {
 			</div>
 
 			<!--  Right Column -->
-			<c:import url="../myBusRight.do?driver=${driver}&email=${email}"></c:import>
+			<c:import url="../myBusRight.do?driver=${driver}"></c:import>
 			<!-- End Right Column -->
 
 			<!-- End Grid -->
