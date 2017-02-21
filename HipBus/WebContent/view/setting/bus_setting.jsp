@@ -73,10 +73,10 @@
 <!-- myBusUpcomingWrite.jsp -->
 <c:set var="str_upcoming" value="Upcoming"/>
 <c:set var="str_concertName" value="공연명"/>
-<c:set var="str_location" value="* 장소"/>
-<c:set var="str_cast" value="* 출연진"/>
-<c:set var="str_date" value="* 일시"/>
-<c:set var="str_time" value="* 시간"/>
+<c:set var="str_location" value="장소"/>
+<c:set var="str_cast" value="출연진"/>
+<c:set var="str_date" value="공연 일자"/>
+<c:set var="str_time" value="공연 시각"/>
 <c:set var="str_register" value="등록"/>
 
 <!-- myBusVideos.jsp -->

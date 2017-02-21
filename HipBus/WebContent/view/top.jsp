@@ -107,16 +107,26 @@
 
 			<li class="w3-hide-small w3-right">
 				<a href="myBus.do?driver=${sessionScope.memEmail}" class="w3-padding-large w3-hover-white" title="${str_myBus}">
-					<img src="${project}/hipbusSave/${member.imglocation}" class="w3-circle" style="height: 25px; width: 25px" alt="Crew Bus">
+					<c:if test="${member.imglocation eq null}">
+						<img src="${project}/view/img/HipBusLogo_pale_sq.png" class="w3-circle" style="height: 25px; width: 25px" alt="My Bus">
+					</c:if>
+					<c:if test="${member.imglocation ne null}">
+						<img src="${project}/hipbusSave/${member.imglocation}" class="w3-circle" style="height: 25px; width: 25px" alt="My Bus">
+					</c:if>
 				</a>
 			</li>
 
-			<c:if test="${hasMyCrew eq 1}">
+			<c:if test="${myCrews ne null}">
 				<!-- 가입한 크루가 있으면 -->
 				<c:forEach var="myCrew" items="${myCrews}" begin="0" end="${fn:length(myCrews)}">
 					<li class="w3-hide-small w3-right">
 						<a href="crewBus.do?driver=${myCrew.crewid}" class="w3-padding-large w3-hover-white" title="${str_crewBus}">
-							<img src="${project}/${myCrew.imglocation}" class="w3-circle" style="height: 25px; width: 25px" alt="My Bus">
+							<c:if test="${myCrew.imglocation eq null}">
+								<img src="${project}/view/img/CrewBusLogo_pale_sq.png" class="w3-circle" style="height: 25px; width: 25px" alt="Crew Bus">
+							</c:if>
+							<c:if test="${myCrew.imglocation ne null}">
+								<img src="${project}/hipbusSave/${myCrew.imglocation}" class="w3-circle" style="height: 25px; width: 25px" alt="Crew Bus">
+							</c:if>
 						</a>
 					</li>
 				</c:forEach>
