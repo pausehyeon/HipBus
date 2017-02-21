@@ -6,8 +6,65 @@
 
 <!DOCTYPE html>
 <html>
-<title>${str_title}</title>
+<title>${str_titleAdmin}</title>
 <script type="text/javascript">
+	verifyNick=function(){
+		var params = "nick=" + $('input[name="nick"]').val();
+		var request = new Request(function() {
+			if(request.httpRequest.readyState == 4){
+				if(request.httpRequest.status == 200){
+					if(request.httpRequest.responseText.trim() == "0"){
+						$('#nickresult').removeClass('w3-text-red').addClass('w3-text-blue').text("${str_nickOk}");	
+					}else{
+						$('#nickresult').removeClass('w3-text-blue').addClass('w3-text-red').text("${str_nickNo}");	
+					}
+				}else{
+					$('#nickresult').text('오류');
+				}
+			}else{
+				console.log( "통신중..." );
+			}	
+		}, "verifyNickResult.do", "POST", params);
+		request.sendRequest();
+	}
+	$(document).ready(function(){
+	//비밀번호-숫자, 알파벳조합 길이가 5~10글자 이하
+	$('input[name="passwd"]').keyup(function(){
+		if( isNaN( Number( $(this).val() ) ) ){
+		//숫자가 아닌 경우
+			var containsNumber = false;
+			for(var i=0; i<10; i++){
+				if( $(this).val().indexOf(i) != -1)	containsNumber = true;
+			}
+			if(containsNumber == false){
+				$('#passwdresult').removeClass('w3-text-blue').addClass('w3-text-red').text("${str_passwdError1}");
+			}else if( $(this).val().length<5 ){
+				//길이 짧음
+				var minlength = 5; 
+				$('#passwdresult').removeClass('w3-text-red').addClass('w3-text-blue').text('*'+minlength+"${str_passswdError2}");
+			}else if( $(this).val().length>10 ){
+				//길이가 김
+				var maxlength = 10;
+				$('#passwdresult').removeClass('w3-text-red').addClass('w3-text-blue').text("${str_passwdError3}"+maxlength+"${str_passwdError4}");
+				$(this).val( $(this).val().substring(0, maxlength) );
+			}else{
+				$('#passwdresult').removeClass('w3-text-red').addClass('w3-text-blue').text("${str_passwdOk}");					
+			}
+		}else{
+		//숫자인 경우
+			$('#passwdresult').removeClass('w3-text-blue').addClass('w3-text-red').text("${str_passwdError1}");
+		}
+	});
+	//비밀번호 확인
+	$('input[name="passwdcheck"]').keyup(function(){
+		if( $(this).val() == inputform.passwd.value){
+			$('#passwdcheckresult').removeClass('w3-text-red').addClass('w3-text-blue').text("${str_passwdCheckOk}");
+		}else{
+			$('#passwdcheckresult').removeClass('w3-text-blue').addClass('w3-text-red').text("${str_passwdCheckNo}");
+		}			
+	});
+	
+	});
 		
 		keywordCheck=function(){
 			if(! search.keyword.value){
@@ -328,29 +385,29 @@
 				<!-- 해당관리자 정보를 불러옴 -->
 			</h5>
 
-			<form id="inputform" class="w3-container">
+			<form id="inputform" class="w3-container" method="post" action="adminEditPro.do">
 				<p>
 					<label>${str_amNick}</label>
-					<input class="w3-input" type="text" id="nick">
-				<div class="w3-text-red w3-xsmall w3-right">*이미 존재하는 닉네임입니다.innerHTML</div>
+					<input name="nick" class="w3-input" type="text" value="${member.nick}" onkeyup="verifyNick()">
+					<div class="w3-text-blue w3-xsmall w3-right" id="nickresult">${str_modifyNick}</div>
 				</p>
 				<br> <br>
 				<p>
 					<label>${str_amPasswd}</label>
-					<input class="w3-input" type="text" id="passwd">
-				<div class="w3-text-blue w3-xsmall w3-right">*비밀번호는 숫자와 알파벳 5~10자리로 입력해주세요. innerHTML</div>
+					<input name="passwd" class="w3-input" type="password">
+					<div class="w3-text-blue w3-xsmall w3-right" id="passwdresult">${str_modifyPasswd}</div>
 				</p>
 				<br>
 				<p>
 					<label>${str_amPasswdCheck}</label>
-					<input class="w3-input" type="text" id="passwdCheck">
-				<div class="w3-text-blue w3-xsmall w3-right">*확인을 위해 다시 한번 입력해주세요. innerHTML</div>
+					<input class="w3-input" type="password" name="passwdcheck">
+					<div class="w3-text-blue w3-xsmall w3-right" id="passwdcheckresult">${str_passwdCheck}</div>
 				</p>
 				<br> <br>
 				</p>
 				<br> <br>
 				<div class="w3-center w3-row">
-					<input class="w3-btn w3-hover-teal" type="submit" value="${str_amModifyBtn}">
+					<button class="w3-btn w3-hover-teal" type="submit">${str_amModifyBtn}</button>
 				</div>
 			</form>
 		</div>

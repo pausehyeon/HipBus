@@ -8,7 +8,7 @@ import model.CrewMemberDto;
 import model.MemberDto;
 
 public interface AdminDao {
-	//관리자현황
+		//관리자현황
 		public int reportMember();		//전체멤버 수 불러오기
 		public int reportGrade();		//3등급관리자 수만 부르기
 		public int reportCrew();		//크루 수 전체
@@ -41,4 +41,7 @@ public interface AdminDao {
 		public int updateAd(AdDto dto);
 		public int adnumCheck(int ad_num);
 		public int insertAd(AdDto dto);
+		
+		//관리자 정보수정
+		public int updateAdmin(MemberDto dto);
 }

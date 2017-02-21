@@ -1,12 +1,20 @@
+<%@page import="handler.admin.AdminEditPro" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
 
-</body>
-</html>
+<%@include file="/view/setting/setting.jsp"%>
+<%@include file="/view/setting/admin_setting.jsp"%>
+
+
+<c:if test="${result != 0}">
+	<c:redirect url="admin.do#modify"/>
+</c:if>
+<!-- 	<script type="text/javascript">
+		alert("성공");
+	</script> -->
+<c:if test="${result == 0}">
+	<script type="text/javascript">
+		alert("관리자 정보수정 실패");
+	</script>
+	<meta http-equiv="refresh" content="5; url=admin.do">
+</c:if>

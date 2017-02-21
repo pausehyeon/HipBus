@@ -82,4 +82,10 @@
 		where ad_num=#{ad_num}
 	</update>
 	
+	<!-- 관리자 정보 수정하기 -->
+	<update id="updateAdmin" parameterType="model.MemberDto">
+		update hb_member set nick=#{nick, jdbcType=VARCHAR}, passwd=#{passwd, jdbcType=VARCHAR}
+		where email=#{email}
+	</update>
+	
 </mapper>
