@@ -53,5 +53,7 @@ public interface GarageDao {
 	public List<UpcomingDto> getDateList(Map<String, Object> upcomingMap);
 
 	public int searchDate(Map<String, Object> dateMap);
+	
+	public String getAd(int ad_num);
 
 }

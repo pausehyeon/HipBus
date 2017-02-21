@@ -139,6 +139,15 @@ public class GarageUpcoming implements CommandHandler {
 		}
 		request.setAttribute("count", count);
 
+		//상업광고
+		String ad1_imglocation = dao.getAd(1);
+		String ad2_imglocation = dao.getAd(2);
+		String ad3_imglocation = dao.getAd(3);
+		
+		request.setAttribute("ad1_imglocation", ad1_imglocation);
+		request.setAttribute("ad2_imglocation", ad2_imglocation);
+		request.setAttribute("ad3_imglocation", ad3_imglocation);
+		
 		return new ModelAndView("garageUpcoming");
 	}
 

@@ -120,10 +120,39 @@
 			</div>
 
 			<div class="w3-third">
+				<!-- 상업광고 -->
 				<div class="w3-container">
-					<p class="w3-border w3-padding-large w3-padding-128 w3-center">AD</p>
-					<p class="w3-border w3-padding-large w3-padding-48 w3-center">AD</p>
-					<p class="w3-border w3-padding-large w3-padding-128 w3-center">AD</p>
+					<!-- 광고 있을 때 -->
+					<c:if test="${ad1_imglocation eq null}">
+						<div class="w3-col m12 w3-margin-top">
+							<p class="w3-border w3-padding-large w3-padding-128 w3-center">AD</p>
+						</div>
+					</c:if>
+					<c:if test="${ad1_imglocation ne null}">
+						<div class="w3-col m12 w3-margin-top">
+							<img src="${project}/hipbusSave/${ad1_imglocation}" width="100%" />
+						</div>
+					</c:if>
+					<c:if test="${ad2_imglocation eq null}">
+						<div class="w3-col m12 w3-margin-top">
+							<p class="w3-border w3-padding-large w3-padding-48 w3-center">AD</p>
+						</div>
+					</c:if>
+					<c:if test="${ad2_imglocation ne null}">
+						<div class="w3-col m12 w3-margin-top">
+							<img src="${project}/hipbusSave/${ad2_imglocation}" width="100%" />
+						</div>
+					</c:if>
+					<c:if test="${ad3_imglocation eq null}">
+						<div class="w3-col m12 w3-margin-top">
+							<p class="w3-border w3-padding-large w3-padding-48 w3-center">AD</p>
+						</div>
+					</c:if>
+					<c:if test="${ad3_imglocation ne null}">
+						<div class="w3-col m12 w3-margin-top">
+							<img src="${project}/hipbusSave/${ad3_imglocation}" width="100%" />
+						</div>
+					</c:if>
 				</div>
 			</div>
 		</div>

@@ -180,5 +180,10 @@
 		content, imglocation, readcount, reg_date, row_number() over(order by reg_date 
 		desc) r from hb_upcoming) where r &gt;= #{start} and r &lt;= #{end} order 
 		by reg_date desc </select> -->
+		
+	<select id="getAd" parameterType="int" resultType="String">
+		select imglocation from hb_ad where ad_num=#{ad_num}
+	</select>
+		
 </mapper>
 

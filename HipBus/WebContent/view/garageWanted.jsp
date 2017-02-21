@@ -63,10 +63,39 @@
 
 
 			<div class="w3-third">
+				<!-- 상업광고 -->
 				<div class="w3-container">
-					<p class="w3-border w3-padding-large w3-padding-128 w3-center">AD</p>
-					<p class="w3-border w3-padding-large w3-padding-48 w3-center">AD</p>
-					<p class="w3-border w3-padding-large w3-padding-128 w3-center">AD</p>
+					<!-- 광고 있을 때 -->
+					<c:if test="${ad1_imglocation eq null}">
+						<div class="w3-col m12 w3-margin-top">
+							<p class="w3-border w3-padding-large w3-padding-128 w3-center">AD</p>
+						</div>
+					</c:if>
+					<c:if test="${ad1_imglocation ne null}">
+						<div class="w3-col m12 w3-margin-top">
+							<img src="${project}/hipbusSave/${ad1_imglocation}" width="100%" />
+						</div>
+					</c:if>
+					<c:if test="${ad2_imglocation eq null}">
+						<div class="w3-col m12 w3-margin-top">
+							<p class="w3-border w3-padding-large w3-padding-48 w3-center">AD</p>
+						</div>
+					</c:if>
+					<c:if test="${ad2_imglocation ne null}">
+						<div class="w3-col m12 w3-margin-top">
+							<img src="${project}/hipbusSave/${ad2_imglocation}" width="100%" />
+						</div>
+					</c:if>
+					<c:if test="${ad3_imglocation eq null}">
+						<div class="w3-col m12 w3-margin-top">
+							<p class="w3-border w3-padding-large w3-padding-48 w3-center">AD</p>
+						</div>
+					</c:if>
+					<c:if test="${ad3_imglocation ne null}">
+						<div class="w3-col m12 w3-margin-top">
+							<img src="${project}/hipbusSave/${ad3_imglocation}" width="100%" />
+						</div>
+					</c:if>
 				</div>
 			</div>
 		</div>
@@ -74,23 +103,23 @@
 		<div class="w3-row w3-center w3-margin-bottom">
 			<div class="w3-col m7">
 				<div class="w3-row-padding">
-				<form name="searchform" method="get" action="garageWantedSearch.do" onsubmit="return search()">
-					<div class="w3-col m2">
-						<select name="searchType" class="w3-padding w3-theme-l4 w3-btn w3-margin-right">
-							<option value="nick">${str_Writer}</option>
-							<option value="subject">${str_Subject}</option>
-							<option value="content">${str_Content}</option>
-						</select>
-					</div>
-					<div class="w3-col m3">
-						<input type="text" name="keyword" placeholder="${str_Search}" class="w3-input">
-					</div>
-					<div class="w3-col m1">
-						<button type="submit" class="w3-btn-block w3-theme-d1 w3-padding">
-							<i class="fa fa-search"></i>
-						</button>
-					</div>
-				</form>
+					<form name="searchform" method="get" action="garageWantedSearch.do" onsubmit="return search()">
+						<div class="w3-col m2">
+							<select name="searchType" class="w3-padding w3-theme-l4 w3-btn w3-margin-right">
+								<option value="nick">${str_Writer}</option>
+								<option value="subject">${str_Subject}</option>
+								<option value="content">${str_Content}</option>
+							</select>
+						</div>
+						<div class="w3-col m3">
+							<input type="text" name="keyword" placeholder="${str_Search}" class="w3-input">
+						</div>
+						<div class="w3-col m1">
+							<button type="submit" class="w3-btn-block w3-theme-d1 w3-padding">
+								<i class="fa fa-search"></i>
+							</button>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>

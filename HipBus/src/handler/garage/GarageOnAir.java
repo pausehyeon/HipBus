@@ -13,12 +13,15 @@ import org.springframework.web.servlet.ModelAndView;
 import handler.CommandHandler;
 import handler.HandlerException;
 import model.ChannelDto;
+import model.garage.GarageDao;
 import model.general.GeneralDao;
 
 @Controller
 public class GarageOnAir implements CommandHandler {
 	@Resource(name = "generalDao")
 	private GeneralDao generalDao;
+	@Resource(name="garageDao")
+	private GarageDao garageDao;
 
 	@RequestMapping("/garageOnAir.do")
 	@Override
@@ -51,6 +54,16 @@ public class GarageOnAir implements CommandHandler {
 		}
 		channelsJson += "]";
 		request.setAttribute("channelsJson", channelsJson);
+		
+		
+		//상업광고
+		String ad1_imglocation = garageDao.getAd(1);
+		String ad2_imglocation = garageDao.getAd(2);
+		String ad3_imglocation = garageDao.getAd(3);
+		
+		request.setAttribute("ad1_imglocation", ad1_imglocation);
+		request.setAttribute("ad2_imglocation", ad2_imglocation);
+		request.setAttribute("ad3_imglocation", ad3_imglocation);
 
 		return new ModelAndView("garageOnAir");
 	}

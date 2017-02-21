@@ -149,5 +149,10 @@ public class GarageDBBean implements GarageDao {
 		// TODO Auto-generated method stub
 		return SqlMapClient.getSession().selectOne("Garage.searchDate", dateMap);
 	}
+	
+	@Override
+	public String getAd(int ad_num) {
+		return SqlMapClient.getSession().selectOne("Garage.getAd", ad_num);
+	}
 
 }
