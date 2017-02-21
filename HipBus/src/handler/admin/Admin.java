@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import handler.CommandHandler;
 import handler.HandlerException;
+import model.CrewMemberDto;
 import model.MemberDto;
 import model.admin.AdminDao;
 import model.general.GeneralDao;
@@ -123,7 +124,8 @@ public class Admin implements CommandHandler {
 			request.setAttribute("pageStart", pageStart);
 			request.setAttribute("pageEnd", pageEnd);
 			
-			List<MemberDto> list = adminDao.getMemberLists(map);		
+			List<MemberDto> list = adminDao.getMemberLists(map);
+			
 			request.setAttribute("list", list);
 			request.setAttribute("number", number);
 			
@@ -147,9 +149,9 @@ public class Admin implements CommandHandler {
 			request.setAttribute("slist", slist);
 		}
 		
-		
-		
-		
+		//크루목록 가져오기
+		List<CrewMemberDto> clist = adminDao.getCrewId();
+		request.setAttribute("clist", clist);
 		
 		
 		
