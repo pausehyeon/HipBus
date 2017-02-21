@@ -1,6 +1,7 @@
 package handler.main;
 
 import java.util.HashMap;
+
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -14,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import handler.CommandHandler;
 import handler.HandlerException;
-import model.MemberDto;
 import model.main.MainDao;
 
 @Controller
@@ -29,21 +29,25 @@ public class MainValidatePro implements CommandHandler{
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		// TODO Auto-generated method stub
-		/*
-		MemberDto dto = new MemberDto();
-				
+		
+
 		String email= request.getParameter("email");
-		request.setAttribute("email", email);		
-		
 		String code = request.getParameter("code");
-		request.setAttribute("code", code);		
+				
+		Map<String, String> emailCheck = new HashMap<String, String>();
+		emailCheck.put("email", email);
+		emailCheck.put("code", code);	
 		
-		Map<String, String> ms = new HashMap<String, String>();
-		ms.put("email", dto.getEmail() );
-		ms.put("code", code);	
+		int resultMail = mainDao.emailCheck( emailCheck );
+		request.setAttribute("resultMail", resultMail);
 		
-		int resultMail = mainDao.emailValidate( ms );
-		request.setAttribute("resultMail", resultMail);	*/
+		if (resultMail == 1) {
+			resultMail = mainDao.codeUpdate( email );						
+		} else {
+			//방어코드
+		}
+		
+		
 		
 		
 		return new ModelAndView("mainValidatePro");
