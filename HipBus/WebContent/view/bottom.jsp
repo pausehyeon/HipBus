@@ -17,7 +17,7 @@
 		<span class="w3-bottom w3-left w3-padding-large w3-hover-opacity" onclick="crewBusGet()">crewBus</span>
 	</div>
 	<div style="border: 1px solid white; float: left; width: 5%;">
-		<span class="w3-bottom w3-left w3-padding-large w3-hover-opacity" onclick="location.href='garageNews.do'">mybus3</span>
+		<span class="w3-bottom w3-left w3-padding-large w3-hover-opacity" onclick="boardGet()">board</span>
 	</div>
 	<div id="id01" class="w3-modal">
 		<div class="w3-modal-content w3-padding-32 w3-animate-top w3-card-8">

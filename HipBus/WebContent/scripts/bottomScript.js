@@ -26,3 +26,16 @@ function crewBusGet() {
 	var crewBusDriver = localStorage.getItem("crewBus");
 	location.href = crewBusDriver;
 }
+
+function boardSet(){
+	var boardSrc = document.location.href;
+	if	(board != ""){
+		loaclStorage.setItem("board",boardSrc);
+	}
+	
+}
+
+function boardGet(){
+	var boardSrc = loaclStorage.getItem("board");
+	loaction.href= boardSrc;
+}
