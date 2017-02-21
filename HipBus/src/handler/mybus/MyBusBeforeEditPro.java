@@ -23,21 +23,18 @@ public class MyBusBeforeEditPro implements CommandHandler {
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		// TODO Auto-generated method stub
-		
+		String driver = request.getParameter("driver");
 		String passwd = request.getParameter("passwd");
-		String email = (String) request.getSession().getAttribute("memEmail");
-		String driver = request.getParameter("driver");				
+		String email = (String) request.getSession().getAttribute("memEmail");						
 		String passwdCheck = mybusDao.getMember(email).getPasswd();		
 		
 		int result = 0;
 		
 		if ( passwd.equals(passwdCheck)) {
-			result = mybusDao.beforeEditCheck(passwd);					
+			result = 0;								
 		} else if ( ! passwd.equals(passwdCheck)) {
 			result = -1;
-		} else {
-			result = 1;
-		}
+		} 
 		
 		
 		request.setAttribute("driver", driver);

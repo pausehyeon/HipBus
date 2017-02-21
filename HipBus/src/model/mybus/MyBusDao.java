@@ -42,6 +42,5 @@ public interface MyBusDao {
 	public List<WantedDto> getWantedArticles(String driver);
 	public int modifyWantedWholeArticle(WantedDto article);
 	public int modifyWantedArticle(WantedDto article);
-	public int deleteWantedArticle(int num);
-	public int beforeEditCheck(String passwd);
+	public int deleteWantedArticle(int num);	
 }

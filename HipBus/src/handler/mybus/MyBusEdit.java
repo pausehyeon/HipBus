@@ -17,6 +17,10 @@ public class MyBusEdit implements CommandHandler{
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		// TODO Auto-generated method stub
+		
+		String driver = request.getParameter("driver");		
+		request.setAttribute("driver", driver);
+		
 		return new ModelAndView("myBusEdit");
 	}
 }

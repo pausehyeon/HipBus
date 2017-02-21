@@ -1,7 +1,5 @@
 package handler.mybus;
 
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -25,11 +23,8 @@ public class MyBusBeforeEdit implements CommandHandler {
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 				
-		String driver = request.getParameter("driver");
-		
-		request.setAttribute("driver", driver);		
-				
-				
+		String driver = request.getParameter("driver");		
+		request.setAttribute("driver", driver);				
 		
 		return new ModelAndView("myBusBeforeEdit");
 	}

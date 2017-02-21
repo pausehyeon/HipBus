@@ -114,8 +114,5 @@ public class MyBusDBBean implements MyBusDao {
 	@Override
 	public int deleteWantedArticle(int num) {
 		return SqlMapClient.getSession().delete("MyBus.deleteWantedArticle", num);
-	}
-	public int beforeEditCheck (String passwd) {
-		return SqlMapClient.getSession().selectOne("MyBus.beforeEditCheck", passwd);
-	}
+	}	
 }

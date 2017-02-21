@@ -142,9 +142,6 @@
 	<update id="deleteWantedArticle" parameterType="int">
 		delete hb_wanted where num=#{num}
 	</update>	
-	<select id="beforeEditCheck" parameterType="String" resultType="model.MemberDto">
-		select * from hb_member where passwd=#{passwd}		
-	</select>
 </mapper>
 
 
