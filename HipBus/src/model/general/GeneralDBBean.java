@@ -57,4 +57,14 @@ public class GeneralDBBean implements GeneralDao {
 	public int getVerificationCode(String email) {
 		return session.selectOne("General.getVerificationCode", email);
 	}
+	
+	@Override
+	public List<MemberDto> getHoppedOnMembers(String email) {
+		return session.selectList("General.getHoppedOnMembers", email);
+	}
+	
+	@Override
+	public List<CrewDto> getHoppedOnCrews(String email) {
+		return session.selectList("General.getHoppedOnCrews", email);
+	}
 }

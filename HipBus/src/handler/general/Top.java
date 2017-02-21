@@ -36,6 +36,11 @@ public class Top implements CommandHandler {
 			MemberDto member = dao.getMember(memEmail);
 			request.setAttribute("member", member);
 			
+			List<CrewDto> hoppedOnCrews = dao.getHoppedOnCrews(memEmail);
+			request.setAttribute("hoppedOnCrews", hoppedOnCrews);
+			
+			List<MemberDto> hoppedOnMembers = dao.getHoppedOnMembers(memEmail);
+			request.setAttribute("hoppedOnMembers", hoppedOnMembers);
 		}
 
 		return new ModelAndView("top");

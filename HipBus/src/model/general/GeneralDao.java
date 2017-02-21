@@ -15,4 +15,6 @@ public interface GeneralDao {
 	public List<CrewDto> getMyCrews(String email);
 	public List<ChannelDto> getChannels();
 	public int getVerificationCode(String email);
+	public List<MemberDto> getHoppedOnMembers(String email);
+	public List<CrewDto> getHoppedOnCrews(String email);
 }

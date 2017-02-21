@@ -40,4 +40,12 @@
 	<select id="getVerificationCode" parameterType="String" resultType="int">
 		select code from HB_Verification where email=#{email} 
 	</select>
+	
+	<select id="getHoppedOnMembers" parameterType="String" resultType="model.MemberDto">
+		select distinct p.driver as email, m.nick, m.imglocation from hb_passengers p, hb_member m where p.driver = m.email and p.email = #{email}
+	</select>
+	
+	<select id="getHoppedOnCrews" parameterType="String" resultType="model.CrewDto">
+		select distinct p.driver as crewid, c.crewname, c.imglocation from hb_passengers p, hb_crew c where p.driver = c.crewid and p.email = #{email}
+	</select>
 </mapper>
