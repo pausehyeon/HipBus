@@ -9,7 +9,7 @@
 <title>${str_title}</title>
 <script type="text/javascript">
 		
-		keywordcheck=function(){
+		keywordCheck=function(){
 			if(! search.keyword.value){
 				alert("${str_memSearchMsg}");
 				search.keyword.focus();
@@ -134,15 +134,15 @@
 								<th width="80px"><a href="#" style="text-decoration: none">&nbsp;&nbsp;${str_memNick}</a></th>
 								<th style="text-align: certer"><a href="#" style="text-decoration: none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${str_memAuthority}</a></th>
 							</tr>
-						<c:if test="${count == 0}">
+						<c:if test="${count eq 0}">
 							<tr>
 								<td colspan="4" style="text-align : center">
 									${str_listMsg}
 								</td>
 							</tr>
 						</c:if>
-						<c:if test="${count != 0}">
-							<c:if test="${slist == null}">
+						<c:if test="${count ne 0}">
+							<c:if test="${slist eq null}">
 								<c:forEach var="getMember" items="${list}" varStatus="status">
 									<tr>
 										<td>${getMember.mem_level}&nbsp;${str_memGrade}</td>
@@ -153,35 +153,24 @@
 										<td>${getMember.nick}</td>
 										<!-- 불러온 닉네임 -->
 										<td style="text-align: left;"><a class="w3-hover-black w3-padding" style="text-decoration: none" href="myBus.do?driver=${getMember.email}">${str_memGo}&nbsp;<i class="fa fa-bus"></i></a>
+										<button id="${status.count}" onclick="myFunction('crew${status.count}')">
+											${str_crewList}
+										</button>												
+											<div id="crew${status.count}" class="w3-accordion-content w3-container">
+												<ul>
+												 	<c:forEach var="cl" items="${clist}">
+														<c:if test="${cl.email eq getMember.email}">
+															<li><a href="crewBus.do?driver=${cl.crewid}">${cl.crewid}</a>
+														</c:if>
+													</c:forEach>
+												</ul>
+											</div>
 										
-										<form action="admin.do" name="butto">
-										<button id="1" type="submit" onclick="hid(${getMember.email})">
-											크루목록 보기
-										</button>
-										
-										<a id="2"  href="#manageMembers" onclick="myFunction('crew')">
-											크루
-										</a>
-										<c:if test="${clist ==null}">
-											크루에 가입되어 잇지 않습니다
-										</c:if>
-										<c:if test="${clist != null}">
-										<c:forEach var="cl" items="${clist}">
-										<div id="crew" class="w3-accordion-content w3-container">
-											<ul>
-											
-												<li><a href="#">${cl}</a>
-											
-											</ul>
-										</div>
-										</c:forEach>
-										</c:if>
-										</form>
-										<c:if test="${getMember.mem_level == 1}">
+										<c:if test="${getMember.mem_level eq 1}">
 											<a class="w3-hover-black w3-padding" style="text-decoration: none" href="adminMemberManagePro.do?mem_level=2&email=${getMember.email}">${str_memModify}</a>
 										</c:if>
 
-										<c:if test="${getMember.mem_level == 2}">
+										<c:if test="${getMember.mem_level eq 2}">
 											<a class="w3-hover-black w3-padding" style="text-decoration: none" href="adminMemberManagePro.do?mem_level=1&email=${getMember.email}">${str_memModify}</a>
 										</c:if>
 										<a class="w3-hover-black w3-padding" style="text-decoration: none" href="adminMemberEjectPro.do?email=${getMember.email}">${str_memLeave}</a>
@@ -216,7 +205,7 @@
 								</c:forEach>
 							</c:if>
 						</c:if>
-						</table>
+					</table>
 					</div>
 			
 					<div class="w3-row">
@@ -244,7 +233,7 @@
 							</ul>
 						</div>
 	
-						<form class="w3-container" name="search" action="admin.do#manageMembers" onsubmit="return keywordcheck()">
+						<form class="w3-container" name="search" action="admin.do#manageMembers" onsubmit="return keywordCheck()">
 							<select class="w3-select w3-border w3-quarter" name="category">
 								<option value="${str_memSearchOption}">${str_memSearchOption}</option>
 								<option value="email">${str_memEmail}</option>
@@ -261,7 +250,7 @@
 
 		</div>
 		
-		<div>
+		</div>
 
 		<hr id="addad">
 		<div class="w3-content w3-padding-128">
