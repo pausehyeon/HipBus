@@ -184,10 +184,10 @@
 						<li class="w3-padding-8"><b>${str_perf_cast}</b> ${upcoming.perf_cast}</li>
 						<li class="w3-light-grey w3-padding-24"><c:if test="${fn:contains(upcoming.driver, '@') }">
 								<!-- 개인인 경우 -->
-								<a href="myBusUpcomingRead.do?num=${upcoming.num}" class="w3-btn w3-green w3-padding-large">${str_detail}</a>
+								<a href="myBusUpcomingRead.do?driver=${upcoming.driver}&num=${upcoming.num}" class="w3-btn w3-green w3-padding-large">${str_detail}</a>
 							</c:if> <c:if test="${not fn:contains(upcoming.driver, '@') }">
 								<!-- 크루인경우 -->
-								<a href="crewBusUpcomingRead.do?num=${upcoming.num}" class="w3-btn w3-green w3-padding-large">${str_detail}</a>
+								<a href="crewBusUpcomingRead.do?driver=${upcoming.driver}&num=${upcoming.num}" class="w3-btn w3-green w3-padding-large">${str_detail}</a>
 							</c:if></li>
 					</ul>
 				</div>
