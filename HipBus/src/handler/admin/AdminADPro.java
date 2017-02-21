@@ -47,10 +47,10 @@ public class AdminADPro implements CommandHandler {
 				html = multi.getParameter("htmlCode");	
 				imglocation = "";
 			}else{
-				if(ad_num == 2){
-					imglocation = new ImageResize().resize(request, imglocation, 0.5, 569);
-				}else{
+				if(ad_num == 1){
 					imglocation = new ImageResize().resize(request, imglocation, 1, 569);
+				}else{
+					imglocation = new ImageResize().resize(request, imglocation, 0.5, 569);
 				}
 			}
 		
