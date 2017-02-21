@@ -32,36 +32,47 @@ textarea:focus {
 	function loadBoard(boardCount, more) {	// 방명록리스트 가져오는 메소드
 		var params = 'driver=' + "${driver}" + '&boardCount=' + boardCount;
 		request = new Request(
-				function() {
-					var boardList = document.getElementById("boardList");
-					if (request.httpRequest.readyState == 4) {
-						$('#console').remove();
-						if (request.httpRequest.status == 200) {
-							var msg = "";
-							var xmldoc = request.httpRequest.responseXML;
-							var code = xmldoc.getElementsByTagName("code").item(0).innerHTML;
-							if (code == "selected") {
-								var data = eval("("
-										+ xmldoc.getElementsByTagName("data").item(0).innerHTML + ")");
-								if (data.length == 0) {
-									msg = "현재 방명록이 없습니다. 첫방명록을 작성해보세요!";
-									$('#boardInfo').html(msg);
+			function() {
+				var boardList = document.getElementById("boardList");
+				if (request.httpRequest.readyState == 4) {
+					if (request.httpRequest.status == 200) {
+						var msg = "";
+						var xmldoc = request.httpRequest.responseXML;
+						var code = xmldoc.getElementsByTagName("code").item(0).innerHTML;
+						if (code == "selected") {
+							var data = eval("("+ xmldoc.getElementsByTagName("data").item(0).innerHTML + ")");
+							if (data.length == 0) {
+								msg = "현재 방명록이 없습니다. 첫방명록을 작성해보세요!";
+								$('#boardInfo').html(msg);	// 방명록 없을때 메세지출력용 div
+								$('#moreBoard').hide();
+							} else {
+								if ( more ) {	// more매개변수가 왔으면, 원래있던 리스트를 먼저 지운다
+									$('#boardList').empty();
+								}
+								if (data.length < 5){
 									$('#moreBoard').hide();
 								} else {
 									$('#moreBoard').show();
 								}
-							} else if (code == "empty") {
-								var message = xmldoc.getElementsByTagName("message").item(0).innerHTML;
-								msg += message;
 								for (var i = 0; i < data.length; i++) {	// 방명록을 위부터 하나씩 붙인다
 									var newdiv = makeBoard(data[i]);
 									boardList.appendChild(newdiv);
 								}
-				}, "myBusBoardListResult.do", "POST", params);
+							}
+						} else if (code == "empty") {
+							var message = xmldoc.getElementsByTagName(
+									"message").item(0).innerHTML;
+							msg += message;
+						}
+						$('#console').remove();
+					} else {
+						$('#console').html("readyState 에러");
+					}
 				} else {
 					$('#console').append($("<img/>",{
-						src : "${project}/view/img/loading.gif",
-						style : "width:30%"
+						src : "${project}/view/img/loading2.gif",
+						style : "width:30%",
+						class : "w3-center"
 					}));
 				}
 			}, "myBusBoardListResult.do", "POST", params);
@@ -79,14 +90,17 @@ textarea:focus {
 					if (request.httpRequest.readyState == 4) {
 						if (request.httpRequest.status == 200) {
 							var xmldoc = request.httpRequest.responseXML;
-							var code = xmldoc.getElementsByTagName("code").item(0).innerHTML;
+							var code = xmldoc.getElementsByTagName("code")
+									.item(0).innerHTML;
 							if (code == "inserted") {
-								var data = eval("("+ xmldoc.getElementsByTagName("data").item(0).innerHTML + ")");
+								var data = eval("("
+										+ xmldoc.getElementsByTagName("data")
+												.item(0).innerHTML + ")");
 								var newdiv = makeBoard(data);		// 일단 방명록을 div로 만든다
 								if (boardList.firstChild != null) {
-									var oldFirstChild = boardList.firstChild;
-									boardList.insertBefore(newdiv,oldFirstChild);
-
+									var oldFirstChild = boardList.firstChild;	// 기존 리스트의 첫번째 방명록
+									boardList.insertBefore(newdiv,				// 첫번째 방명록 위에 새 방명록을 붙인다
+											oldFirstChild);
 								}
 								if (boardList.firstChild == null) {		// 기존리스트의 첫번째 방명록이 없으면 그냥 뒤에 붙인다
 									boardList.appendChild(newdiv);
@@ -95,7 +109,8 @@ textarea:focus {
 								$('#boardInfo').html("");
 								$('console').html('성공적');
 							} else if (code == "failed") {
-								var message = xmldoc.getElementsByTagName("message").item(0).innerHTML;
+								var message = xmldoc.getElementsByTagName(
+										"message").item(0).innerHTML;
 								$('#console').html(message);
 							}
 						} else {
@@ -148,12 +163,15 @@ textarea:focus {
 					if (request.httpRequest.readyState == 4) {
 						if (request.httpRequest.status == 200) {
 							var xmldoc = request.httpRequest.responseXML;
-							var code = xmldoc.getElementsByTagName("code").item(0).innerHTML;
+							var code = xmldoc.getElementsByTagName("code")
+									.item(0).innerHTML;
 							if (code == "updated") {
-								var data = xmldoc.getElementsByTagName("data").item(0).innerHTML;
+								var data = xmldoc.getElementsByTagName("data")
+										.item(0).innerHTML;
 								alert("성공적으로 수정되었습니다.");
 							} else if (code == "failed") {
-								var message = xmldoc.getElementsByTagName("message").item(0).innerHTML;
+								var message = xmldoc.getElementsByTagName(
+										"message").item(0).innerHTML;
 								$('#console').html(message);
 							}
 							modCancel(num, data);	// 수정한 글에 수정한 내용을 띄우고 수정전 폼으로 되돌린다
@@ -206,40 +224,46 @@ textarea:focus {
 	function makeBoard(data) {
 		var newdiv = document.createElement("div");
 		newdiv.setAttribute("id", "board_" + data.num);
-		var appendBtn = ''; 
-		var modBtn = ''; 
+		var appendBtn = '';
+		var modBtn = '';
 		var board = '';
-		
-		modBtn += '<button type="button" id="modComplete" class="w3-btn w3-theme-l1 modc" style="display:none" onclick="modComplete('+ data.num+ ')">';
-		modBtn += '<i class="fa fa-check"></i>';
+
+		modBtn += '<button type="button" id="modComplete" class="w3-btn w3-theme-l1 modc" style="display:none" onclick="modComplete('
+				+ data.num + ')">';
+		modBtn += '<i class="fa fa-check"></i> ${str_modComplete}';
 		modBtn += '</button>';
-		modBtn += '<button type="button" id="modView" class="w3-btn w3-theme-l1" onclick="modBoardView('+ data.num+ ')">';
-		modBtn += '<i class="fa fa-pencil"></i>';
+		modBtn += '<button type="button" id="modView" class="w3-btn w3-theme-l1" onclick="modBoardView('
+				+ data.num + ')">';
+		modBtn += '<i class="fa fa-pencil"></i> ${str_modBoard}';
 		modBtn += '</button> &nbsp;';
-		modBtn += "<button type=\"button\" id='modCancel' class=\"w3-btn w3-theme-l1\" style=\"display:none\" onclick=\"modCancel("+ data.num + ",\'"+ data.content+ "\','creteria')\">";
-		modBtn += '<i class="fa fa-times"></i>';
+		modBtn += "<button type=\"button\" id='modCancel' class=\"w3-btn w3-theme-l1\" style=\"display:none\" onclick=\"modCancel("
+				+ data.num + ",\'" + data.content + "\','creteria')\">";
+		modBtn += '<i class="fa fa-times"></i> ${str_modCancel}';
 		modBtn += '</button>';
-		
-		appendBtn += '<div class="w3-left">';
-		if(data.email=="${sessionScope.memEmail}"){		// 글의 작성자와 세션의 이메일이 같으면 수정버튼을 보여준다
+
+		appendBtn += '<div class="w3-center">';
+		if (data.email == "${sessionScope.memEmail}") {
 			appendBtn += modBtn;
 		}
-		appendBtn += '<button type="button" id="delBoard" class="w3-btn w3-theme-l1" onclick="delBoard('+ data.num+ ')">';
-		appendBtn += '<i class="fa fa-trash-o"></i>';
+		appendBtn += '<button type="button" id="delBoard" class="w3-btn w3-theme-l1" onclick="delBoard('
+				+ data.num + ')">';
+		appendBtn += '<i class="fa fa-trash-o"></i> ${str_delBoard}';
 		appendBtn += '</button> &nbsp;';
 		appendBtn += '</div>';
-		
-		
+
 		board += '<div class="w3-container w3-card-2 w3-white w3-round w3-padding-32 w3-margin" id="list">';
-		board += '<a href="myBus.do?driver='+data.email+'"><img src="${project}/view/img/HipBusLogo_colored_sq.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width: 40px"></a>';
-		board += '<span class="w3-right w3-opacity">' + data.reg_date + '</span>';
+		board += '<a href=myBus.do?driver='
+				+ data.email
+				+ '><img src="${project}/view/img/HipBusLogo_colored_sq.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width: 40px"></a>';
+		board += '<span class="w3-right w3-opacity">' + data.reg_date
+				+ '</span>';
 		board += '<h4>' + data.nick + '</h4>';
 		board += '<hr class="w3-clear">';
 		board += '<input type="hidden" name="'+ data.num +'">';
-		board += '<textarea class="w3-padding-4" readonly="true" rows="3">' + data.content + "</textarea>";
-		if (data.email == "${sessionScope.memEmail}" || "${email==driver}" || "${my_level}"!=3) {
-			board += appendBtn;
-		}
+		board += '<textarea readonly="true" rows="3" class="w3-padding-left">'+ data.content+ "</textarea>";
+			if(data.email=="${sessionScope.memEmail}" || "${driver}"=="<%=session.getAttribute("memEmail")%>"){	// 작성자와 세션이메일이 같거나 버스주인과 이메일이 같으면 버튼을 붙인다
+				board += appendBtn;
+			}
 		board += '</div>';
 		
 		newdiv.innerHTML = board;
@@ -256,7 +280,7 @@ textarea:focus {
 //-->
 </script>
 <title>${str_mybusTitle}</title>
-<body class="w3-theme-l5" onload="myBusSet()">
+<body class="w3-theme-l5">
 	<!-- Navbar -->
 	<c:import url="../top.do" />
 	<!-- Page Container -->
@@ -343,16 +367,24 @@ textarea:focus {
 					<div class="w3-col m12">
 						<div class="w3-card-2 w3-round w3-white">
 							<div class="w3-container w3-padding">
-								<h6 class="w3-opacity">${str_putMsg}</h6>
-								<c:if test="${email != null}">
-									<input type="text" placeholder="${str_boardEx}" name="content" class="w3-border w3-padding w3-input" border="1">
-								</c:if>
-								<c:if test="${email == null}">
-									<input type="text" placeholder="${str_cantBoard}" name="content" class="w3-border w3-padding w3-input" border="1" readonly>
-								</c:if>
-								<button type="button" class="w3-btn w3-theme-l1" onclick="boardAppend()">
-									<i class="fa fa-pencil"></i> ${str_post}
-								</button>
+								<div class="w3-row-padding">
+									<h6 class="w3-opacity">${str_putMsg}</h6>
+								</div>
+								<div class="w3-row-padding w3-margin-bottom">
+									<div class="w3-col m10 w3-cell-middle">
+										<c:if test="${email != null}">
+											<input type="text" placeholder="${str_boardEx}" name="content" class="w3-border w3-padding w3-input" border="1">
+										</c:if>
+										<c:if test="${email == null}">
+											<input type="text" placeholder="${str_cantBoard}" name="content" class="w3-border w3-padding w3-input" border="1" readonly>
+										</c:if>
+									</div>
+									<div class="w3-col m2 w3-cell-middle">
+										<button type="button" class="w3-btn-block w3-theme-l1" onclick="boardAppend()">
+											<i class="fa fa-pencil"></i> ${str_post}
+										</button>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -363,7 +395,7 @@ textarea:focus {
 				<div class="w3-row-padding">
 					<div class="w3-col m12 w3-center dash">
 						<br> <br> <span id="boardInfo"></span>
-						<button id="moreBoard">${str_moreBoard}</button>
+						<p id="moreBoard" style="text-decoration: underline">${str_moreBoard}</p>
 						<br> <br>
 						<div id="console"></div>
 					</div>
@@ -375,7 +407,7 @@ textarea:focus {
 			</div>
 
 			<!--  Right Column -->
-			<c:import url="../myBusRight.do?driver=${driver}"></c:import>
+			<c:import url="../myBusRight.do?driver=${driver}&email=${email}"></c:import>
 			<!-- End Right Column -->
 
 			<!-- End Grid -->
