@@ -42,14 +42,18 @@ public class AdminADPro implements CommandHandler {
 			String html = "";
 			/*System.out.println("ht"+html);
 			System.out.println("img"+imglocation);*/
-			
+								
 			if(imglocation == null){
 				html = multi.getParameter("htmlCode");	
 				imglocation = "";
 			}else{
-				imglocation = new ImageResize().resize(request, imglocation, 0.7, 1060);
+				if(ad_num == 2){
+					imglocation = new ImageResize().resize(request, imglocation, 0.5, 569);
+				}else{
+					imglocation = new ImageResize().resize(request, imglocation, 1, 569);
+				}
 			}
-			
+		
 			
 			int check = adminDao.adnumCheck(ad_num);
 			
