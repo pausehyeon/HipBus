@@ -146,13 +146,13 @@
 								<c:forEach var="getMember" items="${list}" varStatus="status">
 									<tr>
 										<td>${getMember.mem_level}&nbsp;${str_memGrade}</td>
-										<td>
-										${getMember.email}
-										</td>
+										<!-- 등급 -->
+										<td>${getMember.email}</td>
 										<!-- 불러오는 아이디 -->
 										<td>${getMember.nick}</td>
 										<!-- 불러온 닉네임 -->
 										<td style="text-align: left;"><a class="w3-hover-black w3-padding" style="text-decoration: none" href="myBus.do?driver=${getMember.email}">${str_memGo}&nbsp;<i class="fa fa-bus"></i></a>
+										<!-- 마이버스로 가기 -->
 										<button id="${status.count}" onclick="myFunction('crew${status.count}')">
 											${str_crewList}
 										</button>												
@@ -165,11 +165,10 @@
 													</c:forEach>
 												</ul>
 											</div>
-										
+											<!-- 크루버스 -->
 										<c:if test="${getMember.mem_level eq 1}">
 											<a class="w3-hover-black w3-padding" style="text-decoration: none" href="adminMemberManagePro.do?mem_level=2&email=${getMember.email}">${str_memModify}</a>
 										</c:if>
-
 										<c:if test="${getMember.mem_level eq 2}">
 											<a class="w3-hover-black w3-padding" style="text-decoration: none" href="adminMemberManagePro.do?mem_level=1&email=${getMember.email}">${str_memModify}</a>
 										</c:if>
@@ -178,8 +177,8 @@
 									</tr>
 								</c:forEach>
 							</c:if>
-							<c:if test="${slist != null}">
-								<c:forEach var="getSearch" items="${slist}">
+							<c:if test="${slist ne null}">
+								<c:forEach var="getSearch" items="${slist}" varStatus="cstatus">
 									<tr>
 										<td>${getSearch.mem_level}&nbsp;${str_memGrade}</td>
 										<td>${getSearch.email}</td>
@@ -187,16 +186,23 @@
 										<td>${getSearch.nick}</td>
 										<!-- 불러온 닉네임 -->
 										<td style="text-align: left;"><a class="w3-hover-black w3-padding" style="text-decoration: none" href="myBus.do?driver=${getSearch.email}">${str_memGo}&nbsp;<i class="fa fa-bus"></i></a>
-										<c:if test="${getSearch.crewid != null}">
-											<a class="w3-hover-black w3-padding" style="text-decoration: none" href="crewBus.do?driver=${getSearch.crewid}">${str_memGo}&nbsp; <i class="fa fa-fort-awesome"></i></a>
-										</c:if>
-										<c:if test="${getSearch.crewid == null}">
-											<i class="fa fa-close">&nbsp;&nbsp;${str_memGo}</i>
-										</c:if>
-										<c:if test="${getMember.mem_level == 1}">
+										<button id="${status.count}" onclick="myFunction('searchCrew${cstatus.count}')">
+											${str_crewList}
+										</button>												
+											<div id="searchCrew${cstatus.count}" class="w3-accordion-content w3-container">
+												<ul>
+												 	<c:forEach var="c" items="${clist}">
+														<c:if test="${c.email eq getSearch.email}">
+															<li><a href="crewBus.do?driver=${c.crewid}">${c.crewid}</a>
+														</c:if>
+													</c:forEach>
+												</ul>
+											</div>
+											<!-- 크루버스 -->										
+										<c:if test="${getMember.mem_level eq 1}">
 											<a class="w3-hover-black w3-padding" style="text-decoration: none" href="adminMemberManagePro.do?mem_level=2&email=${getMember.email}">${str_memModify}</a>
 										</c:if>
-										<c:if test="${getMember.mem_level == 2}">
+										<c:if test="${getMember.mem_level eq 2}">
 											<a class="w3-hover-black w3-padding" style="text-decoration: none" href="adminMemberManagePro.do?mem_level=1&email=${getMember.email}">${str_memModify}</a>
 										</c:if>
 										<a class="w3-hover-black w3-padding" style="text-decoration: none" href="adminMemberEjectPro.do?email=${getSearch.email}">${str_memLeave}</a>
@@ -308,7 +314,7 @@
 					</p>
 
 					<p>
-						<button class="w3-btn w3-black w3-hover-teal" onclick="location=admin.do?#">${str_emSendEmail}</button>
+						<button class="w3-btn w3-black w3-hover-teal" >${str_emSendEmail}</button>
 					</p>
 				</form>
 			</div>
