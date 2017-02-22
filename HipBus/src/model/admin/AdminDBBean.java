@@ -100,4 +100,27 @@ public class AdminDBBean implements AdminDao {
 	public int updateAdmin(MemberDto dto) {
 		return SqlMapClient.getSession().update("Admin.updateAdmin", dto);
 	}
+	
+	
+	//****관리자등업 인증이메일보내기****
+	//관리자 이메일 전송시 verification테이블 업데이트로 변경
+	@Override
+	public int updateValidate(Map<String, String> ms) {
+		return SqlMapClient.getSession().update("Admin.updateValidate", ms);
+	}
+	@Override
+	public int validateCheck(Map<String, String> imap) {
+		return SqlMapClient.getSession().selectOne("Admin.validateCheck", imap);
+	}
+	
+	@Override
+	public int inviteCode(String iemail) {
+		return SqlMapClient.getSession().update("Admin.inviteCode", iemail);
+	}
+	@Override
+	public int gradAdmin(String iemail) {
+		return SqlMapClient.getSession().update("Admin.gradAdmin", iemail);
+	}
+
+	
 }

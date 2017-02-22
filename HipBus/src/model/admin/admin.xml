@@ -88,4 +88,34 @@
 		where email=#{email}
 	</update>
 	
+	<!-- 관리자 등업 인증메일전송 -->
+	<update id="updateValidate" parameterType="Map">
+		update hb_verification set code=#{code} where email=#{email} 
+	</update>
+	<select id="validateCheck" parameterType="Map" resultType="int">
+		select count(*) from hb_verification where email=#{iemail} and code=#{icode}
+	</select>
+	<update id="inviteCode" parameterType="String">
+		update hb_verification set code= -1 where email=#{iemail}
+	</update>
+	
+	<update id="gradAdmin" parameterType="String">
+		update hb_member set mem_level=3 where email=#{iemail}
+	</update>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 </mapper>

@@ -44,4 +44,13 @@ public interface AdminDao {
 		
 		//관리자 정보수정
 		public int updateAdmin(MemberDto dto);
+		
+		//관리자 이메일 인증
+		public int updateValidate(Map<String,String> ms);
+		public int validateCheck(Map<String, String> map);
+		public int inviteCode(String iemail);
+		
+		public int gradAdmin(String email);
+		
+		
 }
