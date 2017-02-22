@@ -24,6 +24,7 @@
 			</p>
 			<hr>
 			<p>
+
 				<i class="fa fa-id-badge fa-fw w3-margin-right w3-text-theme"></i>
 				${memDto.getNick()}
 			</p>

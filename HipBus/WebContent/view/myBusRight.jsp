@@ -51,8 +51,8 @@
 		</div>
 	</div>
 	<br>
+	<div class="w3-card-2 w3-round w3-white w3-center">
 
-	<div class="w3-card-2 w3-round w3-white w3-padding-16 w3-center">
 		<div class="w3-container">
 			<div class="w3-right w3-padding-16">
 				<button type="button" class="w3-btn w3-theme-l1">

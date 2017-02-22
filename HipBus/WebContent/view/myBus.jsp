@@ -77,6 +77,7 @@ textarea:focus {
 			}, "myBusBoardListResult.do", "POST", params);
 		request.sendRequest();
 	}
+	
 
 	// 방명록 위로 삽입하는 메소드 (appendresult핸들러가 db에 넣고 appendresult.jsp에 출력된 새 방명록을 맨 위에 붙인다)
 	function boardAppend() {

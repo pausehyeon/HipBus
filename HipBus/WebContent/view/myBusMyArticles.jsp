@@ -8,7 +8,6 @@
 
 <title>${str_mybusTitle}</title>
 <body class="w3-theme-l5">
-
 	<!-- Navbar -->
 	<c:import url="../top.do" />
 
