@@ -5,7 +5,7 @@
 <%@include file="/view/setting/garage_setting.jsp"%>
 
 <title>${str_Title}</title>
-<body>
+<body onload="boardSet()">
 
 	<c:import url="../top.do" />
 

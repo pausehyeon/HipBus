@@ -6,7 +6,7 @@
 
 
 <title>${str_Title}</title>
-<body>
+<body onload="boardSet()">
 
 	<c:import url="../top.do" />
 

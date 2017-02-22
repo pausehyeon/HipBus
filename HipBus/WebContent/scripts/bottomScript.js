@@ -34,7 +34,7 @@ $(document).ready(function() {
 /*
 	if (crewBusImgLocation != "") {
 		var crewBusImgLocation = localStorage.getItem("crewBusImg");
-		$('#crewBusImg').attr({
+		$('#crewbusImg').attr({
 			src : crewBusImgLocation,
 			width : 30,
 			height : 35
@@ -61,10 +61,10 @@ function myBusGet() {
 
 function crewBusSet() {
 	var crewBusDriver = document.location.href;
-	// var crewBusImgLocation = document.getElementById("crewBusLeftImg").src;
+	//var crewBusImgLocation = document.getElementById("crewBusLeftImg").src;
 	if (crewBusDriver != "") {
 		localStorage.setItem("crewBus", crewBusDriver);
-		// localStroage.setItem("crewBusImg",crewBusImgLocation);
+		//localStroage.setItem("crewBusImg",crewBusImgLocation);
 	}
 
 }

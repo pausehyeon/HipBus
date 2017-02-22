@@ -6,7 +6,7 @@
 
 
 <title>${str_Title}</title>
-<body>
+<body onload="boardSet()">
 
 	<c:import url="../top.do" />
 	<!-- Main content: shift it to the right by 250 pixels when the sidenav is visible -->

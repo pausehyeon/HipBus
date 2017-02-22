@@ -5,20 +5,22 @@
 <body>
 
 	<!-- 댓글 Alert   -->
-	<div class="w3-container w3-margin-bottom w3-text-khaki" style="border: 1px solid transparent; ; float: left; width: 5%;">
+	<div class="w3-container w3-margin-bottom w3-text-khaki" style="border: 1px solid transparent; ; float: left; width:85px;">
 		<a href="#" onclick="document.getElementById('id01').style.display='block'" class="w3-bottom w3-left w3-padding-large w3-hover-opacity" title="실시간 댓글 알림"> <i class="fa fa-bell w3-xxlarge"></i><span
 			class="w3-badge w3-red">3</span>
 		</a>
 	</div>
 	
-	<div style="border: 1px solid transparent; ; float: left; width: 3%;" id="mybusget">
+	<div style="border: 1px solid transparent; ; float: left; width: 40px;" id="mybusget">
 		<a href="#" class="w3-bottom w3-left w3-padding-large w3-hover-opacity" onclick="myBusGet()"><img class="w3-circle" alt="" id="mybusImg" src=""> </a>
 	</div>
-	<div style="border: 1px solid transparent; ; float: left; width: 3%;" id="crewbusget">
-		<span class="w3-bottom w3-left w3-padding-large w3-hover-opacity" onclick="crewBusGet()"><img class="w3-circle" id="crewbusImg" src=""></span>
+	<div style="border: 1px solid transparent; ; float: left; width: 40px;" id="crewbusget">
+		<a href="#" class="w3-bottom w3-left w3-padding-large w3-hover-opacity" onclick="crewBusGet()">
+		<img style="width:30px; height:35px;" class="w3-circle" id="crewbusImg" src="${project}/view/img/HipBusLogo_colored_sq.png"></a>
 	</div>
-	<div style="border: 1px solid transparent; ; float: left; width: 3%;" id="boardget">
-		<a href="#" class="w3-bottom w3-left w3-padding-large w3-hover-opacity" onclick="boardGet()"><img class="w3-circle" src=""></a>
+	<div style="border: 1px solid transparent; ; float: left; width: 40px;" id="boardget">
+		<a href="#" class="w3-bottom w3-left w3-padding-large w3-hover-opacity" onclick="boardGet()">
+		<img style="width:30px; height:35px;" class="w3-circle" src="${project}/view/img/board.jpg"></a>
 	</div>
 	<div id="id01" class="w3-modal">
 		<div class="w3-modal-content w3-padding-32 w3-animate-top w3-card-8">
