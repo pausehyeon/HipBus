@@ -7,7 +7,7 @@
 
 
 <title>${str_title}</title>
-<body>
+<body onload="boardSet()">
 
 	<!-- Navbar -->
 	<c:import url="../top.do" />
