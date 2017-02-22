@@ -67,8 +67,8 @@
 	 <select id="getPassengers" parameterType="String" resultType="model.MemberDto">
 		select * from hb_member where email in (select email from hb_passengers where driver=#{driver})
 	 </select>
-	 <insert id="insertChannel" parameterType="model.StationDto">
-	 	insert into hb_member values(#{driver},#{channel_id})
+	 <insert id="insertChannel" parameterType="model.ChannelDto">
+	 	insert into hb_channel values(#{driver},#{channel_id})
 	 </insert>
 	 
 <!-- myArticles -->
@@ -124,6 +124,19 @@
 	<delete id="deleteDriver" parameterType="String">
 		delete from HB_Driver where driver=#{driver}
 	</delete>
+	<update id="imgLocationUpdate" parameterType="model.MemberDto">
+		update hb_member set imglocation=#{imglocation} where email=#{email} 
+	</update>
+	<update id="updateProfile" parameterType="model.MemberDto">
+		update hb_member set nick=#[nick} and passwd=#{passwd} where email=#{email}
+	</update>	
+	<select id="checkChannel" parameterType="String" resultType="int">
+		select count(*) from HB_Channel where driver=#{driver}
+	</select>
+	<update id="updateChannel" parameterType="model.ChannelDto">
+		update hb_channel set channel_id=#{channel_id} where driver=#{driver}
+	</update>
+	
 <!-- myBusWanted -->
 	<insert id="insertWantedArticle" parameterType="model.WantedDto">
 		insert into hb_wanted values(#{driver}, hb_wantedseq.nextval, #{nick}, #{subject}, #{content}, #{imglocation,jdbcType=VARCHAR}, #{duedate}, 0, #{reg_date})
@@ -145,12 +158,6 @@
 	<delete id="deleteWantedArticle" parameterType="int">
 		delete hb_wanted where num=#{num}
 	</delete>	
-	<update id="imgLocationUpdate" parameterType="model.MemberDto">
-		update hb_member set imglocation=#{imglocation} where email=#{email} 
-	</update>
-	<update id="updateNick" parameterType="model.MemberDto">
-		update hb_member set nick=#{nick} where email=#{email}
-	</update>
 	<update id="readWanted" parameterType="int">
 		update hb_wanted set readcount=readcount+1 where num=#{num}
 	</update>
@@ -161,6 +168,7 @@
 		select * from hb_wanted 
 		where num=(select max(num) from hb_wanted where driver=#{driver})
 	</select>
+	
 </mapper>
 
 

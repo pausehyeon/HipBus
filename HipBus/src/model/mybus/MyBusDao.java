@@ -45,9 +45,11 @@ public interface MyBusDao {
 	public int modifyWantedArticle(WantedDto article);
 	public int deleteWantedArticle(int num);
 	public int imgLocationUpdate(MemberDto imglocation);
-	public int updateNick(MemberDto nick);
+	public int updateProfile(MemberDto dto);	
+	public int checkChannel(String driver);
 	public void readWanted (int num);
 	public void readUpcoming (int num);
 	public WantedDto getNewWanted(String driver);
 	public int insertChannel(ChannelDto dto);
+	public int updateChannel(ChannelDto dto);
 }

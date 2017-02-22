@@ -119,8 +119,11 @@ public class MyBusDBBean implements MyBusDao {
 	public int imgLocationUpdate(MemberDto imglocation) {
 		return SqlMapClient.getSession().update("MyBus.imgLocationUpdate", imglocation);
 	}
-	public int updateNick(MemberDto nick) {
-		return SqlMapClient.getSession().update("MyBus.updateNick", nick);
+	public int updateProfile(MemberDto dto) {
+		return SqlMapClient.getSession().update("MyBus.updateProfile", dto);
+	}	
+	public int checkChannel(String driver) {
+		return SqlMapClient.getSession().selectOne("MyBus.checkChannel", driver);
 	}
 	public void readWanted (int num){
 		SqlMapClient.getSession().update("MyBus.readWanted", num);
@@ -132,6 +135,9 @@ public class MyBusDBBean implements MyBusDao {
 		return SqlMapClient.getSession().selectOne("MyBus.getNewWanted", driver);
 	}
 	public int insertChannel(ChannelDto dto){
-		return SqlMapClient.getSession().update("MyBus.insertChannel",dto);		
+		return SqlMapClient.getSession().insert("MyBus.insertChannel",dto);		
+	}
+	public int updateChannel(ChannelDto chdto){
+		return SqlMapClient.getSession().update("MyBus.updateChannel",chdto);		
 	}
 }
