@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
 <%@include file="/view/setting/setting.jsp"%>
 <script src="/HipBus/scripts/jquery-3.1.1.js"></script>
 
@@ -12,14 +11,14 @@
 		</a>
 	</div>
 	
-	<div style="border: 1px solid transparent; ; float: left; width: 5%;" id="mybusget">
-		<span class="w3-bottom w3-left w3-padding-large w3-hover-opacity" onclick="myBusGet()">myBus</span>
+	<div style="border: 1px solid transparent; ; float: left; width: 3%;" id="mybusget">
+		<a href="#" class="w3-bottom w3-left w3-padding-large w3-hover-opacity" onclick="myBusGet()"><img class="w3-circle" id="mybusImg" src=""> </a>
 	</div>
-	<div style="border: 1px solid transparent; ; float: left; width: 5%;" id="crewbusget">
-		<span class="w3-bottom w3-left w3-padding-large w3-hover-opacity" onclick="crewBusGet()">crewBus</span>
+	<div style="border: 1px solid transparent; ; float: left; width: 3%;" id="crewbusget">
+		<span class="w3-bottom w3-left w3-padding-large w3-hover-opacity" onclick="crewBusGet()"><img class="w3-circle" id="crewbusImg" src=""></span>
 	</div>
-	<div style="border: 1px solid transparent; ; float: left; width: 5%;" id="boardget">
-		<span class="w3-bottom w3-left w3-padding-large w3-hover-opacity" onclick="boardGet()">board</span>
+	<div style="border: 1px solid transparent; ; float: left; width: 3%;" id="boardget">
+		<a href="#" class="w3-bottom w3-left w3-padding-large w3-hover-opacity" onclick="boardGet()"><img class="w3-circle" src=""></a>
 	</div>
 	<div id="id01" class="w3-modal">
 		<div class="w3-modal-content w3-padding-32 w3-animate-top w3-card-8">
