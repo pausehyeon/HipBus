@@ -47,11 +47,7 @@ public class SignInPro implements CommandHandler {
 			}else{
 				// 이메일 인증만 안 된 상태면 result == 2
 				result = 2;							
-			}
-			
-			
-
-			
+			}		
 		}
 		request.setAttribute("result", result);
 

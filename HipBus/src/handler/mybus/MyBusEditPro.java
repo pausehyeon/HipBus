@@ -60,12 +60,14 @@ public class MyBusEditPro implements CommandHandler{
 			int profileResult = mybusDao.updateProfile(dto);								
 			request.setAttribute("profileResult", profileResult);	
 			
-			//유튜브
+			//유튜브	
 			String channel_id = multi.getParameter("channel_id");
-			chdto.setChannel_id(channel_id);
-			chdto.setDriver(driver);
-			int channelResult = mybusDao.updateChannel(chdto);					
-			request.setAttribute("channelResult", channelResult);
+			if ( channel_id != null) {				
+				chdto.setChannel_id(channel_id);
+				chdto.setDriver(driver);
+				int channelResult = mybusDao.updateChannel(chdto);					
+				request.setAttribute("channelResult", channelResult);
+			}			
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
