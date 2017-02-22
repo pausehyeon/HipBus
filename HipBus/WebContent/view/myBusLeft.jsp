@@ -143,7 +143,29 @@
 	<br>
 </div>
 <!-- End Left Column -->
-
+<script type="text/javascript">
+	//<!--
+	function verifyCrewName(){
+		var params = "crewname=" + $('input[name="crewname"]').val();
+		var request = new Request(function() {
+			if(request.httpRequest.readyState == 4){
+				if(request.httpRequest.status == 200){
+					if(request.httpRequest.responseText.trim() == "0"){
+						$('#nameresult').removeClass('w3-text-red').addClass('w3-text-blue').text("유효한 크루 이름입니다.");	//"${str_userNameOk}" "${str_userNameNo}"
+					}else{
+						$('#nameresult').removeClass('w3-text-blue').addClass('w3-text-red').text("*사용할 수 없는 크루 이름입니다.");	
+					}
+				}else{
+					$('#nameresult').text(request.httpRequest.status+'오류');
+				}
+			}else{
+				console.log( "통신중..." );
+			}	
+		}, "verifyCrewNameResult.do", "POST", params);
+		request.sendRequest();
+	}
+	//-->
+</script>
 <!-- 크루버스 만들기 모달 -->
 <div id="createCrewBus" class="w3-modal">
 	<div class="w3-modal-content w3-card-8 w3-animate-zoom" style="max-width: 600px">
@@ -152,15 +174,15 @@
 			<br> <span onclick="document.getElementById('createCrewBus').style.display='none'" class="w3-closebtn w3-container w3-padding-8 w3-display-topright" title="Close Modal">×</span>
 		</div>
 
-		<form name="CreateCrewForm" method="Post" action="MyBusCreateCrewPro.do" class="w3-container">
+		<form name="CreateCrewForm" method="post" action="myBusCreatCrewPro.do?driver=${driver}&crewname=dd" class="w3-container">
 			<div class="w3-section">
 				<div class="w3-row-padding">
 					<div class="w3-col m12 w3-margin-bottom">
 						<label><b>크루 이름</b></label>
 					</div>
 					<div class="w3-col s10 m9">
-						<input name="crewname" type="text" placeholder="새 크루의 이름을 입력하세요." required class="w3-input w3-border">
-						<p class="w3-text-red w3-small w3-right">* 사용할 수 없는 크루 이름입니다.</p>
+						<input name="crewname" onkeyup="verifyCrewName()" type="text" placeholder="새 크루의 이름을 입력하세요." required class="w3-input w3-border">
+						<p id="nameresult" class="w3-text-red w3-small w3-right"></p>
 					</div>
 					<div class="w3-col s10 m3">
 						<input type="submit" value="크루 생성" class="w3-btn-block w3-theme-d5 w3-padding">
@@ -175,7 +197,6 @@
 			<span class="w3-right w3-padding w3-hide-small w3-tiny">기존 크루에 가입하려면? <a href="garageFAQ.do">자주 묻는 질문으로 가기</a></span>
 			<button onclick="document.getElementById('createCrewBus').style.display='none'" type="button" class="w3-btn w3-theme-d5">${str_signInCancel}</button>
 		</div>
-
 	</div>
 </div>
 </html>

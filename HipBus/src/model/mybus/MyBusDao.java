@@ -52,5 +52,8 @@ public interface MyBusDao {
 	public int checkChannel(String driver);
 	public int insertChannel(ChannelDto dto);
 	public int updateChannel(ChannelDto dto);
+	public int createCrew(String crewname);
+	public int createCrewMember(CrewMemberDto dto);
+	public String getCrewId(String crewname);
 	
 }

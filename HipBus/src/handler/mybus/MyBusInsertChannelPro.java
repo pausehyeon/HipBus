@@ -15,11 +15,11 @@ import model.ChannelDto;
 import model.mybus.MyBusDao;
 
 @Controller
-public class MyBusInsertChannel implements CommandHandler {
+public class MyBusInsertChannelPro implements CommandHandler {
 	@Resource(name="myBusDao")
 	MyBusDao mybusDao;
 	
-	@RequestMapping("/myBusInsertChannel.do")
+	@RequestMapping("/myBusInsertChannelPro.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		String driver = request.getParameter("driver");

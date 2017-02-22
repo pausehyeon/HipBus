@@ -19,4 +19,5 @@ public interface GeneralDao {
 	public List<MemberDto> getHoppedOnMembers(String email);
 	public List<CrewDto> getHoppedOnCrews(String email);
 	public List<MemberDto> getSearchMember(Map<String,String> map);
+	public int verifyCrew(String crewname);
 }

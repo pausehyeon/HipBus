@@ -13,8 +13,7 @@
 				email : '${dto.getEmail()}',
 				nick : '${dto.getNick()}',
 				content : '${dto.getContent()}',
-				reg_date : '${dto.getReg_date()}',
-				mod_date : '${dto.getMod_date()}'
+				reg_date : '${dto.getReg_date()}'
 			}
 		</data>
 	</result>

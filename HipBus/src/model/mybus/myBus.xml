@@ -3,6 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="MyBus">
+<!-- 방명록 -->
 	<select id="getLastBoard" parameterType="String" resultType="model.BoardDto">
 		select * from HB_Board where num=(select max(num) from HB_Board where driver=#{driver})
 	</select>
@@ -17,12 +18,6 @@
 	<update id="modifyBoard" parameterType="model.BoardDto">
 		update HB_Board set content=#{content} where num=#{num}
 	</update>
-	<select id="getMember" parameterType="String"  resultType="model.MemberDto">
-		select * from HB_member where email=#{email,jdbcType=VARCHAR}
-	</select>
-	<select id="getChannelid" parameterType="String"  resultType="String">
-		select channel_id from HB_Channel where driver=#{driver,jdbcType=VARCHAR}
-	</select>
 	<select id="getBoards" parameterType="map" resultType="model.BoardDto">
 		select * from (select driver, num, email, nick, content, reg_date, rownum r 
 		from hb_board where driver=#{driver} order by reg_date desc)
@@ -30,6 +25,14 @@
 		from hb_board where driver=#{driver} order by reg_date desc))
 		and r &gt; (select max(r) from (select driver, num, email, nick, content, reg_date, rownum r 
 		from hb_board where driver=#{driver} order by reg_date desc))-#{boardCount}
+		order by num desc
+	</select>
+<!-- myBus 메인화면, 그외 -->
+	<select id="getMember" parameterType="String"  resultType="model.MemberDto">
+		select * from HB_member where email=#{email,jdbcType=VARCHAR}
+	</select>
+	<select id="getChannelid" parameterType="String"  resultType="String">
+		select channel_id from HB_Channel where driver=#{driver,jdbcType=VARCHAR}
 	</select>
 	<select id="isHop" parameterType="map" resultType="int">
 		select count(*) from hb_passengers where driver=#{driver} and email=#{email}
@@ -40,13 +43,6 @@
 	<delete id="hopOff" parameterType="map">
 		delete from hb_passengers where driver=#{driver} and email=#{email}
 	</delete>
-	<!-- <select id="getMyCrews" parameterType="String" resultType="model.MyCrewDto">
-		select distinct c.crewid, c.crewname, email 
-		from hb_crewmember m, hb_crew c
-		where m.crewid=c.crewid
-		and m.crewid in (select crewid from hb_crewmember where email=#{driver})
-	</select>
-	 -->
 	 <select id="getMyCrews" parameterType="String" resultType="model.CrewDto">
 	 	select c.crewid, c.crewname
 		from hb_crewmember m, hb_crew c
@@ -115,6 +111,9 @@
 	<delete id="delUpcoming" parameterType="int">
 		delete from hb_upcoming where num=#{num}
 	</delete>
+	<update id="readUpcoming" parameterType="int">
+		update hb_upcoming set readcount=readcount+1 where num=#{num}
+	</update>
 
 <!-- editProfile -->
 	<delete id="deleteEmail" parameterType="String">
@@ -161,12 +160,19 @@
 	<update id="readWanted" parameterType="int">
 		update hb_wanted set readcount=readcount+1 where num=#{num}
 	</update>
-	<update id="readUpcoming" parameterType="int">
-		update hb_upcoming set readcount=readcount+1 where num=#{num}
-	</update>
 	<select id="getNewWanted" parameterType="String" resultType="model.WantedDto">
 		select * from hb_wanted 
 		where num=(select max(num) from hb_wanted where driver=#{driver})
+	</select>
+	
+	<insert id="createCrew" parameterType="String">
+		insert into hb_crew (crewid,crewname) values(HB_crewidseq.nextVal,#{crewname})
+	</insert>
+	<insert id="createCrewMember" parameterType="model.CrewMemberDto">
+		insert into hb_crewmember values(#{email},#{crewid},2)
+	</insert>
+	<select id="getCrewId" parameterType="String" resultType="String">
+		select crewid from hb_crew where crewname=#{crewname}
 	</select>
 	
 </mapper>

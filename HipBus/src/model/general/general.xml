@@ -21,6 +21,10 @@
 		select count(*) from HB_Member where nick = #{nick}
 	</select>
 	
+	<select id="verifyCrew" parameterType="String" resultType="Integer">
+		select count(*) from HB_Crew where crewname = #{crewname}
+	</select>
+	
 	<select id="checkEmailPasswd" parameterType="hashmap" resultType="Integer">
 		select count(*) from HB_Member where email=#{email} and passwd = #{passwd}
 	</select>
@@ -52,5 +56,7 @@
 	<select id="getSearchMember" parameterType="Map" resultType="model.MemberDto">
 		select * from hb_member where email like '%${keyword}%'
 	</select>
+	
+
 	
 </mapper>

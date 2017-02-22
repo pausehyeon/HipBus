@@ -26,10 +26,11 @@ textarea:focus {
 	var boardCount = 5;		// 한번에 가져올 방명록 갯수
 	// 댓글목록 불러오기
 	$(document).ready(function() {
-		if("${chResult}" != null){
+		if("${chResult}" != null && "${chResult}" == "" && "${chResult}" == undefined){
 			if("${chResult}" == 1){
 				alert("채널아이디 등록성공");
 			} else if("${chResult}" == 0) {
+				alert("채널아이디 등록실패");
 			}
 		}
 		loadBoard(boardCount);	// 페이지로드시에 방명록리스트를 불러온다.
@@ -267,7 +268,7 @@ textarea:focus {
 		board += '<hr class="w3-clear">';
 		board += '<input type="hidden" name="'+ data.num +'">';
 		board += '<textarea readonly="true" rows="3" class="w3-padding-left">'+ data.content+ "</textarea>";
-			if(data.email=="${sessionScope.memEmail}" || "${driver}"=="<%=session.getAttribute("memEmail")%>"){	// 작성자와 세션이메일이 같거나 버스주인과 이메일이 같으면 버튼을 붙인다
+			if(data.email=="${sessionScope.memEmail}" || "${driver}"=="${sessionScope.memEmail}" || "${my_level}"==3){	// 작성자와 세션이메일이 같거나 버스주인과 이메일이 같으면 버튼을 붙인다
 				board += appendBtn;
 			}
 		board += '</div>';
@@ -335,7 +336,7 @@ textarea:focus {
 					<c:if test="${driver == email}">
 						<!-- 2등급 회원인데 아직 채널을 연결하지 않은 경우 -->
 						<c:if test="${channelid == null and mem_level == 2}">
-						<form method="post" name="inputChannel" action="myBusInsertChannel.do?driver=${driver}">
+						<form method="post" name="inputChannel" action="myBusInsertChannelPro.do?driver=${driver}">
 							<div class="w3-row">
 								<div class="w3-row w3-center w3-theme-l1 w3-padding-large w3-small">
 									<p>
@@ -424,7 +425,7 @@ textarea:focus {
 			</div>
 
 			<!--  Right Column -->
-			<c:import url="../myBusRight.do?driver=${driver}&email=${email}"></c:import>
+			<c:import url="../myBusRight.do?driver=${driver}"></c:import>
 			<!-- End Right Column -->
 
 			<!-- End Grid -->

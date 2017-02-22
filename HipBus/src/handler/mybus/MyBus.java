@@ -29,6 +29,7 @@ public class MyBus implements CommandHandler {
 			email = (String) request.getSession().getAttribute("memEmail");	// 방문자 (세션에 저장된 이메일)
 			my_level = mybusDao.getMember(email).getMem_level();
 			request.setAttribute("my_level", my_level);
+			
 		}
 		
 		int mem_level = mybusDao.getMember(driver).getMem_level();

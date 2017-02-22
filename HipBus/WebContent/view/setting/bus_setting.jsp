@@ -8,6 +8,7 @@
 <!-- Titles -->
 <c:set var="str_crewbusTitle" value="HipBus - Crew Bus"/>
 <c:set var="str_mybusTitle" value="HipBus - My Bus"/>
+<c:set var="str_crewbusTitle" value="HipBus - crew Bus"/>
 <c:set var="str_upcomingTitle" value="HipBus - Upcoming"/>
 <c:set var="str_crewbusTitle" value="HipBus - Crew Bus"/>
 

@@ -1,4 +1,4 @@
-package handler.crewbus;
+package handler.general;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -10,19 +10,18 @@ import org.springframework.web.servlet.ModelAndView;
 
 import handler.CommandHandler;
 import handler.HandlerException;
-import model.mybus.MyBusDao;
+import model.general.GeneralDao;
+
 @Controller
-public class CrewBusBoardDeleteResult implements CommandHandler {
-	@Resource(name="myBusDao")
-	private MyBusDao mybusDao;
-	
-	@RequestMapping("/crewBusBoardDeleteResult.do")
+public class VerifyCrewNameResult implements CommandHandler {
+	@Resource(name="generalDao")
+	private GeneralDao generalDao;
+	@RequestMapping("/verifyCrewNameResult.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-		int num = Integer.parseInt( request.getParameter("num") );
-		int result = mybusDao.deleteBoard( num );
+		int result = generalDao.verifyCrew( request.getParameter("crewname") );
 		request.setAttribute("result", result);
-		request.setAttribute("num", num);
-		return new ModelAndView("crewBusBoardDeleteResult");
+		return new ModelAndView("verifyCrewNameResult");
 	}
+
 }
