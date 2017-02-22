@@ -87,6 +87,7 @@
 			return false;
 			//location.href="AdminADPro.do?ad_num="+adform.ad_num.value;
 		} */
+		
 		</script>
 <body>
 
@@ -96,15 +97,15 @@
 	<!-- Sidenav/menu -->
 	<nav class="w3-sidenav w3-collapse w3-theme-l5 w3-animate-right w3-padding-xlarge" style="z-index: 3; right: 0; width: 20%; margin-top: 50px;" id="mySidenav">
 		<br>
-		<c:if test="${sessionScope.memEmail != null}">
+		<c:if test="${sessionScope.memEmail ne null}">
 		<div class="w3-container w3-row">
 			<div class="w3-col s8 w3-center">
 				<span><strong> ${member.nick}</strong>&nbsp;${str_idMsg}</span><br>
 			</div>
 		</div>
 		</c:if>
-		<c:if test="${sessionScope.memEmail == null}">
-			<c:redirect url="main.do"/>
+		<c:if test="${sessionScope.memEmail eq null}">
+			<c:redirect url="http://localhost:8080/HipBus/main.do"/>
 		</c:if>
 		<hr>
 		<div class="w3-container">
@@ -364,21 +365,35 @@
 			</h5>
 			<br>
 			<div class="w3-card-4 w3-margin-left w3-margin-right w3-margin-top">
-				<form class="w3-container w3-margin">
+				<form name="sendform" class="w3-container w3-margin" method="post" action="adminInvitePro.do" onsubmit="return sendEmail()">
 					<p>
 						<label class="w3-label w3-text-teal"><b>${str_emEmail}</b></label>
-						<input class="w3-input w3-border" name="first" type="text">
+						<input class="w3-input w3-border" name="email" type="text">
 					</p>
-
+						<div class="w3-text-blue w3-xsmall w3-right" id="sendCheck">${str_sendOk}</div>
 					<p>
-						<button class="w3-btn w3-black w3-hover-teal" >${str_emSendEmail}</button>
+						<button type="submit" class="w3-btn w3-black w3-hover-teal" >${str_emSendEmail}</button>
 					</p>
 				</form>
 			</div>
 		</div>
 
 		<hr id="modify">
+<script type="text/javascript">
 
+sendEmail= function(){
+	if(sendform.email.value == ""){
+		alert("관리자 초대하실 사용자의 이메일을 작성해주세요.");
+		sendform.email.focus();
+		return false;
+	}
+	if(sendform.email.value.indexOf('@') == -1){
+		alert("유효하지 않은 이메일을 확인해주세요.");
+		sendform.email.focus();
+		return false;
+	}	
+}
+</script>
 		<div class="w3-content w3-padding-128">
 			<h5>
 				<i class="fa fa-user"></i><b>&nbsp;${str_adminModify}</b>
