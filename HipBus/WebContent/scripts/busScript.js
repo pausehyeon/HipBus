@@ -70,7 +70,7 @@ function playonair(channel_id, googleApiKey){
 							onairchat.innerHTML = "";
 						}
 					}else{
-						onairchat.innerHTML = "<p class='w3-center'> 오류 발생"+request.status+" </p>";
+						onairchat.innerHTML = "<p class='w3-center'> 오류 발생 "+request.status+" </p><p>channelID가 유효하지 않을 수 있습니다. 확인해주세요</p>";
 					}
 				}else{
 					onairchat.innerHTML = "<img src='/HipBus/view/img/loading.gif' alt='로딩 중입니다' style='width:100px;'>";
