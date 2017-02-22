@@ -145,6 +145,9 @@
 	<update id="imgLocationUpdate" parameterType="model.MemberDto">
 		update hb_member set imglocation=#{imglocation} where email=#{email} 
 	</update>
+	<update id="updateNick" parameterType="model.MemberDto">
+		update hb_member set nick=#{nick} where email=#{email}
+	</update>
 	<update id="readWanted" parameterType="int">
 		update hb_wanted set readcount=readcount+1 where num=#{num}
 	</update>

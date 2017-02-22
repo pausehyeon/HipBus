@@ -79,6 +79,11 @@
 <!-- mainContactUsPro.jsp -->
 <c:set var="str_mailingSuccess" value="문의메일이 성공적으로 전송되었습니다. 관리자 확인 후 24시간 이내에 답변하겠습니다."></c:set>
 
+<!-- myBusEdit.jsp -->
+<c:set var="str_userName" value="NickName"/>
+<c:set var="str_password" value="Password"/>
+
+
 
 
 

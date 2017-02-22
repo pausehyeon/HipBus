@@ -120,28 +120,34 @@
 									<input name="upload" class="w3-input" type="file">
 								</div>
 							</div>
-							<div class="w3-text-red w3-xsmall w3-right"></div>
+							<div class="w3-text-red w3-small w3-right"></div>
 							</p>
 							<br> <br>
 
 							<p>
 								<label>${str_userName}</label>
 								<input name="nick" class="w3-input" type="text" onkeyup="verifynick()">
-							<div class="w3-text-red w3-xsmall w3-right" id="nickresult">${str_signUpUserName}</div>
+							<div class="w3-text-red w3-small w3-right" id="nickresult">${str_signUpUserName}</div>
 							</p>
 							<br> <br>
 							<p>
 								<label>${str_password}</label>
 								<input name="passwd" class="w3-input" type="password">
-							<div class="w3-text-blue w3-xsmall w3-right" id="passwdresult">${str_signUpPassword}</div>
+							<div class="w3-text-blue w3-small w3-right" id="passwdresult">${str_signUpPassword}</div>
 							</p>
 							<br>
 							<p>
 								<label>${str_passwordCheck}</label>
 								<input name="repasswd" class="w3-input" type="password">
-							<div class="w3-text-blue w3-xsmall w3-right" id="repasswdresult">${str_signUpPasswordCheck}</div>
+							<div class="w3-text-blue w3-small w3-right" id="repasswdresult">${str_signUpPasswordCheck}</div>
 							</p>
-							<br> <br>
+							<br><br>
+							<p>
+								<label>Youtube 채널 아이디</label>
+								<a class="w3-right w3-small"> <i class="fa fa-question-circle"></i> 채널 아이디 확인하는 방법 </a>
+								<input name="channel_id" class="w3-input" type="text">
+							</p>
+							<br><br>
 							<div class="w3-center">
 								<input type="submit" value="수정 완료" class="w3-btn w3-padding w3-black w3-margin">
 							</div>

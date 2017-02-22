@@ -27,19 +27,24 @@ public class MyBusEditPro implements CommandHandler{
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		// TODO Auto-generated method stub
-		MultipartRequest multi;
-		
+		// 이미지
+		MultipartRequest multi;		
+		MemberDto dto = new MemberDto();
+		String driver = request.getParameter("driver");
 		try {
 			//이미지 업로드
 			request.setCharacterEncoding("utf-8");
-			String driver = request.getParameter("driver");			
+						
 			multi = new FileUpload().getMultipartRequest(request);
+			
+			/*if ( multi.getFile("upload")) {
+				
+			}*/
 			String imglocation = multi.getFilesystemName("upload");
 			
 			//이미지 사이즈 조정
 			imglocation = new ImageResize().resize(request, imglocation, 1, 900);
-		
-			MemberDto dto = new MemberDto();
+				
 			dto.setEmail(driver);
 			dto.setImglocation(imglocation);
 			int result= mybusDao.imgLocationUpdate(dto);			
@@ -53,6 +58,19 @@ public class MyBusEditPro implements CommandHandler{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		// 닉네임
+		String nick = request.getParameter("nick");
+		System.out.println("왜안되냐1");
+		dto.setEmail(driver);
+		System.out.println("왜안되냐2");
+		dto.setNick(nick);
+		System.out.println("왜안되냐3");
+		int result = mybusDao.updateNick(dto);
+		System.out.println("왜안되냐4");
+		request.setAttribute("driver", driver);
+		System.out.println("왜안되냐5");
+		request.setAttribute("result", result);
+		System.out.println("왜안되냐6");
 		
 		return new ModelAndView("myBusEditPro");
 	}
