@@ -40,18 +40,16 @@ public class SignInPro implements CommandHandler {
 		
 		if (result == 1) {
 		//id와 pw가 모두 일치하면
-			
-			/*if( dao.getVerificationCode(email) == "Y" ){
+			if( dao.getVerificationCode(email) == -1 ){
 				// 이메일 인증이 된 상태면
 				// session에 로그인정보 저장
-				request.getSession().setAttribute("memEmail", email);
-				// 위엣놈을 복사해서 아래에 놓으면 로그인됨. 기능 구현시에는 아래꺼 지우고 주석 해제
+				request.getSession().setAttribute("memEmail", email);			
 			}else{
 				// 이메일 인증만 안 된 상태면 result == 2
-				// result = 2;							
-			}*/
+				result = 2;							
+			}
 			
-			request.getSession().setAttribute("memEmail", email);
+			
 
 			
 		}

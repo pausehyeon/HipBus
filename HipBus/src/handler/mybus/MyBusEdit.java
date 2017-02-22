@@ -12,11 +12,17 @@ import handler.CommandHandler;
 import handler.HandlerException;
 import model.MemberDto;
 import model.general.GeneralDao;
+import model.mybus.MyBusDao;
 
 @Controller
 public class MyBusEdit implements CommandHandler{
+	
+	@Resource(name="myBusDao")
+	private MyBusDao myBusDao;
+	
 	@Resource(name="generalDao")
 	private GeneralDao generalDao;
+	
 	@RequestMapping("/myBusEdit.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
@@ -26,6 +32,10 @@ public class MyBusEdit implements CommandHandler{
 				
 		MemberDto member = generalDao.getMember(driver);
 		request.setAttribute("member", member);
+		
+		//result 넘겨줘야.		
+		int result = myBusDao.checkChannel(driver);
+		request.setAttribute("result", result);
 		
 		return new ModelAndView("myBusEdit");
 	}

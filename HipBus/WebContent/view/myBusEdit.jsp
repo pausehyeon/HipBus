@@ -98,12 +98,12 @@
 				<div class="w3-container w3-card-2 w3-white w3-round w3-margin-bottom w3-margin-left w3-margin-right w3-padding-32 w3-padding-xxlarge">
 					<div class="w3-container w3-center w3-black">
 						<h2>
-							<i class="fa fa-pencil"></i>&nbsp; 회원 정보 수정
+							<i class="fa fa-pencil"></i>&nbsp; ${str_editProfile}
 						</h2>
 					</div>
 					<div class="w3-content w3-padding-64">
 						<h5>
-							<i class="fa fa-pencil"></i><b> 기본 정보 수정 </b>
+							<i class="fa fa-pencil"></i><b> ${str_editProfile} </b>
 						</h5>
 
 						<form id="inputform" enctype="multipart/form-data" action="myBusEditPro.do?driver=${driver}" method="post" class="w3-container">
@@ -147,12 +147,14 @@
 							<div class="w3-text-blue w3-small w3-right" id="repasswdresult">${str_signUpPasswordCheck}</div>
 							</p>
 							<br><br>
-							<p>
-								<label>Youtube 채널 아이디</label>
-								<a class="w3-right w3-small"> <i class="fa fa-question-circle"></i> 채널 아이디 확인하는 방법 </a>
-								<input name="channel_id" class="w3-input" type="text">
-							</p>
-							<br><br>
+							<c:if test="${(member.mem_level eq 2) and (result eq 1)}">
+								<p>
+									<label>${str_channel_id}</label>
+									<a class="w3-right w3-small"> <i class="fa fa-question-circle"></i> 채널 아이디 확인하는 방법 </a>
+									<input name="channel_id" class="w3-input" type="text">
+								</p>
+								<br><br>
+							</c:if>
 							<div class="w3-center">
 								<input type="submit" value="수정 완료" class="w3-btn w3-padding w3-black w3-margin">
 							</div>
@@ -162,7 +164,7 @@
 					<hr>
 					<div class="w3-content w3-padding-64">
 						<h5>
-							<i class="fa fa-hashtag"></i><b> Tags 수정 </b>
+							<i class="fa fa-hashtag"></i><b> ${str_editTag} </b>
 						</h5>
 						<div class="w3-row">
 							<div class="w3-quarter">
@@ -186,22 +188,22 @@
 					<hr>
 					<div class="w3-content w3-padding-64">
 						<h5>
-							<i class="fa fa-sign-out"></i><b> 사이트 탈퇴</b>
+							<i class="fa fa-sign-out"></i><b> ${str_goSignOut}</b>
 						</h5>
 
 						<p class="w3-responsive">
-							<i class="fa fa-check"></i> 탈퇴할 경우 재사용 및 복구가 불가능합니다.<br> 탈퇴 후 사이트에 게시한 내용을 수정/삭제 할 수 없습니다.
+							<i class="fa fa-check"></i> ${str_signOutmsg1}<br> ${str_signOutmsg2}
 						</p>
 						<form id="signoutform" class="w3-container" action="myBusDeletePro.do" method="post">
 							<p>
-								<label>Password</label>
+								<label>${str_password}</label>
 								<input name="passwd" class="w3-input" type="password">
 							</p>
 							<br> <br>
 							<input class="w3-check" type="checkbox">
-							<label class="w3-validate">안내 사항을 모두 확인하였으며, 이에 동의합니다.</label>
+							<label class="w3-validate">${str_agreeSignOut}</label>
 							<p class="w3-center">
-								<button type="submit" class="w3-btn w3-hover-teal">탈퇴</button>
+								<button type="submit" class="w3-btn w3-hover-teal">${str_signOutbtn}</button>
 							</p>
 						</form>
 					</div>

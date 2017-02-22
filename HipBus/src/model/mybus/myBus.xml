@@ -128,7 +128,7 @@
 		update hb_member set imglocation=#{imglocation} where email=#{email} 
 	</update>
 	<update id="updateProfile" parameterType="model.MemberDto">
-		update hb_member set nick=#[nick} and passwd=#{passwd} where email=#{email}
+		update hb_member set nick=#{nick}, passwd=#{passwd} where email=#{email}
 	</update>	
 	<select id="checkChannel" parameterType="String" resultType="int">
 		select count(*) from HB_Channel where driver=#{driver}

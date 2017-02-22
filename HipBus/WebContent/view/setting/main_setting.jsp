@@ -80,8 +80,19 @@
 <c:set var="str_mailingSuccess" value="문의메일이 성공적으로 전송되었습니다. 관리자 확인 후 24시간 이내에 답변하겠습니다."></c:set>
 
 <!-- myBusEdit.jsp -->
+
+<c:set var="str_editProfile" value=" edit profile"/>
 <c:set var="str_userName" value="NickName"/>
 <c:set var="str_password" value="Password"/>
+<c:set var="str_channel_id" value="Youtube 채널 아이디"/>
+<c:set var="str_howToChannel" value="채널 아이디 확인하는 방법"/>
+<c:set var="str_editTag" value="Tags 수정"/>
+<c:set var="str_goSignOut" value="회원 탈퇴"/>
+<c:set var="str_signOutmsg1" value="탈퇴할 경우 재사용 및 복구가 불가능합니다."/>
+<c:set var="str_signOutmsg2" value="탈퇴 후 사이트에 게시한 내용을 수정/삭제 할 수 없습니다."/>
+<c:set var="str_agreeSignOut" value="안내 사항을 모두 확인하였으며, 이에 동의합니다."/>
+<c:set var="str_signOutbtn" value="탈퇴"/>
+
 
 
 

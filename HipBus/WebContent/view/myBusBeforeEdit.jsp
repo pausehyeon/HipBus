@@ -31,7 +31,7 @@
 					class="w3-container w3-card-2 w3-white w3-round w3-margin-bottom w3-margin-left w3-margin-right w3-padding-32 w3-padding-xxlarge">
 					<div class="w3-container w3-center w3-black">
 						<h2>
-							<i class="fa fa-pencil"></i>&nbsp; ${str_modProfile}
+							<i class="fa fa-pencil"></i>&nbsp; ${str_editProfile}
 						</h2>
 					</div>
 					<div class="w3-content w3-padding-64">
