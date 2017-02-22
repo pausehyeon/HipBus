@@ -15,11 +15,11 @@
 			<p class="w3-center">
 			<c:if test="${memDto.getImglocation()!=null}">
 				<img alt="img" src="${project}/hipbusSave/${memDto.getImglocation()}"
-					class="w3-circle" style="width:50%" onclick="location='myBus.do?driver=${driver}'">
+					class="w3-circle" style="width:50%" id="myBusLeftImg" onclick="location='myBus.do?driver=${driver}'">
 			</c:if>
 			<c:if test="${memDto.getImglocation()==null}">
 				<img src="${project}/view/img/HipBusLogo_colored_sq.png"
-					class="w3-circle" style="width:50%" alt="Avatar"  onclick="location='myBus.do?driver=${driver}'">
+					class="w3-circle" style="width:50%" alt="Avatar" id="myBusLeftImg"  onclick="location='myBus.do?driver=${driver}'">
 			</c:if>
 			</p>
 			<hr>

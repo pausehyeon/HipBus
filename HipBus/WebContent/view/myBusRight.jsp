@@ -99,7 +99,7 @@
 					<fmt:formatDate value="${wantedDto.reg_date}" type="both" pattern="yyyy-MM-dd HH:mm" />
 					| ${wantedDto.readcount}
 				</p>
-				<button class="w3-btn w3-btn-block w3-theme-d5 w3-margin-bottom" onclick="location='myBusUpcomingRead.do?driver=${driver}&num=${upcomingDto.num}'">
+				<button class="w3-btn w3-btn-block w3-theme-d5 w3-margin-bottom" onclick="location='myBusWantedRead.do?driver=${driver}&num=${wantedDto.num}'">
 					${str_detail}
 				</button>
 			</c:if>

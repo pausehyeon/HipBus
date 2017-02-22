@@ -6,7 +6,7 @@
 
 
 <title>${str_crewbusTitle}</title>
-<body class="w3-theme-l5">
+<body class="w3-theme-l5" onload="crewBusSet()">
 
 	<!-- Navbar -->
 	<c:import url="../top.do" />

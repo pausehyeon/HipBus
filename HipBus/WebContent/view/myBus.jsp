@@ -26,6 +26,12 @@ textarea:focus {
 	var boardCount = 5;		// 한번에 가져올 방명록 갯수
 	// 댓글목록 불러오기
 	$(document).ready(function() {
+		if("${chResult}" != null){
+			if("${chResult}" == 1){
+				alert("채널아이디 등록성공");
+			} else if("${chResult}" == 0) {
+			}
+		}
 		loadBoard(boardCount);	// 페이지로드시에 방명록리스트를 불러온다.
 	});
 
@@ -280,7 +286,7 @@ textarea:focus {
 //-->
 </script>
 <title>${str_mybusTitle}</title>
-<body class="w3-theme-l5">
+<body class="w3-theme-l5" onload="myBusSet()">
 	<!-- Navbar -->
 	<c:import url="../top.do" />
 	<!-- Page Container -->
@@ -329,15 +335,26 @@ textarea:focus {
 					<c:if test="${driver == email}">
 						<!-- 2등급 회원인데 아직 채널을 연결하지 않은 경우 -->
 						<c:if test="${channelid == null and mem_level == 2}">
+						<form method="post" name="inputChannel" action="myBusInsertChannel.do?driver=${driver}">
 							<div class="w3-row">
 								<div class="w3-row w3-center w3-theme-l1 w3-padding-large w3-small">
 									<p>
 										<i class="fa fa-video-camera w3-xxlarge"></i> <br> 아직 채널 ID를 등록하지 않으셨습니다.<br> 유투브 채널 ID를 등록하고 방송을 시작해보세요.<br> <br>
-										<input class="w3-input" type="text" required>
-										<br> <a href="#">채널 ID를 찾으려면?</a>
+										<div class="w3-col s10 m10 l10">
+										<input class="w3-input" type="text" name="channel_id" required>
+										</div>
+										<div class="w3-col s2 m2 l2">
+										<button type="submit" class="w3-btn-block w3-theme-l1">
+											<i class="fa fa-pencil"></i> 등록
+										</button>
+										</div>
 									</p>
 								</div>
-							</div>						
+								<div class="w3-row w3-center w3-theme-l1 w3-padding-large w3-small">
+								<a href="#">채널 ID를 찾으려면?</a>
+								</div>
+							</div>				
+						</form>		
 						</c:if>
 						<!-- 1등급 회원인 경우 -->
 						<c:if test="${mem_level == 1}">
