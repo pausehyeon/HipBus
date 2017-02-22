@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import model.BoardDto;
+import model.ChannelDto;
 import model.CrewDto;
 import model.CrewMemberDto;
 import model.MemberDto;
@@ -48,4 +49,5 @@ public interface MyBusDao {
 	public void readWanted (int num);
 	public void readUpcoming (int num);
 	public WantedDto getNewWanted(String driver);
+	public int insertChannel(ChannelDto dto);
 }

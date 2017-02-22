@@ -67,6 +67,9 @@
 	 <select id="getPassengers" parameterType="String" resultType="model.MemberDto">
 		select * from hb_member where email in (select email from hb_passengers where driver=#{driver})
 	 </select>
+	 <insert id="insertChannel" parameterType="model.StationDto">
+	 	insert into hb_member values(#{driver},#{channelid})
+	 </insert>
 	 
 <!-- myArticles -->
 	<select id="getArticleCount" parameterType="String" resultType="int">

@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.stereotype.Component;
 
 import model.BoardDto;
+import model.ChannelDto;
 import model.CrewDto;
 import model.CrewMemberDto;
 import model.MemberDto;
@@ -129,5 +130,8 @@ public class MyBusDBBean implements MyBusDao {
 	}
 	public WantedDto getNewWanted(String driver) {
 		return SqlMapClient.getSession().selectOne("MyBus.getNewWanted", driver);
+	}
+	public int insertChannel(ChannelDto dto){
+		return SqlMapClient.getSession().update("MyBus.insertChannel",dto);		
 	}
 }
