@@ -8,6 +8,13 @@
 
 <h2> ${str_write} </h2>
 
+	<c:if test="${resultCount != 0}">
+	<script type="text/javascript">
+		<!--
+		alert("2등급 으로 등업하셨습니다.\n He has climbed to 2 ranks");
+		//-->
+	</script>
+	</c:if>
 <c:if test="${result == 0}">
 	<script type="text/javascript">
 		<!--
@@ -16,6 +23,10 @@
 	</script>
 </c:if>
 <c:if test="${result != 0}">
-
-	<c:redirect url="station.do"/>	
-</c:if>	
+<script type="text/javascript">
+		//<!--
+		location.href = "station.do";
+		//-->
+		</script>
+	</c:if>	
+	

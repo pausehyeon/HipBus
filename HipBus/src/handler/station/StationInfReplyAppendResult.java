@@ -16,12 +16,12 @@ import model.ReplyDto;
 import model.station.StationDao;
 
 @Controller
-public class StationReplyAppendResult implements CommandHandler {
+public class StationInfReplyAppendResult implements CommandHandler {
 
 	@Resource( name="stationDao")
 	private StationDao stationDao;
 	
-	@RequestMapping("/stationReplyAppendResult.do")
+	@RequestMapping("/stationInfReplyAppendResult.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		try {
@@ -31,20 +31,14 @@ public class StationReplyAppendResult implements CommandHandler {
 		}
 		// 댓글
 				int replynum = 0;		// 제목글 0 / 답변글 ! 0
-				int ref_num = 1;		// 그룹화 아이디
-				int re_step = 0;	// 글순서
-				int re_level = 0;	// 글레벨
+				int re_level = 1;	// 글레벨
 				if( request.getParameter( "replynum" ) != null ) {
 					// 답변글인 경우 <- read.jsp
 					replynum = Integer.parseInt( request.getParameter( "replynum" ) );
-					ref_num = Integer.parseInt( request.getParameter( "ref_num" ) );
-					re_step = Integer.parseInt( request.getParameter( "re_step" ) );
 					re_level = Integer.parseInt( request.getParameter( "re_level" ) );		
 				}
 			
 				request.setAttribute( "replynum", replynum );
-				request.setAttribute( "ref_num", ref_num );
-				request.setAttribute( "re_step", re_step );
 				request.setAttribute( "re_level", re_level );
 				
 				
@@ -52,8 +46,8 @@ public class StationReplyAppendResult implements CommandHandler {
 		dto.setEmail(request.getParameter("email"));
 		dto.setContent(request.getParameter("content"));
 		dto.setNum(Integer.parseInt(request.getParameter("num")));
-		
-		int result = stationDao.replyInsert(dto);
+		dto.setRef_num(Integer.parseInt(request.getParameter("ref_num")));
+		int result = stationDao.infReplyInsert(dto);
 		
 		ReplyDto returnDto = new ReplyDto();
 		returnDto = stationDao.getLastReply( dto.getNum());

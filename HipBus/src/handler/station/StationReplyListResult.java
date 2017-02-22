@@ -28,9 +28,7 @@ public class StationReplyListResult implements CommandHandler {
 		
 		int num = Integer.parseInt(request.getParameter("num"));
 		
-		
-		
-		
+					
 		
 		List< ReplyDto > dto = stationDao.getReplys(num);
 		request.setAttribute("dto", dto);

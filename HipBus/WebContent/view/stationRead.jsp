@@ -93,7 +93,10 @@
 		}
 		board += '<a href="#" onClick="reBoardView(' + data.replynum +','
 			  + data.ref_num + ',' + data.re_step				
-		      + '); return false" id="reBoard">${str_reply}</a>';
+		      + '); return false" id="reBoardView">${str_reply}</a>';
+		board += '<a href="#" onClick="reBoardClose(' + data.replynum +','
+			  + data.ref_num + ',' + data.re_step				
+		      + '); return false" id="reBoardClose"  style="display:none">답글닫기</a>'; 
 		board += '</div>';
 		board += '<div class="w3-container w3-left-align">';
 		board += '<input type="hidden" name="'+ data.replynum +'">';
@@ -133,13 +136,10 @@
 												.item(0).innerHTML + ")");
 								var newdiv = makeBoard(data);
 								$('#boardInfo').html("");
-								if (result.firstChild != null) {
-									var oldFirstChild = result.firstChild;
-									result.insertBefore(newdiv, oldFirstChild);
-								}
-								if (result.firstChild == null) {
+
+								
 									result.appendChild(newdiv);
-								}
+								
 								$('input[name=content]').val("");
 								alert("글이 등록되었습니다.")
 							} else if (code == "failed") {
@@ -156,6 +156,7 @@
 		request.getXMLHttpRequest();
 		request.sendRequest();
 	}
+	
 	function Likego() {
 		var retVal = confirm(likeok);
 		if (retVal == true) {
@@ -167,38 +168,88 @@
 		}
 	}
 	// 리댓글
+	function reBoardClose(replynum,ref_num,re_step){
+		$('#board_' + replynum + ' #reBoardView').show();
+		$('#board_' + replynum + ' #reBoardClose').hide();
+		$('#replyBoardABC_'+ ref_num + ' #reContentClose').hide();
+		$('#reboard' + replynum + ' #reboardDown').hide();
+		$('#replyBoardABC_'+ ref_num + ' center').hide();
+	}
 	function reBoardView(replynum,ref_num,re_step){
 		//var replyBoard = document.getElementById("replyBoardABC_"+replynum);
+		var infResult = document.getElementById("replyBoardABC_"+ref_num);
+	      $('#board_' + replynum + ' #reBoardView').hide();
+			$('#board_' + replynum + ' #reBoardClose').show();
+		reboard = '';
+		reboard += '<div class="w3-row-padding w3-padding-32 w3-row" id="reContentClose">'
+			reboard += '<div class="w3-col m1">'
+			reboard += '<img src="${project}/view/img/HipBusLogo_pale_sq.png" width="100%" class="w3-circle">'
+			reboard += '</div>'
+			reboard += '<div class="w3-col m7">'
+			reboard += '<input name="recontent" type="text" required class="w3-input w3-border w3-padding-5" style="height: 50px">'
+			reboard += '</div>'
+			reboard += '<div class="w3-col m2">'
+			reboard += '<input type="button" onclick="reboardAppend('+ref_num+')" value="${btn_register}" class="w3-btn-block w3-theme-d1" style="height: 50px">'
+			reboard += '</div>'
+			reboard += '</div>'
+		
+		infResult.innerHTML = reboard;
+		
 		reloadBoard(ref_num);
+	}
+	function reboardAppend(ref_num) {
+		var params = 'num=' + "${num}" // 버스주인 이메일 혹은 크루아이디
+				+ '&ref_num=' + ref_num
+				+ '&email=' + "${sessionScope.memEmail}" // 세션에 저장된 작성자 이메일
+				+ '&content=' + $('input[name=recontent]').val(); // 본문 입력내용
+		request = new Request(
+				function() {
+					var reResult = document.getElementById("replyBoardABC_"+ref_num);
+					if (request.httpRequest.readyState == 4) {
+						if (request.httpRequest.status == 200) {
+							var xmldoc = request.httpRequest.responseXML;
+							var code = xmldoc.getElementsByTagName("code")
+									.item(0).innerHTML;
+							if (code == "inserted") {
+								var data = eval("("
+										+ xmldoc.getElementsByTagName("data")
+												.item(0).innerHTML + ")");
+								var newdiv = reMakeBoard(data);
+									reResult.appendChild(newdiv);
+								$('input[name=recontent]').val("");
+								$("#replyBoardABC_"+ref_num+ ' center').remove();
+								alert(readform.category.value);
+								alert("글이 등록되었습니다.")
+							} else if (code == "failed") {
+								var message = xmldoc.getElementsByTagName(
+										"message").item(0).innerHTML;
+							}
+						} else {
+
+						}
+					} else {
+
+					}
+				}, 'stationInfReplyAppendResult.do', 'POST', params);
+		request.getXMLHttpRequest();
+		request.sendRequest();
 	}
 	function reMakeBoard(data) {
 		var renewdiv = document.createElement("div");
 		renewdiv.setAttribute("id", "reboard_" + data.replynum);
 		var modBtn = '';
 		var reboard = '';
-		modBtn += '<button type="button" id="replyComplete" class="w3-btn w3-theme-l1 modc" style="display:none" onclick="modComplete('
+		modBtn += '<button type="button" id="reReplyComplete" class="w3-btn w3-theme-l1 modc" style="display:none" onclick="remodComplete('
 			+ data.replynum + ')">';
 		modBtn += '<i class="fa fa-check"></i>';
 		modBtn += '</button>';
-		modBtn += "<button type=\"button\" id='replyCancel' class=\"w3-btn w3-theme-l1\" style=\"display:none\" onclick=\"modCancel("
+		modBtn += "<button type=\"button\" id='reReplyCancel' class=\"w3-btn w3-theme-l1\" style=\"display:none\" onclick=\"remodCancel("
 				+ data.replynum + ",\'" + data.content + "\','creteria')\">";
 		modBtn += '<i class="fa fa-times"></i>';
 		modBtn += '</button>';
 		
-		
-		reboard += '<div class="w3-row-padding w3-padding-32 w3-row">'
-		reboard += '<div class="w3-col m1">'
-		reboard += '<img src="${project}/view/img/HipBusLogo_pale_sq.png" width="100%" class="w3-circle">'
-		reboard += '</div>'
-		reboard += '<div class="w3-col m7">'
-		reboard += '<input name="recontent" type="text" required class="w3-input w3-border w3-padding-5" style="height: 50px">'
-		reboard += '</div>'
-		reboard += '<div class="w3-col m2">'
-		reboard += '<input type="button" onclick="boardAppend()" value="${btn_register}" class="w3-btn-block w3-theme-d1" style="height: 50px">'
-		reboard += '</div>'
-		reboard += '</div>'
-		
-		reboard += '<div class="w3-card-8 w3-margin w3-padding-xlarge w3-padding-64">';
+		reboard += '<div id="reboard'+data.ref_num+'">';
+		reboard += '<div class="w3-card-8 w3-margin w3-padding-xlarge w3-padding-64" id="reboardDown">';
 		reboard += '<div class="w3-container w3-row">';
 		reboard += '<div class="w3-col m1 w3-center">';
 		reboard += '<img src="${project}/view/img/HipBusLogo_pale_sq.png" width="100%" class="w3-circle">';
@@ -210,11 +261,11 @@
 		reboard += '<div class="w3-harf w3-container w3-padding-4 w3-right">';
 		
 	 	if (data.email == "${sessionScope.memEmail}") {
-			reboard += '<a href="#" onClick="modBoardView('
+			reboard += '<a href="#" onClick="remodBoardView('
 					+ data.replynum
 					+ '); return false" id="remodView" class="w3-margin-right">${str_modify}</a>';
-			reboard += '<a href="#" onClick="delComplete('
-					+ data.replynum
+			reboard += '<a href="#" onClick="redelComplete('
+					+ data.replynum +","+ data.ref_num
 					+ '); return false"   id="redelBoard" class="w3-margin-right">${str_delete}</a>';
 			reboard += modBtn;
 		} 
@@ -225,6 +276,7 @@
 				+ 'height:4000; border:0;overflow-y:hidden;background:clear;">'
 				+ data.content +'</textarea>'
 	 	reboard += '</div>';
+		reboard += '</div>';
 		reboard += '</div>';
 		reboard += '</div>';
 		reboard += '</div>';
@@ -251,20 +303,9 @@
 												.item(0).innerHTML + ")");
 								if (data.length == 0) {
 									msg += "<center>"
-										msg += '<div class="w3-row-padding w3-padding-32 w3-row">'
-										msg += '<div class="w3-col m1">'
-										msg += '<img src="${project}/view/img/HipBusLogo_pale_sq.png" width="100%" class="w3-circle">'
-										msg += '</div>'
-										msg += '<div class="w3-col m7">'
-										msg += '<input name="recontent" type="text" required class="w3-input w3-border w3-padding-5" style="height: 50px">'
-										msg += '</div>'
-										msg += '<div class="w3-col m2">'
-										msg += '<input type="button" onclick="boardAppend()" value="${btn_register}" class="w3-btn-block w3-theme-d1" style="height: 50px">'
-										msg += '</div>'
-										msg += '</div>'
 									msg += "현재 댓글이 없습니다.";
 									msg += "</center>"
-									infResult.innerHTML = msg;
+									infResult.innerHTML += msg;
 								} else {
 									for (var i = 0; i < data.length; i++) {
 										var renewdiv = reMakeBoard(data[i]);
@@ -284,12 +325,128 @@
 		request.getXMLHttpRequest();
 		request.sendRequest();
 	}
+	// 리댓글 수정
+	function remodBoardView(replynum){
+	$('#reboard_' + replynum + ' textarea').prop('readonly', false);
+	$('#reboard_' + replynum + ' #remodView').hide();
+	$('#reboard_' + replynum + ' #redelBoard').hide();
+	$('#reboard_' + replynum + ' #reBoardView').hide();
+	$('#reboard_' + replynum + ' #reReplyComplete').show();
+	$('#reboard_' + replynum + ' #reReplyCancel').show();
+	$('#reboard_' + replynum + ' textarea').focus();
+	}
+	function remodCancel(replynum, content, criteria) { // 이전 데이터 저장해서 다시 띄움
+		if (criteria) {
+			if (!$('input[name=' + replynum + ']').prop("content")) {
+				$('input[name=' + replynum + ']').prop("content", content);
+				$('#reboard_' + replynum + ' textarea').val(
+						$('input[name=' + replynum + ']').prop("content"));
+			} else {
+				$('#reboard_' + replynum + ' textarea').val(
+						$('input[name=' + replynum + ']').prop("content"));
+			}
+		} else {
+			$('input[name=' + replynum + ']').prop("content", content);
+			$('#reboard_' + replynum + ' textarea').val(
+					$('input[name=' + replynum + ']').prop("content"));
+		}
+
+		$('#reboard_' + replynum + ' textarea').prop('readonly', true);
+		$('#reboard_' + replynum + ' #remodView').show();
+		$('#reboard_' + replynum + ' #redelBoard').show();
+		$('#reboard_' + replynum + ' #reBoardView').show();
+		$('#reboard_' + replynum + ' #reReplyComplete').hide();
+		$('#reboard_' + replynum + ' #reReplyCancel').hide();
+	}
+	function remodComplete(replynum) {
+		var params = 'replynum=' + replynum + '&content='
+				+ $('#reboard_' + replynum + ' textarea').val();
+		request = new Request(
+				function() {
+					if (request.httpRequest.readyState == 4) {
+						if (request.httpRequest.status == 200) {
+							var xmldoc = request.httpRequest.responseXML;
+							var code = xmldoc.getElementsByTagName("code")
+									.item(0).innerHTML;
+							if (code == "updated") {
+								var data = xmldoc.getElementsByTagName("data")
+										.item(0).innerHTML;
+								alert("성공적으로 수정되었습니다.");
+								$('#reboard_' + replynum + ' textarea').prop('readonly', true);
+								$('#reboard_' + replynum + ' #remodView').show();
+								$('#reboard_' + replynum + ' #redelBoard').show();
+								$('#reboard_' + replynum + ' #reBoardView').show();
+								$('#reboard_' + replynum + ' #reReplyComplete').hide();
+								$('#reboard_' + replynum + ' #reReplyCancel').hide();
+							} else if (code == "failed") {
+								var message = xmldoc.getElementsByTagName(
+										"message").item(0).innerHTML;
+
+							}
+							modCancel(replynum, data);
+						} else {
+
+						}
+					} else {
+
+					}
+				}, 'stationReplyModifyResult.do', "POST", params);
+		request.getXMLHttpRequest();
+		request.sendRequest();
+	}
+	// 리댓글 삭제
+	function redelComplete(replynum,ref_num) {
+		var retVal = confirm("삭제 하시겠습니까?");
+		if (retVal == true) {
+			var params = "replynum=" + replynum;
+			request = new Request(
+					function() {
+						var infResult = document.getElementById("replyBoardABC_"+ref_num);
+						var msg = "";
+						if (request.httpRequest.readyState == 4) {
+							if (request.httpRequest.status == 200) {
+								var xmldoc = request.httpRequest.responseXML;
+								var code = xmldoc.getElementsByTagName("code")
+										.item(0).innerHTML;
+								if (code == "deleted") {
+									var replynum = eval("("
+											+ xmldoc.getElementsByTagName(
+													"data").item(0).innerHTML
+											+ ")");
+									var deldiv = document
+											.getElementById("reboard_" + replynum);
+									infResult.removeChild(deldiv);	
+									alert("성공적으로 삭제하였습니다.");
+								} else if (code == "failed") {
+									msg += xmldoc.getElementsByTagName(
+											"message").item(0).innerHTML;
+								} else if (code == "no") {
+									alert("댓글이 있는글은 삭제할수없습니다.");
+								}
+
+							} else {
+
+							}
+						} else {
+
+						}
+					}, "stationReplyDeleteResult.do", "POST", params);
+			request.getXMLHttpRequest();
+			request.sendRequest();
+		} else {
+			location.href = "stationRead.do?num=" + readform.num.value
+					+ "&pageNum=" + readform.pageNum.value + "category="
+					+ readform.category.value + "&type=" + readform.type.value;
+		}
+	}
+	
 	// 댓글 수정
 	function modBoardView(replynum) {
 		$('#board_' + replynum + ' textarea').prop('readonly', false);
 		$('#board_' + replynum + ' #modView').hide();
 		$('#board_' + replynum + ' #delBoard').hide();
-		$('#board_' + replynum + ' #reBoard').hide();
+		$('#board_' + replynum + ' #reBoardView').hide();
+		$('#board_' + replynum + ' #reBoardClose').hide();
 		$('#board_' + replynum + ' #replyComplete').show();
 		$('#board_' + replynum + ' #replyCancel').show();
 		$('#board_' + replynum + ' textarea').focus();
@@ -314,7 +471,7 @@
 		$('#board_' + replynum + ' textarea').prop('readonly', true);
 		$('#board_' + replynum + ' #modView').show();
 		$('#board_' + replynum + ' #delBoard').show();
-		$('#board_' + replynum + ' #reBoard').show();
+		$('#board_' + replynum + ' #reBoardView').show();
 		$('#board_' + replynum + ' #replyComplete').hide();
 		$('#board_' + replynum + ' #replyCancel').hide();
 	}
@@ -332,7 +489,7 @@
 							if (code == "updated") {
 								var data = xmldoc.getElementsByTagName("data")
 										.item(0).innerHTML;
-								alert("성공적으로 수정되었습니다.");
+								alert("성공적으로 수정되었습니다.");							
 							} else if (code == "failed") {
 								var message = xmldoc.getElementsByTagName(
 										"message").item(0).innerHTML;
@@ -373,12 +530,7 @@
 											.getElementById("board_" + replynum);
 									result.removeChild(deldiv);
 									alert("성공적으로 삭제하였습니다.");
-									if(data.length > 1){
-										msg += "<center>"
-										msg += "현재 댓글이 없습니다.";
-										msg += "</center>"
-										$('#boardInfo').html(msg);
-									}
+									
 								} else if (code == "failed") {
 									msg += xmldoc.getElementsByTagName(
 											"message").item(0).innerHTML;
@@ -466,6 +618,7 @@ ${article.content}
 								<input type="hidden" value="${pageNum}" name="pageNum">
 								<input type="hidden" value="${article.category}" name="category">
 								<input type="hidden" value="${type}" name="type">
+								<input type="hidden" value="${article.nick}" name="nick">
 								<input type="hidden" value="${sessionScope.memEmail}" name="email">
 								<input type="hidden" name="ref_num" value="${ref_num}">
 								<input type="hidden" name="re_step" value="${re_step}">
@@ -505,7 +658,7 @@ ${article.content}
 
 	</div>
 
-
+	
 	<!-- END MAIN -->
 	</div>
 

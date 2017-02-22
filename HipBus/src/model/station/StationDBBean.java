@@ -3,6 +3,7 @@ package model.station;
 import java.util.List;
 import java.util.Map;
 
+
 import org.springframework.stereotype.Component;
 
 import model.LikeDto;
@@ -42,9 +43,8 @@ public class StationDBBean implements StationDao {
 		return SqlMapClient.getSession().insert( "Station.likeArticle", dto );
 	}
 	
-	public int insertArticle( StationDto dto ) {
-		return SqlMapClient.getSession().insert( "Station.insertArticle", dto );
-		
+	public int insertArticle( StationDto dto ) {	
+		return SqlMapClient.getSession().insert( "Station.insertArticle", dto );	
 	}
 	
 	@Override
@@ -85,10 +85,10 @@ public class StationDBBean implements StationDao {
 			if( getReplyCount() != 0 ) {
 				// 글이 있는 경우
 				// 그룹화아이디 = 글번호최대값 + 1
-				ref_num = (Integer) SqlMapClient.getSession().selectOne( "Station.maxNum" ) + 1;				
+				ref_num = (Integer) SqlMapClient.getSession().selectOne("Station.reMaxNum");				
 			} else {
 				// 글이 없는 경우
-				ref_num = 1;
+				ref_num = (Integer) SqlMapClient.getSession().selectOne("Station.reMaxNum");
 			}				
 			re_step = 0;
 			re_level = 0;
@@ -127,5 +127,33 @@ public class StationDBBean implements StationDao {
 		public List<ReplyDto> getInfReplys( int ref_num ) {
 			return SqlMapClient.getSession().selectList( "Station.getInfReplys", ref_num );
 		}
-
+		public int infReplyInsert( ReplyDto dto ) {
+			int re_level = dto.getRe_level();	// 글레벨
+			int replynum = dto.getReplynum();
+			if( replynum == 0 ) {
+				// 제목글			
+				if( getInfReplyCount() != 0 ) {
+					// 글이 있는 경우
+					// 그룹화아이디 = 글번호최대값 + 1
+					re_level = (Integer) SqlMapClient.getSession().selectOne( "Station.maxNum" ) + 1;				
+				} else {
+					// 글이 없는 경우
+					re_level = (Integer) SqlMapClient.getSession().selectOne("Station.reMaxNum");
+				}					
+			}			
+			dto.setRe_level( re_level );
+			return SqlMapClient.getSession().insert( "Station.infReplyInsert", dto );
+			
+		}
+		public int getInfReplyCount() {
+			return SqlMapClient.getSession().selectOne( "Station.getInfReplyCount" );
+		}
+		// 멤레벨
+		public int countMem(String email) {
+			return SqlMapClient.getSession().selectOne( "Station.countMem", email );
+		}
+		public int addMem(String email) {
+			return SqlMapClient.getSession().update( "Station.addMem",email );
+		}	
+	
 }

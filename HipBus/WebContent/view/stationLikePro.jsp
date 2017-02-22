@@ -12,7 +12,7 @@
 	<script type="text/javascript">
 		//<!--
 		alert( likeconfirm )
-		history.go(-1);
+		history.go(-1)
 		//-->
 	</script>
 </c:if>

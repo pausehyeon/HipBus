@@ -41,6 +41,13 @@
 	<select id="getMember" parameterType="String" resultType="model.MemberDto">
 	select * from HB_Member where email=#{email}
 	</select>
+	<!-- 레벨 업데이트 -->
+	<select id="countMem" parameterType="String" resultType="int">
+	 select count(*) from hb_station where email=#{email}
+	</select>
+	<update id="addMem" parameterType="String">
+		update HB_member set mem_level=2 where email=#{email}
+	</update>
 	
 	<insert id="insertArticle" parameterType="model.StationDto">
 		insert into HB_Station( num, email, category, nick, subject, content,
@@ -67,7 +74,7 @@
   	
   	<!--  댓글 -->
   	<select id="getReplys" parameterType="int" resultType="model.ReplyDto">
-		select * from HB_StationReply where num=#{num} order by replynum asc
+		select * from HB_StationReply where num=#{num} and re_step=0 order by replynum asc
 	</select>
 	
 	<insert id="replyInsert" parameterType="model.ReplyDto">
@@ -92,6 +99,7 @@
 		select max(replynum) from HB_StationReply
 	</select>
 	
+	
 	<update id="modifyReply" parameterType="model.ReplyDto">
 		update HB_StationReply set content=#{content} where replynum=#{replynum}
 	</update>
@@ -99,7 +107,6 @@
 	<delete id="deleteReply" parameterType="int">
 		delete from HB_StationReply where replynum = #{replynum}
 	</delete>
-	
 	<select id="replyCount" parameterType="model.ReplyDto" resultType="int">
 		select count(*) from HB_StationReply 
 		where ref_num = #{ref_num} 
@@ -118,4 +125,18 @@
 	<select id="getInfReplys" parameterType="int" resultType="model.ReplyDto">
 		select * from HB_StationReply where ref_num=#{ref_num} and re_step=1 order by reg_date asc
 	</select>
+	<!-- 시퀀스마지막번호 -->
+	<select id="reMaxNum" resultType="int">
+		select last_number from user_sequences where sequence_name=upper('hb_replyseq')
+	</select>
+	<insert id="infReplyInsert" parameterType="model.ReplyDto">
+		insert into HB_StationReply( replynum,num,email,content,
+		ref_num,re_step,re_level,reg_date,status)
+		values(HB_replyseq.NEXTVAL,#{num},#{email},
+		#{content},#{ref_num},1,#{re_level},sysdate,0)
+	</insert>
+	<select id="getInfReplyCount" resultType="int">
+		select count(*) from HB_StationReply where re_step=1
+	</select>
+	
 </mapper>

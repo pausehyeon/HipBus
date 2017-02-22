@@ -23,6 +23,7 @@ public class StationWritePro implements CommandHandler {
 	@Resource( name="stationDao")
 	private StationDao stationDao;
 	
+	
 	@RequestMapping("/stationWritePro.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
@@ -32,13 +33,17 @@ public class StationWritePro implements CommandHandler {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		
+		int resultCount = 0;
 		
 		String email = request.getParameter("email");
 		
 		MemberDto article = stationDao.getMember(email);
 		
-		
+		int count = stationDao.countMem(email);
+		if( count == 10){
+			resultCount = stationDao.addMem(email);
+			request.setAttribute("resultCount", resultCount);
+		}
 		
 		StationDto dto = new StationDto();
 		dto.setEmail((String)request.getSession().getAttribute("memEmail"));
@@ -51,7 +56,6 @@ public class StationWritePro implements CommandHandler {
 		int result = stationDao.insertArticle( dto );
 		request.setAttribute("article", article);
 		request.setAttribute( "result", result );
-		
 		return new ModelAndView("stationWritePro");
 	}
 

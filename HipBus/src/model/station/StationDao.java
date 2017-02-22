@@ -29,4 +29,7 @@ public interface StationDao {
 	public int deleteReply( int replynum );
 	public ReplyDto getReply(int replynum);
 	public List<ReplyDto> getInfReplys( int ref_num );
+	public int infReplyInsert( ReplyDto dto );
+	public int countMem(String email);
+	public int addMem( String email);
 }
