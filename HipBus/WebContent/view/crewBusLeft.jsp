@@ -12,7 +12,7 @@
 		<div class="w3-container">
 			<h4 class="w3-center">${str_crewProfile}</h4>
 			<p class="w3-center">
-				<img src="${project}/view/img/CrewBusLogo_colored_sq.png" class="w3-circle"
+				<img id="crewBusLeftImg" src="${project}/view/img/CrewBusLogo_colored_sq.png" class="w3-circle"
 					style="height: 106px; width: 106px" alt="Avatar">
 			</p>
 			<hr>
