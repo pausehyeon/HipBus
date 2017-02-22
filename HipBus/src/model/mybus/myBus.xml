@@ -145,6 +145,16 @@
 	<update id="imgLocationUpdate" parameterType="model.MemberDto">
 		update hb_member set imglocation=#{imglocation} where email=#{email} 
 	</update>
+	<update id="readWanted" parameterType="int">
+		update hb_wanted set readcount=readcount+1 where num=#{num}
+	</update>
+	<update id="readUpcoming" parameterType="int">
+		update hb_upcoming set readcount=readcount+1 where num=#{num}
+	</update>
+	<select id="getNewWanted" parameterType="String" resultType="model.WantedDto">
+		select * from hb_wanted 
+		where num=(select max(num) from hb_wanted where driver=#{driver})
+	</select>
 </mapper>
 
 

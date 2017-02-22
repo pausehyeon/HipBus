@@ -44,4 +44,7 @@ public interface MyBusDao {
 	public int modifyWantedArticle(WantedDto article);
 	public int deleteWantedArticle(int num);
 	public int imgLocationUpdate(MemberDto imglocation);
+	public void readWanted (int num);
+	public void readUpcoming (int num);
+	public WantedDto getNewWanted(String driver);
 }

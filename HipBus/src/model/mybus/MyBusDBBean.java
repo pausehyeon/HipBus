@@ -118,4 +118,13 @@ public class MyBusDBBean implements MyBusDao {
 	public int imgLocationUpdate(MemberDto imglocation) {
 		return SqlMapClient.getSession().update("MyBus.imgLocationUpdate", imglocation);
 	}
+	public void readWanted (int num){
+		SqlMapClient.getSession().update("MyBus.readWanted", num);
+	}
+	public void readUpcoming (int num){
+		SqlMapClient.getSession().update("MyBus.readUpcoming",num);
+	}
+	public WantedDto getNewWanted(String driver) {
+		return SqlMapClient.getSession().selectOne("MyBus.getNewWanted", driver);
+	}
 }

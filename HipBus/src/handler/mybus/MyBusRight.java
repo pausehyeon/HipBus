@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import handler.CommandHandler;
 import handler.HandlerException;
 import model.UpcomingDto;
+import model.WantedDto;
 import model.general.ImageResize;
 import model.mybus.MyBusDao;
 
@@ -30,7 +31,11 @@ public class MyBusRight implements CommandHandler {
 			request.setAttribute("upcomingDto", upcomingDto);
 			
 		}
-		
+		WantedDto wantedDto = mybusDao.getNewWanted(driver);
+		if(wantedDto!=null){
+			wantedDto.setImglocation(wantedDto.getImglocation());
+			request.setAttribute("wantedDto", wantedDto);
+		}
 		request.setAttribute("driver", driver);
 		request.setAttribute("email", email);
 		return new ModelAndView("myBusRight");
