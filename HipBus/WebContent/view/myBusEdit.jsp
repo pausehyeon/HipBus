@@ -109,14 +109,19 @@
 						<form id="inputform" enctype="multipart/form-data" action="myBusEditPro.do?driver=${driver}" method="post" class="w3-container">
 							<p>
 								<label>Profile Picture</label>
-							<div class="w3-row">
-								<div class="w3-quarter w3-center">
-									<img src="${project}/view/img/HipBusLogo_colored_sq.png" class="w3-circle" style="height: 106px; width: 106px" alt="Avatar">
+							<div class="w3-row-padding">
+								<c:if test="${member.imglocation eq null}">
+								<div class="w3-col m4 w3-center">
+									<img src="${project}/view/img/HipBusLogo_pale_sq.png" class="w3-circle" width="100%" alt="Avatar">
 								</div>
-								<div class="w3-rest">
-									<a class="w3-input w3-right-align">
-										HipBusLogo_colored_sq.png(기존 파일명) &nbsp;&nbsp;<i class="fa fa-download"></i>
-									</a>
+								</c:if>
+								<c:if test="${member.imglocation ne null}">
+								<div class="w3-col m4 w3-center">
+									<img src="${project}/hipbusSave/${member.imglocation}" class="w3-circle" width="100%" alt="Avatar">
+								</div>
+								</c:if>
+								<div class="w3-col m8">
+									<br><br>
 									<input name="upload" class="w3-input" type="file">
 								</div>
 							</div>
@@ -126,19 +131,19 @@
 
 							<p>
 								<label>${str_userName}</label>
-								<input name="nick" class="w3-input" type="text" onkeyup="verifynick()">
+								<input name="nick" value="${member.nick}" class="w3-input" type="text" onkeyup="verifynick()">
 							<div class="w3-text-red w3-small w3-right" id="nickresult">${str_signUpUserName}</div>
 							</p>
 							<br> <br>
 							<p>
 								<label>${str_password}</label>
-								<input name="passwd" class="w3-input" type="password">
+								<input name="passwd" value="${member.passwd}" class="w3-input" type="password">
 							<div class="w3-text-blue w3-small w3-right" id="passwdresult">${str_signUpPassword}</div>
 							</p>
 							<br>
 							<p>
 								<label>${str_passwordCheck}</label>
-								<input name="repasswd" class="w3-input" type="password">
+								<input name="repasswd" value="${member.passwd}" class="w3-input" type="password">
 							<div class="w3-text-blue w3-small w3-right" id="repasswdresult">${str_signUpPasswordCheck}</div>
 							</p>
 							<br><br>
