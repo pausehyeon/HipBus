@@ -1,6 +1,8 @@
 package handler.general;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -27,6 +29,7 @@ public class Top implements CommandHandler {
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 
 		String memEmail = (String) request.getSession().getAttribute("memEmail");
+		String keyword = request.getParameter("keyword");
 
 		if (memEmail != null) {
 			// 로그인 된 상태에서
@@ -41,6 +44,11 @@ public class Top implements CommandHandler {
 			
 			List<MemberDto> hoppedOnMembers = dao.getHoppedOnMembers(memEmail);
 			request.setAttribute("hoppedOnMembers", hoppedOnMembers);
+			
+			Map<String,String> map = new HashMap<String,String>();
+			map.put("keyword",keyword);
+			List<MemberDto> searchMember = dao.getSearchMember(map);
+			request.setAttribute("searchMember", searchMember);
 		}
 
 		return new ModelAndView("top");

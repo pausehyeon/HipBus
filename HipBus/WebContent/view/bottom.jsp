@@ -12,7 +12,7 @@
 	</div>
 	
 	<div style="border: 1px solid transparent; ; float: left; width: 3%;" id="mybusget">
-		<a href="#" class="w3-bottom w3-left w3-padding-large w3-hover-opacity" onclick="myBusGet()"><img class="w3-circle" id="mybusImg" src=""> </a>
+		<a href="#" class="w3-bottom w3-left w3-padding-large w3-hover-opacity" onclick="myBusGet()"><img class="w3-circle" alt="" id="mybusImg" src=""> </a>
 	</div>
 	<div style="border: 1px solid transparent; ; float: left; width: 3%;" id="crewbusget">
 		<span class="w3-bottom w3-left w3-padding-large w3-hover-opacity" onclick="crewBusGet()"><img class="w3-circle" id="crewbusImg" src=""></span>

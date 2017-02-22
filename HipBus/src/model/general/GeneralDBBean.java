@@ -2,6 +2,7 @@ package model.general;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
@@ -66,5 +67,11 @@ public class GeneralDBBean implements GeneralDao {
 	@Override
 	public List<CrewDto> getHoppedOnCrews(String email) {
 		return session.selectList("General.getHoppedOnCrews", email);
+	}
+
+	@Override
+	public List<MemberDto> getSearchMember(Map<String,String> map) {
+		// TODO Auto-generated method stub
+		return session.selectList("General.getSearchMember", map);
 	}
 }

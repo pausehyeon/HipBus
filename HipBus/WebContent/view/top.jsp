@@ -57,23 +57,26 @@
 					<a class="w3-center w3-small" onclick="document.getElementById('driverSearch').style.display='block'"> <span>${str_more}</span>
 					</a>
 				</div></li>
+
 			<li class="w3-hide-small w3-dropdown-hover"><a href="#" class="w3-padding-large w3-hover-white" title="otherdrivers"> <i class="fa fa-search"></i>
 			</a>
 				<div class="w3-dropdown-content w3-white w3-card-4">
-					<div class="w3-row w3-container w3-padding-16">
-						<div class="w3-threequarter">
-							<input type="text" class="w3-input" placeholder="${str_search}">
+					<form name="searchBusForm" method="get" >
+						<div class="w3-row w3-container w3-padding-16">
+							<div class="w3-threequarter">
+								<input type="text" name="keyword" class="w3-input" placeholder="${str_search}">
+							</div>
+							<div class="w3-quarter w3-right-align">
+								<i class="fa fa-search"></i>
+							</div>
 						</div>
-						<div class="w3-quarter w3-right-align">
-							<i class="fa fa-search"></i>
-						</div>
-					</div>
-					<a href="myBus.do?driver=">누구의 버스</a>
-					<a href="myBus.do?driver=">누구의 버스</a>
-					<a href="myBus.do?driver=">누구의 버스</a>
-					<a href="myBus.do?driver=">누구의 버스</a>
-					<a class="w3-center w3-small" onclick="document.getElementById('driverSearch').style.display='block'"> <span>${str_more}</span>
-					</a>
+						<c:forEach var="searchMember" items="${searchMember}">
+						
+						</c:forEach>
+						<a href="myBus.do?driver=">누구의 버스</a> <a class="w3-center w3-small" onclick="document.getElementById('driverSearch').style.display='block'"> <span>${str_more}</span>
+						</a>
+					
+					</form>
 				</div></li>
 		</c:if>
 		<c:if test="${sessionScope.memEmail ne null}">
@@ -82,10 +85,10 @@
 			<li class="w3-hide-small w3-right">
 				<!-- 로그아웃 -->
 				<form name="signOutForm" method="post" action="signOutPro.do">
-					<input type="submit" value="${str_signOut}" class="w3-btn w3-theme-d2 w3-padding-large w3-hover-white">
-					<input name="urlToGoBack" type="hidden">
+					<input type="submit" value="${str_signOut}" class="w3-btn w3-theme-d2 w3-padding-large w3-hover-white"> <input name="urlToGoBack" type="hidden">
 					<!-- ^ 로그아웃 후 돌아올 현재 페이지 url을 기억.-->
 					<script type="text/javascript">
+						
 						
 						
 						//<!--
@@ -95,6 +98,7 @@
 								signOutForm.urlToGoBack.value = location.href;
 							}
 						);
+					
 					
 					
 					//-->

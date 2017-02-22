@@ -48,4 +48,9 @@
 	<select id="getHoppedOnCrews" parameterType="String" resultType="model.CrewDto">
 		select distinct p.driver as crewid, c.crewname, c.imglocation from hb_passengers p, hb_crew c where p.driver = c.crewid and p.email = #{email}
 	</select>
+	
+	<select id="getSearchMember" parameterType="Map" resultType="model.MemberDto">
+		select * from hb_member where email like '%${keyword}%'
+	</select>
+	
 </mapper>
