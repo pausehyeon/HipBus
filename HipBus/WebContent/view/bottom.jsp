@@ -1,22 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@include file="/view/setting/setting.jsp"%>
+<script src="/HipBus/scripts/jquery-3.1.1.js"></script>
 
 <body>
 
 	<!-- 댓글 Alert   -->
-	<div class="w3-container w3-margin-bottom w3-text-khaki" style="border: 1px solid white; float: left; width: 5%;">
+	<div class="w3-container w3-margin-bottom w3-text-khaki" style="border: 1px solid transparent; ; float: left; width: 5%;">
 		<a href="#" onclick="document.getElementById('id01').style.display='block'" class="w3-bottom w3-left w3-padding-large w3-hover-opacity" title="실시간 댓글 알림"> <i class="fa fa-bell w3-xxlarge"></i><span
 			class="w3-badge w3-red">3</span>
 		</a>
 	</div>
-	<div style="border: 1px solid white; float: left; width: 5%;">
+	
+	<div style="border: 1px solid transparent; ; float: left; width: 5%;" id="mybusget">
 		<span class="w3-bottom w3-left w3-padding-large w3-hover-opacity" onclick="myBusGet()">myBus</span>
 	</div>
-	<div style="border: 1px solid white; float: left; width: 5%;">
+	<div style="border: 1px solid transparent; ; float: left; width: 5%;" id="crewbusget">
 		<span class="w3-bottom w3-left w3-padding-large w3-hover-opacity" onclick="crewBusGet()">crewBus</span>
 	</div>
-	<div style="border: 1px solid white; float: left; width: 5%;">
+	<div style="border: 1px solid transparent; ; float: left; width: 5%;" id="boardget">
 		<span class="w3-bottom w3-left w3-padding-large w3-hover-opacity" onclick="boardGet()">board</span>
 	</div>
 	<div id="id01" class="w3-modal">
