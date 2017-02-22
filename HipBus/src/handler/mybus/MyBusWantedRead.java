@@ -27,6 +27,8 @@ public class MyBusWantedRead implements CommandHandler {
 		
 		int num = Integer.parseInt( request.getParameter("num") );
 		WantedDto article = dao.getWantedArticle(num);
+		dao.readWanted(num);
+		
 		request.setAttribute("article", article);
 		
 		return new ModelAndView("myBusWantedRead");

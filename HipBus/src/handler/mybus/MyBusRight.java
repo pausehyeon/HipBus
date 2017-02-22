@@ -12,7 +12,6 @@ import handler.CommandHandler;
 import handler.HandlerException;
 import model.UpcomingDto;
 import model.WantedDto;
-import model.general.ImageResize;
 import model.mybus.MyBusDao;
 
 @Controller
@@ -29,7 +28,6 @@ public class MyBusRight implements CommandHandler {
 		if(upcomingDto!=null){
 			upcomingDto.setImglocation(upcomingDto.getImglocation());
 			request.setAttribute("upcomingDto", upcomingDto);
-			
 		}
 		WantedDto wantedDto = mybusDao.getNewWanted(driver);
 		if(wantedDto!=null){

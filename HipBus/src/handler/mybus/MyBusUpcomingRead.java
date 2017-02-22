@@ -24,7 +24,7 @@ public class MyBusUpcomingRead implements CommandHandler {
 		int num = Integer.parseInt(request.getParameter("num"));
 		
 		UpcomingDto upcomingDto = mybusDao.getUpcoming(num);
-		
+		mybusDao.readUpcoming(num);
 		
 		
 		request.setAttribute("upcomingDto", upcomingDto);
