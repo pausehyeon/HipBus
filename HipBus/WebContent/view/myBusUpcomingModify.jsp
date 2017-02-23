@@ -74,7 +74,11 @@
 										<jsp:useBean id="defaultDateTime" class="java.util.Date" />
 										<fmt:formatDate var="today" value="${defaultDateTime}" pattern="yyyy-MM-dd" />
 										<fmt:formatDate var="now" value="${defaultDateTime}" pattern="hh:mm" />
-										<input name="perf_date" type="datetime-local" required="required" value="${perf_date}" min="${today}T${now}" class="w3-input">
+										<!-- 기존 perf_date를 받아와서 format -->
+										<fmt:formatDate var="perf_date" value="${upcomingDto.perf_date}" pattern="yyyy-MM-dd" />
+										<fmt:formatDate var="perf_time" value="${upcomingDto.perf_date}" pattern="hh:mm" />
+										
+										<input name="perf_date" type="datetime-local" required="required" value="${perf_date}T${perf_time}" min="${today}T${now}" class="w3-input">
 										<label class="w3-label w3-validate">${str_perf_date}</label>
 									</div>
 									<div class="w3-col m12 w3-margin-bottom">
@@ -96,6 +100,11 @@
 							<div class="w3-col m12">
 								<textarea name="content" id="editor" required class="w3-input"></textarea>
 								<script type="text/javascript" src="${project}/scripts/ckeditor/insertCkeditor.js"></script>
+								<script type="text/javascript">
+								CKEDITOR.instances.editor
+										.setData("${upcomingDto.content}");
+								//-->
+								</script>
 							</div>
 						</div>
 						<div class="w3-row-padding w3-padding-32">

@@ -49,7 +49,7 @@
 									<jsp:useBean id="now" class="java.util.Date" />
 									<fmt:parseNumber var="today" value="${now.time/ (1000*60*60*24)}" integerOnly="true" />
 									<fmt:parseNumber var="perf_date" value="${article.perf_date.time/ (1000*60*60*24)}" integerOnly="true" />
-									<!-- D-n 초록색, D-3 ~ D-1 빨간 색, D-day, 마감으로 나누어표시 -->
+									<!-- D-n 초록색, D-3 ~ D-1 빨간 색, D-day으로 나누어표시 -->
 									<p>
 										<c:if test="${(today - perf_date) lt (-3)}">
 											<span class="w3-badge w3-green">D${today - perf_date}</span>
@@ -60,10 +60,6 @@
 										<c:if test="${(today - perf_date) eq 0}">
 											<span class="w3-badge w3-red">D-Day</span>
 										</c:if>
-										<c:if test="${(today - perf_date) gt 0}">
-											<span class="w3-badge">${str_ended}</span>
-										</c:if>
-
 										<c:if test="${fn:length(article.subject) le 7}">
 											${article.subject}
 										</c:if>
