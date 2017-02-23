@@ -27,12 +27,12 @@ public class MyBusRight implements CommandHandler {
 		UpcomingDto upcomingDto = mybusDao.getNewUpcoming(driver);
 		if(upcomingDto!=null){
 			upcomingDto.setImglocation(upcomingDto.getImglocation());
-			request.setAttribute("upcomingDto", upcomingDto);
+			request.setAttribute("newUpcomingDto", upcomingDto);
 		}
 		WantedDto wantedDto = mybusDao.getNewWanted(driver);
 		if(wantedDto!=null){
 			wantedDto.setImglocation(wantedDto.getImglocation());
-			request.setAttribute("wantedDto", wantedDto);
+			request.setAttribute("newWantedDto", wantedDto);
 		}
 		request.setAttribute("driver", driver);
 		request.setAttribute("email", email);

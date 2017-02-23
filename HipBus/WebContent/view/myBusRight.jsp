@@ -18,7 +18,7 @@
 					<i class="fa fa-align-left"></i>&nbsp; ${str_mylist}
 				</button>
 			</div>
-			<c:if test="${upcomingDto.imglocation==null}">
+			<c:if test="${newUpcomingDto.imglocation==null}">
 				<img src="${project}/view/img/notice1.png" alt="some image" style="width: 100%;">
 				<div class="w3-padding-12">
 					<p>
@@ -26,9 +26,9 @@
 					</p>
 				</div>
 			</c:if>
-			<c:if test="${upcomingDto.imglocation!=null}">
-				<img src="${project}/hipbusSave/${upcomingDto.imglocation}" alt="some image" style="width: 100%;">
-				<fmt:parseNumber var="perf_date" value="${upcomingDto.perf_date.time/ (1000*60*60*24)}" integerOnly="true" />
+			<c:if test="${newUpcomingDto.imglocation!=null}">
+				<img src="${project}/hipbusSave/${newUpcomingDto.imglocation}" alt="some image" style="width: 100%;">
+				<fmt:parseNumber var="perf_date" value="${newUpcomingDto.perf_date.time/ (1000*60*60*24)}" integerOnly="true" />
 				<!-- D-n 초록색, D-3 ~ D-1 빨간 색, D-day으로 나누어표시 -->
 				<h5 class="w3-padding">
 					<c:if test="${(today - perf_date) lt (-3)}">
@@ -40,19 +40,19 @@
 					<c:if test="${(today - perf_date) eq 0}">
 						<span class="w3-badge w3-red">D-Day</span>
 					</c:if>
-					<c:if test="${fn:length(upcomingDto.subject) le 7}">
-						${upcomingDto.subject}
+					<c:if test="${fn:length(newUpcomingDto.subject) le 7}">
+						${newUpcomingDto.subject}
 					</c:if>
-					<c:if test="${fn:length(upcomingDto.subject) gt 7}">
-						${fn:substring(upcomingDto.subject, 0, 7)}...
+					<c:if test="${fn:length(newUpcomingDto.subject) gt 7}">
+						${fn:substring(newUpcomingDto.subject, 0, 7)}...
 					</c:if>
 				</h5>
 				<p class="w3-small">
-					<fmt:formatDate value="${upcomingDto.reg_date}" type="both" pattern="yyyy-MM-dd HH:mm" />
-					| ${upcomingDto.readcount}
+					<fmt:formatDate value="${newUpcomingDto.reg_date}" type="both" pattern="yyyy-MM-dd HH:mm" />
+					| ${newUpcomingDto.readcount}
 				</p>
 				<p>
-					<button class="w3-btn w3-btn-block w3-theme-d5" onclick="location='myBusUpcomingRead.do?driver=${driver}&num=${upcomingDto.num}'">${str_detail}</button>
+					<button class="w3-btn w3-btn-block w3-theme-d5" onclick="location='myBusUpcomingRead.do?driver=${driver}&num=${newUpcomingDto.num}'">${str_detail}</button>
 				</p>
 			</c:if>
 		</div>
@@ -65,7 +65,7 @@
 					<i class="fa fa-align-left"></i>&nbsp; ${str_mylist}
 				</button>
 			</div>
-			<c:if test="${wantedDto==null}">
+			<c:if test="${newWantedDto==null}">
 				<img src="${project}/view/img/topdriver1.png" alt="some image" style="width: 100%;">
 				<div class="w3-padding-12">
 					<p>
@@ -73,17 +73,17 @@
 					</p>
 				</div>
 			</c:if>
-			<c:if test="${wantedDto!=null}">
+			<c:if test="${newWantedDto!=null}">
 				<!-- 대표 이미지가 있는 경우 -->
-				<c:if test="${(wantedDto.imglocation ne null) and (wantedDto.imglocation ne '') }">
-					<img src="${project}/hipbusSave/${wantedDto.imglocation}" alt="poster" style="width: 100%">
+				<c:if test="${(newWantedDto.imglocation ne null) and (newWantedDto.imglocation ne '') }">
+					<img src="${project}/hipbusSave/${newWantedDto.imglocation}" alt="poster" style="width: 100%">
 				</c:if>
 				<!-- 대표 이미지가 없는 경우 -->
-				<c:if test="${(wantedDto.imglocation eq null) or (wantedDto.imglocation eq '') }">
+				<c:if test="${(newWantedDto.imglocation eq null) or (newWantedDto.imglocation eq '') }">
 					<img src="${project}/view/img/HipBusLogo_pale_sq.png" alt="poster" style="width: 100%" class="w3-opacity">
 				</c:if>
 
-				<fmt:parseNumber var="duedate" value="${wantedDto.duedate.time/ (1000*60*60*24)}" integerOnly="true" />
+				<fmt:parseNumber var="duedate" value="${newWantedDto.duedate.time/ (1000*60*60*24)}" integerOnly="true" />
 				<!-- D-n 초록색, D-3 ~ D-1 빨간 색, D-day로 나누어표시 -->
 				<h5 class="w3-padding">
 					<c:if test="${(today - duedate) lt (-3)}">
@@ -95,19 +95,19 @@
 					<c:if test="${(today - duedate) eq 0}">
 						<span class="w3-badge w3-red">D-Day</span>
 					</c:if>
-					<c:if test="${fn:length(wantedDto.subject) le 7}">
+					<c:if test="${fn:length(newWantedDto.subject) le 7}">
 						${wantedDto.subject}
 					</c:if>
-					<c:if test="${fn:length(wantedDto.subject) gt 7}">
-						${fn:substring(wantedDto.subject, 0, 7)}...
+					<c:if test="${fn:length(newWantedDto.subject) gt 7}">
+						${fn:substring(newWantedDto.subject, 0, 7)}...
 					</c:if>
 				</h5>
 
 				<p class="w3-small">
-					<fmt:formatDate value="${wantedDto.reg_date}" type="both" pattern="yyyy-MM-dd HH:mm" />
-					| ${wantedDto.readcount}
+					<fmt:formatDate value="${newWantedDto.reg_date}" type="both" pattern="yyyy-MM-dd HH:mm" />
+					| ${newWantedDto.readcount}
 				</p>
-				<button class="w3-btn w3-btn-block w3-theme-d5 w3-margin-bottom" onclick="location='myBusWantedRead.do?driver=${driver}&num=${wantedDto.num}'">${str_detail}</button>
+				<button class="w3-btn w3-btn-block w3-theme-d5 w3-margin-bottom" onclick="location='myBusWantedRead.do?driver=${driver}&num=${newWantedDto.num}'">${str_detail}</button>
 			</c:if>
 		</div>
 	</div>
