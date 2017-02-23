@@ -4,7 +4,7 @@
 
 <%@include file="/view/setting/setting.jsp"%>
 <%@include file="/view/setting/admin_setting.jsp"%>
-
+<!-- 관리자 정보수정 -->
 
 <c:if test="${result != 0}">
 	<c:redirect url="admin.do#modify"/>

@@ -87,26 +87,45 @@
 			return false;
 			//location.href="AdminADPro.do?ad_num="+adform.ad_num.value;
 		} */
-		
+		sendEmail= function(){
+			if(sendform.email.value == ""){
+				alert("관리자 초대하실 사용자의 이메일을 작성해주세요.");
+				sendform.email.focus();
+				return false;
+			}
+			if(sendform.email.value.indexOf('@') == -1){
+				alert("유효하지 않은 이메일을 확인해주세요.");
+				sendform.email.focus();
+				return false;
+			}
+		}
+
+		checkedBox=function(){
+			if($('input[name="assent"]').is(':checked') == false){
+				alert("**경고 : 회원탈퇴 안내사항에 동의하시고 진행해주세요.");
+				return false;
+			}
+		}
 		</script>
 <body>
-
+<c:if test="${sessionScope.memEmail eq null}">
+	<c:redirect url="main.do"/>
+</c:if>
+<c:if test="${sessionScope.memEmail ne null}">
 	<!-- Navbar -->
 	<c:import url="../top.do" />
 
 	<!-- Sidenav/menu -->
 	<nav class="w3-sidenav w3-collapse w3-theme-l5 w3-animate-right w3-padding-xlarge" style="z-index: 3; right: 0; width: 20%; margin-top: 50px;" id="mySidenav">
 		<br>
-		<c:if test="${sessionScope.memEmail ne null}">
+		
 		<div class="w3-container w3-row">
 			<div class="w3-col s8 w3-center">
 				<span><strong> ${member.nick}</strong>&nbsp;${str_idMsg}</span><br>
 			</div>
 		</div>
-		</c:if>
-		<c:if test="${sessionScope.memEmail eq null}">
-			<c:redirect url="http://localhost:8080/HipBus/main.do"/>
-		</c:if>
+		
+		
 		<hr>
 		<div class="w3-container">
 			<h5>${str_adminMenu}</h5>
@@ -187,7 +206,7 @@
 					<div>
 						<table class="w3-table w3-striped w3-white">
 							<tr class="w3-black">
-								<th ><a href="#" style="text-decoration: none">${str_memGrade}</a></th>
+								<th >${str_memGrade}</th>
 								<th><a href="#" style="text-decoration: none">&nbsp;&nbsp;${str_memEmail}</a></th>
 								<th width="80px"><a href="#" style="text-decoration: none">&nbsp;&nbsp;${str_memNick}</a></th>
 								<th style="text-align: certer"><a href="#" style="text-decoration: none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${str_memAuthority}</a></th>
@@ -379,21 +398,6 @@
 		</div>
 
 		<hr id="modify">
-<script type="text/javascript">
-
-sendEmail= function(){
-	if(sendform.email.value == ""){
-		alert("관리자 초대하실 사용자의 이메일을 작성해주세요.");
-		sendform.email.focus();
-		return false;
-	}
-	if(sendform.email.value.indexOf('@') == -1){
-		alert("유효하지 않은 이메일을 확인해주세요.");
-		sendform.email.focus();
-		return false;
-	}	
-}
-</script>
 		<div class="w3-content w3-padding-128">
 			<h5>
 				<i class="fa fa-user"></i><b>&nbsp;${str_adminModify}</b>
@@ -430,6 +434,7 @@ sendEmail= function(){
 		<hr id="withdrawal">
 
 		<div class="w3-content w3-padding-128">
+			<form name="adminDelete" method="post" action="adminSignOutPro.do" onsubmit=" return checkedBox()">
 			<h5>
 				<i class="fa fa-sign-out"></i><b>&nbsp;${str_adminSignOut}</b>
 			</h5>
@@ -437,13 +442,15 @@ sendEmail= function(){
 			<pre class="w3-responsive">
 			<i class="fa fa-check"></i>${str_amLeaveMsg}
 			</pre>
-			<input class="w3-check" type="checkbox">
-			<label class="w3-validate"></label>
+				<input class="w3-check" type="checkbox" name="assent">
+				<label class="w3-validate">위 사항에 동의하며 관리자 탈퇴를 진행하겠습니다.</label>
 			<p class="w3-center">
-				<button class="w3-btn w3-hover-teal" onclick="location=main.do">${str_adminDeleteBtn}</button>
+				<button class="w3-btn w3-hover-teal" type="submit">${str_adminDeleteBtn}</button>
+				<%-- <a class="w3-btn w3-hover-teal" style="text-decoration: none" href="adminSignOutPro.do">${str_adminDeleteBtn}</a> --%>
 			</p>
+			</form>
 		</div>
-
+</c:if>
 		<!-- 여기까지 -->
 
 		<!-- End page content -->
