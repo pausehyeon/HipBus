@@ -41,7 +41,10 @@
 				</div>
 
 				<div class="w3-container w3-border-top w3-padding-16">
-					<span class="w3-right w3-padding w3-hide-small">${str_signInNotMember}<a href="mainSignUp.do">${str_signInBecomeMember}</a></span>
+					<span class="w3-right w3-padding w3-hide-small"> ${str_signInNotMember}<a href="mainSignUp.do">${str_signInBecomeMember}</a> <br>${str_signInPasswordSearchMent}<a
+						href="mainForgot.do"
+					>${str_signInPasswordSearchMent}</a>
+					</span>
 				</div>
 			</div>
 		</div>

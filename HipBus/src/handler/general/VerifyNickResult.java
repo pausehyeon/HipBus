@@ -1,5 +1,7 @@
 package handler.general;
 
+import java.io.UnsupportedEncodingException;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,6 +23,13 @@ public class VerifyNickResult implements CommandHandler {
 	@RequestMapping("/verifyNickResult.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
+		
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		int result = generalDao.verifyNick(request.getParameter("nick"));
 		request.setAttribute("result", result);
 		return new ModelAndView("verifyNickResult");

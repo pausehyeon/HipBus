@@ -1,6 +1,7 @@
 package handler.mybus;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -27,7 +28,16 @@ public class MyBusEditPro implements CommandHandler{
 	@RequestMapping("/myBusEditPro.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-		// TODO Auto-generated method stub
+
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		request.setAttribute("driver", request.getParameter("driver"));
+		
 		// 이미지
 		MultipartRequest multi;		
 		MemberDto dto = new MemberDto();

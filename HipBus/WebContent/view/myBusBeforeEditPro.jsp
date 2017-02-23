@@ -9,8 +9,7 @@
 
 <c:if test="${result == 0 }">
 	<script type="text/javascript">
-		//<!--
-		alert( "수정 페이지로 이동합니다." );		
+		//<!--		
 		location.href="myBusEdit.do?driver=" + '${driver}';
 		//-->
 	</script>	
