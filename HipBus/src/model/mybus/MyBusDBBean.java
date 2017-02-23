@@ -147,6 +147,12 @@ public class MyBusDBBean implements MyBusDao {
 	public int updateChannel(ChannelDto chdto){
 		return SqlMapClient.getSession().update("MyBus.updateChannel",chdto);		
 	}
+	public int insertTag(Map<String, String> ms){
+		return SqlMapClient.getSession().insert("MyBus.insertTag",ms);		
+	}
+	public int deleteTag(Map<String, String> ms) {
+		return SqlMapClient.getSession().delete("MyBus.deleteTag", ms);
+	}
 	public int createCrew(String crewname){
 		return SqlMapClient.getSession().insert("MyBus.createCrew", crewname);
 	}
@@ -155,6 +161,5 @@ public class MyBusDBBean implements MyBusDao {
 	}
 	public String getCrewId(String crewname){
 		return SqlMapClient.getSession().selectOne("MyBus.getCrewId", crewname);
-	}
-	
+	}	
 }

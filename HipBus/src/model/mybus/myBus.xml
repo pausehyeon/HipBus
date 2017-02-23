@@ -141,6 +141,13 @@
 	<update id="updateChannel" parameterType="model.ChannelDto">
 		update hb_channel set channel_id=#{channel_id} where driver=#{driver}
 	</update>
+	<insert id="insertTag" parameterType="Map">
+		insert into hb_tag values(#{driver}, #{tag} )
+	</insert>
+	<delete id="deleteTag" parameterType="Map">
+		delete hb_tag where tag=#{tag}
+	</delete>
+
 	
 <!-- myBusWanted -->
 	<insert id="insertWantedArticle" parameterType="model.WantedDto">

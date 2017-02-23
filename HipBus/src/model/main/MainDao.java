@@ -18,4 +18,6 @@ public interface MainDao {
 	public List<UpcomingDto> getUpcomings();
 	public int emailCheck( Map<String, String> emailCheck );
 	public int codeUpdate( String email );
+	public int forgotPasswd(String email);
+	public int forgotPasswdUpdate(Map<String, String> ms);
 }

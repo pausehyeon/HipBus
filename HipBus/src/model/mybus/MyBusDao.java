@@ -57,5 +57,7 @@ public interface MyBusDao {
 	public int createCrew(String crewname);
 	public int createCrewMember(CrewMemberDto dto);
 	public String getCrewId(String crewname);
+	public int insertTag(Map<String, String> ms);
+	public int deleteTag(Map<String, String> ms);
 	
 }

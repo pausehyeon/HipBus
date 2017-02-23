@@ -53,5 +53,11 @@ public class MainDBBean implements MainDao{
 	public List<UpcomingDto> getUpcomings() {
 		return SqlMapClient.getSession().selectList("Main.getUpcomings");
 	}
+	public int forgotPasswd(String email){
+		return SqlMapClient.getSession().selectOne("MyBus.forgotPasswd", email);
+	}
+	public int forgotPasswdUpdate(Map<String, String> ms){
+		return SqlMapClient.getSession().update("MyBus.forgotPasswdUpdate",ms);		
+	}
 	
 }

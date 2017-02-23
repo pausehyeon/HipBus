@@ -6,7 +6,8 @@
 <%@include file="/view/setting/main_setting.jsp"%>
 <script type="text/javascript" src="/HipBus/scripts/busScript.js"></script>
 <!-- SETTING 끝 -->
-
+<!-- 데이터가 아무것도 없을때 수정이 안되고 다시 되돌리는 것. -->
+<!-- 수정 성공/실패부분. -->
 <c:if test="${ ( result eq 0 ) or (profileResult ne 1) or (channelResult eq 0)}">
 	<script type="text/javascript">
 		//<!--		
