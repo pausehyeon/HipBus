@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import model.CrewDto;
 import model.CrewMemberDto;
 import model.SqlMapClient;
 
@@ -13,4 +14,10 @@ public class CrewBusDBBean implements CrewBusDao {
 	public List<CrewMemberDto> getCrewmembers(String crewid) {
 		return SqlMapClient.getSession().selectList("CrewBus.getCrewmembers", crewid);
 	}
+
+	@Override
+	public CrewDto getCrewInfo(String crewid) {
+		return SqlMapClient.getSession().selectOne("CrewBus.getCrewInfo", crewid);
+	}
+
 }

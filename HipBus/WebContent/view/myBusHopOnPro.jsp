@@ -22,5 +22,9 @@
 	<meta http-equiv="refresh" content="0;url=myBus.do?driver=${driver}">
 </c:if>
 <c:if test="${result eq 1}">
-	<c:redirect url="myBus.do?driver=${driver}"/>
+	<script type="text/javascript">
+		//<!--
+		history.back();
+		//-->
+	</script>
 </c:if>

@@ -33,7 +33,6 @@ public class MyBusBoardAppendResult implements CommandHandler {
 		dto.setDriver(request.getParameter("driver"));
 		dto.setEmail(request.getParameter("email"));
 		dto.setContent(request.getParameter("content"));
-		
 		dto.setNick( mybusDao.getMember( dto.getEmail() ).getNick() );
 		
 		int result = mybusDao.appendBoard( dto );

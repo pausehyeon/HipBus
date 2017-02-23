@@ -71,7 +71,8 @@
 				</a>
 				<hr>
 				<a href="myBusBeforeEdit.do?driver=${driver}">
-					<i class="fa fa-pencil"></i>${str_editProfile}</a>
+					<i class="fa fa-pencil"></i>${str_editProfile}
+				</a>
 			</c:if>
 			<hr>
 		</div>
@@ -174,7 +175,7 @@
 			<br> <span onclick="document.getElementById('createCrewBus').style.display='none'" class="w3-closebtn w3-container w3-padding-8 w3-display-topright" title="Close Modal">×</span>
 		</div>
 
-		<form name="CreateCrewForm" method="post" action="myBusCreatCrewPro.do?driver=${driver}&crewname=dd" class="w3-container">
+		<form name="CreateCrewForm" method="post" action="myBusCreatCrewPro.do?driver=${driver}" class="w3-container">
 			<div class="w3-section">
 				<div class="w3-row-padding">
 					<div class="w3-col m12 w3-margin-bottom">

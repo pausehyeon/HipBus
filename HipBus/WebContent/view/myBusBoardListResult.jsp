@@ -17,7 +17,8 @@
 					email : '${article.email}',
 					nick : '${article.nick}',
 					content : '${article.content}',
-					reg_date : '${article.reg_date}'
+					reg_date : '${article.reg_date}',
+					imglocation : '${article.imglocation}'
 				}
 			</c:forEach>
 		]</data>

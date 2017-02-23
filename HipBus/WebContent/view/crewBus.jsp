@@ -4,6 +4,7 @@
 <%@include file="/view/setting/setting.jsp"%>
 <%@include file="/view/setting/bus_setting.jsp"%>
 <%@include file="/view/setting/crewBus_setting.jsp"%>
+<link rel="stylesheet" href="/HipBus/stylesheets/w3style_blue.css">
 
 <script src="/HipBus/scripts/busScript.js"></script>
 <script src="/HipBus/scripts/ajax.js"></script>
@@ -14,6 +15,9 @@ textarea {
 	border: none;
 	width: 100%;
 }
+
+
+
 
 textarea:focus {
 	outline: none;	/* 방명록 content에 포커스갔을때 테두리 라인 없앰 */
@@ -241,7 +245,13 @@ textarea:focus {
 		appendBtn += '</div>';
 
 		board += '<div class="w3-container w3-card-2 w3-white w3-round w3-padding-32 w3-margin" id="list">';
-		board += '<a href=myBus.do?driver='+ data.email+ '><img src="${project}/view/img/HipBusLogo_colored_sq.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width: 40px"></a>';
+		board += '<a href=myBus.do?driver='+ data.email + '>';
+		if(data.imglocation==""){
+			board += '<img src="${project}/view/img/HipBusLogo_colored_sq.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width: 40px">';		
+		} else {
+			board += '<img src="${project}/hipbusSave/'+ data.imglocation +'" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width: 40px">';
+		}
+		board += '</a>';
 		board += '<span class="w3-right w3-opacity">' + data.reg_date + '</span>';
 		board += '<h4>' + data.nick + '</h4>';
 		board += '<hr class="w3-clear">';
@@ -277,7 +287,7 @@ textarea:focus {
 		</div>
 		<div class="w3-row">
 			<!-- Left Column -->
-			<c:import url="../myBusLeft.do?driver=${driver}"></c:import>
+			<c:import url="../crewBusLeft.do?driver=${driver}"></c:import>
 			<!-- End Left Column -->
 
 			<!-- Middle Column -->
@@ -393,7 +403,7 @@ textarea:focus {
 			</div>
 
 			<!--  Right Column -->
-			<c:import url="../myBusRight.do?driver=${driver}"></c:import>
+			<c:import url="../crewBusRight.do?driver=${driver}"></c:import>
 			<!-- End Right Column -->
 
 			<!-- End Grid -->

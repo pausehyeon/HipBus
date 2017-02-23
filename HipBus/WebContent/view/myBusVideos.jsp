@@ -58,16 +58,22 @@ function loadVideos(channel_id, googleApiKey, pageToken){
 				if(request.httpRequest.readyState == 4){
 					if(request.httpRequest.status == 200){
 						var jsonData = eval( "("+request.httpRequest.responseText.trim() +")");
-						var video = null;
+
+						
+						
+						
+						
 						if(jsonData.pageInfo.totalResults != 0){ // 동영상이 있는경우
+							var video = '';
 							for(var i=0;i<jsonData.items.length;i++){
 								var data = jsonData.items[i];
-								
-								video += '<div class="w3-col m4 l6 w3-padding-32">';
-								video += '<iframe src="http://www.youtube.com/embed/'+data.id.videoId+'" frameborder="0" allowfullscreen></iframe>';
-								video += '<p class="w3-center w3-tiny">${str_title}'+data.snippet.channelTitle+' ${str_writeDate}'+data.snippet.publishedAt+'</p>';
-								video += '<h5>'+data.snippet.title+'</h5>';
-								video += '</div><br>';
+								if(data.id.kind == 'youtube#video'){
+									video += '<div class="w3-col m12 l6 w3-padding-32">';
+									video += '<iframe src="http://www.youtube.com/embed/'+data.id.videoId+'" frameborder="0" allowfullscreen></iframe>';
+									video += '<p class="w3-center w3-tiny">${str_title}'+data.snippet.channelTitle+' ${str_writeDate}'+data.snippet.publishedAt+'</p>';
+									video += '<h5>'+data.snippet.title+'</h5>';
+									video += '</div>';
+								}
 							}
 							if(jsonData.nextPageToken && !jsonData.prevPageToken){
 								video += '<div class="w3-row w3-center">';
@@ -129,13 +135,10 @@ function loadVideos(channel_id, googleApiKey, pageToken){
 				<div class="w3-container w3-card-2 w3-white w3-round w3-margin-bottom w3-margin-left w3-margin-right w3-padding-32 w3-padding-xxlarge" >
 					<div class="w3-container w3-center w3-black">
 						<h3>
-							<i class="fa fa-list-ul"></i>&nbsp; ${nick} ${str_myVideos}
+							<i class="fa fa-list-ul"></i>&nbsp; ${nick}${str_myVideos}
 						</h3>
 					</div>
-					<div class="w3-row">
-						<a href="myBus.do" class="w3-closebtn"><span>&times;</span></a>
-					</div>
-					<div class="w3-row-padding w3-center w3-theme-l5" id="videos"></div>
+					<div class="w3-row-padding w3-center" id="videos"></div>
 					<div id="console"></div>
 				</div>
 			<!-- 여기까지 -->

@@ -5,7 +5,10 @@
 <mapper namespace="MyBus">
 <!-- 방명록 -->
 	<select id="getLastBoard" parameterType="String" resultType="model.BoardDto">
-		select * from HB_Board where num=(select max(num) from HB_Board where driver=#{driver})
+		select b.driver, b.num, b.email, b.nick, b.content, b.reg_date, m.imglocation
+		from HB_Board b, hb_member m
+		where b.email=m.email
+		and num=(select max(num) from HB_Board where driver=#{driver})
 	</select>
 	<insert id="appendBoard" parameterType="model.BoardDto">
 		insert into HB_Board values 
@@ -19,8 +22,8 @@
 		update HB_Board set content=#{content} where num=#{num}
 	</update>
 	<select id="getBoards" parameterType="map" resultType="model.BoardDto">
-		select * from (select driver, num, email, nick, content, reg_date, rownum r 
-		from hb_board where driver=#{driver} order by reg_date desc)
+		select * from (select b.driver, b.num, b.email, b.nick, b.content, b.reg_date, m.imglocation, rownum r 
+		from hb_board b, hb_member m where b.email=m.email and driver=#{driver} order by reg_date desc)
 		where r &lt;= (select max(r) from (select driver, num, email, nick, content, reg_date, rownum r 
 		from hb_board where driver=#{driver} order by reg_date desc))
 		and r &gt; (select max(r) from (select driver, num, email, nick, content, reg_date, rownum r 

@@ -35,7 +35,7 @@ textarea:focus {
 		}
 		loadBoard(boardCount);	// 페이지로드시에 방명록리스트를 불러온다.
 	});
-
+	
 	function loadBoard(boardCount, more) {	// 방명록리스트 가져오는 메소드
 		var params = 'driver=' + "${driver}" + '&boardCount=' + boardCount;
 		request = new Request(
@@ -226,25 +226,23 @@ textarea:focus {
 				}, "myBusBoardDeleteResult.do", "POST", params);
 		request.sendRequest();
 	}
-
+	
 	// div 만들어서 붙이기
 	function makeBoard(data) {
 		var newdiv = document.createElement("div");
 		newdiv.setAttribute("id", "board_" + data.num);
+		
 		var appendBtn = '';
 		var modBtn = '';
 		var board = '';
-
-		modBtn += '<button type="button" id="modComplete" class="w3-btn w3-theme-l1 modc" style="display:none" onclick="modComplete('
-				+ data.num + ')">';
+		
+		modBtn += '<button type="button" id="modComplete" class="w3-btn w3-theme-l1" style="display:none" onclick="modComplete(' + data.num + ')">';
 		modBtn += '<i class="fa fa-check"></i> ${str_modComplete}';
 		modBtn += '</button>';
-		modBtn += '<button type="button" id="modView" class="w3-btn w3-theme-l1" onclick="modBoardView('
-				+ data.num + ')">';
+		modBtn += '<button type="button" id="modView" class="w3-btn w3-theme-l1" onclick="modBoardView(' + data.num + ')">';
 		modBtn += '<i class="fa fa-pencil"></i> ${str_modBoard}';
 		modBtn += '</button> &nbsp;';
-		modBtn += "<button type=\"button\" id='modCancel' class=\"w3-btn w3-theme-l1\" style=\"display:none\" onclick=\"modCancel("
-				+ data.num + ",\'" + data.content + "\','creteria')\">";
+		modBtn += "<button type=\"button\" id='modCancel' class=\"w3-btn w3-theme-l1\" style=\"display:none\" onclick=\"modCancel(" + data.num + ",\'" + data.content + "\','creteria')\">";
 		modBtn += '<i class="fa fa-times"></i> ${str_modCancel}';
 		modBtn += '</button>';
 
@@ -259,11 +257,15 @@ textarea:focus {
 		appendBtn += '</div>';
 
 		board += '<div class="w3-container w3-card-2 w3-white w3-round w3-padding-32 w3-margin" id="list">';
-		board += '<a href=myBus.do?driver='
-				+ data.email
-				+ '><img src="${project}/view/img/HipBusLogo_colored_sq.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width: 40px"></a>';
-		board += '<span class="w3-right w3-opacity">' + data.reg_date
-				+ '</span>';
+		board += '<a href=myBus.do?driver='+ data.email + '>';
+		if(data.imglocation==""){
+			board += '<img src="${project}/view/img/HipBusLogo_colored_sq.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width: 40px">';		
+		} else {
+			board += '<img src="${project}/hipbusSave/'+ data.imglocation +'" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width: 40px">';
+		}
+
+		board += '</a>';
+		board += '<span class="w3-right w3-opacity">' + data.reg_date + '</span>';
 		board += '<h4>' + data.nick + '</h4>';
 		board += '<hr class="w3-clear">';
 		board += '<input type="hidden" name="'+ data.num +'">';
@@ -275,9 +277,10 @@ textarea:focus {
 		
 		newdiv.innerHTML = board;
 		newdiv.data += data;
-
 		return newdiv;
 	}
+	
+	
 	$(document).on('click', '#moreBoard', function(e) {	// more버튼을 눌렀을때 보일 방명록수를 카운트 누적해서 새로 로드한다
 		boardCount += countCriteria;
 		loadBoard(boardCount, "more");

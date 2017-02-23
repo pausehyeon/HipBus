@@ -5,6 +5,14 @@
 <mapper namespace="CrewBus">
 <!-- 가입된 크루의 페이지인가? -->
 	<select id="getCrewmembers" parameterType="String" resultType="model.CrewMemberDto">
-		select * from hb_crewmember where crewid=#{crewid}
+		select c.email, c.crewid, c.leader, m.nick
+		from hb_crewmember c, hb_member m 
+		where c.email=m.email
+		and crewid=#{crewid}
 	</select>
+<!-- crewBusLeft.jsp 크루정보가져오기 -->
+	<select id="getCrewInfo" parameterType="String" resultType="model.CrewDto">
+		select * from hb_crew where crewid=#{crewid}
+	</select>
+
 </mapper>

@@ -34,8 +34,6 @@ public class MyBusLeft implements CommandHandler {
 			email = (String) request.getSession().getAttribute("memEmail");
 			mem_level = mybusDao.getMember(email).getMem_level();
 		}
-		
-		email = (String) request.getSession().getAttribute("memEmail");
 
 		Map<String,String> map = new HashMap<String,String>();
 		map.put("driver", driver);

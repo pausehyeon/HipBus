@@ -9,8 +9,15 @@ public class BoardDto {
 	private String nick;		// 방명록작성자의 닉네임
 	private String content;		// 방명록 내용
 	private Timestamp reg_date;	// 방명록 작성일
-	private Timestamp mod_date;	// 방명록 수정일
 	
+	private String imglocation;	// join용 프로필사진
+	
+	public String getImglocation() {
+		return imglocation;
+	}
+	public void setImglocation(String imglocation) {
+		this.imglocation = imglocation;
+	}
 	public String getDriver() {
 		return driver;
 	}
@@ -46,11 +53,5 @@ public class BoardDto {
 	}
 	public void setReg_date(Timestamp reg_date) {
 		this.reg_date = reg_date;
-	}
-	public Timestamp getMod_date() {
-		return mod_date;
-	}
-	public void setMod_date(Timestamp mod_date) {
-		this.mod_date = mod_date;
 	}
 }
