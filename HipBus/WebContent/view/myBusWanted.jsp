@@ -32,9 +32,9 @@
 						</h3>
 					</div>
 					<c:if test="${driver eq sessionScope.memEmail}">
-						<div class="w3-row w3-margin-top w3-margin-bottom">
+						<div class="w3-row-padding w3-margin-top w3-margin-bottom">
 							<div class="w3-col m12">
-								<a href="myBusWantedWrite.do?driver=${driver}" class="w3-btn w3-padding w3-theme-l3 w3-margin-left w3-right"> <i class="fa fa-pencil w3-margin-right"></i>${str_post}</a>
+								<a href="myBusWantedWrite.do?driver=${driver}" class="w3-btn w3-padding w3-theme-d5 w3-margin-left w3-right"> <i class="fa fa-pencil w3-margin-right"></i>${str_post}</a>
 							</div>
 						</div>
 					</c:if>
@@ -50,7 +50,7 @@
 						<!-- 글이있는경우 -->
 						<c:if test="${(count ne 0) and (articles ne null)}">
 							<c:forEach var="article" items="${articles}">
-								<div class="w3-col m4" onclick="location = 'myBusWantedRead.do?driver=${driver}&num=${article.num}'">
+								<div class="w3-col m4 w3-hover-opacity" onclick="location = 'myBusWantedRead.do?driver=${driver}&num=${article.num}'">
 									<!-- 대표 이미지가 있는 경우 -->
 									<c:if test="${(article.imglocation ne null) and (article.imglocation ne '') }">
 										<img src="${project}/hipbusSave/${article.imglocation}" alt="poster" style="width: 100%">

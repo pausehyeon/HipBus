@@ -32,8 +32,8 @@
 			<!-- Middle Column -->
 			<!-- 여기서부터 -->
 			<div class="w3-col m7">
-				<div class="w3-container w3-card-2 w3-white w3-round w3-margin-bottom w3-margin-left w3-margin-right w3-padding-32 w3-padding-xxlarge">
-					<div class="w3-container w3-center w3-black">
+				<div class="w3-container w3-card-2 w3-round w3-margin-bottom w3-margin-left w3-margin-right w3-padding-32 w3-padding-xxlarge">
+					<div class="w3-container w3-center w3-theme-d5">
 						<h3>
 							<i class="fa fa-bullhorn"></i>&nbsp; Wanted : ${article.subject}
 						</h3>
@@ -60,26 +60,42 @@
 							</div>
 						</c:if>
 					</div>
+
 					<div class="w3-row-padding w3-white w3-center">
 						<c:if test="${article.driver eq sessionScope.memEmail}">
-							<a href="myBusWantedModify.do?driver=${driver}&num=${article.num}" class="w3-btn w3-padding w3-theme-d1 w3-margin-left"> <i class="fa fa-pencil w3-margin-right"></i>${str_modBoard}</a>
-							<a href="myBusWantedDeletePro.do?driver=${driver}&num=${article.num}" class="w3-btn w3-padding w3-theme-d1 w3-margin-left"> <i class="fa fa-close w3-margin-right"></i>${str_delBoard}</a>
+							<div class="w3-col m6 l3">
+								<a href="myBusWantedModify.do?driver=${driver}&num=${article.num}" class="w3-btn-block w3-padding w3-theme-d1 w3-margin-left"> <i class="fa fa-pencil w3-margin-right"></i>${str_modBoard}</a>
+							</div>
+							<div class="w3-col m6 l3">
+								<a href="myBusWantedDeletePro.do?driver=${driver}&num=${article.num}" class="w3-btn-block w3-padding w3-theme-d1 w3-margin-left"> <i class="fa fa-close w3-margin-right"></i>${str_delBoard}</a>
+							</div>
 						</c:if>
-						<a href="myBusWanted.do?driver=${driver}" class="w3-btn w3-padding w3-theme-d1 w3-margin-left"> <i class="fa fa-align-justify w3-margin-right"></i>${str_mylist}</a>
-						<a href="garageWanted.do" class="w3-btn w3-padding w3-theme-d1 w3-margin-left"> <i class="fa fa-align-justify w3-margin-right"></i>${str_list}</a>
+						<c:if test="${article.driver ne sessionScope.memEmail}">
+							<div class="w3-col m6 l3">
+								&nbsp;
+								<!-- ^ 가운데 정렬을 위해 추가한 공백 컬럼 -->
+							</div>
+						</c:if>
+						<div class="w3-col m6 l3">
+							<a href="myBusWanted.do?driver=${driver}" class="w3-btn-block w3-padding w3-theme-d1 w3-margin-left"> <i class="fa fa-bus w3-margin-right"></i>${str_mylist}</a>
+						</div>
+						<div class="w3-col m6 l3">
+							<a href="garageWanted.do" class="w3-btn-block w3-padding w3-theme-d1 w3-margin-left"> <i class="fa fa-align-justify w3-margin-right"></i>${str_list}</a>
+						</div>
 					</div>
 				</div>
 			</div>
-
-
-			<!-- Right Column -->
-			<c:import url="../myBusRight.do"></c:import>
-			<!-- End Right Column -->
-
-			<!-- End Grid -->
 		</div>
 
-		<!-- End Page Container -->
+
+		<!-- Right Column -->
+		<c:import url="../myBusRight.do"></c:import>
+		<!-- End Right Column -->
+
+		<!-- End Grid -->
+	</div>
+
+	<!-- End Page Container -->
 	</div>
 
 	<!-- Footer -->

@@ -74,12 +74,21 @@
 
 <!-- myBusUpcomingWrite.jsp -->
 <c:set var="str_upcoming" value="Upcoming"/>
-<c:set var="str_concertName" value="공연명"/>
-<c:set var="str_location" value="장소"/>
-<c:set var="str_cast" value="출연진"/>
-<c:set var="str_date" value="공연 일자"/>
+<c:set var="str_perf_subject" value="공연명"/>
+<c:set var="str_perf_place" value="공연 장소"/>
+<c:set var="str_perf_cast" value="출연진"/>
+<c:set var="str_perf_date" value="공연 일자"/>
+<c:set var="str_perf_runningtime" value="공연 시간 (분)"></c:set>
+<c:set var="str_perf_price" value="관람료 (원)"/>
+<c:set var="str_searchPlace" value="검색할 주소를 입력해주세요."/>
+<c:set var="str_postUpcoming" value="공연 등록"/>
+<c:set var="str_selectPoster" value="공연 포스터 (권장 크기 560*790) : "/>
+
+<!-- myBusUpcomingRead.jsp -->
 <c:set var="str_time" value="공연 시각"/>
-<c:set var="str_register" value="등록"/>
+
+<!--  myBusUpcomingModify -->
+<c:set var="str_modifyUpcoming" value="공연 수정"/>
 
 <!-- myBusVideos.jsp -->
 <c:set var="str_whosLive" value="님의 라이브"/>
@@ -96,9 +105,11 @@
 <!-- myBusWanted.jsp, myBusWantedModify.jsp -->
 <c:set var="str_subject" value="제목"/>
 <c:set var="str_duedate" value="모집 마감일"/>
-<c:set var="str_list" value="전체 글목록"/>
-<c:set var="str_mylist" value="글목록"/>
+<c:set var="str_list" value="전체 목록"/>
+<c:set var="str_mylist" value="목록"/>
 <c:set var="str_ended" value="마감"/>
-<c:set var="str_insertThumbnail" value="대표이미지 선택"/>
+<c:set var="str_insertThumbnail" value="대표이미지 선택 (권장 크기 560*790) : "/>
 <c:set var="str_modifyThumbnail" value="대표이미지 수정"/>
 <c:set var="str_currentThumbnail" value="기존 대표이미지"/>
+<c:set var="str_postWanted" value="구인광고 등록"/>
+<c:set var="str_modifyWanted" value="구인광고 수정 완료"/>

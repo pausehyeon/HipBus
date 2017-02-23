@@ -35,49 +35,115 @@ function openNav() {
 	}
 }
 
-
 // youtube
-function playonair(channel_id, googleApiKey){
-	var params = "part=snippet&channelId="+channel_id+"&type=video&eventType=live&key="+googleApiKey;
+function playonair(channel_id, googleApiKey) {
+	var params = "part=snippet&channelId=" + channel_id
+			+ "&type=video&eventType=live&key=" + googleApiKey;
 	var request;
-	request = new Request( function(){
+	request = new Request(
+			function() {
 				var onair = document.getElementById('onair');
 				var onairchat = document.getElementById('onairchat');
 				var console = document.getElementById('oaconsole');
 				var cnt = 0;
-				if(request.httpRequest.readyState == 4){
-					if(request.httpRequest.status == 200){
-						var jsonData = eval( "("+request.httpRequest.responseText.trim() +")");
+				if (request.httpRequest.readyState == 4) {
+					if (request.httpRequest.status == 200) {
+						var jsonData = eval("("
+								+ request.httpRequest.responseText.trim() + ")");
 
 						var video = "";
 						var chat = "";
-						video += '<iframe style="width: 100%; height: 360px" src="http://www.youtube.com/embed/live_stream?channel='+ channel_id +'" frameborder="0" allowfullscreen></iframe>';
+						video += '<iframe style="width: 100%; height: 360px" src="http://www.youtube.com/embed/live_stream?channel='
+								+ channel_id
+								+ '" frameborder="0" allowfullscreen></iframe>';
 						onair.innerHTML += video;
-							
-						if(jsonData.pageInfo.totalResults != 0){ //라이브 방송중인 경우
+
+						if (jsonData.pageInfo.totalResults != 0) { // 라이브 방송중인
+							// 경우
 							var videoId = jsonData.items[0].id.videoId;
-							chat += '<iframe style="width: 100%; height: 360px" src="https://www.youtube.com/live_chat?v='+videoId+'&embed_domain=localhost" frameborder="0" allowfullscreen></iframe>';
-							
+							chat += '<iframe style="width: 100%; height: 360px" src="https://www.youtube.com/live_chat?v='
+									+ videoId
+									+ '&embed_domain=localhost" frameborder="0" allowfullscreen></iframe>';
+
 							onairchat.innerHTML += chat;
 							cnt++;
-						} else{
-							//라이브 방송 중이 아닌 경우
+						} else {
+							// 라이브 방송 중이 아닌 경우
 						}
-						
-						if(cnt == 0){
+
+						if (cnt == 0) {
 							onairchat.innerHTML = "<p class='w3-center'><br><br><br><br>방송중인 영상이 없습니다.</p>";
-						}else{
+						} else {
 							onairchat.innerHTML = "";
 						}
 					}else{
 						onairchat.innerHTML = "<p class='w3-center'> 오류 발생 "+request.status+" </p><p>channelID가 유효하지 않을 수 있습니다. <br>확인해주세요</p>";
 					}
-				}else{
+				} else {
 					onairchat.innerHTML = "<img src='/HipBus/view/img/loading.gif' alt='로딩 중입니다' style='width:100px;'>";
 				}
-			},
-			"https://www.googleapis.com/youtube/v3/search",
-			"GET",
-			params);
+			}, "https://www.googleapis.com/youtube/v3/search", "GET", params);
 	request.sendRequest();
+}
+
+// google Map
+var geocoder;
+var map;
+function initMap() {
+	geocoder = new google.maps.Geocoder();
+	var latlng = new google.maps.LatLng(37.5580798, 126.9255336);
+	var mapOptions = {
+		zoom : 15,
+		center : latlng
+	}
+	map = new google.maps.Map(document.getElementById("map"), mapOptions);
+}
+
+function codeAddress() {
+	var address = document.writeUpcomingForm.placeToSearch.value;
+	geocoder
+			.geocode(
+					{
+						'address' : address
+					},
+					function(results, status) {
+						if (status == google.maps.GeocoderStatus.OK) {
+							map.setCenter(results[0].geometry.location);
+							var marker = new google.maps.Marker({
+								map : map,
+								position : results[0].geometry.location
+							});
+							document.writeUpcomingForm.perf_place.value = results[0].place_id
+									+ '@' + results[0].formatted_address;
+							document.writeUpcomingForm.showSearchResult.value = results[0].formatted_address;
+						} else if (status == google.maps.GeocoderStatus.ZERO_RESULTS) {
+							alert("'" + address + "'의 검색결과가 없습니다.");
+						} else {
+							alert("잠시 후 다시 시도해주세요. ( status : " + status + ")");
+						}
+					});
+}
+
+function geocodePlaceId(geocoder, map, infowindow) {
+	var placeId = '${perf_place}'
+	geocoder.geocode({
+		'placeId' : placeId
+	}, function(results, status) {
+		if (status === google.maps.GeocoderStatus.OK) {
+			if (results[0]) {
+				map.setZoom(11);
+				map.setCenter(results[0].geometry.location);
+				var marker = new google.maps.Marker({
+					map : map,
+					position : results[0].geometry.location
+				});
+				infowindow.setContent(results[0].formatted_address);
+				infowindow.open(map, marker);
+			} else {
+				window.alert('No results found');
+			}
+		} else {
+			window.alert('Geocoder failed due to: ' + status);
+		}
+	});
 }

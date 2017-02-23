@@ -41,17 +41,17 @@ public class MyBusUpcomingModifyPro implements CommandHandler {
 			multi = new FileUpload().getMultipartRequest(request);
 			
 			String imglocation = multi.getFilesystemName("upload");
-			System.out.println(multi.getParameter("showDate").replace("T", " "));
+			System.out.println(multi.getParameter("perf_date").replace("T", " "));
 			UpcomingDto dto = new UpcomingDto();
 			dto.setNum(num);
-			dto.setSubject(multi.getParameter("showName"));
-			dto.setPerf_place(multi.getParameter("location"));
-			dto.setPerf_date(Timestamp.valueOf(multi.getParameter("showDate").replace("T", " ")+":00"));
-			dto.setPerf_cast(multi.getParameter("cast"));
-			dto.setPerf_runningtime(Integer.parseInt(multi.getParameter("runningTime")));
-			dto.setPerf_price(Integer.parseInt(multi.getParameter("price")));
+			dto.setSubject(multi.getParameter("subject"));
+			dto.setPerf_place(multi.getParameter("perf_place"));
+			dto.setPerf_date(Timestamp.valueOf(multi.getParameter("perf_date").replace("T", " ")+":00"));
+			dto.setPerf_cast(multi.getParameter("perf_cast"));
+			dto.setPerf_runningtime(Integer.parseInt(multi.getParameter("perf_runningtime")));
+			dto.setPerf_price(Integer.parseInt(multi.getParameter("perf_price")));
 			dto.setContent(multi.getParameter("content"));
-			System.out.println(multi.getParameter("showDate").replace("T", " ")+":00");
+			System.out.println(multi.getParameter("perf_date").replace("T", " ")+":00");
 			int result = 0;
 			if(imglocation==null){
 				result = mybusDao.modUpcomingWithout(dto);

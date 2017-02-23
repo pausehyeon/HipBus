@@ -46,12 +46,12 @@ public class MyBusUpcomingWritePro implements CommandHandler {
 			UpcomingDto dto = new UpcomingDto();
 			dto.setDriver(driver);
 			dto.setNick(mybusDao.getMember(driver).getNick());
-			dto.setSubject(multi.getParameter("showName"));
-			dto.setPerf_place(multi.getParameter("location"));
-			dto.setPerf_date(Timestamp.valueOf(multi.getParameter("showDate").replace("T", " ")+":00"));
-			dto.setPerf_cast(multi.getParameter("cast"));
-			dto.setPerf_runningtime(Integer.parseInt(multi.getParameter("runningTime")));
-			dto.setPerf_price(Integer.parseInt(multi.getParameter("price")));
+			dto.setSubject(multi.getParameter("subject"));
+			dto.setPerf_place(multi.getParameter("perf_place"));
+			dto.setPerf_date(Timestamp.valueOf(multi.getParameter("perf_date").replace("T", " ")+":00"));
+			dto.setPerf_cast(multi.getParameter("perf_cast"));
+			dto.setPerf_runningtime(Integer.parseInt(multi.getParameter("perf_runningtime")));
+			dto.setPerf_price(Integer.parseInt(multi.getParameter("perf_price")));
 			dto.setContent(multi.getParameter("content"));
 			dto.setImglocation(imglocation);
 			
