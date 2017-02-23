@@ -78,6 +78,28 @@
 								</div>
 							</c:forEach>
 						</c:if>
+						
+						<!-- 마감된 공연일정 -->
+						<c:if test="${pastUpcomings!=null}">
+							<c:forEach var="article" items="${pastUpcomings}">
+								<div class="w3-col m4 l3 w3-hover-opacity w3-margin-bottom" onclick="location='myBusUpcomingRead.do?driver=${driver}&num=${article.num}'">
+									<img src="${project}/hipbusSave/${article.imglocation}" alt="poster" width="100%" class="w3-grayscale-max">
+									<p>
+										<span class="w3-badge">${str_ended}</span>
+										<c:if test="${fn:length(article.subject) le 7}">
+											${article.subject}
+										</c:if>
+										<c:if test="${fn:length(article.subject) gt 7}">
+											${fn:substring(article.subject, 0, 7)}...
+										</c:if>
+									</p>
+									<p class="w3-tiny">${article.nick}|
+										<fmt:formatDate value="${article.reg_date}" type="both" pattern="yyyy-MM-dd HH:mm" />
+										| ${article.readcount}
+									</p>
+								</div>
+							</c:forEach>
+						</c:if>
 						<c:if test="${upcomings==null}">
 							<div class="w3-col m4 l3">
 								<h4>${아직 작성한 글이 없습니다.}</h4>

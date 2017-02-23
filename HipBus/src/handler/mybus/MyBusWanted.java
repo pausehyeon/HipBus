@@ -29,7 +29,9 @@ public class MyBusWanted implements CommandHandler {
 		request.setAttribute("driver", driver );
 		if(driver != null && driver != ""){
 			List<WantedDto> articles = dao.getWantedArticles(driver);
+			List<WantedDto> pastArticles = dao.getPastWantedArticles(driver);
 			request.setAttribute("articles", articles);
+			request.setAttribute("pastArticles", pastArticles);
 		}
 
 		return new ModelAndView("myBusWanted");

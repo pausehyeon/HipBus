@@ -25,10 +25,10 @@ public class MyBusUpcoming implements CommandHandler {
 		String driver = request.getParameter("driver");
 		
 		List<UpcomingDto> upcomings = mybusDao.getUpcomings(driver);
-		
-		
+		List<UpcomingDto> pastUpcomings = mybusDao.getPastUpcomings(driver);
 		
 		request.setAttribute("upcomings", upcomings);
+		request.setAttribute("pastUpcomings", pastUpcomings);
 		request.setAttribute("driver", driver);
 		return new ModelAndView("myBusUpcoming");
 	}

@@ -91,7 +91,10 @@
 		select * from hb_upcoming where num=#{num}
 	</select>
 	<select id="getUpcomings" parameterType="String" resultType="model.UpcomingDto">
-		select * from hb_upcoming where driver=#{driver}
+		select * from hb_upcoming where driver=#{driver} and perf_date &gt;= sysdate order by perf_date asc
+	</select>
+	<select id="getPastUpcomings" parameterType="String" resultType="model.UpcomingDto">
+		select * from hb_upcoming where driver=#{driver} and perf_date &lt; sysdate order by perf_date asc
 	</select>
 	<select id="getNewUpcoming" parameterType="String" resultType="model.UpcomingDto">
 		select * from hb_upcoming 
@@ -144,7 +147,10 @@
 		select * from hb_wanted where num=#{num}
 	</select>
 	<select id="getWantedArticles" parameterType="String" resultType="model.WantedDto">
-		select * from hb_wanted where driver=#{driver} order by duedate
+		select * from hb_wanted where driver=#{driver} and duedate &gt;= sysdate order by duedate
+	</select>
+	<select id="getPastWantedArticles" parameterType="String" resultType="model.WantedDto">
+		select * from hb_wanted where driver=#{driver} and duedate &lt; sysdate order by duedate
 	</select>
 	<update id="modifyWantedWholeArticle" parameterType="model.WantedDto">
 		update hb_wanted set subject = #{subject}, content=#{content}, imglocation = #{imglocation}, duedate=#{duedate}

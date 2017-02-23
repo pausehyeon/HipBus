@@ -38,7 +38,7 @@
 							</div>
 						</div>
 					</c:if>
-					
+
 					<div class="w3-row-padding w3-padding-16 w3-center">
 						<!-- 글이 없는 경우 -->
 						<c:if test="${(count eq 0) or (articles eq null)}">
@@ -79,6 +79,36 @@
 											<span class="w3-badge">${str_ended}</span>
 										</c:if>
 
+										<c:if test="${fn:length(article.subject) le 7}">
+											${article.subject}
+										</c:if>
+										<c:if test="${fn:length(article.subject) gt 7}">
+											${fn:substring(article.subject, 0, 7)}...
+										</c:if>
+									</h5>
+
+									<p class="w3-tiny">${article.nick}|
+										<fmt:formatDate value="${article.reg_date}" type="both" pattern="yyyy-MM-dd HH:mm" />
+										| ${article.readcount}
+									</p>
+									<hr>
+								</div>
+							</c:forEach>
+						</c:if>
+						<c:if test="${pastArticles ne null}">
+							<c:forEach var="article" items="${pastArticles}">
+								<div class="w3-col m4 w3-hover-opacity" onclick="location = 'myBusWantedRead.do?driver=${driver}&num=${article.num}'">
+									<!-- 대표 이미지가 있는 경우 -->
+									<c:if test="${(article.imglocation ne null) and (article.imglocation ne '') }">
+										<img src="${project}/hipbusSave/${article.imglocation}" alt="poster" style="width: 100%" class="w3-grayscale-max">
+									</c:if>
+									<!-- 대표 이미지가 없는 경우 -->
+									<c:if test="${(article.imglocation eq null) or (article.imglocation eq '') }">
+										<img src="${project}/view/img/HipBusLogo_pale_sq.png" alt="poster" style="width: 100%" class="w3-grayscale-max">
+									</c:if>
+
+									<h5>
+										<span class="w3-badge">${str_ended}</span>
 										<c:if test="${fn:length(article.subject) le 7}">
 											${article.subject}
 										</c:if>

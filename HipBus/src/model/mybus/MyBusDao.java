@@ -32,6 +32,7 @@ public interface MyBusDao {
 	public int writeUpcoming(UpcomingDto dto);
 	public UpcomingDto getUpcoming(int num);
 	public List<UpcomingDto> getUpcomings(String driver);
+	public List<UpcomingDto> getPastUpcomings(String driver);
 	public UpcomingDto getNewUpcoming(String driver);
 	public int modUpcomingWithout (UpcomingDto dto);
 	public int modUpcomingWith (UpcomingDto dto);
@@ -41,6 +42,7 @@ public interface MyBusDao {
 	public int insertWantedArticle(WantedDto article);
 	public WantedDto getWantedArticle(int num);
 	public List<WantedDto> getWantedArticles(String driver);
+	public List<WantedDto> getPastWantedArticles(String driver);
 	public int modifyWantedWholeArticle(WantedDto article);
 	public int modifyWantedArticle(WantedDto article);
 	public int deleteWantedArticle(int num);	

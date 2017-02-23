@@ -74,6 +74,9 @@ public class MyBusDBBean implements MyBusDao {
 	public List<UpcomingDto> getUpcomings(String driver){
 		return SqlMapClient.getSession().selectList("MyBus.getUpcomings", driver);
 	}
+	public List<UpcomingDto> getPastUpcomings(String driver){
+		return SqlMapClient.getSession().selectList("MyBus.getPastUpcomings", driver);
+	}
 	public UpcomingDto getNewUpcoming(String driver){
 		return SqlMapClient.getSession().selectOne("MyBus.getNewUpcoming", driver);
 	}
@@ -103,6 +106,10 @@ public class MyBusDBBean implements MyBusDao {
 	@Override
 	public List<WantedDto> getWantedArticles(String driver) {
 		return SqlMapClient.getSession().selectList("MyBus.getWantedArticles", driver);
+	}
+	@Override
+	public List<WantedDto> getPastWantedArticles(String driver) {
+		return SqlMapClient.getSession().selectList("MyBus.getPastWantedArticles", driver);
 	}
 	@Override
 	public int modifyWantedWholeArticle(WantedDto article) {
