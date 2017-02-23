@@ -2,35 +2,34 @@
  * 
  */
 
-$(document).ready(function() {
+$(document).ready(function() {	
 	
-	if (!localStorage.getItem("myBus")) {
+	if (!sessionStorage.getItem("myBus")) {
 		$('#mybusget').hide();
 	} else {
 		$('#mybusget').show();
 	}
 
-	if (!localStorage.getItem("crewBus")) { 	
+	if (!sessionStorage.getItem("crewBus")) { 	
 		$('#crewbusget').hide();
 	} else {
 		$('#crewbusget').show();
 	}
 	
 
-	if (!localStorage.getItem("board")) {
+	if (!sessionStorage.getItem("board")) {
 		$('#boardget').hide();
 	} else {
 		$('#boardget').show();
 	}
 
-	if (myBusImgLocation != "") {
-		var myBusImgLocation = localStorage.getItem("myBusImg");
+		var myBusImgLocation = sessionStorage.getItem("myBusImg");
 		$('#mybusImg').attr({
 			src : myBusImgLocation,
 			width : 30,
 			height : 35
 		});
-	}
+	
 /*
 	if (crewBusImgLocation != "") {
 		var crewBusImgLocation = localStorage.getItem("crewBusImg");
@@ -42,21 +41,24 @@ $(document).ready(function() {
 	}
 */
 	
+		
 });
+
 
 function myBusSet() {
 	var myBusDriver = document.location.href;
 	var myBusImgLocation = document.getElementById("myBusLeftImg").src;
-	//var memEmail = document.getElementById("getMemEmail").value
+	//var src = "http://localhost:8080/HipBus/myBus.do?driver="+memEmail;
 	if ( myBusDriver !="" ) {
+		sessionStorage.setItem("myBus", myBusDriver);
+		sessionStorage.setItem("myBusImg", myBusImgLocation);
 		
-		localStorage.setItem("myBus", myBusDriver);
-		localStorage.setItem("myBusImg", myBusImgLocation);
 	}
-
-}
+	
+}	
 function myBusGet() {
-	var myBusDriver = localStorage.getItem("myBus");
+	var myBusDriver = sessionStorage.getItem("myBus");
+
 	location.href = myBusDriver;
 }
 
@@ -64,26 +66,26 @@ function crewBusSet() {
 	var crewBusDriver = document.location.href;
 	//var crewBusImgLocation = document.getElementById("crewBusLeftImg").src;
 	if (crewBusDriver != "") {
-		localStorage.setItem("crewBus", crewBusDriver);
+		sessionStorage.setItem("crewBus", crewBusDriver);
 		//localStroage.setItem("crewBusImg",crewBusImgLocation);
 	}
 
 }
 
 function crewBusGet() {
-	var crewBusDriver = localStorage.getItem("crewBus");
+	var crewBusDriver = sessionStorage.getItem("crewBus");
 	location.href = crewBusDriver;
 }
 
 function boardSet() {
 	var boardSrc = document.location.href;
 	if (boardSrc != "") {
-		localStorage.setItem("board", boardSrc);
+		sessionStorage.setItem("board", boardSrc);
 	}
 
 }
 
 function boardGet() {
-	var boardSrc = localStorage.getItem("board");
+	var boardSrc = sessionStorage.getItem("board");
 	location.href = boardSrc;
 }
