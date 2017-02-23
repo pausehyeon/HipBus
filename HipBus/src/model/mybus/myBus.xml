@@ -99,7 +99,7 @@
 	<select id="getNewUpcoming" parameterType="String" resultType="model.UpcomingDto">
 		select * from hb_upcoming 
 		where driver=#{driver} 
-		and num=(select max(num) from hb_upcoming where driver=#{driver})
+		and num=(select max(num) from hb_upcoming where driver=#{driver} and perf_date &gt;= sysdate)
 	</select>
 	<update id="modUpcomingWith" parameterType="model.UpcomingDto">
 		update hb_upcoming set subject=#{subject}, perf_place=#{perf_place}, perf_date=#{perf_date}, perf_cast=#{perf_cast}, 
@@ -168,7 +168,7 @@
 	</update>
 	<select id="getNewWanted" parameterType="String" resultType="model.WantedDto">
 		select * from hb_wanted 
-		where num=(select max(num) from hb_wanted where driver=#{driver})
+		where num=(select max(num) from hb_wanted where driver=#{driver} and duedate &gt;= sysdate)
 	</select>
 	
 	<insert id="createCrew" parameterType="String">

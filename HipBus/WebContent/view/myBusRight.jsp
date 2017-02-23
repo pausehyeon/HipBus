@@ -1,10 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <%@include file="/view/setting/setting.jsp"%>
 <%@include file="/view/setting/bus_setting.jsp"%>
 <%@include file="/view/setting/myBus_setting.jsp"%>
+
+<!-- D-day 연산을 위해 시스템 날짜를 받아옴 -->
+<jsp:useBean id="now" class="java.util.Date" />
+<fmt:parseNumber var="today" value="${now.time/ (1000*60*60*24)}" integerOnly="true" />
 
 <!-- Right Column -->
 <div class="w3-col m2">
@@ -16,25 +19,40 @@
 				</button>
 			</div>
 			<c:if test="${upcomingDto.imglocation==null}">
-				<img src="${project}/view/img/notice1.png" alt="some image"	style="width: 100%;">
+				<img src="${project}/view/img/notice1.png" alt="some image" style="width: 100%;">
 				<div class="w3-padding-12">
-				<p>
-					<strong>예정된 공연이 없습니다.</strong>
-				</p>
+					<p>
+						<strong>예정된 공연이 없습니다.</strong>
+					</p>
 				</div>
 			</c:if>
 			<c:if test="${upcomingDto.imglocation!=null}">
-				<img src="${project}/hipbusSave/${upcomingDto.imglocation}" alt="some image"
-					style="width: 100%;">
-				<p>
-					<strong>${upcomingDto.subject}</strong>
+				<img src="${project}/hipbusSave/${upcomingDto.imglocation}" alt="some image" style="width: 100%;">
+				<fmt:parseNumber var="perf_date" value="${upcomingDto.perf_date.time/ (1000*60*60*24)}" integerOnly="true" />
+				<!-- D-n 초록색, D-3 ~ D-1 빨간 색, D-day으로 나누어표시 -->
+				<h5 class="w3-padding">
+					<c:if test="${(today - perf_date) lt (-3)}">
+						<span class="w3-badge w3-green">D${today - perf_date}</span>
+					</c:if>
+					<c:if test="${( (today - perf_date) ge (-3) ) and ((today - perf_date) lt 0)}">
+						<span class="w3-badge w3-red">D${today - perf_date}</span>
+					</c:if>
+					<c:if test="${(today - perf_date) eq 0}">
+						<span class="w3-badge w3-red">D-Day</span>
+					</c:if>
+					<c:if test="${fn:length(upcomingDto.subject) le 7}">
+						${upcomingDto.subject}
+					</c:if>
+					<c:if test="${fn:length(upcomingDto.subject) gt 7}">
+						${fn:substring(upcomingDto.subject, 0, 7)}...
+					</c:if>
+				</h5>
+				<p class="w3-small">
+					<fmt:formatDate value="${upcomingDto.reg_date}" type="both" pattern="yyyy-MM-dd HH:mm" />
+					| ${upcomingDto.readcount}
 				</p>
-				<fmt:formatDate var="date" value="${upcomingDto.perf_date}" pattern="yy/MM/dd hh:mm"/>
-				<p>${date}</p>
 				<p>
-					<button class="w3-btn w3-btn-block w3-theme-d5" onclick="location='myBusUpcomingRead.do?driver=${driver}&num=${upcomingDto.num}'">
-						${str_detail}
-					</button>
+					<button class="w3-btn w3-btn-block w3-theme-d5" onclick="location='myBusUpcomingRead.do?driver=${driver}&num=${upcomingDto.num}'">${str_detail}</button>
 				</p>
 			</c:if>
 		</div>
@@ -48,7 +66,7 @@
 				</button>
 			</div>
 			<c:if test="${wantedDto==null}">
-				<img src="${project}/view/img/topdriver1.png" alt="some image"	style="width: 100%;">
+				<img src="${project}/view/img/topdriver1.png" alt="some image" style="width: 100%;">
 				<div class="w3-padding-12">
 					<p>
 						<strong>구인글이 없습니다.</strong>
@@ -64,12 +82,9 @@
 				<c:if test="${(wantedDto.imglocation eq null) or (wantedDto.imglocation eq '') }">
 					<img src="${project}/view/img/HipBusLogo_pale_sq.png" alt="poster" style="width: 100%" class="w3-opacity">
 				</c:if>
-				<!-- D-day 연산을 위해 시스템 날짜를 받아옴 -->
-				<jsp:useBean id="now" class="java.util.Date" />
-				<fmt:parseNumber var="today" value="${now.time/ (1000*60*60*24)}" integerOnly="true" />
-				<fmt:parseNumber var="duedate" value="${wantedDto.duedate.time/ (1000*60*60*24)}" integerOnly="true" />
-				<!-- D-n 초록색, D-3 ~ D-1 빨간 색, D-day, 마감으로 나누어표시 -->
 
+				<fmt:parseNumber var="duedate" value="${wantedDto.duedate.time/ (1000*60*60*24)}" integerOnly="true" />
+				<!-- D-n 초록색, D-3 ~ D-1 빨간 색, D-day로 나누어표시 -->
 				<h5 class="w3-padding">
 					<c:if test="${(today - duedate) lt (-3)}">
 						<span class="w3-badge w3-green">D${today - duedate}</span>
@@ -80,18 +95,11 @@
 					<c:if test="${(today - duedate) eq 0}">
 						<span class="w3-badge w3-red">D-Day</span>
 					</c:if>
-					<c:if test="${(today - duedate) gt 0}">
-						<span class="w3-badge">${str_ended}</span>
-					</c:if>
 					<c:if test="${fn:length(wantedDto.subject) le 7}">
-						<strong>
-							${wantedDto.subject}
-						</strong>
+						${wantedDto.subject}
 					</c:if>
 					<c:if test="${fn:length(wantedDto.subject) gt 7}">
-						<strong>
-							${fn:substring(wantedDto.subject, 0, 7)}...
-						</strong>
+						${fn:substring(wantedDto.subject, 0, 7)}...
 					</c:if>
 				</h5>
 
@@ -99,9 +107,7 @@
 					<fmt:formatDate value="${wantedDto.reg_date}" type="both" pattern="yyyy-MM-dd HH:mm" />
 					| ${wantedDto.readcount}
 				</p>
-				<button class="w3-btn w3-btn-block w3-theme-d5 w3-margin-bottom" onclick="location='myBusWantedRead.do?driver=${driver}&num=${wantedDto.num}'">
-					${str_detail}
-				</button>
+				<button class="w3-btn w3-btn-block w3-theme-d5 w3-margin-bottom" onclick="location='myBusWantedRead.do?driver=${driver}&num=${wantedDto.num}'">${str_detail}</button>
 			</c:if>
 		</div>
 	</div>
