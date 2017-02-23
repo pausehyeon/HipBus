@@ -33,6 +33,7 @@ public class AdminInvitePro implements CommandHandler {
 		String iemail = (String) request.getParameter("iemail");
 		int result = 0;
 		int resultGrade =0;
+		
 		if(email == null){
 			Map<String, String> imap = new HashMap<String,String>();
 			imap.put("icode", icode);
@@ -43,10 +44,12 @@ public class AdminInvitePro implements CommandHandler {
 			if(result == 1 ){
 				//인증과정 진행중이면 count=1 아니면 count=0 인증완료면 code=-1
 				int resultEmail = adminDao.inviteCode(iemail); //맞으면 인증코드를 변경함
-				//System.out.println(resultEmail);
 				if(resultEmail == 1){
 				//등급도 변경
-				resultGrade = adminDao.gradAdmin(iemail);
+					resultGrade = adminDao.gradAdmin(iemail);
+						if(resultGrade == 1){
+							int driverD = adminDao.deleteDriver(iemail);
+						}
 				}
 			}
 		
@@ -65,19 +68,11 @@ public class AdminInvitePro implements CommandHandler {
 			
 			int sendEmail = adminDao.updateValidate(ms);  //=1이 넘어온다
 			request.setAttribute("sendemail", sendEmail);
-			System.out.println(sendEmail + "  aa");
-			sendEmail = -1;
 		}
 	
 		request.setAttribute("resultGrade", resultGrade);
-		System.out.println(resultGrade);
-				
-		
+
 		return new ModelAndView("adminInvitePro");
-		
-	
 	}
 
-
-	
 }
