@@ -67,10 +67,10 @@
 		where perf_date &gt; sysdate)
 		where r&lt;4 order by perf_date asc
 	</select>
-	<select id="forgotPasswd" resultType="model.MemberDto" parameterType="String">
-		select * from hb_member where email = #{email,jdbcType=VARCHAR}
+	<select id="forgotPasswd" resultType="int" parameterType="String">
+		select count(*) from hb_member where email = #{email}
 	</select>
 	<update id="forgotPasswdUpdate" parameterType="map">
-		update hb_member set passwd=#{code} where email=#{email}
+		update hb_member set passwd=#{passwd} where email=#{email}
 	</update>
 </mapper>

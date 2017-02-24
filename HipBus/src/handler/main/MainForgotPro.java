@@ -1,6 +1,7 @@
 package handler.main;
 
 import java.io.UnsupportedEncodingException;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import handler.CommandHandler;
 import handler.HandlerException;
-import model.MemberDto;
 import model.general.MailService;
 import model.main.MainDao;
 
@@ -33,30 +33,32 @@ public class MainForgotPro implements CommandHandler {
 			e.printStackTrace();
 		}
 		
-		MemberDto dto = new MemberDto();
 		String email = request.getParameter("email");		
-		dto.setEmail(email);
-		
-		System.out.println("어디냐");
 		int forgotResult = mainDao.forgotPasswd(email);
 		request.setAttribute("forgotResult", forgotResult);
-		System.out.println("어디냐1");
+			
 		
-		int code = (int) ( Math.random() * 888889 + 111111 );
-		request.setAttribute("code", code);		
+		if ( forgotResult == 1 ) {
+			
+			
+			int code = (int) ( Math.random() * 888889 + 111111 );
+			request.setAttribute("code", code);		
+			
+			new MailService(email, "비밀번호 분실 메일입니다.", 
+					"<a href='http://localhost:8080/HipBus/mainForgotPro.do?code="+code+"&email="+email+"'>클릭하시면 ["+code+"] 임시비밀번호로 수정 완료 됩니다.\n로그인 후 비밀번호를 변경해주세요.</a>");
 		
-		new MailService(dto.getEmail(), "비밀번호 분실 메일입니다.", 
-				"<a href='http://localhost:8080/HipBus/mainForgotPro.do?code="+code+"&email="+email+"'>클릭하시면 ["+code+"] 임시비밀번호로 수정 완료 됩니다.\n로그인 후 비밀번호를 변경해주세요.</a>");
-		System.out.println("어디냐2");
-		
-		Map<String, String> ms = new HashMap<String, String>();
-		ms.put("email", dto.getEmail() );
-		ms.put("passwd", Integer.toString(code));
-		System.out.println("어디냐3");
-		
-		int forgotPasswdUpdate = mainDao.forgotPasswdUpdate(ms);
-		request.setAttribute("forgotPasswdUpdate", forgotPasswdUpdate);
-		System.out.println("어디냐4");
+		}
+			
+		if (request.getParameter("code") != null) {
+
+			Map<String, String> ms = new HashMap<String, String>();
+			ms.put("email", email);
+			ms.put("passwd", request.getParameter("code"));
+			int forgotPasswdUpdate = mainDao.forgotPasswdUpdate(ms);
+			request.setAttribute("forgotPasswdUpdate", forgotPasswdUpdate);
+
+		}
+
 		
 		return new ModelAndView("mainForgotPro");
 	}
