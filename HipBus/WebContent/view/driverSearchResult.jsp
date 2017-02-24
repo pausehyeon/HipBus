@@ -1,12 +1,29 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<?xml version="1.0" encoding="UTF-8"?>
+<%@ page language="java" contentType="text/xml; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-</body>
-</html>
+<c:if test="${searchMember != null}">
+	<result>
+		<code>selected</code>
+		<data>[
+			<c:forEach var="article" items="${searchMember}" varStatus="status">
+				<c:if test="${status.count!=1}">
+				,
+				</c:if>
+				{
+					email : '${article.email}',
+					nick : '${article.nick}',
+					imglocation : '${article.imglocation}'
+				}
+			</c:forEach>
+		]</data>
+	</result>
+</c:if>
+
+<c:if test="${searchMember == null}">
+	<result>
+		<code>empty</code>
+		<message>방명록을 불러오지 못했습니다.</message>
+	</result>
+</c:if>

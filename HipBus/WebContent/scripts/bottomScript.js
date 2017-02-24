@@ -4,6 +4,7 @@
 
 $(document).ready(function() {	
 	
+	
 	if (!sessionStorage.getItem("myBus")) {
 		$('#mybusget').hide();
 	} else {
@@ -30,7 +31,7 @@ $(document).ready(function() {
 			height : 35
 		});
 	
-/*
+
 	if (crewBusImgLocation != "") {
 		var crewBusImgLocation = localStorage.getItem("crewBusImg");
 		$('#crewbusImg').attr({
@@ -39,7 +40,7 @@ $(document).ready(function() {
 			height : 35
 		});
 	}
-*/
+
 	
 		
 });
@@ -48,6 +49,7 @@ $(document).ready(function() {
 function myBusSet() {
 	var myBusDriver = document.location.href;
 	var myBusImgLocation = document.getElementById("myBusLeftImg").src;
+	
 	//var src = "http://localhost:8080/HipBus/myBus.do?driver="+memEmail;
 	if ( myBusDriver !="" ) {
 		sessionStorage.setItem("myBus", myBusDriver);
@@ -64,10 +66,10 @@ function myBusGet() {
 
 function crewBusSet() {
 	var crewBusDriver = document.location.href;
-	//var crewBusImgLocation = document.getElementById("crewBusLeftImg").src;
+	var crewBusImgLocation = document.getElementById("crewBusLeftImg").src;
 	if (crewBusDriver != "") {
 		sessionStorage.setItem("crewBus", crewBusDriver);
-		//localStroage.setItem("crewBusImg",crewBusImgLocation);
+		localStroage.setItem("crewBusImg",crewBusImgLocation);
 	}
 
 }

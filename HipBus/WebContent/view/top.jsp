@@ -14,6 +14,43 @@
 		}
 	}
 	
+	function driverCheck() {
+		var params = "keyword=" + $('input[name="keyword"]').val();
+		var driverResult = document.getElementById("driverResult");
+		var request = new Request(function() {
+			if (request.httpRequest.readyState == 4) {
+				if (request.httpRequest.status == 200) {
+					var msg="";
+					var xmldoc= request.httpRequest.responseXML;
+					var code = xmldoc.getElementsByTagName("code").item(0).innerHTML;
+					if(code == "selected"){
+					var data = eval("("+ xmldoc.getElementsByTagName("data").item(0).innerHTML + ")");	
+					if (data.length == 0) {
+						msg = "검색 결과가 없습니다.";
+						$('#driverResult').html(msg);	// 방명록 없을때 메세지출력용 div
+					
+						}else{
+							for (var i = 0; i < data.length; i++) {	// 방명록을 위부터 하나씩 붙인다
+								msg+='<a href="myBus.do?driver='+data[i].email+'">'+data[i].nick+'의버스<img class="w3-circle" style="width:30px; height:35px;" src="${project}/hipbusSave/'+data[i].imglocation+'"></a>';
+							}
+							
+						
+							driverResult.innerHTML=msg;
+							
+						}
+						
+					}
+					
+				} else {
+					$('#nickresult').text('오류');
+				}
+			} else {
+				console.log("통신중...");
+			}
+		}, "driverSearchResult.do", "POST", params);
+		request.sendRequest();
+	}
+	
 
 //-->
 </script>
@@ -64,22 +101,19 @@
 
 			<li class="w3-hide-small w3-dropdown-hover"><a href="#" class="w3-padding-large w3-hover-white" title="otherdrivers"> <i class="fa fa-search"></i>
 			</a>
-				<div class="w3-dropdown-content w3-white w3-card-4">
+				<div id="searchResult" class="w3-dropdown-content w3-white w3-card-4">
 					<form name="searchform" method="post">
 						<div class="w3-row w3-container w3-padding-16">
 							<div class="w3-threequarter">
-								<input type="text" name="keyword" class="w3-input" placeholder="${str_search}">
+								<input type="text" name="keyword" class="w3-input" placeholder="${str_search}" onkeyup="driverCheck()">
 							</div>
 							<div class="w3-quarter w3-right-align">
-								<button type="submit"><i class="fa fa-search"></i></button>
+								<button ><i class="fa fa-search"></i></button>
 							</div>
 						</div>
-				
-						<c:forEach var="searchMember" items="${searchMember}">
-						
-						<a href="myBus.do?driver=${searchMember.email}">${searchMember.nick}의 버스</a></c:forEach> <a class="w3-center w3-small" onclick="document.getElementById('driverSearch').style.display='block'"> <span>${str_more}</span>
-						</a>
+					<div id="driverResult">
 					
+					</div>
 					</form>
 				</div></li>
 		</c:if>

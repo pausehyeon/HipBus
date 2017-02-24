@@ -17,7 +17,7 @@
 	</div>
 	<div style="border: 1px solid transparent; float: left; width: 40px;" id="crewbusget">
 		<a href="#" class="w3-bottom w3-left w3-padding-large w3-hover-opacity" onclick="crewBusGet()" title="최근 방문한 crewBus로 이동합니다.">
-		<img style="width:30px; height:35px;" class="w3-circle" id="crewbusImg" src="${project}/view/img/HipBusLogo_colored_sq.png"></a>
+		<img class="w3-circle" id="crewbusImg" src=""></a>
 	</div>
 	<div style="border: 1px solid transparent; float: left; width: 40px;" id="boardget">
 		<a href="#" class="w3-bottom w3-left w3-padding-large w3-hover-opacity" onclick="boardGet()" title="최근 방문한 게시판으로 이동합니다.">

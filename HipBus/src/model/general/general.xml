@@ -54,7 +54,7 @@
 	</select>
 	
 	<select id="getSearchMember" parameterType="Map" resultType="model.MemberDto">
-		select * from hb_member where email like '%${keyword}%'
+		select * from hb_member where email like '%${keyword}%' or nick like '%${keyword}%'
 	</select>
 	
 
