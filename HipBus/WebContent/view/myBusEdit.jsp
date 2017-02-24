@@ -12,16 +12,14 @@
 		var tagname = document.getElementById("tagname");
 		var tagrequest = new Request(function() {
 			if (tagrequest.httpRequest.readyState == 4) {
-				if (tagrequest.httpRequest.status == 200) {
-					/* tagname.innerHTML = */ 
-					/* var tagText = eval("("+tagrequest.httpRequest.responseText+")"); */
- 					/* 여기다가 출력한거 배열 꺼내서 태그로 넣는거. */
- 					
- 					var ee = eval("("+tagrequest.httpRequest.responseText+")")
- 					
- 					alert(ee[0]);
-					/* for */
- 					tagname.innerHTML = ee[i];
+				if (tagrequest.httpRequest.status == 200) {				 					
+ 					var listResult = eval("("+tagrequest.httpRequest.responseText+")");
+ 					var msg = "";
+ 					for( var i=0; i<listResult.length; i++) {
+ 						msg += '<span class="w3-theme-d5 w3-padding w3-round w3-tag w3-margin-top w3-margin-right">'
+ 							+ listResult[i]+'</span>'; 							
+					}
+ 					tagname.innerHTML = msg; 					
 				} else {
 					tagname.innerHTML = tagrequest.httpRequest.status + "오류";
 				}
@@ -29,8 +27,32 @@
 				tagname.innerHTML = "통신중...";
 			}
 		}, "myBusEditTagsResult.do", "POST", params);
-		tagrequest.sendRequest();
+		tagrequest.sendRequest();	
 	}
+	
+	function taginsert() {		
+		var tagerror = document.getElementById("tagerror");
+		var taginput = document.getElementById("taginput");		
+		var params = "driver=" + "${driver}" + "&type=insert&tag=" + taginput.value;
+		var tagrequest = new Request(function() {
+			if (tagrequest.httpRequest.readyState == 4) {
+				if (tagrequest.httpRequest.status == 200) {
+					tagerror.innerHTML="";					 					
+ 					var insertResult = eval("("+tagrequest.httpRequest.responseText+")");
+ 					if ( insertResult == 0 ) {
+ 						tagerror.innerHTML = "<p>태그 추가에 실패하였습니다.<br>잠시 후 다시 시도해 주세요.</p>";
+ 					} else if ( insertResult == 1) {
+ 						taglist();	
+ 					}					
+				} else {
+					tagerror.innerHTML = tagrequest.httpRequest.status + "오류";
+				} 							
+			} else {
+				tagerror.innerHTML = "통신중...";
+			}
+		}, "myBusEditTagsResult.do", "POST", params);
+		tagrequest.sendRequest();			
+	} 
 </script>
 
 <title>${str_mybusTitle}</title>
@@ -272,17 +294,16 @@
 							</div>
 							<div class="w3-row-padding w3-margin-bottom">
 								<div class="w3-col s3 m3">
-									<input id="tag" type="text" class="w3-input">
+									<input id="taginput" type="text" class="w3-input">
 								</div>
 								<div class="w3-col s1 m1">
-									<i class="fa fa-plus-square w3-xxlarge"></i>
-								</div>
+									<i class="fa fa-plus-square w3-xxlarge" onclick="taginsert()"></i>									
+								</div>								
+							</div>																			
+							<div class="w3-content w3-margin-top">
+							<div id="tagerror">									
 							</div>
-							<div id="tagname"></div>					
-							<div class="w3-content w3-margin-top">							
-								<span class="w3-theme-d5 w3-padding w3-round w3-tag">태그</span>
-								<span class="w3-theme-d5 w3-padding w3-round w3-tag">태그</span>
-								<span class="w3-theme-d5 w3-padding w3-round w3-tag">태그</span>								
+								<div id="tagname"></div>														
 							</div>
 						</div>
 						<!-- 회원탈퇴 -->

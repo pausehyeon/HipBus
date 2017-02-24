@@ -31,6 +31,7 @@ public class MyBusEditTagsResult implements CommandHandler {
 		String driver = request.getParameter("driver");		
 		String tag = request.getParameter("tag");
 		request.setAttribute("driver", driver);
+		request.setAttribute("type", type);
 		Map<String, String> ms = new HashMap<String, String>();
 		
 		if ( driver != null && tag != null ) {			
