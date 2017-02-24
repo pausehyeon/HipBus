@@ -141,6 +141,9 @@
 	<update id="updateChannel" parameterType="model.ChannelDto">
 		update hb_channel set channel_id=#{channel_id} where driver=#{driver}
 	</update>
+	<select id="selectTag" parameterType="String" resultType="String">
+		select tag from HB_Tag where driver=#{driver}
+	</select>
 	<insert id="insertTag" parameterType="Map">
 		insert into hb_tag values(#{driver}, #{tag} )
 	</insert>
@@ -189,8 +192,7 @@
 	</insert>
 	<select id="getCrewId" parameterType="String" resultType="String">
 		select crewid from hb_crew where crewname=#{crewname}
-	</select>
-	
+	</select>	
 </mapper>
 
 

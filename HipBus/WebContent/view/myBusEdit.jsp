@@ -5,6 +5,33 @@
 <script type="text/javascript" src="/HipBus/scripts/ajax.js"></script>
 <%@include file="/view/setting/bus_setting.jsp"%>
 <%@include file="/view/setting/myBus_setting.jsp"%>
+<script src="/HipBus/scripts/ajax.js"></script>
+<script type="text/javascript">		
+	function taglist() {
+		var params = "driver=" +"${driver}" + "&type=list";		
+		var tagname = document.getElementById("tagname");
+		var tagrequest = new Request(function() {
+			if (tagrequest.httpRequest.readyState == 4) {
+				if (tagrequest.httpRequest.status == 200) {
+					/* tagname.innerHTML = */ 
+					/* var tagText = eval("("+tagrequest.httpRequest.responseText+")"); */
+ 					/* 여기다가 출력한거 배열 꺼내서 태그로 넣는거. */
+ 					
+ 					var ee = eval("("+tagrequest.httpRequest.responseText+")")
+ 					
+ 					alert(ee[0]);
+					/* for */
+ 					tagname.innerHTML = ee[i];
+				} else {
+					tagname.innerHTML = tagrequest.httpRequest.status + "오류";
+				}
+			} else {
+				tagname.innerHTML = "통신중...";
+			}
+		}, "myBusEditTagsResult.do", "POST", params);
+		tagrequest.sendRequest();
+	}
+</script>
 
 <title>${str_mybusTitle}</title>
 <script type="text/javascript">
@@ -153,7 +180,7 @@
 	</script>
 </c:if>
 <c:if test="${sessionScope.memEmail eq driver}">
-	<body class="w3-theme-l5">
+	<body class="w3-theme-l5" onload="taglist()">
 
 		<!-- Navbar -->
 		<c:import url="../top.do" />
@@ -251,27 +278,11 @@
 									<i class="fa fa-plus-square w3-xxlarge"></i>
 								</div>
 							</div>
-							<div class="w3-content w3-margin-top">
-								<span class="w3-theme-l5 w3-padding w3-round w3-tag">태그</span>
-								<span class="w3-theme-l4 w3-padding w3-round w3-tag">태그</span>
-								<span class="w3-theme-l3 w3-padding w3-round w3-tag">태그</span>
-								<span class="w3-theme-l2 w3-padding w3-round w3-tag">태그</span>
-								<span class="w3-theme-l1 w3-padding w3-round w3-tag">태그</span>
-								<span class="w3-theme-d1 w3-padding w3-round w3-tag">태그</span>
-								<span class="w3-theme-d2 w3-padding w3-round w3-tag">태그</span>
-								<span class="w3-theme-d3 w3-padding w3-round w3-tag">태그</span>
-								<span class="w3-theme-d4 w3-padding w3-round w3-tag">태그</span>
+							<div id="tagname"></div>					
+							<div class="w3-content w3-margin-top">							
 								<span class="w3-theme-d5 w3-padding w3-round w3-tag">태그</span>
-								<span class="w3-theme-l5 w3-padding w3-round w3-tag">태그</span>
-								<span class="w3-theme-l4 w3-padding w3-round w3-tag">태그</span>
-								<span class="w3-theme-l3 w3-padding w3-round w3-tag">태그</span>
-								<span class="w3-theme-l2 w3-padding w3-round w3-tag">태그</span>
-								<span class="w3-theme-l1 w3-padding w3-round w3-tag">태그</span>
-								<span class="w3-theme-d1 w3-padding w3-round w3-tag">태그</span>
-								<span class="w3-theme-d2 w3-padding w3-round w3-tag">태그</span>
-								<span class="w3-theme-d3 w3-padding w3-round w3-tag">태그</span>
-								<span class="w3-theme-d4 w3-padding w3-round w3-tag">태그</span>
 								<span class="w3-theme-d5 w3-padding w3-round w3-tag">태그</span>
+								<span class="w3-theme-d5 w3-padding w3-round w3-tag">태그</span>								
 							</div>
 						</div>
 						<!-- 회원탈퇴 -->
