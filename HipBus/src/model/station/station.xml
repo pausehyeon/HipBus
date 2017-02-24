@@ -16,6 +16,146 @@
 		(select * from HB_Station order by num desc)
 		order by num desc ) where r &gt;= #{start} and r &lt;= #{end}
 	</select>
+	<!--  카테고리 가져오기 -->
+	<select id="getArticles1" parameterType="Map" resultType="model.StationDto">
+		select num,email,category,nick,subject,content,
+		likenum,readcount,reg_date,
+		 r from( select num,email,category,nick,subject,content,
+		likenum,readcount,reg_date, rownum r from
+		(select * from HB_Station order by num desc) where category = 1
+		order by num desc ) where r &gt;= #{start} and r &lt;= #{end}
+	</select>
+	<select id="getArticles2" parameterType="Map" resultType="model.StationDto">
+		select num,email,category,nick,subject,content,
+		likenum,readcount,reg_date,
+		 r from( select num,email,category,nick,subject,content,
+		likenum,readcount,reg_date, rownum r from
+		(select * from HB_Station order by num desc) where category = 2
+		order by num desc ) where r &gt;= #{start} and r &lt;= #{end}
+	</select>
+	<select id="getArticles3" parameterType="Map" resultType="model.StationDto">
+		select num,email,category,nick,subject,content,
+		likenum,readcount,reg_date,
+		 r from( select num,email,category,nick,subject,content,
+		likenum,readcount,reg_date, rownum r from
+		(select * from HB_Station order by num desc) where category = 3
+		order by num desc ) where r &gt;= #{start} and r &lt;= #{end}
+	</select>
+	<select id="getArticles4" parameterType="Map" resultType="model.StationDto">
+		select num,email,category,nick,subject,content,
+		likenum,readcount,reg_date,
+		 r from( select num,email,category,nick,subject,content,
+		likenum,readcount,reg_date, rownum r from
+		(select * from HB_Station order by num desc) where category = 4
+		order by num desc ) where r &gt;= #{start} and r &lt;= #{end}
+	</select>
+	<select id="getArticles5" parameterType="Map" resultType="model.StationDto">
+		select num,email,category,nick,subject,content,
+		likenum,readcount,reg_date,
+		 r from( select num,email,category,nick,subject,content,
+		likenum,readcount,reg_date, rownum r from
+		(select * from HB_Station order by num desc) where category = 5
+		order by num desc ) where r &gt;= #{start} and r &lt;= #{end}
+	</select>
+	<select id="getArticles6" parameterType="Map" resultType="model.StationDto">
+		select num,email,category,nick,subject,content,
+		likenum,readcount,reg_date,
+		 r from( select num,email,category,nick,subject,content,
+		likenum,readcount,reg_date, rownum r from
+		(select * from HB_Station order by num desc) where category = 6
+		order by num desc ) where r &gt;= #{start} and r &lt;= #{end}
+	</select>
+	
+	
+	<!-- 검색 기능 -->
+	<!-- <select id="getSearch" parameterType="Map" resultType="model.StationDto">
+	select num,email,category,nick,subject,content,
+	likenum,readcount,reg_date,
+	r from( select num, email, category,nick,subject,content,
+	likenum,readcount,reg_date, rownum r from
+	(select * from HB_Station order by num desc) where ${search}
+	like '${keyword}%' order by num desc) where r &gt;= #{start} and r &lt;= #{end}
+	</select> -->
+	
+	<select id="getSearch" parameterType="Map" resultType="model.StationDto">
+	select num,email,category,nick,subject,content,
+	likenum,readcount,reg_date,
+	r from( select num, email, category,nick,subject,content,
+	likenum,readcount,reg_date, rownum r from
+	(select * from HB_Station order by num desc) where ${search}
+	like #{keyword} ||'%' order by num desc) where r &gt;= #{start} and r &lt;= #{end}
+	</select>
+	
+	<select id="getSearch1" parameterType="Map" resultType="model.StationDto">
+	select num,email,category,nick,subject,content,
+	likenum,readcount,reg_date,
+	r from( select num, email, category,nick,subject,content,
+	likenum,readcount,reg_date, rownum r from
+	(select * from HB_Station order by num desc) where category=1 and ${search}
+	like #{keyword} ||'%' order by num desc) where r &gt;= #{start} and r &lt;= #{end}
+	</select>
+	<select id="getSearch2" parameterType="Map" resultType="model.StationDto">
+	select num,email,category,nick,subject,content,
+	likenum,readcount,reg_date,
+	r from( select num, email, category,nick,subject,content,
+	likenum,readcount,reg_date, rownum r from
+	(select * from HB_Station order by num desc) where category=2 and ${search}
+	like #{keyword} ||'%' order by num desc) where r &gt;= #{start} and r &lt;= #{end}
+	</select>
+	<select id="getSearch3" parameterType="Map" resultType="model.StationDto">
+	select num,email,category,nick,subject,content,
+	likenum,readcount,reg_date,
+	r from( select num, email, category,nick,subject,content,
+	likenum,readcount,reg_date, rownum r from
+	(select * from HB_Station order by num desc) where category=3 and ${search}
+	like #{keyword} ||'%' order by num desc) where r &gt;= #{start} and r &lt;= #{end}
+	</select>
+	<select id="getSearch4" parameterType="Map" resultType="model.StationDto">
+	select num,email,category,nick,subject,content,
+	likenum,readcount,reg_date,
+	r from( select num, email, category,nick,subject,content,
+	likenum,readcount,reg_date, rownum r from
+	(select * from HB_Station order by num desc) where category=4 and ${search}
+	like #{keyword} ||'%' order by num desc) where r &gt;= #{start} and r &lt;= #{end}
+	</select>
+	<select id="getSearch5" parameterType="Map" resultType="model.StationDto">
+	select num,email,category,nick,subject,content,
+	likenum,readcount,reg_date,
+	r from( select num, email, category,nick,subject,content,
+	likenum,readcount,reg_date, rownum r from
+	(select * from HB_Station order by num desc) where category=5 and ${search}
+	like #{keyword} ||'%' order by num desc) where r &gt;= #{start} and r &lt;= #{end}
+	</select>
+	<select id="getSearch6" parameterType="Map" resultType="model.StationDto">
+	select num,email,category,nick,subject,content,
+	likenum,readcount,reg_date,
+	r from( select num, email, category,nick,subject,content,
+	likenum,readcount,reg_date, rownum r from
+	(select * from HB_Station order by num desc) where category=6 and ${search}
+	like #{keyword} ||'%' order by num desc) where r &gt;= #{start} and r &lt;= #{end}
+	</select>
+	
+	<select id="searchNum" resultType="int" parameterType="Map">
+		select count(*) from HB_Station where ${search} like '${keyword}%'
+	</select>
+	<select id="searchNum1" resultType="int" parameterType="Map">
+		select count(*) from HB_Station where category=1 and ${search} like '${keyword}%'
+	</select>
+	<select id="searchNum2" resultType="int" parameterType="Map">
+		select count(*) from HB_Station where category=1 and ${search} like '${keyword}%'
+	</select>
+	<select id="searchNum3" resultType="int" parameterType="Map">
+		select count(*) from HB_Station where category=1 and ${search} like '${keyword}%'
+	</select>
+	<select id="searchNum4" resultType="int" parameterType="Map">
+		select count(*) from HB_Station where category=1 and ${search} like '${keyword}%'
+	</select>
+	<select id="searchNum5" resultType="int" parameterType="Map">
+		select count(*) from HB_Station where category=1 and ${search} like '${keyword}%'
+	</select>
+	<select id="searchNum6" resultType="int" parameterType="Map">
+		select count(*) from HB_Station where category=1 and ${search} like '${keyword}%'
+	</select>
 	
 	<select id="getArticle" parameterType="int" resultType="model.StationDto">
 		select * from HB_Station where num=#{num}

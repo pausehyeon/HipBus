@@ -46,14 +46,24 @@
 				<p>${str_freeViewText}</p>
 			</c:if>
 			<hr>
+			<form action="station.do?type=${type}" method="post" name="searchform">
+			<select class="w3-left" name="search" style="margin: 2px; height:30px ">
+				<option value="subject">제목</option>
+				<option value="email">이메일</option>
+				<option value="nick">닉네임</option>
+			</select>
+			<input type="text" class="w3-left" style="margin:2px; height:30px" name="keyword">
+			<button style="margin: 2px; height:30px" class="w3-btn w3-hover-teal" type="submit">검색</button>
+			
 			<c:if test="${sessionScope.memEmail eq null}">
-				<i class="w3-right">${msg_login}</i>
+	<i class="w3-right"><a onclick="document.getElementById('login').style.display='block'">${msg_login}</a></i>
 			</c:if>
 			<c:if test="${sessionScope.memEmail ne null}">
 				<a href="stationWrite.do?email=${sessionScope.memEmail}" class="w3-btn w3-padding w3-theme-d1 w3-margin-left w3-right"><i class="fa fa-pencil-square-o w3-margin-right"></i>${btn_write}</a>
 			</c:if>
+			</form>
 		</div>
-
+		
 		<form>
 			<div class="w3-row">
 				<div class="w3-twothird">
@@ -68,8 +78,7 @@
 					<!-- 글이있는경우 -->
 
 					<c:if test="${count != 0}">
-						<c:forEach var="article" items="${station}">
-							<c:if test="${type == 1 }">
+						<c:forEach var="article" items="${station}">			
 								<div>
 									<div class="w3-row w3-margin-bottom">
 										<div class="w3-twothird w3-container">
@@ -106,116 +115,6 @@
 									</div>
 
 								</div>
-							</c:if>
-							<c:if test="${type == 2 }">
-								<c:if test="${article.category == 1}">
-									<div class="w3-row w3-margin-bottom">
-										<div class="w3-twothird w3-container">
-											<a href="stationRead.do?num=${article.num}&type=${type}&category=${article.category}&pageNum${pageNum}">
-												<h4>[${str_beat}] ${article.subject}</h4>
-											</a>
-										</div>
-										<div class="w3-third w3-container">
-											<p class="w3-right w3-tiny">${str_writeNick}:
-												${article.nick} | ${str_reg_date}:
-												<fmt:formatDate value="${article.reg_date}" type="both" pattern="yyyy-MM-dd HH:mm" />
-												| ${str_readCount}: ${article.readcount} | ${str_upCount}: ${article.likenum }
-											</p>
-										</div>
-									</div>
-								</c:if>
-							</c:if>
-							<c:if test="${type == 3 }">
-								<c:if test="${article.category == 2}">
-									<div class="w3-row w3-margin-bottom">
-										<div class="w3-twothird w3-container">
-											<a href="stationRead.do?num=${article.num}&type=${type}&category=${article.category}&pageNum${pageNum}">
-												<h4>[${str_rab}] ${article.subject}</h4>
-											</a>
-										</div>
-										<div class="w3-third w3-container">
-											<p class="w3-right w3-tiny">${str_writeNick}:
-												${article.nick} | ${str_reg_date}:
-												<fmt:formatDate value="${article.reg_date}" type="both" pattern="yyyy-MM-dd HH:mm" />
-												| ${str_readCount}: ${article.readcount} | ${str_upCount}: ${article.likenum }
-											</p>
-										</div>
-									</div>
-								</c:if>
-							</c:if>
-							<c:if test="${type == 4 }">
-								<c:if test="${article.category == 3}">
-									<div class="w3-row w3-margin-bottom">
-										<div class="w3-twothird w3-container">
-											<a href="stationRead.do?num=${article.num}&type=${type}&category=${article.category}&pageNum${pageNum}">
-												<h4>[${str_mixTape}] ${article.subject}</h4>
-											</a>
-										</div>
-										<div class="w3-third w3-container">
-											<p class="w3-right w3-tiny">${str_writeNick}:
-												${article.nick} | ${str_reg_date}:
-												<fmt:formatDate value="${article.reg_date}" type="both" pattern="yyyy-MM-dd HH:mm" />
-												| ${str_readCount}: ${article.readcount} | ${str_upCount}: ${article.likenum }
-											</p>
-										</div>
-									</div>
-								</c:if>
-							</c:if>
-							<c:if test="${type == 5 }">
-								<c:if test="${article.category == 4}">
-									<div class="w3-row w3-margin-bottom">
-										<div class="w3-twothird w3-container">
-											<a href="stationRead.do?num=${article.num}&type=${type}&category=${article.category}&pageNum${pageNum}">
-												<h4>[${str_vocal}] ${article.subject}</h4>
-											</a>
-										</div>
-										<div class="w3-third w3-container">
-											<p class="w3-right w3-tiny">${str_writeNick}:
-												${article.nick} | ${str_reg_date}:
-												<fmt:formatDate value="${article.reg_date}" type="both" pattern="yyyy-MM-dd HH:mm" />
-												| ${str_readCount}: ${article.readcount} | ${str_upCount}: ${article.likenum }
-											</p>
-										</div>
-									</div>
-								</c:if>
-							</c:if>
-							<c:if test="${type == 6 }">
-								<c:if test="${article.category == 5}">
-									<div class="w3-row w3-margin-bottom">
-										<div class="w3-twothird w3-container">
-											<a href="stationRead.do?num=${article.num}&type=${type}&category=${article.category}&pageNum${pageNum}">
-												<h4>[${str_gasa}] ${article.subject}</h4>
-											</a>
-										</div>
-										<div class="w3-third w3-container">
-											<p class="w3-right w3-tiny">${str_writeNick}:
-												${article.nick} | ${str_reg_date}:
-												<fmt:formatDate value="${article.reg_date}" type="both" pattern="yyyy-MM-dd HH:mm" />
-												| ${str_readCount}: ${article.readcount} | ${str_upCount}: ${article.likenum }
-											</p>
-										</div>
-									</div>
-								</c:if>
-							</c:if>
-							<c:if test="${type == 7 }">
-								<c:if test="${article.category == 6}">
-									<div class="w3-row w3-margin-bottom">
-										<div class="w3-twothird w3-container">
-											<a href="stationRead.do?num=${article.num}&type=${type}&category=${article.category}&pageNum${pageNum}">
-												<h4>[${str_freeBoard}] ${article.subject}</h4>
-											</a>
-										</div>
-										<div class="w3-third w3-container">
-											<p class="w3-right w3-tiny">${str_writeNick}:
-												${article.nick} | ${str_reg_date}:
-												<fmt:formatDate value="${article.reg_date}" type="both" pattern="yyyy-MM-dd HH:mm" />
-												| ${str_readCount}: ${article.readcount} | ${str_upCount}: ${article.likenum }
-											</p>
-										</div>
-									</div>
-								</c:if>
-							</c:if>
-
 						</c:forEach>
 					</c:if>
 				</div>
@@ -259,7 +158,7 @@
 		</form>
 
 	</div>
-	<c:if test="${type == 1 }">
+
 		<div class="w3-center ">
 			<!-- Pagination -->
 
@@ -272,7 +171,7 @@
 					<span class="w3-hover-black">${i}</span>
 				</c:if>
 				<c:if test="${i != currentPage}">
-					<a class="w3-hover-black" href="station.do?pageNum=${i}">[${i}]</a>
+					<a class="w3-hover-black" href="station.do?pageNum=${i}&type=${type}&category=${category}&key=${keyword}">[${i}]</a>
 				</c:if>
 			</c:forEach>
 			<c:if test="${pageCount > endPage}">
@@ -281,7 +180,7 @@
 			</c:if>
 
 		</div>
-	</c:if>
+
 	<!-- END MAIN -->
 	</div>
 

@@ -25,7 +25,25 @@ public class StationDBBean implements StationDao {
 	}
 	public List<StationDto> getArticles( Map<String, Integer> map ) {
 		return SqlMapClient.getSession().selectList( "Station.getArticles", map );
-	}	
+	}
+	public List<StationDto> getArticles1( Map<String, Integer> map ) {
+		return SqlMapClient.getSession().selectList( "Station.getArticles1", map );
+	}
+	public List<StationDto> getArticles2( Map<String, Integer> map ) {
+		return SqlMapClient.getSession().selectList( "Station.getArticles2", map );
+	}
+	public List<StationDto> getArticles3( Map<String, Integer> map ) {
+		return SqlMapClient.getSession().selectList( "Station.getArticles3", map );
+	}
+	public List<StationDto> getArticles4( Map<String, Integer> map ) {
+		return SqlMapClient.getSession().selectList( "Station.getArticles4", map );
+	}
+	public List<StationDto> getArticles5( Map<String, Integer> map ) {
+		return SqlMapClient.getSession().selectList( "Station.getArticles5", map );
+	}
+	public List<StationDto> getArticles6( Map<String, Integer> map ) {
+		return SqlMapClient.getSession().selectList( "Station.getArticles6", map );
+	}
 	
 	public StationDto getArticle( int num ) {
 		return SqlMapClient.getSession().selectOne( "Station.getArticle", num );	
@@ -47,6 +65,49 @@ public class StationDBBean implements StationDao {
 		return SqlMapClient.getSession().insert( "Station.insertArticle", dto );	
 	}
 	
+	// 검색
+	public List<StationDto> getSearch(Map<String, Object> smap) {
+		return SqlMapClient.getSession().selectList("Station.getSearch", smap);
+	}//검색
+	public List<StationDto> getSearch1(Map<String, Object> smap) {
+		return SqlMapClient.getSession().selectList("Station.getSearch1", smap);
+	}
+	public List<StationDto> getSearch2(Map<String, Object> smap) {
+		return SqlMapClient.getSession().selectList("Station.getSearch2", smap);
+	}
+	public List<StationDto> getSearch3(Map<String, Object> smap) {
+		return SqlMapClient.getSession().selectList("Station.getSearch3", smap);
+	}
+	public List<StationDto> getSearch4(Map<String, Object> smap) {
+		return SqlMapClient.getSession().selectList("Station.getSearch4", smap);
+	}
+	public List<StationDto> getSearch5(Map<String, Object> smap) {
+		return SqlMapClient.getSession().selectList("Station.getSearch5", smap);
+	}
+	public List<StationDto> getSearch6(Map<String, Object> smap) {
+		return SqlMapClient.getSession().selectList("Station.getSearch6", smap);
+	}
+	public int searchNum(Map<String, String> nmap) {
+		return SqlMapClient.getSession().selectOne("Station.searchNum", nmap);
+	}//검색되는 페이지 수
+	public int searchNum1(Map<String, String> nmap) {
+		return SqlMapClient.getSession().selectOne("Station.searchNum1", nmap);
+	}//검색되는 페이지 수
+	public int searchNum2(Map<String, String> nmap) {
+		return SqlMapClient.getSession().selectOne("Station.searchNum2", nmap);
+	}
+	public int searchNum3(Map<String, String> nmap) {
+		return SqlMapClient.getSession().selectOne("Station.searchNum3", nmap);
+	}
+	public int searchNum4(Map<String, String> nmap) {
+		return SqlMapClient.getSession().selectOne("Station.searchNum4", nmap);
+	}
+	public int searchNum5(Map<String, String> nmap) {
+		return SqlMapClient.getSession().selectOne("Station.searchNum5", nmap);
+	}
+	public int searchNum6(Map<String, String> nmap) {
+		return SqlMapClient.getSession().selectOne("Station.searchNum6", nmap);
+	}
 	@Override
 	public MemberDto getMember(String email) { //nick값 불러오기위해씀
 		// TODO Auto-generated method stub

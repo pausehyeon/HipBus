@@ -181,7 +181,8 @@
 	      $('#board_' + replynum + ' #reBoardView').hide();
 			$('#board_' + replynum + ' #reBoardClose').show();
 		reboard = '';
-		reboard += '<div class="w3-row-padding w3-padding-32 w3-row" id="reContentClose">'
+			if("${sessionScope.memEmail}" != ''){
+			reboard += '<div class="w3-row-padding w3-padding-32 w3-row" id="reContentClose">'
 			reboard += '<div class="w3-col m1">'
 			reboard += '<img src="${project}/view/img/HipBusLogo_pale_sq.png" width="100%" class="w3-circle">'
 			reboard += '</div>'
@@ -192,9 +193,9 @@
 			reboard += '<input type="button" onclick="reboardAppend('+ref_num+')" value="${btn_register}" class="w3-btn-block w3-theme-d1" style="height: 50px">'
 			reboard += '</div>'
 			reboard += '</div>'
-		
+			
 		infResult.innerHTML = reboard;
-		
+			}
 		reloadBoard(ref_num);
 	}
 	function reboardAppend(ref_num) {
@@ -218,7 +219,6 @@
 									reResult.appendChild(newdiv);
 								$('input[name=recontent]').val("");
 								$("#replyBoardABC_"+ref_num+ ' center').remove();
-								alert(readform.category.value);
 								alert("글이 등록되었습니다.")
 							} else if (code == "failed") {
 								var message = xmldoc.getElementsByTagName(
@@ -608,13 +608,7 @@ ${article.content}
 						</div>
 
 						<footer class="w3-container w3-padding-jumbo w3-theme-l3 w3-center">
-							<c:if test="${sessionScope.memEmail != null }">
-								<a class="w3-btn w3-padding w3-theme-d1 w3-margin-left" onclick="Likego()"><i class="fa fa-thumbs-up w3-margin-right"></i>${btn_recommend}<br>${article.likenum}</a>
-							</c:if>
-							<a href="station.do?pageNum=${pageNum}&type=${type}" class="w3-btn w3-padding w3-theme-d1 w3-margin-left"><i class="fa fa-align-justify w3-margin-right"></i>${str_list}</a>
-							<c:if test="${sessionScope.memEmail == article.email}">
-								<a href="stationModify.do?num=${article.num}" class="w3-btn w3-padding w3-theme-d1 w3-margin-left"> <i class="fa fa-cog w3-margin-right"></i>${str_modify}</a>
-								<input type="hidden" value="${article.num}" name="num">
+						<input type="hidden" value="${article.num}" name="num">
 								<input type="hidden" value="${pageNum}" name="pageNum">
 								<input type="hidden" value="${article.category}" name="category">
 								<input type="hidden" value="${type}" name="type">
@@ -623,6 +617,12 @@ ${article.content}
 								<input type="hidden" name="ref_num" value="${ref_num}">
 								<input type="hidden" name="re_step" value="${re_step}">
 								<input type="hidden" name="re_level" value="${re_level}">
+							<c:if test="${sessionScope.memEmail != null }">
+								<a class="w3-btn w3-padding w3-theme-d1 w3-margin-left" onclick="Likego()"><i class="fa fa-thumbs-up w3-margin-right"></i>${btn_recommend}<br>${article.likenum}</a>
+							</c:if>
+							<a href="station.do?pageNum=${pageNum}&type=${type}" class="w3-btn w3-padding w3-theme-d1 w3-margin-left"><i class="fa fa-align-justify w3-margin-right"></i>${str_list}</a>
+							<c:if test="${sessionScope.memEmail == article.email}">
+								<a href="stationModify.do?num=${article.num}" class="w3-btn w3-padding w3-theme-d1 w3-margin-left"> <i class="fa fa-cog w3-margin-right"></i>${str_modify}</a>			
 								<a class="w3-btn w3-padding w3-theme-d1 w3-margin-left" onclick="alertgo()"> <i class="glyphicon glyphicon-remove w3-margin-right"></i>${str_delete}</a>
 							</c:if>
 
@@ -643,6 +643,7 @@ ${article.content}
 			</div>
 
 			<!--  댓글쓰기 -->
+			<c:if test="${sessionScope.memEmail != null }">
 			<div class="w3-row-padding w3-padding-64 w3-row">
 				<div class="w3-col m1">
 					<img src="${project}/view/img/HipBusLogo_pale_sq.png" width="100%" class="w3-circle">
@@ -654,6 +655,7 @@ ${article.content}
 					<input type="button" onclick="boardAppend()" value="${btn_register}" class="w3-btn-block w3-theme-d1" style="height: 70px">
 				</div>
 			</div>
+			</c:if>
 		</div>
 
 	</div>

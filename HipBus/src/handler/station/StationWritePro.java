@@ -44,7 +44,6 @@ public class StationWritePro implements CommandHandler {
 			resultCount = stationDao.addMem(email);
 			request.setAttribute("resultCount", resultCount);
 		}
-		
 		StationDto dto = new StationDto();
 		dto.setEmail((String)request.getSession().getAttribute("memEmail"));
 		dto.setCategory(Integer.parseInt(request.getParameter("category")));
@@ -56,6 +55,7 @@ public class StationWritePro implements CommandHandler {
 		int result = stationDao.insertArticle( dto );
 		request.setAttribute("article", article);
 		request.setAttribute( "result", result );
+		request.setAttribute("resultCount",resultCount);
 		return new ModelAndView("stationWritePro");
 	}
 

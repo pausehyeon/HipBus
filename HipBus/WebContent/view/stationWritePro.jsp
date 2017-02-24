@@ -7,11 +7,10 @@
 
 
 <h2> ${str_write} </h2>
-
 	<c:if test="${resultCount != 0}">
 	<script type="text/javascript">
 		<!--
-		alert("2등급 으로 등업하셨습니다.\n He has climbed to 2 ranks");
+		alert("2등급 으로 등업하셨습니다.\nHe has climbed to 2 ranks");
 		//-->
 	</script>
 	</c:if>
