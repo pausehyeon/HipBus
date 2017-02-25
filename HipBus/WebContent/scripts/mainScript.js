@@ -2,13 +2,12 @@
  * main.jsp에 연결할 javascript.
  */
 var signuperror = "회원가입에 실패했습니다. \n잠시 후 다시 시도하세요.";
-var signupok = "회원가입에 성공하였습니다! \n입력하신 이메일로 인증 메일을 발송하였습니다. \n" +
-				"이메일 인증 후 로그인 가능합니다.";
+var signupok = "회원가입에 성공하였습니다! \n입력하신 이메일로 인증 메일을 발송하였습니다. \n"
+		+ "이메일 인증 후 로그인 가능합니다.";
 var verificationerror = "이메일 인증에 실패했습니다. \n잠시 후 다시 시도하세요.";
 var verificationok = "이메일 인증에 성공하였습니다. \n로그인 후 사용 가능합니다.";
 
-
-//Accordions
+// Accordions
 function myAccordion(id) {
 	var x = document.getElementById(id);
 	if (x.className.indexOf("w3-show") == -1) {
@@ -49,75 +48,114 @@ function showDivs(n) {
 	dots[slideIndex - 1].className += " w3-white";
 }
 
-
-
-//채널 아이디를 넘겨받아서 라이브 중인 채널의 썸네일을 출력해주는 function
-function checkonair(channel_id, googleApiKey){
-	var params = "part=snippet&channelId="+channel_id+"&type=video&eventType=live&key="+googleApiKey;
+// 채널 아이디를 넘겨받아서 라이브 중인 채널의 썸네일을 출력해주는 function
+function checkonair(channel_id, googleApiKey) {
+	var params = "part=snippet&channelId=" + channel_id
+			+ "&type=video&eventType=live&key=" + googleApiKey;
 	var request;
-	request = new Request( function(){
+	request = new Request(
+			function() {
 				var onairsection = document.getElementById('onairsection');
-				var onairloadingsection = document.getElementById('onairloadingsection');
+				var onairloadingsection = document
+						.getElementById('onairloadingsection');
 				var cnt = 0;
-				if(request.httpRequest.readyState == 4){
-					if(request.httpRequest.status == 200){
-						var jsonData = eval( "("+request.httpRequest.responseText.trim() +")");
-						if(jsonData.pageInfo.totalResults != 0){
-							//라이브 방송중인 경우
-							//var videoId = jsonData.items[0].id.videoId;
+				if (request.httpRequest.readyState == 4) {
+					if (request.httpRequest.status == 200) {
+						var jsonData = eval("("
+								+ request.httpRequest.responseText.trim() + ")");
+						if (jsonData.pageInfo.totalResults != 0) {
+							// 라이브 방송중인 경우
+							// var videoId = jsonData.items[0].id.videoId;
 							var title = jsonData.items[0].snippet.title;
 							var thumbnail = jsonData.items[0].snippet.thumbnails.high.url;
-							
+
 							var msg = "";
 							msg += "<div class='w3-col l3 m6 w3-margin-bottom'>";
 							msg += "	<div class='w3-display-container'>";
-							msg += "		<div class='w3-display-topleft w3-black w3-padding'>"+title+"</div>";
-							msg += "		<img src='"+thumbnail+"' alt='thumbnail' style='width: 100%'>";
+							msg += "		<div class='w3-display-topleft w3-black w3-padding'>"
+									+ title + "</div>";
+							msg += "		<img src='" + thumbnail
+									+ "' alt='thumbnail' style='width: 100%'>";
 							msg += "	</div>";
 							msg += "</div>";
-							
+
 							onairsection.innerHTML += msg;
 							cnt++;
-						}else{
-							//라이브 방송 중이 아닌 경우
+						} else {
+							// 라이브 방송 중이 아닌 경우
 						}
-						
-						if(cnt == 0){
+
+						if (cnt == 0) {
 							onairloadingsection.innerHTML = "<p class='w3-center'>현재 방송 중인 채널이 없습니다.</p>";
-						}else{
+						} else {
 							onairloadingsection.innerHTML = "";
 						}
-					}else{
-						onairloadingsection.innerHTML = "<p class='w3-center'> 오류 발생"+request.status+" </p>";
+					} else {
+						onairloadingsection.innerHTML = "<p class='w3-center'> 오류 발생"
+								+ request.status + " </p>";
 					}
-				}else{
+				} else {
 					onairloadingsection.innerHTML = "<img src='/HipBus/view/img/loading.gif' alt='로딩 중입니다' style='width:100px;'>";
 				}
-			},
-			"https://www.googleapis.com/youtube/v3/search",
-			"GET",
-			params);
+			}, "https://www.googleapis.com/youtube/v3/search", "GET", params);
 	request.sendRequest();
 }
 
-//채널 목록 받아와서 checkonair()에 출력을 요청
-function getonairlist(channelsJson, googleApiKey){
-//	var channelsJson = eval("${channelsJson}");
-	for(var i=0; i<channelsJson.length; i++){
+// 채널 목록 받아와서 checkonair()에 출력을 요청
+function getonairlist(channelsJson, googleApiKey) {
+	// var channelsJson = eval("${channelsJson}");
+	for (var i = 0; i < channelsJson.length; i++) {
 		var channel_id = channelsJson[i].channel_id;
 		var driver = channelsJson[i].driver;
 		checkonair(channel_id, googleApiKey);
 	}
 }
 
-
-$(document).ready(function() {	
+$(document).ready(function() {
 	// 자동으로 슬라이드 넘기기
-	if($('#nextslide').length){
-		//^ 만일 id=nextslide가 하나도 없으면 0. 즉 false
+	if ($('#nextslide').length) {
+		// ^ 만일 id=nextslide가 하나도 없으면 0. 즉 false
 		setInterval(function() {
 			$('#nextslide').trigger('click');
 		}, 1500);
 	}
 
+	if (getCookie("id")) {
+		loginCheckForm.email.value = getCookie("id");
+		loginCheckForm.rememberMe.checked = true;
+	}
+
 });
+
+function setCookie(name, value, expiredays) {
+	var todayDate = new Date();
+	todayDate.setDate(todayDate.getDate() + expiredays);
+	document.cookie = name + "=" + escape(value) + "; path=/; expires="
+			+ todayDate.toGMTString() + ";"
+}
+
+function getCookie(Name) {
+	var search = Name + "=";
+	if (document.cookie.length > 0) { 
+		offset = document.cookie.indexOf(search);
+		if (offset != -1) { 
+			offset += search.length; 
+			end = document.cookie.indexOf(";", offset);
+														
+			if (end == -1)
+				end = document.cookie.length;
+			return unescape(document.cookie.substring(offset, end));
+		}
+	}
+}
+
+function sendit() {
+	var id = loginCheckForm.email.value;
+
+	if (loginCheckForm.rememberMe.checked) {
+		setCookie("id", id, 999);
+	} else {
+		setCookie("id", id, 0);
+	}
+
+}

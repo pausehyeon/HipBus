@@ -32,14 +32,14 @@ $(document).ready(function() {
 		});
 	
 
-	if (crewBusImgLocation != "") {
-		var crewBusImgLocation = localStorage.getItem("crewBusImg");
+	
+		var crewBusImgLocation = sessionStorage.getItem("crewBusImg");
 		$('#crewbusImg').attr({
 			src : crewBusImgLocation,
 			width : 30,
 			height : 35
 		});
-	}
+
 
 	
 		
@@ -49,8 +49,6 @@ $(document).ready(function() {
 function myBusSet() {
 	var myBusDriver = document.location.href;
 	var myBusImgLocation = document.getElementById("myBusLeftImg").src;
-	
-	//var src = "http://localhost:8080/HipBus/myBus.do?driver="+memEmail;
 	if ( myBusDriver !="" ) {
 		sessionStorage.setItem("myBus", myBusDriver);
 		sessionStorage.setItem("myBusImg", myBusImgLocation);
@@ -65,11 +63,12 @@ function myBusGet() {
 }
 
 function crewBusSet() {
+	// crewBusLeft img태그에 id="crewBusLeftImg" 줄것
 	var crewBusDriver = document.location.href;
 	var crewBusImgLocation = document.getElementById("crewBusLeftImg").src;
 	if (crewBusDriver != "") {
 		sessionStorage.setItem("crewBus", crewBusDriver);
-		localStroage.setItem("crewBusImg",crewBusImgLocation);
+		sessionStorage.setItem("crewBusImg",crewBusImgLocation);
 	}
 
 }

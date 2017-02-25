@@ -29,12 +29,12 @@
 				</div>
 
 				<div class="w3-section">
-					<form method="Post" action="signInPro.do" class="w3-container">
+					<form method="Post" name="loginCheckForm" action="signInPro.do" class="w3-container">
 						<label><b>${str_signInUserName}</b></label>
 						<input name="email" type="text" placeholder="Enter Username" required class="w3-input w3-border w3-margin-bottom">
 						<label><b>${str_signInPassword}</b></label>
 						<input name="passwd" type="password" placeholder="Enter Password" required class="w3-input w3-border">
-						<input type="submit" value="${str_signIn}" class="w3-btn-block w3-green w3-section w3-padding">
+						<input type="submit" value="${str_signIn}" class="w3-btn-block w3-green w3-section w3-padding"  onclick="sendit()">
 						<input name="rememberMe" type="checkbox" value="1" checked="checked" class="w3-check w3-margin-top">
 						${str_signInRememberMe}
 					</form>

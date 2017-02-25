@@ -24,15 +24,15 @@ public class SignInPro implements CommandHandler {
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		String email = request.getParameter("email");
 		String passwd = request.getParameter("passwd");
-		String[] rememberMe = request.getParameterValues("rememberMe");
+		//String[] rememberMe = request.getParameterValues("rememberMe");
 		String urlToGoBack = request.getParameter("urlToGoBack");
 
 		int result = 0;
 
 		// local storage에 로그인 정보 저장 javascript로 처리하기 위해서 그대로 넘겨주기.
-		for (int i = 0; i < rememberMe.length; i++) {
+		/*for (int i = 0; i < rememberMe.length; i++) {
 			request.setAttribute("rememberMe", rememberMe[i]);
-		}
+		}*/
 
 		
 		// id와 pw 모두 일치하고 이메일 인증 된 상태면 result == 1 id나 pw가 틀렸으면 result == 0
