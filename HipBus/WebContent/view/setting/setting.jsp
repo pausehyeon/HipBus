@@ -12,11 +12,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<!-- jQuery연결 -->
-<script type="text/javascript" src="/HipBus/scripts/jquery-3.1.1.js"></script>
+<!-- jQuery연결 : top.jsp로 옮겼습니다. 170226 지현-->
 <!-- ckeditor연결 -->
 <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
-<script src="/HipBus/scripts/bottomScript.js"></script>
+
 
 
 <c:set var="project" value="/HipBus"/>
