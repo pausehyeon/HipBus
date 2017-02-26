@@ -4,7 +4,6 @@
 <%@include file="/view/setting/setting.jsp"%>
 <%@include file="/view/setting/garage_setting.jsp"%>
 <script src="${project}/scripts/garageScript.js"></script>
-<script src="${project}/jquery-3.1.1.js"></script>
 
 
 <title>${str_Title}</title>
