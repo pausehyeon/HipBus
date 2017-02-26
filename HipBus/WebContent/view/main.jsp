@@ -4,7 +4,9 @@
 <!-- SETTING -->
 <%@include file="/view/setting/setting.jsp"%>
 <%@include file="/view/setting/main_setting.jsp"%>
-
+<script type="text/javascript" src="${project}/scripts/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="/HipBus/scripts/ajax.js"></script>
+<script type="text/javascript" src="/HipBus/scripts/mainScript.js"></script>
 <!-- SETTING 끝 -->
 
 <title>${str_welcome}</title>
