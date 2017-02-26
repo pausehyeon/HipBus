@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="/view/setting/setting.jsp"%>
-<script src="/HipBus/scripts/jquery-3.1.1.js"></script>
+<script src="/HipBus/scripts/bottomScript.js"></script>
 
 <body>
 
