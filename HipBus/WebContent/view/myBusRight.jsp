@@ -40,11 +40,11 @@
 					<c:if test="${(today - perf_date) eq 0}">
 						<span class="w3-badge w3-red">D-Day</span>
 					</c:if>
-					<c:if test="${fn:length(newUpcomingDto.subject) le 7}">
+					<c:if test="${fn:length(newUpcomingDto.subject) le 5}">
 						${newUpcomingDto.subject}
 					</c:if>
-					<c:if test="${fn:length(newUpcomingDto.subject) gt 7}">
-						${fn:substring(newUpcomingDto.subject, 0, 7)}...
+					<c:if test="${fn:length(newUpcomingDto.subject) gt 5}">
+						${fn:substring(newUpcomingDto.subject, 0, 5)}...
 					</c:if>
 				</h5>
 				<p class="w3-small">
@@ -95,11 +95,11 @@
 					<c:if test="${(today - duedate) eq 0}">
 						<span class="w3-badge w3-red">D-Day</span>
 					</c:if>
-					<c:if test="${fn:length(newWantedDto.subject) le 7}">
-						${wantedDto.subject}
+					<c:if test="${fn:length(newWantedDto.subject) le 5}">
+						${newWantedDto.subject}
 					</c:if>
-					<c:if test="${fn:length(newWantedDto.subject) gt 7}">
-						${fn:substring(newWantedDto.subject, 0, 7)}...
+					<c:if test="${fn:length(newWantedDto.subject) gt 5}">
+						${fn:substring(newWantedDto.subject, 0, 5)}...
 					</c:if>
 				</h5>
 
