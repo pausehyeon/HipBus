@@ -31,17 +31,7 @@
 					<i class="fa fa-bookmark fa-fw w3-margin-right w3-text-theme"></i> Best Driver
 				</p>
 			</c:if>
-			<c:if test="${email!=null and email != driver and mem_level!=3}">
-				<button name="hop" class="w3-btn-block" onclick="location='myBusHopOnPro.do?driver=${driver}&email=${email}&hopORnot=${hopORnot}'">
-					<c:if test="${hopORnot.trim()=='on'}">
-						<i class="fa fa fa-heart w3-margin-right"></i>
-					</c:if>
-					<c:if test="${hopORnot.trim()=='off'}">
-						<i class="fa fa fa-heart-o w3-margin-right"></i>
-					</c:if>
-					${str_hop}&nbsp;${hopORnot}
-				</button>
-			</c:if>
+			
 			<c:if test="${myCrews[0] != null}">
 				<c:forEach var="crew" items="${myCrews}">
 
@@ -75,6 +65,17 @@
 				</a>
 			</c:if>
 			<hr>
+			<c:if test="${email!=null and email != driver and mem_level!=3}">
+				<button name="hop" class="w3-btn-block w3-margin-bottom" onclick="location='myBusHopOnPro.do?driver=${driver}&email=${email}&hopORnot=${hopORnot}'">
+					<c:if test="${hopORnot.trim()=='on'}">
+						<i class="fa fa fa-heart w3-margin-right"></i>
+					</c:if>
+					<c:if test="${hopORnot.trim()=='off'}">
+						<i class="fa fa fa-heart-o w3-margin-right"></i>
+					</c:if>
+					${str_hop}&nbsp;${hopORnot}
+				</button>
+			</c:if>
 		</div>
 	</div>
 

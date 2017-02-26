@@ -41,7 +41,6 @@ public class MyBusMyArticles implements CommandHandler {
 		int endPage = 0;			// 보여줄 페이지의 끝 번호
 		
 		count = mybusDao.getArticleCount(driver);
-		
 		int type = 1; 
 		if(request.getParameter("type") != null){
 			type = Integer.parseInt(request.getParameter("type"));
@@ -60,6 +59,7 @@ public class MyBusMyArticles implements CommandHandler {
 		
 		start = ( currentPage -1 ) * pageSize + 1;	// ( 5 - 1 ) * 10 + 1	41
 		end = start + pageSize - 1;					// 41 + 10 - 1			50
+		
 		if( end > count ) end = count;
 		
 		number = count - ( currentPage -1 ) * pageSize;	// 50 - ( 2-1 ) * 10
@@ -91,7 +91,6 @@ public class MyBusMyArticles implements CommandHandler {
 			map.put( "start", start+"" );
 			map.put( "end", end+"" );
 			map.put("driver", driver);
-			
 			List <StationDto> station = mybusDao.getArticles(map);
 			request.setAttribute( "station", station );
 			request.setAttribute( "number", number );

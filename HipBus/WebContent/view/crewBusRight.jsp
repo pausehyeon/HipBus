@@ -13,7 +13,7 @@
 	<div class="w3-card-2 w3-round w3-white w3-center">
 		<div class="w3-container">
 			<div class="w3-right w3-padding-16">
-				<button class="w3-btn w3-theme-d5" onclick="location='myBusUpcoming.do?driver=${driver}'">
+				<button class="w3-btn w3-theme-d5" onclick="location='crewBusUpcoming.do?driver=${driver}'">
 					<i class="fa fa-align-left"></i>&nbsp; ${str_mylist}
 				</button>
 			</div>
@@ -51,7 +51,7 @@
 					| ${upcomingDto.readcount}
 				</p>
 				<p>
-					<button class="w3-btn w3-btn-block w3-theme-d5" onclick="location='myBusUpcomingRead.do?driver=${driver}&num=${upcomingDto.num}'">${str_detail}</button>
+					<button class="w3-btn w3-btn-block w3-theme-d5" onclick="location='crewBusUpcomingRead.do?driver=${driver}&num=${upcomingDto.num}'">${str_detail}</button>
 				</p>
 			</c:if>
 		</div>
@@ -61,7 +61,7 @@
 	<div class="w3-card-2 w3-round w3-white w3-center">
 		<div class="w3-container">
 			<div class="w3-right w3-padding-16">
-				<button type="button" class="w3-btn w3-theme-d5" onclick="location='myBusWanted.do?driver=${driver}'">
+				<button type="button" class="w3-btn w3-theme-d5" onclick="location='crewBusWanted.do?driver=${driver}'">
 					<i class="fa fa-align-left"></i>&nbsp; ${str_mylist}
 				</button>
 			</div>
@@ -107,8 +107,32 @@
 					<fmt:formatDate value="${wantedDto.reg_date}" type="both" pattern="yyyy-MM-dd HH:mm" />
 					| ${wantedDto.readcount}
 				</p>
-				<button class="w3-btn w3-btn-block w3-theme-d5 w3-margin-bottom" onclick="location='myBusWantedRead.do?driver=${driver}&num=${wantedDto.num}'">${str_detail}</button>
+				<button class="w3-btn w3-btn-block w3-theme-d5 w3-margin-bottom" onclick="location='crewBusWantedRead.do?driver=${driver}&num=${wantedDto.num}'">${str_detail}</button>
 			</c:if>
+		</div>
+	</div>
+	
+	<br>
+
+	<div class="w3-card-2 w3-round w3-white w3-center">
+		<div class="w3-container">
+			<p>${str_crewApply}</p>
+			<img src="${project}/view/img/HipBusLogo_bw.png" alt="Avatar"
+				style="width: 50%"><br> <span>JH Jeong</span>
+			<div class="w3-row w3-opacity">
+				<div class="w3-half">
+					<button class="w3-btn w3-green w3-btn-block w3-section"
+						title="Accept">
+						<i class="fa fa-check"></i>
+					</button>
+				</div>
+				<div class="w3-half">
+					<button class="w3-btn w3-red w3-btn-block w3-section"
+						title="Decline">
+						<i class="fa fa-remove"></i>
+					</button>
+				</div>
+			</div>
 		</div>
 	</div>
 

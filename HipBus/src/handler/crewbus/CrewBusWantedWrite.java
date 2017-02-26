@@ -16,7 +16,7 @@ public class CrewBusWantedWrite implements CommandHandler {
 	@RequestMapping("/crewBusWantedWrite.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-		// TODO Auto-generated method stub
+		request.setAttribute("driver", request.getParameter("driver") );
 		return new ModelAndView("crewBusWantedWrite");
 	}
 

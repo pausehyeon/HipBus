@@ -10,9 +10,33 @@
 		where c.email=m.email
 		and crewid=#{crewid}
 	</select>
+	<select id="isMember" parameterType="map" resultType="int">
+		select count(*) from hb_crewmember where crewid=#{crewid} and email=#{email}
+	</select>
 <!-- crewBusLeft.jsp 크루정보가져오기 -->
 	<select id="getCrewInfo" parameterType="String" resultType="model.CrewDto">
 		select * from hb_crew where crewid=#{crewid}
 	</select>
-
+	
+<!-- ourArticles -->
+	<select id="getArticleCount" parameterType="java.util.List" resultType="int">
+		select count(*) from hb_station where email in 
+		<foreach collection="list" item="email" separator="," open="(" close=")">
+			#{email,jdbcType=VARCHAR}
+		</foreach>
+		
+	</select>
+	<select id="getArticles" parameterType="map" resultType="model.StationDto">
+		select num,email,category,nick,subject,content,likenum,readcount,reg_date,r 
+		from( select num,email,category,nick,subject,content,likenum,readcount,reg_date, rownum r 
+		     from (select distinct s.num,s.email,s.category,s.nick,s.subject,s.content,s.likenum,s.readcount,s.reg_date 
+					from hb_station s,hb_crewmember cm 
+					where s.email in 
+						(select email from hb_crewmember where crewid=#{crewid})
+					)
+		     order by reg_date desc 
+			) 
+		where r &gt;= #{start} and r &lt;= #{end}
+	</select>
+		
 </mapper>

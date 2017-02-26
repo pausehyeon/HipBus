@@ -1,5 +1,6 @@
 package handler.crewbus;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,12 +11,16 @@ import org.springframework.web.servlet.ModelAndView;
 import handler.CommandHandler;
 import handler.HandlerException;
 
+
 @Controller
 public class CrewBusUpcomingWrite implements CommandHandler {
+
 	@RequestMapping("/crewBusUpcomingWrite.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-		// TODO Auto-generated method stub
+		String driver = request.getParameter("driver");
+		request.setAttribute("driver", driver);
+		
 		return new ModelAndView("crewBusUpcomingWrite");
 	}
 }

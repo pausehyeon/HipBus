@@ -12,29 +12,16 @@
 			<h4 class="w3-center">${str_crewProfile}</h4>
 			<p class="w3-center">
 				<c:if test="${crewDto.getImglocation()!=null}">
-					<img alt="img" src="${project}/hipbusSave/${crewDto.getImglocation()}" class="w3-circle" style="width: 50%" id="myBusLeftImg" onclick="location='crewBus.do?driver=${driver}'">
+					<img alt="img" src="${project}/hipbusSave/${crewDto.getImglocation()}" class="w3-circle" style="width: 50%" id="crewBusLeftImg" onclick="location='crewBus.do?driver=${driver}'">
 				</c:if>
 				<c:if test="${crewDto.getImglocation()==null}">
-					<img src="${project}/view/img/CrewBusLogo_colored_sq.png" class="w3-circle" style="width: 50%" alt="Avatar" id="myBusLeftImg" onclick="location='crewBus.do?driver=${driver}'">
+					<img src="${project}/view/img/CrewBusLogo_colored_sq.png" class="w3-circle" style="width: 50%" alt="Avatar" id="crewBusLeftImg" onclick="location='crewBus.do?driver=${driver}'">
 				</c:if>
 			</p>
 			<hr>			
 			<p>
 				<i class="fa fa-fort-awesome fa-fw w3-margin-right w3-text-theme"></i>${crewDto.getCrewname()}
 			</p>
-			
-			<c:if test="${email != null and isMember==false and mem_level!=3}">
-				<button name="hop" class="w3-btn-block w3-theme-l1" onclick="location='myBusHopOnPro.do?driver=${driver}&email=${email}&hopORnot=${hopORnot}'">
-					<c:if test="${hopORnot.trim()=='on'}">
-						<i class="fa fa fa-heart w3-margin-right"></i>
-					</c:if>
-					<c:if test="${hopORnot.trim()=='off'}">
-						<i class="fa fa fa-heart-o w3-margin-right"></i>
-					</c:if>
-					${str_hop}&nbsp;${hopORnot}
-				</button>
-			</c:if>
-
 			<p onclick="myFunction('crew')">
 				<i class="fa fa-users fa-fw w3-margin-right w3-text-theme"></i> ${str_memberCount} ${memberList.size()} ${str_per}
 			</p>
@@ -49,11 +36,25 @@
 					</ul>
 				</p>
 			</div>
+			<c:if test="${isMember==true}">
+				<hr>
+				<a href="crewBusBeforeEdit.do?driver=${driver}">
+					<i class="fa fa-pencil"></i>${str_editProfile}
+				</a>
+			</c:if>
 			<hr>
-			<a href="crewBusBeforeEdit.do?driver=${driver}">
-				<i class="fa fa-pencil"></i>${str_editProfile}
-			</a>
-			<hr>
+			<c:if test="${email != null and isMember==false and mem_level!=3}">
+				<button name="hop" class="w3-btn-block w3-theme-l1" onclick="location='myBusHopOnPro.do?driver=${driver}&email=${email}&hopORnot=${hopORnot}'">
+					<c:if test="${hopORnot.trim()=='on'}">
+						<i class="fa fa fa-heart w3-margin-right"></i>
+					</c:if>
+					<c:if test="${hopORnot.trim()=='off'}">
+						<i class="fa fa fa-heart-o w3-margin-right"></i>
+					</c:if>
+					${str_hop}&nbsp;${hopORnot}
+				</button>
+			</c:if>
+			&nbsp;
 		</div>
 	</div>
 	<br>
@@ -91,7 +92,7 @@
 				</button>
 			</c:if>
 			
-			<button onclick="location='myBusMyArticles.do?driver=${driver}'" class="w3-btn-block w3-theme-l1 w3-left-align">
+			<button onclick="location='crewBusOurArticles.do?driver=${driver}'" class="w3-btn-block w3-theme-l1 w3-left-align">
 				<i class="fa fa fa-align-left fa-fw w3-margin-right"></i> ${crewDto.getCrewname()}${str_seePosts}
 			</button>
 			<button onclick="location='crewBusUpcoming.do?driver=${driver}'" class="w3-btn-block w3-theme-l1 w3-left-align">

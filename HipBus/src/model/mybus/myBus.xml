@@ -79,8 +79,8 @@
 		likenum,readcount,reg_date,
 		 r from( select num,email,category,nick,subject,content,
 		likenum,readcount,reg_date, rownum r from
-		(select * from HB_Station order by num desc)
-		order by num desc ) where r &gt;= #{start} and r &lt;= #{end} and email=#{driver}
+		(select * from HB_Station where email=#{driver} order by num desc)
+		order by num desc ) where r &gt;= #{start} and r &lt;= #{end} 
 	</select>
 	
 <!-- myBusUpcoming -->
