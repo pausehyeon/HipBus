@@ -1,5 +1,7 @@
 package handler.mybus;
 
+import java.io.UnsupportedEncodingException;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +22,13 @@ public class MyBusCreatCrewPro implements CommandHandler {
 	@RequestMapping("/myBusCreatCrewPro.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		String driver = request.getParameter("driver");
 		String crewname = request.getParameter("crewname");
 		
