@@ -45,6 +45,7 @@
 				<!-- ^ 로그아웃 후 돌아올 현재 페이지 url을 기억.-->
 				<script type="text/javascript">
 					
+					
 					//<!--
 					$(document).ready(
 						function() {
@@ -52,6 +53,7 @@
 							signOutForm.urlToGoBack.value = location.href;
 						}
 					);
+				
 				
 				//-->
 				</script>
@@ -109,11 +111,13 @@
 	<div class="w3-row-padding w3-center" id="onairloadingsection"></div>
 	<script type="text/javascript">
 		
+		
 	//<!--
 		$(document).ready(function() {
 			//OnAir 목록 받아오기
 			getonairlist( eval("${channelsJson}"), "${googleApiKey}" );
 		});
+	
 	
 	//-->
 	</script>
@@ -178,7 +182,9 @@
 							<li class="w3-black w3-xlarge w3-padding-16">${upcoming.subject}</li>
 						</c:if>
 						<li class="w3-center w3-padding-8 w3-padding-small"><img src="${project}/hipbusSave/${upcoming.imglocation}" alt="${str_upcoming}" style="width: 100%"></li>
-						<li class="w3-padding-8"><b>${str_perf_place}</b> ${upcoming.perf_place}</li>
+						<c:set var="perf_place" value="${fn:split(upcoming.perf_place, '@')}" />
+						<c:set var="perf_place" value="${perf_place[1]}" />
+						<li class="w3-padding-8"><b>${str_perf_place}</b> ${perf_place}</li>
 						<li class="w3-padding-8"><b>${str_perf_date}</b> <fmt:formatDate value="${upcoming.perf_date}" type="both" pattern="yy.MM.dd" /></li>
 						<li class="w3-padding-8"><b>${str_perf_runningtime}</b> <fmt:formatDate value="${upcoming.perf_date}" type="both" pattern="a h시 mm분" /> ( ${upcoming.perf_runningtime}${str_minute} )</li>
 						<li class="w3-padding-8"><b>${str_perf_cast}</b> ${upcoming.perf_cast}</li>
