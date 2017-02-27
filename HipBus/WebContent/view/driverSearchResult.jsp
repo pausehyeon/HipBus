@@ -8,16 +8,35 @@
 		<code>selected</code>
 		<data>[
 			<c:forEach var="article" items="${searchMember}" varStatus="status">
+				
 				<c:if test="${status.count!=1}">
 				,
 				</c:if>
-				{
+				{	
 					email : '${article.email}',
 					nick : '${article.nick}',
-					imglocation : '${article.imglocation}'
+					imglocation : '${article.imglocation}',
+					
 				}
+			
 			</c:forEach>
 		]</data>
+		
+		<datas>[
+			<c:forEach var="searchCrew" items="${searchCrew}" varStatus="status1">
+		
+				<c:if test="${status1.count!=1}">
+				,
+				</c:if>
+				{	
+					crewname : '${searchCrew.crewname}',
+					crewid : '${searchCrew.crewid}',
+					crewImg : '${searchCrew.imglocation}'
+		
+				} 
+			</c:forEach>
+		]</datas>
+		
 	</result>
 </c:if>
 
@@ -27,3 +46,5 @@
 		<message>방명록을 불러오지 못했습니다.</message>
 	</result>
 </c:if>
+
+

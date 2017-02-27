@@ -37,8 +37,7 @@
 								msg+='<a href="myBus.do?driver='+data[i].email+'">'+data[i].nick+'의버스<img class="w3-circle"'+
 										'style="width:30px; height:35px;" src="${project}/hipbusSave/'+data[i].imglocation+'"></a>';
 							}
-							msg+='<hr>';
-							
+							msg+='<hr>';		
 						}
 					
 					if (datas.length == 0) {
