@@ -74,7 +74,7 @@
 									'style="width:30px; height:35px;" src="${project}/hipbusSave/'+datas[i].crewImg+'"></a>';	
 								}
 							}
-								if (datas.length  5) {
+								if (datas.length >= 5) {
 								msg += '<a class="w3-center w3-small" onclick="document.getElementById("driverSearch").style.display="block"" >'+
 								'<span>${str_more}</span></a><hr>';
 							}
