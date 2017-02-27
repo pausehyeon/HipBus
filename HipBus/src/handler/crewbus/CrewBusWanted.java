@@ -36,10 +36,12 @@ public class CrewBusWanted implements CommandHandler {
 			request.setAttribute("articles", articles);
 			request.setAttribute("pastArticles", pastArticles);
 		}
-		Map<String, String> map = new HashMap<String,String>();
-		map.put("crewid", driver);
-		map.put("email",(String)request.getSession().getAttribute("memEmail"));
-		if(crewbusDao.isMember(map)==1) isMember = true;
+		if((String)request.getSession().getAttribute("memEmail")!=null){
+			Map<String, String> map = new HashMap<String,String>();
+			map.put("crewid", driver);
+			map.put("email",(String)request.getSession().getAttribute("memEmail"));
+			if(crewbusDao.isMember(map)==1) isMember = true;
+		}
 		
 		request.setAttribute("isMember", isMember);
 		return new ModelAndView("crewBusWanted");

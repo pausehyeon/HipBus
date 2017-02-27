@@ -33,11 +33,12 @@ public class CrewBusUpcoming implements CommandHandler {
 		
 		List<UpcomingDto> upcomings = mybusDao.getUpcomings(driver);
 		List<UpcomingDto> pastUpcomings = mybusDao.getPastUpcomings(driver);
-		
-		Map<String, String> map = new HashMap<String,String>();
-		map.put("crewid", driver);
-		map.put("email",(String)request.getSession().getAttribute("memEmail"));
-		if(crewbusDao.isMember(map)==1) isMember = true;
+		if((String)request.getSession().getAttribute("memEmail")!=null){
+			Map<String, String> map = new HashMap<String,String>();
+			map.put("crewid", driver);
+			map.put("email",(String)request.getSession().getAttribute("memEmail"));
+			if(crewbusDao.isMember(map)==1) isMember = true;
+		}
 		
 		request.setAttribute("isMember", isMember);
 		request.setAttribute("upcomings", upcomings);

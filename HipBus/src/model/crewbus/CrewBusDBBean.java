@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import model.CrewDto;
 import model.CrewMemberDto;
+import model.MemberDto;
 import model.SqlMapClient;
 import model.StationDto;
 
@@ -18,6 +19,11 @@ public class CrewBusDBBean implements CrewBusDao {
 	}
 	public int isMember(Map<String,String> map){
 		return SqlMapClient.getSession().selectOne("CrewBus.isMember", map);
+	}
+
+	@Override
+	public int isMem(Map<String, String> map) {
+		return SqlMapClient.getSession().selectOne("CrewBus.isMem", map);
 	}
 
 	@Override
@@ -33,6 +39,26 @@ public class CrewBusDBBean implements CrewBusDao {
 	@Override
 	public List<StationDto> getArticles(Map<String,String> map) {
 		return SqlMapClient.getSession().selectList("CrewBus.getArticles", map);
+	}
+	@Override
+	public int applyCrew(Map<String, String> map) {
+		return SqlMapClient.getSession().insert("CrewBus.applyCrew", map);
+	}
+	@Override
+	public List<MemberDto> getApplyMembers(String crewid) {
+		return SqlMapClient.getSession().selectList("CrewBus.getApplyMembers", crewid);
+	}
+	@Override
+	public int acceptMember(Map<String, String> map) {
+		return SqlMapClient.getSession().insert("CrewBus.acceptMember", map);
+	}
+	@Override
+	public int ejectMember(Map<String, String> map) {
+		return SqlMapClient.getSession().delete("CrewBus.ejectMember", map);
+	}
+	@Override
+	public int isApplied(Map<String, String> map) {
+		return SqlMapClient.getSession().selectOne("CrewBus.isApplied", map);
 	}
 
 }

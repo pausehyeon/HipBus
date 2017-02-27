@@ -53,6 +53,11 @@
 					</c:if>
 					${str_hop}&nbsp;${hopORnot}
 				</button>
+				<c:if test="${isApplied==0}">
+					<button name="apply" class="w3-btn-block w3-theme-l1 w3-margin-top" onclick="location='crewBusApplyPro.do?driver=${driver}'">
+						크루원신청
+					</button>
+				</c:if>
 			</c:if>
 			&nbsp;
 		</div>

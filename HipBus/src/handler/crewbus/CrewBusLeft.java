@@ -34,10 +34,14 @@ public class CrewBusLeft implements CommandHandler {
 		String email = null; 
 		int mem_level = 0;
 		boolean isMember = false;
-		String leader = null;
+		int isApplied = 0;
 		if( request.getSession().getAttribute("memEmail") != null ) {
 			email = (String) request.getSession().getAttribute("memEmail");
 			mem_level = mybusDao.getMember(email).getMem_level();
+			Map<String,String> map = new HashMap<String,String>();
+			map.put("crewid", driver);
+			map.put("email", email);
+			isApplied = crewbusDao.isApplied(map);
 		}
 
 		Map<String,String> map = new HashMap<String,String>();
@@ -60,12 +64,8 @@ public class CrewBusLeft implements CommandHandler {
 		if(!memberList.isEmpty()){
 			for(int i=0;i<memberList.size();i++){
 				CrewMemberDto cmDto = memberList.get(i);
-				if(cmDto.getEmail().equals(email)){
+				if(cmDto.getEmail().equals(email) && cmDto.getLeader()!=0){
 					isMember = true;
-				}
-				if(cmDto.getLeader() == 2){
-					leader = cmDto.getEmail();
-					System.out.println(leader);
 				}
 			}
 		}
@@ -75,8 +75,9 @@ public class CrewBusLeft implements CommandHandler {
 		
 		String channelid = mybusDao.getChannelid( driver );
 		
+		
+		request.setAttribute("isApplied", isApplied);
 		request.setAttribute("memberList", memberList);
-		request.setAttribute("leader", leader);
 		request.setAttribute("isMember", isMember);
 		request.setAttribute("mem_level", mem_level);
 		request.setAttribute("channelid", channelid);

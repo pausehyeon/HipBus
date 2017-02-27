@@ -9,9 +9,13 @@
 		from hb_crewmember c, hb_member m 
 		where c.email=m.email
 		and crewid=#{crewid}
+		and not leader=0
 	</select>
 	<select id="isMember" parameterType="map" resultType="int">
 		select leader from hb_crewmember where crewid=#{crewid} and email=#{email}
+	</select>
+	<select id="isMem" parameterType="map" resultType="int">
+		select count(*) from hb_crewmember where crewid=#{crewid} and email=#{email}
 	</select>
 <!-- crewBusLeft.jsp 크루정보가져오기 -->
 	<select id="getCrewInfo" parameterType="String" resultType="model.CrewDto">
@@ -49,5 +53,17 @@
 		where cm.email=m.email
 		and cm.crewid=#{crewid}
 		and cm.leader=0
+	</select>
+<!-- 신청수락 -->
+	<update id="acceptMember" parameterType="map">
+		update HB_Crewmember set leader=1 where crewid=#{crewid} and email=#{email}
+	</update>
+<!-- 신청거절 -->
+	<delete id="ejectMember" parameterType="map">
+		delete HB_Crewmember where crewid=#{crewid} and email=#{email}
+	</delete>
+<!-- 신청인? -->
+	<select id="isApplied" parameterType="map" resultType="int">
+		select count(*) from HB_Crewmember where crewid=#{crewid} and email=#{email}
 	</select>
 </mapper>

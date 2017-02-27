@@ -32,7 +32,7 @@
 			<!-- Middle Column -->
 			<!-- 여기서부터 -->
 			<div class="w3-col m7">
-				<div class="w3-container w3-card-2 w3-round w3-margin-bottom w3-margin-left w3-margin-right w3-padding-32 w3-padding-xxlarge">
+				<div class="w3-container w3-card-2 w3-white w3-round w3-margin-bottom w3-margin-left w3-margin-right w3-padding-32 w3-padding-xxlarge">
 					<div class="w3-container w3-center w3-theme-d5">
 						<h3>
 							<i class="fa fa-bullhorn"></i>&nbsp; Wanted : ${article.subject}
@@ -85,11 +85,10 @@
 					</div>
 				</div>
 			</div>
-		</div>
 
 
 		<!-- Right Column -->
-		<c:import url="../myBusRight.do"></c:import>
+		<c:import url="../myBusRight.do?driver=${driver}"></c:import>
 		<!-- End Right Column -->
 
 		<!-- End Grid -->

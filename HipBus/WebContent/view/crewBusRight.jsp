@@ -113,29 +113,35 @@
 	</div>
 	
 	<br>
-
-	<div class="w3-card-2 w3-round w3-white w3-center">
-		<div class="w3-container">
-			<p>${str_crewApply}</p>
-			<img src="${project}/view/img/HipBusLogo_bw.png" alt="Avatar"
-				style="width: 50%"><br> <span>JH Jeong</span>
-			<div class="w3-row w3-opacity">
-				<div class="w3-half">
-					<button class="w3-btn w3-green w3-btn-block w3-section"
-						title="Accept">
-						<i class="fa fa-check"></i>
-					</button>
-				</div>
-				<div class="w3-half">
-					<button class="w3-btn w3-red w3-btn-block w3-section"
-						title="Decline">
-						<i class="fa fa-remove"></i>
-					</button>
+<c:if test="${Applymembers!=null and leader==2}">
+	<c:forEach var="ApplyMem" items="${Applymembers}" >
+		<div class="w3-card-2 w3-round w3-white w3-center">
+			<div class="w3-container">
+				<p>${str_crewApply}</p>
+				<c:if test="${ApplyMem.getImglocation()!=null}">
+					<img alt="img" src="${project}/hipbusSave/${ApplyMem.getImglocation()}" class="w3-circle" style="width: 50%" id="crewBusLeftImg" onclick="location='myBus.do?driver=${ApplyMem.getEmail()}'">
+				</c:if>
+				<c:if test="${ApplyMem.getImglocation()==null}">
+					<img src="${project}/view/img/HipBusLogo_bw.png" class="w3-circle" style="width: 50%" alt="Avatar" id="crewBusLeftImg" onclick="location='myBus.do?driver=${ApplyMem.getEmail()}'">
+				</c:if>
+				<br>
+				<span>${ApplyMem.getNick()}</span>
+				<div class="w3-row w3-opacity">
+					<div class="w3-half">
+						<button class="w3-btn w3-green w3-btn-block w3-section" title="Accept" onclick="location='crewBusAcceptPro.do?driver=${driver}&email=${ApplyMem.getEmail()}'">
+							<i class="fa fa-check"></i>
+						</button>
+					</div>
+					<div class="w3-half">
+						<button class="w3-btn w3-red w3-btn-block w3-section" title="Decline" onclick="location='crewBusEjectPro.do?driver=${driver}&email=${ApplyMem.getEmail()}'">
+							<i class="fa fa-remove"></i>
+						</button>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-
-
+		<br>
+	</c:forEach>
+</c:if>
 	<!-- End Right Column -->
 </div>

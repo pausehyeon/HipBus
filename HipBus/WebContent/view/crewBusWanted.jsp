@@ -25,7 +25,7 @@
 			<!-- Middle Column -->
 			<div class="w3-col m7">
 				<div class="w3-container w3-card-2 w3-white w3-round w3-margin-bottom w3-margin-left w3-margin-right w3-padding-32 w3-padding-xxlarge">
-					<div class="w3-container w3-center w3-black">
+					<div class="w3-container w3-center w3-theme-l1">
 						<h3>
 							<i class="fa fa-bullhorn"></i>&nbsp; Wanted
 						</h3>
