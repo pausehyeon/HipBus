@@ -25,12 +25,11 @@ public class AdminSignOutPro implements CommandHandler{
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 
 		String email = (String) request.getSession().getAttribute("memEmail");
-		System.out.println(email);
-		
+				
 		int result = adminDao.deleteMember(email);
 		if(result != 0){
 			request.setAttribute("result", result);
-			request.getSession().removeAttribute("memEmail");
+			request.getSession().removeAttribute("memEmail");    //탈퇴와 함께 세션에서 기록을 지워서 이동
 		}
 		return new ModelAndView("adminSignOutPro");
 	}

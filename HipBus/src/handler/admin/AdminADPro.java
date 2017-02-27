@@ -37,9 +37,9 @@ public class AdminADPro implements CommandHandler {
 			multi = new FileUpload().getMultipartRequest(request);
 			
 			String imglocation = multi.getFilesystemName("upload");
-			
-			int ad_num = Integer.parseInt(multi.getParameter("ad_num"));
 			String html = "";
+			int ad_num = Integer.parseInt(multi.getParameter("ad_num"));
+						
 			/*System.out.println("ht"+html);
 			System.out.println("img"+imglocation);*/
 								
@@ -55,7 +55,8 @@ public class AdminADPro implements CommandHandler {
 			}
 		
 			
-			int check = adminDao.adnumCheck(ad_num);
+			
+			int check = adminDao.adnumCheck(ad_num);		
 			
 			if(check == 0){
 				//insert
