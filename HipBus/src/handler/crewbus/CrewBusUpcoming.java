@@ -37,7 +37,7 @@ public class CrewBusUpcoming implements CommandHandler {
 			Map<String, String> map = new HashMap<String,String>();
 			map.put("crewid", driver);
 			map.put("email",(String)request.getSession().getAttribute("memEmail"));
-			if(crewbusDao.isMember(map)==1) isMember = true;
+			if(crewbusDao.isMem(map)==1) isMember = true;
 		}
 		
 		request.setAttribute("isMember", isMember);

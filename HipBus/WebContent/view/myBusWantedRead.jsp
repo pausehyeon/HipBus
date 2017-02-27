@@ -66,6 +66,8 @@
 							<div class="w3-col m6 l3">
 								<a href="myBusWantedModify.do?driver=${driver}&num=${article.num}" class="w3-btn-block w3-padding w3-theme-d1 w3-margin-left"> <i class="fa fa-pencil w3-margin-right"></i>${str_modBoard}</a>
 							</div>
+						</c:if>
+						<c:if test="${article.driver eq sessionScope.memEmail or mem_level==3}">
 							<div class="w3-col m6 l3">
 								<a href="myBusWantedDeletePro.do?driver=${driver}&num=${article.num}" class="w3-btn-block w3-padding w3-theme-d1 w3-margin-left"> <i class="fa fa-close w3-margin-right"></i>${str_delBoard}</a>
 							</div>

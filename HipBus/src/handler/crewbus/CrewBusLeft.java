@@ -52,7 +52,7 @@ public class CrewBusLeft implements CommandHandler {
 		String hopORnot = null;
 		if( email != null ){
 			isHop = mybusDao.isHop(map);
-			if( isHop == 1 ) {
+			if( isHop >= 1 ) {
 				hopORnot = "off";
 			} else if( isHop == 0 ) {
 				hopORnot = "on";

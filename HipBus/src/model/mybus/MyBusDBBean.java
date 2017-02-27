@@ -159,6 +159,9 @@ public class MyBusDBBean implements MyBusDao {
 	public int createCrew(String crewname){
 		return SqlMapClient.getSession().insert("MyBus.createCrew", crewname);
 	}
+	public int createCrewDriver(String crewid){
+		return SqlMapClient.getSession().insert("MyBus.createCrewDriver", crewid);
+	}
 	public int createCrewMember(CrewMemberDto dto){
 		return SqlMapClient.getSession().insert("MyBus.createCrewMember", dto);
 	}

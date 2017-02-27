@@ -51,6 +51,7 @@
 		from hb_crewmember m, hb_crew c
 		where m.crewid=c.crewid
 		and m.email=#{driver}
+		and not m.leader=0
 	 </select>
 	 <select id="getMyMembers" parameterType="Map" resultType="model.CrewMemberDto">
 	 	select c.email,c.crewid,c.leader,m.nick 
@@ -58,6 +59,7 @@
 		where c.email=m.email 
 		and crewid=#{crewid} 
 		and c.email!=#{driver}
+		and not c.leader=0
 		order by c.leader desc
 	 </select>
 	 <select id="getTags" parameterType="String" resultType="String">
@@ -186,6 +188,9 @@
 	
 	<insert id="createCrew" parameterType="String">
 		insert into hb_crew (crewid,crewname) values(HB_crewidseq.nextVal,#{crewname})
+	</insert>
+	<insert id="createCrewDriver" parameterType="String">
+		insert into hb_driver values(#{crewid})
 	</insert>
 	<insert id="createCrewMember" parameterType="model.CrewMemberDto">
 		insert into hb_crewmember values(#{email},#{crewid},2)

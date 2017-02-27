@@ -94,7 +94,7 @@
 								</div>
 							</c:forEach>
 						</c:if>
-						<c:if test="${pastArticles ne null}">
+						<c:if test="${!pastArticles.isEmpty()}">
 							<c:forEach var="article" items="${pastArticles}">
 								<div class="w3-col m4 w3-hover-opacity" onclick="location = 'crewBusWantedRead.do?driver=${driver}&num=${article.num}'">
 									<!-- 대표 이미지가 있는 경우 -->
@@ -123,6 +123,11 @@
 									<hr>
 								</div>
 							</c:forEach>
+						</c:if>
+						<c:if test="${pastArticles==null}">
+							<div class="w3-col">
+								<h4>아직 작성한 글이 없습니다.</h4>
+							</div>
 						</c:if>
 					</div>
 

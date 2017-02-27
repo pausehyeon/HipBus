@@ -29,14 +29,18 @@ public class CrewBusUpcomingRead implements CommandHandler {
 		String driver = request.getParameter("driver");
 		int num = Integer.parseInt(request.getParameter("num"));
 		boolean isMember = false;
-		
+		int mem_level = 0;
 		if((String)request.getSession().getAttribute("memEmail")!=null){
 			Map<String, String> map = new HashMap<String,String>();
 			map.put("crewid", driver);
 			map.put("email",(String)request.getSession().getAttribute("memEmail"));
-			if(crewbusDao.isMember(map)==1) isMember = true;
+			if(crewbusDao.isMem(map)==1) isMember = true;
 		}
 		
+		if((String)request.getSession().getAttribute("memEmail")!=null){
+			mem_level = mybusDao.getMember((String)request.getSession().getAttribute("memEmail")).getMem_level();
+		}
+		request.setAttribute("mem_level", mem_level);
 		
 		UpcomingDto upcomingDto = mybusDao.getUpcoming(num);
 		mybusDao.readUpcoming(num);

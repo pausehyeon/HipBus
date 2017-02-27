@@ -22,10 +22,14 @@ public class MyBusUpcomingRead implements CommandHandler {
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		String driver = request.getParameter("driver");
 		int num = Integer.parseInt(request.getParameter("num"));
-		
+		int mem_level = 0;
 		UpcomingDto upcomingDto = mybusDao.getUpcoming(num);
 		mybusDao.readUpcoming(num);
 		
+		if((String)request.getSession().getAttribute("memEmail")!=null){
+			mem_level = mybusDao.getMember((String)request.getSession().getAttribute("memEmail")).getMem_level();
+		}
+		request.setAttribute("mem_level", mem_level);
 		
 		request.setAttribute("upcomingDto", upcomingDto);
 		request.setAttribute("driver", driver);

@@ -44,7 +44,7 @@
 			</c:if>
 			<hr>
 			<c:if test="${email != null and isMember==false and mem_level!=3}">
-				<button name="hop" class="w3-btn-block w3-theme-l1" onclick="location='myBusHopOnPro.do?driver=${driver}&email=${email}&hopORnot=${hopORnot}'">
+				<button name="hop" class="w3-btn-block w3-theme-l1" onclick="goHop()">
 					<c:if test="${hopORnot.trim()=='on'}">
 						<i class="fa fa fa-heart w3-margin-right"></i>
 					</c:if>
@@ -53,6 +53,13 @@
 					</c:if>
 					${str_hop}&nbsp;${hopORnot}
 				</button>
+				<script type="text/javascript">
+				//<!--
+				function goHop(){
+					location.href='myBusHopOnPro.do?driver='+'${driver}'+'&email='+'${email}'+'&hopORnot='+'${hopORnot}'+'&urlToGoBack='+location.href;
+				}
+				//-->
+				</script>
 				<c:if test="${isApplied==0}">
 					<button name="apply" class="w3-btn-block w3-theme-l1 w3-margin-top" onclick="location='crewBusApplyPro.do?driver=${driver}'">
 						크루원신청

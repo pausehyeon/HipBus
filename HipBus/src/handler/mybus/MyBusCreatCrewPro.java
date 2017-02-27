@@ -38,6 +38,7 @@ public class MyBusCreatCrewPro implements CommandHandler {
 		
 		if(cResult != 0){
 			String crewid = mybusDao.getCrewId(crewname);
+			mybusDao.createCrewDriver(crewid);
 			CrewMemberDto cmDto = new CrewMemberDto();
 			cmDto.setCrewid(crewid);
 			cmDto.setEmail(driver);

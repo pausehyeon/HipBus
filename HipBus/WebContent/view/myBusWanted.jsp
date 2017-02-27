@@ -11,7 +11,6 @@
 <body class="w3-theme-l5">
 	<!-- Navbar -->
 	<c:import url="../top.do" />
-	<textarea rows="" cols="" readonly="readonly"></textarea>
 	<!-- Page Container -->
 	<div class="w3-container w3-content" style="max-width: 1400px">
 		<!-- The Grid -->
@@ -20,7 +19,7 @@
 		</div>
 		<div class="w3-row">
 			<!-- Left Column -->
-			<c:import url="../myBusLeft.do?driver=${driver}&email=${email}"></c:import>
+			<c:import url="../myBusLeft.do?driver=${driver}"></c:import>
 			<!-- End Left Column -->
 
 			<!-- Middle Column -->
@@ -133,7 +132,7 @@
 			</div>
 
 			<!--  Right Column -->
-			<c:import url="../myBusRight.do"></c:import>
+			<c:import url="../myBusRight.do?driver=${driver}"></c:import>
 			<!-- End Right Column -->
 
 			<!-- End Grid -->

@@ -25,6 +25,7 @@ public class MyBusHopOnPro implements CommandHandler {
 		String driver = request.getParameter("driver");
 		String email = request.getParameter("email");
 		String hopORnot = request.getParameter("hopORnot");
+		String urlToGoBack = request.getParameter("urlToGoBack");
 		Map<String,String> map = new HashMap<String,String>();
 		map.put("driver", driver);
 		map.put("email", email);
@@ -37,6 +38,7 @@ public class MyBusHopOnPro implements CommandHandler {
 			result = mybusDao.hopOff(map);
 		}
 		
+		request.setAttribute("urlToGoBack", urlToGoBack);
 		request.setAttribute("result", result);
 		request.setAttribute("driver", driver);
 		request.setAttribute("hopORnot", hopORnot);
