@@ -26,23 +26,34 @@
 					var xmldoc= request.httpRequest.responseXML;
 					var code = xmldoc.getElementsByTagName("code").item(0).innerHTML;
 					if(code == "selected"){
-					var data = eval("("+ xmldoc.getElementsByTagName("data").item(0).innerHTML + ")");	
-					if (data.length == 0) {
-						msg = "검색 결과가 없습니다.";
-						$('#driverResult').html(msg);	// 방명록 없을때 메세지출력용 div
+					var data = eval("("+ xmldoc.getElementsByTagName("data").item(0).innerHTML + ")");
+					var datas = eval("("+ xmldoc.getElementsByTagName("datas").item(0).innerHTML + ")");
 					
+					if (data.length == 0) {
+						msg+='<div class="w3-margin">My Bus 검색 결과 <br><br> 검색 결과가 없습니다.</div> <hr>';
 						}else{
+							msg+='<div class="w3-margin">MY Bus 검색 결과</div>';
 							for (var i = 0; i < data.length; i++) {	// 방명록을 위부터 하나씩 붙인다
-								msg+='<a href="myBus.do?driver='+data[i].email+'">'+data[i].nick+'의버스<img class="w3-circle" style="width:30px; height:35px;" src="${project}/hipbusSave/'+data[i].imglocation+'"></a>';
+								msg+='<a href="myBus.do?driver='+data[i].email+'">'+data[i].nick+'의버스<img class="w3-circle"'+
+										'style="width:30px; height:35px;" src="${project}/hipbusSave/'+data[i].imglocation+'"></a>';
 							}
-							
-						
-							driverResult.innerHTML=msg;
+							msg+='<hr>';
 							
 						}
-						
-					}
 					
+					if (datas.length == 0) {
+						msg+='<div class="w3-margin">Crew Bus 검색 결과 <br><br> 검색 결과가 없습니다.</div>';
+					
+					}else{
+							msg+='<div class="w3-margin">Crew Bus 검색 결과</div>';
+							for (var i = 0; i < datas.length; i++){
+								msg+='<a href="crewBus.do?driver='+datas[i].crewid+'">'+datas[i].crewname+'의버스<img class="w3-circle"'+
+								'style="width:30px; height:35px;" src="${project}/hipbusSave/'+datas[i].crewImg+'"></a>';
+							}
+						}
+					
+						driverResult.innerHTML=msg;
+					}
 				} else {
 					$('#nickresult').text('오류');
 				}
@@ -150,7 +161,7 @@
 								<input type="text" name="keyword" class="w3-input" placeholder="${str_search}" onkeyup="driverCheck()">
 							</div>
 							<div class="w3-quarter w3-right-align">
-								<button ><i class="fa fa-search"></i></button>
+								<i class="fa fa-search"></i>
 							</div>
 						</div>
 					<div id="driverResult">

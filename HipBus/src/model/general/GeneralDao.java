@@ -20,4 +20,5 @@ public interface GeneralDao {
 	public List<CrewDto> getHoppedOnCrews(String email);
 	public List<MemberDto> getSearchMember(Map<String,String> map);
 	public int verifyCrew(String crewname);
+	public List<CrewDto> getSearchCrew(Map<String,String> map);
 }

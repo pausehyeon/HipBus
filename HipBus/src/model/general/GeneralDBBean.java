@@ -79,4 +79,10 @@ public class GeneralDBBean implements GeneralDao {
 	public int verifyCrew(String crewname) {
 		return session.selectOne("General.verifyCrew", crewname);
 	}
+
+	@Override
+	public List<CrewDto> getSearchCrew(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		return session.selectList("General.getSearchCrew", map);
+	}
 }
