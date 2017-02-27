@@ -4,6 +4,7 @@
 
 <%@include file="/view/setting/setting.jsp"%>
 <%@include file="/view/setting/admin_setting.jsp"%>
+
 <!-- 광고 등록 결과창 -->
 <c:if test="${result == 0}">
 	alert("실패");

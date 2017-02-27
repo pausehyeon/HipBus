@@ -72,10 +72,34 @@
 				search.keyword.focus();
 				return false;
 			}
-		}		
-		adNum=function(){
-			adform.ad_num.value = "";
 		}
+		
+		adCheck=function(){
+			var ad_num = document.getElementById("selectBox").value;
+			var params = "ad_num=" + ad_num;
+			var request = new Request(function() {
+				if(request.httpRequest.readyState == 4){
+					if(request.httpRequest.status == 200){
+
+						if(request.httpRequest.responseText.trim() != ''){
+							$("#ad_location").removeClass('w3-text-red').addClass('w3-text-blue').html("&nbsp;&nbsp;&nbsp;&nbsp;"+request.httpRequest.responseText);
+						}else{
+							$("#ad_location").addClass('w3-text-red').html("&nbsp;&nbsp;&nbsp;&nbsp;${str_adNoMsg}");
+						}
+					}else{
+						$('#ad_location').text('오류');
+					}
+				}else{
+					console.log( "통신중..." );
+				}	
+			}, "adminADResult.do", "POST", params);
+			request.sendRequest();
+		
+	}				
+			
+			
+			
+		
 		addReq=function(){
 			$('input[name="upload"]').attr("required", false);
 		}
@@ -153,7 +177,7 @@
 			</h5>
 
 			<div class="w3-row-padding w3-margin-bottom ">
-				<div class="w3-quarter">
+				<div class="w3-third">
 					<div class="w3-container w3-red w3-padding-16">
 						<div class="w3-left">
 							<i class="fa fa-group w3-xxxlarge"></i>
@@ -165,7 +189,7 @@
 						<h4>${str_memberReport}</h4>
 					</div>
 				</div>
-				<div class="w3-quarter">
+				<div class="w3-third">
 					<div class="w3-container w3-blue w3-padding-16">
 						<div class="w3-left">
 							<i class="fa fa-fort-awesome w3-xxxlarge"></i>
@@ -177,7 +201,7 @@
 						<h4>${str_crewReport}</h4>
 					</div>
 				</div>
-				<div class="w3-quarter">
+				<div class="w3-third">
 					<div class="w3-container w3-teal w3-padding-16">
 						<div class="w3-left">
 							<i class="fa fa-eye w3-xxxlarge "></i>
@@ -209,7 +233,7 @@
 								<th >${str_memGrade}</th>
 								<th><a href="#" style="text-decoration: none">&nbsp;&nbsp;${str_memEmail}</a></th>
 								<th width="80px"><a href="#" style="text-decoration: none">&nbsp;&nbsp;${str_memNick}</a></th>
-								<th style="text-align: certer"><a href="#" style="text-decoration: none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${str_memAuthority}</a></th>
+								<th colspan="4" style="text-align: certer"><a href="#" style="text-decoration: none;" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${str_memAuthority}</a></th>
 							</tr>
 						<c:if test="${count eq 0}">
 							<tr>
@@ -230,9 +254,10 @@
 										<!-- 불러온 닉네임 -->
 										<td style="text-align: left;"><a class="w3-hover-black w3-padding" style="text-decoration: none" href="myBus.do?driver=${getMember.email}">${str_memGo}&nbsp;<i class="fa fa-bus"></i></a>
 										<!-- 마이버스로 가기 -->
-										<button id="${status.count}" onclick="myFunction('crew${status.count}')">
-											${str_crewList}
-										</button>												
+										<td>
+										<span id="${status.count}" onclick="myFunction('crew${status.count}')" >
+											${str_crewList} <i class="fa fa-caret-down"></i>
+										</span>												
 											<div id="crew${status.count}" class="w3-accordion-content w3-container">
 												<ul>
 												 	<c:forEach var="cl" items="${clist}">
@@ -243,12 +268,16 @@
 												</ul>
 											</div>
 											<!-- 크루버스 -->
+										</td>
+										<td>
 										<c:if test="${getMember.mem_level eq 1}">
 											<a class="w3-hover-black w3-padding" style="text-decoration: none" href="adminMemberManagePro.do?mem_level=2&email=${getMember.email}">${str_memModify}</a>
 										</c:if>
 										<c:if test="${getMember.mem_level eq 2}">
 											<a class="w3-hover-black w3-padding" style="text-decoration: none" href="adminMemberManagePro.do?mem_level=1&email=${getMember.email}">${str_memModify}</a>
 										</c:if>
+										</td>
+										<td>
 										<a class="w3-hover-black w3-padding" style="text-decoration: none" href="adminMemberEjectPro.do?email=${getMember.email}">${str_memLeave}</a>
 										</td>
 									</tr>
@@ -349,14 +378,17 @@
 					<p>
 						<label class="w3-label w3-text-teal"><b>${str_adSize}</b></label>
 					<div>
-					<select class="w3-select w3-border w3-quarter" name="ad_num" style="width: 150px">
-						<option value="선택" disabled>${str_adNumMsg}</option>
-						<option value="1">AD1</option>
-						<option value="2">AD2</option>
-						<option value="3">AD3</option>
-					</select>
-					<!-- <input type="text" name="ad_num" class="w3-opacity w3-input" style="width: 250px" maxlength="1"> -->
-					</div><br><br>
+					<select class="w3-select w3-border w3-quarter" name="ad_num"  id="selectBox" style="width: 150px" onchange="adCheck()">
+						<option value="선택">${str_adNumMsg}</option>
+						<option id="1" value="1" >AD1</option>
+						<option id="2" value="2">AD2</option>
+						<option id="3" value="3">AD3</option>
+					</select> 
+				
+					<!-- <input type="text" id="ad_location" class="w3-opacity w3-input" style="width: 250px" maxlength="1" value="없음"> -->
+					<div class="w3-xsmall w3-right" id="ad_location"></div>
+					</div>
+					<br><br>
 					<div>
 						<input name="upload" type="file" accept="image/*" required>
 							<!-- 불러들인 이미지의 주소 -->
@@ -423,7 +455,7 @@
 					<div class="w3-text-blue w3-xsmall w3-right" id="passwdcheckresult">${str_passwdCheck}</div>
 				</p>
 				<br> <br>
-				</p>
+				
 				<br> <br>
 				<div class="w3-center w3-row">
 					<button class="w3-btn w3-hover-teal" type="submit">${str_amModifyBtn}</button>
@@ -454,7 +486,7 @@
 		<!-- 여기까지 -->
 
 		<!-- End page content -->
-	</div>
+
 
 	<!-- Footer -->
 	<c:import url="../bottom.do" />
