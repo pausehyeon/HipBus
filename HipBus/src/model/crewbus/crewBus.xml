@@ -11,7 +11,7 @@
 		and crewid=#{crewid}
 	</select>
 	<select id="isMember" parameterType="map" resultType="int">
-		select count(*) from hb_crewmember where crewid=#{crewid} and email=#{email}
+		select leader from hb_crewmember where crewid=#{crewid} and email=#{email}
 	</select>
 <!-- crewBusLeft.jsp 크루정보가져오기 -->
 	<select id="getCrewInfo" parameterType="String" resultType="model.CrewDto">
@@ -38,5 +38,16 @@
 			) 
 		where r &gt;= #{start} and r &lt;= #{end}
 	</select>
-		
+<!-- 크루원신청 -->
+	<insert id="applyCrew" parameterType="map">
+		insert into hb_crewmember values(#{email},#{crewid},#{apply})
+	</insert>
+<!-- 신청크루원관리 -->
+	<select id="getApplyMembers" parameterType="String" resultType="model.MemberDto">
+		select m.email,m.imglocation,m.nick 
+		from HB_Crewmember cm, HB_Member m
+		where cm.email=m.email
+		and cm.crewid=#{crewid}
+		and cm.leader=0
+	</select>
 </mapper>
