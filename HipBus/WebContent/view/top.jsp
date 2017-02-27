@@ -7,6 +7,7 @@
 
 <script type="text/javascript">
 	//Used to toggle the menu on smaller screens when clicking on the menu button
+	var pageSize=5;
 	function openNav() {
 		var x = document.getElementById("navDemo");
 		if (x.className.indexOf("w3-show") == -1) {
@@ -29,44 +30,69 @@
 					var data = eval("("+ xmldoc.getElementsByTagName("data").item(0).innerHTML + ")");
 					var datas = eval("("+ xmldoc.getElementsByTagName("datas").item(0).innerHTML + ")");
 					
+					// myBus 검색 결과
 					if (data.length == 0) {
-						msg+='<div class="w3-margin">My Bus 검색 결과 <br><br> 검색 결과가 없습니다.</div> <hr>';
+						msg+='<div class="w3-margin"><h4 style="font-weight:bold;">My Bus 검색 결과<h4> <br><br> 검색 결과가 없습니다.</div> <hr>';
 						}else{
-							msg+='<div class="w3-margin">MY Bus 검색 결과</div>';
-							for (var i = 0; i < data.length; i++) {	// 방명록을 위부터 하나씩 붙인다
-								msg+='<a href="myBus.do?driver='+data[i].email+'">'+data[i].nick+'의버스<img class="w3-circle"'+
+							msg+='<div class="w3-margin"><h4 style="font-weight:bold;">MY Bus 검색 결과<h4></div>';
+							
+								if( data.length > 5){
+									for (var i = 0; i < pageSize; i++) {
+										msg+='<a href="myBus.do?driver='+data[i].email+'">'+data[i].nick+'의버스<img class="w3-circle"'+
 										'style="width:30px; height:35px;" src="${project}/hipbusSave/'+data[i].imglocation+'"></a>';
+										
+									}
+								}else{
+									for (var i = 0; i < data.length; i++) {
+										msg+='<a href="myBus.do?driver='+data[i].email+'">'+data[i].nick+'의버스<img class="w3-circle"'+
+										'style="width:30px; height:35px;" src="${project}/hipbusSave/'+data[i].imglocation+'"></a>';
+									}
+								}
+
+								if (data.length >= 5) {
+									msg += '<a class="w3-center w3-small" onclick="document.getElementById("driverSearch").style.display="block"" > <span id="more">${str_more}</span></a><hr>';
+
+								}
 							}
-							msg+='<hr>';		
-						}
 					
+					
+					// crewBus 검색 결과
 					if (datas.length == 0) {
-						msg+='<div class="w3-margin">Crew Bus 검색 결과 <br><br> 검색 결과가 없습니다.</div>';
-					
-					}else{
-							msg+='<div class="w3-margin">Crew Bus 검색 결과</div>';
-							for (var i = 0; i < datas.length; i++){
-								msg+='<a href="crewBus.do?driver='+datas[i].crewid+'">'+datas[i].crewname+'의버스<img class="w3-circle"'+
+						
+						msg += '<div class="w3-margin"><h4 style="font-weight:bold;">Crew Bus 검색 결과<h4> <br><br> 검색 결과가 없습니다.</div>';
+						
+					} else {
+							msg += '<div class="w3-margin"><h4 style="font-weight:bold;">Crew Bus 검색 결과<h4></div>';
+							if( datas.length > 5){
+							for (var i = 0; i < pageSize; i++) {
+								msg += '<a href="crewBus.do?driver='+datas[i].crewid+'">'+datas[i].crewname+'의버스<img class="w3-circle"'+
 								'style="width:30px; height:35px;" src="${project}/hipbusSave/'+datas[i].crewImg+'"></a>';
+								}
+							}else{
+								for (var i = 0; i < datas.length; i++) {
+									msg += '<a href="crewBus.do?driver='+datas[i].crewid+'">'+datas[i].crewname+'의버스<img class="w3-circle"'+
+									'style="width:30px; height:35px;" src="${project}/hipbusSave/'+datas[i].crewImg+'"></a>';	
+								}
+							}
+								if (datas.length  5) {
+								msg += '<a class="w3-center w3-small" onclick="document.getElementById("driverSearch").style.display="block"" >'+
+								'<span>${str_more}</span></a><hr>';
 							}
 						}
-					
-						driverResult.innerHTML=msg;
+
+							driverResult.innerHTML = msg;
+							}
+						} else {
+							$('#nickresult').text('오류');
+						}
+					} else {
+						console.log("통신중...");
 					}
-				} else {
-					$('#nickresult').text('오류');
-				}
-			} else {
-				console.log("통신중...");
-			}
-		}, "driverSearchResult.do", "POST", params);
+				}, "driverSearchResult.do", "POST", params);
 		request.sendRequest();
 	}
 
-
-	
-	$(document).ready(function(){
-
+	$(document).ready(function() {
 
 		if (!sessionStorage.getItem("myBus")) {
 			$('#mybusget').hide();
@@ -74,19 +100,18 @@
 			$('#mybusget').show();
 		}
 
-		if (!sessionStorage.getItem("crewBus")) { 	
+		if (!sessionStorage.getItem("crewBus")) {
 			$('#crewbusget').hide();
 		} else {
 			$('#crewbusget').show();
 		}
-		
 
 		if (!sessionStorage.getItem("board")) {
 			$('#boardget').hide();
 		} else {
 			$('#boardget').show();
 		}
-		
+
 		var myBusImgLocation = sessionStorage.getItem("myBusImg");
 		$('#mybusImg').attr({
 			src : myBusImgLocation,
@@ -100,10 +125,8 @@
 			width : 30,
 			height : 35
 		});
-	
-	
-	});
 
+	});
 //-->
 </script>
 
