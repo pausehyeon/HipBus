@@ -61,7 +61,7 @@
 		order by c.leader desc
 	 </select>
 	 <select id="getTags" parameterType="String" resultType="String">
-	 	select tag from hb_tag where driver=#{driver}
+	 	select tag from hb_tag where driver=#{driver} order by tag desc
 	 </select>
 	 <select id="getPassengers" parameterType="String" resultType="model.MemberDto">
 		select * from hb_member where email in (select email from hb_passengers where driver=#{driver})

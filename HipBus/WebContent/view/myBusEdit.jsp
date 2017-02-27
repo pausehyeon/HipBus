@@ -6,6 +6,8 @@
 <%@include file="/view/setting/bus_setting.jsp"%>
 <%@include file="/view/setting/myBus_setting.jsp"%>
 <script src="/HipBus/scripts/ajax.js"></script>
+
+
 <script type="text/javascript">		
 	function taglist() {
 		var params = "driver=" +"${driver}" + "&type=list";		
@@ -17,7 +19,7 @@
  					var msg = "";
  					for( var i=0; i<listResult.length; i++) {
  						msg += '<span class="w3-theme-d5 w3-padding w3-round w3-tag w3-margin-top w3-margin-right">'
- 							+ listResult[i]+'</span>'; 							
+ 							+ listResult[i]+'<i class="fa fa-close w3-right w3-margin-left" onclick="tagdelete()"></i></span>'; 							
 					}
  					tagname.innerHTML = msg; 					
 				} else {
@@ -53,148 +55,32 @@
 		}, "myBusEditTagsResult.do", "POST", params);
 		tagrequest.sendRequest();			
 	} 
+	/* function tagdelete() {
+		var tagdelete = document.getElementById("tagdelete");
+		var deleteerror = document.getElementById("deleteerror");
+		var params = "driver=" + "${driver}" + "&type=delete&tag=" + tagdelete.value;
+		var tagrequest = new Request(function() {
+			if (tagrequest.httpRequest.readyState == 4) {
+				if ( tagrequest.httpRequest.status == 200 ) {
+					deleteerror.innerHTML="";
+					var deleteResult = eval("("+tagrequest.httpRequest.responseText+")");
+					if ( deleteResult == 0 ) {
+						deleteerror.innerHTML = "<P>태그 삭제에 실패하였습니다.<br>잠시 후 다시 시도해 주세요</p>";
+					} else if ( deleteResult == 1) {
+						taglist();
+					}
+				} else {
+					tagerror.innerHTML = tagrequest.httpRequest.status + "오류";
+				}
+			} else {
+				tagerror.innerHTML = "통신중...";
+			}			
+		}, "myBusEditTagResult.do", "POST", params);
+		tagrequest.sendRequest();		
+	} */
 </script>
 
 <title>${str_mybusTitle}</title>
-<script type="text/javascript">
-	//닉네임 중복체크
-	function verifynick() {
-		var params = "nick=" + $('input[name="nick"]').val();
-		var request = new Request(function() {
-			if (request.httpRequest.readyState == 4) {
-				if (request.httpRequest.status == 200) {
-					if (request.httpRequest.responseText.trim() == "0") {
-						$('#nickresult').removeClass('w3-text-red').addClass(
-								'w3-text-blue').text("${str_userNameOk}");
-					} else {
-						$('#nickresult').removeClass('w3-text-blue').addClass(
-								'w3-text-red').text("${str_userNameNo}");
-					}
-				} else {
-					$('#nickresult').text('오류');
-				}
-			} else {
-				console.log("통신중...");
-			}
-		}, "verifyNickResult.do", "POST", params);
-		request.sendRequest();
-	}
-	$(document)
-			.ready(
-					function() {
-						//이메일 길이 제한
-						$('input[name="nick"]')
-								.keyup(
-										function() {
-											var maxlength = 10;
-											if ($(this).val().length > maxlength) {
-												$('#nickresult')
-														.addClass('w3-text-red')
-														.text(
-																maxlength
-																		+ "${str_emailLength}");
-												$(this)
-														.val(
-																$(this)
-																		.val()
-																		.substring(
-																				0,
-																				maxlength));
-											}
-										});
-
-						//비밀번호 제한 : 반드시 숫자와 알파벳을 조합해야하며 길이가 5글자 이상, 10글자 이하여야.
-						$('input[name="passwd"]')
-								.keyup(
-										function() {
-											if (isNaN(Number($(this).val()))) {
-												//숫자가 아닌 경우
-												//숫자가 아니면서 숫자가 하나도 없는 경우
-												var containsNumber = false;
-												for (var i = 0; i < 10; i++) {
-													if ($(this).val()
-															.indexOf(i) != -1)
-														containsNumber = true;
-												}
-												if (containsNumber == false) {
-													$('#passwdresult')
-															.removeClass(
-																	'w3-text-blue')
-															.addClass(
-																	'w3-text-red')
-															.text(
-																	"${str_passwordError1}");
-												} else if ($(this).val().length < 5) {
-													//길이가 짧은 경우
-													var minlength = 5;
-													$('#passwdresult')
-															.removeClass(
-																	'w3-text-red')
-															.addClass(
-																	'w3-text-blue')
-															.text(
-																	'*'
-																			+ minlength
-																			+ "${str_passswordError2}");
-												} else if ($(this).val().length > 10) {
-													//길이가 너무 긴 경우
-													var maxlength = 10;
-													$('#passwdresult')
-															.removeClass(
-																	'w3-text-red')
-															.addClass(
-																	'w3-text-blue')
-															.text(
-																	"${str_passwordError3}"
-																			+ maxlength
-																			+ "${str_passwordError4}");
-													$(this)
-															.val(
-																	$(this)
-																			.val()
-																			.substring(
-																					0,
-																					maxlength));
-												} else {
-													$('#passwdresult')
-															.removeClass(
-																	'w3-text-red')
-															.addClass(
-																	'w3-text-blue')
-															.text(
-																	"${str_passwordOk}");
-												}
-											} else {
-												//숫자인 경우
-												$('#passwdresult')
-														.removeClass(
-																'w3-text-blue')
-														.addClass('w3-text-red')
-														.text(
-																"${str_passwordError5}");
-											}
-										});
-
-						//비밀번호 확인
-						$('input[name="repasswd"]').keyup(
-								function() {
-									if ($(this).val() == $(
-											'input[name="passwd"]').val()) {
-										$('#repasswdresult').removeClass(
-												'w3-text-red').addClass(
-												'w3-text-blue').text(
-												"${str_passwordCheckOk}");
-									} else {
-										$('#repasswdresult').removeClass(
-												'w3-text-blue').addClass(
-												'w3-text-red').text(
-												"${str_passwordCheckNo}");
-									}
-								});
-
-					});
-//-->
-</script>
 <c:if test="${sessionScope.memEmail ne driver}">
 	<script type="text/javascript">
 		location.href = "myBus.do?driver=" + '${driver}';
@@ -202,10 +88,15 @@
 	</script>
 </c:if>
 <c:if test="${sessionScope.memEmail eq driver}">
-	<body class="w3-theme-l5" onload="taglist()">
+	<body class="w3-theme-l5" onload="taglist(); inputformvalidate()">
 
 		<!-- Navbar -->
 		<c:import url="../top.do" />
+		<!-- jQuery Validation Plugin -->
+		<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
+		<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js"></script>
+		<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/localization/messages_ko.js"></script>
+		<script type="text/javascript" src="${project}/scripts/formValidationScripts.js"></script>
 
 
 		<!-- Page Container -->
@@ -257,7 +148,7 @@
 									</div>
 									<div class="w3-col m12 w3-margin-top w3-margin-bottom">
 										<label>${str_userName}</label>
-										<input name="nick" value="${member.nick}" class="w3-input" type="text" onkeyup="verifynick()">
+										<input name="nick" value="${member.nick}" class="w3-input" type="text">
 										<div class="w3-text-red w3-small w3-right" id="nickresult">${str_signUpUserName}</div>
 									</div>
 									<div class="w3-col m12 w3-margin-top w3-margin-bottom">
@@ -294,11 +185,11 @@
 							</div>
 							<div class="w3-row-padding w3-margin-bottom">
 								<div class="w3-col s3 m3">
-									<input id="taginput" type="text" class="w3-input">
+									<input id="taginput" type="text" class="w3-input">									
 								</div>
 								<div class="w3-col s1 m1">
 									<i class="fa fa-plus-square w3-xxlarge" onclick="taginsert()"></i>									
-								</div>								
+								</div>																											
 							</div>																			
 							<div class="w3-content w3-margin-top">
 							<div id="tagerror">									

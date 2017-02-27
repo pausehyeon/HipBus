@@ -113,3 +113,11 @@
 <c:set var="str_currentThumbnail" value="기존 대표이미지"/>
 <c:set var="str_postWanted" value="구인광고 등록"/>
 <c:set var="str_modifyWanted" value="구인광고 수정 완료"/>
+
+<!-- myBusEdit.jsp -->
+<c:set var="str_editTag" value="Tags 수정"/>
+<c:set var="str_goSignOut" value="회원 탈퇴"/>
+<c:set var="str_signOutmsg1" value="탈퇴할 경우 재사용 및 복구가 불가능합니다."/>
+<c:set var="str_signOutmsg2" value="탈퇴 후 사이트에 게시한 내용을 수정/삭제 할 수 없습니다."/>
+<c:set var="str_agreeSignOut" value="안내 사항을 모두 확인하였으며, 이에 동의합니다."/>
+<c:set var="str_signOutbtn" value="탈퇴"/>
