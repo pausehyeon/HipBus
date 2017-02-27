@@ -2,49 +2,6 @@
  * 
  */
 
-$(document).ready(function() {	
-	
-	
-	if (!sessionStorage.getItem("myBus")) {
-		$('#mybusget').hide();
-	} else {
-		$('#mybusget').show();
-	}
-
-	if (!sessionStorage.getItem("crewBus")) { 	
-		$('#crewbusget').hide();
-	} else {
-		$('#crewbusget').show();
-	}
-	
-
-	if (!sessionStorage.getItem("board")) {
-		$('#boardget').hide();
-	} else {
-		$('#boardget').show();
-	}
-
-		var myBusImgLocation = sessionStorage.getItem("myBusImg");
-		$('#mybusImg').attr({
-			src : myBusImgLocation,
-			width : 30,
-			height : 35
-		});
-	
-
-	
-		var crewBusImgLocation = sessionStorage.getItem("crewBusImg");
-		$('#crewbusImg').attr({
-			src : crewBusImgLocation,
-			width : 30,
-			height : 35
-		});
-
-
-	
-		
-});
-
 
 function myBusSet() {
 	var myBusDriver = document.location.href;
@@ -90,3 +47,6 @@ function boardGet() {
 	var boardSrc = sessionStorage.getItem("board");
 	location.href = boardSrc;
 }
+
+
+

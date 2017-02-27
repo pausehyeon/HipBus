@@ -4,6 +4,9 @@
 <!-- SETTING -->
 <%@include file="/view/setting/setting.jsp"%>
 <%@include file="/view/setting/main_setting.jsp"%>
+<script type="text/javascript" src="${project}/scripts/jquery-3.1.1.js"></script>
+<script src="/HipBus/scripts/generalScript.js"></script>
+
 <!-- SETTING 끝 -->
 
 <title>HipBus - Welcome!</title>
@@ -37,6 +40,7 @@
 						<input type="submit" value="${str_signIn}" class="w3-btn-block w3-green w3-section w3-padding"  onclick="sendit()">
 						<input name="rememberMe" type="checkbox" value="1" checked="checked" class="w3-check w3-margin-top">
 						${str_signInRememberMe}
+						
 					</form>
 				</div>
 

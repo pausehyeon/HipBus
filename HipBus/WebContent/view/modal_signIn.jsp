@@ -14,10 +14,10 @@
 		<form name="signInForm" method="Post" action="signInPro.do" class="w3-container">
 			<div class="w3-section">
 				<label><b>${str_signInUserName}</b></label>
-				<input name="email" type="text" placeholder="Enter Username" name="usrname" required class="w3-input w3-border w3-margin-bottom">
+				<input name="email" type="text" placeholder="Enter Username"  required class="w3-input w3-border w3-margin-bottom">
 				<label><b>${str_signInPassword}</b></label>
-				<input name="passwd" type="password" placeholder="Enter Password" name="psw" required class="w3-input w3-border">
-				<input type="submit" value="${str_signIn}" class="w3-btn-block w3-green w3-section w3-padding">
+				<input name="passwd" type="password" placeholder="Enter Password"  required class="w3-input w3-border">
+				<input type="submit" value="${str_signIn}" class="w3-btn-block w3-green w3-section w3-padding" onclick="sendId()">
 				<input name="rememberMe" type="checkbox" value="1" checked="checked" class="w3-check w3-margin-top">
 				${str_signInRememberMe}
 				<input name="urlToGoBack" type="hidden">
@@ -26,8 +26,15 @@
 					//<!--
 					$(document).ready(
 						function() {
+							
+							
 							//여기서 hidden값을 현재 페이지 url로 바꿔줌.
 							signInForm.urlToGoBack.value = location.href;
+							
+							if( getCookie("id")){
+								signInForm.email.value = getCookie("id");
+								signInForm.rememberMe.checked = true;
+							}
 						}
 					);
 					//-->

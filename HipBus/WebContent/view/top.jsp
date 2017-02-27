@@ -3,6 +3,7 @@
 <%@include file="/view/setting/navbar_top_setting.jsp"%>
 <!-- jQuery 연결 -->
 <script type="text/javascript" src="${project}/scripts/jquery-3.1.1.js"></script>
+<script src="${project}/scripts/generalScript.js"></script>
 
 <script type="text/javascript">
 	//Used to toggle the menu on smaller screens when clicking on the menu button
@@ -51,7 +52,47 @@
 		}, "driverSearchResult.do", "POST", params);
 		request.sendRequest();
 	}
+
+
 	
+	$(document).ready(function(){
+
+
+		if (!sessionStorage.getItem("myBus")) {
+			$('#mybusget').hide();
+		} else {
+			$('#mybusget').show();
+		}
+
+		if (!sessionStorage.getItem("crewBus")) { 	
+			$('#crewbusget').hide();
+		} else {
+			$('#crewbusget').show();
+		}
+		
+
+		if (!sessionStorage.getItem("board")) {
+			$('#boardget').hide();
+		} else {
+			$('#boardget').show();
+		}
+		
+		var myBusImgLocation = sessionStorage.getItem("myBusImg");
+		$('#mybusImg').attr({
+			src : myBusImgLocation,
+			width : 30,
+			height : 35
+		});
+
+		var crewBusImgLocation = sessionStorage.getItem("crewBusImg");
+		$('#crewbusImg').attr({
+			src : crewBusImgLocation,
+			width : 30,
+			height : 35
+		});
+	
+	
+	});
 
 //-->
 </script>
