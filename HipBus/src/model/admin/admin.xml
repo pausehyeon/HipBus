@@ -73,6 +73,9 @@
 	<select id="adnumCheck" parameterType="int" resultType="int">
 		select count(*) from hb_ad where ad_num=#{ad_num}
 	</select>
+	<select id="getData" parameterType="int" resultType="model.AdDto">
+		select * from hb_ad where ad_num=#{ad_num}
+	</select>
 	<insert id="insertAd" parameterType="model.AdDto">
 		insert into hb_ad 
 		values (#{ad_num}, #{html}, #{imglocation})

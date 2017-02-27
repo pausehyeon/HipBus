@@ -89,6 +89,9 @@ public class AdminDBBean implements AdminDao {
 	public int adnumCheck(int ad_num) {
 		return SqlMapClient.getSession().selectOne("Admin.adnumCheck", ad_num);
 	}//기존에 광고가 있는지 확인
+	public AdDto getData(int ad_num) {
+		return SqlMapClient.getSession().selectOne("Admin.getData", ad_num);
+	}//기존에 광고가 있는지 확인
 	@Override
 	public int insertAd(AdDto dto) {
 		return SqlMapClient.getSession().insert("Admin.insertAd", dto);

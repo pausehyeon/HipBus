@@ -39,6 +39,7 @@ public interface AdminDao {
 		
 		//광고
 		public int updateAd(AdDto dto);
+		public AdDto getData(int ad_num);
 		public int adnumCheck(int ad_num);
 		public int insertAd(AdDto dto);
 		
