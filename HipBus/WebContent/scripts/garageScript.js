@@ -107,41 +107,6 @@ function faqDeleteCheck(){
 	
 }
 
-function newsWriteCheck(){
-	 var data = CKEDITOR.instances.editor.getData();
-	if(data == "" ){
-		alert(writeMsg);
-		return false;
-	}
-}
-
-function newsModifyCheck(){
-	 var data = CKEDITOR.instances.editor.getData();
-	if(data == "" ){
-		alert(writeMsg);
-		return false;
-	}
-}
-
-function faqWriteCheck(){
-	 var data = CKEDITOR.instances.editor.getData();
-	if(data == "" ){
-		alert(writeMsg);
-		return false;
-	}
-}
-
-function faqModifyCheck(){
-	 var data = CKEDITOR.instances.editor.getData();
-	if(data == "" ){
-		alert(writeMsg);
-		return false;
-	}
-}
-
-
-
-
 function search(){	
 	
 	if(! searchform.keyword.value){

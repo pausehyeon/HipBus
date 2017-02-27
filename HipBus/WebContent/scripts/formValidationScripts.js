@@ -1,4 +1,5 @@
 /**
+ * 
  * 반드시
  * <!-- jQuery Validation Plugin -->
 	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
@@ -7,7 +8,9 @@
 	<script type="text/javascript" src="${project}/scripts/formValidationScripts.js"></script>
 	^ 와 함께 사용해야.
  *
- * inputformvalidate() -> mainSighUp.jsp의 body onload
+ * 사용된 곳 :
+ * inputformvalidate() -> mainSighUp.jsp의 body onload, myBusEdit.jsp의 body onload(현재 작동x 수정필요 TODO)
+ * writeformvalidate(), updateeditor() -> stationWrite.jsp의 body onload
  * 
  */
 
@@ -21,7 +24,9 @@ var str_passwordCheckNo = "* 비밀번호가 일치하지 않습니다.";
 var str_nowhitespace = "* 공백을 포함할 수 없습니다.";
 var str_alphanumeric = "* '_' 이외의 특수기호는 포함할 수 없습니다.";
 var str_confirmSignUp = "으로 HipBus에서 보내는 가입 인증 링크를 클릭하면 회원가입이 완료됩니다. 가입하시겠습니까?";
-
+var str_needSubject = '* 제목을 입력해주세요.';
+var str_needContent = '&nbsp;&nbsp;&nbsp;* 내용을 입력해주세요.';
+var str_needUpload = '* 대표 이미지를 입력해주세요.';
 
 function inputformvalidate() {
 	$("#inputform").validate({
@@ -98,3 +103,42 @@ function inputformvalidate() {
 		}
 	});
 }
+
+function updateeditor(){
+	for(var i in CKEDITOR.instances) {
+		CKEDITOR.instances[i].updateElement();
+	}
+}
+
+function writeformvalidate(){
+	$("form[name=writeform]").validate({
+		errorClass : "w3-text-red w3-xsmall",
+		ignore: [],         
+		rules: {
+			subject: {
+				required : true
+			},
+			content: {
+				required: function(){
+					updateeditor();
+					return true;
+				}
+			},
+			upload: {
+				required: true
+			}
+		},
+		messages: {
+			subject : {
+				required : str_needSubject
+				},
+			content : {
+				required : str_needContent
+				},
+			upload : {
+				required : str_needUpload
+			}
+		}
+	});
+}
+
