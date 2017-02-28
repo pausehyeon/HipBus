@@ -380,7 +380,7 @@
 						</select> 
 					
 						<!-- <input type="text" id="ad_location" class="w3-opacity w3-input" style="width: 250px" maxlength="1" value="없음"> -->
-						<div class="w3-xsmall w3-right" id="ad_location">dkd</div>
+						<div class="w3-xsmall w3-right" id="ad_location"></div>
 						</div>
 						<br><br>
 						<div>
