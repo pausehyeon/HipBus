@@ -31,7 +31,6 @@ public class AdminADResult implements CommandHandler {
 		if(article!=null){
 			if(article.getImglocation()!=null){
 				result = "<img class='w3-circle' src='/HipBus/hipbusSave/"+article.getImglocation()+"' width='100px'>";
-				
 			} else if(article.getHtml()!=null){
 				result = article.getHtml();		
 			}
@@ -44,9 +43,7 @@ public class AdminADResult implements CommandHandler {
 				imglocation = "업음";
 				html = "없음";
 			}*/
-			
 			request.setAttribute("result", result);
-		
 		
 		return new ModelAndView("adminADResult");
 	}
