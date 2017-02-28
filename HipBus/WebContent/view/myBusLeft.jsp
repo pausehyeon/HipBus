@@ -56,9 +56,11 @@
 				</c:forEach>
 			</c:if>
 			<c:if test="${driver==email}">
-				<a onclick="document.getElementById('createCrewBus').style.display='block'">
-					<i class="fa fa-plus w3-margin-right"></i>새 크루 추가하기
-				</a>
+				<c:if test="${mem_level==2}">
+					<a onclick="document.getElementById('createCrewBus').style.display='block'">
+						<i class="fa fa-plus w3-margin-right"></i>새 크루 추가하기
+					</a>
+				</c:if>
 				<hr>
 				<a href="myBusBeforeEdit.do?driver=${driver}">
 					<i class="fa fa-pencil"></i>${str_editProfile}

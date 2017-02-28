@@ -361,7 +361,7 @@ textarea:focus {
 										</p>
 									</div>
 									<div class="w3-row w3-center w3-theme-l1 w3-padding-large w3-small">
-										<a href="#">채널 ID를 찾으려면?</a>
+										<a href="https://www.youtube.com/account_advanced">채널 ID를 찾으려면?</a>
 									</div>
 								</div>
 							</form>

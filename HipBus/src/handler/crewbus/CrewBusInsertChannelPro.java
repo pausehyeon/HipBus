@@ -1,7 +1,5 @@
 package handler.crewbus;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,16 +11,12 @@ import org.springframework.web.servlet.ModelAndView;
 import handler.CommandHandler;
 import handler.HandlerException;
 import model.ChannelDto;
-import model.CrewMemberDto;
-import model.crewbus.CrewBusDao;
 import model.mybus.MyBusDao;
 
 @Controller
 public class CrewBusInsertChannelPro implements CommandHandler {
 	@Resource(name="myBusDao")
 	MyBusDao mybusDao;
-	@Resource(name="crewBusDao")
-	private CrewBusDao crewbusDao;
 	
 	@RequestMapping("/crewBusInsertChannelPro.do")
 	@Override
@@ -32,9 +26,6 @@ public class CrewBusInsertChannelPro implements CommandHandler {
 		String channelid = null;
 		String email = null;
 		int my_level = 0;
-		boolean isMember = false;
-		boolean isLeader = false;
-		int memberCount = 0;
 		
 		ChannelDto dto = new ChannelDto();
 		dto.setDriver(driver);
@@ -50,30 +41,14 @@ public class CrewBusInsertChannelPro implements CommandHandler {
 			my_level = mybusDao.getMember(email).getMem_level();
 			request.setAttribute("my_level", my_level);
 		}
-		List<CrewMemberDto> memberList = crewbusDao.getCrewmembers(driver);
-		if(!memberList.isEmpty()){
-			for(int i=0;i<memberList.size();i++){
-				CrewMemberDto cmDto = memberList.get(i);
-				if(cmDto.getEmail() == email){
-					isMember = true;
-					if(cmDto.getLeader() == 2){
-						isLeader = true;
-					}
-				}
-			}
-			memberCount = memberList.size();
-		}
 		
 		int mem_level = mybusDao.getMember(driver).getMem_level();
 		
-		request.setAttribute("isLeader", isLeader);
-		request.setAttribute("isMember", isMember);
-		request.setAttribute("memberCount", memberCount);
 		request.setAttribute("chResult", result);
 		request.setAttribute("mem_level", mem_level);
 		request.setAttribute("driver", driver);
 		request.setAttribute("email", email);
 		request.setAttribute("channelid", channelid);
-		return new ModelAndView("myBus");
+		return new ModelAndView("crewBus");
 	}
 }

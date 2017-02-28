@@ -5,6 +5,12 @@
 <%@include file="/view/setting/bus_setting.jsp"%>
 <%@include file="/view/setting/crewBus_setting.jsp"%>
 <script src="/HipBus/scripts/busScript.js"></script>
+
+<title>${str_mybusTitle}</title>
+<body class="w3-theme-l5">
+
+	<!-- Navbar -->
+	<c:import url="../top.do" />
 <script type="text/javascript">
 	function Quest() { // 주소창의 주소 가져와서 getParameter처럼 쓸 수 있게 하는 메소드
 		var requestParam = "";
@@ -130,12 +136,6 @@
 	}
 //-->
 </script>
-<title>${str_mybusTitle}</title>
-<body class="w3-theme-l5">
-
-	<!-- Navbar -->
-	<c:import url="../top.do" />
-
 
 	<!-- Page Container -->
 	<div class="w3-container w3-content" style="max-width: 1400px;">
