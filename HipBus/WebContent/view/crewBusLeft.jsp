@@ -3,7 +3,19 @@
 <%@include file="/view/setting/setting.jsp"%>
 <%@include file="/view/setting/bus_setting.jsp"%>
 <%@include file="/view/setting/crewBus_setting.jsp"%>
-
+<script type="text/javascript">
+$(document).ready(
+	function(){
+		if(localStorage.getItem("isClosed")=="true"){
+			$('#crewInfo').hide();
+		}
+	}
+);
+function closeInfo() {
+	localStorage.setItem("isClosed","true");
+	$('#crewInfo').hide();
+}
+</script>
 <!-- Left Column -->
 <div class="w3-col m3">
 	<!-- Profile -->
@@ -22,10 +34,10 @@
 			<p>
 				<i class="fa fa-fort-awesome fa-fw w3-margin-right w3-text-theme"></i>${crewDto.getCrewname()}
 			</p>
-			<p onclick="myFunction('crew')">
+			<p onclick="myFunction('crew')" class="w3-padding-4">
 				<i class="fa fa-users fa-fw w3-margin-right w3-text-theme"></i> ${str_memberCount} ${memberList.size()} ${str_per}
 			</p>
-			<div id="crew" class="w3-accordion-content w3-container">
+			<div id="crew" class="w3-accordion-content">
 				<p>
 					<ul>
 						<c:if test="${memberList.size() != 0}">
@@ -60,7 +72,7 @@
 				}
 				//-->
 				</script>
-				<c:if test="${isApplied==0}">
+				<c:if test="${isApplied==0 && mem_level==2}">
 					<button name="apply" class="w3-btn-block w3-theme-l1 w3-margin-top" onclick="location='crewBusApplyPro.do?driver=${driver}'">
 						크루원신청
 					</button>
@@ -133,11 +145,9 @@
 	<br>
 
 	<!-- Alert Box -->
-	<div
-		class="w3-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small">
-		<span onclick="this.parentElement.style.display='none'"
-			class="w3-hover-text-grey w3-closebtn"> <i
-			class="fa fa-remove"></i>
+	<div class="w3-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small" id="crewInfo">
+		<span onclick="closeInfo()" class="w3-hover-text-grey w3-closebtn"> 
+			<i class="fa fa-remove"></i>
 		</span>
 		<p>
 			<strong>${str_infoTitle}</strong>

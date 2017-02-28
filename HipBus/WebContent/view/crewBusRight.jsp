@@ -133,7 +133,7 @@
 						</button>
 					</div>
 					<div class="w3-half">
-						<button class="w3-btn w3-red w3-btn-block w3-section" title="Decline" onclick="location='crewBusEjectPro.do?driver=${driver}&email=${ApplyMem.getEmail()}'">
+						<button class="w3-btn w3-red w3-btn-block w3-section" title="Decline" onclick="location='crewBusEjectPro.do?driver=${driver}&email=${ApplyMem.getEmail()}&hidden=0'">
 							<i class="fa fa-remove"></i>
 						</button>
 					</div>

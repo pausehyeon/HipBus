@@ -5,6 +5,7 @@
 <%@include file="/view/setting/bus_setting.jsp"%>
 <%@include file="/view/setting/myBus_setting.jsp"%>
 
+
 <!-- Left Column -->
 <div class="w3-col m3">
 	<!-- Profile -->
@@ -35,10 +36,10 @@
 			<c:if test="${myCrews[0] != null}">
 				<c:forEach var="crew" items="${myCrews}">
 
-					<p onclick="myFunction('${crew.crewid}')">
+					<p onclick="myFunction('${crew.crewid}')" class="w3-padding-4">
 						<i class="fa fa-fort-awesome fa-fw w3-margin-right w3-text-theme"></i> ${crew.crewname}
 					</p>
-					<div id="${crew.crewid}" class="w3-accordion-content w3-container">
+					<div id="${crew.crewid}" class="w3-accordion-content">
 						<p>
 							<a href="crewBus.do?driver=${crew.crewid}">${crew.crewname}
 								<i class="fa fa-mail-forward fa-fw w3-margin-right w3-text-theme"></i>
@@ -97,10 +98,10 @@
 			<div id="Demo1" class="w3-accordion-content w3-container w3-padding-2">
 				<p>
 				<ul class="w3-ul">
-					<c:if test="${passengers==null}">
+					<c:if test="${passengers.isEmpty()}">
 						<li>아직 탑승자가 없습니다.</li>
 					</c:if>
-					<c:if test="${passengers!=null}">
+					<c:if test="${!passengers.isEmpty()}">
 						<c:forEach var="passenger" items="${passengers}" varStatus="status">
 							<li class="w3-padding-10">
 							<c:if test="${passenger.getImglocation()!=null}">
