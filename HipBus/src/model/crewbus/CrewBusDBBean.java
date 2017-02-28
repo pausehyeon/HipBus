@@ -60,5 +60,15 @@ public class CrewBusDBBean implements CrewBusDao {
 	public int isApplied(Map<String, String> map) {
 		return SqlMapClient.getSession().selectOne("CrewBus.isApplied", map);
 	}
+	@Override
+	public int updateLeader(Map<String, String> map) {
+		return SqlMapClient.getSession().update("CrewBus.updateLeader", map);
+	}
+	@Override
+	public int leaderChange(Map<String, String> map) {
+		return SqlMapClient.getSession().update("CrewBus.leaderChange", map);
+	}
 
+	
+	
 }

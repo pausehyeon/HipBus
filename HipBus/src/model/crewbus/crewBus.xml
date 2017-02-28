@@ -66,4 +66,14 @@
 	<select id="isApplied" parameterType="map" resultType="int">
 		select count(*) from HB_Crewmember where crewid=#{crewid} and email=#{email}
 	</select>
+	
+	<update id="updateLeader" parameterType="map">
+		update hb_crewmember set leader=2 where email=#{email} and crewid=#{crewid} 
+	</update>
+	<update id="leaderChange" parameterType="map">
+		update hb_crewmember set leader=1 where email=#{email} and crewid=#{crewid} 
+	</update>
+	
+	
+	
 </mapper>

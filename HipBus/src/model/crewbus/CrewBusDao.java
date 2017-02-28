@@ -20,4 +20,6 @@ public interface CrewBusDao {
 	public int acceptMember(Map<String,String> map);
 	public int ejectMember(Map<String, String> map);
 	public int isApplied(Map<String, String> map);
+	public int updateLeader(Map<String,String>map);
+	public int leaderChange(Map<String,String>map);
 }
