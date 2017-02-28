@@ -1,5 +1,7 @@
 package handler.station;
 
+import java.io.UnsupportedEncodingException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,7 +18,13 @@ public class StationSearch implements CommandHandler {
 	@RequestMapping("/stationSearch.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-		// TODO Auto-generated method stub
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		
+		
 		return new ModelAndView("stationSearch");
 	}
 

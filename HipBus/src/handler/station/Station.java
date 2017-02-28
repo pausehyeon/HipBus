@@ -1,5 +1,6 @@
 package handler.station;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -46,7 +47,11 @@ public class Station implements CommandHandler {
 		int pageCount = 0;			// 페이지 개수
 		int startPage = 0;			// 보여줄 페이지의 시작 번호
 		int endPage = 0;			// 보여줄 페이지의 끝 번호
-		
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 		
 		// 검색
 		String keyword = request.getParameter("keyword"); 
