@@ -1,17 +1,20 @@
 /**
  * 
- * 반드시
- * <!-- jQuery Validation Plugin -->
-	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
-	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js"></script>
-	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/localization/messages_ko.js"></script>
-	<script type="text/javascript" src="${project}/scripts/formValidationScripts.js"></script>
-	^ 와 함께 사용해야.
- *
- * 사용된 곳 :
- * inputformvalidate() -> mainSighUp.jsp의 body onload, myBusEdit.jsp의 body onload(현재 작동x 수정필요 TODO)
- * writeformvalidate(), updateeditor() -> stationWrite.jsp, myBusUpcomingWrite.jsp, myBusWantedWrite.jsp, myBUsWantedModify.jsp, garageFAQModify.jsp, garageFAQWrite.jsp의 body onload
- * withoutuploadvalidate(), updateeditor() -> myBusUpcomingModify.jsp, stationModify.jsp 의 body onload
+ * 반드시 <!-- jQuery Validation Plugin --> <script
+ * src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
+ * <script
+ * src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js"></script>
+ * <script
+ * src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/localization/messages_ko.js"></script>
+ * <script type="text/javascript"
+ * src="${project}/scripts/formValidationScripts.js"></script> ^ 와 함께 사용해야.
+ * 
+ * 사용된 곳 : inputformvalidate() -> mainSighUp.jsp의 body onload, myBusEdit.jsp의
+ * body onload(현재 작동x 수정필요 TODO) writeformvalidate(), updateeditor() ->
+ * stationWrite.jsp, myBusUpcomingWrite.jsp, myBusWantedWrite.jsp,
+ * myBUsWantedModify.jsp, garageFAQModify.jsp, garageFAQWrite.jsp의 body onload
+ * withoutuploadvalidate(), updateeditor() -> myBusUpcomingModify.jsp,
+ * stationModify.jsp 의 body onload
  * 
  */
 
@@ -28,6 +31,8 @@ var str_confirmSignUp = "으로 HipBus에서 보내는 가입 인증 링크를 �
 var str_needSubject = '* 제목을 입력해주세요.';
 var str_needContent = '&nbsp;&nbsp;&nbsp;* 내용을 입력해주세요.';
 var str_needUpload = '<br>* 대표 이미지를 입력해주세요.';
+var str_confirmSignOut = "정말 탈퇴하시겠습니까?";
+var str_mustAgree = "<br>* 동의하셔야만 탈퇴할 수 있습니다.";
 
 function inputformvalidate() {
 	$("#inputform").validate({
@@ -105,37 +110,37 @@ function inputformvalidate() {
 	});
 }
 
-function updateeditor(){
-	for(var i in CKEDITOR.instances) {
+function updateeditor() {
+	for ( var i in CKEDITOR.instances) {
 		CKEDITOR.instances[i].updateElement();
 	}
 }
 
-function writeformvalidate(){
+function writeformvalidate() {
 	$("form[name=writeform]").validate({
 		errorClass : "w3-text-red w3-xsmall",
-		ignore: [],         
-		rules: {
-			subject: {
+		ignore : [],
+		rules : {
+			subject : {
 				required : true
 			},
-			content: {
-				required: function(){
+			content : {
+				required : function() {
 					updateeditor();
 					return true;
 				}
 			},
-			upload: {
-				required: true
+			upload : {
+				required : true
 			}
 		},
-		messages: {
+		messages : {
 			subject : {
 				required : str_needSubject
-				},
+			},
 			content : {
 				required : str_needContent
-				},
+			},
 			upload : {
 				required : str_needUpload
 			}
@@ -143,31 +148,31 @@ function writeformvalidate(){
 	});
 }
 
-function withoutuploadvalidate(){
+function withoutuploadvalidate() {
 	$("form[name=writeform]").validate({
 		errorClass : "w3-text-red w3-xsmall",
-		ignore: [],         
-		rules: {
-			subject: {
+		ignore : [],
+		rules : {
+			subject : {
 				required : true
 			},
-			content: {
-				required: function(){
+			content : {
+				required : function() {
 					updateeditor();
 					return true;
 				}
 			},
-			upload: {
-				required: false
+			upload : {
+				required : false
 			}
 		},
-		messages: {
+		messages : {
 			subject : {
 				required : str_needSubject
-				},
+			},
 			content : {
 				required : str_needContent
-				},
+			},
 			upload : {
 				required : str_needUpload
 			}
@@ -175,3 +180,31 @@ function withoutuploadvalidate(){
 	});
 }
 
+function signoutformvalidate() {
+
+	$("#signoutform").validate({
+		errorClass : "w3-text-red w3-xsmall",
+		submitHandler : function() {
+			if (confirm(str_confirmSignOut)) {
+				return true;
+			} else {
+				return false;
+			}
+		},
+		// 규칙
+		rules : {
+			signoutcheck : {
+				required : true
+			}
+		},
+		// 규칙체크 실패시 출력될 메시지
+		messages : {
+			signoutcheck : {
+				required : str_mustAgree
+			}
+		},
+		errorPlacement: function(error, element) {
+			error.insertAfter("#signOutCheckError");
+		}
+	});
+}

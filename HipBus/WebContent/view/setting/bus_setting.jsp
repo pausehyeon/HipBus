@@ -115,6 +115,10 @@
 <c:set var="str_modifyWanted" value="구인광고 수정 완료"/>
 
 <!-- myBusEdit.jsp crewBusEdit.jsp-->
+<c:set var="str_nick" value="닉네임"/>
+<c:set var="str_passwd" value="비밀번호"/>
+<c:set var="str_repasswd" value="비밀번호 확인"/>
+<c:set var="str_enterPasswd" value="비밀번호를 다시 한번 입력해주세요."/>
 <c:set var="str_editChanal" value="채널 아이디 확인하는 방법"/>
 <c:set var="str_editModifyBtn" value="수정완료"/>
 <c:set var="str_crewMemEmail" value="Email"/>

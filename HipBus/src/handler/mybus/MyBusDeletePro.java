@@ -13,37 +13,23 @@ import handler.HandlerException;
 
 @Controller
 public class MyBusDeletePro implements CommandHandler {
-	@Resource(name="myBusDao")
+	@Resource(name = "myBusDao")
 	model.mybus.MyBusDao mybusDao;
 
 	@RequestMapping("/myBusDeletePro.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		// TODO Auto-generated method stub
-		String passwd = request.getParameter("passwd");
 		String email = (String) request.getSession().getAttribute("memEmail");
+
+		int signOutResult = mybusDao.deleteEmail(email);
+		int signOutDriver = mybusDao.deleteDriver(email);
 		
-		String passwdCheck = mybusDao.getMember(email).getPasswd();
-		
-		int signOutResult = 0;
-		int signOutDriver = 0;		
-		
-		if ( passwd.equals(passwdCheck)) {
-			signOutResult = mybusDao.deleteEmail(email);
-			request.getSession().removeAttribute("memEmail");
-		} else if ( ! passwd.equals(passwdCheck)) {
-			signOutResult = -1;
-		} else {
-			signOutResult = 1;
-		}
-		
-		if ( passwd.equals(passwdCheck)) signOutDriver = mybusDao.deleteDriver(email);		
-		
-		
+		request.getSession().removeAttribute("memEmail");
+
 		request.setAttribute("signOutResult", signOutResult);
-		request.setAttribute("signOutDriver", signOutDriver);	
-		
-		
+		request.setAttribute("signOutDriver", signOutDriver);
+
 		return new ModelAndView("myBusDeletePro");
 	}
 

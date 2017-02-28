@@ -18,7 +18,7 @@
 	</script>
 </c:if>
 <c:if test="${sessionScope.memEmail eq driver}">
-	<body class="w3-theme-l5" onload="taglist();">
+	<body class="w3-theme-l5" onload="taglist(); signoutformvalidate(); inputformvalidate()">
 
 		<!-- Navbar -->
 		<c:import url="../top.do" />
@@ -27,75 +27,97 @@
 		<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js"></script>
 		<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/localization/messages_ko.js"></script>
 		<script type="text/javascript" src="${project}/scripts/formValidationScripts.js"></script>
-		<script type="text/javascript">		
+		<script type="text/javascript">
 			function taglist() {
-				var params = "driver=" +"${driver}" + "&type=list";		
+				var params = "driver=" + "${driver}" + "&type=list";
 				var tagname = document.getElementById("tagname");
-				var tagrequest = new Request(function() {
-					if (tagrequest.httpRequest.readyState == 4) {
-						if (tagrequest.httpRequest.status == 200) {				 					
-		 					var listResult = eval("("+tagrequest.httpRequest.responseText+")");
-		 					var msg = "";
-		 					var cnt = 0;
-		 					for( var i=0; i<listResult.length; i++) {
-		 						msg += '<span id="tag_' + cnt + '" class="w3-theme-d5 w3-padding w3-round w3-tag w3-margin-top w3-margin-right">'
-		 							+ listResult[i]+'<i class="fa fa-close w3-right w3-margin-left" onclick="tagdelete(\'tag_' + cnt++ + '\')"></i></span>'; 						
+				var tagrequest = new Request(
+						function() {
+							if (tagrequest.httpRequest.readyState == 4) {
+								if (tagrequest.httpRequest.status == 200) {
+									var listResult = eval("("
+											+ tagrequest.httpRequest.responseText
+											+ ")");
+									var msg = "";
+									var cnt = 0;
+									for (var i = 0; i < listResult.length; i++) {
+										msg += '<span id="tag_' + cnt + '" class="w3-theme-d5 w3-padding w3-round w3-tag w3-margin-top w3-margin-right">'
+												+ listResult[i]
+												+ '<i class="fa fa-close w3-right w3-margin-left" onclick="tagdelete(\'tag_'
+												+ cnt++ + '\')"></i></span>';
+									}
+									tagname.innerHTML = msg;
+								} else {
+									tagname.innerHTML = tagrequest.httpRequest.status
+											+ "오류";
+								}
+							} else {
+								tagname.innerHTML = "<img src='${project}/view/img/loading.gif' width='100px' class='w3-center'>";
 							}
-		 					tagname.innerHTML = msg; 					
-						} else {
-							tagname.innerHTML = tagrequest.httpRequest.status + "오류";
-						}
-					} else {
-						tagname.innerHTML = "통신중...";
-					}
-				}, "myBusEditTagsResult.do", "POST", params);
-				tagrequest.sendRequest();	
+						}, "myBusEditTagsResult.do", "POST", params);
+				tagrequest.sendRequest();
 			}
-			
-			function taginsert() {		
+
+			function taginsert() {
 				var tagerror = document.getElementById("tagerror");
-				var taginput = document.getElementById("taginput");		
-				var params = "driver=" + "${driver}" + "&type=insert&tag=" + taginput.value;
-				var tagrequest = new Request(function() {
-					if (tagrequest.httpRequest.readyState == 4) {
-						if (tagrequest.httpRequest.status == 200) {
-							tagerror.innerHTML="";					 					
-		 					var insertResult = eval("("+tagrequest.httpRequest.responseText+")");
-		 					if ( insertResult == 0 ) {
-		 						tagerror.innerHTML = "<p>태그 추가에 실패하였습니다.<br>잠시 후 다시 시도해 주세요.</p>";
-		 					} else if ( insertResult == 1) {
-		 						taglist();	
-		 					}					
-						} else {
-							tagerror.innerHTML = tagrequest.httpRequest.status + "오류";
-						} 							
-					} else {
-						tagerror.innerHTML = "통신중...";
-					}
-				}, "myBusEditTagsResult.do", "POST", params);
-				tagrequest.sendRequest();			
-			} 
+				var taginput = document.getElementById("taginput");
+				
+				if(taginput.value == ''){
+					tagerror.innerHTML = '<p class="w3-small w3-text-red">* 태그를 입력해주세요.</p>';			
+				}else{
+					tagerror.innerHTML = '';
+					var params = "driver=" + "${driver}" + "&type=insert&tag="
+							+ taginput.value;
+					var tagrequest = new Request(
+							function() {
+								if (tagrequest.httpRequest.readyState == 4) {
+									if (tagrequest.httpRequest.status == 200) {
+										tagerror.innerHTML = "";
+										var insertResult = eval("("
+												+ tagrequest.httpRequest.responseText
+												+ ")");
+										if (insertResult == 0) {
+											tagerror.innerHTML = "<p>태그 추가에 실패하였습니다.<br>잠시 후 다시 시도해 주세요.</p>";
+										} else if (insertResult == 1) {
+											taglist();
+										}
+									} else {
+										tagerror.innerHTML = tagrequest.httpRequest.status
+												+ "오류";
+									}
+								} else {
+									tagerror.innerHTML = "<img src='${project}/view/img/loading.gif' width='100px' class='w3-center'>";
+								}
+							}, "myBusEditTagsResult.do", "POST", params);
+					tagrequest.sendRequest();
+				}
+			}
 			function tagdelete(tag_num) {
 				var tagerror = document.getElementById("tagerror");
-				var params = "driver=" + "${driver}" + "&type=delete&tag=" + $('#'+tag_num).text();
-				var tagrequest = new Request(function() {
-					if (tagrequest.httpRequest.readyState == 4) {
-						if ( tagrequest.httpRequest.status == 200 ) {
-							tagerror.innerHTML = "";
-							var deleteResult = eval("("+tagrequest.httpRequest.responseText+")");
-							if ( deleteResult == 0 ) {
-								//deleteerror.innerHTML = "<P>태그 삭제에 실패하였습니다.<br>잠시 후 다시 시도해 주세요</p>";
-							} else if ( deleteResult > 0) {
-								taglist();
+				var params = "driver=" + "${driver}" + "&type=delete&tag="
+						+ $('#' + tag_num).text();
+				var tagrequest = new Request(
+						function() {
+							if (tagrequest.httpRequest.readyState == 4) {
+								if (tagrequest.httpRequest.status == 200) {
+									tagerror.innerHTML = "";
+									var deleteResult = eval("("
+											+ tagrequest.httpRequest.responseText
+											+ ")");
+									if (deleteResult == 0) {
+										tagerror.innerHTML = "<P>태그 삭제에 실패하였습니다.<br>잠시 후 다시 시도해 주세요</p>";
+									} else if (deleteResult > 0) {
+										taglist();
+									}
+								} else {
+									tagerror.innerHTML = tagrequest.httpRequest.status
+											+ "오류";
+								}
+							} else {
+								tagerror.innerHTML = "<img src='${project}/view/img/loading.gif' width='100px' class='w3-center'>";
 							}
-						} else {
-							tagerror.innerHTML = tagrequest.httpRequest.status + "오류";
-						}
-					} else {
-						tagerror.innerHTML = "통신중...";
-					}			
-				}, "myBusEditTagsResult.do", "POST", params);
-				tagrequest.sendRequest();		
+						}, "myBusEditTagsResult.do", "POST", params);
+				tagrequest.sendRequest();
 			}
 		</script>
 
@@ -129,7 +151,6 @@
 							<div class="w3-row-padding">
 								<form id="inputform" enctype="multipart/form-data" action="myBusEditPro.do?driver=${driver}" method="post" class="w3-container">
 									<div class="w3-col m12 w3-margin-top w3-margin-bottom">
-										<label>Profile Picture</label>
 										<div class="w3-row-padding">
 											<c:if test="${member.imglocation eq null}">
 												<div class="w3-col m4 w3-center">
@@ -143,24 +164,22 @@
 											</c:if>
 											<div class="w3-col m8">
 												<input name="upload" class="w3-input" type="file">
+												<label for="upload" class="w3-validate w3-label">Profile Picture</label>
 											</div>
 										</div>
 										<div class="w3-text-red w3-small w3-right"></div>
 									</div>
 									<div class="w3-col m12 w3-margin-top w3-margin-bottom">
-										<label>${str_userName}</label>
+										<label class="w3-validate w3-label">${str_nick}</label>
 										<input name="nick" value="${member.nick}" class="w3-input" type="text">
-										<div class="w3-text-red w3-small w3-right" id="nickresult">${str_signUpUserName}</div>
 									</div>
 									<div class="w3-col m12 w3-margin-top w3-margin-bottom">
-										<label>${str_password}</label>
-										<input name="passwd" value="${member.passwd}" class="w3-input" type="password">
-										<div class="w3-text-blue w3-small w3-right" id="passwdresult">${str_signUpPassword}</div>
+										<label class="w3-validate w3-label">${str_passwd}</label>
+										<input name="passwd" id="passwd" value="${member.passwd}" class="w3-input" type="password">
 									</div>
 									<div class="w3-col m12 w3-margin-top w3-margin-bottom">
-										<label>${str_passwordCheck}</label>
+										<label class="w3-validate w3-label">${str_repasswd}</label>
 										<input name="repasswd" value="${member.passwd}" class="w3-input" type="password">
-										<div class="w3-text-blue w3-small w3-right" id="repasswdresult">${str_signUpPasswordCheck}</div>
 									</div>
 									<div class="w3-col m12 w3-margin-top w3-margin-bottom w3-center">
 										<c:if test="${(member.mem_level eq 2) and (result eq 1)}">
@@ -186,16 +205,15 @@
 							</div>
 							<div class="w3-row-padding w3-margin-bottom">
 								<div class="w3-col s3 m3">
-									<input id="taginput" type="text" class="w3-input">									
+									<input id="taginput" type="text" class="w3-input">
 								</div>
 								<div class="w3-col s1 m1">
-									<i class="fa fa-plus-square w3-xxlarge" onclick="taginsert()"></i>									
-								</div>																											
-							</div>																									
-							<div class="w3-content w3-margin-top">						
-							<div id="tagerror">									
+									<i class="fa fa-plus w3-xlarge" onclick="taginsert()"></i>
+								</div>
 							</div>
-								<div id="tagname"></div>														
+							<div class="w3-content w3-margin-top">
+								<div id="tagerror"></div>
+								<div id="tagname"></div>
 							</div>
 						</div>
 						<!-- 회원탈퇴 -->
@@ -209,15 +227,11 @@
 								<i class="fa fa-check"></i> ${str_signOutmsg1}<br> ${str_signOutmsg2}
 							</p>
 							<form id="signoutform" class="w3-container" action="myBusDeletePro.do" method="post">
-								<p>
-									<label>${str_password}</label>
-									<input name="passwd" class="w3-input" type="password">
-								</p>
-								<br> <br>
-								<input class="w3-check" type="checkbox">
+								<input name="signoutcheck" class="w3-check" type="checkbox">
 								<label class="w3-validate">${str_agreeSignOut}</label>
+								<p id="signOutCheckError"></p>
 								<p class="w3-center">
-									<button type="submit" class="w3-btn w3-hover-teal">${str_signOutbtn}</button>
+									<button type="submit" class="w3-btn">${str_signOutbtn}</button>
 								</p>
 							</form>
 						</div>
