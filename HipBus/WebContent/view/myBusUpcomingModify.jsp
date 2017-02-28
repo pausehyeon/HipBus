@@ -11,10 +11,15 @@
 
 <title>${str_upcomingTitle}</title>
 
-<body class="w3-theme-l5" onload="initMap(); codeAddress();">
+<body class="w3-theme-l5" onload="initMap(); codeAddress(); withoutuploadvalidate()">
 
 	<!-- Navbar -->
 	<c:import url="../top.do" />
+	<!-- jQuery Validation Plugin -->
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/localization/messages_ko.js"></script>
+	<script type="text/javascript" src="${project}/scripts/formValidationScripts.js"></script>
 
 	<!-- Page Container -->
 	<div class="w3-container w3-content" style="max-width: 1400px;">
@@ -32,7 +37,7 @@
 			<!-- 여기서부터 -->
 			<div class="w3-col m7">
 				<div class="w3-container w3-card-2 w3-white w3-round w3-margin-bottom w3-margin-left w3-margin-right w3-padding-32 w3-padding-xxlarge">
-					<form name="writeUpcomingForm" action="myBusUpcomingModifyPro.do?driver=${driver}&num=${num}" method="post" enctype="multipart/form-data">
+					<form name="writeform" action="myBusUpcomingModifyPro.do?driver=${driver}&num=${num}" method="post" enctype="multipart/form-data">
 						<div class="w3-container w3-center w3-black">
 							<h3>
 								<i class="fa fa-calendar"></i>&nbsp; ${str_upcoming}

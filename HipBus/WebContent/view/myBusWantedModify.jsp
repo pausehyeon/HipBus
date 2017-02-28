@@ -11,10 +11,16 @@
 <title>${str_upcomingTitle}</title>
 
 
-<body class="w3-theme-l5">
+<body class="w3-theme-l5" onload="withoutuploadvalidate()">
 
 	<!-- Navbar -->
 	<c:import url="../top.do" />
+	<!-- jQuery Validation Plugin -->
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/localization/messages_ko.js"></script>
+	<script type="text/javascript" src="${project}/scripts/formValidationScripts.js"></script>
+	
 
 
 	<!-- Page Container -->

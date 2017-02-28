@@ -5,10 +5,14 @@
 <%@include file="/view/setting/station_setting.jsp"%>
 <script src="${project}/scripts/ckeditor/insertCkeditor.js"></script>
 <title>${str_title}</title>
-<body>
+<body onload="withoutuploadvalidate()">
 
 	<c:import url="../top.do" />
-	
+	<!-- jQuery Validation Plugin -->
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/localization/messages_ko.js"></script>
+	<script type="text/javascript" src="${project}/scripts/formValidationScripts.js"></script>
 
 	<!-- Main content: shift it to the right by 250 pixels when the sidenav is visible -->
 	<div class="w3-main " style="margin-right: 20%; margin-left: 20%">

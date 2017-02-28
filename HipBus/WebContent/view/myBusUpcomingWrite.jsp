@@ -11,10 +11,15 @@
 
 <title>${str_upcomingTitle}</title>
 
-<body class="w3-theme-l5" onload="initMap()">
+<body class="w3-theme-l5" onload="initMap(); writeformvalidate()">
 
 	<!-- Navbar -->
 	<c:import url="../top.do" />
+	<!-- jQuery Validation Plugin -->
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/localization/messages_ko.js"></script>
+	<script type="text/javascript" src="${project}/scripts/formValidationScripts.js"></script>
 
 	<!-- Page Container -->
 	<div class="w3-container w3-content" style="max-width: 1400px;">
@@ -32,7 +37,7 @@
 			<!-- 여기서부터 -->
 			<div class="w3-col m7">
 				<div class="w3-container w3-card-2 w3-white w3-round w3-margin-bottom w3-margin-left w3-margin-right w3-padding-32 w3-padding-xxlarge">
-					<form name="writeUpcomingForm" id="writeUpcomingForm" action="myBusUpcomingWritePro.do?driver=${driver}" method="post" enctype="multipart/form-data">
+					<form name="writeform" action="myBusUpcomingWritePro.do?driver=${driver}" method="post" enctype="multipart/form-data">
 						<div class="w3-container w3-center w3-theme-d5">
 							<h3>
 								<i class="fa fa-calendar"></i>&nbsp; ${str_upcoming}
@@ -85,13 +90,13 @@
 								<label class="w3-label w3-validate w3-right">${str_perf_cast}</label>
 							</div>
 							<div class="w3-col m6 w3-margin-bottom">
-								<input name="perf_price" type="number" min="0" step="1000" class="w3-input">
+								<input name="perf_price" type="number" min="0" step="1000" required="required" class="w3-input">
 								<label class="w3-label w3-validate w3-right">${str_perf_price}</label>
 							</div>
 						</div>
 						<div class="w3-row-padding w3-padding-32">
 							<div class="w3-col m12">
-								<textarea name="content" id="editor" required class="w3-input"></textarea>
+								<textarea name="content" id="editor" required="required" class="w3-input"></textarea>
 								<script type="text/javascript" src="${project}/scripts/ckeditor/insertCkeditor.js"></script>
 							</div>
 						</div>
@@ -99,7 +104,7 @@
 							<div class="w3-col m12">
 								<span class="w3-text-teal"><i class="fa fa-image"></i> &nbsp;${str_insertThumbnail}
 								</span>
-								<input name="upload" type="file" accept="image/*" required>
+								<input name="upload" type="file" accept="image/*" required="required">
 							</div>
 						</div>
 
@@ -111,8 +116,6 @@
 					</form>
 				</div>
 			</div>
-
-
 
 			<!-- Right Column -->
 			<c:import url="../myBusRight.do?driver=${driver}"></c:import>
