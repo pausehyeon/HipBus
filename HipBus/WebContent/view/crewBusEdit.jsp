@@ -195,7 +195,10 @@
 					});
 //-->
 </script>
-
+<c:if test="${sessionScope.memEmail eq null}">
+	<c:redirect url="main.do"/>
+</c:if>
+<c:if test="${sessionScope.memEmail ne null}">
 	<body class="w3-theme-l5" onload="taglist()">
 
 		<!-- Navbar -->
@@ -411,4 +414,5 @@
 		<c:import url="../bottom.do" />
 
 	</body>
+</c:if>
 </html>

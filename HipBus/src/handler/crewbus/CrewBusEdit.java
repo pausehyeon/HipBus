@@ -32,13 +32,14 @@ public class CrewBusEdit implements CommandHandler {
 		String email = (String) request.getSession().getAttribute("memEmail");
 		String driver = request.getParameter("driver");
 		
-		Map<String,String> map = new HashMap<String,String>();
-		map.put("email", email);
-		map.put("crewid", driver);
-		
-		int leader = crewBusDao.isMember(map);
-		request.setAttribute("leader", leader);
-				
+		if(email != null){
+			Map<String,String> map = new HashMap<String,String>();
+			map.put("email", email);
+			map.put("crewid", driver);
+			
+			int leader = crewBusDao.isMember(map);
+			request.setAttribute("leader", leader);		
+		}
 		List<CrewMemberDto> crewMember = crewBusDao.getCrewmembers(driver);
 		request.setAttribute("crewMember", crewMember);
 		request.setAttribute("driver", driver);
