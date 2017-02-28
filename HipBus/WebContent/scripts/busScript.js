@@ -100,7 +100,7 @@ function initMap() {
 }
 
 function codeAddress() {
-	var address = document.writeUpcomingForm.placeToSearch.value;
+	var address = document.writeform.placeToSearch.value;
 	geocoder
 			.geocode(
 					{
@@ -113,9 +113,9 @@ function codeAddress() {
 								map : map,
 								position : results[0].geometry.location
 							});
-							document.writeUpcomingForm.perf_place.value = results[0].place_id
+							document.writeform.perf_place.value = results[0].place_id
 									+ '@' + results[0].formatted_address;
-							document.writeUpcomingForm.showSearchResult.value = results[0].formatted_address;
+							document.writeform.showSearchResult.value = results[0].formatted_address;
 						} else if (status == google.maps.GeocoderStatus.ZERO_RESULTS) {
 							alert("'" + address + "'의 검색결과가 없습니다.");
 						} else {
