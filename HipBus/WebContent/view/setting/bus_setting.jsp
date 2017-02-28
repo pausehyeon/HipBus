@@ -119,6 +119,8 @@
 <c:set var="str_editModifyBtn" value="수정완료"/>
 <c:set var="str_crewMemEmail" value="Email"/>
 <c:set var="str_crewMemNick" value="Nick"/>
+<c:set var="str_crewMasterBtn" value="크루장 위임"/>
+<c:set var="str_crewMemEjectBtn" value="크루 탈퇴"/>
 <c:set var="str_crewMemManage" value="Crew Member Management"/>
 <c:set var="str_crewMemNoneMsg" value="크루에 가입한 회원이 없습니다. 크루를 홍보해주세요."/>
 
