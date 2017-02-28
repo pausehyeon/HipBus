@@ -49,12 +49,6 @@ function sendId() {
 $(document).ready(
 		function() {
 			
-			if( getCookie("id")){
-				loginCheckForm.email.value =getCookie("id");
-				loginCheckForm.rememberMe.checked = true;
-			}
-			
-			
 			if (!sessionStorage.getItem("myBus")) {
 				$('#mybusget').hide();
 			} else {

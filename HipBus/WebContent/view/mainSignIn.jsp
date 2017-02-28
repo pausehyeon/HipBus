@@ -41,6 +41,19 @@
 						<input name="rememberMe" type="checkbox" value="1" checked="checked" class="w3-check w3-margin-top">
 						${str_signInRememberMe}
 						
+						<script>
+						$(document).ready(
+								function() {
+					
+							if( getCookie("id")){
+								loginCheckForm.email.value = getCookie("id");
+								loginCheckForm.rememberMe.checked = true;
+							}		
+									
+						});
+						
+						</script>
+						
 					</form>
 				</div>
 
