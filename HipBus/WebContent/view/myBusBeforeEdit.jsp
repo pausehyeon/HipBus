@@ -6,7 +6,14 @@
 <%@include file="/view/setting/bus_setting.jsp"%>
 
 <title>${str_mybusTitle}</title>
-<body class="w3-theme-l5">
+<body onload="passwdfocus()" class="w3-theme-l5">
+<script src="/HipBus/scripts/ajax.js"></script>
+	<script type="text/javascript">
+	function passwdfocus() {
+		inputform.passwd.focus();
+	}
+	</script>
+	
 
 	<!-- Navbar -->
 	<c:import url="../top.do"/>
