@@ -39,7 +39,7 @@
 						msg+='<div class="w3-margin"><h4 style="font-weight:bold;">My Bus 검색 결과<h4> <br><br> 검색 결과가 없습니다.</div> <hr>';
 						}else{
 							
-							messages += '<div class="w3-margin"><h4 style="font-weight:bold;">My Bus 검색 결과<h4></div>';
+							messages += '<div class="w3-margin"><h4 style="font-weight:bold; text-align:center;">My Bus 검색 결과<h4></div>';
 							for (var i = 0; i < data.length; i++) {
 								messages+='<a href="myBus.do?driver='+data[i].email+'">'+data[i].nick+'의버스<img class="w3-circle"'+
 								'style="width:30px; height:35px;" src="${project}/hipbusSave/'+data[i].imglocation+'"></a><br><br>';
@@ -72,7 +72,7 @@
 						msg += '<div class="w3-margin"><h4 style="font-weight:bold;">Crew Bus 검색 결과<h4> <br><br> 검색 결과가 없습니다.</div>';
 						
 					} else {
-						message += '<div class="w3-margin"><h4 style="font-weight:bold;">Crew Bus 검색 결과<h4></div>';
+						message += '<div class="w3-margin"><h4 style="font-weight:bold; text-align:center;">Crew Bus 검색 결과<h4></div>';
 							for (var i = 0; i < datas.length; i++) {
 								message += '<a href="crewBus.do?driver='+datas[i].crewid+'">'+datas[i].crewname+'의버스<img class="w3-circle"'+
 								'style="width:30px; height:35px;" src="${project}/hipbusSave/'+datas[i].crewImg+'"></a><br><br>';	
@@ -201,7 +201,7 @@
 						<a>아직 올라 탄 버스가 없습니다.</a>
 					</c:if>
 						<c:if test="${fn:length(hoppedOnMembers) ge 5}">
-							<a class="w3-center w3-small" onclick="document.getElementById('driverSearch').style.display='block'"> <span>${str_more}</span>
+							<a class="w3-center w3-small" onclick="document.getElementById('myBusSearch').style.display='block'"> <span>${str_more}</span>
 						</a>
 						</c:if>
 					<hr>
