@@ -8,77 +8,7 @@
 <script src="/HipBus/scripts/ajax.js"></script>
 
 
-<script type="text/javascript">		
-	function taglist() {
-		var params = "driver=" +"${driver}" + "&type=list";		
-		var tagname = document.getElementById("tagname");
-		var tagrequest = new Request(function() {
-			if (tagrequest.httpRequest.readyState == 4) {
-				if (tagrequest.httpRequest.status == 200) {				 					
- 					var listResult = eval("("+tagrequest.httpRequest.responseText+")");
- 					var msg = "";
- 					for( var i=0; i<listResult.length; i++) {
- 						msg += '<span class="w3-theme-d5 w3-padding w3-round w3-tag w3-margin-top w3-margin-right">'
- 							+ listResult[i]+'<i class="fa fa-close w3-right w3-margin-left" onclick="tagdelete()"></i></span>'; 							
-					}
- 					tagname.innerHTML = msg; 					
-				} else {
-					tagname.innerHTML = tagrequest.httpRequest.status + "오류";
-				}
-			} else {
-				tagname.innerHTML = "통신중...";
-			}
-		}, "myBusEditTagsResult.do", "POST", params);
-		tagrequest.sendRequest();	
-	}
-	
-	function taginsert() {		
-		var tagerror = document.getElementById("tagerror");
-		var taginput = document.getElementById("taginput");		
-		var params = "driver=" + "${driver}" + "&type=insert&tag=" + taginput.value;
-		var tagrequest = new Request(function() {
-			if (tagrequest.httpRequest.readyState == 4) {
-				if (tagrequest.httpRequest.status == 200) {
-					tagerror.innerHTML="";					 					
- 					var insertResult = eval("("+tagrequest.httpRequest.responseText+")");
- 					if ( insertResult == 0 ) {
- 						tagerror.innerHTML = "<p>태그 추가에 실패하였습니다.<br>잠시 후 다시 시도해 주세요.</p>";
- 					} else if ( insertResult == 1) {
- 						taglist();	
- 					}					
-				} else {
-					tagerror.innerHTML = tagrequest.httpRequest.status + "오류";
-				} 							
-			} else {
-				tagerror.innerHTML = "통신중...";
-			}
-		}, "myBusEditTagsResult.do", "POST", params);
-		tagrequest.sendRequest();			
-	} 
-	/* function tagdelete() {
-		var tagdelete = document.getElementById("tagdelete");
-		var deleteerror = document.getElementById("deleteerror");
-		var params = "driver=" + "${driver}" + "&type=delete&tag=" + tagdelete.value;
-		var tagrequest = new Request(function() {
-			if (tagrequest.httpRequest.readyState == 4) {
-				if ( tagrequest.httpRequest.status == 200 ) {
-					deleteerror.innerHTML="";
-					var deleteResult = eval("("+tagrequest.httpRequest.responseText+")");
-					if ( deleteResult == 0 ) {
-						deleteerror.innerHTML = "<P>태그 삭제에 실패하였습니다.<br>잠시 후 다시 시도해 주세요</p>";
-					} else if ( deleteResult == 1) {
-						taglist();
-					}
-				} else {
-					tagerror.innerHTML = tagrequest.httpRequest.status + "오류";
-				}
-			} else {
-				tagerror.innerHTML = "통신중...";
-			}			
-		}, "myBusEditTagResult.do", "POST", params);
-		tagrequest.sendRequest();		
-	} */
-</script>
+
 
 <title>${str_mybusTitle}</title>
 <c:if test="${sessionScope.memEmail ne driver}">
@@ -88,7 +18,7 @@
 	</script>
 </c:if>
 <c:if test="${sessionScope.memEmail eq driver}">
-	<body class="w3-theme-l5" onload="taglist(); inputformvalidate()">
+	<body class="w3-theme-l5" onload="taglist();">
 
 		<!-- Navbar -->
 		<c:import url="../top.do" />
@@ -97,6 +27,77 @@
 		<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js"></script>
 		<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/localization/messages_ko.js"></script>
 		<script type="text/javascript" src="${project}/scripts/formValidationScripts.js"></script>
+		<script type="text/javascript">		
+			function taglist() {
+				var params = "driver=" +"${driver}" + "&type=list";		
+				var tagname = document.getElementById("tagname");
+				var tagrequest = new Request(function() {
+					if (tagrequest.httpRequest.readyState == 4) {
+						if (tagrequest.httpRequest.status == 200) {				 					
+		 					var listResult = eval("("+tagrequest.httpRequest.responseText+")");
+		 					var msg = "";
+		 					var cnt = 0;
+		 					for( var i=0; i<listResult.length; i++) {
+		 						msg += '<span id="tag_' + cnt + '" class="w3-theme-d5 w3-padding w3-round w3-tag w3-margin-top w3-margin-right">'
+		 							+ listResult[i]+'<i class="fa fa-close w3-right w3-margin-left" onclick="tagdelete(\'tag_' + cnt++ + '\')"></i></span>'; 						
+							}
+		 					tagname.innerHTML = msg; 					
+						} else {
+							tagname.innerHTML = tagrequest.httpRequest.status + "오류";
+						}
+					} else {
+						tagname.innerHTML = "통신중...";
+					}
+				}, "myBusEditTagsResult.do", "POST", params);
+				tagrequest.sendRequest();	
+			}
+			
+			function taginsert() {		
+				var tagerror = document.getElementById("tagerror");
+				var taginput = document.getElementById("taginput");		
+				var params = "driver=" + "${driver}" + "&type=insert&tag=" + taginput.value;
+				var tagrequest = new Request(function() {
+					if (tagrequest.httpRequest.readyState == 4) {
+						if (tagrequest.httpRequest.status == 200) {
+							tagerror.innerHTML="";					 					
+		 					var insertResult = eval("("+tagrequest.httpRequest.responseText+")");
+		 					if ( insertResult == 0 ) {
+		 						tagerror.innerHTML = "<p>태그 추가에 실패하였습니다.<br>잠시 후 다시 시도해 주세요.</p>";
+		 					} else if ( insertResult == 1) {
+		 						taglist();	
+		 					}					
+						} else {
+							tagerror.innerHTML = tagrequest.httpRequest.status + "오류";
+						} 							
+					} else {
+						tagerror.innerHTML = "통신중...";
+					}
+				}, "myBusEditTagsResult.do", "POST", params);
+				tagrequest.sendRequest();			
+			} 
+			function tagdelete(tag_num) {
+				var tagerror = document.getElementById("tagerror");
+				var params = "driver=" + "${driver}" + "&type=delete&tag=" + $('#'+tag_num).text();
+				var tagrequest = new Request(function() {
+					if (tagrequest.httpRequest.readyState == 4) {
+						if ( tagrequest.httpRequest.status == 200 ) {
+							tagerror.innerHTML = "";
+							var deleteResult = eval("("+tagrequest.httpRequest.responseText+")");
+							if ( deleteResult == 0 ) {
+								//deleteerror.innerHTML = "<P>태그 삭제에 실패하였습니다.<br>잠시 후 다시 시도해 주세요</p>";
+							} else if ( deleteResult > 0) {
+								taglist();
+							}
+						} else {
+							tagerror.innerHTML = tagrequest.httpRequest.status + "오류";
+						}
+					} else {
+						tagerror.innerHTML = "통신중...";
+					}			
+				}, "myBusEditTagsResult.do", "POST", params);
+				tagrequest.sendRequest();		
+			}
+		</script>
 
 
 		<!-- Page Container -->
@@ -190,8 +191,8 @@
 								<div class="w3-col s1 m1">
 									<i class="fa fa-plus-square w3-xxlarge" onclick="taginsert()"></i>									
 								</div>																											
-							</div>																			
-							<div class="w3-content w3-margin-top">
+							</div>																									
+							<div class="w3-content w3-margin-top">						
 							<div id="tagerror">									
 							</div>
 								<div id="tagname"></div>														
