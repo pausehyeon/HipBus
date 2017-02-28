@@ -81,14 +81,14 @@
 <c:set var="str_perf_runningtime" value="공연 시간 (분)"></c:set>
 <c:set var="str_perf_price" value="관람료 (원)"/>
 <c:set var="str_searchPlace" value="검색할 주소를 입력해주세요."/>
-<c:set var="str_postUpcoming" value="공연 등록"/>
+<c:set var="str_postUpcoming" value="공연일정 등록"/>
 <c:set var="str_selectPoster" value="공연 포스터 (권장 크기 560*790) : "/>
 
 <!-- myBusUpcomingRead.jsp -->
 <c:set var="str_time" value="공연 시각"/>
 
 <!--  myBusUpcomingModify -->
-<c:set var="str_modifyUpcoming" value="공연 수정"/>
+<c:set var="str_modifyUpcoming" value="공연일정 수정"/>
 
 <!-- myBusVideos.jsp -->
 <c:set var="str_whosLive" value="님의 라이브"/>

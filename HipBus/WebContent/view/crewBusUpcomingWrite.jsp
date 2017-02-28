@@ -9,17 +9,17 @@
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=${googleApiKey}&region=kr" type="text/javascript"></script>
 <script src="/HipBus/scripts/busScript.js"></script>
 
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/localization/messages_ko.js"></script>
-
-
 <title>${str_upcomingTitle}</title>
 
-<body class="w3-theme-l5" onload="initMap()">
+<body class="w3-theme-l5" onload="initMap(); writeformvalidate()">
 
 	<!-- Navbar -->
 	<c:import url="../top.do" />
+	<!-- jQuery Validation Plugin -->
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/localization/messages_ko.js"></script>
+	<script type="text/javascript" src="${project}/scripts/formValidationScripts.js"></script>
 
 	<!-- Page Container -->
 	<div class="w3-container w3-content" style="max-width: 1400px;">
@@ -37,7 +37,7 @@
 			<!-- 여기서부터 -->
 			<div class="w3-col m7">
 				<div class="w3-container w3-card-2 w3-white w3-round w3-margin-bottom w3-margin-left w3-margin-right w3-padding-32 w3-padding-xxlarge">
-					<form name="writeUpcomingForm" id="writeUpcomingForm" action="crewBusUpcomingWritePro.do?driver=${driver}" method="post" enctype="multipart/form-data">
+					<form name="writeform" id="writeform" action="crewBusUpcomingWritePro.do?driver=${driver}" method="post" enctype="multipart/form-data">
 						<div class="w3-container w3-center w3-theme-d5">
 							<h3>
 								<i class="fa fa-calendar"></i>&nbsp; ${str_upcoming}
@@ -110,7 +110,7 @@
 
 						<div class="w3-row-padding w3-center">
 							<p>
-								<button type="submit" class="w3-btn w3-padding"><i class="fa fa-check w3-margin-rignt"></i> ${str_postWanted}</button>
+								<button type="submit" class="w3-btn w3-padding"><i class="fa fa-check w3-margin-rignt"></i> ${str_postUpcoming}</button>
 							<script type="text/javascript">
 							//<!--
 							$(document).ready(function(){

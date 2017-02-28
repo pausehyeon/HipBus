@@ -110,7 +110,7 @@
 
 						<div class="w3-row-padding w3-center">
 							<p>
-								<button type="submit" class="w3-btn w3-padding"><i class="fa fa-check w3-margin-rignt"></i> ${str_postWanted}</button>
+								<button type="submit" class="w3-btn w3-padding"><i class="fa fa-check w3-margin-rignt"></i> ${str_postUpcoming}</button>
 							</p>
 						</div>
 					</form>
