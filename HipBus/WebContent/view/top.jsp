@@ -20,6 +20,7 @@
 	function driverCheck() {
 		var params = "keyword=" + $('input[name="keyword"]').val();
 		var driverResult = document.getElementById("driverResult");
+		var keyword=searchform.keyword.value;
 		var crewSearchResult = document.getElementById("crewSearchResult");
 		var myBusSearchResult = document.getElementById("myBusSearchResult");
 		var request = new Request(function() {
@@ -39,7 +40,7 @@
 						msg+='<div class="w3-margin"><h4 style="font-weight:bold;">My Bus 검색 결과<h4> <br><br> 검색 결과가 없습니다.</div> <hr>';
 						}else{
 							
-							messages += '<div class="w3-margin"><h4 style="font-weight:bold; text-align:center;">My Bus 검색 결과<h4></div>';
+							messages += '<div class="w3-margin"><h4 style="font-weight:bold; text-align:center;">My Bus<br><br> '+keyword+' 검색 결과<h4></div>';
 							for (var i = 0; i < data.length; i++) {
 								messages+='<a href="myBus.do?driver='+data[i].email+'">'+data[i].nick+'의버스<img class="w3-circle"'+
 								'style="width:30px; height:35px;" src="${project}/hipbusSave/'+data[i].imglocation+'"></a><br><br>';
@@ -189,7 +190,7 @@
 		</c:if>
 		<c:if test="${sessionScope.memEmail ne null}">
 			<!-- ^ 로그인 된 경우 친구목록과 검색기능 -->
-			<li class="w3-hid	e-small w3-dropdown-hover"><a href="#" class="w3-padding-large w3-hover-white" title="otherdrivers"> <i class="fa fa-users"></i>
+			<li class="w3-hide-small w3-dropdown-hover"><a href="#" class="w3-padding-large w3-hover-white" title="otherdrivers"> <i class="fa fa-users"></i>
 			</a>
 				<div class="w3-dropdown-content w3-white w3-card-4">
 					<c:if test="${hoppedOnMembers ne null}">
@@ -226,7 +227,7 @@
 					<form name="searchform" method="post">
 						<div class="w3-row w3-container w3-padding-16">
 							<div class="w3-threequarter">
-								<input type="text" name="keyword" class="w3-input" placeholder="${str_search}" onkeyup="driverCheck()">
+								<input type="text" name="keyword" id="keyword" class="w3-input" placeholder="${str_search}" onkeyup="driverCheck()">
 							</div>
 							<div class="w3-quarter w3-right-align">
 								<i class="fa fa-search"></i>
