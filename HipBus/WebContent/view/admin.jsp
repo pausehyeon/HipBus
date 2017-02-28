@@ -237,7 +237,7 @@
 							</tr>
 						<c:if test="${count eq 0}">
 							<tr>
-								<td colspan="4" style="text-align : center">
+								<td colspan="7" style="text-align : center">
 									${str_listMsg}
 								</td>
 							</tr>
@@ -292,9 +292,9 @@
 										<td>${getSearch.nick}</td>
 										<!-- 불러온 닉네임 -->
 										<td style="text-align: left;"><a class="w3-hover-black w3-padding" style="text-decoration: none" href="myBus.do?driver=${getSearch.email}">${str_memGo}&nbsp;<i class="fa fa-bus"></i></a>
-										<button id="${status.count}" onclick="myFunction('searchCrew${cstatus.count}')">
+										<span id="${status.count}" onclick="myFunction('searchCrew${cstatus.count}')">
 											${str_crewList}
-										</button>												
+										</span>												
 											<div id="searchCrew${cstatus.count}" class="w3-accordion-content w3-container">
 												<ul>
 												 	<c:forEach var="c" items="${clist}">

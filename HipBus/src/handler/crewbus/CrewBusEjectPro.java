@@ -18,19 +18,32 @@ import model.crewbus.CrewBusDao;
 public class CrewBusEjectPro implements CommandHandler {
 	@Resource(name="crewBusDao")
 	private CrewBusDao crewbusDao;
+	
 	@RequestMapping("/crewBusEjectPro.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
+
 		String driver = request.getParameter("driver");
 		String email = request.getParameter("email");
+		int hidden =Integer.parseInt(request.getParameter("hidden"));
+		
+		int result = 0;
+		int creweject = 0;
 		
 		Map<String,String> map = new HashMap<String,String>();
 		map.put("crewid", driver);
 		map.put("email", email);
-		int result = crewbusDao.ejectMember(map);
+		
+		if(hidden != 1){
+			result = crewbusDao.ejectMember(map);
+		}else{
+			creweject = crewbusDao.ejectMember(map);
+		}
 		
 		request.setAttribute("driver", driver);
 		request.setAttribute("result", result);
+		request.setAttribute("creweject", creweject);
+		
 		return new ModelAndView("crewBusEjectPro");
 	}
 
