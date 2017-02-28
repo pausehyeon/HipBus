@@ -113,6 +113,21 @@
 		request.sendRequest();
 	}
 
+	
+	function moreCrew(){
+		var msg="";
+		var moreBusResult = document.getElementById("moreBusResult");
+		msg += '<div class="w3-margin"><h4 style="font-weight:bold;">hop on<h4> </div>';
+		
+		moreBusResult.innerHTML=msg;
+		
+		
+		
+		
+		
+	}
+	
+	
 	$(document).ready(function() {
 
 		if (!sessionStorage.getItem("myBus")) {
@@ -146,7 +161,10 @@
 			width : 30,
 			height : 35
 		});
-
+		/*
+		var keywprd=searchResult.keyword.value;
+		$('#crewResult').attr({})
+*/
 	});
 //-->
 </script>
@@ -175,24 +193,31 @@
 			</a>
 				<div class="w3-dropdown-content w3-white w3-card-4">
 					<c:if test="${hoppedOnMembers ne null}">
-						<c:forEach var="hoppedOnMember" items="${hoppedOnMembers}">
+						<c:forEach var="hoppedOnMember" begin="0" end="4" items="${hoppedOnMembers}">
 							<a href="myBus.do?driver=${hoppedOnMember.email}"><i class="fa fa-bus w3-margin-right"></i>${hoppedOnMember.nick}</a>
 						</c:forEach>
 					</c:if>
-					<c:if test="${hoppedOnMembers eq null}">
+					<c:if test="${fn:length(hoppedOnMembers) eq 0}">
 						<a>아직 올라 탄 버스가 없습니다.</a>
 					</c:if>
+						<c:if test="${fn:length(hoppedOnMembers) ge 5}">
+							<a class="w3-center w3-small" onclick="document.getElementById('driverSearch').style.display='block'"> <span>${str_more}</span>
+						</a>
+						</c:if>
 					<hr>
 					<c:if test="${hoppedOnCrews ne null}">
-						<c:forEach var="hoppedOnCrew" items="${hoppedOnCrews}">
+						<c:forEach var="hoppedOnCrew" begin="0" end="4" items="${hoppedOnCrews}">
 							<a href="crewBus.do?driver=${hoppedOnCrew.crewid}"><i class="fa fa-fort-awesome w3-margin-right"></i>${hoppedOnCrew.crewname}</a>
 						</c:forEach>
 					</c:if>
-					<c:if test="${hoppedOnCrews eq null}">
+					<c:if test="${fn:length(hoppedOnCrews) eq 0}" >
 						<a>아직 올라 탄 크루가 없습니다.</a>
 					</c:if>
-					<a class="w3-center w3-small" onclick="document.getElementById('driverSearch').style.display='block'"> <span>${str_more}</span>
+					<c:if test="${fn:length(hoppedOnCrews) ge 5}">
+						<a class="w3-center w3-small" onclick="document.getElementById('crewBusSearch').style.display='block'"> <span>${str_more}</span>
 					</a>
+					</c:if>
+				
 				</div></li>
 
 			<li class="w3-hide-small w3-dropdown-hover"><a href="#" class="w3-padding-large w3-hover-white" title="otherdrivers"> <i class="fa fa-search"></i>

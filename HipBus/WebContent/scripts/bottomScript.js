@@ -20,7 +20,6 @@ function myBusGet() {
 }
 
 function crewBusSet() {
-	// crewBusLeft img태그에 id="crewBusLeftImg" 줄것
 	var crewBusDriver = document.location.href;
 	var crewBusImgLocation = document.getElementById("crewBusLeftImg").src;
 	if (crewBusDriver != "") {

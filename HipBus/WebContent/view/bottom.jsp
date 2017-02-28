@@ -3,7 +3,6 @@
 <script src="/HipBus/scripts/bottomScript.js"></script>
 
 <body>
-
 	<!-- 댓글 Alert   -->
 	<div class="w3-container w3-margin-bottom w3-text-khaki" style="border: 1px solid transparent; ; float: left; width:85px;">
 		<a href="#" onclick="document.getElementById('id01').style.display='block'" class="w3-bottom w3-left w3-padding-large w3-hover-opacity" title="실시간 댓글 알림"> <i class="fa fa-bell w3-xxlarge"></i><span
