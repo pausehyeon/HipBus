@@ -2,11 +2,145 @@
 <%@include file="/view/setting/setting.jsp"%>
 <script src="/HipBus/scripts/bottomScript.js"></script>
 
+<!-- 댓글 알람 -->
+<script type="text/javascript" src="/HipBus/scripts/ajax.js"></script>
+<script type="text/javascript">
+//<!--
+var request = null;
+var contentFix = null;
+var itv = 0;
+// 댓글목록 불러오기
+	$(document).ready(function() {
+		if(localStorage.getItem("alram") == "On"){
+			 $('#alramOff').show();
+				$('#alramOn').hide();
+				alram();
+		} else {
+			var idvalue = document.getElementById("idvalue");
+			$('#alramOn').show();
+			$('#alramOff').hide();
+			idvalue.innerHTML = "알림기능을 켜주세요.^^";
+		}
+	});
+	function alram(){
+			itv = setInterval(function(){ 
+				replyResult();
+			}, 1000);
+	}
+	function  replyResult() {
+		var params = 'email=' + "${sessionScope.memEmail}"
+					+ '&replynum=0';
+		request = new Request(
+				function() {
+					var idvalue = document.getElementById("idvalue");
+					var alramCount = document.getElementById("alramCount");
+					if (request.httpRequest.readyState == 4) {
+						if (request.httpRequest.status == 200) {
+							var msg = "";
+							var count = "";
+							var xmldoc = request.httpRequest.responseXML;
+							var code = xmldoc.getElementsByTagName("code")
+									.item(0).innerHTML;
+							if (code == "select") {
+								var data = eval("("
+										+ xmldoc.getElementsByTagName("data")
+												.item(0).innerHTML + ")");
+								//alert(data.length)
+								if (data.length == 0) {
+									msg += "<center>"
+									msg += "알림이 없습니다.";
+									msg += "</center>"									
+									idvalue.innerHTML = msg;
+								} else {
+									count += eval("("
+											+ xmldoc.getElementsByTagName("count")
+													.item(0).innerHTML + ")");
+																	
+											alramCount.innerHTML = count;
+											var deldiv = document
+											.getElementById("board_" + data.replynum);
+									while(idvalue.hasChildNodes()){
+										idvalue.removeChild(idvalue.firstChild);
+									}
+									
+								//	alert("1");
+									for (var i = 0; i < data.length; i++) {
+									//	alert("2");
+										var newdiv = makeReply(data[i]);
+										idvalue.appendChild(newdiv);
+										
+									}
+								}
+							} else if (code == "empty") {
+								var message = xmldoc.getElementsByTagName(
+										"message").item(0).innerHTML;
+								msg += message;
+							}
+						} else {
+						}
+					} else {
+					}
+				}, "replyAlertResult.do", "POST", params);
+		request.getXMLHttpRequest();
+		request.sendRequest();
+	}
+function makeReply(data){
+	var newdiv = document.createElement("div");
+	newdiv.setAttribute("id", "board_" + data.replynum);
+	var board = '';
+	var categoryName = '';
+	var category = data.category;
+	var type = 1;
+	switch( category ) {
+	case 1 : categoryName = '비트'; type= category+1; break;
+	case 2 : categoryName = '랩'; type= category+1; break;
+	case 3 : categoryName = '믹스테잎'; type= category+1; break;
+	case 4 : categoryName = '보컬'; type= category+1; break;
+	case 5 : categoryName = '가사'; type= category+1; break;
+	case 6 : categoryName = '자유'; type= category+1; break;
+	}
+	
+			board += '<p>'
+			board += '<a href="stationRead.do?num='+data.num+'&category='+data.category+'&type='+type+'"><span>['+categoryName+']'+ data.subject+'</span>에 댓글이 달렸습니다.</a>'
+			board += '&nbsp;&nbsp;<a href="#"><i class="fa fa-hand-o-left w3-margin-right"></i></a>'
+			board += '</p>'
+	
+				
+	
+	newdiv.innerHTML = board;
+	newdiv.data += data;
+
+	return newdiv;
+}
+function alramOff(){
+	localStorage.removeItem("alram");
+	var alramOff = document.getElementById( "alramOff" );
+	 $('#alramOff').hide();
+		$('#alramOn').show();
+	localStorage.setItem("alram","Off");
+	clearInterval(itv);
+	var idvalue = document.getElementById("idvalue");
+	var alramCount = document.getElementById("alramCount");
+	idvalue.innerHTML = "알림기능을 켜주세요.^^";
+	alramCount.innerHTML = '';
+	
+}
+function alramOn(){
+	localStorage.removeItem("alram");
+	var alramOn = document.getElementById( "alramOn" );
+	 $('#alramOn').hide();
+		$('#alramOff').show();
+	localStorage.setItem("alram","On");
+	alram();
+	
+}
+//-->
+</script>
 <body>
 	<!-- 댓글 Alert   -->
 	<div class="w3-container w3-margin-bottom w3-text-khaki" style="border: 1px solid transparent; ; float: left; width:85px;">
 		<a href="#" onclick="document.getElementById('id01').style.display='block'" class="w3-bottom w3-left w3-padding-large w3-hover-opacity" title="실시간 댓글 알림"> <i class="fa fa-bell w3-xxlarge"></i><span
-			class="w3-badge w3-red">3</span>
+			class="w3-badge w3-red" id="alramCount"></span>
 		</a>
 	</div>
 	
@@ -30,21 +164,13 @@
 					<i class="fa fa-bell w3-xlarge"></i>&nbsp;실시간 댓글 확인
 				</h4>
 			</header>
-			<div class="w3-container w3-padding-jumbo">
-				<p>
-					<a href="#"><span>[잡담] 안녕...</span>에 댓글이 달렸습니다.</a>&nbsp;&nbsp;<a href="#"><i class="fa fa-close w3-margin-right"></i></a>
-				</p>
-				<p>
-					<a href="#"><span>[잡담] 안녕...</span>에 댓글이 달렸습니다.</a>&nbsp;&nbsp;<a href="#"><i class="fa fa-close w3-margin-right"></i></a>
-				</p>
-				<p>
-					<a href="#"><span>[잡담] 안녕...</span>에 댓글이 달렸습니다.</a>&nbsp;&nbsp;<a href="#"><i class="fa fa-close w3-margin-right"></i></a>
-				</p>
-
+			<div class="w3-container w3-padding-jumbo" id="idvalue">
 			</div>
 			<footer class="w3-container w3-padding-16 w3-padding-large">
-				<div class="w3-right">
-					<input class="w3-check" type="checkbox"> <label class="w3-validate">알림중지</label>
+				<div class="w3-right" id="alram">
+				
+				<a href="#" onClick="alramOff(); return false" style="text-decoration:none;" class="w3-xxlarge fa fa-toggle-on" id="alramOff"></a>
+				<a href="#" onClick="alramOn(); return false"style="display:none; text-decoration:none; "class="w3-xxlarge fa fa-toggle-off" id="alramOn"></a>
 				</div>
 			</footer>
 		</div>
