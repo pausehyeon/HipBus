@@ -12,7 +12,7 @@ public class StationDto {
 	private int likenum;		// 추천수
 	private int readcount;		// 조회수
 	private Timestamp reg_date;	// 작성일
-	
+	private int replynum;
 	
 	public int getNum() {
 		return num;
@@ -67,6 +67,12 @@ public class StationDto {
 	}
 	public void setReg_date(Timestamp reg_date) {
 		this.reg_date = reg_date;
+	}
+	public int getReplynum() {
+		return replynum;
+	}
+	public void setReplynum(int replynum) {
+		this.replynum = replynum;
 	}
 
 	

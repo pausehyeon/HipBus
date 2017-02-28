@@ -4,7 +4,10 @@
 <html>
 <%@include file="/view/setting/setting.jsp"%>
 <%@include file="/view/setting/station_setting.jsp"%>
-
+<style>
+a{text-decoration:none;
+}
+</style>
 
 <title>${str_title}</title>
 <body onload="boardSet()">

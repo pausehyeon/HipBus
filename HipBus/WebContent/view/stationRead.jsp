@@ -6,7 +6,6 @@
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
-
 <title>${str_title}</title>
 <body>
 
@@ -602,9 +601,9 @@
 						</header>
 
 						<div class="w3-container w3-padding-128 w3-padding-jumbo">
-							<pre>
+							<p>
 ${article.content}
-					</pre>
+					</p>
 						</div>
 
 						<footer class="w3-container w3-padding-jumbo w3-theme-l3 w3-center">

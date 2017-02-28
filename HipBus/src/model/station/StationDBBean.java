@@ -184,6 +184,19 @@ public class StationDBBean implements StationDao {
 		result = SqlMapClient.getSession().delete("Station.deleteReply", replynum);	
 		return result;
 	}
+	// 알람
+	public List< StationDto > replyAlrams(String email) {
+		return SqlMapClient.getSession().selectList("Station.replyAlrams", email);
+	}
+	public int getAlrams(String email){
+		return SqlMapClient.getSession().selectOne("Station.getAlrams", email);
+	}
+	public void addStatus(int num){
+		SqlMapClient.getSession().update("Station.addStatus", num);
+	}
+	public int upStatus(int replynum){
+		return SqlMapClient.getSession().update("Station.upStatus", replynum);
+	}
 	// 대댓글
 		public List<ReplyDto> getInfReplys( int ref_num ) {
 			return SqlMapClient.getSession().selectList( "Station.getInfReplys", ref_num );
@@ -215,6 +228,6 @@ public class StationDBBean implements StationDao {
 		}
 		public int addMem(String email) {
 			return SqlMapClient.getSession().update( "Station.addMem",email );
-		}	
-	
+		}
+
 }

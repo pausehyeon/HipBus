@@ -52,4 +52,9 @@ public interface StationDao {
 	public int infReplyInsert( ReplyDto dto );
 	public int countMem(String email);
 	public int addMem( String email);
+	//알람
+	public List<StationDto> replyAlrams(String email);
+	public int getAlrams(String email);
+	public void addStatus( int num);
+	public int upStatus(int replynum);
 }

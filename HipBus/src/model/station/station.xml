@@ -228,6 +228,34 @@
 		update HB_StationReply set re_step=re_step+1 
 		where ref_num=#{ref_num} and re_step &gt; #{re_step}
 	</update>
+	
+	
+	<!--  알람 -->
+	<select id="replyAlrams" parameterType="String" resultType="model.StationDto">
+	select s.num, s.subject, s.category, sr.replynum
+	from hb_stationreply sr, hb_station s
+	where sr.num=s.num 
+	and sr.num in (select num from hb_station where email=#{email})
+	and sr.status=0	
+	</select>
+	<select id="getAlrams" parameterType="String" resultType="int">
+	select count(*)
+	from hb_stationreply sr, hb_station s
+	where sr.num=s.num 
+	and sr.num in (select num from hb_station where email=#{email})
+	and sr.status=0
+	</select>
+	<update id="addStatus" parameterType="int">
+	update HB_StationReply set Status=1
+	where num=#{num}
+	</update>
+	<update id="upStatus" parameterType="int">
+	update HB_StationReply set Status=1
+	where replynum=#{replynum}
+	</update>
+	
+	
+	
 	<select id="getReplyCount" resultType="int">
 		select count(*) from HB_StationReply
 	</select>
