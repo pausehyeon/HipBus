@@ -13,7 +13,7 @@
 	<c:redirect url="main.do" />
 </c:if>
 <c:if test="${sessionScope.memEmail ne null}">
-	<body class="w3-theme-l5" onload="taglist(); signoutformvalidate(); inputformvalidate()">
+	<body class="w3-theme-l5" onload="taglist(); signoutformvalidate(); crewinputformvalidate()">
 
 		<!-- Navbar -->
 		<c:import url="../top.do" />
@@ -144,7 +144,7 @@
 							</h5>
 
 							<div class="w3-row-padding">
-								<form id="inputform" enctype="multipart/form-data" action="myBusEditPro.do?driver=${driver}" method="post" class="w3-container">
+								<form id="inputform" enctype="multipart/form-data" action="crewBusEditPro.do?driver=${driver}" method="post" class="w3-container">
 									<div class="w3-col m12 w3-margin-top w3-margin-bottom">
 										<div class="w3-row-padding">
 											<c:if test="${member.imglocation eq null}">
@@ -154,7 +154,7 @@
 											</c:if>
 											<c:if test="${member.imglocation ne null}">
 												<div class="w3-col m4 w3-center">
-													<img src="${project}/hipbusSave/${member.imglocation}" class="w3-circle" width="100%" alt="profile">
+													<img src="${project}/hipbusSave/수정해야" class="w3-circle" width="100%" alt="profile">
 												</div>
 											</c:if>
 											<div class="w3-col m8">
@@ -165,16 +165,8 @@
 										<div class="w3-text-red w3-small w3-right"></div>
 									</div>
 									<div class="w3-col m12 w3-margin-top w3-margin-bottom">
-										<label class="w3-validate w3-label">${str_nick}</label>
-										<input name="nick" value="${member.nick}" class="w3-input" type="text">
-									</div>
-									<div class="w3-col m12 w3-margin-top w3-margin-bottom">
-										<label class="w3-validate w3-label">${str_passwd}</label>
-										<input name="passwd" id="passwd" value="${member.passwd}" class="w3-input" type="password">
-									</div>
-									<div class="w3-col m12 w3-margin-top w3-margin-bottom">
-										<label class="w3-validate w3-label">${str_repasswd}</label>
-										<input name="repasswd" value="${member.passwd}" class="w3-input" type="password">
+										<label class="w3-validate w3-label">${str_crewname}</label>
+										<input name="crewname" value="" class="w3-input" type="text">
 									</div>
 									<div class="w3-col m12 w3-margin-top w3-margin-bottom w3-center">
 										<c:if test="${(member.mem_level eq 2) and (result eq 1)}">

@@ -203,8 +203,37 @@ function signoutformvalidate() {
 				required : str_mustAgree
 			}
 		},
-		errorPlacement: function(error, element) {
+		errorPlacement : function(error, element) {
 			error.insertAfter("#signOutCheckError");
+		}
+	});
+}
+
+function crewinputformvalidate() {
+	$("#inputform").validate({
+		errorClass : "w3-text-red w3-xsmall w3-right",
+		submitHandler : function() {
+			if (confirm(inputform.email.value + str_confirmSignUp)) {
+				return true;
+			} else {
+				return false;
+			}
+		},
+		// 규칙
+		rules : {
+			crewname : {
+				required : true,
+				nowhitespace : true,
+				remote : {
+					url : "verifyCrewNameResult.do",
+					type : "post",
+					data : {
+						nick : function() {
+							return inputform.crewname.value;
+						}
+					}
+				}
+			}
 		}
 	});
 }
