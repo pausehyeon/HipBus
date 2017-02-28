@@ -114,7 +114,14 @@
 <c:set var="str_postWanted" value="구인광고 등록"/>
 <c:set var="str_modifyWanted" value="구인광고 수정 완료"/>
 
-<!-- myBusEdit.jsp -->
+<!-- myBusEdit.jsp crewBusEdit.jsp-->
+<c:set var="str_editChanal" value="채널 아이디 확인하는 방법"/>
+<c:set var="str_editModifyBtn" value="수정완료"/>
+<c:set var="str_crewMemEmail" value="Email"/>
+<c:set var="str_crewMemNick" value="Nick"/>
+<c:set var="str_crewMemManage" value="Crew Member Management"/>
+<c:set var="str_crewMemNoneMsg" value="크루에 가입한 회원이 없습니다. 크루를 홍보해주세요."/>
+
 <c:set var="str_editTag" value="Tags 수정"/>
 <c:set var="str_goSignOut" value="회원 탈퇴"/>
 <c:set var="str_signOutmsg1" value="탈퇴할 경우 재사용 및 복구가 불가능합니다."/>
