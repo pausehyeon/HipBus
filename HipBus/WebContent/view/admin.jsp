@@ -103,14 +103,7 @@
 		addReq=function(){
 			$('input[name="upload"]').attr("required", false);
 		}
-		/* ad=function(){
-			//alert(adform.upload.value == "");
-			if(adform.upload.value == "" || adform.htmlCode.value == null )
-			
-			alert("아니야");
-			return false;
-			//location.href="AdminADPro.do?ad_num="+adform.ad_num.value;
-		} */
+		
 		sendEmail= function(){
 			if(sendform.email.value == ""){
 				alert("관리자 초대하실 사용자의 이메일을 작성해주세요.");
@@ -232,7 +225,7 @@
 							<tr class="w3-black">
 								<th >${str_memGrade}</th>
 								<th><a href="#" style="text-decoration: none">&nbsp;&nbsp;${str_memEmail}</a></th>
-								<th width="80px"><a href="#" style="text-decoration: none">&nbsp;&nbsp;${str_memNick}</a></th>
+								<th width="80px">&nbsp;&nbsp;${str_memNick}</th>
 								<th colspan="4" style="text-align: certer"><a href="#" style="text-decoration: none;" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${str_memAuthority}</a></th>
 							</tr>
 						<c:if test="${count eq 0}">
@@ -293,7 +286,7 @@
 										<!-- 불러온 닉네임 -->
 										<td style="text-align: left;"><a class="w3-hover-black w3-padding" style="text-decoration: none" href="myBus.do?driver=${getSearch.email}">${str_memGo}&nbsp;<i class="fa fa-bus"></i></a>
 										<span id="${status.count}" onclick="myFunction('searchCrew${cstatus.count}')">
-											${str_crewList}
+											${str_crewList} <i class="fa fa-caret-down"></i>
 										</span>												
 											<div id="searchCrew${cstatus.count}" class="w3-accordion-content w3-container">
 												<ul>
@@ -305,11 +298,11 @@
 												</ul>
 											</div>
 											<!-- 크루버스 -->										
-										<c:if test="${getMember.mem_level eq 1}">
-											<a class="w3-hover-black w3-padding" style="text-decoration: none" href="adminMemberManagePro.do?mem_level=2&email=${getMember.email}">${str_memModify}</a>
+										<c:if test="${getSearch.mem_level eq 1}">
+											<a class="w3-hover-black w3-padding" style="text-decoration: none" href="adminMemberManagePro.do?mem_level=2&email=${getSearch.email}">${str_memModify}</a>
 										</c:if>
-										<c:if test="${getMember.mem_level eq 2}">
-											<a class="w3-hover-black w3-padding" style="text-decoration: none" href="adminMemberManagePro.do?mem_level=1&email=${getMember.email}">${str_memModify}</a>
+										<c:if test="${getSearch.mem_level eq 2}">
+											<a class="w3-hover-black w3-padding" style="text-decoration: none" href="adminMemberManagePro.do?mem_level=1&email=${getSearch.email}">${str_memModify}</a>
 										</c:if>
 										<a class="w3-hover-black w3-padding" style="text-decoration: none" href="adminMemberEjectPro.do?email=${getSearch.email}">${str_memLeave}</a>
 										</td>
@@ -353,7 +346,10 @@
 								<option value="mem_level">${str_memGrade}</option>
 							</select>
 							<input class="w3-input w3-border w3-half" name="keyword" type="text">
-							<button class="w3-btn w3-black w3-large" type="submit">${str_memSearchBtn}</button>
+							<button class="w3-btn w3-black w3-hover-teal" type="submit">${str_memSearchBtn}</button>
+							<c:if test="${slist ne null}">
+								<a href="admin.do#manageMembers" class="w3-btn w3-black w3-hover-teal" style="text-decoration: none">${str_memListBtn}</a> 
+							</c:if>
 						</form>
 					</div>
 
@@ -471,11 +467,11 @@
 				<i class="fa fa-sign-out"></i><b>&nbsp;${str_adminSignOut}</b>
 			</h5>
 
-			<pre class="w3-responsive">
-			<i class="fa fa-check"></i>${str_amLeaveMsg}
-			</pre>
+			<p class="w3-responsive">
+				<i class="fa fa-check"></i>${str_amLeaveMsg}
+			</p>
 				<input class="w3-check" type="checkbox" name="assent">
-				<label class="w3-validate">위 사항에 동의하며 관리자 탈퇴를 진행하겠습니다.</label>
+				<label class="w3-validate">&nbsp;&nbsp;${str_amLeaveCheck}</label>
 			<p class="w3-center">
 				<button class="w3-btn w3-hover-teal" type="submit">${str_adminDeleteBtn}</button>
 				<%-- <a class="w3-btn w3-hover-teal" style="text-decoration: none" href="adminSignOutPro.do">${str_adminDeleteBtn}</a> --%>

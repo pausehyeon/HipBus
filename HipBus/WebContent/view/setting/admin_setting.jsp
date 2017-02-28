@@ -30,6 +30,7 @@
 <c:set var="str_memLeave" value="회원탈퇴"/>
 <c:set var="str_memSearchOption" value="검색기준 선택"/>
 <c:set var="str_memSearchMsg" value="*검색할 키워드를 작성하세요."/>
+<c:set var="str_memListBtn" value="처음으로 돌아가기"/>
 <c:set var="str_memSearchBtn" value="검색"/>
 
 <c:set var="str_adminAd" value="상업광고"/>
@@ -66,10 +67,10 @@
 <c:set var="str_passwdCheckOk" value="입력하신 비밀번호가 일치합니다"/>
 <c:set var="str_passwdCheckNo" value="*입력하신 비밀번호가 일치하지 않습니다. 다시 입력 해주세요."/>
 
-
 <c:set var="str_adminSignOut" value="관리자 탈퇴"/>
-<c:set var="str_amLeaveMsg" value=" 사용하고 계신 계정은 탈퇴할 경우 복구가 불가능하며 자세한 사항은 인사부 02-111-1313으로 문의바랍니다. <br>탈퇴 후 사이트관리 권한이 사라지며 한달간 가입이 불가합니다."/>
-<c:set var="str_amLeaveCheck" value="안내 사항을 모두 확인하였으며, 이에 동의합니다."/>
+<c:set var="str_amLeaveMsg" value=" 사용하고 계신 계정은 탈퇴할 경우 복구가 불가능하며 자세한 사항은 인사부 02-111-1313으로 문의바랍니다.
+									<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;탈퇴 후 사이트관리 권한이 사라지며 한달간 가입이 불가합니다."/>
+<c:set var="str_amLeaveCheck" value="위 사항에 동의하며 관리자 탈퇴를 진행하겠습니다."/>
 <c:set var="str_adminDeleteBtn" value="관리자 탈퇴"/>
 
 
