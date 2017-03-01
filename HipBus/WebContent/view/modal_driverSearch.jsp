@@ -1,14 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="/view/setting/navbar_top_setting.jsp"%>
-<script type="text/javascript">
-//<!--
-var keyword=searchform.keyword.value;
-document.getElementById('crewKeyword').innerHTML=keyword;
-//-->
-</script>
-
-
 <!-- MyBus 검색결과창 -->
 <div class="w3-container">
   <div id="driverSearch" class="w3-modal">
