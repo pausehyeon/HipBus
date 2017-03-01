@@ -50,12 +50,12 @@
 					<c:if test="${count ne 0 and dateList eq null}">
 						<c:forEach var="article" items="${articles}">
 							<c:if test='${fn:contains(article.driver, "@")}'>
-								<c:set var="url" value="myBusUpcomingRead.do?num="></c:set>
+								<c:set var="url" value="myBusUpcomingRead.do?driver="></c:set>
 							</c:if>
 							<c:if test='${not fn:contains(article.driver, "@")}'>
-								<c:set var="url" value="crewBusUpcomingRead.do?num="></c:set>
+								<c:set var="url" value="crewBusUpcomingRead.do?driver="></c:set>
 							</c:if>
-							<div class="w3-col m4 l3" onclick="location='${url}${article.driver}'">
+							<div class="w3-col m4 l3" onclick="location='${url}${datelist.driver}&num=${article.num}'">
 								<c:if test="${article.imglocation eq null }">
 									<img src="${project}/view/img/poster1.jpg" alt="poster" style="width: 100%">
 								</c:if>
@@ -87,12 +87,12 @@
 						</div>
 						<c:forEach var="datelist" items="${dateList}">
 							<c:if test='${fn:contains(datelist.driver, "@")}'>
-								<c:set var="url" value="myBusUpcomingRead.do?num="></c:set>
+								<c:set var="url" value="myBusUpcomingRead.do?drvier="></c:set>
 							</c:if>
 							<c:if test='${not fn:contains(datelist.driver, "@")}'>
-								<c:set var="url" value="crewBusUpcomingRead.do?num="></c:set>
+								<c:set var="url" value="crewBusUpcomingRead.do?drvier="></c:set>
 							</c:if>
-							<div class="w3-col m4 l3" onclick="location='${url}${datelist.driver}'">
+							<div class="w3-col m4 l3" onclick="location='${url}${datelist.driver}&num=${datelist.num}'">
 								<c:if test="${datelist.imglocation eq null }">
 									<img src="${project}/view/img/poster1.jpg" alt="poster" style="width: 100%">
 								</c:if>
