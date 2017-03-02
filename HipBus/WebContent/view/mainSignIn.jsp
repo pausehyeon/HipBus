@@ -16,7 +16,13 @@
 	<c:redirect url="main.do" />
 </c:if>
 <c:if test="${sessionScope.memEmail eq null}">
-	<body>
+	<body onload="loginpasswdfocus()">
+		<script src="/HipBus/scripts/ajax.js"></script>
+		<script type="text/javascript">
+			function loginpasswdfocus() {
+				loginCheckForm.passwd.focus();
+			}
+		</script>
 		<!-- navigation -->
 		<%@ include file="navbar_main.jsp"%>
 
@@ -32,7 +38,7 @@
 				</div>
 
 				<div class="w3-section">
-					<form method="Post" name="loginCheckForm" action="signInPro.do" class="w3-container">
+					<form id="loginCheckForm" method="Post" name="loginCheckForm" action="signInPro.do" class="w3-container">
 						<label><b>${str_signInUserName}</b></label>
 						<input name="email" type="text" placeholder="Enter Username" required class="w3-input w3-border w3-margin-bottom">
 						<label><b>${str_signInPassword}</b></label>
