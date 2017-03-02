@@ -22,7 +22,7 @@
 			var request = new Request(function() {
 				if(request.httpRequest.readyState == 4){
 					if(request.httpRequest.status == 200){
-						if(request.httpRequest.responseText.trim() == "0"){
+						if(request.httpRequest.responseText.trim() == "true"){
 							$('#nickresult').removeClass('w3-text-red').addClass('w3-text-blue').text("${str_nickOk}");	
 						}else{
 							$('#nickresult').removeClass('w3-text-blue').addClass('w3-text-red').text("${str_nickNo}");	
@@ -50,7 +50,7 @@
 				}else if( $(this).val().length<5 ){
 					//길이 짧음
 					var minlength = 5; 
-					$('#passwdresult').removeClass('w3-text-red').addClass('w3-text-blue').text('*'+minlength+"${str_passswdError2}");
+					$('#passwdresult').removeClass('w3-text-red').addClass('w3-text-blue').text('*'+minlength+"${str_passwdError2}");
 				}else if( $(this).val().length>10 ){
 					//길이가 김
 					var maxlength = 10;
