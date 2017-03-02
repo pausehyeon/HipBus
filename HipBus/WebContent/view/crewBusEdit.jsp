@@ -35,11 +35,14 @@
 											+ ")");
 									var msg = "";
 									var cnt = 0;
+									var cssCnt = 0;
 									for (var i = 0; i < listResult.length; i++) {
-										msg += '<span id="tag_' + cnt + '" class="w3-theme-d5 w3-padding w3-round w3-tag w3-margin-top w3-margin-right">'
+										cssCnt++;
+										msg += '<span id="tag_' + cnt + '" class="w3-theme-l'+cssCnt+' w3-padding w3-round w3-tag w3-margin-top w3-margin-right">'
 												+ listResult[i]
 												+ '<i class="fa fa-close w3-right w3-margin-left" onclick="tagdelete(\'tag_'
 												+ cnt++ + '\')"></i></span>';
+										if(cssCnt==4) cssCnt=0;
 									}
 									tagname.innerHTML = msg;
 								} else {

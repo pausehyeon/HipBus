@@ -145,8 +145,14 @@
 			<div class="w3-container">
 				<p>${str_tags}</p>
 				<p>
+				<c:set var="cnt" value="${0}"/>
 					<c:forEach var="tag" items="${tags}">
-						<span class="w3-tag w3-small w3-theme-d3">${tag}</span>
+						<c:if test="${cnt<5}">
+							<span class="w3-tag w3-small w3-theme-l${cnt=cnt+1}">${tag}</span>
+						</c:if>	
+						<c:if test="${cnt==4}">
+							<span class="w3-tag w3-small w3-theme-l${cnt=1}">${tag}</span>
+						</c:if>
 					</c:forEach>
 				</p>
 			</div>
