@@ -16,7 +16,9 @@
 				re_step : '${dto.getRe_step()}',
 				re_level : '${dto.getRe_level()}',
 				reg_date : '${dto.getReg_date()}',
-				status : '${dto.getStatus()}'
+				status : '${dto.getStatus()}',
+				nick : '${dto.getNick()}',
+				imglocation : '${dto.getImglocation()}'
 			}
 		</data>
 	</result>

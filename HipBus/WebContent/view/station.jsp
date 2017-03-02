@@ -53,7 +53,7 @@ a{text-decoration:none;
 					<a onclick="document.getElementById('login').style.display='block'" class="w3-tiny w3-padding w3-margin-left w3-right" style="text-decoration: underline;">${msg_login}</a>
 				</c:if>
 				<c:if test="${sessionScope.memEmail ne null}">
-					<a href="stationWrite.do?email=${sessionScope.memEmail}" class="w3-btn w3-padding w3-theme-d1 w3-margin-left w3-right">
+					<a href="stationWrite.do?email=${sessionScope.memEmail}&type=${type}" class="w3-btn w3-padding w3-theme-d1 w3-margin-left w3-right">
 						<i class="fa fa-pencil-square-o w3-margin-right"></i>${btn_write}</a>
 				</c:if>
 			</div>
@@ -61,8 +61,43 @@ a{text-decoration:none;
 		</div>
 
 		<div class="w3-row-padding">
-			<div class="w3-twothird">
-				<!-- 글이없는경우 -->
+			<div class="w3-twothird">		
+				<c:forEach var="dto" items="${topStation}">
+						<div class="w3-row w3-margin-bottom" style="color:red">
+							<div class="w3-col m12" >
+								<a href="stationRead.do?num=${dto.num}&pageNum=${pageNum}&category=${dto.category}&type=${type}">
+								<i class="fa fa-hand-peace-o"></i>
+									<c:choose>
+										<c:when test="${dto.category == 1}">
+												[${str_beat}] ${dto.subject} 
+												</c:when>
+										<c:when test="${dto.category == 2}">
+													[${str_rab}] ${dto.subject}
+												</c:when>
+										<c:when test="${dto.category == 3}">
+													[${str_mixTape}] ${dto.subject}
+												</c:when>
+										<c:when test="${dto.category == 4}">
+													[${str_vocal}] ${dto.subject}
+												</c:when>
+										<c:when test="${dto.category == 5}">
+													[${str_gasa}] ${dto.subject}
+												</c:when>
+										<c:when test="${dto.category == 6}">
+													[${str_freeBoard}] ${dto.subject}
+												</c:when>
+									</c:choose>
+								</a>
+								<p class="w3-right w3-tiny">${str_writeNick}:
+									${dto.nick} | ${str_reg_date}:
+									<fmt:formatDate value="${dto.reg_date}" type="both" pattern="yyyy-MM-dd HH:mm" />
+									| ${str_readCount}: ${dto.readcount} | ${str_upCount}: ${dto.likenum }
+								</p>
+								<hr>
+							</div>
+						</div>
+					</c:forEach>
+					<!-- 글이없는경우 -->
 				<c:if test="${count == 0}">
 					<div class="w3-row w3-margin-bottom">
 						<div class="w3-col m12">
@@ -71,8 +106,7 @@ a{text-decoration:none;
 					</div>
 				</c:if>
 				<!-- 글이있는경우 -->
-
-				<c:if test="${count != 0}">
+					<c:if test="${count != 0}">
 					<c:forEach var="article" items="${station}">
 						<div class="w3-row w3-margin-bottom">
 							<div class="w3-col m12">
@@ -111,7 +145,39 @@ a{text-decoration:none;
 			</div>
 			<div class="w3-third">
 				<!-- 상업광고 -->
-				<c:import url="../commercialAds.do"></c:import>
+				<div class="w3-container">
+					<!-- 광고 있을 때 -->
+					<c:if test="${ad1_imglocation eq null}">
+						<div class="w3-col m12 w3-margin-top">
+							<p class="w3-border w3-padding-large w3-padding-128 w3-center">AD</p>
+						</div>
+					</c:if>
+					<c:if test="${ad1_imglocation ne null}">
+						<div class="w3-col m12 w3-margin-top">
+							<img src="${project}/hipbusSave/${ad1_imglocation}" width="100%" />
+						</div>
+					</c:if>
+					<c:if test="${ad2_imglocation eq null}">
+						<div class="w3-col m12 w3-margin-top">
+							<p class="w3-border w3-padding-large w3-padding-48 w3-center">AD</p>
+						</div>
+					</c:if>
+					<c:if test="${ad2_imglocation ne null}">
+						<div class="w3-col m12 w3-margin-top">
+							<img src="${project}/hipbusSave/${ad2_imglocation}" width="100%" />
+						</div>
+					</c:if>
+					<c:if test="${ad3_imglocation eq null}">
+						<div class="w3-col m12 w3-margin-top">
+							<p class="w3-border w3-padding-large w3-padding-48 w3-center">AD</p>
+						</div>
+					</c:if>
+					<c:if test="${ad3_imglocation ne null}">
+						<div class="w3-col m12 w3-margin-top">
+							<img src="${project}/hipbusSave/${ad3_imglocation}" width="100%" />
+						</div>
+					</c:if>
+				</div>
 			</div>
 		</div>
 

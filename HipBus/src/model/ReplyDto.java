@@ -13,6 +13,8 @@ public class ReplyDto {
 	private Timestamp reg_date;
 	private int status;
 	
+	private String imglocation;	// join용 프로필사진
+	private String nick;
 	
 	public int getReplynum() {
 		return replynum;
@@ -67,5 +69,17 @@ public class ReplyDto {
 	}
 	public void setStatus(int status) {
 		this.status = status;
+	}
+	public String getNick() {
+		return nick;
+	}
+	public void setNick(String nick) {
+		this.nick = nick;
+	}
+	public String getImglocation() {
+		return imglocation;
+	}
+	public void setImglocation(String imglocation) {
+		this.imglocation = imglocation;
 	}
 }

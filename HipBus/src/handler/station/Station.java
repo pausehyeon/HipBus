@@ -182,7 +182,14 @@ public class Station implements CommandHandler {
 		request.setAttribute("category5", category5);
 		request.setAttribute("category6", category6);
 		*/
-		
+		if( count == 0) {
+			Map<String, Integer> map 
+			= new HashMap<String, Integer>();
+		map.put( "start", start );
+		map.put( "end", end );
+			List <StationDto> topStation = stationDao.topGetArticles(map);
+			request.setAttribute( "topStation", topStation);
+		}
 		if( count != 0 ) {
 			request.setAttribute("start", start);
 			request.setAttribute("end", end);
@@ -192,8 +199,9 @@ public class Station implements CommandHandler {
 				= new HashMap<String, Integer>();
 			map.put( "start", start );
 			map.put( "end", end );
-			
+			List <StationDto> topStation = stationDao.topGetArticles(map);
 			List <StationDto> station = stationDao.getArticles(map);
+			request.setAttribute( "topStation", topStation);
 			request.setAttribute( "station", station );
 			request.setAttribute( "number", number );
 			request.setAttribute( "currentPage", currentPage );
@@ -226,6 +234,8 @@ public class Station implements CommandHandler {
 				= new HashMap<String, Integer>();
 			map.put( "start", start );
 			map.put( "end", end );
+			List <StationDto> topStation = stationDao.topGetArticles(map);
+			request.setAttribute( "topStation", topStation);
 			List <StationDto> station = stationDao.getArticles1(map);
 			request.setAttribute( "station", station );
 			request.setAttribute( "number", number );
@@ -259,7 +269,8 @@ public class Station implements CommandHandler {
 				= new HashMap<String, Integer>();
 			map.put( "start", start );
 			map.put( "end", end );
-			
+			List <StationDto> topStation = stationDao.topGetArticles(map);
+			request.setAttribute( "topStation", topStation);
 			List <StationDto> station = stationDao.getArticles2(map);
 			request.setAttribute( "station", station );
 			request.setAttribute( "number", number );
@@ -293,7 +304,8 @@ public class Station implements CommandHandler {
 				= new HashMap<String, Integer>();
 			map.put( "start", start );
 			map.put( "end", end );
-			
+			List <StationDto> topStation = stationDao.topGetArticles(map);
+			request.setAttribute( "topStation", topStation);
 			List <StationDto> station = stationDao.getArticles3(map);
 			request.setAttribute( "station", station );
 			request.setAttribute( "number", number );
@@ -327,7 +339,8 @@ public class Station implements CommandHandler {
 				= new HashMap<String, Integer>();
 			map.put( "start", start );
 			map.put( "end", end );
-			
+			List <StationDto> topStation = stationDao.topGetArticles(map);
+			request.setAttribute( "topStation", topStation);
 			List <StationDto> station = stationDao.getArticles4(map);
 			request.setAttribute( "station", station );
 			request.setAttribute( "number", number );
@@ -360,7 +373,8 @@ public class Station implements CommandHandler {
 				= new HashMap<String, Integer>();
 			map.put( "start", start );
 			map.put( "end", end );
-			
+			List <StationDto> topStation = stationDao.topGetArticles(map);
+			request.setAttribute( "topStation", topStation);
 			List <StationDto> station = stationDao.getArticles5(map);
 			request.setAttribute( "station", station );
 			request.setAttribute( "number", number );
@@ -393,7 +407,8 @@ public class Station implements CommandHandler {
 				= new HashMap<String, Integer>();
 			map.put( "start", start );
 			map.put( "end", end );
-			
+			List <StationDto> topStation = stationDao.topGetArticles(map);
+			request.setAttribute( "topStation", topStation);
 			List <StationDto> station = stationDao.getArticles6(map);
 			request.setAttribute( "station", station );
 			request.setAttribute( "number", number );

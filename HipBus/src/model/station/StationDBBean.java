@@ -26,6 +26,10 @@ public class StationDBBean implements StationDao {
 	public List<StationDto> getArticles( Map<String, Integer> map ) {
 		return SqlMapClient.getSession().selectList( "Station.getArticles", map );
 	}
+	public List<StationDto> topGetArticles( Map<String, Integer> map ) {
+		return SqlMapClient.getSession().selectList( "Station.topGetArticles", map );
+	}
+	
 	public List<StationDto> getArticles1( Map<String, Integer> map ) {
 		return SqlMapClient.getSession().selectList( "Station.getArticles1", map );
 	}
@@ -177,12 +181,13 @@ public class StationDBBean implements StationDao {
 		return SqlMapClient.getSession().selectOne( "Station.getReply", replynum );	
 	}
 	
-	public int deleteReply(int replynum) {
-		int result = 0;
-		ReplyDto dto = getReply( replynum );
-		SqlMapClient.getSession().update( "Station.deleteReplyArticle", dto );
-		result = SqlMapClient.getSession().delete("Station.deleteReply", replynum);	
-		return result;
+	public int deleteReply(int ref_num) {
+		return SqlMapClient.getSession().delete("Station.deleteReply", ref_num);	
+		
+	}
+	public int infDeleteReply(int replynum) {
+		return SqlMapClient.getSession().delete("Station.infDeleteReply", replynum);	
+		
 	}
 	// 알람
 	public List< StationDto > replyAlrams(String email) {

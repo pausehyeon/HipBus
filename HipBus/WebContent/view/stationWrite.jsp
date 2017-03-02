@@ -24,6 +24,7 @@
 				<form name="writeform" method="post" action="stationWritePro.do?email=${sessionScope.memEmail}">
 					<div class="w3-card-4">
 						<header class="w3-container w3-padding-jumbo w3-theme-l3">
+							<c:if test="${type == 1}">
 							<select class="w3-left" name="category" style="margin: 2px">
 								<option value="1">${str_beat}</option>
 								<option value="2">${str_rab}</option>
@@ -32,6 +33,67 @@
 								<option value="5">${str_gasa}</option>
 								<option value="6">${str_free}</option>
 							</select>
+							</c:if>
+							<c:if test="${type == 2}">
+							<select class="w3-left" name="category" style="margin: 2px">
+								<option value="1" selected>${str_beat}</option>
+								<option value="2" >${str_rab}</option>
+								<option value="3">${str_mixTape}</option>
+								<option value="4">${str_vocal}</option>
+								<option value="5">${str_gasa}</option>
+								<option value="6">${str_free}</option>
+							</select>
+							</c:if>
+							<c:if test="${type == 3}">
+							<select class="w3-left" name="category" style="margin: 2px">
+								<option value="1">${str_beat}</option>
+								<option value="2" selected>${str_rab}</option>
+								<option value="3">${str_mixTape}</option>
+								<option value="4">${str_vocal}</option>
+								<option value="5">${str_gasa}</option>
+								<option value="6">${str_free}</option>
+							</select>
+							</c:if>
+							<c:if test="${type == 4}">
+							<select class="w3-left" name="category" style="margin: 2px">
+								<option value="1">${str_beat}</option>
+								<option value="2" >${str_rab}</option>
+								<option value="3" selected>${str_mixTape}</option>
+								<option value="4">${str_vocal}</option>
+								<option value="5">${str_gasa}</option>
+								<option value="6">${str_free}</option>
+							</select>
+							</c:if>
+							<c:if test="${type == 5}">
+							<select class="w3-left" name="category" style="margin: 2px">
+								<option value="1">${str_beat}</option>
+								<option value="2" >${str_rab}</option>
+								<option value="3">${str_mixTape}</option>
+								<option value="4" selected>${str_vocal}</option>
+								<option value="5">${str_gasa}</option>
+								<option value="6">${str_free}</option>
+							</select>
+							</c:if>
+							<c:if test="${type == 6}">
+							<select class="w3-left" name="category" style="margin: 2px">
+								<option value="1">${str_beat}</option>
+								<option value="2" >${str_rab}</option>
+								<option value="3">${str_mixTape}</option>
+								<option value="4">${str_vocal}</option>
+								<option value="5" selected>${str_gasa}</option>
+								<option value="6">${str_free}</option>
+							</select>
+							</c:if>
+							<c:if test="${type == 7}">
+							<select class="w3-left" name="category" style="margin: 2px">
+								<option value="1">${str_beat}</option>
+								<option value="2" >${str_rab}</option>
+								<option value="3">${str_mixTape}</option>
+								<option value="4">${str_vocal}</option>
+								<option value="5">${str_gasa}</option>
+								<option value="6" selected>${str_free}</option>
+							</select>
+							</c:if>
 							<input name="subject" class="w3-input" type="text" required="required">
 							<label for="subject" class="w3-label w3-validate">${str_writeName}</label><br>
 

@@ -76,7 +76,6 @@
 					+ data.replynum + ",\'" + data.content + "\','creteria')\">";
 			modBtn += '<i class="fa fa-times"></i>';
 			modBtn += '</button>';
-	
 			board += '<div class="w3-card-8 w3-margin w3-padding-xlarge w3-padding-64">';
 			board += '<div class="w3-container w3-row">';
 			board += '<div class="w3-col m1 w3-center">';
@@ -84,7 +83,7 @@
 			board += '</div>';
 			board += '<div class="w3-col m11 w3-center">';
 			board += '<div class="w3-harf w3-container w3-large w3-left">';
-			board += data.email + '&nbsp;' + data.reg_date;
+			board += data.nick + '&nbsp;' + data.reg_date;
 			board += '</div>';
 			board += '<div class="w3-harf w3-container w3-padding-4 w3-right">';
 			if (data.email == "${sessionScope.memEmail}") {
@@ -92,10 +91,12 @@
 						+ data.replynum
 						+ '); return false" id="modView" class="w3-margin-right">${str_modify}</a>';
 				board += '<a href="#" onClick="delComplete('
-						+ data.replynum
+					+ data.replynum +','
+					  + data.ref_num + ',' + data.re_step
 						+ '); return false"   id="delBoard" class="w3-margin-right">${str_delete}</a>';
 				board += modBtn;
 			}
+			
 			board += '<a href="#" onClick="reBoardView(' + data.replynum +','
 				  + data.ref_num + ',' + data.re_step				
 			      + '); return false" id="reBoardView">${str_reply}</a>';
@@ -105,7 +106,7 @@
 			board += '</div>';
 			board += '<div class="w3-container w3-left-align">';
 			board += '<input type="hidden" name="'+ data.replynum +'">';
-			board += '<textarea readonly="true" wrap="VIRTUAL" style="resize:none; width:100%;' 
+			board += '<textarea id="boardContent"readonly="true" wrap="VIRTUAL" style="resize:none; width:100%;' 
 				  + 'height:4000; border:0;overflow-y:hidden;background:clear;">'
 				  + data.content +'</textarea>'
 			board += '</div>';
@@ -180,6 +181,7 @@
 			$('#reboard' + replynum + ' #reboardDown').hide();
 			$('#replyBoardABC_'+ ref_num + ' center').hide();
 		}
+		
 		function reBoardView(replynum,ref_num,re_step){
 			//var replyBoard = document.getElementById("replyBoardABC_"+replynum);
 			var infResult = document.getElementById("replyBoardABC_"+ref_num);
@@ -261,7 +263,7 @@
 			reboard += '</div>';
 			reboard += '<div class="w3-col m11 w3-center">';
 			reboard += '<div class="w3-harf w3-container w3-large w3-left">';
-			reboard += data.email + '&nbsp;' + data.reg_date;
+			reboard += data.nick + '&nbsp;' + data.reg_date;
 			reboard += '</div>';
 			reboard += '<div class="w3-harf w3-container w3-padding-4 w3-right">';
 			
@@ -270,7 +272,7 @@
 						+ data.replynum
 						+ '); return false" id="remodView" class="w3-margin-right">${str_modify}</a>';
 				reboard += '<a href="#" onClick="redelComplete('
-						+ data.replynum +","+ data.ref_num
+						+ data.replynum +","+ data.ref_num+","+ data.re_step
 						+ '); return false"   id="redelBoard" class="w3-margin-right">${str_delete}</a>';
 				reboard += modBtn;
 			} 
@@ -400,10 +402,12 @@
 			request.sendRequest();
 		}
 		// 리댓글 삭제
-		function redelComplete(replynum,ref_num) {
+		function redelComplete(replynum,ref_num,re_step) {
 			var retVal = confirm("삭제 하시겠습니까?");
 			if (retVal == true) {
-				var params = "replynum=" + replynum;
+				var params = "replynum=" + replynum
+								+ '&ref_num=' + ref_num
+								+ '&re_step=' + re_step;
 				request = new Request(
 						function() {
 							var infResult = document.getElementById("replyBoardABC_"+ref_num);
@@ -447,14 +451,14 @@
 		
 		// 댓글 수정
 		function modBoardView(replynum) {
-			$('#board_' + replynum + ' textarea').prop('readonly', false);
+			$('#board_' + replynum + ' #boardContent').prop('readonly', false);
 			$('#board_' + replynum + ' #modView').hide();
 			$('#board_' + replynum + ' #delBoard').hide();
 			$('#board_' + replynum + ' #reBoardView').hide();
 			$('#board_' + replynum + ' #reBoardClose').hide();
 			$('#board_' + replynum + ' #replyComplete').show();
 			$('#board_' + replynum + ' #replyCancel').show();
-			$('#board_' + replynum + ' textarea').focus();
+			$('#board_' + replynum + ' #boardContent').focus();
 		}
 	
 		function modCancel(replynum, content, criteria) { // 이전 데이터 저장해서 다시 띄움
@@ -473,7 +477,7 @@
 						$('input[name=' + replynum + ']').prop("content"));
 			}
 	
-			$('#board_' + replynum + ' textarea').prop('readonly', true);
+			$('#board_' + replynum + ' #boardContent').prop('readonly', true);
 			$('#board_' + replynum + ' #modView').show();
 			$('#board_' + replynum + ' #delBoard').show();
 			$('#board_' + replynum + ' #reBoardView').show();
@@ -513,10 +517,12 @@
 		}
 	
 		// 댓글 삭제
-		function delComplete(replynum) {
+		function delComplete(replynum,ref_num,re_step) {
 			var retVal = confirm("삭제 하시겠습니까?");
 			if (retVal == true) {
-				var params = "replynum=" + replynum;
+				var params = "replynum=" + replynum
+							+ '&ref_num=' + ref_num
+							+ '&re_step=' + re_step;
 				request = new Request(
 						function() {
 							var result = document.getElementById("result");
@@ -527,9 +533,10 @@
 									var code = xmldoc.getElementsByTagName("code")
 											.item(0).innerHTML;
 									if (code == "deleted") {
+										
 										var replynum = eval("("
 												+ xmldoc.getElementsByTagName(
-														"data").item(0).innerHTML
+														"deldata").item(0).innerHTML
 												+ ")");
 										var deldiv = document
 												.getElementById("board_" + replynum);

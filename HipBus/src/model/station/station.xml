@@ -7,7 +7,9 @@
 	<select id="getCount" resultType="int">
 		select count(*) from HB_Station
 	</select>
-	
+	<select id="topGetArticles" parameterType="Map" resultType="model.StationDto">
+		select * from hb_station where rownum &lt;= 3 and likenum &gt;= 4order by likenum desc, readcount desc
+	</select>
 	<select id="getArticles" parameterType="Map" resultType="model.StationDto">
 		select num,email,category,nick,subject,content,
 		likenum,readcount,reg_date,
@@ -161,6 +163,7 @@
 		select * from HB_Station where num=#{num}
 	</select>
 	
+	
 	<select id="getLike" parameterType="model.LikeDto" resultType="int">
 		select count(*) from HB_StationLike where num=#{num} and email=#{email}
 	</select>
@@ -214,7 +217,8 @@
   	
   	<!--  댓글 -->
   	<select id="getReplys" parameterType="int" resultType="model.ReplyDto">
-		select * from HB_StationReply where num=#{num} and re_step=0 order by replynum asc
+		select s.replynum, s.num, s.email, s.content,s.reg_date,s.ref_num,s.re_step,s.re_level,m.imglocation,m.nick
+		from hb_stationReply s, hb_member m where s.email=m.email and num=#{num} and re_step=0 order by replynum asc
 	</select>
 	
 	<insert id="replyInsert" parameterType="model.ReplyDto">
@@ -260,7 +264,8 @@
 		select count(*) from HB_StationReply
 	</select>
 	<select id="getLastReply" parameterType="int" resultType="model.ReplyDto">
-		select * from HB_StationReply where replynum=(select max(replynum) from HB_StationReply where num=#{num})
+		select s.replynum, s.num, s.email, s.content,s.reg_date,s.re_step,s.re_level,s.ref_num,m.imglocation,m.nick
+		from hb_stationReply s, hb_member m where s.email=m.email and replynum=(select max(replynum) from HB_StationReply where num=#{num})
 	</select>
 	
 	<select id="maxNum" resultType="int">
@@ -273,8 +278,12 @@
 	</update>
 	
 	<delete id="deleteReply" parameterType="int">
+		delete from HB_StationReply where ref_num = #{ref_num}
+	</delete>
+	<delete id="infDeleteReply" parameterType="int">
 		delete from HB_StationReply where replynum = #{replynum}
 	</delete>
+	
 	<select id="replyCount" parameterType="model.ReplyDto" resultType="int">
 		select count(*) from HB_StationReply 
 		where ref_num = #{ref_num} 
@@ -291,7 +300,8 @@
 	</update>				
 	<!--  대댓글 -->
 	<select id="getInfReplys" parameterType="int" resultType="model.ReplyDto">
-		select * from HB_StationReply where ref_num=#{ref_num} and re_step=1 order by reg_date asc
+		select s.replynum, s.num, s.email, s.content,s.reg_date,s.ref_num,s.re_step,s.re_level,m.imglocation,m.nick
+		from hb_StationReply s, hb_member m where s.email=m.email and ref_num=#{ref_num} and re_step=1 order by reg_date asc
 	</select>
 	<!-- 시퀀스마지막번호 -->
 	<select id="reMaxNum" resultType="int">

@@ -17,7 +17,9 @@
 					reg_date : '${article.reg_date}',
 					replynum : '${article.replynum}',
 					ref_num :  ${article.ref_num},
-					re_step :  ${article.re_step}
+					re_step :  ${article.re_step},
+					nick : '${article.nick}',
+					imglocation : '${article.imglocation}'
 				}
 			</c:forEach>
 		]</data>

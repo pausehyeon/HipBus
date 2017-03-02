@@ -40,7 +40,7 @@ public class StationWritePro implements CommandHandler {
 		MemberDto article = stationDao.getMember(email);
 		
 		int count = stationDao.countMem(email);
-		if( count == 10){
+		if( count == 9){
 			resultCount = stationDao.addMem(email);
 			request.setAttribute("resultCount", resultCount);
 		}

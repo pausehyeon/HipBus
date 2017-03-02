@@ -30,8 +30,10 @@ public class StationRead implements CommandHandler{
 		
 		if( ! request.getRemoteAddr().equals( article.getNick() ) )
 			stationDao.addCount( num );
+		if(request.getSession().getAttribute("memEmail") != null){
 		if(request.getSession().getAttribute("memEmail").equals(article.getEmail())){
 		stationDao.addStatus(num);
+		}
 		}
 		request.setAttribute( "num", num );
 		request.setAttribute( "pageNum", pageNum );

@@ -47,9 +47,7 @@ var itv = 0;
 												.item(0).innerHTML + ")");
 								//alert(data.length)
 								if (data.length == 0) {
-									msg += "<center>"
-									msg += "알림이 없습니다.";
-									msg += "</center>"									
+									msg += "알림이 없습니다.";									
 									idvalue.innerHTML = msg;
 								} else {
 									count += eval("("

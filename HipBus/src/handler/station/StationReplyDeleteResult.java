@@ -22,11 +22,19 @@ public class StationReplyDeleteResult implements CommandHandler {
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		
-		
 		int replynum = Integer.parseInt( request.getParameter("replynum") );
-		int result = stationDao.deleteReply( replynum );
-		request.setAttribute("result", result);
-		request.setAttribute("replynum", replynum);
+		int ref_num = Integer.parseInt(request.getParameter("ref_num"));
+		int re_step = Integer.parseInt(request.getParameter("re_step"));
+		if(re_step == 0){
+			int result = stationDao.deleteReply( ref_num );
+			request.setAttribute("result", result);
+			request.setAttribute("ref_num", ref_num);
+		}else if(re_step == 1){
+			int result = stationDao.infDeleteReply(replynum);
+			request.setAttribute("result", result);
+			request.setAttribute("replynum", replynum);
+		}
+		
 		
 		
 		

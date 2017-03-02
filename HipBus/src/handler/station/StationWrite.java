@@ -16,8 +16,11 @@ public class StationWrite implements CommandHandler {
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		int num = 0;
-		
-		
+		int type = 1;
+		if(request.getParameter("type") != null){
+			type = Integer.parseInt(request.getParameter("type"));
+		}
+		request.setAttribute("type", type);
 		request.setAttribute("num",num);
 	
 		return new ModelAndView("stationWrite");

@@ -11,6 +11,7 @@ import model.StationDto;
 public interface StationDao {
 	public int getCount();
 	public List<StationDto> getArticles( Map<String, Integer> map );
+	public List<StationDto> topGetArticles( Map<String, Integer> map );
 	public List<StationDto> getArticles1( Map<String, Integer> map );
 	public List<StationDto> getArticles2( Map<String, Integer> map );
 	public List<StationDto> getArticles3( Map<String, Integer> map );
@@ -46,7 +47,8 @@ public interface StationDao {
 	public int getReplyCount();
 	public ReplyDto getLastReply( int num );
 	public int modifyReply( ReplyDto dto);
-	public int deleteReply( int replynum );
+	public int deleteReply( int ref_num );
+	public int infDeleteReply( int replynum );
 	public ReplyDto getReply(int replynum);
 	public List<ReplyDto> getInfReplys( int ref_num );
 	public int infReplyInsert( ReplyDto dto );
