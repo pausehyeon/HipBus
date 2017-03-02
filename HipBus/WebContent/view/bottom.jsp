@@ -136,22 +136,22 @@ function alramOn(){
 </script>
 <body>
 	<!-- 댓글 Alert   -->
-	<div class="w3-container w3-margin-bottom w3-text-khaki" style="border: 1px solid transparent; ; float: left; width:85px;">
-		<a href="#" onclick="document.getElementById('id01').style.display='block'" class="w3-bottom w3-left w3-padding-large w3-hover-opacity" title="실시간 댓글 알림"> <i class="fa fa-bell w3-xxlarge"></i><span
+	<div class="w3-container w3-margin-bottom w3-text-khaki" style="border: 1px solid transparent; ; float: left; width:80px;">
+		<a style="width:11%" href="#" onclick="document.getElementById('id01').style.display='block'" class="w3-bottom w3-left w3-padding-large w3-hover-opacity" title="실시간 댓글 알림"> <i class="fa fa-bell w3-xxlarge"></i><span
 			class="w3-badge w3-red" id="alramCount"></span>
 		</a>
 	</div>
 	
 	<div style="border: 1px solid transparent; float: left; width: 40px;" id="mybusget">
-		<a href="#" class="w3-bottom w3-left w3-padding-large w3-hover-opacity" onclick="myBusGet()" title="최근 방문한 bus로 이동합니다.">
+		<a style="width:4%" href="#" class="w3-bottom w3-left w3-padding-large w3-hover-opacity" onclick="myBusGet()" title="최근 방문한 bus로 이동합니다.">
 		<img class="w3-circle" id="mybusImg" src=""> </a>
 	</div>
 	<div style="border: 1px solid transparent; float: left; width: 40px;" id="crewbusget">
-		<a href="#" class="w3-bottom w3-left w3-padding-large w3-hover-opacity" onclick="crewBusGet()" title="최근 방문한 crewBus로 이동합니다.">
+		<a style="width:4%" href="#" class="w3-bottom w3-left w3-padding-large w3-hover-opacity" onclick="crewBusGet()" title="최근 방문한 crewBus로 이동합니다.">
 		<img class="w3-circle" id="crewbusImg" src=""></a>
 	</div>
 	<div style="border: 1px solid transparent; float: left; width: 40px;" id="boardget">
-		<a href="#" class="w3-bottom w3-left w3-padding-large w3-hover-opacity" onclick="boardGet()" title="최근 방문한 게시판으로 이동합니다.">
+		<a style="width:4%" href="#" class="w3-bottom w3-left w3-padding-large w3-hover-opacity" onclick="boardGet()" title="최근 방문한 게시판으로 이동합니다.">
 		<img style="width:30px; height:35px;" class="w3-circle" src="${project}/view/img/board.jpg"></a>
 	</div>
 	<div id="id01" class="w3-modal">
