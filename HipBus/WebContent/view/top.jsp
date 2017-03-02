@@ -176,20 +176,17 @@
 		var myBusImgLocation = sessionStorage.getItem("myBusImg");
 		$('#mybusImg').attr({
 			src : myBusImgLocation,
-			width : 30,
+			width : 32,
 			height : 35
 		});
 
 		var crewBusImgLocation = sessionStorage.getItem("crewBusImg");
 		$('#crewbusImg').attr({
 			src : crewBusImgLocation,
-			width : 30,
+			width : 32,
 			height : 35
 		});
-		/*
-		var keywprd=searchResult.keyword.value;
-		$('#crewResult').attr({})
-		 */
+	
 	});
 //-->
 </script>
