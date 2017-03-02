@@ -36,6 +36,7 @@ public class GarageNewsModifyPro implements CommandHandler {
 		dto.setNum(Integer.parseInt(request.getParameter("num")));
 		dto.setSubject(request.getParameter("subject"));
 		dto.setContent(request.getParameter("content"));
+		dto.setImglocation(request.getParameter("upload"));
 		
 		
 		int result = garageDao.updateArticle( dto );

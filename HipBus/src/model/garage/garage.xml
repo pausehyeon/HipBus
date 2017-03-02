@@ -53,7 +53,7 @@
 
 	<update id="updateArticle" parameterType="model.NewsDto">
 		update HB_News set
-		subject=#{subject}, content=#{content} where num=#{num}
+		subject=#{subject}, content=#{content}, imglocation=#{imglocation} where num=#{num}
 	</update>
 
 	<delete id="deleteArticle" parameterType="int">
