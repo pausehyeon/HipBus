@@ -62,5 +62,5 @@ public interface MyBusDao {
 	public List<String> selectTag(String driver);
 	public int insertTag(Map<String, String> ms);
 	public int deleteTag(Map<String, String> ms);
-	
+	public int deleteChannelid(String driver);
 }

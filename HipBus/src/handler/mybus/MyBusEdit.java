@@ -1,5 +1,7 @@
 package handler.mybus;
 
+import java.io.UnsupportedEncodingException;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,16 +28,22 @@ public class MyBusEdit implements CommandHandler{
 	@RequestMapping("/myBusEdit.do")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-		// TODO Auto-generated method stub		
+		
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+		
 		String driver = request.getParameter("driver");		
 		request.setAttribute("driver", driver);	
 				
 		MemberDto member = generalDao.getMember(driver);
 		request.setAttribute("member", member);
 		
-		//result 넘겨줘야.		
-		int result = myBusDao.checkChannel(driver);
-		request.setAttribute("result", result);
+		String channel_id = myBusDao.getChannelid(driver);
+		request.setAttribute("channel_id", channel_id);
 		
 		return new ModelAndView("myBusEdit");
 	}

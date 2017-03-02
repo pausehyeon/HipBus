@@ -47,7 +47,8 @@
 												+ listResult[i]
 												+ '<i class="fa fa-close w3-right w3-margin-left" onclick="tagdelete(\'tag_'
 												+ cnt++ + '\')"></i></span>';
-										if(cssCnt==4) cssCnt=0;
+										if (cssCnt == 4)
+											cssCnt = 0;
 									}
 									tagname.innerHTML = msg;
 								} else {
@@ -64,10 +65,10 @@
 			function taginsert() {
 				var tagerror = document.getElementById("tagerror");
 				var taginput = document.getElementById("taginput");
-				
-				if(taginput.value == ''){
-					tagerror.innerHTML = '<p class="w3-small w3-text-red">* 태그를 입력해주세요.</p>';			
-				}else{
+
+				if (taginput.value == '') {
+					tagerror.innerHTML = '<p class="w3-small w3-text-red">* 태그를 입력해주세요.</p>';
+				} else {
 					tagerror.innerHTML = '';
 					var params = "driver=" + "${driver}" + "&type=insert&tag="
 							+ taginput.value;
@@ -185,16 +186,16 @@
 										<label class="w3-validate w3-label">${str_repasswd}</label>
 										<input name="repasswd" value="${member.passwd}" class="w3-input" type="password">
 									</div>
-									<div class="w3-col m12 w3-margin-top w3-margin-bottom w3-center">
-										<c:if test="${(member.mem_level eq 2) and (result eq 1)}">
-											<label>${str_channel_id}</label>
-											<a class="w3-right w3-small"> <i class="fa fa-question-circle"></i> 채널 아이디 확인하는 방법
+									<c:if test="${(member.mem_level eq 2)}">
+										<div class="w3-col m12 w3-margin-top w3-margin-bottom">
+											<a class="w3-right w3-small" href="https://www.youtube.com/account_advanced"> <i class="fa fa-question-circle"></i>${str_howToFindChannelid}
 											</a>
-											<input name="channel_id" class="w3-input" type="text">
-										</c:if>
-										<div class="w3-center">
-											<input type="submit" value="수정 완료" class="w3-btn w3-padding w3-black w3-margin">
+											<input name="channel_id" value="${channel_id}" class="w3-input" type="text">
+											<label class="w3-validate w3-label">${str_channel_id}</label>
 										</div>
+									</c:if>
+									<div class="w3-col m12 w3-margin-top w3-margin-bottom w3-center">
+										<input type="submit" value="${str_editModifyBtn}" class="w3-btn w3-padding w3-black w3-margin">
 									</div>
 								</form>
 							</div>

@@ -146,6 +146,10 @@
 	<update id="updateChannel" parameterType="model.ChannelDto">
 		update hb_channel set channel_id=#{channel_id} where driver=#{driver}
 	</update>
+	<delete id="deleteChannelid" parameterType="String">
+		delete HB_Channel where driver=#{driver}
+	</delete>
+	
 	<select id="selectTag" parameterType="String" resultType="String">
 		select tag from HB_Tag where driver=#{driver} order by tag desc
 	</select>

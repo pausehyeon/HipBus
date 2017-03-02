@@ -89,6 +89,12 @@ function inputformvalidate() {
 			repasswd : {
 				required : true,
 				equalTo : passwd
+			},
+			channel_id : {
+				minlength : 22,
+				maxlength : 22,
+				nowhitespace : true,
+				alphanumeric : true
 			}
 		},
 		// 규칙체크 실패시 출력될 메시지
@@ -110,6 +116,12 @@ function inputformvalidate() {
 			repasswd : {
 				required : str_signUpPasswordCheck,
 				equalTo : str_passwordCheckNo
+			},
+			channel_id : {
+				minlength : str_invalidChannelId,
+				maxlength : str_invalidChannelId,
+				nowhitespace : str_nowhitespace,
+				alphanumeric : str_invalidChannelId
 			}
 		}
 	});

@@ -72,22 +72,27 @@ public class CrewBusEditPro implements CommandHandler {
 
 			// 유투브 채널 수정
 			String channel_id = multi.getParameter("channel_id");
-			if(channel_id != null && !channel_id.equals("")){
-				ChannelDto chdto = new ChannelDto();
-				chdto.setChannel_id(channel_id);
-				chdto.setDriver(driver);
+			ChannelDto chdto = new ChannelDto();
+			chdto.setChannel_id(channel_id);
+			chdto.setDriver(driver);
+
+			if (myBusDao.checkChannel(driver) == 1) {
+				// 기존에 채널이 등록되어 있었는데
+				if (channel_id.equals("")) {
+					// 아무것도 입력하지 않은 경우 딜리트
+					channelResult = myBusDao.deleteChannelid(driver);
+				} else {
+					// 새로 입력한 경우 업데이트
+					channelResult = myBusDao.updateChannel(chdto);
+				}
 				
-				if( myBusDao.checkChannel(driver) == 1){
-					//기존에 채널이 등록되어 있었던 경우 업데이트
-					if (channel_id != null) {
-						channelResult = myBusDao.updateChannel(chdto);
-					}
-				}else{
-					//채널이 등록되어 있지 않은 경우 인서트
+			} else {
+				if(!channel_id.equals("")){
+					// 기존에 채널이 등록되어 있지 않았는데 새로 입력한 경우 인서트
 					channelResult = myBusDao.insertChannel(chdto);
 				}
 			}
-			
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -96,7 +101,7 @@ public class CrewBusEditPro implements CommandHandler {
 		request.setAttribute("result", result);
 		request.setAttribute("profileResult", profileResult);
 		request.setAttribute("channelResult", channelResult);
-		
+
 		return new ModelAndView("crewBusEditPro");
 	}
 

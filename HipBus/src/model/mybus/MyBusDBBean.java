@@ -171,6 +171,9 @@ public class MyBusDBBean implements MyBusDao {
 	public String getCrewId(String crewname){
 		return SqlMapClient.getSession().selectOne("MyBus.getCrewId", crewname);
 	}	
-	
+	@Override
+	public int deleteChannelid(String driver) {
+		return SqlMapClient.getSession().delete("MyBus.deleteChannelid", driver);
+	}
 	
 }

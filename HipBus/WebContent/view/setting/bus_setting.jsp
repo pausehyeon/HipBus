@@ -128,8 +128,8 @@
 <c:set var="str_crewMemEjectBtn" value="크루 탈퇴"/>
 <c:set var="str_crewMemManage" value="Crew Member Management"/>
 <c:set var="str_crewMemNoneMsg" value="크루에 가입한 회원이 없습니다. 크루를 홍보해주세요."/>
-<c:set var="str_channel_id" value="라이브 채널 아이디"/>
-
+<c:set var="str_channel_id" value="Youtube 라이브 채널 아이디"/>
+<c:set var="str_howToFindChannelid" value="채널 아이디 확인하는 방법"/>
 
 
 <c:set var="str_editTag" value="Tags 수정"/>
@@ -147,6 +147,9 @@
 <c:set var="str_crewDeleteSuccess" value="크루 탈퇴에 성공했습니다."/>
 <c:set var="str_crewDeleteFail" value="크루 탈퇴에 실패했습니다. 잠시 후 다시 시도해주세요."/>
 
+<!-- myBusEditPro.jsp -->
+<c:set var="str_myBusEditSuccess" value="회원정보 수정에 성공하였습니다."></c:set>
+<c:set var="str_myBusEditFail" value="회원정보 수정에 실패하였습니다. 잠시 후 다시 시도해주세요."></c:set>
 <!-- crewBusEditPro.jsp -->
 <c:set var="str_crewEditSuccess" value="크루정보 수정에 성공하였습니다."></c:set>
 <c:set var="str_crewEditFail" value="크루정보 수정에 실패하였습니다. 잠시 후 다시 시도해주세요."></c:set>

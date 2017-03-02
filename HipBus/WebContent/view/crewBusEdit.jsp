@@ -174,13 +174,13 @@
 										<label class="w3-validate w3-label">${str_crewname}</label>
 									</div>
 									<div class="w3-col m12 w3-margin-top w3-margin-bottom">
-										<a class="w3-right w3-small" href="https://www.youtube.com/account_advanced"> <i class="fa fa-question-circle"></i> 채널 아이디 확인하는 방법
+										<a class="w3-right w3-small" href="https://www.youtube.com/account_advanced"> <i class="fa fa-question-circle"></i> ${str_howToFindChannelid}
 										</a>
 										<input name="channel_id" value="${channel_id}" class="w3-input" type="text">
 										<label class="w3-validate w3-label">${str_channel_id}</label>
 									</div>
 									<div class="w3-col m12 w3-margin-top w3-margin-bottom w3-center">
-										<input type="submit" value="수정 완료" class="w3-btn w3-padding w3-black w3-margin">
+										<input type="submit" value="${str_editModifyBtn}" class="w3-btn w3-padding w3-black w3-margin">
 									</div>
 								</form>
 							</div>
