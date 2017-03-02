@@ -20,7 +20,7 @@
 		<div class="w3-row-padding">
 			<div class="w3-twothird">
 				<!-- 글이 없는 경우 -->
-				<c:if test="${(count eq 0) or (WantedList eq null)}">
+				<c:if test="${WantedList.size() eq 0}">
 
 					<div class="w3-row w3-margin-bottom">
 						<div class="w3-col m12">
@@ -30,7 +30,7 @@
 				</c:if>
 
 				<!-- 글이있는경우 -->
-				<c:if test="${(count ne 0) and (WantedList ne null)}">
+				<c:if test="${WantedList.size() ne 0}">
 					<c:forEach var="article" items="${WantedList}">
 						<div class="w3-row w3-margin-bottom">
 							<div class="w3-col m12">
@@ -47,6 +47,9 @@
 								</c:if>
 								<c:if test="${(today - duedate) eq 0}">
 									<span class="w3-badge w3-red">D-Day</span>
+								</c:if>
+								<c:if test="${(today - duedate) gt 0}">
+									<span class="w3-badge">마감</span>
 								</c:if>
 								<c:if test="${fn:contains( article.driver,'@') }">
 									<a href="myBusWantedRead.do?driver=${article.driver}&num=${article.num}"> ${article.subject}</a>
@@ -129,7 +132,7 @@
 			</div>
 		</div>
 
-		<c:if test="${(count ne 0) and (WantedList ne null)}">
+		<c:if test="${count != 0}">
 			<div class="w3-row-padding w3-margin-top w3-margin-bottom">
 				<!-- 글이 있는 경우에만 페이지 표시 -->
 				<!-- Pagination -->

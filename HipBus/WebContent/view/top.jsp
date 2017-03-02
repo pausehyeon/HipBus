@@ -18,9 +18,9 @@
 	}
 	
 	function driverCheck() {
-		var params = "keyword=" + $('input[name="keyword"]').val();
+		var params = "keywords=" + $('input[name="keywords"]').val();
 		var driverResult = document.getElementById("driverResult");
-		var keyword=searchform.keyword.value;
+		var keywords=searchBusForm.keywords.value;
 		var crewSearchResult = document.getElementById("crewSearchResult");
 		var myBusSearchResult = document.getElementById("myBusSearchResult");
 		var request = new Request(function() {
@@ -40,7 +40,7 @@
 						msg+='<div class="w3-margin"><h4 style="font-weight:bold;">My Bus 검색 결과<h4> <br><br> 검색 결과가 없습니다.</div> <hr>';
 						}else{
 							
-							messages += '<div class="w3-margin"><h4 style="font-weight:bold; text-align:center;"><img src="${project}/view/img/HipBusLogo_colored_sq.png" class="w3-circle" style="width:40px; height:40px"> &nbsp; My Bus<br><br> '+keyword+' 검색 결과<h4></div>';
+							messages += '<div class="w3-margin"><h4 style="font-weight:bold; text-align:center;"><img src="${project}/view/img/HipBusLogo_colored_sq.png" class="w3-circle" style="width:40px; height:40px"> &nbsp; My Bus<br><br> '+keywords+' 검색 결과<h4></div>';
 							for (var i = 0; i < data.length; i++) {
 								messages+='<a href="myBus.do?driver='+data[i].email+'">'+data[i].nick+'의버스<img class="w3-circle"'+
 								'style="width:30px; height:35px;" src="${project}/hipbusSave/'+data[i].imglocation+'"></a><br><br>';
@@ -224,10 +224,10 @@
 			<li class="w3-hide-small w3-dropdown-hover"><a href="#" class="w3-padding-large w3-hover-white" title="otherdrivers"> <i class="fa fa-search"></i>
 			</a>
 				<div id="searchResult" class="w3-dropdown-content w3-white w3-card-4">
-					<form name="searchform" method="post">
+					<form name="searchBusForm" method="post">
 						<div class="w3-row w3-container w3-padding-16">
 							<div class="w3-threequarter">
-								<input type="text" name="keyword" id="keyword" class="w3-input" placeholder="${str_search}" onkeyup="driverCheck()">
+								<input type="text" name="keywords" id="keyword" class="w3-input" placeholder="${str_search}" onkeyup="driverCheck()">
 							</div>
 							<div class="w3-quarter w3-right-align">
 								<i class="fa fa-search"></i>
