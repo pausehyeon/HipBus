@@ -22,7 +22,7 @@
 		
 		<c:if test="${ad2_img eq null and ad2_html eq null}">
 			<div class="w3-col m12 w3-margin-top">
-				<p class="w3-border w3-padding-large w3-padding-128 w3-center">AD</p>
+				<p class="w3-border w3-padding-large w3-padding-48 w3-center">AD</p>
 			</div>
 		</c:if>
 		<c:if test="${ad2_img ne null}">
@@ -38,7 +38,7 @@
 		
 		<c:if test="${ad3_img eq null and ad3_html eq null}">
 			<div class="w3-col m12 w3-margin-top">
-				<p class="w3-border w3-padding-large w3-padding-128 w3-center">AD</p>
+				<p class="w3-border w3-padding-large w3-padding-48 w3-center">AD</p>
 			</div>
 		</c:if>
 		<c:if test="${ad3_img ne null}">

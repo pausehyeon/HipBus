@@ -23,21 +23,26 @@ public class CommercialAds implements CommandHandler {
 		AdDto ad = generalDao.getAds(1);
 		AdDto aad = generalDao.getAds(2);
 		AdDto aaad = generalDao.getAds(3);
-		
-		if(ad.getImglocation()!=null){
-			request.setAttribute("ad1_img", ad.getImglocation());
-		} else if(ad.getHtml()!=null){
-			request.setAttribute("ad1_html", ad.getHtml());
+		if(ad!=null){
+			if(ad.getImglocation()!=null){
+				request.setAttribute("ad1_img", ad.getImglocation());
+			} else if(ad.getHtml()!=null){
+				request.setAttribute("ad1_html", ad.getHtml());
+			}
 		}
-		if(aad.getImglocation()!=null){
-			request.setAttribute("ad2_img", aad.getImglocation());
-		} else if(aad.getHtml()!=null){
-			request.setAttribute("ad2_html", aad.getHtml());
+		if(aad!=null){
+			if(aad.getImglocation()!=null){
+				request.setAttribute("ad2_img", aad.getImglocation());
+			} else if(aad.getHtml()!=null){
+				request.setAttribute("ad2_html", aad.getHtml());
+			}
 		}
-		if(aaad.getImglocation()!=null){
-			request.setAttribute("ad3_img", aaad.getImglocation());
-		} else if(aaad.getHtml()!=null){
-			request.setAttribute("ad3_html", aaad.getHtml());
+		if(aaad!=null){
+			if(aaad.getImglocation()!=null){
+				request.setAttribute("ad3_img", aaad.getImglocation());
+			} else if(aaad.getHtml()!=null){
+				request.setAttribute("ad3_html", aaad.getHtml());
+			}
 		}
 		
 		return new ModelAndView("commercialAds");
