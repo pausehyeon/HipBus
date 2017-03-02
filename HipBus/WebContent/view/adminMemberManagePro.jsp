@@ -6,7 +6,7 @@
 <%@include file="/view/setting/admin_setting.jsp"%>
 
 <c:if test="${result == 1}">
-	<c:redirect url="admin.do"/>
+	<c:redirect url="admin.do#manageMembers"/>
 </c:if>
 <!-- 	<script type="text/javascript">
 		alert("성공");

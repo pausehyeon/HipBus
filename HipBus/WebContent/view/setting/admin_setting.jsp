@@ -39,7 +39,7 @@
 <c:set var="str_adImgBtn" value="이미지 삽입"/>
 <c:set var="str_adCodeMsg" value="HTML Code를 삽입하세요."/>
 <c:set var="str_adAddBtn" value="Add AD"/>
-<c:set var="str_adDeleteBtn" value="Delete AD"/>
+<c:set var="str_adDeleteBtn" value="Reset AD"/>
 <c:set var="str_adCheckMsg" value="*이미지를 혹은 Html 코드를 입력해주세요."/>
 <c:set var="str_adNumMsg" value="1~3까지중 선택하세요."/>
 
