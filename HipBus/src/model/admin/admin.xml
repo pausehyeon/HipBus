@@ -30,7 +30,10 @@
 	
 	<!-- 크루리스트가져오기 -->
 	<select id="getCrewId" resultType="model.CrewMemberDto">
-		select * from hb_crewmember order by email asc
+		select m.email, c.crewid, c.crewname from hb_crew c, hb_crewmember m 
+		where c.crewid=m.crewid
+		and not m.leader=0
+		order by m.email asc
 	</select>
 	
 	<!-- 검색 -->

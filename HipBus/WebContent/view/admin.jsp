@@ -251,9 +251,9 @@
 											</span>												
 												<div id="crew${status.count}" class="w3-accordion-content w3-container">
 													<ul>
-													 	<c:forEach var="cl" items="${clist}">
+													 	<c:forEach var="cl" items="${clist}" varStatus="status">
 															<c:if test="${cl.email eq getMember.email}">
-																<li><a href="crewBus.do?driver=${cl.crewid}">${cl.crewid}</a>
+																<li><a href="crewBus.do?driver=${cl.crewid}">${cl.crewname}</a>
 															</c:if>
 														</c:forEach>
 													</ul>
@@ -290,7 +290,7 @@
 													<ul>
 													 	<c:forEach var="c" items="${clist}">
 															<c:if test="${c.email eq getSearch.email}">
-																<li><a href="crewBus.do?driver=${c.crewid}">${c.crewid}</a>
+																<li><a href="crewBus.do?driver=${c.crewid}">${c.crewname}</a>
 															</c:if>
 														</c:forEach>
 													</ul>

@@ -5,6 +5,7 @@ public class CrewMemberDto {
 	private String crewid;
 	private int leader;
 	private String nick;
+	private String crewname;
 	
 	public String getNick() {
 		return nick;
@@ -29,6 +30,12 @@ public class CrewMemberDto {
 	}
 	public void setLeader(int leader) {
 		this.leader = leader;
+	}
+	public String getCrewname() {
+		return crewname;
+	}
+	public void setCrewname(String crewname) {
+		this.crewname = crewname;
 	}
 	
 }
