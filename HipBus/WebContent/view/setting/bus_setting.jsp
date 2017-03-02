@@ -116,6 +116,7 @@
 
 <!-- myBusEdit.jsp crewBusEdit.jsp-->
 <c:set var="str_nick" value="닉네임"/>
+<c:set var="str_crewname" value="크루명"/>
 <c:set var="str_passwd" value="비밀번호"/>
 <c:set var="str_repasswd" value="비밀번호 확인"/>
 <c:set var="str_enterPasswd" value="비밀번호를 다시 한번 입력해주세요."/>
@@ -127,6 +128,9 @@
 <c:set var="str_crewMemEjectBtn" value="크루 탈퇴"/>
 <c:set var="str_crewMemManage" value="Crew Member Management"/>
 <c:set var="str_crewMemNoneMsg" value="크루에 가입한 회원이 없습니다. 크루를 홍보해주세요."/>
+<c:set var="str_channel_id" value="라이브 채널 아이디"/>
+
+
 
 <c:set var="str_editTag" value="Tags 수정"/>
 <c:set var="str_goSignOut" value="회원 탈퇴"/>
@@ -135,5 +139,14 @@
 <c:set var="str_agreeSignOut" value="안내 사항을 모두 확인하였으며, 이에 동의합니다."/>
 <c:set var="str_signOutbtn" value="탈퇴"/>
 <c:set var="str_crewSignOut" value="크루 탈퇴"/>
-<c:set var="str_crewSignOutmsg1" value="탈퇴할 경우 재사용 및 복구가 불가능합니다."/>
-<c:set var="str_crewSignOutmsg2" value="탈퇴 후 크루로서 게시한 내용을 수정/삭제 할 수 없습니다."/>
+<c:set var="str_crewSignOutmsg1" value="탈퇴할 경우 크루로서 게시한 내용을 수정/삭제 할 수 없습니다. <br>&nbsp;&nbsp;&nbsp;&nbsp;탈퇴 후 재가입이 가능합니다."/>
+<c:set var="str_crewSignOutmsg2" value="크루장은 다른 크루원에게 크루장 권한을 인계해야만 탈퇴할 수 있습니다."/>
+<c:set var="str_crewSignOutmsg3" value="탈퇴 시 크루가 삭제됩니다. <br>&nbsp;&nbsp;&nbsp;&nbsp;크루의 공연일정 및 구인광고도 함께 삭제되므로 신중히 결정해주세요."/>
+
+<!-- crewBusDeletePro -->
+<c:set var="str_crewDeleteSuccess" value="크루 탈퇴에 성공했습니다."/>
+<c:set var="str_crewDeleteFail" value="크루 탈퇴에 실패했습니다. 잠시 후 다시 시도해주세요."/>
+
+<!-- crewBusEditPro.jsp -->
+<c:set var="str_crewEditSuccess" value="크루정보 수정에 성공하였습니다."></c:set>
+<c:set var="str_crewEditFail" value="크루정보 수정에 실패하였습니다. 잠시 후 다시 시도해주세요."></c:set>

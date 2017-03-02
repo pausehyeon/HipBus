@@ -13,7 +13,7 @@
 	<c:redirect url="main.do" />
 </c:if>
 <c:if test="${sessionScope.memEmail ne null}">
-	<body class="w3-theme-l5" onload="taglist(); signoutformvalidate(); crewinputformvalidate()">
+	<body class="w3-theme-l5" onload="taglist(); signoutformvalidate(); crewprofileformvalidate()">
 
 		<!-- Navbar -->
 		<c:import url="../top.do" />
@@ -22,6 +22,7 @@
 		<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js"></script>
 		<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/localization/messages_ko.js"></script>
 		<script type="text/javascript" src="${project}/scripts/formValidationScripts.js"></script>
+		<!-- 태그 Ajax -->
 		<script type="text/javascript">
 			function taglist() {
 				var params = "driver=" + "${driver}" + "&type=list";
@@ -147,17 +148,17 @@
 							</h5>
 
 							<div class="w3-row-padding">
-								<form id="inputform" enctype="multipart/form-data" action="crewBusEditPro.do?driver=${driver}" method="post" class="w3-container">
+								<form name="crewprofileform" enctype="multipart/form-data" action="crewBusEditPro.do?driver=${driver}" method="post" class="w3-container">
 									<div class="w3-col m12 w3-margin-top w3-margin-bottom">
 										<div class="w3-row-padding">
-											<c:if test="${member.imglocation eq null}">
+											<c:if test="${crew.imglocation eq null}">
 												<div class="w3-col m4 w3-center">
-													<img src="${project}/view/img/HipBusLogo_pale_sq.png" class="w3-circle" width="100%" alt="profile">
+													<img src="${project}/view/img/CrewBusLogo_pale_sq.png" class="w3-circle" width="100%" alt="profile">
 												</div>
 											</c:if>
-											<c:if test="${member.imglocation ne null}">
+											<c:if test="${crew.imglocation ne null}">
 												<div class="w3-col m4 w3-center">
-													<img src="${project}/hipbusSave/수정해야" class="w3-circle" width="100%" alt="profile">
+													<img src="${project}/hipbusSave/${crew.imglocation}" class="w3-circle" width="100%" alt="profile">
 												</div>
 											</c:if>
 											<div class="w3-col m8">
@@ -167,20 +168,19 @@
 										</div>
 										<div class="w3-text-red w3-small w3-right"></div>
 									</div>
-									<div class="w3-col m12 w3-margin-top w3-margin-bottom">
+									<div class="w3-col m12 w3-margin-top">
+										<input name="ex_crewname" type="hidden" value="${crew.crewname}">
+										<input name="crewname" type="text" value="${crew.crewname}" class="w3-input">
 										<label class="w3-validate w3-label">${str_crewname}</label>
-										<input name="crewname" value="" class="w3-input" type="text">
+									</div>
+									<div class="w3-col m12 w3-margin-top w3-margin-bottom">
+										<a class="w3-right w3-small" href="https://www.youtube.com/account_advanced"> <i class="fa fa-question-circle"></i> 채널 아이디 확인하는 방법
+										</a>
+										<input name="channel_id" value="${channel_id}" class="w3-input" type="text">
+										<label class="w3-validate w3-label">${str_channel_id}</label>
 									</div>
 									<div class="w3-col m12 w3-margin-top w3-margin-bottom w3-center">
-										<c:if test="${(member.mem_level eq 2) and (result eq 1)}">
-											<label>${str_channel_id}</label>
-											<a class="w3-right w3-small"> <i class="fa fa-question-circle"></i> 채널 아이디 확인하는 방법
-											</a>
-											<input name="channel_id" class="w3-input" type="text">
-										</c:if>
-										<div class="w3-center">
-											<input type="submit" value="수정 완료" class="w3-btn w3-padding w3-black w3-margin">
-										</div>
+										<input type="submit" value="수정 완료" class="w3-btn w3-padding w3-black w3-margin">
 									</div>
 								</form>
 							</div>
@@ -203,7 +203,7 @@
 											<th colspan="2">${str_crewMemManage}</th>
 										</tr>
 
-										<c:if test="${crewMember ne null}">
+										<c:if test="${crewMember.size() ne 0}">
 											<c:forEach var="crew" items="${crewMember}">
 												<c:if test="${crew.email ne sessionScope.memEmail}">
 													<tr>
@@ -215,9 +215,9 @@
 												</c:if>
 											</c:forEach>
 										</c:if>
-										<c:if test="${crewMember eq null}">
+										<c:if test="${crewMember.size() eq 0}">
 											<tr>
-												<th>${str_crewMemNoneMsg}</th>
+												<th colspan="3">${str_crewMemNoneMsg}</th>
 											</tr>
 										</c:if>
 
@@ -253,14 +253,33 @@
 							</h5>
 
 							<p class="w3-responsive">
-								<i class="fa fa-check"></i> ${str_crewSignOutmsg1}<br> ${str_crewSignOutmsg2}
+								<i class="fa fa-check"></i>
+								<c:if test="${leader ne 2}">
+									<!-- 크루장이 아닌 경우 : 기본 탈퇴 메시지 -->
+									${str_crewSignOutmsg1}
+								</c:if>
+								<c:if test="${leader eq 2 and crewMember.size() gt 1}">
+									<!-- 크루장이고 멤버가 남아있는 경우 : 권한 인계 메시지, submit 불가능하게 -->
+									${str_crewSignOutmsg2}
+									<script type="text/javascript">
+									$(document).ready(function(){
+										document.getElementById('signoutformSubmit').disabled = true;
+										document.getElementById('signoutcheck').disabled = true;
+									});	
+									</script>
+								</c:if>
+								<c:if test="${leader eq 2 and crewMember.size() le 1}">
+									<!-- 크루장이고 멤버가 크루장만 남은 경우 : 크루 삭제 경고 메시지 -->
+									${str_crewSignOutmsg3}
+								</c:if>
 							</p>
 							<form id="signoutform" class="w3-container" action="crewBusDeletePro.do" method="post">
-								<input name="signoutcheck" class="w3-check" type="checkbox">
+								<input name="signoutcheck" id="signoutcheck" class="w3-check" type="checkbox">
+								<input type="hidden" name="crewid" value="${driver}">
 								<label class="w3-validate">${str_agreeSignOut}</label>
 								<p id="signOutCheckError"></p>
 								<p class="w3-center">
-									<button type="submit" class="w3-btn">${str_signOutbtn}</button>
+									<input type="submit" id="signoutformSubmit" value="${str_signOutbtn}" class="w3-btn w3-center">
 								</p>
 							</form>
 						</div>

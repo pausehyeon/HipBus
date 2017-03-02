@@ -22,4 +22,7 @@ public interface CrewBusDao {
 	public int isApplied(Map<String, String> map);
 	public int updateLeader(Map<String,String>map);
 	public int leaderChange(Map<String,String>map);
+	public int deleteCrew(String crewid);
+	public int updateImglocation(CrewDto dto);
+	public int updateCrewname(CrewDto dto);
 }

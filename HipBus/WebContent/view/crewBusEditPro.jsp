@@ -1,12 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<!-- SETTING -->
+<%@include file="/view/setting/setting.jsp"%>
+<%@include file="/view/setting/bus_setting.jsp"%>
 
-</body>
-</html>
+<!-- SETTING 끝 -->
+
+<c:if test="${ ( result eq 0 ) or (profileResult eq 0) or (channelResult eq 0)}">
+	<script type="text/javascript">
+		//<!--		
+		alert( "${str_crewEditFail}" );
+		location.href="crewBusEdit.do?driver=" + '${driver}';		
+		//-->
+	</script>
+</c:if>
+<c:if test="${ ( result eq -1 or result eq 1 ) and profileResult eq 1 and (channelResult eq -1 or channelResult eq 1)}">
+	<script type="text/javascript">
+		//<!--
+		alert("${str_crewEditSuccess}");	
+		location.href="crewBus.do?driver=" + '${driver}';
+		//-->
+	</script>	
+</c:if>

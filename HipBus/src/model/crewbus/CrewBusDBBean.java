@@ -69,6 +69,18 @@ public class CrewBusDBBean implements CrewBusDao {
 		return SqlMapClient.getSession().update("CrewBus.leaderChange", map);
 	}
 
+	@Override
+	public int deleteCrew(String crewid) {
+		return SqlMapClient.getSession().delete("CrewBus.deleteCrew", crewid);
+	}
 	
+	@Override
+	public int updateImglocation(CrewDto dto) {
+		return SqlMapClient.getSession().update("CrewBus.updateImglocation", dto);
+	}
 	
+	@Override
+	public int updateCrewname(CrewDto dto) {
+		return SqlMapClient.getSession().update("CrewBus.updateCrewname", dto);
+	}
 }

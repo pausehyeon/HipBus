@@ -174,6 +174,7 @@
 									</div>
 									<div class="w3-col m12 w3-margin-top w3-margin-bottom">
 										<label class="w3-validate w3-label">${str_nick}</label>
+										<input name="ex_nick" value="${member.nick}" type="hidden">
 										<input name="nick" value="${member.nick}" class="w3-input" type="text">
 									</div>
 									<div class="w3-col m12 w3-margin-top w3-margin-bottom">

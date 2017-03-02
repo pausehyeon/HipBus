@@ -24,6 +24,7 @@ var str_signUpPassword = "* 비밀번호는 숫자와 알파벳을 조합하여 
 var str_signUpPasswordCheck = "* 확인을 위해 다시 한번 입력해주세요.";
 var str_emailNo = "* 이미 존재하는 이메일입니다. <a href='mainSignIn.do'>로그인하기</a>";
 var str_userNameNo = "* 이미 존재하는 닉네임입니다.";
+var str_crewnameNo = "* 이미 존재하는 크루 이름입니다.";
 var str_passwordCheckNo = "* 비밀번호가 일치하지 않습니다.";
 var str_nowhitespace = "* 공백을 포함할 수 없습니다.";
 var str_alphanumeric = "* '_' 이외의 특수기호는 포함할 수 없습니다.";
@@ -33,6 +34,7 @@ var str_needContent = '&nbsp;&nbsp;&nbsp;* 내용을 입력해주세요.';
 var str_needUpload = '<br>* 대표 이미지를 입력해주세요.';
 var str_confirmSignOut = "정말 탈퇴하시겠습니까?";
 var str_mustAgree = "<br>* 동의하셔야만 탈퇴할 수 있습니다.";
+var str_invalidChannelId = "* 유효하지 않은 Youtube 채널 아이디입니다.<br><a class='w3-right w3-small' href='https://www.youtube.com/account_advanced'><i class='fa fa-question-circle'></i> 채널 아이디 확인하기</a>";
 
 function inputformvalidate() {
 	$("#inputform").validate({
@@ -70,6 +72,9 @@ function inputformvalidate() {
 					data : {
 						nick : function() {
 							return inputform.nick.value;
+						},
+						ex_nick : function(){
+							return inputform.ex_nick.value;
 						}
 					}
 				}
@@ -209,31 +214,71 @@ function signoutformvalidate() {
 	});
 }
 
-function crewinputformvalidate() {
-	$("#inputform").validate({
+function crewprofileformvalidate() {
+	$("form[name=crewprofileform]").validate({
 		errorClass : "w3-text-red w3-xsmall w3-right",
-		submitHandler : function() {
-			if (confirm(inputform.email.value + str_confirmSignUp)) {
-				return true;
-			} else {
-				return false;
-			}
-		},
 		// 규칙
 		rules : {
 			crewname : {
 				required : true,
-				nowhitespace : true,
 				remote : {
 					url : "verifyCrewNameResult.do",
 					type : "post",
 					data : {
-						nick : function() {
-							return inputform.crewname.value;
+						crewname : function() {
+							return crewprofileform.crewname.value;
+						},
+						ex_crewname : function(){
+							return crewprofileform.ex_crewname.value;
+						}
+					}
+				}
+			},
+			channel_id : {
+				minlength : 22,
+				maxlength : 22,
+				nowhitespace : true,
+				alphanumeric : true
+			}
+		},
+		messages : {
+			crewname : {
+				remote : str_crewnameNo
+			},
+			channel_id : {
+				minlength : str_invalidChannelId,
+				maxlength : str_invalidChannelId,
+				nowhitespace : str_nowhitespace,
+				alphanumeric : str_invalidChannelId
+			}
+		}
+	});
+}
+
+function createcrewformvalidate(){
+	$("form[name=createcrewform]").validate({
+		errorClass : "w3-text-red w3-xsmall w3-right",
+		// 규칙
+		rules : {
+			crewname : {
+				required : true,
+				minlength : 3,
+				maxlength : 33,
+				remote : {
+					url : "verifyCrewNameResult.do",
+					type : "post",
+					data : {
+						crewname : function() {
+							return createcrewform.crewname.value;
 						}
 					}
 				}
 			}
+		},
+		messages : {
+			crewname : {
+				remote : str_crewnameNo
+			}
 		}
-	});
+	});	
 }

@@ -16,7 +16,7 @@ public class ImageResize {
 		// 이미지를 사이즈에 맞게 잘라주는 모듈.
 		// request, 사이즈 조정이 필요한 이미지, 가로세로 비율, 최대크기
 		
-		String newImglocation = "resized_" + imglocation;
+		String newImglocation = "r_" + imglocation;
 		String path = request.getSession().getServletContext().getRealPath("/hipbusSave") + "\\";
 		RenderedOp op = JAI.create("fileload", path + imglocation); // fileload는 고정값
 		BufferedImage oldImageBuffer = op.getAsBufferedImage();

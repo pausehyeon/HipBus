@@ -5,7 +5,11 @@
 <%@include file="/view/setting/bus_setting.jsp"%>
 <%@include file="/view/setting/myBus_setting.jsp"%>
 
-
+<!-- jQuery Validation Plugin -->
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/localization/messages_ko.js"></script>
+<script type="text/javascript" src="${project}/scripts/formValidationScripts.js"></script>
 <!-- Left Column -->
 <div class="w3-col m3">
 	<!-- Profile -->
@@ -32,7 +36,7 @@
 					<i class="fa fa-bookmark fa-fw w3-margin-right w3-text-theme"></i> Best Driver
 				</p>
 			</c:if>
-			
+
 			<c:if test="${myCrews[0] != null}">
 				<c:forEach var="crew" items="${myCrews}">
 
@@ -41,8 +45,7 @@
 					</p>
 					<div id="${crew.crewid}" class="w3-accordion-content">
 						<p>
-							<a href="crewBus.do?driver=${crew.crewid}">${crew.crewname}
-								<i class="fa fa-mail-forward fa-fw w3-margin-right w3-text-theme"></i>
+							<a href="crewBus.do?driver=${crew.crewid}">${crew.crewname} <i class="fa fa-mail-forward fa-fw w3-margin-right w3-text-theme"></i>
 							</a>
 						<ul>
 							<c:if test="${myMembers[crew.crewid]!=null and myMembers[crew.crewid].size()!=0}">
@@ -58,13 +61,11 @@
 			</c:if>
 			<c:if test="${driver==email}">
 				<c:if test="${mem_level==2}">
-					<a onclick="document.getElementById('createCrewBus').style.display='block'">
-						<i class="fa fa-plus w3-margin-right"></i>새 크루 추가하기
+					<a onclick="document.getElementById('createCrewBus').style.display='block'"> <i class="fa fa-plus w3-margin-right"></i>새 크루 추가하기
 					</a>
 				</c:if>
 				<hr>
-				<a href="myBusBeforeEdit.do?driver=${driver}">
-					<i class="fa fa-pencil"></i>${str_editProfile}
+				<a href="myBusBeforeEdit.do?driver=${driver}"> <i class="fa fa-pencil"></i>${str_editProfile}
 				</a>
 			</c:if>
 			<hr>
@@ -103,13 +104,11 @@
 					</c:if>
 					<c:if test="${!passengers.isEmpty()}">
 						<c:forEach var="passenger" items="${passengers}" varStatus="status">
-							<li class="w3-padding-10">
-							<c:if test="${passenger.getImglocation()!=null}">
+							<li class="w3-padding-10"><c:if test="${passenger.getImglocation()!=null}">
 									<img alt="img" src="${project}/hipbusSave/${passenger.getImglocation()}" class="w3-left w3-circle w3-margin-right" style="width: 11%">
-							</c:if>
-							<c:if test="${passenger.getImglocation()==null}">
+								</c:if> <c:if test="${passenger.getImglocation()==null}">
 									<img src="${project}/view/img/HipBusLogo_colored_sq.png" class="w3-left w3-circle w3-margin-right" style="width: 11%" alt="Avatar">
-							</c:if> <a href="myBus.do?driver=${passenger.getEmail()}" class="w3-middle">${passenger.getNick()}</a></li>
+								</c:if> <a href="myBus.do?driver=${passenger.getEmail()}" class="w3-middle">${passenger.getNick()}</a></li>
 						</c:forEach>
 					</c:if>
 				</ul>
@@ -161,55 +160,36 @@
 	<br>
 </div>
 <!-- End Left Column -->
-<script type="text/javascript">
-	//<!--
-	function verifyCrewName(){
-		var params = "crewname=" + $('input[name="crewname"]').val();
-		var request = new Request(function() {
-			if(request.httpRequest.readyState == 4){
-				if(request.httpRequest.status == 200){
-					if(request.httpRequest.responseText.trim() == "0"){
-						$('#nameresult').removeClass('w3-text-red').addClass('w3-text-blue').text("유효한 크루 이름입니다.");	//"${str_userNameOk}" "${str_userNameNo}"
-					}else{
-						$('#nameresult').removeClass('w3-text-blue').addClass('w3-text-red').text("*사용할 수 없는 크루 이름입니다.");	
-					}
-				}else{
-					$('#nameresult').text(request.httpRequest.status+'오류');
-				}
-			}else{
-				console.log( "통신중..." );
-			}	
-		}, "verifyCrewNameResult.do", "POST", params);
-		request.sendRequest();
-	}
-	//-->
-</script>
 <!-- 크루버스 만들기 모달 -->
 <div id="createCrewBus" class="w3-modal">
 	<div class="w3-modal-content w3-card-8 w3-animate-zoom" style="max-width: 600px">
-
 		<div class="w3-center">
 			<br> <span onclick="document.getElementById('createCrewBus').style.display='none'" class="w3-closebtn w3-container w3-padding-8 w3-display-topright" title="Close Modal">×</span>
 		</div>
-
-		<form name="CreateCrewForm" method="post" action="myBusCreatCrewPro.do?driver=${driver}" class="w3-container">
+		<form name="createcrewform" method="post" action="myBusCreatCrewPro.do?driver=${driver}" class="w3-container">
 			<div class="w3-section">
 				<div class="w3-row-padding">
 					<div class="w3-col m12 w3-margin-bottom">
 						<label><b>크루 이름</b></label>
 					</div>
 					<div class="w3-col s10 m9">
-						<input name="crewname" onkeyup="verifyCrewName()" type="text" placeholder="새 크루의 이름을 입력하세요." required class="w3-input w3-border">
+						<input name="crewname" type="text" placeholder="새 크루의 이름을 입력하세요." required class="w3-input w3-border">
 						<p id="nameresult" class="w3-text-red w3-small w3-right"></p>
 					</div>
 					<div class="w3-col s10 m3">
 						<input type="submit" value="크루 생성" class="w3-btn-block w3-theme-d5 w3-padding">
 					</div>
-					<div class="w3-col m12 w3-right">
-					</div>
+					<div class="w3-col m12 w3-right"></div>
 				</div>
 			</div>
 		</form>
+		<script type="text/javascript">
+		//<!--
+			$(document).ready(function(){
+				createcrewformvalidate();
+			});
+		//-->
+		</script>
 
 		<div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
 			<span class="w3-right w3-padding w3-hide-small w3-tiny">기존 크루에 가입하려면? <a href="garageFAQ.do">자주 묻는 질문으로 가기</a></span>

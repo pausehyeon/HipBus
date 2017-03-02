@@ -73,6 +73,20 @@
 	<update id="leaderChange" parameterType="map">
 		update hb_crewmember set leader=1 where email=#{email} and crewid=#{crewid} 
 	</update>
+
+<!-- 크루 삭제 -->
+	<delete id="deleteCrew" parameterType="String">
+		delete HB_Crew where crewid=#{crewid}
+	</delete>
+
+<!-- 크루 정보 수정 -->
+	<update id="updateImglocation">
+		update HB_Crew set imglocation = #{imglocation} where crewid=#{crewid}
+	</update>
+	
+	<update id="updateCrewname">
+		update HB_Crew set crewname = #{crewname} where crewid=#{crewid}
+	</update>
 	
 	
 	
