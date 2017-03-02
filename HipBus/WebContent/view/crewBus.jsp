@@ -22,6 +22,17 @@ textarea:focus {
 </style>
 
 <title>${str_crewbusTitle}</title>
+
+<c:if test="${!isDriver}">
+	<script type="text/javascript">
+	//<!--
+	alert("없어졌거나 존재하지 않는 크루입니다.");
+	location.href="main.do";
+	//-->
+	</script>
+
+</c:if>
+
 <body class="w3-theme-l5" onload="crewBusSet()">
 	<!-- Navbar -->
 	<c:import url="../top.do" />

@@ -11,11 +11,12 @@ import org.springframework.web.servlet.ModelAndView;
 import handler.CommandHandler;
 import handler.HandlerException;
 import model.general.GeneralDao;
+import model.mybus.MyBusDao;
 
 @Controller
 public class MyBus implements CommandHandler {
 	@Resource(name="myBusDao")
-	model.mybus.MyBusDao mybusDao;
+	private MyBusDao mybusDao;
 	
 	@RequestMapping("/myBus.do")
 	@Override
@@ -23,23 +24,33 @@ public class MyBus implements CommandHandler {
 		String driver = request.getParameter("driver");		// 버스주인 (get으로 넘어온 이메일)
 		String email = null;
 		int my_level = 0;
-		String channelid = mybusDao.getChannelid( driver );
+		boolean isDriver = false;
 		
-		if( request.getSession().getAttribute("memEmail") != null ) {
-			email = (String) request.getSession().getAttribute("memEmail");	// 방문자 (세션에 저장된 이메일)
-			my_level = mybusDao.getMember(email).getMem_level();
-			request.setAttribute("my_level", my_level);
+		if(mybusDao.isDriver(driver)==1){
+			isDriver = true;
+			
+			String channelid = mybusDao.getChannelid( driver );
+			
+			if( request.getSession().getAttribute("memEmail") != null ) {
+				email = (String) request.getSession().getAttribute("memEmail");	// 방문자 (세션에 저장된 이메일)
+				my_level = mybusDao.getMember(email).getMem_level();
+				request.setAttribute("my_level", my_level);
+				
+			}
+			
+			int mem_level = mybusDao.getMember(driver).getMem_level();
+			
+			
+			request.setAttribute("chResult", request.getParameter("chResult"));
+			request.setAttribute("mem_level", mem_level);
+			request.setAttribute("driver", driver);
+			request.setAttribute("email", email);
+			request.setAttribute("channelid", channelid);
 			
 		}
 		
-		int mem_level = mybusDao.getMember(driver).getMem_level();
+		request.setAttribute("isDriver", isDriver);
 		
-		
-		request.setAttribute("chResult", request.getParameter("chResult"));
-		request.setAttribute("mem_level", mem_level);
-		request.setAttribute("driver", driver);
-		request.setAttribute("email", email);
-		request.setAttribute("channelid", channelid);
 		return new ModelAndView("myBus");
 	}
 }

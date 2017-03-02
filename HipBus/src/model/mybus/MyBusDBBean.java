@@ -17,6 +17,9 @@ import model.WantedDto;
 
 @Component("myBusDao")
 public class MyBusDBBean implements MyBusDao {
+	public int isDriver(String driver) {
+		return SqlMapClient.getSession().selectOne("MyBus.isDriver", driver);
+	}
 	public List<BoardDto> getBoardList( Map<String, String> map ) {
 		return SqlMapClient.getSession().selectList("MyBus.getBoards", map);
 	}
@@ -168,5 +171,6 @@ public class MyBusDBBean implements MyBusDao {
 	public String getCrewId(String crewname){
 		return SqlMapClient.getSession().selectOne("MyBus.getCrewId", crewname);
 	}	
+	
 	
 }

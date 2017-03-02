@@ -20,8 +20,16 @@ textarea:focus {
 }
 </style>
 
-
 <title>${str_mybusTitle}</title>
+<c:if test="${!isDriver}">
+	<script type="text/javascript">
+	//<!--
+	alert("탈퇴했거나 존재하지 않는 회원입니다.");
+	location.href="main.do";
+	//-->
+	</script>
+
+</c:if>
 <body class="w3-theme-l5" onload="myBusSet()">
 	<!-- Navbar -->
 	<c:import url="../top.do" />

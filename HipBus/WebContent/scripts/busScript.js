@@ -77,7 +77,8 @@ function playonair(channel_id, googleApiKey) {
 							onairchat.innerHTML = "";
 						}
 					}else{
-						onairchat.innerHTML = "<p class='w3-center'> 오류 발생 "+request.status+" </p><p>channelID가 유효하지 않을 수 있습니다. <br>확인해주세요</p>";
+						onair.innerHTML = "<p class='w3-center'> 유효하지 않은 채널아이디입니다. <br> 확인 후 수정해주세요! <br></p>"
+										+ "<a href='https://www.youtube.com/account_advanced'>채널아이디 확인하러가기</a> ";
 					}
 				} else {
 					onairchat.innerHTML = "<img src='/HipBus/view/img/loading2.gif' alt='로딩 중입니다' style='width:100px;'>";

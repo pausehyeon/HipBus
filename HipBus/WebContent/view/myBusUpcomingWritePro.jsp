@@ -9,8 +9,8 @@
 		alert("공연광고 작성을 실패했습니다.");
 	//-->
 	</script>
-	<meta http-equiv="refresh" content="0;url=myBus.do?driver=${driver}">
+	<meta http-equiv="refresh" content="0;url=myBusUpcoming.do?driver=${driver}">
 </c:if>
 <c:if test="${result != 0}">
-	<c:redirect url="myBus.do?driver=${driver}"/>	
+	<c:redirect url="myBusUpcoming.do?driver=${driver}"/>	
 </c:if>	

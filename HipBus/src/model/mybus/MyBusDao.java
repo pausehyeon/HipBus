@@ -13,6 +13,7 @@ import model.UpcomingDto;
 import model.WantedDto;
 
 public interface MyBusDao {
+	public int isDriver(String driver);
 	public List<BoardDto> getBoardList( Map<String, String> map );
 	public BoardDto getLastBoard( String driver );
 	public MemberDto getMember( String email );

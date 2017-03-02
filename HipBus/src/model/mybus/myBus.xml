@@ -3,6 +3,9 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="MyBus">
+	<select id="isDriver" parameterType="String" resultType="int">
+		select count(*) from hb_driver where driver=#{driver}
+	</select>
 <!-- 방명록 -->
 	<select id="getLastBoard" parameterType="String" resultType="model.BoardDto">
 		select b.driver, b.num, b.email, b.nick, b.content, b.reg_date, m.imglocation
