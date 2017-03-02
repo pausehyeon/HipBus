@@ -3,6 +3,7 @@ package model.general;
 import java.util.List;
 import java.util.Map;
 
+import model.AdDto;
 import model.ChannelDto;
 import model.CrewDto;
 import model.MemberDto;
@@ -21,4 +22,5 @@ public interface GeneralDao {
 	public List<MemberDto> getSearchMember(Map<String,String> map);
 	public int verifyCrew(String crewname);
 	public List<CrewDto> getSearchCrew(Map<String,String> map);
+	public AdDto getAds(int ad_num);
 }

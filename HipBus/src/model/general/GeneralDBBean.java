@@ -7,6 +7,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
 
+import model.AdDto;
 import model.ChannelDto;
 import model.CrewDto;
 import model.MemberDto;
@@ -84,5 +85,10 @@ public class GeneralDBBean implements GeneralDao {
 	public List<CrewDto> getSearchCrew(Map<String, String> map) {
 		// TODO Auto-generated method stub
 		return session.selectList("General.getSearchCrew", map);
+	}
+
+	@Override
+	public AdDto getAds(int ad_num) {
+		return session.selectOne("General.getAds", ad_num);
 	}
 }

@@ -60,6 +60,8 @@
 	<select id="getSearchCrew" parameterType="Map" resultType="model.CrewDto">
 		select * from hb_crew where crewname like '%${keyword}%'
 	</select>
-
 	
+	<select id="getAds" parameterType="int" resultType="model.AdDto">
+		select * from hb_ad where ad_num=#{ad_num}
+	</select>	
 </mapper>
