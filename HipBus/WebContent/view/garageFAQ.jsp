@@ -36,14 +36,9 @@
 				<c:forEach var="article" items="${FAQList}">
 					<div class="w3-accordion w3-white w3-card-4">
 						<c:set var="sum" value="${sum+1}" />
-						<c:if test="${article.num%2 eq 0}">
+						<c:if test="${sum%2 eq 0}">
 							<!-- 짝수 일 때 -->
 						<button onclick="myFunction('q${article.num}')" class="w3-btn-block w3-theme-d1 w3-left-align">
-						</c:if>
-						<c:if test="${article.num%2 eq 1}">
-							<!-- 홀수 일 때 -->
-						<button onclick="myFunction('q${article.num}')" class="w3-btn-block w3-theme-l3 w3-left-align">
-						</c:if>
 						<h4>
 							<c:if test="${fn:length(article.subject) lt 40}">
 								<!-- 제목이 길지 않을 때 -->
@@ -55,6 +50,26 @@
 							</c:if>
 						</h4>
 						</button>
+						</c:if>
+						
+						
+						<c:if test="${sum%2 eq 1}">
+							<!-- 홀수 일 때 -->
+						<button onclick="myFunction('q${article.num}')" class="w3-btn-block w3-theme-l3 w3-left-align">
+						<h4>
+							<c:if test="${fn:length(article.subject) lt 40}">
+								<!-- 제목이 길지 않을 때 -->
+								Q${sum}.&nbsp;${article.subject}&nbsp;<i class="fa fa-caret-down"></i>
+							</c:if>
+							<c:if test="${fn:length(article.subject) ge 40}">
+								<!-- 제목이 길 때 -->
+								Q${sum}.&nbsp;${fn:substring(article.subject,0,40)}...&nbsp;<i class="fa fa-caret-down"></i>
+							</c:if>
+						</h4>
+						</button>
+						
+						</c:if>
+						
 						<div id="q${article.num}" class="w3-accordion-content w3-container">
 							<div class="w3-padding-jumbo ">${article.content}
 								<c:if test="${dto.mem_level == 3 }">
