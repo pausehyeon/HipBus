@@ -35,6 +35,7 @@ DROP SEQUENCE HB_wantedseq;
 
 
 
+
 /* Create Sequences 수정: 지현*/
 
 CREATE SEQUENCE HB_boardseq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999;
@@ -46,7 +47,6 @@ CREATE SEQUENCE HB_upcomingseq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999;
 CREATE SEQUENCE HB_wantedseq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999;
 
 CREATE SEQUENCE HB_replyseq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 nocache;
-
 
 /* Create Tables */
 
@@ -173,7 +173,7 @@ CREATE TABLE HB_StationReply
 (
 	replynum number(22) NOT NULL,
 	num number(22) NOT NULL,
-	email varchar2(50) NOT NULL,
+	email varchar2(50),
 	content varchar2(4000) NOT NULL,
 	ref_num number(22) NOT NULL,
 	re_step number(22) NOT NULL,
@@ -231,6 +231,7 @@ CREATE TABLE HB_Wanted
 	reg_date date NOT NULL,
 	PRIMARY KEY (num)
 );
+
 
 
 /* Create Foreign Keys 수정: 지현 */
