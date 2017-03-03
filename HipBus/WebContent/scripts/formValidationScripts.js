@@ -35,6 +35,7 @@ var str_needUpload = '<br>* 대표 이미지를 입력해주세요.';
 var str_confirmSignOut = "정말 탈퇴하시겠습니까?";
 var str_mustAgree = "<br>* 동의하셔야만 탈퇴할 수 있습니다.";
 var str_invalidChannelId = "* 유효하지 않은 Youtube 채널 아이디입니다.<br><a class='w3-right w3-small' href='https://www.youtube.com/account_advanced'><i class='fa fa-question-circle'></i> 채널 아이디 확인하기</a>";
+var str_mustAgreeTerms = "* 약관을 읽고 동의하셔야만 가입하실 수 있습니다.";
 
 function inputformvalidate() {
 	$("#inputform").validate({
@@ -95,6 +96,9 @@ function inputformvalidate() {
 				maxlength : 22,
 				nowhitespace : true,
 				alphanumeric : true
+			},
+			agreeTerms : {
+				required : true
 			}
 		},
 		// 규칙체크 실패시 출력될 메시지
