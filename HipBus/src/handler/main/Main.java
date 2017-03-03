@@ -68,6 +68,24 @@ public class Main implements CommandHandler {
 
 		// Top Drivers
 		List<TopDriversDto> topdrivers = dao.getTopDrivers();
+		
+		for (int i = 0; i < topdrivers.size(); i++) {
+			TopDriversDto topdriver = topdrivers.get(i);
+			// 만약 topdriver.driver 값에 @가 포함되면 개인이고 포함되지 않으면 crew임.
+			if (topdriver.getDriver().contains("@")) {
+				// 개인인 경우
+				MemberDto topMember = generalDao.getMember(topdriver.getDriver());
+				topdriver.setNick(topMember.getNick());
+				topdriver.setImglocation(topMember.getImglocation());
+			} else {
+				// 크루인 경우
+				CrewDto topCrew = generalDao.getCrew(topdriver.getDriver());
+				topdriver.setNick(topCrew.getCrewname());
+				topdriver.setImglocation(topCrew.getImglocation());
+			}
+			topdrivers.remove(i);
+			topdrivers.add(i, topdriver);
+		}
 		request.setAttribute("topdrivers", topdrivers);
 
 		// Upcoming
