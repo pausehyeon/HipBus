@@ -33,6 +33,7 @@ public class MainForgotPro implements CommandHandler {
 			e.printStackTrace();
 		}
 		
+		String localhost = "192.168.20.57";
 		String email = request.getParameter("email");		
 		int forgotResult = mainDao.forgotPasswd(email);
 		request.setAttribute("forgotResult", forgotResult);
@@ -45,7 +46,7 @@ public class MainForgotPro implements CommandHandler {
 			request.setAttribute("code", code);		
 			
 			new MailService(email, "비밀번호 분실 메일입니다.", 
-					"<a href='http://localhost:8080/HipBus/mainForgotPro.do?code="+code+"&email="+email+"'>클릭하시면 ["+code+"] 임시비밀번호로 수정 완료 됩니다.\n로그인 후 비밀번호를 변경해주세요.</a>");
+					"<a href='http://"+localhost+":8080/HipBus/mainForgotPro.do?code="+code+"&email="+email+"'>클릭하시면 ["+code+"] 임시비밀번호로 수정 완료 됩니다.\n로그인 후 비밀번호를 변경해주세요.</a>");
 		
 		}
 			

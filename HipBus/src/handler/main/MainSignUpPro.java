@@ -36,6 +36,7 @@ public class MainSignUpPro implements CommandHandler {
 			e.printStackTrace();
 		}
 		
+		String localhost = "192.168.20.57"; 
 		MemberDto dto = new MemberDto();
 		String email = request.getParameter("email");
 		dto.setEmail( email );
@@ -56,7 +57,8 @@ public class MainSignUpPro implements CommandHandler {
 		request.setAttribute("code", code);		
 		
 		new MailService(dto.getEmail(), "회원가입 인증메일입니다.", 
-				"<a href='http://localhost:8080/HipBus/mainValidatePro.do?code="+code+"&email="+email+"'>클릭하면 가입 완료 됩니다.</a>");
+				"<a href='http://"+localhost+":8080/HipBus/mainValidatePro.do?code="+code+"&email="+email+"'>클릭하면 가입 완료 됩니다.</a>");
+				
 		
 		Map<String, String> ms = new HashMap<String, String>();
 		ms.put("email", dto.getEmail() );

@@ -27,6 +27,7 @@ public class AdminInvitePro implements CommandHandler {
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		
+		String localhost = "192.168.20.57"; 
 		String email = request.getParameter("email");
 		
 		String icode = (String) request.getParameter("icode");		
@@ -60,7 +61,7 @@ public class AdminInvitePro implements CommandHandler {
 			
 			//이메일로 코드와 인증을 위한 이메일주소전송
 			new MailService(email, "관리자등업 인증메일입니다.", 
-					"<a href='http://localhost:8080/HipBus/adminInvitePro.do?icode="+code+"&iemail="+email+"'>인증완료하시면 자동으로 등업됩니다.</a>");
+					"<a href='http://"+localhost+":8080/HipBus/adminInvitePro.do?icode="+code+"&iemail="+email+"'>인증완료하시면 자동으로 등업됩니다.</a>");
 			//인증이메일과 코드를  db로 저장하고  
 			Map<String, String> ms = new HashMap<String, String>();
 			ms.put("email", email);
