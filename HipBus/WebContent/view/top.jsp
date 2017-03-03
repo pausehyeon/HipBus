@@ -295,10 +295,9 @@
 
 				<c:if test="${myCrews ne null}">
 					<!-- 가입한 크루가 있으면 -->
-					<c:forEach var="myCrew" items="${myCrews}" begin="0" end="${fn:length(myCrews)}">
-						<li class="w3-hide-small w3-right"><a href="crewBus.do?driver=${myCrew.crewid}" class="w3-padding-large w3-hover-white" title="${str_crewBus}"> <c:if
-									test="${myCrew.imglocation eq null}"
-								>
+					<c:forEach var="myCrew" items="${myCrews}" >
+						<li class="w3-hide-small w3-right"><a href="crewBus.do?driver=${myCrew.crewid}" class="w3-padding-large w3-hover-white" title="${str_crewBus}"> 
+							<c:if test="${myCrew.imglocation eq null}">
 									<img src="${project}/view/img/CrewBusLogo_pale_sq.png" class="w3-circle" style="height: 25px; width: 25px" alt="Crew Bus">
 								</c:if> <c:if test="${myCrew.imglocation ne null}">
 									<img src="${project}/hipbusSave/${myCrew.imglocation}" class="w3-circle" style="height: 25px; width: 25px" alt="Crew Bus">

@@ -30,7 +30,7 @@
 	</select>
 	
 	<select id="getMyCrews" parameterType="String" resultType="model.CrewDto">
-		select distinct c.crewid, c.crewname 
+		select distinct c.crewid, c.crewname, c.imglocation
 		from HB_Crew c, HB_CrewMember m 
 		where c.crewid=m.crewid
 		and m.email=#{email}
