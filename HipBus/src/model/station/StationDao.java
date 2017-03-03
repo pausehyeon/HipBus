@@ -39,6 +39,7 @@ public interface StationDao {
 	public int searchNum4(Map<String, String> nmap);
 	public int searchNum5(Map<String, String> nmap);
 	public int searchNum6(Map<String, String> nmap);
+	public MemberDto getImg(String email);
 	public void addLike( int num);
 	public int likeArticle(LikeDto dto);
 	public int getLike(LikeDto dto);

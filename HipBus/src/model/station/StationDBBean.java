@@ -118,6 +118,10 @@ public class StationDBBean implements StationDao {
 		return SqlMapClient.getSession().selectOne("Station.getMember",email);
 	}
 	
+	public MemberDto getImg(String email) {
+		return SqlMapClient.getSession().selectOne("Station.getImg",email);
+	}
+	
 	public int updateArticle( StationDto dto ) {
 		return SqlMapClient.getSession().update( "Station.updateArticle", dto );				
 	}

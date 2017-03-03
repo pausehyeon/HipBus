@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import handler.CommandHandler;
 import handler.HandlerException;
+import model.MemberDto;
 import model.StationDto;
 import model.station.StationDao;
 
@@ -34,10 +35,14 @@ public class StationRead implements CommandHandler{
 		if(request.getSession().getAttribute("memEmail").equals(article.getEmail())){
 		stationDao.addStatus(num);
 		}
+		String email = (String) request.getSession().getAttribute("memEmail");
+		MemberDto dtoImg = stationDao.getImg(email);
+		request.setAttribute("dtoImg", dtoImg);
 		}
+		
 		request.setAttribute( "num", num );
 		request.setAttribute( "pageNum", pageNum );
-		request.setAttribute( "article", article );	
+		request.setAttribute( "article", article );		
 		request.setAttribute("type", type);
 		
 		

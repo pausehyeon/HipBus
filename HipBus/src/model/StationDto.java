@@ -74,7 +74,6 @@ public class StationDto {
 	public void setReplynum(int replynum) {
 		this.replynum = replynum;
 	}
-
 	
 	
 	

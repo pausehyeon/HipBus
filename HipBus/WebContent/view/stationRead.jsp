@@ -79,7 +79,11 @@
 			board += '<div class="w3-card-8 w3-margin w3-padding-xlarge w3-padding-64">';
 			board += '<div class="w3-container w3-row">';
 			board += '<div class="w3-col m1 w3-center">';
-			board += '	<img src="${project}/view/img/HipBusLogo_pale_sq.png" width="100%" class="w3-circle">';
+			if (data.imglocation == "") {
+				board += '<img src="${project}/view/img/HipBusLogo_pale_sq.png" width="100%" class="w3-circle">';
+			} else {
+				board += '<img src="${project}/hipbusSave/'+ data.imglocation +'" width="100%" class="w3-circle">';
+			}
 			board += '</div>';
 			board += '<div class="w3-col m11 w3-center">';
 			board += '<div class="w3-harf w3-container w3-large w3-left">';
@@ -187,11 +191,15 @@
 			var infResult = document.getElementById("replyBoardABC_"+ref_num);
 		      $('#board_' + replynum + ' #reBoardView').hide();
 				$('#board_' + replynum + ' #reBoardClose').show();
-			reboard = '';
+			var reboard = '';
 				if("${sessionScope.memEmail}" != ''){
 				reboard += '<div class="w3-row-padding w3-padding-32 w3-row" id="reContentClose">'
 				reboard += '<div class="w3-col m1">'
-				reboard += '<img src="${project}/view/img/HipBusLogo_pale_sq.png" width="100%" class="w3-circle">'
+					if ("${dtoImg.imglocation}" == '') {
+						reboard += '<img src="${project}/view/img/HipBusLogo_pale_sq.png" width="100%" class="w3-circle">';
+					} else {
+						reboard += '<img src="${project}/hipbusSave/'+ '${dtoImg.imglocation}' +'" width="100%" class="w3-circle">';
+					}
 				reboard += '</div>'
 				reboard += '<div class="w3-col m7">'
 				reboard += '<input name="recontent" type="text" required class="w3-input w3-border w3-padding-5" style="height: 50px">'
@@ -259,7 +267,11 @@
 			reboard += '<div class="w3-card-8 w3-margin w3-padding-xlarge w3-padding-64" id="reboardDown">';
 			reboard += '<div class="w3-container w3-row">';
 			reboard += '<div class="w3-col m1 w3-center">';
-			reboard += '<img src="${project}/view/img/HipBusLogo_pale_sq.png" width="100%" class="w3-circle">';
+			if (data.imglocation == "") {
+				reboard += '<img src="${project}/view/img/HipBusLogo_pale_sq.png" width="100%" class="w3-circle">';
+			} else {
+				reboard += '<img src="${project}/hipbusSave/'+ data.imglocation +'" width="100%" class="w3-circle">';
+			}
 			reboard += '</div>';
 			reboard += '<div class="w3-col m11 w3-center">';
 			reboard += '<div class="w3-harf w3-container w3-large w3-left">';
@@ -652,7 +664,12 @@ ${article.content}
 			<c:if test="${sessionScope.memEmail != null }">
 			<div class="w3-row-padding w3-padding-64 w3-row">
 				<div class="w3-col m1">
-					<img src="${project}/view/img/HipBusLogo_pale_sq.png" width="100%" class="w3-circle">
+				<c:if test="${dtoImg.imglocation == ''}">
+				<img src="${project}/view/img/HipBusLogo_pale_sq.png" width="100%" class="w3-circle">
+				</c:if>
+				<c:if test="${dtoImg.imglocation != ''}">
+				<img src="${project}/hipbusSave/${dtoImg.imglocation}" width="100%" class="w3-circle">
+				</c:if>
 				</div>
 				<div class="w3-col m9">
 					<input name="content" type="text" required class="w3-input w3-border w3-padding-5" style="height: 70px">

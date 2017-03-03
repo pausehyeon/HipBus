@@ -163,6 +163,9 @@
 		select * from HB_Station where num=#{num}
 	</select>
 	
+	<select id="getImg" parameterType="String" resultType="model.MemberDto">
+	select imglocation from hb_member where email=#{email}
+	</select>
 	
 	<select id="getLike" parameterType="model.LikeDto" resultType="int">
 		select count(*) from HB_StationLike where num=#{num} and email=#{email}
@@ -209,6 +212,8 @@
 	<delete id="deleteArticle" parameterType="int">
 		delete from HB_Station where num=#{num}
 	</delete>
+	
+	
 	
 	<!-- 카테고리 -->
 	<select id="category" resultType="int">
