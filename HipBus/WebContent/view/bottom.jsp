@@ -137,7 +137,7 @@ function alramOn(){
 <body>
 	<!-- 댓글 Alert   -->
 	<div class="w3-text-khaki" style="border: 1px solid transparent; ; float: left; width:65px;">
-		<a style="width:11%" href="#" onclick="document.getElementById('id01').style.display='block'" class="w3-bottom w3-left w3-padding-large w3-hover-opacity" title="실시간 댓글 알림"> <i class="fa fa-bell w3-xxlarge"></i><span
+		<a style="width:7%" href="#" onclick="document.getElementById('id01').style.display='block'" class="w3-bottom w3-left w3-padding-large w3-hover-opacity" title="실시간 댓글 알림"> <i class="fa fa-bell w3-xxlarge"></i><span
 			class="w3-badge w3-red" id="alramCount"></span>
 		</a>
 	</div>
