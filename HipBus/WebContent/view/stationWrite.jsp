@@ -11,6 +11,7 @@
 	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
 	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js"></script>
 	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/localization/messages_ko.js"></script>
+	<script type="text/javascript" src="${project}/scripts/formValidationScripts.js"></script>
 	
 	<!-- Main content: shift it to the right by 250 pixels when the sidenav is visible -->
 	<div class="w3-main " style="margin-right: 20%; margin-left: 20%">
@@ -107,96 +108,6 @@
 						</div>
 						<footer class="w3-container w3-padding-jumbo w3-theme-l3 w3-center">
 							<input type="submit" value="${btn_complete}" class="w3-btn w3-padding w3-theme-d1 w3-margin-left">
-
-							<script type="text/javascript">
-								
-								
-							//<!--
-							
-								/* 
-								function beforesubmit(){
-									 e.preventDefault();
-								     CKEDITOR.instances.event-body.updateElement();
-								     $("form[name=writeform]").validate({
-								    	  ignore: ".ignore"
-								     });
-								}
-							
-								$.validator.setDefaults({
-							    ignore: [],
-							    // with this no hidden fields will be ignored E.g. ckEditor text-area
-								});
-								
-								function writeformvalidate(){
-									$("form[name=writeform]").validate({
-								          onsubmit: function(){
- 							                    CKEditorUpdate();
-							                    return true;
-							                },
-							                rules:{
-							                    subject:{required:true},
-							                    content:{required:true}
-							                },
-							                messages:{
-							                    title:{required:"Please enter a title"},
-							                    content:{required:"Please enter some content"}
-							                },
-							                submitHandler : function(form){}
-							        });
-								}
-									
-								function CKEditorUpdate() {
-							        for (instance in CKEDITOR.instances)
-							            CKEDITOR.instances[instance].updateElement();
-							    }	
-								
-								$("form[name=writeform]").validate({
-								    event: 'blur',
-								    rules: {
-								      subject: {required: true},
-								      content: {
-								        required: function(textarea) {
-								          CKEDITOR.instances[textarea.id].updateElement(); // update textarea
-								          var editorcontent = textarea.value.replace(/<[^>]*>/gi, ''); // strip tags
-								          return editorcontent.length === 0;
-								        }
-								      }
-								    }
-								 });
-								 
-									*/
-								function writeformvalidate(){
-
-									$("form[name=writeform]").validate({
-								    ignore: [],         
-								    rules: {
-							       		content: {
-							                    required: function(){
-								                    	for(var i in CKEDITOR.instances) {
-									                    	CKEDITOR.instances[i].updateElement();
-									                    	//alert(CKEDITOR.instances[i].getData());
-									                    	//alert(document.writeform.content.value);
-								                    	}
-								                    }
-							                    }
-							                },
-							                messages: {
-							                   content: "Required"
-							                },
-							                /* use below section if required to place the error*/
-							                errorPlacement: function(error, element) 
-							                {
-							                    if (element.attr("name") == "content") 
-							                   {
-							                    error.insertBefore("textarea#editor");
-							                    } else {
-							                    error.insertBefore(element);
-							                    }
-							                }
-							            });
-									}
-							//-->
-							</script>
 							<a href="station.do" class="w3-btn w3-padding w3-theme-d1 w3-margin-left" onclick="return backAlert()">
 								<i class="fa fa-mail-reply w3-margin-right"></i>${btn_cancel}</a>
 						</footer>
