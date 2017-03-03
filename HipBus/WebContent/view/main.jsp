@@ -129,10 +129,10 @@
 		<div class="w3-center w3-padding-64">
 			<span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">${str_top3}</span>
 		</div>
-		<c:if test="${topdrivers eq null or topdrivers.size() eq 0}">
+		<c:if test="${topdrivers eq null or fn:length(topdrivers) eq 0}">
 			<p class="w3-center">${str_noTopDriver}</p>
 		</c:if>
-		<c:if test="${topdrivers ne null and topdrivers.size() ne 0}">
+		<c:if test="${topdrivers ne null and fn:length(topdrivers) ne 0}">
 			<c:forEach var="topdriver" begin="0" end="${fn:length(topdrivers)}" step="1" varStatus="status" items="${topdrivers}">
 				<div class="w3-third w3-margin-bottom">
 					<div class="w3-card-4">
