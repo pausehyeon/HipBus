@@ -23,7 +23,7 @@
 				<c:if test="${count == 0}">
 					<div class="w3-row w3-margin-bottom">
 						<div class="w3-twothird w3-container">
-							<h5 style="font-weight:bold;">${msg_search_x}</h5>
+							<p class="w3-left"><span>${msg_search_x}</span></p>
 						</div>
 					</div>
 				</c:if>
@@ -31,8 +31,7 @@
 				<!-- 글이있는경우 -->
 				<c:if test="${count != 0}">
 				<div class="w3-margin-bottom">
-					<h5 style="color:blue; font-weight:bold; display:inline;">${keyword}</h5> 
-					<h5 style="display:inline; font-weight:bold;">검색 결과 ${count}건의 게시글을 찾았습니다.</h5>
+					<p class="w3-center"><span class="w3-text-blue">${keyword}</span> 검색 결과 <span class="w3-text-blue">${count}건</span>의 게시글을 찾았습니다.</p>
 				</div>
 					<c:forEach var="article" items="${SearchList}">
 					<div class="w3-row w3-margin-bottom">

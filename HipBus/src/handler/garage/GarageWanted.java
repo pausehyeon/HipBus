@@ -88,6 +88,7 @@ public class GarageWanted implements CommandHandler{
 			request.setAttribute( "pageCount", pageCount );
 		}
 		
+		request.setAttribute("pageSize", pageSize);
 		String email =(String)request.getSession().getAttribute("memEmail");
 		if( email != null){
 		

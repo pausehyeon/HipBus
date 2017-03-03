@@ -91,7 +91,7 @@
 
 	<select id="getWantedCount" resultType="int">
 		select count(*) from
-		HB_Wanted
+		HB_Wanted where duedate &gt; sysdate-1 order by duedate asc
 	</select>
 
 
@@ -103,9 +103,9 @@
 		driver,num,nick,subject,content,
 		imglocation,duedate,readcount,reg_date,rownum r from
 		(select * from
-		HB_Wanted where duedate &gt; sysdate order by duedate desc)
+		HB_Wanted where duedate &gt; sysdate-1 order by duedate asc)
 		order by
-		duedate desc ) where r &gt;= #{start}
+		duedate asc ) where r &gt;= #{start}
 		and r &lt;= #{end}
 	</select>
 

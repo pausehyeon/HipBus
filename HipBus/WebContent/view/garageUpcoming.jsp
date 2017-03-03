@@ -82,8 +82,7 @@
 
 					<c:if test="${count ne 0 and dateList ne null}">
 						<div class="w3-row-padding w3-margin-bottom w3-center">
-							<p class="w3-center w3-cell-middle" style="font-weight: bold;">${startDate} ~ ${endDate}
-							<br><span class="w3-text-red">${count}건</span>${str_upcomingO}</p>
+						<p class="w3-center">${startDate} ~ ${endDate}<span class="w3-text-blue"><br>${count}건</span>${str_upcomingO}</p>
 						</div>
 						<c:forEach var="datelist" items="${dateList}">
 							<c:if test='${fn:contains(datelist.driver, "@")}'>
