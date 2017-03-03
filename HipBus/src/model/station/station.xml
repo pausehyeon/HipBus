@@ -8,7 +8,7 @@
 		select count(*) from HB_Station
 	</select>
 	<select id="topGetArticles" parameterType="Map" resultType="model.StationDto">
-		select * from hb_station where rownum &lt;= 3 and likenum &gt;= 4order by likenum desc, readcount desc
+		select * from (select * from hb_station order by likenum desc, readcount desc) where rownum &lt;=3 and likenum &gt;=4
 	</select>
 	<select id="getArticles" parameterType="Map" resultType="model.StationDto">
 		select num,email,category,nick,subject,content,

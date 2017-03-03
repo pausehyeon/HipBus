@@ -90,9 +90,9 @@ a.yes-uline:hover{ text-decoration:underline}
 									</c:choose>
 								</a>
 								<p class="w3-right w3-tiny">${str_writeNick}:
-									<a href="myBus.do?driver=${article.email}" 
-									title="${article.nick}님의 버스로&#13;이동합니다"
-									class="yes-uline">${article.nick}</a> | ${str_reg_date}:
+									<a href="myBus.do?driver=${dto.email}" 
+									title="${dto.nick}님의 버스로&#13;이동합니다"
+									class="yes-uline">${dto.nick}</a> | ${str_reg_date}:
 									<fmt:formatDate value="${dto.reg_date}" type="both" pattern="yyyy-MM-dd HH:mm" />
 									| ${str_readCount}: ${dto.readcount} | ${str_upCount}: ${dto.likenum }
 								</p>

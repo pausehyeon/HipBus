@@ -190,9 +190,11 @@ public class Station implements CommandHandler {
 			List <StationDto> topStation = stationDao.topGetArticles(map);
 			request.setAttribute( "topStation", topStation);
 		}
+		
 		if( count != 0 ) {
 			request.setAttribute("start", start);
 			request.setAttribute("end", end);
+			
 			// 글이 있는 경우
 			if( type == 1){
 				Map<String, Integer> map 
