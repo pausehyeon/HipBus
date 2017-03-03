@@ -17,8 +17,13 @@
 		<c:import url="../top.do" />
 		
 		<script type="text/javascript">
+		var str_amModifyMsg ="*경고 : 수정하실 정보를 정확하게 입력해주세요.";
+		var str_sendEamilError = "*관리자로 초대하실 사용자의 이메일을 작성해주세요.";
+		var str_emailError = "*유효하지 않은 이메일입니다.<br> 이메일을 확인해주세요.";
+		var str_checkedBoxError = "**경고 : 회원탈퇴 안내사항에 동의하시고 진행해주세요.";
+		
 		verifyNick=function(){
-			var params = "nick=" + $('input[name="nick"]').val();
+			var params = "nick=" + $('input[name="nick"]').val() + "&ex_nick=" + $('input[name="ex_nick"]').val();
 			var request = new Request(function() {
 				if(request.httpRequest.readyState == 4){
 					if(request.httpRequest.status == 200){
@@ -50,11 +55,11 @@
 				}else if( $(this).val().length<5 ){
 					//길이 짧음
 					var minlength = 5; 
-					$('#passwdresult').removeClass('w3-text-red').addClass('w3-text-blue').text('*'+minlength+"${str_passwdError2}");
+					$('#passwdresult').removeClass('w3-text-blue').addClass('w3-text-red').text("${str_passwdError3}"+minlength+"${str_passwdError2}");
 				}else if( $(this).val().length>10 ){
 					//길이가 김
 					var maxlength = 10;
-					$('#passwdresult').removeClass('w3-text-red').addClass('w3-text-blue').text("${str_passwdError3}"+maxlength+"${str_passwdError4}");
+					$('#passwdresult').removeClass('w3-text-blue').addClass('w3-text-red').text("${str_passwdError3}"+maxlength+"${str_passwdError4}");
 					$(this).val( $(this).val().substring(0, maxlength) );
 				}else{
 					$('#passwdresult').removeClass('w3-text-red').addClass('w3-text-blue').text("${str_passwdOk}");					
@@ -103,20 +108,28 @@
 				}, "adminADResult.do", "POST", params);
 				request.sendRequest();
 			
-		}				
-
+		}	
+				
+			modifyCheck=function(){
+				if(inputform.nick.value == "" || inputform.passwd.value == "" || inputform.passwdcheck.value == ""){
+					alert(str_amModifyMsg);
+					return false;
+				}
+			}
+			
 			addReq=function(){
 				$('input[name="upload"]').attr("required", false);
 			}
 			
 			sendEmail= function(){
 				if(sendform.email.value == ""){
-					alert("관리자 초대하실 사용자의 이메일을 작성해주세요.");
+					alert(str_sendEamilError);
 					sendform.email.focus();
 					return false;
 				}
 				if(sendform.email.value.indexOf('@') == -1){
-					alert("유효하지 않은 이메일을 확인해주세요.");
+					alert(str_emailError);
+					sendform.email.value = "";
 					sendform.email.focus();
 					return false;
 				}
@@ -124,7 +137,7 @@
 	
 			checkedBox=function(){
 				if($('input[name="assent"]').is(':checked') == false){
-					alert("**경고 : 회원탈퇴 안내사항에 동의하시고 진행해주세요.");
+					alert(str_checkedBoxError);
 					return false;
 				}
 			}
@@ -373,7 +386,7 @@
 							<label class="w3-label w3-text-teal"><b>${str_adSize}</b></label>
 						<div>
 						<select class="w3-select w3-border w3-quarter" name="ad_num"  id="selectBox" style="width: 150px" onchange="adCheck()">
-							<option value="선택">${str_adNumMsg}</option>
+							<option value="0">${str_adNumMsg}</option>
 							<option id="1" value="1" >AD1</option>
 							<option id="2" value="2">AD2</option>
 							<option id="3" value="3">AD3</option>
@@ -430,10 +443,11 @@
 					<!-- 해당관리자 정보를 불러옴 -->
 				</h5>
 	
-				<form id="inputform" class="w3-container" method="post" action="adminEditPro.do">
+				<form id="inputform" class="w3-container" method="post" action="adminEditPro.do" onsubmit="return modifyCheck()">
 					<p>
 						<label>${str_amNick}</label>
 						<input name="nick" class="w3-input" type="text" value="${member.nick}" onkeyup="verifyNick()">
+						<input name="ex_nick" value="${member.nick}" type="hidden">
 						<div class="w3-text-blue w3-xsmall w3-right" id="nickresult">${str_modifyNick}</div>
 					</p>
 					<br> <br>
