@@ -124,7 +124,7 @@
 								</div>
 							</c:forEach>
 						</c:if>
-						<c:if test="${pastArticles==null}">
+						<c:if test="${pastArticles.isEmpty() and articles.isEmpty()}">
 							<div class="w3-col">
 								<h4>아직 작성한 글이 없습니다.</h4>
 							</div>

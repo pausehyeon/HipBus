@@ -41,7 +41,7 @@
 						</div>
 					</c:if>
 					<div class="w3-row-padding w3-padding-16 w3-center">
-						<c:if test="${upcomings!=null}">
+						<c:if test="${!upcomings.isEmpty()}">
 							<c:forEach var="article" items="${upcomings}">
 								<div class="w3-col m4 l3 w3-hover-opacity w3-margin-bottom" onclick="location='crewBusUpcomingRead.do?driver=${driver}&num=${article.num}'">
 									<img src="${project}/hipbusSave/${article.imglocation}" alt="poster" width="100%">
@@ -76,7 +76,7 @@
 						</c:if>
 						
 						<!-- 마감된 공연일정 -->
-						<c:if test="${pastUpcomings!=null}">
+						<c:if test="${!pastUpcomings.isEmpty()}">
 							<c:forEach var="article" items="${pastUpcomings}">
 								<div class="w3-col m4 l3 w3-hover-opacity w3-margin-bottom" onclick="location='crewBusUpcomingRead.do?driver=${driver}&num=${article.num}'">
 									<img src="${project}/hipbusSave/${article.imglocation}" alt="poster" width="100%" class="w3-grayscale-max">
@@ -96,7 +96,7 @@
 								</div>
 							</c:forEach>
 						</c:if>
-						<c:if test="${upcomings.isEmpty()}">
+						<c:if test="${pastUpcomings.isEmpty() and upcomings.isEmpty()}">
 							<div class="w3-col">
 								<h4>아직 작성한 글이 없습니다.</h4>
 							</div>

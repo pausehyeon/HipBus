@@ -69,8 +69,15 @@
 						</c:if>
 						<c:if test="${article.driver eq sessionScope.memEmail or mem_level==3}">
 							<div class="w3-col m6 l3">
-								<a href="myBusWantedDeletePro.do?driver=${driver}&num=${article.num}" class="w3-btn-block w3-padding w3-theme-d1 w3-margin-left"> <i class="fa fa-close w3-margin-right"></i>${str_delBoard}</a>
+								<a id="delWanted" href="myBusWantedDeletePro.do?driver=${driver}&num=${article.num}" class="w3-btn-block w3-padding w3-theme-d1 w3-margin-left"> <i class="fa fa-close w3-margin-right"></i>${str_delBoard}</a>
 							</div>
+							<script type="text/javascript">
+								$('#delWanted').click(
+									function(e){
+									  return confirm("정말 삭제하시겠습니까?");	
+									}
+								);
+							</script>
 						</c:if>
 						<c:if test="${article.driver ne sessionScope.memEmail}">
 							<div class="w3-col m6 l3">
