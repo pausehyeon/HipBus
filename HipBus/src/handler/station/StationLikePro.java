@@ -30,7 +30,9 @@ public class StationLikePro implements CommandHandler {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		String pageNum = request.getParameter("pageNum");
+		int pageNum = Integer.parseInt(request.getParameter("pageNum"));
+		int category = Integer.parseInt(request.getParameter("category"));
+		int type = Integer.parseInt(request.getParameter("type"));
 		int num = Integer.parseInt(request.getParameter("num"));
 		StationDto article = stationDao.getArticle(num);
 		LikeDto dto = new LikeDto();
@@ -39,7 +41,6 @@ public class StationLikePro implements CommandHandler {
 		
 		//String email = request.getParameter("email");
 		int emailresult = stationDao.getLike(dto);
-	
 		request.setAttribute( "emailresult", emailresult );
 		if( emailresult == 0 ){
 		stationDao.addLike(num);
@@ -48,6 +49,10 @@ public class StationLikePro implements CommandHandler {
 		request.setAttribute( "result", result );
 		request.setAttribute("article", article);
 		request.setAttribute("pageNum", pageNum);
+		request.setAttribute("category", category);
+		request.setAttribute("num", num);
+		request.setAttribute("type", type);
+		
 		
 		return new ModelAndView("stationLikePro");
 	}

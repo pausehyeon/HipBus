@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import handler.CommandHandler;
 import handler.HandlerException;
 import model.ReplyDto;
+import model.StationDto;
 import model.station.StationDao;
 
 @Controller
@@ -40,13 +41,21 @@ public class StationInfReplyAppendResult implements CommandHandler {
 			
 				request.setAttribute( "replynum", replynum );
 				request.setAttribute( "re_level", re_level );
-				
+				int num =Integer.parseInt(request.getParameter("num"));		
 				
 		ReplyDto dto = new ReplyDto();
 		dto.setEmail(request.getParameter("email"));
 		dto.setContent(request.getParameter("content"));
-		dto.setNum(Integer.parseInt(request.getParameter("num")));
+		dto.setNum(num);
 		dto.setRef_num(Integer.parseInt(request.getParameter("ref_num")));
+		
+		StationDto stdt = stationDao.getArticle(num);
+		if(stdt.getEmail().equals(dto.getEmail())){
+			dto.setStatus(1);
+		} else {
+			dto.setStatus(0);
+		}
+		
 		int result = stationDao.infReplyInsert(dto);
 		
 		ReplyDto returnDto = new ReplyDto();

@@ -87,10 +87,12 @@
 			board += '</div>';
 			board += '<div class="w3-col m11 w3-center">';
 			board += '<div class="w3-harf w3-container w3-large w3-left">';
-			board += data.nick + '&nbsp;' + data.reg_date;
+			board += '<a href="myBus.do?driver='+data.email+'"';
+			board += 'title="'+data.nick+'님의 버스로&#13;이동합니다"';
+			board += 'class="yes-uline">'+data.nick+'</a>' + '&nbsp;&nbsp;&nbsp;'+data.reg_date;
 			board += '</div>';
 			board += '<div class="w3-harf w3-container w3-padding-4 w3-right">';
-			if (data.email == "${sessionScope.memEmail}") {
+			if (data.email == "${sessionScope.memEmail}" || "${dtoImg.mem_level}" == 3) {
 				board += '<a href="#" onClick="modBoardView('
 						+ data.replynum
 						+ '); return false" id="modView" class="w3-margin-right">${str_modify}</a>';
@@ -167,13 +169,19 @@
 			request.sendRequest();
 		}
 		
+		
+		
+		
 		function Likego() {
 			var retVal = confirm(likeok);
 			if (retVal == true) {
-				location.href = "stationLikePro.do?num=" + "${article.num}";
+				 location.href = "stationLikePro.do?num=" + readform.num.value
+							+ "&pageNum=" + readform.pageNum.value + "&category="
+							+ readform.category.value + "&type=" + readform.type.value;
+				//location.href = "stationLikePro.do?urlToGoBack="+location.href+"&num="+"${article.num}";
 			} else {
 				location.href = "stationRead.do?num=" + readform.num.value
-						+ "&pageNum=" + readform.pageNum.value + "category="
+						+ "&pageNum=" + readform.pageNum.value + "&category="
 						+ readform.category.value + "&type=" + readform.type.value;
 			}
 		}
@@ -205,7 +213,7 @@
 				reboard += '<input name="recontent" type="text" required class="w3-input w3-border w3-padding-5" style="height: 50px">'
 				reboard += '</div>'
 				reboard += '<div class="w3-col m2">'
-				reboard += '<input type="button" onclick="reboardAppend('+ref_num+')" value="${btn_register}" class="w3-btn-block w3-theme-d1" style="height: 50px">'
+				reboard += '<input type="button" onclick="reboardAppend('+ref_num+')" value="${btn_register}" class="w3-btn-block w3-theme-d1" style="height: 50px">'	
 				reboard += '</div>'
 				reboard += '</div>'
 				
@@ -217,7 +225,7 @@
 			var params = 'num=' + "${num}" // 버스주인 이메일 혹은 크루아이디
 					+ '&ref_num=' + ref_num
 					+ '&email=' + "${sessionScope.memEmail}" // 세션에 저장된 작성자 이메일
-					+ '&content=' + $('input[name=recontent]').val(); // 본문 입력내용
+					+ '&content=' + $('#replyBoardABC_'+ref_num+' input[name=recontent]').val(); // 본문 입력내용
 			request = new Request(
 					function() {
 						var reResult = document.getElementById("replyBoardABC_"+ref_num);
@@ -275,11 +283,13 @@
 			reboard += '</div>';
 			reboard += '<div class="w3-col m11 w3-center">';
 			reboard += '<div class="w3-harf w3-container w3-large w3-left">';
-			reboard += data.nick + '&nbsp;' + data.reg_date;
+			reboard += '<a href="myBus.do?driver='+data.email+'"';
+			reboard += 'title="'+data.nick+'님의 버스로&#13;이동합니다"';
+			reboard += 'class="yes-uline">'+data.nick+'</a>' + '&nbsp;&nbsp;&nbsp;'+data.reg_date;
 			reboard += '</div>';
 			reboard += '<div class="w3-harf w3-container w3-padding-4 w3-right">';
 			
-		 	if (data.email == "${sessionScope.memEmail}") {
+		 	if (data.email == "${sessionScope.memEmail}" || "${dtoImg.mem_level}" == 3) {
 				reboard += '<a href="#" onClick="remodBoardView('
 						+ data.replynum
 						+ '); return false" id="remodView" class="w3-margin-right">${str_modify}</a>';
@@ -613,7 +623,7 @@
 						<header class="w3-container w3-padding-jumbo w3-theme-l3">
 							<h3>${article.subject}</h3>
 							<p class="w3-right">${str_writeNick}:
-								${article.nick} | ${str_reg_date}:
+								<a href="myBus.do?driver=${article.email}" title="${article.nick}님의 버스로&#13;이동합니다">${article.nick}</a> | ${str_reg_date}:
 								<fmt:formatDate value="${article.reg_date}" type="both" pattern="yyyy-MM-dd HH:mm" />
 								| ${str_readCount}: ${article.readcount} <br>
 							</p>
@@ -639,7 +649,7 @@ ${article.content}
 								<a class="w3-btn w3-padding w3-theme-d1 w3-margin-left" onclick="Likego()"><i class="fa fa-thumbs-up w3-margin-right"></i>${btn_recommend}<br>${article.likenum}</a>
 							</c:if>
 							<a href="station.do?pageNum=${pageNum}&type=${type}" class="w3-btn w3-padding w3-theme-d1 w3-margin-left"><i class="fa fa-align-justify w3-margin-right"></i>${str_list}</a>
-							<c:if test="${sessionScope.memEmail == article.email}">
+							<c:if test="${sessionScope.memEmail == article.email || dtoImg.mem_level == 3}">
 								<a href="stationModify.do?num=${article.num}" class="w3-btn w3-padding w3-theme-d1 w3-margin-left"> <i class="fa fa-cog w3-margin-right"></i>${str_modify}</a>			
 								<a class="w3-btn w3-padding w3-theme-d1 w3-margin-left" onclick="alertgo()"> <i class="glyphicon glyphicon-remove w3-margin-right"></i>${str_delete}</a>
 							</c:if>
@@ -664,12 +674,17 @@ ${article.content}
 			<c:if test="${sessionScope.memEmail != null }">
 			<div class="w3-row-padding w3-padding-64 w3-row">
 				<div class="w3-col m1">
-				<c:if test="${dtoImg.imglocation == ''}">
+				<c:choose>
+				<c:when test="${dtoImg.imglocation == null}">
 				<img src="${project}/view/img/HipBusLogo_pale_sq.png" width="100%" class="w3-circle">
-				</c:if>
-				<c:if test="${dtoImg.imglocation != ''}">
+				</c:when>
+				<c:when test="${dtoImg.imglocation != ''}">
 				<img src="${project}/hipbusSave/${dtoImg.imglocation}" width="100%" class="w3-circle">
-				</c:if>
+				</c:when>
+				<c:otherwise>
+				
+				</c:otherwise>
+				</c:choose>
 				</div>
 				<div class="w3-col m9">
 					<input name="content" type="text" required class="w3-input w3-border w3-padding-5" style="height: 70px">

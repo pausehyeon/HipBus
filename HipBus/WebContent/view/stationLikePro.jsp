@@ -18,10 +18,10 @@
 </c:if>
 <c:if test="${emailresult == 0 }">
 <c:if test="${result != 0}">
-	<script type="text/javascript">
-	//<!--
-	history.go(-1)
-	//-->
-	</script>	
+	 <script type="text/javascript">
+		location.href = "stationRead.do?num=" + "${num}"
+		+ "&pageNum=" + "${pageNum}" + "&category="	
+		+ "${category}" + "&type=" + "${type}";
+	</script>
 </c:if>	
 </c:if>

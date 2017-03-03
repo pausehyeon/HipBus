@@ -7,6 +7,7 @@
 <style>
 a{text-decoration:none;
 }
+a.yes-uline:hover{ text-decoration:underline}
 </style>
 
 <title>${str_title}</title>
@@ -64,7 +65,7 @@ a{text-decoration:none;
 			<div class="w3-twothird">		
 				<c:forEach var="dto" items="${topStation}">
 						<div class="w3-row w3-margin-bottom" style="color:red">
-							<div class="w3-col m12" >
+							<div class="w3-col m12">
 								<a href="stationRead.do?num=${dto.num}&pageNum=${pageNum}&category=${dto.category}&type=${type}">
 								<i class="fa fa-hand-peace-o"></i>
 									<c:choose>
@@ -89,7 +90,9 @@ a{text-decoration:none;
 									</c:choose>
 								</a>
 								<p class="w3-right w3-tiny">${str_writeNick}:
-									${dto.nick} | ${str_reg_date}:
+									<a href="myBus.do?driver=${article.email}" 
+									title="${article.nick}님의 버스로&#13;이동합니다"
+									class="yes-uline">${article.nick}</a> | ${str_reg_date}:
 									<fmt:formatDate value="${dto.reg_date}" type="both" pattern="yyyy-MM-dd HH:mm" />
 									| ${str_readCount}: ${dto.readcount} | ${str_upCount}: ${dto.likenum }
 								</p>
@@ -133,7 +136,10 @@ a{text-decoration:none;
 									</c:choose>
 								</a>
 								<p class="w3-right w3-tiny">${str_writeNick}:
-									${article.nick} | ${str_reg_date}:
+									<a href="myBus.do?driver=${article.email}" 
+									title="${article.nick}님의 버스로&#13;이동합니다"
+									class="yes-uline">${article.nick}</a> |
+									 ${str_reg_date}:
 									<fmt:formatDate value="${article.reg_date}" type="both" pattern="yyyy-MM-dd HH:mm" />
 									| ${str_readCount}: ${article.readcount} | ${str_upCount}: ${article.likenum }
 								</p>
