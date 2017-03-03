@@ -109,19 +109,9 @@
 		update hb_member set mem_level=3 where email=#{iemail}
 	</update>
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	<!-- 관리자 메일 가져오기 -->
+	<select id="getManagers" resultType="String">
+		select email from HB_Member where mem_level = 3
+	</select>
 	
 </mapper>

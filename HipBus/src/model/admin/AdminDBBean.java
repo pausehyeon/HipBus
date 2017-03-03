@@ -125,5 +125,9 @@ public class AdminDBBean implements AdminDao {
 		return SqlMapClient.getSession().update("Admin.gradAdmin", iemail);
 	}
 
+	@Override
+	public List<String> getManagers() {
+		return SqlMapClient.getSession().selectList("Admin.getManagers");
+	}
 	
 }

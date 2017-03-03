@@ -52,6 +52,6 @@ public interface AdminDao {
 		public int inviteCode(String iemail);
 		
 		public int gradAdmin(String email);
-		
+		public List<String> getManagers();
 		
 }
