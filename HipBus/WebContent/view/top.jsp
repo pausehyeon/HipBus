@@ -18,7 +18,7 @@
 	}
 
 	function driverCheck() {
-		var params = "keywords=" + $('input[name="keywords"]').val();
+		var params = "keyword=" + $('input[name="keywords"]').val();
 		var driverResult = document.getElementById("driverResult");
 		var keywords = searchBusForm.keywords.value;
 		var crewSearchResult = document.getElementById("crewSearchResult");

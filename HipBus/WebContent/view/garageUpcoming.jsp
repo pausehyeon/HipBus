@@ -55,7 +55,7 @@
 							<c:if test='${not fn:contains(article.driver, "@")}'>
 								<c:set var="url" value="crewBusUpcomingRead.do?driver="></c:set>
 							</c:if>
-							<div class="w3-col m4 l3" onclick="location='${url}${datelist.driver}&num=${article.num}'">
+							<div class="w3-col m4 l3" onclick="location='${url}${article.driver}&num=${article.num}'">
 								<c:if test="${article.imglocation eq null }">
 									<img src="${project}/view/img/poster1.jpg" alt="poster" style="width: 100%">
 								</c:if>
