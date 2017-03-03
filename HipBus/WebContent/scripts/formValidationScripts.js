@@ -92,8 +92,8 @@ function inputformvalidate() {
 				equalTo : passwd
 			},
 			channel_id : {
-				minlength : 22,
-				maxlength : 22,
+				minlength : 24,
+				maxlength : 24,
 				nowhitespace : true,
 				alphanumeric : true
 			},
@@ -251,8 +251,8 @@ function crewprofileformvalidate() {
 				}
 			},
 			channel_id : {
-				minlength : 22,
-				maxlength : 22,
+				minlength : 24,
+				maxlength : 24,
 				nowhitespace : true,
 				alphanumeric : true
 			}
