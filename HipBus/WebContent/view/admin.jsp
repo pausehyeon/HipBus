@@ -18,7 +18,7 @@
 		
 		<script type="text/javascript">
 		var str_amModifyMsg ="*경고 : 수정하실 정보를 정확하게 입력해주세요.";
-		var str_sendEamilError = "*관리자로 초대하실 사용자의 이메일을 작성해주세요.";
+		var str_sendEamilError ="*관리자로 초대하실 사용자의 이메일을 작성해주세요.";
 		var str_emailError = "*유효하지 않은 이메일입니다.<br> 이메일을 확인해주세요.";
 		var str_checkedBoxError = "**경고 : 회원탈퇴 안내사항에 동의하시고 진행해주세요.";
 		
