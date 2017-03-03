@@ -56,15 +56,15 @@
 <c:set var="str_modifyNick" value="*변경하실 닉네임을 입력해주세요.(중복불가)"/>
 <c:set var="str_modifyPasswd" value="*변경하실 비밀번호를 숫자, 알파벳조합으로 5~10자리 이상입력해주세요."/>
 <c:set var="str_passwdCheck" value="*확인을 위해 다시한번 입력해주세요."/>
-<c:set var="str_nickOk" value="*사용가능하신 닉네임입다."/>
+<c:set var="str_nickOk" value="*사용가능하신 닉네임입니다."/>
 <c:set var="str_nickNo" value="*이미 사용중인 닉네임입니다. 다시 입력 해주세요."/>
 <c:set var="str_passwdOk" value="*사용 가능하신 비밀번호입니다."/>
 <c:set var="str_passwdError1" value="*반드시 숫자, 알파벳 조합해야합니다. 다시 입력해주세요."/>
 <c:set var="str_passwdError2" value="자리 이상 입력해주세요."/>
-<c:set var="str_passwdError3" value="비밀번호는 최대 "/>
+<c:set var="str_passwdError3" value="*비밀번호는 최대 "/>
 <c:set var="str_passwdError4" value="글자를 초과할 수 없습니다."/>
 <c:set var="str_passwdError5" value=""/>
-<c:set var="str_passwdCheckOk" value="입력하신 비밀번호가 일치합니다"/>
+<c:set var="str_passwdCheckOk" value="*입력하신 비밀번호가 일치합니다"/>
 <c:set var="str_passwdCheckNo" value="*입력하신 비밀번호가 일치하지 않습니다. 다시 입력 해주세요."/>
 
 <c:set var="str_adminSignOut" value="관리자 탈퇴"/>
