@@ -84,9 +84,11 @@ public class MyBusEditPro implements CommandHandler {
 					channelResult = myBusDao.updateChannel(chdto);
 				}
 			} else {
-				if (!channel_id.equals("")) {
-					// 기존에 채널이 등록되어 있지 않았는데 새로 입력한 경우 인서트
-					channelResult = myBusDao.insertChannel(chdto);
+				if(channel_id!=null){
+					if (!channel_id.equals("")) {
+						// 기존에 채널이 등록되어 있지 않았는데 새로 입력한 경우 인서트
+						channelResult = myBusDao.insertChannel(chdto);
+					}
 				}
 			}
 			
