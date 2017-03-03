@@ -197,12 +197,12 @@
 				class="fa fa-bars"
 			></i>
 		</a></li>
-		<li><a href="main.do" class="w3-padding-large w3-theme-d4"> <i class="fa fa-bus w3-margin-right"></i>${str_name}
+		<li><a href="main.do" class="w3-padding-large w3-theme-d4" title="Go to Main"> <i class="fa fa-bus w3-margin-right"></i>${str_name}
 		</a></li>
-		<li class="w3-hide-small w3-dropdown-hover"><a href="#" class="w3-padding-large w3-hover-white" title="go"> <i class="fa fa-chevron-down"></i>
+		<li class="w3-hide-small w3-dropdown-hover"><a href="#" class="w3-padding-large w3-hover-white" title="GO to Board"> <i class="fa fa-chevron-down"></i>
 		</a>
 			<div class="w3-dropdown-content w3-white w3-card-4">
-				<a href="station.do">${str_station}</a> <a href="garage.do">${str_garage}</a>
+				<a href="station.do" title="Main Station 바로가기">${str_station}</a> <a href="garage.do"title="Public Garage바로가기">${str_garage}</a>
 			</div></li>
 
 		<c:if test="${sessionScope.memEmail eq null}">
@@ -211,7 +211,7 @@
 		</c:if>
 		<c:if test="${sessionScope.memEmail ne null}">
 			<!-- ^ 로그인 된 경우 친구목록과 검색기능 -->
-			<li class="w3-hide-small w3-dropdown-hover"><a href="#" class="w3-padding-large w3-hover-white" title="otherdrivers"> <i class="fa fa-users"></i>
+			<li class="w3-hide-small w3-dropdown-hover"><a href="#" class="w3-padding-large w3-hover-white" title="Join List"> <i class="fa fa-users"></i>
 			</a>
 				<div class="w3-dropdown-content w3-white w3-card-4">
 					<c:if test="${hoppedOnMembers ne null}">
@@ -242,7 +242,7 @@
 
 				</div></li>
 
-			<li class="w3-hide-small w3-dropdown-hover"><a href="#" class="w3-padding-large w3-hover-white" title="otherdrivers"> <i class="fa fa-search"></i>
+			<li class="w3-hide-small w3-dropdown-hover"><a href="#" class="w3-padding-large w3-hover-white" title="Driver/Crew 검색"> <i class="fa fa-search"></i>
 			</a>
 				<div id="searchResult" class="w3-dropdown-content w3-white w3-card-4">
 					<form name="searchBusForm" method="post">
@@ -264,7 +264,7 @@
 			<li class="w3-hide-small w3-right">
 				<!-- 로그아웃 -->
 				<form name="signOutForm" method="post" action="signOutPro.do">
-					<input type="submit" value="${str_signOut}" class="w3-btn w3-theme-d2 w3-padding-large w3-hover-white">
+					<input type="submit" value="${str_signOut}" class="w3-btn w3-theme-d2 w3-padding-large w3-hover-white" title="LogOut">
 					<input name="urlToGoBack" type="hidden">
 					<!-- ^ 로그아웃 후 돌아올 현재 페이지 url을 기억.-->
 					<script type="text/javascript">
