@@ -37,6 +37,97 @@ var str_mustAgree = "<br>* 동의하셔야만 탈퇴할 수 있습니다.";
 var str_invalidChannelId = "* 유효하지 않은 Youtube 채널 아이디입니다.<br><a class='w3-right w3-small' href='https://www.youtube.com/account_advanced'><i class='fa fa-question-circle'></i> 채널 아이디 확인하기</a>";
 var str_mustAgreeTerms = "* 약관을 읽고 동의하셔야만 가입하실 수 있습니다.";
 
+function becomeformvalidate() {
+	$("#inputform").validate({
+		errorClass : "w3-text-red w3-xsmall w3-right",
+		submitHandler : function() {
+			if (confirm(inputform.email.value + str_confirmSignUp)) {
+				return true;
+			} else {
+				return false;
+			}
+		},
+		// 규칙
+		rules : {
+			email : {
+				required : true,
+				email : true,
+				remote : {
+					url : "verifyEmailResult.do",
+					type : "post",
+					data : {
+						email : function() {
+							return inputform.email.value;
+						}
+					}
+				}
+			},
+			nick : {
+				required : true,
+				minlength : 3,
+				maxlength : 10,
+				nowhitespace : true,
+				remote : {
+					url : "verifyNickResult.do",
+					type : "post",
+					data : {
+						nick : function() {
+							return inputform.nick.value;
+						}
+					}
+				}
+			},
+			passwd : {
+				required : true,
+				minlength : 5,
+				maxlength : 10,
+				nowhitespace : true,
+				alphanumeric : true
+			},
+			repasswd : {
+				required : true,
+				equalTo : passwd
+			},
+			channel_id : {
+				minlength : 24,
+				maxlength : 24,
+				nowhitespace : true,
+				alphanumeric : true
+			},
+			agreeTerms : {
+				required : true
+			}
+		},
+		// 규칙체크 실패시 출력될 메시지
+		messages : {
+			email : {
+				required : str_signUpEmail,
+				remote : str_emailNo
+			},
+			nick : {
+				required : str_signUpUserName,
+				remote : str_userNameNo,
+				nowhitespace : str_nowhitespace
+			},
+			passwd : {
+				required : str_signUpPassword,
+				nowhitespace : str_nowhitespace,
+				alphanumeric : str_alphanumeric
+			},
+			repasswd : {
+				required : str_signUpPasswordCheck,
+				equalTo : str_passwordCheckNo
+			},
+			channel_id : {
+				minlength : str_invalidChannelId,
+				maxlength : str_invalidChannelId,
+				nowhitespace : str_nowhitespace,
+				alphanumeric : str_invalidChannelId
+			}
+		}
+	});
+}
+
 function inputformvalidate() {
 	$("#inputform").validate({
 		errorClass : "w3-text-red w3-xsmall w3-right",

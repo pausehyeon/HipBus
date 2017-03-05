@@ -15,7 +15,7 @@
 <script type="text/javascript" src="${project}/scripts/formValidationScripts.js"></script>
 
 <title>HipBus - Welcome!</title>
-<body onload="inputformvalidate()">
+<body onload="becomeformvalidate()">
 
 	<%@ include file="navbar_main.jsp"%>
 
