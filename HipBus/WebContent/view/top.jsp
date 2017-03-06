@@ -46,35 +46,61 @@
 									msg += '<div class="w3-margin"><h4 style="font-weight:bold;">My Bus 검색 결과<h4> <br><br> 검색 결과가 없습니다.</div> <hr>';
 								} else {
 									
-									messages += '<div class="w3-margin"><h4 style="font-weight:bold; text-align:center;"><img src="${project}/view/img/HipBusLogo_colored_sq.png" class="w3-circle" style="width:40px; height:40px"> &nbsp; My Bus<br><br> '
-											+ keywords + ' 검색 결과<h4></div>';
+									messages += '<div class="w3-margin"><h4 style="font-weight:bold; text-align:center;"><img src="${project}/view/img/HipBusLogo_colored_sq.png" class="w3-circle" style="width:40px; height:40px"> &nbsp; My Bus<br><br> 검색 결과<h4></div>';
 									for (var i = 0; i < data.length; i++) {
+									if(data[i].imglocation !=""){
 										messages += '<a href="myBus.do?driver='
 												+ data[i].email
 												+ '">'
 												+ data[i].nick
 												+ '의버스<img class="w3-circle"'+
 								'style="width:30px; height:35px;" src="${project}/hipbusSave/'+data[i].imglocation+'"></a><br><br>';
-									}
+									}else{
+										messages += '<a href="myBus.do?driver='
+											+ data[i].email
+											+ '">'
+											+ data[i].nick
+											+ '의버스<img class="w3-circle"'+
+							'style="width:30px; height:35px;" src="${project}/view/img/HipBusLogo_colored_sq.png"></a><br><br>';	
+									}	
+								}
 									msg += '<div class="w3-margin"><h4 style="font-weight:bold;">MY Bus 검색 결과<h4></div>';
 
 									if (data.length > 4) {
 										for (var i = 0; i < pageSize; i++) {
+											if(data[i].imglocation !=""){
 											msg += '<a href="myBus.do?driver='
 													+ data[i].email
 													+ '">'
 													+ data[i].nick
 													+ '의버스<img class="w3-circle"'
 													+ 'style="width:30px; height:35px;" src="${project}/hipbusSave/'+data[i].imglocation+'"></a>';
+											}else {
+												msg += '<a href="myBus.do?driver='
+													+ data[i].email
+													+ '">'
+													+ data[i].nick
+													+ '의버스<img class="w3-circle"'
+													+ 'style="width:30px; height:35px;" src="${project}/view/img/HipBusLogo_colored_sq.png"></a>';
+											}
 										}
 									} else {
 										for (var i = 0; i < data.length; i++) {
+											if(data[i].imglocation !=""){
 											msg += '<a href="myBus.do?driver='
 													+ data[i].email
 													+ '">'
 													+ data[i].nick
 													+ '의버스<img class="w3-circle"'+
 										'style="width:30px; height:35px;" src="${project}/hipbusSave/'+data[i].imglocation+'"></a>';
+											}else{
+												msg += '<a href="myBus.do?driver='
+													+ data[i].email
+													+ '">'
+													+ data[i].nick
+													+ '의버스<img class="w3-circle"'+
+										'style="width:30px; height:35px;" src="${project}/view/img/HipBusLogo_colored_sq.png"></a>';
+											}
 										}
 									}
 
@@ -93,32 +119,59 @@
 								} else {
 									message += '<div class="w3-margin"><h4 style="font-weight:bold; text-align:center;"><img src="${project}/view/img/CrewBusLogo_colored_sq.png" class="w3-circle" style="width:40px; height:40px"> &nbsp;Crew Bus 검색 결과<h4></div>';
 									for (var i = 0; i < datas.length; i++) {
+										if(datas[i].crewImg != ""){
 										message += '<a href="crewBus.do?driver='
 												+ datas[i].crewid
 												+ '">'
 												+ datas[i].crewname
 												+ '의버스<img class="w3-circle"'+
 								'style="width:30px; height:35px;" src="${project}/hipbusSave/'+datas[i].crewImg+'"></a><br><br>';
+										}else{
+											message += '<a href="crewBus.do?driver='
+												+ datas[i].crewid
+												+ '">'
+												+ datas[i].crewname
+												+ '의버스<img class="w3-circle"'+
+								'style="width:30px; height:35px;" src="${project}/view/img/CrewBusLogo_colored_sq.png"></a><br><br>';
+										}
 									}
 
 									msg += '<div class="w3-margin"><h4 style="font-weight:bold;">Crew Bus 검색 결과<h4></div>';
 									if (datas.length > 4) {
 										for (var i = 0; i < pageSize; i++) {
+											if(datas[i].crewImg != ""){
 											msg += '<a href="crewBus.do?driver='
 													+ datas[i].crewid
 													+ '">'
 													+ datas[i].crewname
 													+ '의버스<img class="w3-circle"'+
 								'style="width:30px; height:35px;" src="${project}/hipbusSave/'+datas[i].crewImg+'"></a>';
+											}else{
+												msg += '<a href="crewBus.do?driver='
+													+ datas[i].crewid
+													+ '">'
+													+ datas[i].crewname
+													+ '의버스<img class="w3-circle"'+
+								'style="width:30px; height:35px;" src="${project}/view/img/CrewBusLogo_colored_sq.png"></a>';
+											}
 										}
 									} else {
 										for (var i = 0; i < datas.length; i++) {
+											if(datas[i].crewImg != ""){
 											msg += '<a href="crewBus.do?driver='
 													+ datas[i].crewid
 													+ '">'
 													+ datas[i].crewname
 													+ '의버스<img class="w3-circle"'+
 									'style="width:30px; height:35px;" src="${project}/hipbusSave/'+datas[i].crewImg+'"></a>';
+											}else{
+												msg += '<a href="crewBus.do?driver='
+													+ datas[i].crewid
+													+ '">'
+													+ datas[i].crewname
+													+ '의버스<img class="w3-circle"'+
+									'style="width:30px; height:35px;" src="${project}/view/img/CrewBusLogo_colored_sq.png"></a>';
+											}
 										}
 									}
 									if (datas.length >= 4) {

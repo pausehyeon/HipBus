@@ -14,7 +14,7 @@
 		
 			</div>
       <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
-	<p class="w3-right-align"><span id="crewKeyword"></span>${str_searchList}</p>
+	
 	</div>
 		
     </div>
@@ -33,7 +33,7 @@
 			
 		</div>
       <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
- 			<p class="w3-right-align"><span></span>${str_searchList}</p> 
+ 	
       </div>
 
     </div>
