@@ -92,10 +92,12 @@
 			board += 'class="yes-uline">'+data.nick+'</a>' + '&nbsp;&nbsp;&nbsp;'+data.reg_date;
 			board += '</div>';
 			board += '<div class="w3-harf w3-container w3-padding-4 w3-right">';
-			if (data.email == "${sessionScope.memEmail}" || "${dtoImg.mem_level}" == 3) {
+			if (data.email == "${sessionScope.memEmail}") {
 				board += '<a href="#" onClick="modBoardView('
 						+ data.replynum
 						+ '); return false" id="modView" class="w3-margin-right">${str_modify}</a>';
+				board += modBtn;		
+			}if (data.email == "${sessionScope.memEmail}" || "${dtoImg.mem_level}" == 3){
 				board += '<a href="#" onClick="delComplete('
 					+ data.replynum +','
 					  + data.ref_num + ',' + data.re_step
@@ -173,6 +175,9 @@
 		
 		
 		function Likego() {
+			if("${sessionScope.memEmail}" == '' || "${sessionScope.memEmail}" == null){
+				alert("로그인을 해주세요.");		
+			}else {
 			var retVal = confirm(likeok);
 			if (retVal == true) {
 				 location.href = "stationLikePro.do?num=" + readform.num.value
@@ -183,6 +188,7 @@
 				location.href = "stationRead.do?num=" + readform.num.value
 						+ "&pageNum=" + readform.pageNum.value + "&category="
 						+ readform.category.value + "&type=" + readform.type.value;
+			}
 			}
 		}
 		// 리댓글
@@ -289,10 +295,13 @@
 			reboard += '</div>';
 			reboard += '<div class="w3-harf w3-container w3-padding-4 w3-right">';
 			
-		 	if (data.email == "${sessionScope.memEmail}" || "${dtoImg.mem_level}" == 3) {
+		 	if (data.email == "${sessionScope.memEmail}") {
 				reboard += '<a href="#" onClick="remodBoardView('
 						+ data.replynum
 						+ '); return false" id="remodView" class="w3-margin-right">${str_modify}</a>';
+				reboard += modBtn;		
+		 	}
+		 	if (data.email == "${sessionScope.memEmail}" || "${dtoImg.mem_level}" == 3){
 				reboard += '<a href="#" onClick="redelComplete('
 						+ data.replynum +","+ data.ref_num+","+ data.re_step
 						+ '); return false"   id="redelBoard" class="w3-margin-right">${str_delete}</a>';
@@ -639,12 +648,12 @@ ${article.content}
 								<input type="hidden" name="ref_num" value="${ref_num}">
 								<input type="hidden" name="re_step" value="${re_step}">
 								<input type="hidden" name="re_level" value="${re_level}">
-							<c:if test="${sessionScope.memEmail != null }">
-								<a class="w3-btn w3-padding w3-theme-d1 w3-margin-left" onclick="Likego()"><i class="fa fa-thumbs-up w3-margin-right"></i>${btn_recommend}<br>${article.likenum}</a>
-							</c:if>
+								<a class="w3-btn w3-padding w3-theme-d1 w3-margin-left" onclick="Likego()"><i class="fa fa-thumbs-up w3-margin-right"></i>${btn_recommend}(${article.likenum})</a>
 							<a href="station.do?pageNum=${pageNum}&type=${type}" class="w3-btn w3-padding w3-theme-d1 w3-margin-left"><i class="fa fa-align-justify w3-margin-right"></i>${str_list}</a>
-							<c:if test="${sessionScope.memEmail == article.email || dtoImg.mem_level == 3}">
-								<a href="stationModify.do?num=${article.num}" class="w3-btn w3-padding w3-theme-d1 w3-margin-left"> <i class="fa fa-cog w3-margin-right"></i>${str_modify}</a>			
+							<c:if test="${sessionScope.memEmail == article.email}">
+								<a href="stationModify.do?num=${article.num}" class="w3-btn w3-padding w3-theme-d1 w3-margin-left"> <i class="fa fa-cog w3-margin-right"></i>${str_modify}</a>
+							</c:if>	
+							<c:if test="${sessionScope.memEmail == article.email || dtoImg.mem_level == 3}">			
 								<a class="w3-btn w3-padding w3-theme-d1 w3-margin-left" onclick="alertgo()"> <i class="glyphicon glyphicon-remove w3-margin-right"></i>${str_delete}</a>
 							</c:if>
 
