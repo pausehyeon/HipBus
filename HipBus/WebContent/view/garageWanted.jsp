@@ -20,7 +20,7 @@
 		<div class="w3-row-padding">
 			<div class="w3-twothird">
 				<!-- 글이 없는 경우 -->
-				<c:if test="${WantedList.size() eq 0}">
+				<c:if test="${fn:length(WantedList) eq 0}">
 
 					<div class="w3-row w3-margin-bottom">
 						<div class="w3-col m12">
@@ -30,7 +30,7 @@
 				</c:if>
 
 				<!-- 글이있는경우 -->
-				<c:if test="${WantedList.size() ne 0}">
+				<c:if test="${fn:length(WantedList) ne 0}">
 					<c:forEach var="article" items="${WantedList}">
 						<div class="w3-row w3-margin-bottom">
 							<div class="w3-col m12">

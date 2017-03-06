@@ -81,6 +81,27 @@ $(document).ready(
 				width : 32,
 				height : 35
 			});
+			
+		var garageImg = "http://localhost:8080/HipBus/view/img/garage.png";
+			var stationImg = "http://localhost:8080/HipBus/view/img/station.png";
+			var boardSrc = sessionStorage.getItem("board");
+			if (boardSrc != "") {
+				if (boardSrc.indexOf('station') == -1) {
+					$('#boardimgs').attr({
+						src : garageImg,
+						width : 35,
+						height : 38
+					});
+
+				} else {
+					$('#boardimgs').attr({
+						src : stationImg,
+						width : 38,
+						height : 42
+					});
+
+				}
+			}
 
 			
 	});

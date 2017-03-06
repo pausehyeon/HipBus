@@ -39,8 +39,9 @@ function boardSet() {
 	if (boardSrc != "") {
 		sessionStorage.setItem("board", boardSrc);
 	}
-
+	
 }
+
 
 function boardGet() {
 	var boardSrc = sessionStorage.getItem("board");

@@ -16,7 +16,7 @@
 					email : '${article.email}',
 					nick : '${article.nick}',
 					imglocation : '${article.imglocation}',
-					
+					memLevel : '${article.mem_level}'
 				}
 			
 			</c:forEach>

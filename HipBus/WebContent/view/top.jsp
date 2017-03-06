@@ -65,8 +65,8 @@
 													+ data[i].email
 													+ '">'
 													+ data[i].nick
-													+ '의버스<img class="w3-circle"'+
-										'style="width:30px; height:35px;" src="${project}/hipbusSave/'+data[i].imglocation+'"></a>';
+													+ '의버스<img class="w3-circle"'
+													+ 'style="width:30px; height:35px;" src="${project}/hipbusSave/'+data[i].imglocation+'"></a>';
 										}
 									} else {
 										for (var i = 0; i < data.length; i++) {
@@ -186,7 +186,29 @@
 			width : 32,
 			height : 35
 		});
+		
 	
+	var garageImg = "http://localhost:8080/HipBus/view/img/garage.png";
+		var stationImg = "http://localhost:8080/HipBus/view/img/station.png";
+		var boardSrc = sessionStorage.getItem("board");
+		if (boardSrc != "") {
+			if (boardSrc.indexOf('station') == -1) {
+				$('#boardimgs').attr({
+					src : garageImg,
+					width : 35,
+					height : 38
+				});
+
+			} else {
+				$('#boardimgs').attr({
+					src : stationImg,
+					width : 38,
+					height : 42
+				});
+
+			}
+		}
+
 	});
 //-->
 </script>
@@ -207,8 +229,9 @@
 
 		<c:if test="${sessionScope.memEmail eq null}">
 			<!-- ^ 로그인 되어 있지 않은 경우에 로그인 요청 메시지 -->
-			<li><a onclick="document.getElementById('login').style.display='block'">로그인 해주세요.</a></li>
+		<li><a onclick="document.getElementById('login').style.display='block'">로그인 해주세요.</a></li>
 		</c:if>
+
 		<c:if test="${sessionScope.memEmail ne null}">
 			<!-- ^ 로그인 된 경우 친구목록과 검색기능 -->
 			<li class="w3-hide-small w3-dropdown-hover"><a href="#" class="w3-padding-large w3-hover-white" title="Join List"> <i class="fa fa-users"></i>
