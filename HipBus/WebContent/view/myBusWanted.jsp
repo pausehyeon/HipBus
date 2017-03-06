@@ -27,9 +27,10 @@
 				<div class="w3-container w3-card-2 w3-white w3-round w3-margin-bottom w3-margin-left w3-margin-right w3-padding-32 w3-padding-xxlarge">
 					<div class="w3-container w3-center w3-black">
 						<h3>
-							<i class="fa fa-bullhorn"></i>&nbsp; Wanted
+							<i class="fa fa-bullhorn"></i>&nbsp;${str_wanted}
 						</h3>
 					</div>
+					<p class="w3-small w3-left">&nbsp;&nbsp;&nbsp;&nbsp;${str_wantedMsg}</p>
 					<c:if test="${driver eq sessionScope.memEmail}">
 						<div class="w3-row-padding w3-margin-top w3-margin-bottom">
 							<div class="w3-col m12">

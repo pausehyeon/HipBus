@@ -71,6 +71,7 @@
 <c:set var="str_writer" value="작성자 : "/>
 <c:set var="str_writeDate" value="| 작성일 : "/>
 <c:set var="str_hits" value="| 조회수 : "/>
+<c:set var="str_upcomigMsg" value="*작성된 Upcoming은 Public Garage에서도 확인이 가능하며 다양한 정보확인도 가능합니다."/>
 
 <!-- myBusUpcomingRead.jsp -->
 <c:set var="str_minute" value=" 분"/>
@@ -107,6 +108,7 @@
 <c:set var="str_myArticles" value="님의 모든 글"/>
 
 <!-- myBusWanted.jsp, myBusWantedModify.jsp -->
+<c:set var="str_wanted" value="Wanted"/>
 <c:set var="str_subject" value="제목"/>
 <c:set var="str_duedate" value="모집 마감일"/>
 <c:set var="str_list" value="전체 목록"/>
@@ -117,6 +119,7 @@
 <c:set var="str_currentThumbnail" value="기존 대표이미지"/>
 <c:set var="str_postWanted" value="구인광고 등록"/>
 <c:set var="str_modifyWanted" value="구인광고 수정 완료"/>
+<c:set var="str_wantedMsg" value="*작성된 Wanted는 Public Garage에서도 확인이 가능하며 다양한 정보확인도 가능합니다."/>
 
 <!-- myBusEdit.jsp crewBusEdit.jsp-->
 <c:set var="str_nick" value="닉네임"/>

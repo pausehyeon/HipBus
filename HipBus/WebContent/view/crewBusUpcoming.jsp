@@ -33,6 +33,7 @@
 							<i class="fa fa-calendar"></i>&nbsp; ${str_upcoming}
 						</h3>
 					</div>
+					<p class="w3-small w3-left">&nbsp;&nbsp;&nbsp;&nbsp;${str_upcomigMsg}</p>
 					<c:if test="${isMember}">
 						<div class="w3-row-padding w3-margin-top w3-margin-bottom">
 							<div class="w3-col m12">
