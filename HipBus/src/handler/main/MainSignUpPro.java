@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import handler.CommandHandler;
 import handler.HandlerException;
 import model.MemberDto;
+import model.Setting;
 import model.general.MailService;
 import model.main.MainDao;
 
@@ -36,7 +37,7 @@ public class MainSignUpPro implements CommandHandler {
 			e.printStackTrace();
 		}
 		
-		String localhost = "192.168.20.101"; 
+		String serverIP = Setting.serverIP;
 		MemberDto dto = new MemberDto();
 		String email = request.getParameter("email");
 		dto.setEmail( email );
@@ -59,7 +60,7 @@ public class MainSignUpPro implements CommandHandler {
 		new MailService(dto.getEmail(), "회원가입 인증메일입니다.", 
 				"<img class='w3-circle' src='/Hipbus/hipbusSave/AdminLgo.png' width='300px'hight='300px'/>"
 				+ "<h4>AuthentiCode : "+code+" 입니다.</h4>"
-				+ "<a href='http://"+localhost+":8080/HipBus/mainValidatePro.do?code="+code+"&email="+email+"'>클릭하면 가입 완료 됩니다.</a>");
+				+ "<a href='http://"+serverIP+":8080/HipBus/mainValidatePro.do?code="+code+"&email="+email+"'>클릭하면 가입 완료 됩니다.</a>");
 				
 		
 		Map<String, String> ms = new HashMap<String, String>();
