@@ -60,7 +60,7 @@ function playonair(channel_id, googleApiKey) {
 									+ '" frameborder="0" allowfullscreen></iframe>';
 							onair.innerHTML += video;
 							chat += '<iframe style="width: 100%; height: 360px" src="https://www.youtube.com/live_chat?v='
-								+ channel_id
+								+ videoId
 								+ '&embed_domain=localhost" frameborder="0" allowfullscreen></iframe>';
 
 							onairchat.innerHTML = chat;
