@@ -25,7 +25,7 @@ textarea:focus {
 	<script type="text/javascript">
 	//<!--
 	alert("탈퇴했거나 존재하지 않는 회원입니다.");
-	location.href=history.back;
+	location.href=history.go(-1);
 	//-->
 	</script>
 

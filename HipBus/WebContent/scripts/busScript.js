@@ -68,15 +68,14 @@ function playonair(channel_id, googleApiKey) {
 							
 						} else {
 							// 라이브 방송 중이 아닌 경우
-							alert("들어옴");
 							video += '<iframe style="width: 100%; height: 360px" src="http://www.youtube.com/embed/live_stream?channel='
 								+ channel_id
 								+ '" frameborder="0" allowfullscreen></iframe>';
 							onair.innerHTML += video;
 						}
-
+ 
 						if (cnt == 0) {
-							onairchat.innerHTML = "<p class='w3-center'><br><br><br><br>방송중인 영상이 없습니다.</p>";
+							onairchat.innerHTML = "<p class='w3-center'><br><br><br><br><br><br>방송중인 영상이 없습니다.</p>";
 						}
 					}else{
 						onair.innerHTML = "<p class='w3-center'> 유효하지 않은 채널아이디입니다. <br> 확인 후 수정해주세요! <br></p>"

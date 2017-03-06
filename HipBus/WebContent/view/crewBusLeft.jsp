@@ -92,10 +92,10 @@ function closeInfo() {
 			<div id="Demo1" class="w3-accordion-content w3-container w3-padding-2">
 				<p>
 				<ul class="w3-ul">
-					<c:if test="${passengers==null}">
+					<c:if test="${passengers.isEmpty()}">
 						<li>아직 탑승자가 없습니다.</li>
 					</c:if>
-					<c:if test="${passengers!=null}">
+					<c:if test="${!passengers.isEmpty()}">
 						<c:forEach var="passenger" items="${passengers}" varStatus="status">
 							<li class="w3-padding-10">
 							<c:if test="${passenger.getImglocation()!=null}">

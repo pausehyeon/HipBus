@@ -27,7 +27,7 @@ textarea:focus {
 	<script type="text/javascript">
 	//<!--
 	alert("존재하지 않는 크루입니다.");
-	location.href=history.back;
+	location.href=history.go(-1);
 	//-->
 	</script>
 
