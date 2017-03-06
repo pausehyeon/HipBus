@@ -38,7 +38,7 @@
 
 <!-- garageNews.jsp -->
 <c:set var="str_News" value="NEWS"/>
-<c:set var="str_NewsTitle" value="공지사항 및 힙합 관련 최신 소식입니다."/>
+<c:set var="str_NewsTitle" value="공지사항 및 힙합 관련 최신 소식입니다.<br>최신글 3개는 Main창에서 슬라이드로 확인가능합니다."/>
 <c:set var="str_Recommend" value="추천하기"/>
 <c:set var="str_Top" value="위로"/>
 

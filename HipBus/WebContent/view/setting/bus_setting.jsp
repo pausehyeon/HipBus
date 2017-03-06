@@ -54,7 +54,11 @@
 <c:set var="str_memberCount" value="크루 구성원 : "/>
 <c:set var="str_per" value="명"/>
 <c:set var="str_infoTitle" value="잠깐!"/>
-<c:set var="str_infoMsg" value="다른 Driver의 버스에 탑승하면 다양한 정보를 받아보실 수 있습니다."/>
+<c:set var="str_infoMsg1" value="이 CrewBus에 탑승을 원하신다면 등업을 해주세요.<br>자세한 사항은 "/>
+<c:set var="str_infoMsg2" value="CrewBus에 탑승하시면 다른 Driver들과 소통과 크루활동에 참여할 수 있어요.<br>자세한 사항은 "/>
+<c:set var="str_infoMsg3" value="CrewBus를 생성/가입하고 싶다면 등업을 해주세요.<br>자세한 사항은  "/>
+<c:set var="str_infoMsg4" value="CrewBus생성/가입이 가능하며 다른 Driver들과 크루활동에 참여하실 수 있습니다.<br>자세한 사항은"/>
+<c:set var="str_infoMsg" value="를 이용해주세요."/>
 
 <!-- myBusRight.jsp -->
 <c:set var="str_edit" value="Edit"/>

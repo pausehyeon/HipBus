@@ -27,7 +27,7 @@ public class AdminInvitePro implements CommandHandler {
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		
-		String localhost = "192.168.20.57"; 
+		String localhost = "192.168.20.50"; 
 		String email = request.getParameter("email");
 		
 		String icode = (String) request.getParameter("icode");		

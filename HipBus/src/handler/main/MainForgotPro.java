@@ -33,7 +33,7 @@ public class MainForgotPro implements CommandHandler {
 			e.printStackTrace();
 		}
 		
-		String localhost = "192.168.20.57";
+		String localhost = "192.168.20.50";
 		String email = request.getParameter("email");		
 		int forgotResult = mainDao.forgotPasswd(email);
 		request.setAttribute("forgotResult", forgotResult);

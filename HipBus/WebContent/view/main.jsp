@@ -207,7 +207,9 @@
 	<div class="w3-center w3-padding-64" id="contact">
 		<span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">${str_contactUs}</span>
 	</div>
+	
 	<a href="garageFAQ.do" class="w3-small w3-padding w3-margin-left w3-right w3-text-red" style="text-decoration: underline;">*잠깐!&nbsp;FAQ는 확인해 보셨나요?</a>
+	
 	<div class="w3-row-padding w3-padding-64">
 		<form name="contactForm" action="mainContactUsPro.do" method="post" class="w3-container">
 			<div class="w3-group">

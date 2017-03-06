@@ -5,6 +5,19 @@
 <%@include file="/view/setting/bus_setting.jsp"%>
 <%@include file="/view/setting/myBus_setting.jsp"%>
 
+<script type="text/javascript">
+$(document).ready(
+	function(){
+		if(localStorage.getItem("isClosed")=="true"){
+			$('#crewInfo').hide();
+		}
+	}
+);
+function closeInfo() {
+	localStorage.setItem("isClosed","true");
+	$('#crewInfo').hide();
+}
+</script>
 <!-- jQuery Validation Plugin -->
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js"></script>
@@ -158,7 +171,31 @@
 		</div>
 	</c:if>
 	<br>
+<!-- Alert Box -->
+	<div class="w3-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small" id="crewInfo">
+		<span onclick="closeInfo()" class="w3-hover-text-grey w3-closebtn"> 
+			<i class="fa fa-remove"></i>
+		</span>
+		<p>
+			<strong>${str_infoTitle}</strong>
+		</p>
+		<c:if test="${myCrews==null || mem_level==1}"><!-- 크루가 없으면서 레벨이 1이면 등업-->
+			<p>
+			${str_infoMsg3}
+			<a href="garageFAQ.do" class="w3-medium w3-text-red" style="text-decoration: underline;">FAQ</a>
+			${str_infoMsg}
+			</p>
+		</c:if>
+		<c:if test="${myCrews==null || mem_level==2}"><!-- 크루가 없으면서  레벨이 2이면 생성 가입 -->
+			<p>
+			${str_infoMsg4}
+			<a href="garageFAQ.do" class="w3-medium w3-text-red" style="text-decoration: underline;">FAQ</a>
+			${str_infoMsg}
+			</p>
+		</c:if>
+	</div>
 </div>
+
 <!-- End Left Column -->
 <!-- 크루버스 만들기 모달 -->
 <div id="createCrewBus" class="w3-modal">
@@ -197,4 +234,6 @@
 		</div>
 	</div>
 </div>
+
+
 </html>

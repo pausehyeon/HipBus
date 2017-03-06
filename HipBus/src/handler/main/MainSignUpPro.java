@@ -36,7 +36,7 @@ public class MainSignUpPro implements CommandHandler {
 			e.printStackTrace();
 		}
 		
-		String localhost = "192.168.20.57"; 
+		String localhost = "192.168.20.50"; 
 		MemberDto dto = new MemberDto();
 		String email = request.getParameter("email");
 		dto.setEmail( email );

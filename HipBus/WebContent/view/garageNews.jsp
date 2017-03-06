@@ -14,7 +14,8 @@
 		<c:import url="navbar_garage.jsp" />
 		<div class="w3-row-padding" style="margin-top: 64px">
 			<h3>${str_News}</h3>
-			<p>${str_NewsTitle}</p>
+			<p class="w3-small">${str_NewsTitle}</p>
+			<br>
 			<!-- 이 버튼은 관리자에게만 보임 -->
 			<c:if test="${dto.mem_level == 3 }">
 				<div class="w3-row-padding w3-center">

@@ -149,17 +149,30 @@ function closeInfo() {
 		</div>
 	</c:if>
 	<br>
-
-	<!-- Alert Box -->
-	<div class="w3-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small" id="crewInfo">
-		<span onclick="closeInfo()" class="w3-hover-text-grey w3-closebtn"> 
-			<i class="fa fa-remove"></i>
-		</span>
-		<p>
-			<strong>${str_infoTitle}</strong>
-		</p>
-		<p>${str_infoMsg}</p>
-	</div>
-
+	
+		<!-- Alert Box -->
+		<div class="w3-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small" id="crewInfo">
+			<span onclick="closeInfo()" class="w3-hover-text-grey w3-closebtn"> 
+				<i class="fa fa-remove"></i>
+			</span>
+			<p>
+				<strong>${str_infoTitle}</strong>
+			</p>
+				<c:if test="${isApplied==0 && mem_level==1}"><!-- 크루원이 아니면서 레벨이 1이면 등업-->
+					<p>
+					${str_infoMsg1}
+					<a href="garageFAQ.do" class="w3-medium w3-text-red" style="text-decoration: underline;">FAQ</a>
+					${str_infoMsg}
+					</p>
+				</c:if>
+				<c:if test="${isApplied==0 && mem_level==2}"><!-- 크루원이 아니면서 레벨이 2이면 가입  -->
+					<p>
+					${str_infoMsg2}
+					<a href="garageFAQ.do" class="w3-medium w3-text-red" style="text-decoration: underline;">FAQ</a>
+					${str_infoMsg}
+					</p>
+				</c:if>
+		</div>
+	
 	<!-- End Left Column -->
 </div>
