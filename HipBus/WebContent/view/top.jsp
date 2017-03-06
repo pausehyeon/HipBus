@@ -48,7 +48,6 @@
 									
 									messages += '<div class="w3-margin"><h4 style="font-weight:bold; text-align:center;"><img src="${project}/view/img/HipBusLogo_colored_sq.png" class="w3-circle" style="width:40px; height:40px"> &nbsp; My Bus<br><br> '
 											+ keywords + ' 검색 결과<h4></div>';
-								if(! data.imglocation){
 									for (var i = 0; i < data.length; i++) {
 										messages += '<a href="myBus.do?driver='
 												+ data[i].email
@@ -57,7 +56,6 @@
 												+ '의버스<img class="w3-circle"'+
 								'style="width:30px; height:35px;" src="${project}/hipbusSave/'+data[i].imglocation+'"></a><br><br>';
 									}
-								}	
 									msg += '<div class="w3-margin"><h4 style="font-weight:bold;">MY Bus 검색 결과<h4></div>';
 
 									if (data.length > 4) {
@@ -143,15 +141,6 @@
 					}
 				}, "driverSearchResult.do", "POST", params);
 		request.sendRequest();
-	}
-
-	function moreCrew() {
-		var msg = "";
-		var moreBusResult = document.getElementById("moreBusResult");
-		msg += '<div class="w3-margin"><h4 style="font-weight:bold;">hop on<h4> </div>';
-
-		moreBusResult.innerHTML = msg;
-
 	}
 
 	$(document).ready(function() {
