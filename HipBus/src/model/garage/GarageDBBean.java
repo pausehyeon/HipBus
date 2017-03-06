@@ -59,6 +59,12 @@ public class GarageDBBean implements GarageDao {
 		// TODO Auto-generated method stub
 		return SqlMapClient.getSession().update("Garage.updateArticle", dto);
 	}
+	
+	@Override
+	public int updateArticles(NewsDto dto) {
+		// TODO Auto-generated method stub
+		return SqlMapClient.getSession().update("Garage.updateArticles", dto);
+	}
 
 	@Override
 	public int deleteArticle(int num) {
@@ -154,5 +160,7 @@ public class GarageDBBean implements GarageDao {
 	public String getAd(int ad_num) {
 		return SqlMapClient.getSession().selectOne("Garage.getAd", ad_num);
 	}
+
+	
 
 }

@@ -56,13 +56,8 @@
 								<label class="w3-label w3-validate">${str_subject}</label>
 							</div>
 							<div class="w3-col m12">
-								<textarea name="content" id="editor" required class="w3-input"></textarea>
+								<textarea name="content" id="editor" required class="w3-input">${article.content}</textarea>
 								<script type="text/javascript" src="${project}/scripts/ckeditor/insertCkeditor.js"></script>
-								<script type="text/javascript">
-								CKEDITOR.instances.editor
-										.setData("${article.content}");
-							//-->
-							</script>
 							</div>
 						</div>
 						<div class="w3-row-padding w3-padding-32">

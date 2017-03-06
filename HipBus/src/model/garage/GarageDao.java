@@ -1,6 +1,6 @@
 package model.garage;
 
-import java.sql.Timestamp;
+
 import java.util.List;
 import java.util.Map;
 
@@ -25,6 +25,8 @@ public interface GarageDao {
 	public MemberDto getMember(String email); // nick값 불러오기위한 메소드
 
 	public int updateArticle(NewsDto dto);
+	
+	public int updateArticles(NewsDto dto);
 
 	public int deleteArticle(int num);
 

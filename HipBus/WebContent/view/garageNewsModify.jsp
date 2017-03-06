@@ -38,8 +38,15 @@
 							<!-- ^ ckeditor 연결 모듈 -->
 						</div>
 
-						<div class="w3-row w3-padding-jumbo w3-theme-l3">
-							<span>* <i class="fa fa-image"></i> &nbsp;${str_insertThumbnail} <input name="upload" type="file" required="required" accept="image/*">
+						<div class="w3-row-padding w3-padding-32">
+							<div class="w3-col s2 m2">
+								<img src="${project}/hipbusSave/${article.imglocation}" alt="poster" width="100%" class="w3-opacity-min">
+							</div>
+							<div class="w3-col s10 m10">
+								<br><br>
+								<span class="w3-text-teal"><i class="fa fa-image"></i> &nbsp;${str_insertThumbnail} </span>
+								<input name="upload" type="file" accept="image/*">
+							</div>
 						</div>
 						<footer class="w3-container w3-padding-jumbo w3-theme-l3 w3-center">
 							<input type="submit" class="w3-btn w3-padding w3-theme-d1 w3-margin-left" value="&#xf00c; ${btn_mod}">

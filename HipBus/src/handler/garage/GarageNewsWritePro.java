@@ -49,7 +49,6 @@ public class GarageNewsWritePro implements CommandHandler{
 		try {
 			multi = new FileUpload().getMultipartRequest(request);
 			
-			String imgname = multi.getOriginalFileName("upload"); 
 			String imglocation = multi.getFilesystemName("upload");
 			imglocation = new ImageResize().resize(request, imglocation, 0.6, 1060);
 			

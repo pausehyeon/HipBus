@@ -103,13 +103,8 @@
 						</div>
 						<div class="w3-row-padding w3-padding-32">
 							<div class="w3-col m12">
-								<textarea name="content" id="editor" required class="w3-input"></textarea>
+								<textarea name="content" id="editor" required class="w3-input">${upcomingDto.content}</textarea>
 								<script type="text/javascript" src="${project}/scripts/ckeditor/insertCkeditor.js"></script>
-								<script type="text/javascript">
-								CKEDITOR.instances.editor
-										.setData("${upcomingDto.content}");
-								//-->
-								</script>
 							</div>
 						</div>
 						<div class="w3-row-padding w3-padding-32">
