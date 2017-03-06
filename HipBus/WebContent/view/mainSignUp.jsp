@@ -6,13 +6,15 @@
 <%@include file="/view/setting/main_setting.jsp"%>
 <script type="text/javascript" src="${project}/scripts/jquery-3.1.1.js"></script>
 <script type="text/javascript" src="/HipBus/scripts/ajax.js"></script>
-<!-- SETTING 끝 -->
+<script type="text/javascript" src="/HipBus/scripts/mainScript.js"></script>
 
 <!-- jQuery Validation Plugin -->
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/localization/messages_ko.js"></script>
 <script type="text/javascript" src="${project}/scripts/formValidationScripts.js"></script>
+<!-- SETTING 끝 -->
+
 
 <title>HipBus - Welcome!</title>
 <body onload="becomeformvalidate()">

@@ -43,6 +43,7 @@
 <c:set var="str_signInBecomeMember" value="Become a HipDriver"/>
 <c:set var="str_signInCancel" value="Cancel"/>
 <c:set var="str_signInPasswordSearchMent" value="비밀번호가 기억이 안나세요? "/>
+<c:set var="str_passwordSearch" value="임시 비밀번호 발급받기"/>
 <c:set var="str_wrongIdOrPasswd" value="이메일 주소 혹은 비밀번호가 맞지 않습니다."/>
 <c:set var="str_needVerification" value="이메일 인증이 필요합니다. 가입 당시 입력하신  이메일로 인증코드가 전송되었으니 확인해주세요."/>
 

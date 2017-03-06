@@ -38,16 +38,23 @@
 			</p>
 		</c:if>
 		<c:if test="${sessionScope.memEmail ne null}">
-			<p class="w3-xsmall">
-				<span>${member.nick}</span>${str_welcomeMain}
+		<c:if test="${member.mem_level lt 3}">
+			<!-- 관리자가 아닌 경우 myBus로 연결 -->
+			<p class="w3-xsmall" onclick="location='myBus.do?driver=${sessionScope.memEmail}'">
+				<a href="myBus.do?driver=${sessionScope.memEmail}">${member.nick}</a>${str_welcomeMain}
 			</p>
+		</c:if>
+		<c:if test="${member.mem_level eq 3}">
+			<!-- 관리자인 경우 manage로 연결 -->
+			<p class="w3-xsmall" onclick="location='admin.do'">
+				<a href="admin.do">${member.nick}</a>${str_welcomeMain}
+			</p>
+		</c:if>
 			<form name="signOutForm" method="post" action="signOutPro.do">
 				<input type="submit" value="${str_signOut}" class="w3-btn w3-padding-16 w3-large w3-margin-top">
 				<input name="urlToGoBack" type="hidden">
 				<!-- ^ 로그아웃 후 돌아올 현재 페이지 url을 기억.-->
 				<script type="text/javascript">
-					
-					
 					//<!--
 					$(document).ready(
 						function() {
@@ -55,15 +62,13 @@
 							signOutForm.urlToGoBack.value = location.href;
 						}
 					);
-				
-				
 				//-->
 				</script>
 			</form>
 		</c:if>
 	</div>
 
-	<div class="w3-center w3-padding-64" id="news">
+	<div class="w3-center w3-padding-64" id="news" onclick="location='garageNews.do'">
 		<span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">${str_mainNews}</span>
 	</div>
 	<!-- Slideshow -->
@@ -105,11 +110,11 @@
 	</div>
 
 	<!-- On air Section -->
-	<div class="w3-center w3-padding-64" id="onair">
+	<div class="w3-center w3-padding-64" id="onair" onclick="location = 'garageOnAir.do'">
 		<span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">${str_mainOnAir}</span>
 	</div>
 
-	<div class="w3-row-padding" id="onairsection"></div>
+	<div class="w3-row-padding" id="onairsection" onclick="location = 'garageOnAir.do'"></div>
 	<div class="w3-row-padding w3-center" id="onairloadingsection"></div>
 	<script type="text/javascript">
 		
@@ -166,7 +171,7 @@
 	</div>
 
 	<!-- Grid -->
-	<div class="w3-center w3-padding-64" id="upcoming">
+	<div class="w3-center w3-padding-64" id="upcoming" onclick="location = 'garageUpcoming.do'">
 		<span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">${str_upcoming}</span>
 	</div>
 	<div class="w3-row-padding">
@@ -204,7 +209,7 @@
 	</div>
 
 	<!-- Contact -->
-	<div class="w3-center w3-padding-64" id="contact">
+	<div class="w3-center w3-padding-64" id="contact" onclick="location = 'garageFAQ.do'">
 		<span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">${str_contactUs}</span>
 	</div>
 	

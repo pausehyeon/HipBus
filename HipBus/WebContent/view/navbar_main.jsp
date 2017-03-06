@@ -4,10 +4,6 @@
 <%@include file="/view/setting/setting.jsp"%>
 <%@include file="/view/setting/main_setting.jsp"%>
 <script src="${project}/scripts/generalScript.js"></script>
-<!--
-
-//-->
-</script>
 <!-- SETTING 끝 -->
 
 <!-- Icon Bar (Sidenav - hidden on small screens) -->

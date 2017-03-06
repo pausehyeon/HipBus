@@ -26,8 +26,6 @@
 					//<!--
 					$(document).ready(
 						function() {
-							
-							
 							//여기서 hidden값을 현재 페이지 url로 바꿔줌.
 							signInForm.urlToGoBack.value = location.href;
 							
@@ -45,7 +43,7 @@
 		<div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
 			<span class="w3-right w3-padding w3-hide-small w3-tiny">${str_signInNotMember}<a href="mainSignUp.do">${str_signInBecomeMember}</a> <br>${str_signInPasswordSearchMent}<a
 				href="mainForgot.do"
-			>${str_signInPasswordSearchMent}</a>
+			>${str_passwordSearch}</a>
 			</span>
 			<button onclick="document.getElementById('login').style.display='none'" type="button" class="w3-btn w3-red">${str_signInCancel}</button>
 		</div>

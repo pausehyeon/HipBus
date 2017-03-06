@@ -5,40 +5,18 @@
 <!-- SETTING -->
 <%@include file="/view/setting/setting.jsp"%>
 <%@include file="/view/setting/main_setting.jsp"%>
-<script type="text/javascript" src="/HipBus/scripts/ajax.js"></script>
+<script type="text/javascript" src="${project}/scripts/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="/HipBus/scripts/mainScript.js"></script>
+
+<!-- jQuery Validation Plugin -->
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/localization/messages_ko.js"></script>
+<script type="text/javascript" src="${project}/scripts/formValidationScripts.js"></script>
 <!-- SETTING 끝 -->
 
-<script type="text/javascript">
-//<!--
-	var request = null;
-
-	//이메일 체크
-	function verifyemail(){
- 		var params = "email=" + inputform.email.value;
-		request = new Request(verifyemailresult, "verifyEmailResult.do", "POST", params);
-		request.sendRequest();
-	}
-	
-	function verifyemailresult(){
-		var emailresult = document.getElementById("emailresult");
-		
-		if(request.httpRequest.readyState == 4){
-			if(request.httpRequest.status == 200){
-				emailresult.innerHTML = "정상종료 : "+request.httpRequest.responseText;
-			}else{
-				emailresult.innerHTML = request.httpRequest.status + "오류";				
-			}
-		}else{
-			emailresult.innerHTML = "통신중...";
-		}
-			
-	}
-	
-//-->
-</script>
-
 <title>HipBus - Welcome!</title>
-<body onload="showDivs(1)">
+<body onload="forgotformvalidate()">
 
 	<%@ include file="navbar_main.jsp" %>
 	
@@ -55,11 +33,10 @@
 			  <h2><i class="fa fa-question-circle w3-xxsmall"></i>${str_searchPassword} </h2>
 			</div>
 			
-			<form action="mainForgotPro.do" id="inputform" class="w3-container">
+			<form name="forgotform" action="mainForgotPro.do" id="inputform" class="w3-container">
 				<p>
 					<label>Email</label>
-					<input name="email" type="text" class="w3-input" onkeyup="verifyemail()">
-					<div class="w3-text-blue w3-xsmall w3-right" id="emailresult">${str_noEmail}</div>
+					<input name="email" type="text" class="w3-input">
 				</p>
 				<br>				
 				<div class="w3-center">

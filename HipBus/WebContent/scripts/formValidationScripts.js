@@ -36,6 +36,36 @@ var str_confirmSignOut = "정말 탈퇴하시겠습니까?";
 var str_mustAgree = "<br>* 동의하셔야만 탈퇴할 수 있습니다.";
 var str_invalidChannelId = "* 유효하지 않은 Youtube 채널 아이디입니다.<br><a class='w3-right w3-small' href='https://www.youtube.com/account_advanced'><i class='fa fa-question-circle'></i> 채널 아이디 확인하기</a>";
 var str_mustAgreeTerms = "* 약관을 읽고 동의하셔야만 가입하실 수 있습니다.";
+var str_emailNotExists = "* 가입되어 있지 않은 이메일주소입니다.";
+var str_emailRequired = "* 새 비밀번호를 받을 이메일을 입력해주세요.";
+
+function forgotformvalidate() {
+	$("form[name=forgotform]").validate({
+		errorClass : "w3-text-red w3-xsmall w3-right",
+		rules : {
+			email : {
+				required : true,
+				email : true,
+				remote : {
+					url : "verifyEmailResult.do",
+					type : "post",
+					data : {
+						email : function() {
+							return forgotform.email.value;
+						}
+					}
+				}
+			}
+		},
+		// 규칙체크 실패시 출력될 메시지
+		messages : {
+			email : {
+				required : str_emailRequired,
+				remote : str_emailNotExists
+			}
+		}
+	});
+}
 
 function becomeformvalidate() {
 	$("#inputform").validate({
