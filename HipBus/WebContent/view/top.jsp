@@ -193,14 +193,14 @@
 		var boardSrc = sessionStorage.getItem("board");
 		if (boardSrc != "") {
 			if (boardSrc.indexOf('station') == -1) {
-				$('#boardimgs').attr({
+				$('#boardImg').attr({
 					src : garageImg,
 					width : 35,
 					height : 38
 				});
 
 			} else {
-				$('#boardimgs').attr({
+				$('#boardImg').attr({
 					src : stationImg,
 					width : 38,
 					height : 42

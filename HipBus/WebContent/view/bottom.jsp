@@ -152,7 +152,7 @@ function alramOn(){
 	</div>
 	<div class="w3-hide-small" style="border: 1px solid transparent; float: left; width: 40px;" id="boardget">
 		<a style="width:4%" href="#" class="w3-bottom w3-left w3-padding-large w3-hover-opacity" onclick="boardGet()" title="${str_stationGo}">
-		<img style="width:32px; height:38px;" class="w3-circle" src="${project}/view/img/board.jpg"></a>
+		<img class="w3-circle" id="boardImg" src=""></a>
 	</div>
 	<div id="id01" class="w3-modal">
 		<div class="w3-modal-content w3-padding-32 w3-animate-top w3-card-8">
