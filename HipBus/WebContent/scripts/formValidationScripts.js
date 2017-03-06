@@ -153,6 +153,9 @@ function becomeformvalidate() {
 				maxlength : str_invalidChannelId,
 				nowhitespace : str_nowhitespace,
 				alphanumeric : str_invalidChannelId
+			},
+			agreeTerms : {
+				required : str_mustAgreeTerms
 			}
 		}
 	});
