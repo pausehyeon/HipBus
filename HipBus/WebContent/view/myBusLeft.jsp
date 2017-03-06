@@ -172,6 +172,7 @@ function closeInfo() {
 	</c:if>
 	<br>
 <!-- Alert Box -->
+<c:if test="${sessionScope.memEmail ne null}">
 	<div class="w3-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small" id="crewInfo">
 		<span onclick="closeInfo()" class="w3-hover-text-grey w3-closebtn"> 
 			<i class="fa fa-remove"></i>
@@ -194,6 +195,7 @@ function closeInfo() {
 			</p>
 		</c:if>
 	</div>
+</c:if>
 </div>
 
 <!-- End Left Column -->
