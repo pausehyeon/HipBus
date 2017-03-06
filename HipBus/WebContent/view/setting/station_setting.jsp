@@ -23,18 +23,31 @@
 <c:set var="str_vocalViewText" value="자신의 목소리를 자유롭게 들려주며 이야기 나누는 공간입니다."/>
 <c:set var="str_gasaViewText" value="자작 가사를 포스팅 하거나 관련 정보를 공유하는 공간입니다."/>
 <c:set var="str_freeViewText" value="힙합 이야기를 포함한 모든 주제에 대해 이야기 하는 공간입니다."/>
+<c:set var="str_busGo" value="님의 버스로&#13;이동합니다"/>
+<c:set var="str_ad" value="AD"/>
 <c:set var="btn_write" value="글쓰기"/>
 <c:set var="msg_station_x" value="게시글이 없습니다."/>
 <c:set var="msg_login" value="글을 쓰려면 로그인을 해주세요"/>
+<c:set var="str_subject" value="제목"/>
+<c:set var="str_email" value="이메일"/>
+<c:set var="str_nick" value="닉네임"/>
+<c:set var="str_search" value="검색"/>
 <!-- stationRead.jsp -->
 <c:set var="btn_recommend" value="추천"/>
 <c:set var="btn_top" value="위로"/>
 <c:set var="str_reply" value="답글"/>
+<c:set var="str_replyClose" value="답글닫기"/>
 <c:set var="str_modify" value="수정"/>
 <c:set var="str_delete" value="삭제"/>
 <c:set var="str_replyWrite" value="댓글"/>
 <c:set var="str_list" value="목록"/>
+<c:set var="str_noreply" value="현재 댓글이 없습니다."/>
+<c:set var="str_writeOk" value="글이 등록 되었습니다."/>
+<c:set var="str_modOk" value="성공적으로 수정되었습니다."/>
+<c:set var="str_delConfirm" value="삭제 하시겠습니까?"/>
 <c:set var="btn_register" value="등록"/>
+<c:set var="str_delOk" value="성공적으로 삭제되었습니다."/>
+
 <!-- navbar_station.jsp -->
 <c:set var="str_sideName" value="Main Station"/>
 <c:set var="str_beat" value="비트"/>

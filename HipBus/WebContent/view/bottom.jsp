@@ -19,7 +19,7 @@ var itv = 0;
 			var idvalue = document.getElementById("idvalue");
 			$('#alramOn').show();
 			$('#alramOff').hide();
-			idvalue.innerHTML = "알림기능을 켜주세요.^^";
+			idvalue.innerHTML = "${str_alramOn}";
 		}
 	});
 	function alram(){
@@ -47,7 +47,7 @@ var itv = 0;
 												.item(0).innerHTML + ")");
 								//alert(data.length)
 								if (data.length == 0) {
-									msg += "알림이 없습니다.";									
+									msg += "${str_noAlram}";									
 									idvalue.innerHTML = msg;
 								} else {
 									count += eval("("
@@ -90,16 +90,16 @@ function makeReply(data){
 	var category = data.category;
 	var type = 1;
 	switch( category ) {
-	case 1 : categoryName = '비트'; type= category+1; break;
-	case 2 : categoryName = '랩'; type= category+1; break;
-	case 3 : categoryName = '믹스테잎'; type= category+1; break;
-	case 4 : categoryName = '보컬'; type= category+1; break;
-	case 5 : categoryName = '가사'; type= category+1; break;
-	case 6 : categoryName = '자유'; type= category+1; break;
+	case 1 : categoryName = '${str_beat}'; type= category+1; break;
+	case 2 : categoryName = '${str_rab}'; type= category+1; break;
+	case 3 : categoryName = '${str_mixTape}'; type= category+1; break;
+	case 4 : categoryName = '${str_vocal}'; type= category+1; break;
+	case 5 : categoryName = '${str_gasa}'; type= category+1; break;
+	case 6 : categoryName = '${str_free}'; type= category+1; break;
 	}
 	
 			board += '<p>'
-			board += '<a href="stationRead.do?num='+data.num+'&category='+data.category+'&type='+type+'"><span>['+categoryName+']'+ data.subject+'</span>에 댓글이 달렸습니다.</a>'
+			board += '<a href="stationRead.do?num='+data.num+'&category='+data.category+'&type='+type+'"><span>['+categoryName+']'+ data.subject+'</span>${str_reply}</a>'
 			board += '&nbsp;&nbsp;<a href="#"><i class="fa fa-hand-o-left w3-margin-right"></i></a>'
 			board += '</p>'
 	
@@ -119,7 +119,7 @@ function alramOff(){
 	clearInterval(itv);
 	var idvalue = document.getElementById("idvalue");
 	var alramCount = document.getElementById("alramCount");
-	idvalue.innerHTML = "알림기능을 켜주세요.^^";
+	idvalue.innerHTML = "${str_alramOn}";
 	alramCount.innerHTML = '';
 	
 }
@@ -137,21 +137,21 @@ function alramOn(){
 <body>
 	<!-- 댓글 Alert   -->
 	<div class="w3-text-khaki w3-hide-small" style="border: 1px solid transparent; ; float: left; width:65px;">
-		<a style="width:7%" href="#" onclick="document.getElementById('id01').style.display='block'" class="w3-bottom w3-left w3-padding-large w3-hover-opacity" title="실시간 댓글 알림"> <i class="fa fa-bell w3-xxlarge"></i><span
+		<a style="width:7%" href="#" onclick="document.getElementById('id01').style.display='block'" class="w3-bottom w3-left w3-padding-large w3-hover-opacity" title="${str_realReply}"> <i class="fa fa-bell w3-xxlarge"></i><span
 			class="w3-badge w3-red" id="alramCount"></span>
 		</a>
 	</div>
 	
 	<div class="w3-hide-small" style="border: 1px solid transparent; float: left; width: 40px;" id="mybusget">
-		<a style="width:4%" href="#" class="w3-bottom w3-left w3-padding-large w3-hover-opacity" onclick="myBusGet()" title="최근 방문한 bus로 이동합니다.">
+		<a style="width:4%" href="#" class="w3-bottom w3-left w3-padding-large w3-hover-opacity" onclick="myBusGet()" title="${str_busGo}">
 		<img class="w3-circle" id="mybusImg" src=""> </a>
 	</div>
 	<div class="w3-hide-small" style="border: 1px solid transparent; float: left; width: 40px;" id="crewbusget">
-		<a style="width:4%" href="#" class="w3-bottom w3-left w3-padding-large w3-hover-opacity" onclick="crewBusGet()" title="최근 방문한 crewBus로 이동합니다.">
+		<a style="width:4%" href="#" class="w3-bottom w3-left w3-padding-large w3-hover-opacity" onclick="crewBusGet()" title="${str_crewGo}">
 		<img class="w3-circle" id="crewbusImg" src=""></a>
 	</div>
 	<div class="w3-hide-small" style="border: 1px solid transparent; float: left; width: 40px;" id="boardget">
-		<a style="width:4%" href="#" class="w3-bottom w3-left w3-padding-large w3-hover-opacity" onclick="boardGet()" title="최근 방문한 게시판으로 이동합니다.">
+		<a style="width:4%" href="#" class="w3-bottom w3-left w3-padding-large w3-hover-opacity" onclick="boardGet()" title="${str_stationGo}">
 		<img style="width:32px; height:38px;" class="w3-circle" src="${project}/view/img/board.jpg"></a>
 	</div>
 	<div id="id01" class="w3-modal">
@@ -159,7 +159,7 @@ function alramOn(){
 			<header class="w3-container w3-center">
 				<span onclick="document.getElementById('id01').style.display='none'" class="w3-closebtn">&times;</span>
 				<h4>
-					<i class="fa fa-bell w3-xlarge"></i>&nbsp;실시간 댓글 확인
+					<i class="fa fa-bell w3-xlarge"></i>&nbsp;${str_replyConfirm}
 				</h4>
 			</header>
 			<div class="w3-container w3-padding-jumbo" id="idvalue">

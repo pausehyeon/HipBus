@@ -37,7 +37,7 @@
 													.item(0).innerHTML + ")");
 									if (data.length == 0) {
 										msg += "<center>"
-										msg += "현재 댓글이 없습니다.";
+										msg += "${str_noreply}";
 										msg += "</center>"
 										$('#boardInfo').html(msg);
 									} else {
@@ -88,7 +88,7 @@
 			board += '<div class="w3-col m11 w3-center">';
 			board += '<div class="w3-harf w3-container w3-large w3-left">';
 			board += '<a href="myBus.do?driver='+data.email+'"';
-			board += 'title="'+data.nick+'님의 버스로&#13;이동합니다"';
+			board += 'title="'+data.nick+'${str_busGo}"';
 			board += 'class="yes-uline">'+data.nick+'</a>' + '&nbsp;&nbsp;&nbsp;'+data.reg_date;
 			board += '</div>';
 			board += '<div class="w3-harf w3-container w3-padding-4 w3-right">';
@@ -108,7 +108,7 @@
 			      + '); return false" id="reBoardView">${str_reply}</a>';
 			board += '<a href="#" onClick="reBoardClose(' + data.replynum +','
 				  + data.ref_num + ',' + data.re_step				
-			      + '); return false" id="reBoardClose"  style="display:none">답글닫기</a>'; 
+			      + '); return false" id="reBoardClose"  style="display:none">${str_replyClose}</a>'; 
 			board += '</div>';
 			board += '<div class="w3-container w3-left-align">';
 			board += '<input type="hidden" name="'+ data.replynum +'">';
@@ -153,7 +153,7 @@
 										result.appendChild(newdiv);
 									
 									$('input[name=content]').val("");
-									alert("글이 등록되었습니다.")
+									alert("${str_writeOk}")
 								} else if (code == "failed") {
 									var message = xmldoc.getElementsByTagName(
 											"message").item(0).innerHTML;
@@ -242,7 +242,7 @@
 										reResult.appendChild(newdiv);
 									$('input[name=recontent]').val("");
 									$("#replyBoardABC_"+ref_num+ ' center').remove();
-									alert("글이 등록되었습니다.")
+									alert("${str_writeOk}")
 								} else if (code == "failed") {
 									var message = xmldoc.getElementsByTagName(
 											"message").item(0).innerHTML;
@@ -284,7 +284,7 @@
 			reboard += '<div class="w3-col m11 w3-center">';
 			reboard += '<div class="w3-harf w3-container w3-large w3-left">';
 			reboard += '<a href="myBus.do?driver='+data.email+'"';
-			reboard += 'title="'+data.nick+'님의 버스로&#13;이동합니다"';
+			reboard += 'title="'+data.nick+'${str_busGo}"';
 			reboard += 'class="yes-uline">'+data.nick+'</a>' + '&nbsp;&nbsp;&nbsp;'+data.reg_date;
 			reboard += '</div>';
 			reboard += '<div class="w3-harf w3-container w3-padding-4 w3-right">';
@@ -332,7 +332,7 @@
 													.item(0).innerHTML + ")");
 									if (data.length == 0) {
 										msg += "<center>"
-										msg += "현재 댓글이 없습니다.";
+										msg += "${str_noreply}";
 										msg += "</center>"
 										infResult.innerHTML += msg;
 									} else {
@@ -400,7 +400,7 @@
 								if (code == "updated") {
 									var data = xmldoc.getElementsByTagName("data")
 											.item(0).innerHTML;
-									alert("성공적으로 수정되었습니다.");
+									alert("${str_modOk}");
 									$('#reboard_' + replynum + ' textarea').prop('readonly', true);
 									$('#reboard_' + replynum + ' #remodView').show();
 									$('#reboard_' + replynum + ' #redelBoard').show();
@@ -425,7 +425,7 @@
 		}
 		// 리댓글 삭제
 		function redelComplete(replynum,ref_num,re_step) {
-			var retVal = confirm("삭제 하시겠습니까?");
+			var retVal = confirm("${str_delConfirm}");
 			if (retVal == true) {
 				var params = "replynum=" + replynum
 								+ '&ref_num=' + ref_num
@@ -447,14 +447,11 @@
 										var deldiv = document
 												.getElementById("reboard_" + replynum);
 										infResult.removeChild(deldiv);	
-										alert("성공적으로 삭제하였습니다.");
+										alert("${str_delOk}");
 									} else if (code == "failed") {
 										msg += xmldoc.getElementsByTagName(
 												"message").item(0).innerHTML;
-									} else if (code == "no") {
-										alert("댓글이 있는글은 삭제할수없습니다.");
 									}
-	
 								} else {
 	
 								}
@@ -520,7 +517,7 @@
 								if (code == "updated") {
 									var data = xmldoc.getElementsByTagName("data")
 											.item(0).innerHTML;
-									alert("성공적으로 수정되었습니다.");							
+									alert("${str_modOk}");							
 								} else if (code == "failed") {
 									var message = xmldoc.getElementsByTagName(
 											"message").item(0).innerHTML;
@@ -540,7 +537,7 @@
 	
 		// 댓글 삭제
 		function delComplete(replynum,ref_num,re_step) {
-			var retVal = confirm("삭제 하시겠습니까?");
+			var retVal = confirm("${str_delConfirm}");
 			if (retVal == true) {
 				var params = "replynum=" + replynum
 							+ '&ref_num=' + ref_num
@@ -563,15 +560,12 @@
 										var deldiv = document
 												.getElementById("board_" + replynum);
 										result.removeChild(deldiv);
-										alert("성공적으로 삭제하였습니다.");
+										alert("${str_delOk}");
 										
 									} else if (code == "failed") {
 										msg += xmldoc.getElementsByTagName(
 												"message").item(0).innerHTML;
-									} else if (code == "no") {
-										alert("댓글이 있는글은 삭제할수없습니다.");
 									}
-	
 								} else {
 	
 								}

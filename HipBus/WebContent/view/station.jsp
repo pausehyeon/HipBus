@@ -70,7 +70,7 @@ a.yes-uline:hover{ text-decoration:underline}
 								<i class="fa fa-hand-peace-o"></i>
 									<c:choose>
 										<c:when test="${dto.category == 1}">
-												[${str_beat}] ${dto.subject} 
+												[${str_beat}] ${dto.subject}
 												</c:when>
 										<c:when test="${dto.category == 2}">
 													[${str_rab}] ${dto.subject}
@@ -91,7 +91,7 @@ a.yes-uline:hover{ text-decoration:underline}
 								</a>
 								<p class="w3-right w3-tiny">${str_writeNick}:
 									<a href="myBus.do?driver=${dto.email}" 
-									title="${dto.nick}님의 버스로&#13;이동합니다"
+									title="${dto.nick}${str_busGo}"
 									class="yes-uline">${dto.nick}</a> | ${str_reg_date}:
 									<fmt:formatDate value="${dto.reg_date}" type="both" pattern="yyyy-MM-dd HH:mm" />
 									| ${str_readCount}: ${dto.readcount} | ${str_upCount}: ${dto.likenum }
@@ -137,7 +137,7 @@ a.yes-uline:hover{ text-decoration:underline}
 								</a>
 								<p class="w3-right w3-tiny">${str_writeNick}:
 									<a href="myBus.do?driver=${article.email}" 
-									title="${article.nick}님의 버스로&#13;이동합니다"
+									title="${article.nick}${str_busGo}"
 									class="yes-uline">${article.nick}</a> |
 									 ${str_reg_date}:
 									<fmt:formatDate value="${article.reg_date}" type="both" pattern="yyyy-MM-dd HH:mm" />
@@ -155,7 +155,7 @@ a.yes-uline:hover{ text-decoration:underline}
 					<!-- 광고 있을 때 -->
 					<c:if test="${ad1_imglocation eq null}">
 						<div class="w3-col m12 w3-margin-top">
-							<p class="w3-border w3-padding-large w3-padding-128 w3-center">AD</p>
+							<p class="w3-border w3-padding-large w3-padding-128 w3-center">${str_ad}</p>
 						</div>
 					</c:if>
 					<c:if test="${ad1_imglocation ne null}">
@@ -165,7 +165,7 @@ a.yes-uline:hover{ text-decoration:underline}
 					</c:if>
 					<c:if test="${ad2_imglocation eq null}">
 						<div class="w3-col m12 w3-margin-top">
-							<p class="w3-border w3-padding-large w3-padding-48 w3-center">AD</p>
+							<p class="w3-border w3-padding-large w3-padding-48 w3-center">${str_ad}/p>
 						</div>
 					</c:if>
 					<c:if test="${ad2_imglocation ne null}">
@@ -175,7 +175,7 @@ a.yes-uline:hover{ text-decoration:underline}
 					</c:if>
 					<c:if test="${ad3_imglocation eq null}">
 						<div class="w3-col m12 w3-margin-top">
-							<p class="w3-border w3-padding-large w3-padding-48 w3-center">AD</p>
+							<p class="w3-border w3-padding-large w3-padding-48 w3-center">${str_ad}</p>
 						</div>
 					</c:if>
 					<c:if test="${ad3_imglocation ne null}">
@@ -193,13 +193,13 @@ a.yes-uline:hover{ text-decoration:underline}
 					<form action="station.do?type=${type}" method="post" name="searchform">
 						<div class="w3-col m2">
 							<select name="search" class="w3-padding w3-theme-l4 w3-btn w3-margin-right">
-								<option value="subject">제목</option>
-								<option value="email">이메일</option>
-								<option value="nick">닉네임</option>
+								<option value="subject">${str_subject}</option>
+								<option value="email">${str_email}</option>
+								<option value="nick">${str_nick}</option>
 							</select>
 						</div>
 						<div class="w3-col m3">
-							<input type="text" name="keyword" placeholder="검색" class="w3-input">
+							<input type="text" name="keyword" placeholder="${str_search}" class="w3-input">
 						</div>
 						<div class="w3-col m1">
 							<button type="submit" class="w3-btn-block w3-theme-d1 w3-padding">

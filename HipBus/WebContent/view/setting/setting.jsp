@@ -46,5 +46,19 @@
 <c:set var="str_wrongIdOrPasswd" value="이메일 주소 혹은 비밀번호가 맞지 않습니다."/>
 <c:set var="str_needVerification" value="이메일 인증이 필요합니다. 가입 당시 입력하신  이메일로 인증코드가 전송되었으니 확인해주세요."/>
 
-
+<!-- bottom.jsp -->
+<c:set var="str_alramOn" value="알람기능을 켜주세요.^^"/>
+<c:set var="str_noAlram" value="알람이 없습니다."/>
+<c:set var="str_beat" value="비트"/>
+<c:set var="str_rab" value="랩"/>
+<c:set var="str_mixTape" value="믹스테이프"/>
+<c:set var="str_vocal" value="보컬"/>
+<c:set var="str_gasa" value="가사"/>
+<c:set var="str_free" value="자유"/>
+<c:set var="str_reply" value="에 댓글이 달렸습니다."/>
+<c:set var="str_replyConfirm" value="실시간 댓글 확인"/>
+<c:set var="str_realReply" value="실시간 댓글 알람"/>
+<c:set var="str_busGo" value="최근 방문한 myBus로 이동합니다."/>
+<c:set var="str_crewGo" value="최근 방문한 crewBus로 이동합니다."/>
+<c:set var="str_stationGo" value="최근 방문한 게시판으로 이동합니다."/>
 
