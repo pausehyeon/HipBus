@@ -19,7 +19,7 @@
 				</button>
 			</div>
 			<c:if test="${newUpcomingDto.imglocation==null}">
-				<img src="${project}/view/img/notice1.png" alt="some image" style="width: 100%;">
+				<img src="${project}/view/img/upcoming.png" alt="some image" style="width: 100%;">
 				<div class="w3-padding-12">
 					<p>
 						<strong>예정된 공연이 없습니다.</strong>
@@ -66,7 +66,7 @@
 				</button>
 			</div>
 			<c:if test="${newWantedDto==null}">
-				<img src="${project}/view/img/topdriver1.png" alt="some image" style="width: 100%;">
+				<img src="${project}/view/img/wanted.png" alt="some image" style="width: 100%;">
 				<div class="w3-padding-12">
 					<p>
 						<strong>구인글이 없습니다.</strong>

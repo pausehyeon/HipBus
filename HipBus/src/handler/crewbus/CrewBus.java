@@ -31,7 +31,7 @@ public class CrewBus implements CommandHandler {
 		boolean isLeader = false;
 		boolean isDriver = false;
 		
-		if(mybusDao.isDriver(driver)==1){
+		if(mybusDao.isDriver(driver)==1) {
 			isDriver = true;
 		
 			String channelid = mybusDao.getChannelid( driver );

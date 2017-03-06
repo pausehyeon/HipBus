@@ -38,37 +38,42 @@ public class CrewBusInsertChannelPro implements CommandHandler {
 		dto.setDriver(driver);
 		dto.setChannel_id(channel_id);
 		int result = mybusDao.insertChannel(dto);
+		boolean isDriver = false;
 		
-		if (result != 0) {
-			channelid = channel_id;
-		}
-		
-		if( request.getSession().getAttribute("memEmail") != null ) {
-			email = (String) request.getSession().getAttribute("memEmail");	// 방문자 (세션에 저장된 이메일)
-			my_level = mybusDao.getMember(email).getMem_level();
-			request.setAttribute("my_level", my_level);
-		}
-		
-		List<CrewMemberDto> memberList = crewbusDao.getCrewmembers(driver);
-		if(!memberList.isEmpty()){
-			for(int i=0;i<memberList.size();i++){
-				CrewMemberDto cmDto = memberList.get(i);
-				if(cmDto.getEmail().equals(email)){
-					isMember = true;
-					if(cmDto.getLeader() == 2){
-						isLeader = true;
+		if(mybusDao.isDriver(driver)==1){
+			isDriver = true;
+			if (result != 0) {
+				channelid = channel_id;
+			}
+			
+			if( request.getSession().getAttribute("memEmail") != null ) {
+				email = (String) request.getSession().getAttribute("memEmail");	// 방문자 (세션에 저장된 이메일)
+				my_level = mybusDao.getMember(email).getMem_level();
+				request.setAttribute("my_level", my_level);
+			}
+			
+			List<CrewMemberDto> memberList = crewbusDao.getCrewmembers(driver);
+			if(!memberList.isEmpty()){
+				for(int i=0;i<memberList.size();i++){
+					CrewMemberDto cmDto = memberList.get(i);
+					if(cmDto.getEmail().equals(email)){
+						isMember = true;
+						if(cmDto.getLeader() == 2){
+							isLeader = true;
+						}
 					}
 				}
 			}
+			
+			request.setAttribute("chResult", result);
+			request.setAttribute("isLeader", isLeader);
+			request.setAttribute("isMember", isMember);
+			request.setAttribute("chResult", request.getParameter("chResult"));
+			request.setAttribute("driver", driver);
+			request.setAttribute("email", email);
+			request.setAttribute("channelid", channelid);
 		}
-		
-		request.setAttribute("chResult", result);
-		request.setAttribute("isLeader", isLeader);
-		request.setAttribute("isMember", isMember);
-		request.setAttribute("chResult", request.getParameter("chResult"));
-		request.setAttribute("driver", driver);
-		request.setAttribute("email", email);
-		request.setAttribute("channelid", channelid);
+		request.setAttribute("isDriver", isDriver);
 		return new ModelAndView("crewBus");
 	}
 }

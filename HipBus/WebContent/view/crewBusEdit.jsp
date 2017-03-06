@@ -209,9 +209,23 @@
 													<tr>
 														<td>${crew.email}</td>
 														<td>${crew.nick}</td>
-														<td><a class="w3-hover-black w3-padding" style="text-decoration: none" href="crewBusSignOverPro.do?email=${crew.email}&driver=${driver}">${str_crewMasterBtn}</a></td>
-														<td><a class="w3-hover-black w3-padding" style="text-decoration: none" href="crewBusEjectPro.do?email=${crew.email}&driver=${driver}&hidden=1">${str_crewMemEjectBtn}</a></td>
+														<td><a id="changeLeader" class="w3-hover-black w3-padding" style="text-decoration: none" href="crewBusSignOverPro.do?email=${crew.email}&driver=${driver}">${str_crewMasterBtn}</a></td>
+														<td><a id="ejectMem" class="w3-hover-black w3-padding" style="text-decoration: none" href="crewBusEjectPro.do?email=${crew.email}&driver=${driver}&hidden=1">${str_crewMemEjectBtn}</a></td>
 													</tr>
+													<script type="text/javascript">
+													//<!--
+														$('#ejectMem').click(
+															function(e){
+															  return confirm("정말 탈퇴시키겠습니까?");	
+															}
+														);
+														$('#changeLeader').click(
+															function(e){
+															  return confirm("정말 크루장을 위임하시겠습니까?");	
+															}
+														);
+													//-->
+													</script>
 												</c:if>
 											</c:forEach>
 										</c:if>

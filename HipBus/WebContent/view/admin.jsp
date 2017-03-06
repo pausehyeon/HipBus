@@ -282,9 +282,18 @@
 											</c:if>
 											</td>
 											<td>
-											<a class="w3-hover-black w3-padding" style="text-decoration: none" href="adminMemberEjectPro.do?email=${getMember.email}">${str_memLeave}</a>
+											<a class="ejectMem w3-hover-black w3-padding" style="text-decoration: none" href="adminMemberEjectPro.do?email=${getMember.email}">${str_memLeave}</a>
 											</td>
 										</tr>
+										<script type="text/javascript">
+										//<!--
+											$('.ejectMem').click(
+												function(e){
+												  return confirm("정말 탈퇴시키겠습니까?");	
+												}
+											);
+										//-->
+										</script>
 									</c:forEach>
 								</c:if>
 								<c:if test="${slist ne null}">
@@ -315,9 +324,10 @@
 											<c:if test="${getSearch.mem_level eq 2}">
 												<a class="w3-hover-black w3-padding" style="text-decoration: none" href="adminMemberManagePro.do?mem_level=1&email=${getSearch.email}">${str_memModify}</a>
 											</c:if>
-											<a class="w3-hover-black w3-padding" style="text-decoration: none" href="adminMemberEjectPro.do?email=${getSearch.email}">${str_memLeave}</a>
+											<a class="ejectMem w3-hover-black w3-padding" style="text-decoration: none" href="adminMemberEjectPro.do?email=${getSearch.email}">${str_memLeave}</a>
 											</td>
 										</tr>
+										
 									</c:forEach>
 								</c:if>
 							</c:if>
