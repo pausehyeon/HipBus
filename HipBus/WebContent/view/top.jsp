@@ -292,6 +292,7 @@
 
 		<c:if test="${sessionScope.memEmail ne null}">
 			<!-- ^ 로그인 된 경우 친구목록과 검색기능 -->
+			<c:if test="${member.mem_level ne 3 }">
 			<li class="w3-hide-small w3-dropdown-hover"><a href="#" class="w3-padding-large w3-hover-white" title="Join List"> <i class="fa fa-users"></i>
 			</a>
 				<div class="w3-dropdown-content w3-white w3-card-4">
@@ -322,6 +323,7 @@
 					</c:if>
 
 				</div></li>
+			</c:if>
 
 			
 		</c:if>
