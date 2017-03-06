@@ -22,11 +22,11 @@ insert into hb_verification values('ddd@email.com', -1);
 insert into hb_verification values('eee@email.com', -1);
 
 /* 2등급 회원*/
-insert into hb_member values('fff@email.com', 'FFF', 'a1a1a1', 1, sysdate, '');
-insert into hb_member values('ggg@email.com', 'GGG', 'a1a1a1', 1, sysdate, '');
-insert into hb_member values('hhh@email.com', 'HHH', 'a1a1a1', 1, sysdate, '');
-insert into hb_member values('iii@email.com', 'III', 'a1a1a1', 1, sysdate, '');
-insert into hb_member values('jjj@email.com', 'JJJ', 'a1a1a1', 1, sysdate, '');
+insert into hb_member values('fff@email.com', 'FFF', 'a1a1a1', 2, sysdate, '');
+insert into hb_member values('ggg@email.com', 'GGG', 'a1a1a1', 2, sysdate, '');
+insert into hb_member values('hhh@email.com', 'HHH', 'a1a1a1', 2, sysdate, '');
+insert into hb_member values('iii@email.com', 'III', 'a1a1a1', 2, sysdate, '');
+insert into hb_member values('jjj@email.com', 'JJJ', 'a1a1a1', 2, sysdate, '');
 
 insert into hb_driver values('fff@email.com');
 insert into hb_driver values('ggg@email.com');
