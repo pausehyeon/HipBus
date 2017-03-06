@@ -50,7 +50,7 @@
 							<div class="w3-col m12 l6 w3-padding-12 w3-center">
 								<img src="${project}/hipbusSave/${upcomingDto.imglocation}" width="100%">
 							</div>
-							<div class="w3-col m12 l6 w3-margin-top">
+							<div class="w3-col m12 l6">
 								<p>
 									<span style="font-weight: bold;">${str_perf_subject}</span> ${upcomingDto.subject}
 								</p>
@@ -65,6 +65,9 @@
 									<fmt:formatDate var="perf_time" value="${upcomingDto.perf_date}" pattern="a hh시 mm분" />
 									<span style="font-weight: bold;">${str_perf_runningtime}</span> ${perf_time}( ${upcomingDto.perf_runningtime}${str_minute} )
 								</p>
+								<p>
+									<span style="font-weight: bold;">${str_perf_price}</span> ${upcomingDto.perf_price}
+								</p>
 								<c:set var="perf_place" value="${fn:split(upcomingDto.perf_place, '@')}" />
 								<c:set var="placeId" value="${perf_place[0]}" />
 								<c:set var="perf_place" value="${perf_place[1]}" />
@@ -73,7 +76,7 @@
 								</p>
 							</div>
 							<div class="w3-col m12 l6">
-								<iframe width="100%" height="200" frameborder="0" style="border: 0" src="https://www.google.com/maps/embed/v1/place?q=place_id:${placeId}&key=${googleApiKey}" allowfullscreen></iframe>
+								<iframe width="100%" height="180" frameborder="0" style="border: 0" src="https://www.google.com/maps/embed/v1/place?q=place_id:${placeId}&key=${googleApiKey}" allowfullscreen></iframe>
 							</div>
 						</div>
 
