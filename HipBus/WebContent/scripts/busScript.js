@@ -60,7 +60,7 @@ function playonair(channel_id, googleApiKey) {
 									+ '" frameborder="0" allowfullscreen></iframe>';
 							onair.innerHTML += video;
 							chat += '<iframe style="width: 100%; height: 360px" src="https://www.youtube.com/live_chat?v='
-								+ videoId
+								+ channel_id
 								+ '&embed_domain=localhost" frameborder="0" allowfullscreen></iframe>';
 
 							onairchat.innerHTML = chat;
@@ -68,6 +68,11 @@ function playonair(channel_id, googleApiKey) {
 							
 						} else {
 							// 라이브 방송 중이 아닌 경우
+							alert("들어옴");
+							video += '<iframe style="width: 100%; height: 360px" src="http://www.youtube.com/embed/live_stream?channel='
+								+ channel_id
+								+ '" frameborder="0" allowfullscreen></iframe>';
+							onair.innerHTML += video;
 						}
 
 						if (cnt == 0) {
