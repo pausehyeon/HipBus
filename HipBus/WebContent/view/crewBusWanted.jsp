@@ -104,7 +104,7 @@
 									</c:if>
 									<!-- 대표 이미지가 없는 경우 -->
 									<c:if test="${(article.imglocation eq null) or (article.imglocation eq '') }">
-										<img src="${project}/view/img/HipBusLogo_pale_sq.png" alt="poster" style="width: 100%" class="w3-grayscale-max">
+										<img src="${project}/view/img/wanted.png" alt="poster" style="width: 100%" class="w3-grayscale-max">
 									</c:if>
 
 									<h5>

@@ -39,9 +39,6 @@ public class AdminADPro implements CommandHandler {
 			String imglocation = multi.getFilesystemName("upload");
 			String html = "";
 			int ad_num = Integer.parseInt(multi.getParameter("ad_num"));
-						
-			/*System.out.println("ht"+html);
-			System.out.println("img"+imglocation);*/
 								
 			if(imglocation == null){
 				html = multi.getParameter("htmlCode");	

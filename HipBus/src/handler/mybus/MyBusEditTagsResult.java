@@ -49,7 +49,6 @@ public class MyBusEditTagsResult implements CommandHandler {
 		switch(type) {
 			case "list" : List<String> selectResult = myBusDao.selectTag(driver);
 							request.setAttribute("selectResult", selectResult);
-							System.out.println(selectResult.size());
 				break;
 			case "insert" : int insertResult = myBusDao.insertTag(ms);
 							request.setAttribute("insertResult", insertResult);							

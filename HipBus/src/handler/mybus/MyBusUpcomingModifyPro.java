@@ -41,7 +41,6 @@ public class MyBusUpcomingModifyPro implements CommandHandler {
 			multi = new FileUpload().getMultipartRequest(request);
 			
 			String imglocation = multi.getFilesystemName("upload");
-			System.out.println(multi.getParameter("perf_date").replace("T", " "));
 			UpcomingDto dto = new UpcomingDto();
 			dto.setNum(num);
 			dto.setSubject(multi.getParameter("subject"));
@@ -51,7 +50,6 @@ public class MyBusUpcomingModifyPro implements CommandHandler {
 			dto.setPerf_runningtime(Integer.parseInt(multi.getParameter("perf_runningtime")));
 			dto.setPerf_price(Integer.parseInt(multi.getParameter("perf_price")));
 			dto.setContent(multi.getParameter("content"));
-			System.out.println(multi.getParameter("perf_date").replace("T", " ")+":00");
 			int result = 0;
 			if(imglocation==null){
 				result = mybusDao.modUpcomingWithout(dto);
