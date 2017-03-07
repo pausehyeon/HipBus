@@ -2,6 +2,8 @@
  * mybus.jsp와 crewbus.jsp에 연결할 javascript.
  */
 
+var serverIP = '${serverIP}';
+
 var str_insertSuccess = "글이 게시되었습니다.";
 var str_insertFail = "게시에 실패했습니다. 잠시 후 다시 시도해주세요."
 var str_deleteSuccess = "글이 삭제되었습니다.";
@@ -61,7 +63,7 @@ function playonair(channel_id, googleApiKey) {
 							onair.innerHTML += video;
 							chat += '<iframe style="width: 100%; height: 360px" src="https://www.youtube.com/live_chat?v='
 								+ videoId
-								+ '&embed_domain=localhost" frameborder="0" allowfullscreen></iframe>';
+								+ '&embed_domain='+serverIP+'" frameborder="0" allowfullscreen></iframe>';
 
 							onairchat.innerHTML = chat;
 							cnt++;

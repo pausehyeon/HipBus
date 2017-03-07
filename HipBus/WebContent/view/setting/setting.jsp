@@ -17,6 +17,13 @@
 <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
 
 
+<!-- !!아이피 바꿔주세요!! -->
+<c:set var="serverIP" value="192.168.20.57"/>
+
+
+
+
+
 
 <c:set var="project" value="/HipBus"/>
 <c:set var="googleApiKey" value="AIzaSyAg6U0l2-bbb3gH_VCElJcM9Ry6Uug7jFw"/>
