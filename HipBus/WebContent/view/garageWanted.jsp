@@ -100,7 +100,7 @@
 			</div>
 		</div>
 
-		<c:if test="${count != 0}">
+		<c:if test="${fn:length(WantedList) ne 0}">
 			<div class="w3-row-padding w3-margin-top w3-margin-bottom">
 				<!-- 글이 있는 경우에만 페이지 표시 -->
 				<!-- Pagination -->

@@ -7,7 +7,7 @@
 
 <!-- D-day 연산을 위해 시스템 날짜를 받아옴 -->
 <jsp:useBean id="now" class="java.util.Date" />
-<fmt:parseNumber var="today" value="${now.time/ (1000*60*60*24)}" integerOnly="true" />
+<fmt:parseNumber var="today" value="${(now.time/ (1000*60*60*24))-1}" integerOnly="true" />
 
 <!-- Right Column -->
 <div class="w3-col m2">

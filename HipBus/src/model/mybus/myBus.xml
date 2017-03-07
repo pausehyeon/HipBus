@@ -169,10 +169,10 @@
 		select * from hb_wanted where num=#{num}
 	</select>
 	<select id="getWantedArticles" parameterType="String" resultType="model.WantedDto">
-		select * from hb_wanted where driver=#{driver} and duedate &gt;= sysdate order by duedate
+		select * from hb_wanted where driver=#{driver} and duedate &gt;= sysdate-1 order by duedate
 	</select>
 	<select id="getPastWantedArticles" parameterType="String" resultType="model.WantedDto">
-		select * from hb_wanted where driver=#{driver} and duedate &lt; sysdate order by duedate
+		select * from hb_wanted where driver=#{driver} and duedate &lt; sysdate-1 order by duedate
 	</select>
 	<update id="modifyWantedWholeArticle" parameterType="model.WantedDto">
 		update hb_wanted set subject = #{subject}, content=#{content}, imglocation = #{imglocation}, duedate=#{duedate}
@@ -190,7 +190,7 @@
 	</update>
 	<select id="getNewWanted" parameterType="String" resultType="model.WantedDto">
 		select * from hb_wanted 
-		where num=(select max(num) from hb_wanted where driver=#{driver} and duedate &gt;= sysdate)
+		where num=(select min(num) from hb_wanted where driver=#{driver} and duedate &gt;= sysdate-1)
 	</select>
 	
 	<insert id="createCrew" parameterType="String">

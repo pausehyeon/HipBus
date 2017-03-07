@@ -10,26 +10,26 @@
 	<c:import url="../top.do" />
 
 	<!-- Main content: shift it to the right by 250 pixels when the sidenav is visible -->
-	<div class="w3-main " style="margin-right: 20%; margin-left: 20%">
+	<div class="w3-main  w3-margin-bottom "  style="margin-right: 20%; margin-left: 20%">
 		<c:import url="navbar_garage.jsp" />
-		<div class="w3-row w3-container" style="margin-top: 64px">
+		<div class="w3-row-padding" style="margin-top: 64px">
 			<h3>${str_Wanted}</h3>
 			<p>${str_WantedTitle}</p>
 			<hr>
 		</div>
-		<div class="w3-row">
+		<div class="w3-row-padding">
 			<div class="w3-twothird">
 				<!-- 글이 없는 경우 -->
-				<c:if test="${count == 0}">
+				<c:if test="${fn:length(WantedList) eq 0}">
 					<div class="w3-row w3-margin-bottom">
-						<div class="w3-twothird w3-container">
+						<div class="w3-col m12">
 							<p class="w3-left"><span>${msg_search_x}</span></p>
 						</div>
 					</div>
 				</c:if>
 
 				<!-- 글이있는경우 -->
-				<c:if test="${count != 0}">
+				<c:if test="${fn:length(WantedList) ne 0}">
 				<div class="w3-margin-bottom">
 					<p class="w3-center"><span class="w3-text-blue">${keyword}</span> 검색 결과 <span class="w3-text-blue">${count}건</span>의 게시글을 찾았습니다.</p>
 				</div>
@@ -70,10 +70,7 @@
 				</c:if>
 			</div>
 			<div class="w3-third">
-				<div class="w3-container">
-					<p class="w3-border w3-padding-large w3-padding-128 w3-center">AD</p>
-					<p class="w3-border w3-padding-large w3-padding-48 w3-center">AD</p>
-					<p class="w3-border w3-padding-large w3-padding-128 w3-center">AD</p>
+				<c:import url="../commercialAds.do"></c:import>
 				</div>
 			</div>
 
@@ -100,9 +97,11 @@
 				</div>
 			</div>
 			</div>
-			<div class="w3-row">
+			
+	<c:if test="${fn:length(WantedList) ne 0}">
+			<div class="w3-row-padding w3-margin-top w3-margin-bottom">
 				<!-- Pagination -->
-				<div class="w3-center w3-padding-64">
+				<div class="w3-col m12 w3-center">
 					<ul class="w3-pagination">
 
 						<c:if test="${startPage > pageBlock}">
@@ -124,8 +123,9 @@
 					</ul>
 				</div>
 			</div>
+		</c:if>
 			<!-- END MAIN -->
-		</div>
+	
 
 	</div>
 	<!-- Footer -->
