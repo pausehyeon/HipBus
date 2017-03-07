@@ -383,9 +383,62 @@
 <!-- Navbar on small screens -->
 <div id="navDemo" class="w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top: 51px">
 	<ul class="w3-navbar w3-left-align w3-large w3-theme">
-		<li><a class="w3-padding-large" href="admin.do#manageMembers">${str_other}</a></li>
-		<li><a class="w3-padding-large" href="station.do">${str_station}</a></li>
-		<li><a class="w3-padding-large" href="garage.do">${str_garage}</a></li>
+		<li>
+			<a href="station.do" title="Main Station 바로가기" class="w3-padding-large">${str_station}</a>
+		</li>
+		<li>
+			<a href="garage.do" title="Public Garage 바로가기" class="w3-padding-large">${str_garage}</a>
+		</li>
+
+		<c:if test="${sessionScope.memEmail ne null}">
+			<!-- 로그인된 경우 로그아웃 버튼, my bus로 가기, crewbus로 가기 버튼 보이게 -->
+			<c:if test="${member.mem_level ne 3}">
+				<!-- 관리자는 제외 -->
+				<li>
+					<a href="myBus.do?driver=${sessionScope.memEmail}" class="w3-padding-large w3-hover-white" title="${str_myBus}">${str_myBus} 
+						<c:if test="${member.imglocation eq null}">
+							<img src="${project}/view/img/HipBusLogo_pale_sq.png" class="w3-circle" style="height: 25px; width: 25px" alt="My Bus">
+						</c:if>
+						<c:if test="${member.imglocation ne null}">
+							<img src="${project}/hipbusSave/${member.imglocation}" class="w3-circle" style="height: 25px; width: 25px" alt="My Bus">
+						</c:if>
+					</a>
+				</li>
+
+				<c:if test="${myCrews ne null}">
+					<!-- 가입한 크루가 있으면 -->
+					<c:forEach var="myCrew" items="${myCrews}">
+						<li>
+							<a href="crewBus.do?driver=${myCrew.crewid}" class="w3-padding-large w3-hover-white" title="${str_crewBus}">${str_crewBus} 
+								<c:if test="${myCrew.imglocation eq null}">
+									<img src="${project}/view/img/CrewBusLogo_pale_sq.png" class="w3-circle" style="height: 25px; width: 25px" alt="Crew Bus">
+								</c:if>
+								<c:if test="${myCrew.imglocation ne null}">
+									<img src="${project}/hipbusSave/${myCrew.imglocation}" class="w3-circle" style="height: 25px; width: 25px" alt="Crew Bus">
+								</c:if>
+							</a>
+						</li>
+					</c:forEach>
+				</c:if>
+			</c:if>
+			<li>
+				<!-- 로그아웃 -->
+				<form name="smallSignOutForm" method="post" action="signOutPro.do">
+					<input type="submit" value="${str_signOut}" class="w3-btn w3-theme w3-padding-large" title="LogOut">
+					<input name="urlToGoBack" type="hidden">
+					<!-- ^ 로그아웃 후 돌아올 현재 페이지 url을 기억.-->
+					<script type="text/javascript">
+						$(document).ready(function() {
+							//여기서 hidden값을 현재 페이지 url로 바꿔줌.
+							smallSignOutForm.urlToGoBack.value = location.href;
+						});
+					//-->
+					</script>
+				</form>
+			</li>
+
+		</c:if>
+
 	</ul>
 </div>
 
