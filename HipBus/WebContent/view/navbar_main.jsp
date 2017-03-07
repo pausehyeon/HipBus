@@ -22,14 +22,16 @@
 				<!-- 로그인 된 상태에서-->
 				<c:if test="${member.mem_level lt 3}">
 					<!--관리자가 아닐 때만 보임 -->
-					<a href="myBus.do?driver=${sessionScope.memEmail}"> <i class="fa fa-bus"></i> ${str_myBus}
+					<a href="myBus.do?driver=${sessionScope.memEmail}">
+						<i class="fa fa-bus"></i> ${str_myBus}
 					</a>
 
 					<c:if test="${myCrews ne null and myCrews.size() ne 0}">
 						<!-- 로그인 된 상태에서, 관리자가 아닌데 소속된 크루가 있을 때만 보임 -->
 						<c:forEach var="myCrew" begin="0" end="${fn:length(myCrews)}" step="1" items="${myCrews}">
 
-							<a href="crewBus.do?driver=${myCrew.crewid}"> <i class="fa fa-fort-awesome"></i> ${myCrew.crewname}
+							<a href="crewBus.do?driver=${myCrew.crewid}">
+								<i class="fa fa-fort-awesome"></i> ${myCrew.crewname}
 							</a>
 						</c:forEach>
 					</c:if>
@@ -40,7 +42,8 @@
 				<a onclick="document.getElementById('login').style.display='block'">${str_signIn}</a>
 			</c:if>
 			<!-- 로그인 여부 관계없이 항상 보임 -->
-			<a href="station.do">${str_mainStation}</a> <a href="garage.do">${str_publicGarage}</a>
+			<a href="station.do">${str_mainStation}</a>
+			<a href="garage.do">${str_publicGarage}</a>
 			<c:if test="${sessionScope.memEmail ne null }">
 				<c:if test="${member.mem_level eq 3}">
 					<!-- 관리자에게만 보임 -->
@@ -49,17 +52,29 @@
 			</c:if>
 		</div>
 	</div>
-	<a class="w3-padding-large w3-hover-black" href="#"> <i class="fa fa-bus w3-xxlarge"></i>
+	<a class="w3-padding-large w3-hover-black" href="#">
+		<i class="fa fa-bus w3-xxlarge"></i>
 		<p>${str_topTitle}</p>
-	</a> <a class="w3-padding-large w3-hover-black" href="#news"> <i class="fa fa-bullhorn w3-xxlarge"></i>
+	</a>
+	<a class="w3-padding-large w3-hover-black" href="#news">
+		<i class="fa fa-bullhorn w3-xxlarge"></i>
 		<p>${str_news}</p>
-	</a> <a class="w3-padding-large w3-hover-black" href="#onair"> <i class="fa fa-youtube-play w3-xxlarge"></i>
+	</a>
+	<a class="w3-padding-large w3-hover-black" href="#onair">
+		<i class="fa fa-youtube-play w3-xxlarge"></i>
 		<p>${str_onAir}</p>
-	</a> <a class="w3-padding-large w3-hover-black" href="#topdrivers"> <i class="fa fa-thumbs-up w3-xxlarge"></i>
+	</a>
+	<a class="w3-padding-large w3-hover-black" href="#topdrivers">
+		<i class="fa fa-thumbs-up w3-xxlarge"></i>
 		<p>${str_topDrivers}</p>
-	</a> <a class="w3-padding-large w3-hover-black" href="#upcoming"> <i class="fa fa-calendar w3-xxlarge"></i>
+	</a>
+	<a class="w3-padding-large w3-hover-black" href="#upcoming">
+		<i class="fa fa-calendar w3-xxlarge"></i>
 		<p>${str_upcoming}</p>
-	</a> </a> <a class="w3-padding-large w3-hover-black" href="#contact"> <i class="fa fa-paper-plane w3-xxlarge"></i>
+	</a>
+	</a>
+	<a class="w3-padding-large w3-hover-black" href="#contact">
+		<i class="fa fa-paper-plane w3-xxlarge"></i>
 		<p>${str_contact}</p>
 	</a>
 </nav>
@@ -67,11 +82,44 @@
 <!-- Navbar on small screens (Hidden on medium and large screens) -->
 <div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
 	<ul class="w3-navbar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
-		<li class="w3-left" style="width: 25% !important"><a href="#">${str_topTitle}</a></li>
+		<!-- 로그인 여부 관계없이 항상 보임 -->
+		<li class="w3-left" style="width: 25% !important"><a href="#">Home</a></li>
 		<li class="w3-left" style="width: 25% !important"><a href="#news">${str_news}</a></li>
 		<li class="w3-left" style="width: 25% !important"><a href="#onair">${str_onAir}</a></li>
 		<li class="w3-left" style="width: 25% !important"><a href="#topdrivers">${str_topDrivers}</a></li>
 		<li class="w3-left" style="width: 25% !important"><a href="#upcoming">${str_upcoming}</a></li>
 		<li class="w3-left" style="width: 25% !important"><a href="#contact">${str_contact}</a></li>
+		<li class="w3-left" style="width: 25% !important"><a href="station.do">${str_mainStation}</a></li>
+		<li class="w3-left" style="width: 25% !important"><a href="garage.do">${str_publicGarage}</a></li>
+		<c:if test="${sessionScope.memEmail ne null }">
+
+			<!-- 로그인 된 상태에서-->
+			<c:if test="${member.mem_level lt 3}">
+				<!--관리자가 아닐 때만 보임 -->
+				<li class="w3-left" style="width: 25% !important"><a href="myBus.do?driver=${sessionScope.memEmail}">
+						<i class="fa fa-bus"></i> ${str_myBus}
+					</a></li>
+
+				<c:if test="${myCrews ne null and myCrews.size() ne 0}">
+					<!-- 로그인 된 상태에서, 관리자가 아닌데 소속된 크루가 있을 때만 보임 -->
+					<c:forEach var="myCrew" begin="0" end="${fn:length(myCrews)}" step="1" items="${myCrews}">
+						<li class="w3-left" style="width: 25% !important"><a href="crewBus.do?driver=${myCrew.crewid}">
+								<i class="fa fa-fort-awesome"></i> ${myCrew.crewname}
+							</a></li>
+					</c:forEach>
+				</c:if>
+			</c:if>
+		</c:if>
+		<c:if test="${sessionScope.memEmail eq null }">
+			<!-- 로그인 안 된 상태에서 보임 -->
+			<li class="w3-left" style="width: 25% !important"><a onclick="document.getElementById('login').style.display='block'">${str_signIn}</a></li>
+		</c:if>
+
+		<c:if test="${sessionScope.memEmail ne null }">
+			<c:if test="${member.mem_level eq 3}">
+				<!-- 관리자에게만 보임 -->
+				<li class="w3-left" style="width: 25% !important"><a href="admin.do">${str_management}</a></li>
+			</c:if>
+		</c:if>
 	</ul>
 </div>
