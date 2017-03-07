@@ -191,17 +191,23 @@
 						<li class="w3-center w3-padding-8 w3-padding-small"><img src="${project}/hipbusSave/${upcoming.imglocation}" alt="${str_upcoming}" style="width: 100%"></li>
 						<c:set var="perf_place" value="${fn:split(upcoming.perf_place, '@')}" />
 						<c:set var="perf_place" value="${perf_place[1]}" />
+						<c:if test="${fn:contains(perf_place, '대한민국')}">
+							<!-- '대한민국'은 생략하고 표기 -->
+							<c:set var="perf_place" value="${fn:substring( perf_place, 5, fn:length(perf_place) )}"/>
+						</c:if>
 						<li class="w3-padding-8"><b>${str_perf_place}</b> ${perf_place}</li>
 						<li class="w3-padding-8"><b>${str_perf_date}</b> <fmt:formatDate value="${upcoming.perf_date}" type="both" pattern="yy.MM.dd" /></li>
 						<li class="w3-padding-8"><b>${str_perf_runningtime}</b> <fmt:formatDate value="${upcoming.perf_date}" type="both" pattern="a h시 mm분" /> ( ${upcoming.perf_runningtime}${str_minute} )</li>
 						<li class="w3-padding-8"><b>${str_perf_cast}</b> ${upcoming.perf_cast}</li>
-						<li class="w3-light-grey w3-padding-24"><c:if test="${fn:contains(upcoming.driver, '@') }">
+						<li class="w3-light-grey w3-padding-24">
+							<c:if test="${fn:contains(upcoming.driver, '@') }">
 								<!-- 개인인 경우 -->
 								<a href="myBusUpcomingRead.do?driver=${upcoming.driver}&num=${upcoming.num}" class="w3-btn w3-green w3-padding-large">${str_detail}</a>
 							</c:if> <c:if test="${not fn:contains(upcoming.driver, '@') }">
 								<!-- 크루인경우 -->
 								<a href="crewBusUpcomingRead.do?driver=${upcoming.driver}&num=${upcoming.num}" class="w3-btn w3-green w3-padding-large">${str_detail}</a>
-							</c:if></li>
+							</c:if>
+						</li>
 					</ul>
 				</div>
 			</c:forEach>

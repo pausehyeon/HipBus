@@ -71,6 +71,10 @@
 								<c:set var="perf_place" value="${fn:split(upcomingDto.perf_place, '@')}" />
 								<c:set var="placeId" value="${perf_place[0]}" />
 								<c:set var="perf_place" value="${perf_place[1]}" />
+								<c:if test="${fn:contains(perf_place, '대한민국')}">
+									<!-- '대한민국'은 생략하고 표기 -->
+									<c:set var="perf_place" value="${fn:substring( perf_place, 5, fn:length(perf_place) )}"/>
+								</c:if>
 								<p>
 									<span style="font-weight: bold;">${str_perf_place}</span> ${perf_place}
 								</p>
