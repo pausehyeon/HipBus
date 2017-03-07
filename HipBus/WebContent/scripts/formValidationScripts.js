@@ -60,8 +60,8 @@ function forgotformvalidate() {
 		// 규칙체크 실패시 출력될 메시지
 		messages : {
 			email : {
-				required : str_emailRequired,
-				remote : str_emailNotExists
+				required : str_emailNotExists,
+				remote : str_emailRequired
 			}
 		}
 	});

@@ -23,8 +23,10 @@
 
 	<!-- Content -->
 	
-	<div class="w3-content"
-		style="max-width: 1100px; margin-top: 80px; margin-bottom: 80px">
+	<div class="w3-content" style="max-width: 1100px;margin-top:0px;margin-bottom: 80px">
+	<div class="w3-row w3-container w3-padding-64">
+		<!-- 여백 -->
+	</div>
 
 		<!-- 비밀번호 입력 -->
 		<div class="w3-container w3-padding-128"
@@ -34,11 +36,12 @@
 			</div>
 			
 			<form name="forgotform" action="mainForgotPro.do" id="inputform" class="w3-container">
-				<p>
-					<label>Email</label>
-					<input name="email" type="text" class="w3-input">
-				</p>
-				<br>				
+				<div class="w3-row w3-container w3-padding-64">
+					<p>
+						<label>Email</label>
+						<input name="email" type="text" class="w3-input">
+					</p>
+				</div>				
 				<div class="w3-center">
 					<input type="submit" value="${str_newPasswordSend}" class="w3-btn w3-padding w3-black w3-margin">				
 				</div>
