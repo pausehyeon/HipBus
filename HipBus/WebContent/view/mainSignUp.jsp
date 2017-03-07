@@ -54,9 +54,11 @@
 					<div class="w3-col m12 w3-margin-top w3-margin-bottom">
 						<label>${str_termsLabel}</label><br><br>
 						<textarea rows="10" cols="125" readonly>${str_terms}</textarea><br>
-						<input type="checkbox" class="w3-check" name="agreeTerms" required="required">	
-						<label class="w3-validate">&nbsp;&nbsp;${str_termsCheck}</label>													
+						<input type="checkbox" class="w3-check" name="agreeTerms">	
+						<label class="w3-validate">&nbsp;&nbsp;${str_termsCheck}</label>
+						<p id="checkBoxError"></p>													
 					</div>
+					<input type="hidden" name="num" value="2">	
 					<div class="w3-col m12 w3-margin-top w3-margin-bottom w3-center">
 						<input type="submit" value="회원가입" class="w3-btn w3-padding w3-black w3-margin">
 					</div>

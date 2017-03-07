@@ -22,7 +22,11 @@ public class VerifyEmailResult implements CommandHandler {
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		int result = generalDao.verifyEmail(request.getParameter("email"));
+		int hid =Integer.parseInt( request.getParameter("num") );
+		
 		request.setAttribute("result", result);
+		request.setAttribute("hid", hid);
+		
 		return new ModelAndView("verifyEmailResult");
 	}
 

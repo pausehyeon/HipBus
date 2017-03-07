@@ -53,6 +53,9 @@ function forgotformvalidate() {
 					data : {
 						email : function() {
 							return forgotform.email.value;
+						},
+						num : function(){
+							return forgotform.num.value;
 						}
 					}
 				}
@@ -97,7 +100,7 @@ function Invitationvalidate() {
 
 function becomeformvalidate() {
 	$("#inputform").validate({
-		errorClass : "w3-text-red w3-xsmall w3-right",
+		errorClass : "w3-text-red w3-xsmall",
 		submitHandler : function() {
 			if (confirm(inputform.email.value + str_confirmSignUp)) {
 				return true;
@@ -116,6 +119,9 @@ function becomeformvalidate() {
 					data : {
 						email : function() {
 							return inputform.email.value;
+						},
+						num : function(){
+							return inputform.num.value;
 						}
 					}
 				}
@@ -184,6 +190,13 @@ function becomeformvalidate() {
 			},
 			agreeTerms : {
 				required : str_mustAgreeTerms
+			}
+		},
+		errorPlacement : function(error, element) {
+			if(element.attr("name") == "agreeTerms"){
+				error.insertAfter("#checkBoxError");
+			}else{
+				error.insertAfter(element);
 			}
 		}
 	});

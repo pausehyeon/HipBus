@@ -41,7 +41,8 @@
 						<label>Email</label>
 						<input name="email" type="text" class="w3-input">
 					</p>
-				</div>				
+				</div>
+				<input type="hidden" name="num" value="1">				
 				<div class="w3-center">
 					<input type="submit" value="${str_newPasswordSend}" class="w3-btn w3-padding w3-black w3-margin">				
 				</div>
