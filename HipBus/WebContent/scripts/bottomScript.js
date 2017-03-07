@@ -6,7 +6,7 @@
 function myBusSet() {
 	var myBusDriver = document.location.href;
 	var myBusImgLocation = document.getElementById("myBusLeftImg").src;
-	if ( myBusDriver !="" ) {
+	if ( myBusDriver) {
 		sessionStorage.setItem("myBus", myBusDriver);
 		sessionStorage.setItem("myBusImg", myBusImgLocation);
 		
@@ -22,7 +22,7 @@ function myBusGet() {
 function crewBusSet() {
 	var crewBusDriver = document.location.href;
 	var crewBusImgLocation = document.getElementById("crewBusLeftImg").src;
-	if (crewBusDriver != "") {
+	if (crewBusDriver) {
 		sessionStorage.setItem("crewBus", crewBusDriver);
 		sessionStorage.setItem("crewBusImg",crewBusImgLocation);
 	}
@@ -36,7 +36,7 @@ function crewBusGet() {
 
 function boardSet() {
 	var boardSrc = document.location.href;
-	if (boardSrc != "") {
+	if (boardSrc) {
 		sessionStorage.setItem("board", boardSrc);
 	}
 	
