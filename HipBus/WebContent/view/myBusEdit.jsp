@@ -84,6 +84,10 @@
 											tagerror.innerHTML = "<p>태그 추가에 실패하였습니다.<br>잠시 후 다시 시도해 주세요.</p>";
 										} else if (insertResult == 1) {
 											taglist();
+											//태그 입력 후 taginput 값 지우고 포커스 주기
+											var taginput = document.getElementById("taginput");
+											taginput.value = "";
+											taginput.focus();
 										}
 									} else {
 										tagerror.innerHTML = tagrequest.httpRequest.status
@@ -123,6 +127,7 @@
 						}, "myBusEditTagsResult.do", "POST", params);
 				tagrequest.sendRequest();
 			}
+
 		</script>
 
 
