@@ -77,7 +77,7 @@
 			<div class="w3-row w3-center w3-margin-bottom">
 			<div class="w3-col m7">
 				<div class="w3-row-padding">
-					<form name="searchform" method="post" action="garageWantedSearch.do" onsubmit="return search()">
+					<form name="searchform" method="get" action="garageWantedSearch.do" onsubmit="return search()">
 						<div class="w3-col m2">
 							<select name="searchType" class="w3-padding w3-theme-l4 w3-btn w3-margin-right">
 								<option value="nick">${str_Writer}</option>
