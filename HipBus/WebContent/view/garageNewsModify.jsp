@@ -26,7 +26,7 @@
 
 				<div class="w3-card-4">
 
-					<form name="writeform" method="post" onsubmit="return newsModifyCheck(this);" action="garageNewsModifyPro.do?num=${article.num}">
+					<form name="writeform" method="post" onsubmit="return newsModifyCheck(this);" action="garageNewsModifyPro.do?num=${article.num}" enctype="multipart/form-data">
 
 						<header class="w3-container w3-padding-jumbo w3-theme-l3">
 							<input name="subject" type="text" required class="w3-input" value="${article.subject}"> <label class="w3-label w3-validate">${str_Subject}</label>
