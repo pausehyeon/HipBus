@@ -165,7 +165,7 @@ a.yes-uline:hover{ text-decoration:underline}
 					</c:if>
 					<c:if test="${ad2_imglocation eq null}">
 						<div class="w3-col m12 w3-margin-top">
-							<p class="w3-border w3-padding-large w3-padding-48 w3-center">${str_ad}/p>
+							<p class="w3-border w3-padding-large w3-padding-48 w3-center">${str_ad}</p>
 						</div>
 					</c:if>
 					<c:if test="${ad2_imglocation ne null}">

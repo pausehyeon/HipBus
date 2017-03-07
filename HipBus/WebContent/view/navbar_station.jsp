@@ -20,12 +20,12 @@
 <!-- Side Navbar on small screens (Hidden on medium and large screens) -->
 <div class="w3-bottom w3-hide-large w3-hide-medium" id="myNavbar">
   <ul class="w3-navbar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
-    <li class="w3-left" style="width:25% !important"><a href="#"> ${str_allView} </a></li>
-    <li class="w3-left" style="width:25% !important"><a href="#"> ${str_beat} </a></li>
-    <li class="w3-left" style="width:25% !important"><a href="#"> ${str_rab} </a></li>
-    <li class="w3-left" style="width:25% !important"><a href="#"> ${str_mixTape} </a></li>
-    <li class="w3-left" style="width:25% !important"><a href="#"> ${str_vocal} </a></li>
-    <li class="w3-left" style="width:25% !important"><a href="#"> ${str_gasa} </a></li>
-    <li class="w3-left" style="width:25% !important"><a href="#"> ${str_freeBoard} </a></li>    
+    <li class="w3-left" style="width:25% !important"><a href="station.do"> ${str_allView} </a></li>
+    <li class="w3-left" style="width:25% !important"><a href="station.do?category=${category1}&type=2"> ${str_beat} </a></li>
+    <li class="w3-left" style="width:25% !important"><a href="station.do?category=${category2}&type=3"> ${str_rab} </a></li>
+    <li class="w3-left" style="width:25% !important"><a href="station.do?category=${category3}&type=4"> ${str_mixTape} </a></li>
+    <li class="w3-left" style="width:25% !important"><a href="station.do?category=${category4}&type=5"> ${str_vocal} </a></li>
+    <li class="w3-left" style="width:25% !important"><a href="station.do?category=${category5}&type=6"> ${str_gasa} </a></li>
+    <li class="w3-left" style="width:25% !important"><a href="station.do?category=${category6}&type=7"> ${str_freeBoard} </a></li>    
   </ul>
 </div>

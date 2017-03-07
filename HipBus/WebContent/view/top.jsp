@@ -383,9 +383,9 @@
 <!-- Navbar on small screens -->
 <div id="navDemo" class="w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top: 51px">
 	<ul class="w3-navbar w3-left-align w3-large w3-theme">
-		<li><a class="w3-padding-large" href="#">${str_other}</a></li>
-		<li><a class="w3-padding-large" href="#">${str_station}</a></li>
-		<li><a class="w3-padding-large" href="#">${str_garage}</a></li>
+		<li><a class="w3-padding-large" href="admin.do#manageMembers">${str_other}</a></li>
+		<li><a class="w3-padding-large" href="station.do">${str_station}</a></li>
+		<li><a class="w3-padding-large" href="garage.do">${str_garage}</a></li>
 	</ul>
 </div>
 
