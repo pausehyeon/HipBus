@@ -85,8 +85,8 @@
 								</div>
 							</div>
 							<div class="w3-col m6 w3-margin-bottom">
-								<!-- 출연진 기본값을 닉네임으로 설정 -->
-								<input name="perf_cast" type="text" required="required" class="w3-input">
+								<!-- 출연진 기본값을 크루이름으로 설정 -->
+								<input name="perf_cast" type="text" value="${crewDto.crewname}" required="required" class="w3-input">
 								<label class="w3-label w3-validate w3-right">${str_perf_cast}</label>
 							</div>
 							<div class="w3-col m6 w3-margin-bottom">
