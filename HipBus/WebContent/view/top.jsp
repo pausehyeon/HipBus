@@ -46,22 +46,22 @@
 									msg += '<div class="w3-margin"><h4 style="font-weight:bold;">My Bus 검색 결과<h4> <br><br> 검색 결과가 없습니다.</div> <hr>';
 								} else {
 									
-									messages += '<div class="w3-margin"><h4 style="font-weight:bold; text-align:center;"><img src="${project}/view/img/HipBusLogo_colored_sq.png" class="w3-circle" style="width:40px; height:40px"> &nbsp; My Bus<br><br> 검색 결과<h4></div>';
+									messages += '<div class="w3-margin"><h4 style="font-weight:bold; text-align:center;"><img src="${project}/view/img/HipBusLogo_colored_sq.png" class="w3-circle" style="width:40px; height:40px"> &nbsp; My Bus 검색 결과<h4></div>';
 									for (var i = 0; i < data.length; i++) {
 									if(data[i].imglocation !=""){
-										messages += '<a href="myBus.do?driver='
+										messages += '<ul class="w3-pagination"><li><a href="myBus.do?driver='
 												+ data[i].email
 												+ '">'
 												+ data[i].nick
 												+ '의버스<img class="w3-circle"'+
-								'style="width:30px; height:35px;" src="${project}/hipbusSave/'+data[i].imglocation+'"></a><br><br>';
+								'style="width:30px; height:35px;" src="${project}/hipbusSave/'+data[i].imglocation+'"></a></li><br><br></ul>';
 									}else{
-										messages += '<a href="myBus.do?driver='
+										messages += '<ul class="w3-pagination"><li><a href="myBus.do?driver='
 											+ data[i].email
 											+ '">'
 											+ data[i].nick
 											+ '의버스<img class="w3-circle"'+
-							'style="width:30px; height:35px;" src="${project}/view/img/HipBusLogo_colored_sq.png"></a><br><br>';	
+							'style="width:30px; height:35px;" src="${project}/view/img/HipBusLogo_colored_sq.png"></a></li><br><br></ul>';	
 									}	
 								}
 									msg += '<div class="w3-margin"><h4 style="font-weight:bold;">MY Bus 검색 결과<h4></div>';
@@ -120,19 +120,19 @@
 									message += '<div class="w3-margin"><h4 style="font-weight:bold; text-align:center;"><img src="${project}/view/img/CrewBusLogo_colored_sq.png" class="w3-circle" style="width:40px; height:40px"> &nbsp;Crew Bus 검색 결과<h4></div>';
 									for (var i = 0; i < datas.length; i++) {
 										if(datas[i].crewImg != ""){
-										message += '<a href="crewBus.do?driver='
+										message += '<ul class="w3-pagination"><li><a href="crewBus.do?driver='
 												+ datas[i].crewid
 												+ '">'
 												+ datas[i].crewname
 												+ '의버스<img class="w3-circle"'+
-								'style="width:30px; height:35px;" src="${project}/hipbusSave/'+datas[i].crewImg+'"></a><br><br>';
+								'style="width:30px; height:35px;" src="${project}/hipbusSave/'+datas[i].crewImg+'"></a></li><br><br></ul>';
 										}else{
-											message += '<a href="crewBus.do?driver='
+											message += '<ul class="w3-pagination"><li><a href="crewBus.do?driver='
 												+ datas[i].crewid
 												+ '">'
 												+ datas[i].crewname
 												+ '의버스<img class="w3-circle"'+
-								'style="width:30px; height:35px;" src="${project}/view/img/CrewBusLogo_colored_sq.png"></a><br><br>';
+								'style="width:30px; height:35px;" src="${project}/view/img/CrewBusLogo_colored_sq.png"></a></li><br><br></ul>';
 										}
 									}
 
