@@ -16,13 +16,6 @@
 			<h3>${str_OnAir}</h3>
 			<p>${str_OnAirTitle}</p>
 			<hr>
-			<div class="w3-right" style="width: 10%">
-				<select class="w3-select" name="alignment">
-					<option value="" disabled selected>${str_order}</option>
-					<option value="1">${str_latest}</option>
-					<option value="2">${str_morePassengers}</option>
-				</select>
-			</div>
 			<a href="#">
 				<i class="fa fa-question-circle"></i> ${str_howTo}
 			</a>
