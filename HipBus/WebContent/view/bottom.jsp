@@ -181,7 +181,7 @@ function alramOn(){
 		<a href="#" class="w3-btn w3-padding w3-black w3-margin"> <i class="fa fa-arrow-up w3-margin-right"></i>To the top
 		</a>
 		<div class="w3-xlarge w3-section">
-			<i class="fa fa-facebook-official w3-hover-text-indigo"></i> <i class="fa fa-instagram w3-hover-text-purple"></i> <i class="fa fa-snapchat w3-hover-text-yellow"></i> <i
+			<i class="fa fa-facebook-official w3-hover-text-indigo"></i> <i class="fa fa-instagram w3-hover-text-purple" onclick="location = 'https://www.instagram.com/proj.hipbus/'"></i> <i class="fa fa-snapchat w3-hover-text-yellow"></i> <i
 				class="fa fa-pinterest-p w3-hover-text-red"
 			></i> <i class="fa fa-twitter w3-hover-text-light-blue"></i> <i class="fa fa-linkedin w3-hover-text-indigo"></i>
 		</div>
