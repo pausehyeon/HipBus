@@ -38,6 +38,7 @@ var str_invalidChannelId = "* 유효하지 않은 Youtube 채널 아이디입니
 var str_mustAgreeTerms = "* 약관을 읽고 동의하셔야만 가입하실 수 있습니다.";
 var str_emailNotExists = "* 가입되어 있지 않은 이메일주소입니다.";
 var str_emailRequired = "* 새 비밀번호를 받을 이메일을 입력해주세요.";
+var str_emailInvitation = "* 관리자 초대할 이메일을 입력해주세요.";
 
 function forgotformvalidate() {
 	$("form[name=forgotform]").validate({
@@ -60,8 +61,35 @@ function forgotformvalidate() {
 		// 규칙체크 실패시 출력될 메시지
 		messages : {
 			email : {
-				required : str_emailNotExists,
-				remote : str_emailRequired
+				required : str_emailRequired,
+				remote : str_emailNotExists
+			}
+		}
+	});
+}
+function Invitationvalidate() {
+	$("form[name=sendform]").validate({
+		errorClass : "w3-text-red w3-xsmall w3-right",
+		rules : {
+			email : {
+				required : true,
+				email : true,
+				remote : {
+					url : "verifyEmailResult.do",
+					type : "post",
+					data : {
+						email : function() {
+							return sendform.email.value;
+						}
+					}
+				}
+			}
+		},
+		// 규칙체크 실패시 출력될 메시지
+		messages : {
+			email : {
+				required : str_emailInvitation,
+				remote : str_emailNotExists
 			}
 		}
 	});

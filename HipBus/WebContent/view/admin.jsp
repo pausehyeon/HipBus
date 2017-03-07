@@ -5,10 +5,11 @@
 <%@include file="/view/setting/bus_setting.jsp"%>
 <%@include file="/view/setting/myBus_setting.jsp"%>
 
+
 <!DOCTYPE html>
 <html>
 <title>${str_titleAdmin}</title>
-<body>
+<body onload="Invitationvalidate()">
 	<c:if test="${sessionScope.memEmail eq null}">
 		<c:redirect url="main.do"/>
 	</c:if>
@@ -16,6 +17,15 @@
 		<!-- Navbar -->
 		<c:import url="../top.do" />
 		
+		<script type="text/javascript" src="${project}/scripts/jquery-3.1.1.js"></script>
+		<script type="text/javascript" src="/HipBus/scripts/ajax.js"></script>
+		
+		<!-- jQuery Validation Plugin -->
+		<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
+		<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js"></script>
+		<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/localization/messages_ko.js"></script>
+		<script type="text/javascript" src="${project}/scripts/formValidationScripts.js"></script>
+
 		<script type="text/javascript">
 		var str_amModifyMsg ="*경고 : 수정하실 정보를 정확하게 입력해주세요.";
 		var str_sendEamilError ="*관리자로 초대하실 사용자의 이메일을 작성해주세요.";
@@ -121,19 +131,6 @@
 				$('input[name="upload"]').attr("required", false);
 			}
 			
-			sendEmail= function(){
-				if(sendform.email.value == ""){
-					alert(str_sendEamilError);
-					sendform.email.focus();
-					return false;
-				}
-				if(sendform.email.value.indexOf('@') == -1){
-					alert(str_emailError);
-					sendform.email.value = "";
-					sendform.email.focus();
-					return false;
-				}
-			}
 	
 			checkedBox=function(){
 				if($('input[name="assent"]').is(':checked') == false){
@@ -264,7 +261,7 @@
 											</span>												
 												<div id="crew${status.count}" class="w3-accordion-content w3-container">
 													<ul>
-													 	<c:forEach var="cl" items="${clist}" varStatus="status">
+													 	<c:forEach var="cl" items="${clist}">
 															<c:if test="${cl.email eq getMember.email}">
 																<li><a href="crewBus.do?driver=${cl.crewid}">${cl.crewname}</a>
 															</c:if>
@@ -275,22 +272,28 @@
 											</td>
 											<td>
 											<c:if test="${getMember.mem_level eq 1}">
-												<a class="w3-hover-black w3-padding" style="text-decoration: none" href="adminMemberManagePro.do?mem_level=2&email=${getMember.email}">${str_memModify}</a>
+												<a class="gradeMem${status.count} w3-hover-black w3-padding" style="text-decoration: none" href="adminMemberManagePro.do?mem_level=2&email=${getMember.email}">${str_memModify}</a>
 											</c:if>
 											<c:if test="${getMember.mem_level eq 2}">
-												<a class="w3-hover-black w3-padding" style="text-decoration: none" href="adminMemberManagePro.do?mem_level=1&email=${getMember.email}">${str_memModify}</a>
+												<a class="gradeMem${status.count} w3-hover-black w3-padding" style="text-decoration: none" href="adminMemberManagePro.do?mem_level=1&email=${getMember.email}">${str_memModify}</a>
 											</c:if>
 											</td>
 											<td>
-											<a class="ejectMem w3-hover-black w3-padding" style="text-decoration: none" href="adminMemberEjectPro.do?email=${getMember.email}">${str_memLeave}</a>
+											<a class="ejectMem${status.count} w3-hover-black w3-padding" style="text-decoration: none" href="adminMemberEjectPro.do?email=${getMember.email}">${str_memLeave}</a>
 											</td>
 										</tr>
 										<script type="text/javascript">
 										//<!--
-											$('.ejectMem').click(
+											$('.ejectMem${status.count}').click(
 												function(e){
 												  return confirm("정말 탈퇴시키겠습니까?");	
 												}
+											);
+											
+											$('.gradeMem${status.count}').click(
+												function(e){
+													return confirm("선택하신 회원의 등급을  변경하시겠습니까?");
+												}		
 											);
 										//-->
 										</script>
@@ -433,15 +436,19 @@
 				</h5>
 				<br>
 				<div class="w3-card-4 w3-margin-left w3-margin-right w3-margin-top">
-					<form name="sendform" class="w3-container w3-margin" method="post" action="adminInvitePro.do" onsubmit="return sendEmail()">
+					<form name="sendform" class="w3-container w3-margin" method="post" action="adminInvitePro.do">
+						<div class="w3-container">
 						<p>
 							<label class="w3-label w3-text-teal"><b>${str_emEmail}</b></label>
 							<input class="w3-input w3-border" name="email" type="text">
 						</p>
-							<div class="w3-text-blue w3-xsmall w3-right" id="sendCheck">${str_sendOk}</div>
+						</div>
+						
+						<div class="w3-container">
 						<p>
 							<button type="submit" class="w3-btn w3-black w3-hover-teal" >${str_emSendEmail}</button>
 						</p>
+						</div>
 					</form>
 				</div>
 			</div>
