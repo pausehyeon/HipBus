@@ -11,7 +11,13 @@
 		<c:redirect url="main.do"/>
 	</c:if>
 	<c:if test="${sessionScope.memEmail ne null}">
-		<body class="w3-theme-l5">
+		<body onload="editpasswdfocus()" class="w3-theme-l5">
+		<script src="/HipBus/scripts/ajax.js"></script>
+		<script type="text/javascript">
+			function editpasswdfocus() {
+				inputform.passwd.focus();
+			}
+		</script>
 		
 			<!-- Navbar -->
 			<c:import url="../top.do"/>
