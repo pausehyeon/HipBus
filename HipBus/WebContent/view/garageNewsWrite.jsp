@@ -21,6 +21,7 @@
 		<c:import url="navbar_garage.jsp" />
 		<div class="w3-row w3-container" style="margin-top: 64px">
 			<h3>${str_News}</h3>
+			<p class="w3-small">${str_newsInfo}</p>
 			<hr>
 		</div>
 		<div class="w3-row">

@@ -38,7 +38,8 @@
 
 <!-- garageNews.jsp -->
 <c:set var="str_News" value="NEWS"/>
-<c:set var="str_NewsTitle" value="공지사항 및 힙합 관련 최신 소식입니다.<br>최신글 3개는 Main창에서 슬라이드로 확인가능합니다."/>
+<c:set var="str_NewsTitle" value="HipBus에서 전하는 공지사항 및 최신 힙합 소식입니다."/>
+<c:set var="str_newsInfo" value="최신 공지사항은 이미지 슬라이드 형식으로 HipBus 메인화면에도 보여집니다. 신중히 작성해주세요."/>
 <c:set var="str_Recommend" value="추천하기"/>
 <c:set var="str_Top" value="위로"/>
 

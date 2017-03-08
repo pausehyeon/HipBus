@@ -39,13 +39,13 @@
 				<c:if test="${(count ne 0) and (NewsList ne null)}">
 					<c:forEach var="article" items="${NewsList}">
 						<div class="w3-row w3-margin-bottom">
-							<div class="w3-col m4 l3">
+							<div class="w3-col m12">
 								<a href="garageNewsRead.do?num=${article.num}&pageNum=${pageNum}">${article.subject}</a>
+								<p class="w3-right w3-tiny">${article.nick}|
+									<fmt:formatDate value="${article.reg_date}" type="both" pattern="yyyy-MM-dd HH:mm" />
+									|${article.readcount}
+								</p>
 							</div>
-							<p class="w3-right w3-tiny">${article.nick}|
-								<fmt:formatDate value="${article.reg_date}" type="both" pattern="yyyy-MM-dd HH:mm" />
-								|${article.readcount}
-							</p>
 						</div>
 						<hr>
 					</c:forEach>
