@@ -23,6 +23,7 @@ public class VerifyEmailResult implements CommandHandler {
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		int result = generalDao.verifyEmail(request.getParameter("email"));
 		int hid =Integer.parseInt( request.getParameter("num") );
+		//1-이메일이 있어야지 pass 2-이메일이 없어야지 pass
 		
 		request.setAttribute("result", result);
 		request.setAttribute("hid", hid);

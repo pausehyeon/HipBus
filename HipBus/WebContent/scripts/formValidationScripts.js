@@ -83,6 +83,9 @@ function Invitationvalidate() {
 					data : {
 						email : function() {
 							return sendform.email.value;
+						},
+						num : function(){
+							return sendform.num.value;
 						}
 					}
 				}

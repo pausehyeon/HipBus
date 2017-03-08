@@ -393,8 +393,7 @@
 				<br>
 				<div class="w3-card-4 w3-margin-left w3-margin-right w3-margin-top">
 					<form name="adform" class="w3-container w3-margin"  method="post" enctype="multipart/form-data"
-						action="adminADPro.do"><!-- onclick="return ad()" adminADPro.do -->
-						
+						action="adminADPro.do"><!-- onclick="return ad()" adminADPro.do -->						
 						<p>
 							<label class="w3-label w3-text-teal"><b>${str_adSize}</b></label>
 						<div>
@@ -404,7 +403,6 @@
 							<option id="2" value="2">AD2</option>
 							<option id="3" value="3">AD3</option>
 						</select> 
-					
 						<!-- <input type="text" id="ad_location" class="w3-opacity w3-input" style="width: 250px" maxlength="1" value="없음"> -->
 						<div class="w3-xsmall w3-right" id="ad_location"></div>
 						</div>
@@ -446,6 +444,7 @@
 						
 						<div class="w3-container">
 						<p>
+							<input type="hidden" name="num" value="1">	
 							<button type="submit" class="w3-btn w3-black w3-hover-teal" >${str_emSendEmail}</button>
 						</p>
 						</div>
