@@ -5,7 +5,7 @@
 <%@include file="/view/setting/bus_setting.jsp"%>
 <%@include file="/view/setting/myBus_setting.jsp"%>
 
-<script src="/HipBus/scripts/busScript.js"></script>
+
 <script src="/HipBus/scripts/ajax.js"></script>
 <style type="text/css">
 textarea {
@@ -33,6 +33,7 @@ textarea:focus {
 <body class="w3-theme-l5" onload="myBusSet()">
 	<!-- Navbar -->
 	<c:import url="../top.do" />
+	<script src="/HipBus/scripts/busScript.js"></script>
 	<script type="text/javascript">
 		var request = null;
 		var countCriteria = 5; // 방명록 로드시 볼 갯수 (more를 누르면 이 수만큼 누적해서 더 보여준다)

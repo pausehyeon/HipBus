@@ -1,8 +1,5 @@
-/**
- * mybus.jsp와 crewbus.jsp에 연결할 javascript.
- */
-
-var serverIP = '${serverIP}';
+/* 아이피바꿔주세요!!!!!!!!!!!!! */
+var serverIP = "192.168.0.45";
 
 var str_insertSuccess = "글이 게시되었습니다.";
 var str_insertFail = "게시에 실패했습니다. 잠시 후 다시 시도해주세요."
