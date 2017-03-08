@@ -3,18 +3,23 @@ insert into hb_member values('admin@hipbus.com', 'Admin1', 'a1a1a1', 3, sysdate,
 insert into hb_verification values('admin@hipbus.com', -1);
 
 /* 1등급회원 */
-insert into hb_member values('aaa@email.com', 'Jueun Jeong', 'a1a1a1', 1, sysdate, 'aaa.png');
-insert into hb_member values('bbb@email.com', 'Gahyeon Nam', 'a1a1a1', 1, sysdate, 'bbb.png');
-insert into hb_member values('ccc@email.com', 'Jihyeon Jeong', 'a1a1a1', 1, sysdate, 'ccc.png');
-insert into hb_member values('ddd@email.com', 'Victory Lee', 'a1a1a1', 1, sysdate, 'ddd.png');
-insert into hb_member values('eee@email.com', 'Jaeduek Yoo', 'a1a1a1', 1, sysdate, 'eee.png');
+insert into hb_member values('aaa@email.com', 'Jueun', 'a1a1a1', 1, sysdate, 'aaa.png');
+insert into hb_member values('bbb@email.com', 'Gahyeon', 'a1a1a1', 1, sysdate, 'bbb.png');
+insert into hb_member values('ccc@email.com', 'Jihyeon', 'a1a1a1', 1, sysdate, 'ccc.png');
+insert into hb_member values('ddd@email.com', 'Victory', 'a1a1a1', 1, sysdate, 'ddd.png');
+insert into hb_member values('eee@email.com', 'Jaeduek', 'a1a1a1', 1, sysdate, 'eee.png');
 
+
+insert into hb_member values('proj.hipbus@gmail.com', 'hipbus', 'a1a1a1', 1, sysdate, 'AdminLogo.png');
+
+insert into hb_driver values('proj.hipbus@gmail.com');
 insert into hb_driver values('aaa@email.com');
 insert into hb_driver values('bbb@email.com');
 insert into hb_driver values('ccc@email.com');
 insert into hb_driver values('ddd@email.com');
 insert into hb_driver values('eee@email.com');
 
+insert into hb_verification values('proj.hipbus@gmail.com', -1);
 insert into hb_verification values('aaa@email.com', -1);
 insert into hb_verification values('bbb@email.com', -1);
 insert into hb_verification values('ccc@email.com', -1);
@@ -22,11 +27,11 @@ insert into hb_verification values('ddd@email.com', -1);
 insert into hb_verification values('eee@email.com', -1);
 
 /* 2등급회원*/
-insert into hb_member values('fff@email.com', 'Jihun Kim', 'a1a1a1', 2, sysdate, 'fff.png');
-insert into hb_member values('ggg@email.com', 'Jaehyeon Jo', 'a1a1a1', 2, sysdate, 'ggg.png');
-insert into hb_member values('hhh@email.com', 'Seongyong Moon', 'a1a1a1', 2, sysdate, 'hhh.png');
-insert into hb_member values('iii@email.com', 'Betrayer Moon', 'a1a1a1', 2, sysdate, 'iii.png');
-insert into hb_member values('jjj@email.com', 'Juda Moon', 'a1a1a1', 2, sysdate, 'jjj.png');
+insert into hb_member values('fff@email.com', 'Jihun', 'a1a1a1', 2, sysdate, 'fff.png');
+insert into hb_member values('ggg@email.com', 'Jaehyeong', 'a1a1a1', 2, sysdate, 'ggg.png');
+insert into hb_member values('hhh@email.com', 'Seongyong', 'a1a1a1', 2, sysdate, 'hhh.png');
+insert into hb_member values('iii@email.com', 'Betrayer', 'a1a1a1', 2, sysdate, 'iii.png');
+insert into hb_member values('jjj@email.com', 'Juda', 'a1a1a1', 2, sysdate, 'jjj.png');
 
 insert into hb_driver values('fff@email.com');
 insert into hb_driver values('ggg@email.com');
@@ -150,3 +155,31 @@ insert into hb_crewmember values('fff@email.com',1,1);
 insert into hb_crewmember values('hhh@email.com',1,1);
 insert into hb_crewmember values('iii@email.com',1,1);
 insert into hb_crewmember values('jjj@email.com',1,1);
+
+
+insert into hb_passengers values('ggg@email.com','aaa@email.com');
+insert into hb_passengers values('ggg@email.com','bbb@email.com');
+insert into hb_passengers values('ggg@email.com','ccc@email.com');
+insert into hb_passengers values('eee@email.com','ddd@email.com');
+insert into hb_passengers values('eee@email.com','fff@email.com');
+insert into hb_passengers values('ccc@email.com','bbb@email.com');
+
+																										
+insert into hb_upcoming values(HB_upcomingseq.nextval,'ggg@email.com','Jaehyeong','힙합플레이야 페스티벌 2017','ChIJ77fEAzuffDURLEWNv56G2KQ@대한민국 서울특별시 영등포구 여의동 여의동로 330 여의도한강공원',to_date('04-08-2017 13:00:00','mm-dd-yyyy hh24:mi:ss'),'도끼 더 콰이엇 씨잼 넉살 던밀스 나플라 박재범 비와이 서사무엘 팔로알토 로꼬 허클베리피 식 케이 창모 김효은 해쉬스완',180,50000,'<strong>한국힙합 17년지기 힙합플레이야의 대규모 프로젝트</strong><p><strong>HIPHOPPLAYA FESTIVAL 2017이 오는 4월 서울에서 개최된다.</strong></p>','cons.png',0,sysdate);
+
+insert into hb_upcoming values(HB_upcomingseq.nextval,'iii@email.com','Betrayer','2017 힙합페스티벌-부산','ChIJlZOAoeDsaDUR-BoxSrh69zc@대한민국 부산광역시 수영구 남천동 수영로 429',to_date('04-23-2017 19:00:00','mm-dd-yyyy hh24:mi:ss'),'매드클라운 다이나믹듀오 지코',60,50000,'페스티벌합니다','Busan.png',0,sysdate);
+
+insert into hb_upcoming values(HB_upcomingseq.nextval,'hhh@email.com','Seongyong','인디페스타1 힙합유니온','ChIJLZZXYbHAfDURgMoGuwSdjxI@대한민국 경기도 의정부시 의정부2동 323',to_date('04-07-2017 20:00:00','mm-dd-yyyy hh24:mi:ss'),'매드클라운 베이식 긱스 ',90,40000,'<p>쇼미더머니의 레전드 무대가 재연된다.</p> <p>실력과 인기를 겸비한 힙합 뮤지션들이 선보이는 경연 아닌, 축제의 무대!</p> ','jungbu.png',0,sysdate);
+
+insert into hb_upcoming values(HB_upcomingseq.nextval,'eee@email.com','Jaeduek','Awesome U - brokenday','ChIJ8WuuPUulfDURGV0009pz9TM@대한민국 서울특별시 광진구 광장동 구천면로 20',to_date('04-01-2017 20:00:00','mm-dd-yyyy hh24:mi:ss'),'사이먼 도미닉 그레이 레디 저스디스 킬라그램 정상수 ',90,77000,'지친 당신의 심장을 뛰게 하고 현란한 귀가르즘을 선사합니다.','yes24.png',0,sysdate);
+
+insert into hb_news values('admin@hipbus.com',hb_newsseq.nextval,'Admin1','쇼미더머니6’ 래퍼 공개모집 시작','<p>오늘 Mnet ‘쇼미더머니5’의 우승자 ‘비와이(BewhY)’의 무료 공약 공연과 함께</p><p>2017년 새 시즌 ‘쇼미더머니6’ 지원자 모집이 시작된다.</p><p>Mnet은 지난 2일, 공식 SNS계정을 통해 비와이의 우승 공약 이행 사실을 알렸다.</p><p>비와이의 무료 공연은 오늘 저녁 7시부터 클럽 옥타곤에서 진행된다.</p><p>오늘 깜짝 공연에서는 비와이가 ‘쇼미더머니6’의 새로운 시작을 알리고</p><p>앞으로 도전할 래퍼들을 위해 직접 만든 자작곡도 최초로 공개된다.</p><p>또한, 팬들을 위한 질의응답뿐만 아니라 ‘쇼미더머니’ 비하인드 스토리 와</p><p>예비 지원자들을 위한 꿀팁 공개도 이어질 예정이다.</p>','news.png',0,sysdate);
+
+insert into hb_news values('admin@hipbus.com',hb_newsseq.nextval,'Admin1','칸예 웨스트 기억상실증 겪었다 "현재는 회복"','<p>팝가수 카니예 웨스트가 기억상실 증상을 겪었다고 미국 연예매체 할리우드라이프가 지난 13일(이하 현지시각) 보도했다.</p><p>보도에 따르면 카니예 웨스트는 8일 간 정신 질환으로 병원에 입원해있을 당시, 기억 상실 증상을 보인 것으로 전해졌다.</p><p>지난 12일 열렸던 그래미 어워즈 레드카펫에서 카니예 웨스트의 절친이자 동료 가수인 말릭 유세프의 입을 통해 알려졌다.</p><p>그는 레드카펫에서 “웨스트가 입원해 있는 동안 6~7시간 정도 함께 시간을 보내곤 했다”며 “기억 상실 증세를 보였지만</p><p>지금은 회복한 상태”라고 밝혔다.</p><p>이어 “현재는 주로 가족들과 함께 시간을 보내고 있는 것으로 안다”면서</p><p>"아이가 많이 커서 스스로 걸어다니고 장난감을 가지고 놀곤 한다. 그런 아이를 보는 게 웨스트의 가장 큰 힘”이라고 말했다.</p>','news1.png',0,sysdate);
+
+insert into hb_channel values('aaa@email.com','UCp6Kj1KPQZ1dwhGUKkwnanQ');
+insert into hb_channel values('fff@email.com','UCSXqBJql66rcAiplPEBlKGw');
+insert into hb_channel values('ggg@email.com','UCKDN9ey_tPWGPWPBIwGYVCw');
+insert into hb_channel values('hhh@email.com','UCUuZODYHQ2KvoBNiwq_Ey1g');
+insert into hb_channel values('iii@email.com','UC4OYayWn1eR2QpUB5DtLNPg');
+insert into hb_channel values('jjj@email.com','UCA7DC5I9ZqF7dXsdT4G1COg');
