@@ -39,6 +39,7 @@ var str_mustAgreeTerms = "* 약관을 읽고 동의하셔야만 가입하실 수
 var str_emailNotExists = "* 가입되어 있지 않은 이메일주소입니다.";
 var str_emailRequired = "* 새 비밀번호를 받을 이메일을 입력해주세요.";
 var str_emailInvitation = "* 관리자 초대할 이메일을 입력해주세요.";
+var str_invitation = "으로 관리자 인증메일을 전송하시겠습니까?";
 
 function forgotformvalidate() {
 	$("form[name=forgotform]").validate({
@@ -73,6 +74,13 @@ function forgotformvalidate() {
 function Invitationvalidate() {
 	$("form[name=sendform]").validate({
 		errorClass : "w3-text-red w3-xsmall w3-right",
+		submitHandler : function() {
+			if(confirm(sendform.email.value + str_invitation)) {
+				return true;
+			} else {
+				return false;
+			}
+		},
 		rules : {
 			email : {
 				required : true,
