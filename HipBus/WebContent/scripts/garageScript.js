@@ -26,11 +26,11 @@ function checkonair(channel_id, googleApiKey, url, nick){
 							var publishedAt = jsonData.items[0].snippet.publishedAt;
 							
 							var msg = "";
-							msg += "<div class='w3-col m4 l5  w3-padding-32 w3-theme-l5 w3-margin w3-hover-opacity'>";
+							msg += "<div class='w3-col m4 l5  w3-padding-32 w3-theme-l5 w3-margin w3-hover-opacity' onclick='location=\""+url+"\"'>";
 							msg += "	<div class='w3-display-container'>";
 							msg += "		<img src='" + thumbnail + "' alt='thumbnail' style='width: 100%'>";
 							msg += "		<div class='w3-padding w3-display-middle'>";
-							msg += "			<a href='"+url+"'><i class='fa fa-caret-right w3-xxlarge'></i></a>";
+							msg += "			<a href='"+url+"'><i class='fa fa-play w3-xxlarge'></i></a>";
 							msg += "		</div>";
 							msg += "	</div>";
 							msg += "	<p>"+ title +"</p>";
