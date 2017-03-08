@@ -8,7 +8,7 @@
 <%@include file="/view/setting/myBus_setting.jsp"%>
 <script src="/HipBus/scripts/busScript.js"></script>
 
-<title>${str_upcomingTitle}</title>
+<title>${str_wantedTitle}</title>
 
 
 <body class="w3-theme-l5" onload="withoutuploadvalidate()">

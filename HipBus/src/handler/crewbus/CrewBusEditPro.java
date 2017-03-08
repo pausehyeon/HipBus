@@ -17,7 +17,6 @@ import handler.CommandHandler;
 import handler.HandlerException;
 import model.ChannelDto;
 import model.CrewDto;
-import model.MemberDto;
 import model.crewbus.CrewBusDao;
 import model.general.FileUpload;
 import model.general.ImageResize;

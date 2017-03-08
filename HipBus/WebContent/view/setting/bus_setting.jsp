@@ -10,6 +10,7 @@
 <c:set var="str_mybusTitle" value="HipBus - My Bus"/>
 <c:set var="str_crewbusTitle" value="HipBus - crew Bus"/>
 <c:set var="str_upcomingTitle" value="HipBus - Upcoming"/>
+<c:set var="str_wantedTitle" value="HipBus - Wanted"/>
 <c:set var="str_crewbusTitle" value="HipBus - Crew Bus"/>
 
 <!-- myBus / crewBus -->
@@ -88,6 +89,7 @@
 <c:set var="str_searchPlace" value="검색할 주소를 입력해주세요."/>
 <c:set var="str_postUpcoming" value="공연일정 등록"/>
 <c:set var="str_selectPoster" value="공연 포스터 (권장 크기 560*790) : "/>
+<c:set var="str_selectImg" value="이미지 (권장 크기 560*790) : "/>
 
 <!-- myBusUpcomingRead.jsp -->
 <c:set var="str_time" value="공연 시각"/>

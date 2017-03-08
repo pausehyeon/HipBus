@@ -8,7 +8,7 @@
 <%@include file="/view/setting/crewBus_setting.jsp"%>
 <script src="/HipBus/scripts/busScript.js"></script>
 
-<title>${str_upcomingTitle}</title>
+<title>${str_wantedTitle}</title>
 
 
 <body class="w3-theme-l5" onload="withoutuploadvalidate()">
@@ -68,7 +68,7 @@
 								</div>
 								<div class="w3-col m9">
 									<br><br>
-									<span class="w3-text-teal"><i class="fa fa-image"></i> &nbsp;${str_selectPoster} </span>
+									<span class="w3-text-teal"><i class="fa fa-image"></i> &nbsp;${str_insertThumbnail} </span>
 									<input name="upload" type="file" accept="image/*">
 								</div>
 							</c:if>

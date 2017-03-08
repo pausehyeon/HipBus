@@ -113,7 +113,7 @@
 							</div>
 							<div class="w3-col s10 m10">
 								<br><br>
-								<span class="w3-text-teal"><i class="fa fa-image"></i> &nbsp;${str_selectPoster} </span>
+								<span class="w3-text-teal"><i class="fa fa-image"></i> &nbsp;${str_insertThumbnail} </span>
 								<input name="upload" type="file" accept="image/*">
 							</div>
 						</div>
