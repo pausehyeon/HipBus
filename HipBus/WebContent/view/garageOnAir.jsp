@@ -16,7 +16,7 @@
 			<h3>${str_OnAir}</h3>
 			<p>${str_OnAirTitle}</p>
 			<hr>
-			<a href="#">
+			<a href="garageFAQ.do">
 				<i class="fa fa-question-circle"></i> ${str_howTo}
 			</a>
 		</div>
