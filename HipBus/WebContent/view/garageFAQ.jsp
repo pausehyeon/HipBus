@@ -21,6 +21,7 @@
 					<a href="garageFAQWrite.do" class="w3-btn w3-padding w3-theme-d1 w3-margin w3-right"><i class="fa fa-pencil-square-o w3-margin-right"></i>${str_Write}</a>
 				</div>
 			</c:if>
+			<a href="main.do#contact" class="w3-small w3-padding w3-margin-left w3-right w3-text-red" style="text-decoration: underline;">*더 궁금하신 사항은 Contact를 이용해보세요.</a>
 			<hr>
 		</div>
 		<div class="w3-row w3-margin w3-padding-jumbo">
