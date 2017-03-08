@@ -39,7 +39,7 @@
 						</div>
 
 						<footer class="w3-container w3-padding-jumbo w3-theme-l3 w3-center">
-							<input type="submit" class="w3-btn w3-padding w3-theme-d1 w3-margin-left" value="&#xf00c; ${btn_Write}"> <a href="#" class="w3-btn w3-padding w3-theme-d1 w3-margin-left"><i
+							<input type="submit" class="w3-btn w3-padding w3-theme-d1 w3-margin-left" value="&#xf00c; ${btn_Write}"> <a href="garageFAQ.do" class="w3-btn w3-padding w3-theme-d1 w3-margin-left"><i
 								class="fa fa-mail-reply w3-margin-right"
 							></i>${btn_Cancel}</a>
 						</footer>
