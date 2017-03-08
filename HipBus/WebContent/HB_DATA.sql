@@ -53,7 +53,7 @@ insert into hb_ad values(3, '', 'ad3.png');
 /* Station글쓰기*/
 insert into hb_station values(hb_stationseq.nextval,'aaa@email.com',6,'Jueun','잘부탁드립니다.','<p>안녕하세요 ㅋㅋㅋ .</p>활동열심히하겠습니다.
 ',0,0,sysdate);
-insert into hb_station values(hb_stationseq.nextval,'aaa@email.com',1,'Jueun','(창모 느낌나는 피아노 비트) Piano Scribble','<p>안녕하세요 Jueun 입니다.</p>
+insert into hb_station values(hb_stationseq.nextval,'aaa@email.com',1,'Jueun','(창모 느낌나는 피아노 비트) Piano','<p>안녕하세요 Jueun 입니다.</p>
 <p>Youtube :</p><iframe allowfullscreen="" frameborder="0" height="360" src="//www.youtube.com/embed/hRngH4aDBgU" width="640"></iframe><p>잘부탁드립니다.</p>',0,0,sysdate);
 insert into hb_station values(hb_stationseq.nextval,'aaa@email.com',1,'Jueun','자작비트입니다.피드백부탁드립니다.','<p>안녕하세요 Jueun 입니다.</p>
 <p>Youtube :</p><iframe allowfullscreen="" frameborder="0" height="360" src="//www.youtube.com/embed/fkmkGcvFEVA" width="640"></iframe><p>피드백좀부탁드립니다.</p>',0,0,sysdate);
