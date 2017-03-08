@@ -7,8 +7,6 @@ var deleteMsg = "게시글을 삭제하시겠습니까.?";
 var writeMsg = "내용을 입력하세요.";
 var searchMsg = "검색어를 입력하세요.";
 
-var str_hopOn = 'Go To Hop On';
-
 //채널 아이디를 넘겨받아서 라이브 중인 채널의 썸네일을 출력해주는 function
 function checkonair(channel_id, googleApiKey, url, nick){
 	var params = "part=snippet&channelId="+channel_id+"&type=video&eventType=live&key="+googleApiKey;
@@ -28,11 +26,15 @@ function checkonair(channel_id, googleApiKey, url, nick){
 							var publishedAt = jsonData.items[0].snippet.publishedAt;
 							
 							var msg = "";
-							msg += "<div class='w3-col m4 l5  w3-padding-32 w3-theme-l5 w3-margin'>";
-							msg += "	<iframe src='http://www.youtube.com/embed/live_stream?channel="+ channel_id +"' width='100%' frameborder='0' allowfullscreen></iframe>";
-							msg += "	<p class='w3-center w3-tiny'> "+ nick +" | "+ publishedAt +" </p>";
+							msg += "<div class='w3-col m4 l5  w3-padding-32 w3-theme-l5 w3-margin w3-hover-opacity'>";
+							msg += "	<div class='w3-display-container'>";
+							msg += "		<img src='" + thumbnail + "' alt='thumbnail' style='width: 100%'>";
+							msg += "		<div class='w3-padding w3-display-middle'>";
+							msg += "			<a href='"+url+"'><i class='fa fa-caret-right w3-xxlarge'></i></a>";
+							msg += "		</div>";
+							msg += "	</div>";
 							msg += "	<p>"+ title +"</p>";
-							msg += "	<a href='"+url+"' class='w3-btn w3-theme-d1 w3-padding-large'>"+ str_hopOn +"</a>";
+							msg += "	<p class='w3-center w3-tiny'> "+ nick +" | "+ publishedAt +" </p>";
 							msg += "</div>";
 							
 							onairsection.innerHTML += msg;
