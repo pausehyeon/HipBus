@@ -81,15 +81,13 @@ function checkonair(channel_id, googleApiKey) {
 
 							onairsection.innerHTML += msg;
 							cnt++;
-						} else {
-							// 라이브 방송 중이 아닌 경우
 						}
 
-						if (cnt == 0) {
-							onairloadingsection.innerHTML = "<p class='w3-center'>현재 방송 중인 채널이 없습니다.</p>";
-						} else {
+						//if (cnt == 0) {
+							//onairloadingsection.innerHTML = "<p class='w3-center'>현재 방송 중인 채널이 없습니다.</p>";
+						//} else {
 							onairloadingsection.innerHTML = "";
-						}
+						//}
 					} else {
 						onairloadingsection.innerHTML = "<p class='w3-center'> 오류 발생"
 								+ request.status + " </p>";
