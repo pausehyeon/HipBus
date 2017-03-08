@@ -226,7 +226,7 @@
 		<form name="contactForm" action="mainContactUsPro.do" method="post" class="w3-container">
 			<div class="w3-group">
 				<label>Name</label>
-				<input type="text" name="name" required class="w3-input w3-border w3-hover-border-black" style="width: 100%;">
+				<input type="text" name="name" value="${member.nick}" required class="w3-input w3-border w3-hover-border-black" style="width: 100%;">
 			</div>
 			<div class="w3-group">
 				<label>Email</label>
