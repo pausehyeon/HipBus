@@ -9,9 +9,9 @@
 <!-- Icon Bar (Sidenav - hidden on small screens) -->
 <nav class="w3-sidenav w3-center w3-small w3-hide-small">
 	<!-- Avatar image in top left corner -->
-	<img src="${project}/view/img/HipBusLogo_colored.png" onclick="location='${project}/main.do'" style="width: 100%" class="w3-padding-large w3-padding-32">
+	<img src="${project}/view/img/HipBusLogo_colored.png" onclick="location='${project}/main.do'" style="width: 100%" class="w3-padding-small">
 	<div class="w3-accordion">
-		<a onclick="myAccordion('letsdrive')" class="w3-padding-large w3-hover-black">
+		<a onclick="myAccordion('letsdrive')" class="w3-padding-small w3-hover-black">
 			<p>
 				Let's Drive! &nbsp;<i class="fa fa-caret-down"></i>
 			</p>
@@ -52,29 +52,29 @@
 			</c:if>
 		</div>
 	</div>
-	<a class="w3-padding-large w3-hover-black" href="#">
-		<i class="fa fa-bus w3-xxlarge"></i>
+	<a class="w3-padding-small w3-hover-black" href="#">
+		<i class="fa fa-bus w3-xlarge"></i>
 		<p>${str_topTitle}</p>
 	</a>
-	<a class="w3-padding-large w3-hover-black" href="#news">
-		<i class="fa fa-bullhorn w3-xxlarge"></i>
+	<a class="w3-padding-small w3-hover-black" href="#news">
+		<i class="fa fa-bullhorn w3-xlarge"></i>
 		<p>${str_news}</p>
 	</a>
-	<a class="w3-padding-large w3-hover-black" href="#onair">
-		<i class="fa fa-youtube-play w3-xxlarge"></i>
+	<a class="w3-padding-small w3-hover-black" href="#onair">
+		<i class="fa fa-youtube-play w3-xlarge"></i>
 		<p>${str_onAir}</p>
 	</a>
-	<a class="w3-padding-large w3-hover-black" href="#topdrivers">
-		<i class="fa fa-thumbs-up w3-xxlarge"></i>
+	<a class="w3-padding-small w3-hover-black" href="#topdrivers">
+		<i class="fa fa-thumbs-up w3-xlarge"></i>
 		<p>${str_topDrivers}</p>
 	</a>
-	<a class="w3-padding-large w3-hover-black" href="#upcoming">
-		<i class="fa fa-calendar w3-xxlarge"></i>
+	<a class="w3-padding-small w3-hover-black" href="#upcoming">
+		<i class="fa fa-calendar w3-xlarge"></i>
 		<p>${str_upcoming}</p>
 	</a>
 	</a>
-	<a class="w3-padding-large w3-hover-black" href="#contact">
-		<i class="fa fa-paper-plane w3-xxlarge"></i>
+	<a class="w3-padding-small w3-hover-black" href="#contact">
+		<i class="fa fa-paper-plane w3-xlarge"></i>
 		<p>${str_contact}</p>
 	</a>
 </nav>
