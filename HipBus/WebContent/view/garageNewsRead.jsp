@@ -25,7 +25,7 @@
 						<p class="w3-right">${str_Writer}:${article.nick}| ${str_Reg_Date}:${article.reg_date} | ${str_ReadCount}:${article.readcount}</p>
 					</header>
 					<div class="w3-container w3-padding-128 w3-padding-jumbo">
-						<pre>${article.content}</pre>
+						<p>${article.content}</p>
 					</div>
 					<footer class="w3-container w3-padding-jumbo w3-theme-l3 w3-center">
 						<a href="garageNews.do" class="w3-btn w3-padding w3-theme-d1 w3-margin-left"><i class="fa fa-align-justify w3-margin-right"></i>${btn_list}</a>
