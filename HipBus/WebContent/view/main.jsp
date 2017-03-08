@@ -117,18 +117,13 @@
 	<div class="w3-row-padding" id="onairsection" onclick="location = 'garageOnAir.do'"></div>
 	<div class="w3-row-padding w3-center" id="onairloadingsection"></div>
 	<script type="text/javascript">
-		
-		
 	//<!--
 		$(document).ready(function() {
 			//OnAir 목록 받아오기
 			getonairlist( eval("${channelsJson}"), "${googleApiKey}" );
 		});
-	
-	
 	//-->
 	</script>
-
 	<!-- Grid -->
 	<div class="w3-row-padding" id="topdrivers">
 		<div class="w3-center w3-padding-64">
@@ -198,7 +193,13 @@
 						<li class="w3-padding-8"><b>${str_perf_place}</b> ${perf_place}</li>
 						<li class="w3-padding-8"><b>${str_perf_date}</b> <fmt:formatDate value="${upcoming.perf_date}" type="both" pattern="yy.MM.dd" /></li>
 						<li class="w3-padding-8"><b>${str_perf_runningtime}</b> <fmt:formatDate value="${upcoming.perf_date}" type="both" pattern="a h시 mm분" /> ( ${upcoming.perf_runningtime}${str_minute} )</li>
-						<li class="w3-padding-8"><b>${str_perf_cast}</b> ${upcoming.perf_cast}</li>
+						<c:if test="${fn:length(upcoming.perf_cast) gt 15}">
+							<!-- 출연진 이름이 너무 긴 경우 크롭 -->
+							<li class="w3-padding-8"><b>${str_perf_cast}</b> ${fn:substring(upcoming.perf_cast, 0, 15)} 등</li>
+						</c:if>
+						<c:if test="${fn:length(upcoming.perf_cast) le 15}">
+							<li class="w3-padding-8"><b>${str_perf_cast}</b> ${upcoming.perf_cast}</li>
+						</c:if>
 						<li class="w3-light-grey w3-padding-24">
 							<c:if test="${fn:contains(upcoming.driver, '@') }">
 								<!-- 개인인 경우 -->
