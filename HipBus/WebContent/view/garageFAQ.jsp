@@ -25,14 +25,14 @@
 		</div>
 		<div class="w3-row w3-margin w3-padding-jumbo">
 			<!-- 글이없는경우 -->
-			<c:if test="${FAQList eq null}">
+			<c:if test="${fn:length(FAQList) eq 0}">
 				<div class="w3-row w3-margin-bottom">
 					<div class="w3-col m12 w3-container">
 						<p class="w3-center w3-cell-middle" style="font-weight: bold;">${msg_list_x}</p>
 					</div>
 				</div>
 			</c:if>
-			<c:if test="${FAQList ne null}">
+			<c:if test="${fn:length(FAQList) gt 0}">
 				<c:forEach var="article" items="${FAQList}">
 					<div class="w3-accordion w3-white w3-card-4">
 						<c:set var="sum" value="${sum+1}" />

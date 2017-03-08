@@ -24,7 +24,7 @@
 
 					<div class="w3-row w3-margin-bottom">
 						<div class="w3-col m12">
-							<h5>${msg_list_x}</h5>
+							<p class="w3-center w3-cell-middle" style="font-weight: bold;">${msg_list_x}</p>
 						</div>
 					</div>
 				</c:if>
