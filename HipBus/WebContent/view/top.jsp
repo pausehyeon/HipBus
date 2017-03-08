@@ -326,7 +326,7 @@
 			</c:if>
 
 			
-		</c:if>
+		</c:if>	
 		<c:if test="${sessionScope.memEmail ne null}">
 			<!-- 로그인된 경우 로그아웃 버튼, my bus로 가기, crewbus로 가기 버튼 보이게 -->
 
@@ -350,7 +350,12 @@
 					</script>
 				</form>
 			</li>
-
+			
+			<c:if test="${member.mem_level eq 3}">
+			<li class="w3-hide-small w3-right"><a href="admin.do" class="w3-padding-large w3-hover-white">
+			<i class="fa fa-cogs"></i></a></li>
+			</c:if>
+			
 			<c:if test="${member.mem_level ne 3}">
 				<!-- 관리자는 제외 -->
 				<li class="w3-hide-small w3-right"><a href="myBus.do?driver=${sessionScope.memEmail}" class="w3-padding-large w3-hover-white" title="${str_myBus}"> <c:if
