@@ -51,13 +51,13 @@ insert into hb_ad values(2, '', 'ad2.png');
 insert into hb_ad values(3, '', 'ad3.png');
 
 /* Station글쓰기*/
-insert into hb_station values(hb_stationseq.nextval,'aaa@email.com',6,'Jueun Jeong','잘부탁드립니다.','<p>안녕하세요 ㅋㅋㅋ .</p>활동열심히하겠습니다.
+insert into hb_station values(hb_stationseq.nextval,'aaa@email.com',6,'Jueun','잘부탁드립니다.','<p>안녕하세요 ㅋㅋㅋ .</p>활동열심히하겠습니다.
 ',0,0,sysdate);
-insert into hb_station values(hb_stationseq.nextval,'aaa@email.com',1,'Jueun Jeong','(창모 느낌나는 피아노 비트) Piano Scribble','<p>안녕하세요 Jueun 입니다.</p>
+insert into hb_station values(hb_stationseq.nextval,'aaa@email.com',1,'Jueun','(창모 느낌나는 피아노 비트) Piano Scribble','<p>안녕하세요 Jueun 입니다.</p>
 <p>Youtube :</p><iframe allowfullscreen="" frameborder="0" height="360" src="//www.youtube.com/embed/hRngH4aDBgU" width="640"></iframe><p>잘부탁드립니다.</p>',0,0,sysdate);
-insert into hb_station values(hb_stationseq.nextval,'aaa@email.com',1,'Jueun Jeong','자작비트입니다.피드백부탁드립니다.','<p>안녕하세요 Jueun 입니다.</p>
+insert into hb_station values(hb_stationseq.nextval,'aaa@email.com',1,'Jueun','자작비트입니다.피드백부탁드립니다.','<p>안녕하세요 Jueun 입니다.</p>
 <p>Youtube :</p><iframe allowfullscreen="" frameborder="0" height="360" src="//www.youtube.com/embed/fkmkGcvFEVA" width="640"></iframe><p>피드백좀부탁드립니다.</p>',0,0,sysdate);
-insert into hb_station values(hb_stationseq.nextval,'aaa@email.com',5,'Jueun Jeong','라임좀 봐주세요..','<p>안녕하세요 Jueun 입니다.</p>부탁드려요 형들 ㅠㅠ<p>어렵네요ㅠㅠ</p>
+insert into hb_station values(hb_stationseq.nextval,'aaa@email.com',5,'Jueun','첫눈에 가사써봤어요. 라임좀 봐주세요..','<p>안녕하세요 Jueun 입니다.</p>부탁드려요 형들 ㅠㅠ<p>어렵네요ㅠㅠ</p>
 <p>(verse1
 <p>많은 사람들이 질문을 던지네</p>
 <p>난 정해져있는 답을 또 던지네</p>
@@ -137,15 +137,15 @@ insert into hb_station values(hb_stationseq.nextval,'aaa@email.com',5,'Jueun Jeo
 <p>몰라 남잔 한방을 노려야지</p>
 <p>그리곤 날 기억해야지</p>
 Chi ca no</p>',0,0,sysdate);
-insert into hb_station values(hb_stationseq.nextval,'aaa@email.com',1,'Jueun Jeong','키스에이프 비트 수정해봤어요~','<p>안녕하세요 Jueun 입니다.</p>
+insert into hb_station values(hb_stationseq.nextval,'aaa@email.com',1,'Jueun','키스에이프 비트 수정해봤어요~','<p>안녕하세요 Jueun 입니다.</p>
 <iframe allowfullscreen="" frameborder="0" height="360" src="//www.youtube.com/embed/_NL7CWwFUso" width="640"></iframe><p>잘부탁드립니다.</p>',0,0,sysdate);
-insert into hb_station values(hb_stationseq.nextval,'aaa@email.com',4,'Jueun Jeong','가수가 된 이유(신용재) 불러봤습니다.','<p>안녕하세요 Jueun 입니다.</p>
+insert into hb_station values(hb_stationseq.nextval,'aaa@email.com',4,'Jueun','가수가 된 이유(신용재) 불러봤습니다.','<p>안녕하세요 Jueun 입니다.</p>
 <iframe allowfullscreen="" frameborder="0" height="360" src="//www.youtube.com/embed/WsjCuh0TZe8" width="640"></iframe><p>잘부탁드립니다.</p>',0,0,sysdate);
-insert into hb_station values(hb_stationseq.nextval,'aaa@email.com',1,'Jueun Jeong','도대체 난...','<p>안녕하세요 Jueun 입니다.</p>
+insert into hb_station values(hb_stationseq.nextval,'aaa@email.com',1,'Jueun','자작비트입니다 도대체 난...','<p>안녕하세요 Jueun 입니다.</p>
 <iframe allowfullscreen="" frameborder="0" height="360" src="//www.youtube.com/embed/9n5UpGXCqcg" width="640"></iframe><p>잘부탁드립니다.</p>',0,0,sysdate);
-insert into hb_station values(hb_stationseq.nextval,'aaa@email.com',3,'Jueun Jeong','BaddyHomie (luda)','<p>안녕하세요 Jueun 입니다.</p>
+insert into hb_station values(hb_stationseq.nextval,'aaa@email.com',3,'Jueun','BaddyHomie (luda)','<p>안녕하세요 Jueun 입니다.</p>
 <iframe allowfullscreen="" frameborder="0" height="360" src="//www.youtube.com/embed/-w2UWCUBWDM" width="640"></iframe><p>잘부탁드립니다.</p>',0,0,sysdate);
-insert into hb_station values(hb_stationseq.nextval,'aaa@email.com',2,'Jueun Jeong','첫눈처럼 너에게 가겠다(Rap ver)','<p>안녕하세요 Jueun 입니다.</p>
+insert into hb_station values(hb_stationseq.nextval,'aaa@email.com',2,'Jueun','첫눈처럼 너에게 가겠다(Rap ver)','<p>안녕하세요 Jueun 입니다.</p>
 <iframe allowfullscreen="" frameborder="0" height="360" src="//www.youtube.com/embed/2pZQr7y5VoM" width="640"></iframe><p> 숨이 차네요..</p>',0,0,sysdate);
 
 insert into hb_crew values(HB_crewidseq.nextval,'AOMG','AOMG.png');
@@ -182,3 +182,41 @@ insert into hb_channel values('ggg@email.com','UCKDN9ey_tPWGPWPBIwGYVCw');
 insert into hb_channel values('hhh@email.com','UCUuZODYHQ2KvoBNiwq_Ey1g');
 insert into hb_channel values('iii@email.com','UC4OYayWn1eR2QpUB5DtLNPg');
 insert into hb_channel values('jjj@email.com','UCA7DC5I9ZqF7dXsdT4G1COg');
+
+update hb_station set likenum=4 where num=9;
+update hb_station set likenum=4 where num=2;
+
+insert into hb_stationreply values(hb_replyseq.nextval,9,'bbb@email.com','노래가 참 뭐같네...',1,0,0,sysdate,1);
+
+insert into hb_upcoming values(HB_upcomingseq.nextval,'eee@email.com','JaeDeuk','모아마트 개업ㅎㅎ','ChIJIZZrr6hCezURrS6f2hEQ6Pk@대한민국 경기도 수원시 권선구 입북동 261-2',to_date('04-30-2017 20:00:00','mm-dd-yyyy hh24:mi:ss'),'유재득 ',30,1000,'모아마트가 개업했습니다 많이놀러와라','mart.png',0,sysdate);
+
+insert into hb_station values(hb_stationseq.nextval,'ddd@email.com',2,'Victory','사이트가 이상하네 ㅡㅡ','<p>ㅆ..똑바로 하자</p>',0,0,sysdate);
+
+insert into hb_crew values(HB_crewidseq.nextval,'Just Music','crew1.png');
+insert into hb_driver values(2);
+insert into hb_crewmember values('bbb@email.com',2,2);
+
+insert into hb_crew values(HB_crewidseq.nextval,'mkit rain','crew2.png');
+insert into hb_driver values(3);
+insert into hb_crewmember values('ccc@email.com',3,2);
+
+insert into hb_crew values(HB_crewidseq.nextval,'illionaire','crew3.png');
+insert into hb_driver values(4);
+insert into hb_crewmember values('ddd@email.com',4,2);
+
+insert into hb_crew values(HB_crewidseq.nextval,'Hi-Lite','crew4.png');
+insert into hb_driver values(5);
+insert into hb_crewmember values('eee@email.com',5,2);
+
+insert into hb_crew values(HB_crewidseq.nextval,'Cohort','crew5.png');
+insert into hb_driver values(6);
+insert into hb_crewmember values('fff@email.com',6,2);
+
+
+
+insert into hb_wanted values('2',hb_wantedseq.nextval,'Gahyeon','Just Music.','개성있는 크루원모집합니다.','crew1.png',to_date('04-08-2017','mm-dd-yyyy'),0,sysdate);
+insert into hb_wanted values('3',hb_wantedseq.nextval,'Jihyeon','메킷레인에서 크루원구합니다.','실력있는 크루원 상시모집중.','crew2.png',to_date('04-11-2017','mm-dd-yyyy'),0,sysdate);
+insert into hb_wanted values('4',hb_wantedseq.nextval,'Victory','일리네어레코즈','빈지노를 대신할','crew3.png',to_date('04-09-2017','mm-dd-yyyy'),0,sysdate);
+insert into hb_wanted values('5',hb_wantedseq.nextval,'JaeDeuk','Hi-Lite','하이퀄리티 크루원모집합니다.','crew4.png',to_date('04-07-2017','mm-dd-yyyy'),0,sysdate);
+insert into hb_wanted values('6',hb_wantedseq.nextval,'Jihun','코홀트 크루모집.','성실한 크루원모집합니다.','crew5.png',to_date('04-10-2017','mm-dd-yyyy'),0,sysdate);
+

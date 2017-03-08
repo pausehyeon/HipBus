@@ -72,7 +72,7 @@
 								<span><fmt:formatDate value="${article.perf_date}" type="both" pattern="M월 d일 공연 예정" /></span>
 								<p class="w3-tiny">
 									${article.nick} |
-									<fmt:formatDate value="${article.reg_date}" type="both" pattern="yyyy-MM-dd HH:mm" />
+									<fmt:formatDate value="${article.reg_date}" type="both" pattern="yyyy-MM-dd" />
 									| ${article.readcount}
 								</p>
 							</div>
