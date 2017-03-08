@@ -43,17 +43,9 @@ textarea:focus {
 		var boardCount = 5; // 한번에 가져올 방명록 갯수
 		// 댓글목록 불러오기
 		$(document).ready(
-				function() {
-					if ("${chResult}" != null && "${chResult}" == ""
-							&& "${chResult}" == undefined) {
-						if ("${chResult}" == 1) {
-							alert("채널아이디 등록성공");
-						} else if ("${chResult}" == 0) {
-							alert("채널아이디 등록실패");
-						}
-					}
-					loadBoard(boardCount); // 페이지로드시에 방명록리스트를 불러온다.
-				});
+			function() {
+				loadBoard(boardCount); // 페이지로드시에 방명록리스트를 불러온다.
+			});
 
 		function loadBoard(boardCount, more) { // 방명록리스트 가져오는 메소드
 			var params = 'driver=' + "${driver}" + '&boardCount=' + boardCount;
