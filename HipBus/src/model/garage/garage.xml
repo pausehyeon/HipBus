@@ -76,7 +76,7 @@
 	<insert id="insertFAQ" parameterType="model.FAQDto">
 		insert into
 		HB_FAQ(num,email,nick,subject,content)
-		values(HB_newsseq.NEXTVAL,#{email},#{nick},#{subject},#{content})
+		values(HB_faqseq.NEXTVAL,#{email},#{nick},#{subject},#{content})
 	</insert>
 
 	<select id="getFAQArticle" parameterType="int" resultType="model.FAQDto">
