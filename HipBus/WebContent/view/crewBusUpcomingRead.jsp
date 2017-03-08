@@ -110,10 +110,10 @@
 								</div>
 							</c:if>
 							<div class="w3-col m6 l3">
-								<a href="crewBusUpcomng.do?driver=${driver}" class="w3-btn-block w3-padding w3-theme-d1 w3-margin-left w3-margin-bottom w3-theme-d5"> <i class="fa fa-bus w3-margin-right"></i>${str_mylist}</a>
+								<a href="crewBusUpcoming.do?driver=${driver}" class="w3-btn-block w3-padding w3-theme-d1 w3-margin-left w3-margin-bottom w3-theme-d5"> <i class="fa fa-bus w3-margin-right"></i>${str_mylist}</a>
 							</div>
 							<div class="w3-col m6 l3">
-								<a href='crewBusUpcoming.do?driver=${driver}' class="w3-btn-block w3-padding w3-theme-d1 w3-margin-left w3-margin-bottom w3-theme-d5"> <i class="fa fa-align-justify w3-margin-right"></i>${str_list}</a>
+								<a href='garageUpcoming.do' class="w3-btn-block w3-padding w3-theme-d1 w3-margin-left w3-margin-bottom w3-theme-d5"> <i class="fa fa-align-justify w3-margin-right"></i>${str_list}</a>
 							</div>
 						</div>
 					</div>
