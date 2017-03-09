@@ -62,11 +62,12 @@ a.yes-uline:hover{ text-decoration:underline}
 		</div>
 
 		<div class="w3-row-padding">
-			<div class="w3-twothird">		
-				<c:forEach var="dto" items="${topStation}">
-						<div class="w3-row w3-margin-bottom" style="color:red">
+			<div class="w3-twothird">
+				<div class="w3-margin-bottom w3-text-red">
+					<c:forEach var="dto" items="${topStation}">
+						<div class="w3-row">
 							<div class="w3-col m12">
-								<a href="stationRead.do?num=${dto.num}&pageNum=${pageNum}&category=${dto.category}&type=${type}">
+								<a href="stationRead.do?num=${dto.num}&pageNum=${pageNum}&category=${dto.category}&type=${type}"  style="font-weight: bold">
 								<i class="fa fa-hand-peace-o"></i>
 									<c:choose>
 										<c:when test="${dto.category == 1}">
@@ -99,7 +100,8 @@ a.yes-uline:hover{ text-decoration:underline}
 								<hr>
 							</div>
 						</div>
-					</c:forEach>
+						</c:forEach>
+					</div>
 					<!-- 글이없는경우 -->
 				<c:if test="${count == 0}">
 					<div class="w3-row w3-margin-bottom">

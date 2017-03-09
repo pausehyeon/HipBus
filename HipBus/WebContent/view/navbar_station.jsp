@@ -7,7 +7,7 @@
   <a href="javascript:void(0)" onclick="w3_close()" class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="close menu">
     <i class="fa fa-remove"></i>
   </a>
-  <h4><b>${str_sideName}</b></h4>
+  <h4 onclick="location='station.do'"><b>${str_sideName}</b></h4>
 	  <a href="station.do" class="w3-hover-opacity">${str_allView}</a>  
 	  <a href="station.do?category=${category1}&type=2" class="w3-hover-opacity">${str_beat}</a>
 	  <a href="station.do?category=${category2}&type=3" class="w3-hover-opacity">${str_rab}</a>

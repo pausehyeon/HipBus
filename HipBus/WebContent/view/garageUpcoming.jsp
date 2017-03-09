@@ -49,33 +49,31 @@
 					</c:if>
 					<c:if test="${count ne 0 and dateList eq null}">
 						<c:forEach var="article" items="${articles}">
-							<c:if test='${fn:contains(article.driver, "@")}'>
-								<c:set var="url" value="myBusUpcomingRead.do?driver="></c:set>
-							</c:if>
-							<c:if test='${not fn:contains(article.driver, "@")}'>
-								<c:set var="url" value="crewBusUpcomingRead.do?driver="></c:set>
-							</c:if>
-							<div class="w3-col m4 l3" onclick="location='${url}${article.driver}&num=${article.num}'">
-								<c:if test="${article.imglocation eq null }">
-									<img src="${project}/view/img/poster1.jpg" alt="poster" style="width: 100%">
+								<c:if test='${fn:contains(article.driver, "@")}'>
+									<c:set var="url" value="myBusUpcomingRead.do?driver="></c:set>
 								</c:if>
-								<c:if test="${article.imglocation ne null }">
-									<img src="${project}/hipbusSave/${article.imglocation}" alt="poster" style="width: 100%">
+								<c:if test='${not fn:contains(article.driver, "@")}'>
+									<c:set var="url" value="crewBusUpcomingRead.do?driver="></c:set>
 								</c:if>
-								<c:if test="${fn:length(article.subject) gt 7 }">
-									<p class="w3-large w3-slim">${fn:substring(article.subject, 0, 7)}...</p>
-								</c:if>
-								<c:if test="${ fn:length(article.subject) le 7 }">
-									<p class="w3-large w3-slim">${article.subject}</p>
-								</c:if>
-
-								<span><fmt:formatDate value="${article.perf_date}" type="both" pattern="M월 d일 공연 예정" /></span>
-								<p class="w3-tiny">
-									${article.nick} |
-									<fmt:formatDate value="${article.reg_date}" type="both" pattern="yyyy-MM-dd" />
-									| ${article.readcount}
-								</p>
-							</div>
+									<div class="w3-col m4 l3" onclick="location='${url}${article.driver}&num=${article.num}'">
+										<c:if test="${article.imglocation eq null }">
+											<img src="${project}/view/img/poster1.jpg" alt="poster" style="width: 100%">
+										</c:if>
+										<c:if test="${article.imglocation ne null }">
+											<img src="${project}/hipbusSave/${article.imglocation}" alt="poster" style="width: 100%">
+										</c:if>
+										<c:if test="${fn:length(article.subject) gt 7 }">
+											<p class="w3-large w3-slim">${fn:substring(article.subject, 0, 7)}...</p>
+										</c:if>
+										<c:if test="${ fn:length(article.subject) le 7 }">
+											<p class="w3-large w3-slim">${article.subject}</p>
+										</c:if>
+		
+										<span><fmt:formatDate value="${article.perf_date}" type="both" pattern="M월 d일 공연 예정" /></span>
+										<p class="w3-tiny">
+											${article.nick}<br><fmt:formatDate value="${article.reg_date}" type="both" pattern="yyyy-MM-dd" />|${article.readcount}
+										</p>
+									</div>
 						</c:forEach>
 
 					</c:if>

@@ -472,7 +472,7 @@
 				request.sendRequest();
 			} else {
 				location.href = "stationRead.do?num=" + readform.num.value
-						+ "&pageNum=" + readform.pageNum.value + "category="
+						+ "&pageNum=" + readform.pageNum.value + "&category="
 						+ readform.category.value + "&type=" + readform.type.value;
 			}
 		}
@@ -586,7 +586,7 @@
 				request.sendRequest();
 			} else {
 				location.href = "stationRead.do?num=" + readform.num.value
-						+ "&pageNum=" + readform.pageNum.value + "category="
+						+ "&pageNum=" + readform.pageNum.value + "&category="
 						+ readform.category.value + "&type=" + readform.type.value;
 			}
 		}
