@@ -1,16 +1,18 @@
 /* 관리자*/
 insert into hb_member values('admin@hipbus.com', 'Admin1', 'a1a1a1', 3, sysdate, 'AdminLogo.png');
+insert into hb_member values('hipbus@naver.com', 'Admin2', 'a1a1a1', 3, sysdate, 'AdminLogo.png');
+
 insert into hb_verification values('admin@hipbus.com', -1);
+insert into hb_verification values('hipbus@naver.com', -1);
 
 /* 1등급회원 */
+insert into hb_member values('proj.hipbus@gmail.com', 'hipbus', 'a1a1a1', 1, sysdate, '');
+
 insert into hb_member values('aaa@email.com', 'Jueun', 'a1a1a1', 1, sysdate, 'aaa.png');
 insert into hb_member values('bbb@email.com', 'Gahyeon', 'a1a1a1', 1, sysdate, 'bbb.png');
 insert into hb_member values('ccc@email.com', 'Jihyeon', 'a1a1a1', 1, sysdate, 'ccc.png');
 insert into hb_member values('ddd@email.com', 'Victory', 'a1a1a1', 1, sysdate, 'ddd.png');
 insert into hb_member values('eee@email.com', 'Jaeduek', 'a1a1a1', 1, sysdate, 'eee.png');
-
-
-insert into hb_member values('proj.hipbus@gmail.com', 'hipbus', 'a1a1a1', 1, sysdate, 'AdminLogo.png');
 
 insert into hb_driver values('proj.hipbus@gmail.com');
 insert into hb_driver values('aaa@email.com');
@@ -27,7 +29,7 @@ insert into hb_verification values('ddd@email.com', -1);
 insert into hb_verification values('eee@email.com', -1);
 
 /* 2등급회원*/
-insert into hb_member values('fff@email.com', 'Jihun', 'a1a1a1', 2, sysdate, 'fff.png');
+insert into hb_member values('fff@email.com', 'Victory', 'a1a1a1', 2, sysdate, 'fff.png');
 insert into hb_member values('ggg@email.com', 'Jaehyeong', 'a1a1a1', 2, sysdate, 'ggg.png');
 insert into hb_member values('hhh@email.com', 'Seongyong', 'a1a1a1', 2, sysdate, 'hhh.png');
 insert into hb_member values('iii@email.com', 'Betrayer', 'a1a1a1', 2, sysdate, 'iii.png');
