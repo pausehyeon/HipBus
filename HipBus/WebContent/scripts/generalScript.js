@@ -82,8 +82,8 @@ $(document).ready(
 				height : 35
 			});
 			
-		var garageImg = "http://localhost:8080/HipBus/view/img/garage.png";
-			var stationImg = "http://localhost:8080/HipBus/view/img/station.png";
+			var garageImg = "/HipBus/view/img/garage.png";
+			var stationImg = "/HipBus/view/img/station.png";
 			var boardSrc = sessionStorage.getItem("board");
 			if (boardSrc) {
 				if (boardSrc.indexOf('station') == -1) {
