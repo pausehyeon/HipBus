@@ -179,7 +179,7 @@ insert into hb_news values('admin@hipbus.com',hb_newsseq.nextval,'Admin1','쇼�
 
 insert into hb_news values('admin@hipbus.com',hb_newsseq.nextval,'Admin1','칸예 웨스트 기억상실증 겪었다 "현재는 회복"','<p>팝가수 카니예 웨스트가 기억상실 증상을 겪었다고 미국 연예매체 할리우드라이프가 지난 13일(이하 현지시각) 보도했다.</p><p>보도에 따르면 카니예 웨스트는 8일 간 정신 질환으로 병원에 입원해있을 당시, 기억 상실 증상을 보인 것으로 전해졌다.</p><p>지난 12일 열렸던 그래미 어워즈 레드카펫에서 카니예 웨스트의 절친이자 동료 가수인 말릭 유세프의 입을 통해 알려졌다.</p><p>그는 레드카펫에서 “웨스트가 입원해 있는 동안 6~7시간 정도 함께 시간을 보내곤 했다”며 “기억 상실 증세를 보였지만</p><p>지금은 회복한 상태”라고 밝혔다.</p><p>이어 “현재는 주로 가족들과 함께 시간을 보내고 있는 것으로 안다”면서</p><p>"아이가 많이 커서 스스로 걸어다니고 장난감을 가지고 놀곤 한다. 그런 아이를 보는 게 웨스트의 가장 큰 힘”이라고 말했다.</p>','news1.png',0,sysdate);
 
-insert into hb_channel values('fff@email.com','UCSXqBJql66rcAiplPEBlKGw');
+insert into hb_channel values('fff@email.com','UCQcXx60s242Bkol0EfbytoQ');
 insert into hb_channel values('ggg@email.com','UCKDN9ey_tPWGPWPBIwGYVCw');
 insert into hb_channel values('hhh@email.com','UCUuZODYHQ2KvoBNiwq_Ey1g');
 insert into hb_channel values('iii@email.com','UC4OYayWn1eR2QpUB5DtLNPg');
