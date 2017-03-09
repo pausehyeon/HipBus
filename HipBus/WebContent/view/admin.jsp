@@ -469,13 +469,13 @@
 					<br> <br>
 					<p>
 						<label>${str_amPasswd}</label>
-						<input name="passwd" class="w3-input" type="password">
+						<input name="passwd" class="w3-input" type="password" value="${member.passwd}">
 						<div class="w3-text-blue w3-xsmall w3-right" id="passwdresult">${str_modifyPasswd}</div>
 					</p>
 					<br>
 					<p>
 						<label>${str_amPasswdCheck}</label>
-						<input class="w3-input" type="password" name="passwdcheck">
+						<input class="w3-input" type="password" name="passwdcheck" value="${member.passwd}">
 						<div class="w3-text-blue w3-xsmall w3-right" id="passwdcheckresult">${str_passwdCheck}</div>
 					</p>
 					<br> <br>
