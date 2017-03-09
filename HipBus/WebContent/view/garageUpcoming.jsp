@@ -86,10 +86,10 @@
 						</div>
 						<c:forEach var="datelist" items="${dateList}">
 							<c:if test='${fn:contains(datelist.driver, "@")}'>
-								<c:set var="url" value="myBusUpcomingRead.do?drvier="></c:set>
+								<c:set var="url" value="myBusUpcomingRead.do?driver="></c:set>
 							</c:if>
 							<c:if test='${not fn:contains(datelist.driver, "@")}'>
-								<c:set var="url" value="crewBusUpcomingRead.do?drvier="></c:set>
+								<c:set var="url" value="crewBusUpcomingRead.do?driver="></c:set>
 							</c:if>
 							<div class="w3-col m4 l3" onclick="location='${url}${datelist.driver}&num=${datelist.num}'">
 								<c:if test="${datelist.imglocation eq null }">
